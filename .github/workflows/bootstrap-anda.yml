@@ -47,4 +47,4 @@ jobs:
           subatomic-cli upload \
             --server https://subatomic.fyralabs.com \
             --token ${{ secrets.SUBATOMIC_TOKEN }} \
-            ad37 --prune anda-build/rpm/rpms/*
+            ad37 anda-build/rpm/rpms/*
