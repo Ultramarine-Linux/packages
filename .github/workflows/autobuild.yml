@@ -54,6 +54,7 @@ jobs:
     needs: manifest
     strategy:
       matrix: ${{ fromJson(needs.manifest.outputs.build_matrix) }}
+      fail-fast: false
 
     uses: andaman-common-pkgs/github-actions/.github/workflows/anda-rpm.yml@main
     #if: ${{ matrix.changed_folders != '' }}
