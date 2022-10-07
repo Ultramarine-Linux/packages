@@ -1,0 +1,6 @@
+[ultramarine-backgrounds]
+spec = "ultramarine-backgrounds.spec"
+build_script = ""
+build_method = "mock"
+owner = "cappy"
+git_repo = "https://github.com/Ultramarine-Linux/pkg-ultramarine-backgrounds.git"
