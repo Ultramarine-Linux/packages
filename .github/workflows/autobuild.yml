@@ -4,8 +4,8 @@ name: Build from generated changes
 on:
 
   push:
-    # paths:
-    #   - ultramarine/**
+    paths:
+      - ultramarine/**
     branches:
       - main
   workflow_dispatch:
