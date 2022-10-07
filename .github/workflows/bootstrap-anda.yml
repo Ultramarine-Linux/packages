@@ -9,6 +9,9 @@ on:
 jobs:
   bootstrap:
     runs-on: ARM64
+    container:
+      image: registry.fedoraproject.org/fedora:37
+      options: --cap-add=SYS_ADMIN --privileged
     steps:
       - uses: actions/checkout@v3
         with:
@@ -21,7 +24,7 @@ jobs:
       - uses: actions/setup-go@v3
         with:
           go-version: "^1.19"
-      - run: dnf install -y mock createrepo_c rpm-build
+      - run: sudo dnf install -y mock createrepo_c rpm-build
       - name: Install Anda
         uses: actions-rs/cargo@v1
         with:
