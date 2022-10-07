@@ -46,7 +46,7 @@ jobs:
         run: go install github.com/FyraLabs/subatomic/subatomic-cli@latest
 
       - name: Build
-        run: anda build -c anda-37-aarch64 subatomic -p rpm -D 'autogitcommit e1688892b60f24e5c8f4f20bebb5bd71a1cc252d' -D 'autogitversion 20221007.e1688892'
+        run: anda build -c anda-37-aarch64 subatomic -p rpm
 
       - run: |
           subatomic-cli upload \
