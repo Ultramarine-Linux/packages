@@ -4,4 +4,3 @@ project "pkg" {
         sources =  "."
     }
 }
-
