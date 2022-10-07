@@ -44,3 +44,9 @@ jobs:
 
       - name: Build
         run: anda build -c anda-37-aarch64 anda -p rpm
+
+      - run: |
+          subatomic-cli upload \
+            --server https://subatomic.fyralabs.com \
+            --token ${{ secrets.SUBATOMIC_TOKEN }} \
+            ad37 --prune anda-build/rpm/rpms/* anda-build/rpm/srpm/*
