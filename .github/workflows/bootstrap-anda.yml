@@ -1,4 +1,4 @@
-name: Bootstrap build from anda
+name: Bootstrap build
 
 
 on:
@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          repository: FyraLabs/anda
+          repository: FyraLabs/subatomic
 
       # - name: Run shell commands
       #   run: |
@@ -43,10 +43,10 @@ jobs:
         run: go install github.com/FyraLabs/subatomic/subatomic-cli@latest
 
       - name: Build
-        run: anda build -c anda-37-aarch64 anda -p rpm
+        run: anda build -c anda-37-aarch64 subatomic -p rpm
 
       - run: |
           subatomic-cli upload \
             --server https://subatomic.fyralabs.com \
             --token ${{ secrets.SUBATOMIC_TOKEN }} \
-            ad37 --prune anda-build/rpm/rpms/* anda-build/rpm/srpm/*
+            ad37 --prune anda-build/rpm/rpms/*
