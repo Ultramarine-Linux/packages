@@ -61,7 +61,7 @@ jobs:
     uses: andaman-common-pkgs/github-actions/.github/workflows/anda-rpm.yml@main
     #if: ${{ matrix.changed_folders != '' }}
     with:
-      runsOn: ${{ matrix.arch == "aarch64" && "ARM64" || "ubuntu-latest" }}
+      runsOn: ${{ matrix.arch == 'aarch64' && 'ARM64' || 'ubuntu-latest' }}
       name: "ultramarine/${{ matrix.pkg.changed_folders }}/pkg"
       subatomicServer: "https://subatomic.fyralabs.com"
       subatomicRepo: um37
