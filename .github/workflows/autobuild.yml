@@ -71,9 +71,9 @@ jobs:
           sudo dnf install -y ultramarine-mock-configs subatomic-cli
 
       - uses: andaman-common-pkgs/anda-build@main
+        if: ${{ !fromJson(needs.manifest.outputs.is_empty) }}
         with:
           name: "ultramarine/${{ matrix.pkg }}/pkg"
-          if: ${{ !fromJson(needs.manifest.outputs.is_empty) }}
           mockConfig: ultramarine-37-${{ matrix.arch }}
           andaRepo: https://github.com/andaman-common-pkgs/subatomic-repos/raw/main/ad37.repo
 
