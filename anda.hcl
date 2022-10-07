@@ -1,0 +1,5 @@
+
+// dummy project file
+
+project {
+}

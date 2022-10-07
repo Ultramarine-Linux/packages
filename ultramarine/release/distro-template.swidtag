@@ -1,0 +1,28 @@
+<!-- When changing this file, bump up the @tagVersion value. -->
+<?xml version="1.0" encoding="utf-8"?>
+<SoftwareIdentity
+  xmlns="http://standards.iso.org/iso/19770/-2/2015/schema.xsd"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://standards.iso.org/iso/19770/-2/2015/schema.xsd http://standards.iso.org/iso/19770/-2/2015-current/schema.xsd"
+  xml:lang="en-US"
+  tagId="org.ultramarine.Ultramarine-$version"
+  tagVersion="1"
+  name="Ultramarine"
+  version="$version"
+  versionScheme="unknown"
+  media="(OS:linux)">
+  <Entity
+    name="Ultramarine Linux Project"
+    regid="ultramarine-linux.org"
+    role="tagCreator softwareCreator aggregator distributor licensor" />
+  <Link
+    rel="license"
+    href="https://fedoraproject.org/wiki/Legal:Licenses/LicenseAgreement" />
+  <Meta
+    product="Ultramarine"
+    colloquialVersion="$version"
+    summary="Linux distribution based on Fedora"
+    entitlementDataRequired="false"
+    unspscCode="43233004"
+    unspscVersion="20.0601" />
+</SoftwareIdentity>

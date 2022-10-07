@@ -1,0 +1,11 @@
+README.Ultramarine-Release-Notes
+=============================
+
+Ultramarine Linux is a Linux distribution based on Fedora that aims to provide an simple, no-nonsense
+experience for beginners and advanced users alike while being also 100% bug-for-bug compatible with Fedora.
+
+Ultramarine tracks the latest Fedora releases and pulls in the latest updates and standard packages from Fedora.
+Only keeping Ultramarine-specific patches in its own repository.
+
+Ultramarine can also be considered a spiritual successor to the Korora Project,
+which was a fork of Fedora that aims to achieve similar goals.

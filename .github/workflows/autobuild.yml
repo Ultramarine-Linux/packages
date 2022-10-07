@@ -1,0 +1,64 @@
+# for each folder in ultramarine/
+# generate a new workflow for each folder in ultramarine/
+name: Build from generated changes
+on:
+
+  push:
+    paths:
+      - ultramarine/**
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  manifest:
+    runs-on: ubuntu-latest
+
+    outputs:
+      build_matrix: ${{ steps.generate_build_matrix.outputs.build_matrix }}
+      is_empty: ${{ steps.generate_build_matrix.outputs.is_empty }}
+
+    # check out the repo
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+      - run: git fetch
+      #- run: git checkout HEAD^
+
+      - name: Generate Build matrix
+        id: generate_build_matrix
+        # generate build matrix by checking out changes in ultramarine/
+        run: |
+          # get the list of changed folders in the current commit
+          changed_folders=$(git diff --name-only HEAD^ | grep -oP 'ultramarine/\K[^/]*' | sort -u)
+          # if changed_folders is empty then set is empty to true
+          if [ -z "$changed_folders" ]; then
+            echo "::set-output name=is_empty::true"
+          else
+            echo "::set-output name=is_empty::false"
+          fi
+          build_matrix=$(echo $changed_folders | jq -R -s -c 'split("\n")[:-1]')
+
+          #build_matrix=$(ls ultramarine/ | jq -R -s -c 'split("\n")[:-1]')
+          # create build matrix with { changed_folders: [ "folder1", "folder2" ] }
+
+          echo "::set-output name=build_matrix::{\"changed_folders\": $build_matrix}"
+          #echo "::set-output name=build_matrix::$build_matrix"
+  build:
+    needs: manifest
+    strategy:
+      matrix: ${{ fromJson(needs.manifest.outputs.build_matrix) }}
+
+    uses: andaman-common-pkgs/github-actions/.github/workflows/anda-rpm.yml@main
+    #if: ${{ matrix.changed_folders != '' }}
+    with:
+      name: "ultramarine/${{ matrix.changed_folders }}/pkg"
+      subatomicServer: "https://subatomic.fyralabs.com"
+      subatomicRepo: um37
+      mockConfig: ultramarine-37-x86_64
+      mockConfigPackage: anda-mock-configs mock-core-configs
+      upload: true
+    secrets:
+      subatomicToken: ${{ secrets.SUBATOMIC_TOKEN }}
