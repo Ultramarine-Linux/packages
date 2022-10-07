@@ -4,8 +4,8 @@ name: Build from generated changes
 on:
 
   push:
-    paths:
-      - ultramarine/**
+    # paths:
+    #   - ultramarine/**
     branches:
       - main
   workflow_dispatch:
@@ -57,6 +57,7 @@ jobs:
       name: "ultramarine/${{ matrix.changed_folders }}/pkg"
       subatomicServer: "https://subatomic.fyralabs.com"
       subatomicRepo: um37
+      extraInitRepos: https://github.com/andaman-common-pkgs/subatomic-repos/raw/main/ad37.repo
       mockConfig: ultramarine-37-x86_64
       mockConfigPackage: anda-mock-configs mock-core-configs
       upload: true
