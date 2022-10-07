@@ -13,8 +13,10 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          repository: FyraLabs/subatomic
-          fetch-depth: 2
+          repository: FyraLabs/subatomic@bootstrap
+          submodules: "recursive"
+          set-safe-directory: true
+          fetch-depth: 1
 
       # - name: Run shell commands
       #   run: |
@@ -32,7 +34,6 @@ jobs:
       - name: Set up git repository
         run: |
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
-          git checkout bootstrap
       - uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
