@@ -32,7 +32,7 @@ jobs:
         # generate build matrix by checking out changes in ultramarine/
         run: |
           # get the list of changed folders in the current commit
-          changed_folders=$(git diff --name-only HEAD^ | grep -oP 'ultramarine/\K[^/]*' | sort -u | tr ' ' ',')
+          changed_folders=$(git diff --name-only HEAD^ | grep -oP 'ultramarine/\K[^/]*' | sort -u )
           echo "Changed folders: $changed_folders"
           # if changed_folders is empty then set is empty to true
           if [ -z "$changed_folders" ]; then
@@ -41,7 +41,7 @@ jobs:
             echo "::set-output name=is_empty::false"
           fi
           # turn it into a json array
-          build_matrix=$(echo "$changed_folders" | jq -R | jq -s )
+          build_matrix=$(echo "$changed_folders" | jq -R . | jq -s . | jq -c .)
 
           # if there's only one folder then check if it's
 
