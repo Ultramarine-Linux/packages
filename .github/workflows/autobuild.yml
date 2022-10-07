@@ -68,7 +68,7 @@ jobs:
         run: |
           sudo dnf install -y dnf-plugins-core
           sudo dnf config-manager --add-repo https://github.com/andaman-common-pkgs/subatomic-repos/raw/main/um37.repo
-          sudo dnf install -y ultramarine-mock-configs subatomic-cli
+          sudo dnf install -y ultramarine-mock-configs subatomic-cli anda mock rpm-build
 
       - uses: andaman-common-pkgs/anda-build@main
         if: ${{ !fromJson(needs.manifest.outputs.is_empty) }}
