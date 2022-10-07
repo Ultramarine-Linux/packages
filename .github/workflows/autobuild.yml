@@ -83,7 +83,7 @@ jobs:
       - name: Upload packages to subatomic
         if: ${{ !fromJson(needs.manifest.outputs.is_empty) }}
         run: |
-          subatomic-cli upload --prune \
+          subatomic-cli upload \
             --server https://subatomic.fyralabs.com \
             --token ${{ secrets.SUBATOMIC_TOKEN }} \
-            ${{ matrix.version }} anda-build/rpm/rpms/* anda-build/rpm/srpm/*
+            ${{ matrix.version }} anda-build/rpm/rpms/*
