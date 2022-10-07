@@ -62,7 +62,7 @@ jobs:
     #if: ${{ matrix.changed_folders != '' }}
     with:
       runsOn: ${{ matrix.arch == 'aarch64' && 'ARM64' || 'ubuntu-latest' }}
-      name: "ultramarine/${{ matrix.pkg.changed_folders }}/pkg"
+      name: "ultramarine/${{ matrix.pkgs }}/pkg"
       subatomicServer: "https://subatomic.fyralabs.com"
       subatomicRepo: um37
       extraInitRepos: https://github.com/andaman-common-pkgs/subatomic-repos/raw/main/ad37.repo
