@@ -10,7 +10,7 @@ jobs:
   bootstrap:
     runs-on: ARM64
     container:
-      image: registry.fedoraproject.org/fedora:37
+      image: fedora:37
       options: --cap-add=SYS_ADMIN --privileged
     steps:
       - uses: actions/checkout@v3
