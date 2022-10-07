@@ -1,0 +1,5 @@
+[mesa-full]
+spec = "mesa-full.spec"
+build_method = "mock"
+owner = "cappy"
+git_repo = "https://github.com/ultramarine-linux/pkg-mesa-full"

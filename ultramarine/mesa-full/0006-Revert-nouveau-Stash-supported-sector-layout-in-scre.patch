@@ -1,0 +1,49 @@
+From 8339af08627104557ecd69e0e23396f2caed2050 Mon Sep 17 00:00:00 2001
+From: Karol Herbst <kherbst@redhat.com>
+Date: Thu, 16 Sep 2021 13:07:55 -0400
+Subject: [PATCH 6/6] Revert "nouveau: Stash supported sector layout in screen"
+
+This reverts commit ff534e1b5066f1c8e7969f99f40ec080eee1b907.
+---
+ src/gallium/drivers/nouveau/nouveau_screen.c | 12 ------------
+ src/gallium/drivers/nouveau/nouveau_screen.h |  1 -
+ 2 files changed, 13 deletions(-)
+
+diff --git a/src/gallium/drivers/nouveau/nouveau_screen.c b/src/gallium/drivers/nouveau/nouveau_screen.c
+index 192044c7fb4..5c5253097b1 100644
+--- a/src/gallium/drivers/nouveau/nouveau_screen.c
++++ b/src/gallium/drivers/nouveau/nouveau_screen.c
+@@ -272,18 +272,6 @@ nouveau_screen_init(struct nouveau_screen *screen, struct nouveau_device *dev)
+       } while ((start + screen->svm_cutout_size) < BITFIELD64_MASK(limit_bit));
+    }
+ 
+-   switch (dev->chipset) {
+-   case 0x0ea: /* TK1, GK20A */
+-   case 0x12b: /* TX1, GM20B */
+-   case 0x13b: /* TX2, GP10B */
+-      screen->tegra_sector_layout = true;
+-      break;
+-   default:
+-      /* Xavier's GPU and everything else */
+-      screen->tegra_sector_layout = false;
+-      break;
+-   }
+-
+    /*
+     * Set default VRAM domain if not overridden
+     */
+diff --git a/src/gallium/drivers/nouveau/nouveau_screen.h b/src/gallium/drivers/nouveau/nouveau_screen.h
+index 9460152eff1..58bdaa2065f 100644
+--- a/src/gallium/drivers/nouveau/nouveau_screen.h
++++ b/src/gallium/drivers/nouveau/nouveau_screen.h
+@@ -60,7 +60,6 @@ struct nouveau_screen {
+    int64_t cpu_gpu_time_delta;
+ 
+    bool hint_buf_keep_sysmem_copy;
+-   bool tegra_sector_layout;
+ 
+    unsigned vram_domain;
+ 
+-- 
+2.31.1
+

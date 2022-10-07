@@ -1,0 +1,32 @@
+From 140e7c3de1928f65dc04b9c9a22a705890784f86 Mon Sep 17 00:00:00 2001
+From: Karol Herbst <kherbst@redhat.com>
+Date: Thu, 16 Sep 2021 13:07:42 -0400
+Subject: [PATCH 4/6] Revert "nouveau: no modifier != the invalid modifier"
+
+This reverts commit df451091ac96c09d726379384fa14dea5db2d5b5.
+---
+ src/gallium/drivers/nouveau/nvc0/nvc0_resource.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/gallium/drivers/nouveau/nvc0/nvc0_resource.c b/src/gallium/drivers/nouveau/nvc0/nvc0_resource.c
+index afe8dd7d429..668d2f95a54 100644
+--- a/src/gallium/drivers/nouveau/nvc0/nvc0_resource.c
++++ b/src/gallium/drivers/nouveau/nvc0/nvc0_resource.c
+@@ -9,11 +9,13 @@ static struct pipe_resource *
+ nvc0_resource_create(struct pipe_screen *screen,
+                      const struct pipe_resource *templ)
+ {
++   const uint64_t modifier = DRM_FORMAT_MOD_INVALID;
++
+    switch (templ->target) {
+    case PIPE_BUFFER:
+       return nouveau_buffer_create(screen, templ);
+    default:
+-      return nvc0_miptree_create(screen, templ, NULL, 0);
++      return nvc0_miptree_create(screen, templ, &modifier, 1);
+    }
+ }
+ 
+-- 
+2.31.1
+
