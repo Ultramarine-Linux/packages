@@ -47,7 +47,6 @@ jobs:
 
       - name: Build
         run: anda build -c anda-37-aarch64 subatomic -p rpm
-
       - run: |
           subatomic-cli upload \
             --server https://subatomic.fyralabs.com \
