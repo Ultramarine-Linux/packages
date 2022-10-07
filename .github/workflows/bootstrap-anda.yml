@@ -14,10 +14,10 @@ jobs:
         with:
           repository: FyraLabs/anda
 
-      - name: Run shell commands
-        run: |
-          git config --global url.https://github.com/.insteadOf git://github.com/
-          git clone https://github.com/FyraLabs/anda.git
+      # - name: Run shell commands
+      #   run: |
+      #     git config --global url.https://github.com/.insteadOf git://github.com/
+      #     git clone https://github.com/FyraLabs/anda.git
       - uses: actions/setup-go@v3
         with:
           go-version: "^1.19"
