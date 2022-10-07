@@ -1,0 +1,6 @@
+[hyfetch]
+spec = "hyfetch.spec"
+build_script = ""
+build_method = "mock"
+owner = "cappy"
+git_repo = "https://github.com/ultramarine-linux/hyfetch"
