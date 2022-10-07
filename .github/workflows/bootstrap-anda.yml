@@ -30,6 +30,9 @@ jobs:
           sudo dnf install -y dnf-plugins-core
           sudo dnf config-manager --add-repo https://github.com/andaman-common-pkgs/subatomic-repos/raw/main/ad37.repo
       - run: sudo dnf install -y mock createrepo_c rpm-build anda-mock-configs
+      - uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
       - name: Install Anda
         uses: actions-rs/cargo@v1
         with:
