@@ -14,6 +14,7 @@ jobs:
       - uses: actions/checkout@v3
         with:
           repository: FyraLabs/subatomic
+          fetch-depth: 2
 
       # - name: Run shell commands
       #   run: |
@@ -29,7 +30,9 @@ jobs:
           sudo dnf config-manager --add-repo https://github.com/andaman-common-pkgs/subatomic-repos/raw/main/ad37.repo
       - run: sudo dnf install -y mock createrepo_c rpm-build anda-mock-configs gcc curl wget git-core openssl-devel
       - name: Set up git repository
-        run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
+        run: |
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          git checkout bootstrap
       - uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
