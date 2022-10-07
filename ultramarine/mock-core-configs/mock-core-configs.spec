@@ -12,11 +12,6 @@ URL:        https://github.com/rpm-software-management/mock/
 # git reset --hard %%{name}-%%{version}
 # tito build --tgz
 Source:     https://github.com/rpm-software-management/mock/archive/refs/tags/mock-core-configs-%{version}-1.tar.gz
-Source1:    ultramarine-35-x86_64.cfg
-Source2:    ultramarine.tpl
-Source3:    ultramarine-testing.tpl
-Source4:    ultramarine-36-x86_64.cfg
-Source5:    ultramarine-37-x86_64.cfg
 BuildArch:  noarch
 
 # The mock.rpm requires this.  Other packages may provide this if they tend to
@@ -27,6 +22,8 @@ Provides: mock-configs
 Requires:   distribution-gpg-keys >= 1.60
 # specify minimal compatible version of mock
 Requires:   mock >= 2.5
+# BuildRequires: ultramarine-mock-configs
+Recommends:   ultramarine-mock-configs
 Requires:   mock-filesystem
 
 Requires(post): coreutils
@@ -47,12 +44,6 @@ Config files which allow you to create chroots for:
 
 %prep
 %setup -q -n mock-%{name}-%{version}-1/%{name}/
-
-cp -v %{SOURCE1} etc/mock
-cp -v %{SOURCE2} etc/mock/templates
-cp -v %{SOURCE3} etc/mock/templates
-cp -v %{SOURCE4} etc/mock/
-cp -v %{SOURCE5} etc/mock/
 
 %build
 HOST=none
@@ -159,6 +150,9 @@ fi
 %ghost %config(noreplace,missingok) %{_sysconfdir}/mock/default.cfg
 
 %changelog
+* Fri Oct 07 2022 Cappy Ishihara <cappy@cappuchino.xyz> - 37.4-3.um37
+- Separate Ultramarine configs to somewhere else
+
 * Fri Jan 07 2022 Cappy Ishihara <cappy@cappuchino.xyz> - 36.4-1.um35
 - add Ultramarine Linux
 - added Consumer Linux class (Fedora and Ultramarine)

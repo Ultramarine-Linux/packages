@@ -59,7 +59,7 @@ jobs:
       subatomicRepo: um37
       extraInitRepos: https://github.com/andaman-common-pkgs/subatomic-repos/raw/main/ad37.repo
       mockConfig: ultramarine-37-x86_64
-      mockConfigPackage: anda-mock-configs mock-core-configs-*:*.um37.noarch
+      mockConfigPackage: anda-mock-configs ultramarine-mock-configs
       upload: true
     secrets:
       subatomicToken: ${{ secrets.SUBATOMIC_TOKEN }}
