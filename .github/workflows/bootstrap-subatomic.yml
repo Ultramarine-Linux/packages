@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          repository: FyraLabs/anda
+          repository: FyraLabs/subatomic
 
       # - name: Run shell commands
       #   run: |
@@ -28,6 +28,8 @@ jobs:
           sudo dnf install -y dnf-plugins-core
           sudo dnf config-manager --add-repo https://github.com/andaman-common-pkgs/subatomic-repos/raw/main/ad37.repo
       - run: sudo dnf install -y mock createrepo_c rpm-build anda-mock-configs gcc curl wget git-core openssl-devel
+      - name: Set up git repository
+        run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
       - uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
@@ -41,7 +43,7 @@ jobs:
         run: go install github.com/FyraLabs/subatomic/subatomic-cli@latest
 
       - name: Build
-        run: anda build -c anda-37-aarch64 anda -p rpm
+        run: anda build -c anda-37-aarch64 subatomic -p rpm
 
       - run: |
           subatomic-cli upload \
