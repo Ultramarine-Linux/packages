@@ -70,7 +70,7 @@ jobs:
           sudo dnf config-manager --add-repo https://github.com/andaman-common-pkgs/subatomic-repos/raw/main/um37.repo
           sudo dnf install -y ultramarine-mock-configs subatomic-cli
 
-      - uses: andaman-common-pkgs/anda-build
+      - uses: andaman-common-pkgs/anda-build@main
         with:
           name: "ultramarine/${{ matrix.pkg }}/pkg"
           mockConfig: ultramarine-37-${{ matrix.arch }}
