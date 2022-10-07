@@ -1,6 +1,6 @@
 # for each folder in ultramarine/
 # generate a new workflow for each folder in ultramarine/
-name: Build from generated changes
+name: Automatically build packages
 on:
 
   push:
@@ -48,22 +48,25 @@ jobs:
           #build_matrix=$(ls ultramarine/ | jq -R -s -c 'split("\n")[:-1]')
           # create build matrix with { changed_folders: [ "folder1", "folder2" ] }
 
-          echo "::set-output name=build_matrix::{\"changed_folders\": $build_matrix}"
+          echo "::set-output name=build_matrix::$build_matrix"
           #echo "::set-output name=build_matrix::$build_matrix"
   build:
     needs: manifest
     strategy:
-      matrix: ${{ fromJson(needs.manifest.outputs.build_matrix) }}
+      matrix:
+        pkg: ${{ fromJson(needs.manifest.outputs.build_matrix) }}
+        arch: ["x86_64", "aarch64"]
       fail-fast: false
 
     uses: andaman-common-pkgs/github-actions/.github/workflows/anda-rpm.yml@main
     #if: ${{ matrix.changed_folders != '' }}
     with:
-      name: "ultramarine/${{ matrix.changed_folders }}/pkg"
+      runsOn: ${{ matrix.arch == "aarch64" && "ARM64" || "ubuntu-latest" }}
+      name: "ultramarine/${{ matrix.pkg.changed_folders }}/pkg"
       subatomicServer: "https://subatomic.fyralabs.com"
       subatomicRepo: um37
       extraInitRepos: https://github.com/andaman-common-pkgs/subatomic-repos/raw/main/ad37.repo
-      mockConfig: ultramarine-37-x86_64
+      mockConfig: ultramarine-37-${{ matrix.arch }}
       mockConfigPackage: anda-mock-configs ultramarine-mock-configs
       upload: true
     secrets:
