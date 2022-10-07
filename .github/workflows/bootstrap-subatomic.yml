@@ -11,12 +11,6 @@ jobs:
       image: fedora:37
       options: --cap-add=SYS_ADMIN --privileged
     steps:
-      - uses: actions/checkout@v3
-        with:
-          repository: FyraLabs/subatomic@bootstrap
-          submodules: "recursive"
-          set-safe-directory: true
-          fetch-depth: 1
 
       # - name: Run shell commands
       #   run: |
@@ -31,6 +25,11 @@ jobs:
           sudo dnf install -y dnf-plugins-core
           sudo dnf config-manager --add-repo https://github.com/andaman-common-pkgs/subatomic-repos/raw/main/ad37.repo
       - run: sudo dnf install -y mock createrepo_c rpm-build anda-mock-configs gcc curl wget git-core openssl-devel
+      - uses: actions/checkout@v3
+        with:
+          repository: FyraLabs/subatomic@bootstrap
+          set-safe-directory: true
+          fetch-depth: 1
       - name: Set up git repository
         run: |
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
