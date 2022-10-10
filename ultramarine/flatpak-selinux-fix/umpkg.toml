@@ -1,0 +1,6 @@
+[flatpak-selinux-fix]
+spec = "flatpak-selinux-fix.spec"
+build_script = ""
+build_method = "mock"
+owner = "cappy"
+git_repo = "https://github.com/ultramarine-linux/pkg-flatpak-selinux-fix.git"
