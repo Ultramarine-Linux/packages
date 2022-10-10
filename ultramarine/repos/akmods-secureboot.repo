@@ -1,0 +1,21 @@
+[copr::egeretto:akmods-secureboot]
+name=Secureboot support for akmods
+baseurl=https://download.copr.fedorainfracloud.org/results/egeretto/akmods-secureboot/fedora-$releasever-$basearch/
+type=rpm-md
+skip_if_unavailable=True
+gpgcheck=1
+gpgkey=https://download.copr.fedorainfracloud.org/results/egeretto/akmods-secureboot/pubkey.gpg
+repo_gpgcheck=0
+enabled=1
+enabled_metadata=1
+
+[copr::egeretto:kmodtool-secureboot]
+name=Secureboot support for kmodtool
+baseurl=https://download.copr.fedorainfracloud.org/results/egeretto/kmodtool-secureboot/fedora-$releasever-$basearch/
+type=rpm-md
+skip_if_unavailable=True
+gpgcheck=1
+gpgkey=https://download.copr.fedorainfracloud.org/results/egeretto/kmodtool-secureboot/pubkey.gpg
+repo_gpgcheck=0
+enabled=1
+enabled_metadata=1
