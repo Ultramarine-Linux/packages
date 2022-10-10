@@ -1,0 +1,6 @@
+[ultramarine-gnome-filesystem]
+spec = "ultramarine-gnome-filesystem.spec"
+build_script = ""
+build_method = "mock"
+owner = "cappy"
+git_repo = "https://github.com/ultramarine-linux/pkg-ultramarine-gnome-filesystem.git"

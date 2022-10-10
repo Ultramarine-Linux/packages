@@ -1,0 +1,63 @@
+[Panels]
+Panels=Bottom Panel
+
+[Bottom Panel]
+Children=AppMenu;Visual Space;Icon Tasklist;Tray;Seperator;Keyboard Layout;DropBy;Spacer 1;Network;Status Indicator;User Indicator;Seperator 2;Clock;Raven Trigger
+Position=Bottom
+Size=50
+
+[AppMenu]
+ID=AppMenu
+menu-icon=/usr/share/pixmaps/fedora-logo-sprite.png
+
+[Visual Space]
+ID=Visual Space
+Alignment=start
+
+[Icon Tasklist]
+ID=Icon Task List
+Alignment=center
+
+[Tray]
+ID=System Tray
+Alignment=end
+
+[Seperator]
+ID=Separator
+Alignment=end
+
+[Keyboard Layout]
+ID=Keyboard Layout
+Alignment=end
+
+[DropBy]
+ID=DropBy
+Alignment=end
+
+[Spacer 1]
+ID=Spacer
+Alignment=end
+
+[Network]
+ID=Network
+Alignment=end
+
+[Status Indicator]
+ID=Status Indicator
+Alignment=end
+
+[User Indicator]
+ID=User Indicator
+Alignment=end
+
+[Seperator 2]
+ID=Seperator
+Alignment=end
+
+[Clock]
+ID=Clock
+Alignment=end
+
+[Raven Trigger]
+ID=Raven Trigger
+Alignment=end

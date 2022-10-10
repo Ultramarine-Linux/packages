@@ -1,0 +1,46 @@
+[org.gnome.desktop.background:Budgie]
+picture-uri='file:///usr/share/backgrounds/ultramarine-linux/default/ultramarine-light.png'
+picture-uri-dark='file:///usr/share/backgrounds/ultramarine-linux/default/ultramarine-light.png'
+
+[org.gnome.mutter]
+edge-tiling = true
+attach-modal-dialogs = true
+
+[org.gnome.desktop.wm.preferences]
+button-layout = 'appmenu:minimize,maximize,close'
+
+[org.gnome.desktop.screensaver]
+picture-uri='file:///usr/share/backgrounds/ultramarine-linux/default/default.jpg'
+
+[org.gnome.gedit.preferences.editor]
+scheme='textmate'
+
+[org.gnome.desktop.interface]
+gtk-theme='Fluent-round-dark'
+icon-theme='Fluent-dark'
+color-scheme='prefer-dark'
+
+[org.gnome.nm-applet]
+show-applet=false
+
+[com.solus-project.budgie-panel]
+builtin-theme=false
+dark-theme=true
+migration-level=1
+notification-position='BUDGIE_NOTIFICATION_POSITION_BOTTOM_RIGHT'
+layout='ultramarine-marina'
+
+[org.buddiesofbudgie.budgie-desktop-view]
+show=true
+click-policy='double'
+
+[com.solus-project.budgie-raven]
+show-power-strip=true
+
+[com.solus-project.budgie-wm]
+button-layout='appmenu:minimize,maximize,close'
+button-style='traditional'
+caffeine-mode=false
+center-windows=false
+show-all-windows-tabswitcher=false
+
