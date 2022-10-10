@@ -1,6 +1,6 @@
 # for each folder in ultramarine/
 # generate a new workflow for each folder in ultramarine/
-name: Automatically build packages
+name: Mass Rebuild
 on:
   workflow_dispatch:
 
