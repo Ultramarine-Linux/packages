@@ -1,0 +1,23 @@
+
+[jobs]
+symbol = "+"
+number_threshold = 4
+symbol_threshold = 1
+
+# ~/.config/starship.toml
+
+[hostname]
+ssh_only = false
+format = "[$ssh_symbol](bold blue) on [$hostname](bold red) "
+trim_at = ".companyname.com"
+disabled = false
+
+# ~/.config/starship.toml
+
+[username]
+style_user = "white bold"
+style_root = "black bold"
+format = "[$user]($style)"
+disabled = false
+show_always = true
+

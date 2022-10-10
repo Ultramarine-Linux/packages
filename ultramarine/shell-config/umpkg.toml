@@ -1,0 +1,6 @@
+[ultramarine-shell-config]
+spec = "ultramarine-shell-config.spec"
+build_script = ""
+build_method = "mock"
+owner = "cappy"
+git_repo = "https://github.com/ultramarine-linux/pkg-ultramarine-shell-config"
