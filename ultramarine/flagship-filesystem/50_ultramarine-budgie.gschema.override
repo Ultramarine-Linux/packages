@@ -1,6 +1,6 @@
 [org.gnome.desktop.background:Budgie]
 picture-uri='file:///usr/share/backgrounds/ultramarine-linux/default/ultramarine-light.png'
-picture-uri-dark='file:///usr/share/backgrounds/ultramarine-linux/default/ultramarine-light.png'
+picture-uri-dark='file:///usr/share/backgrounds/ultramarine-linux/default/ultramarine-dark.png'
 
 [org.gnome.mutter]
 edge-tiling = true
@@ -10,13 +10,13 @@ attach-modal-dialogs = true
 button-layout = 'appmenu:minimize,maximize,close'
 
 [org.gnome.desktop.screensaver]
-picture-uri='file:///usr/share/backgrounds/ultramarine-linux/default/default.jpg'
+picture-uri='file:///usr/share/backgrounds/ultramarine-linux/default/ultramarine-dark.jpg'
 
 [org.gnome.gedit.preferences.editor]
 scheme='textmate'
 
 [org.gnome.desktop.interface]
-gtk-theme='Fluent-round-dark'
+gtk-theme='Fluent-round-Dark'
 icon-theme='Fluent-dark'
 color-scheme='prefer-dark'
 

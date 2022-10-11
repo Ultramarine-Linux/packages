@@ -1,6 +1,6 @@
 Name:           hyfetch
 Version:        1.4.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        neofetch with pride flags <3
 URL:            https://github.com/hykilpikonna/hyfetch
 Source0:        %{url}/archive/refs/tags/1.4.1.tar.gz
@@ -32,11 +32,9 @@ Recommends:     xwininfo
 
 %package -n     hyfetch-neofetch
 Summary:        Replacement for neofetch
-%description -n hyfetch-neofetch
-%{summary}
 
 Obsoletes:      neofetch >= 7.1.0
-Provides:       neofetch
+Provides:       neofetch = 7.3.1-%{release}
 Requires:       bash >= 3.2
 Requires:       bind-utils
 Requires:       catimg
@@ -54,6 +52,8 @@ Recommends:     xrandr
 Recommends:     xrdb
 Recommends:     xwininfo
 
+%description -n hyfetch-neofetch
+%{summary}.
 %files -n hyfetch-neofetch
 %{_bindir}/neofetch
 %{_mandir}/man1/neofetch.1.gz
