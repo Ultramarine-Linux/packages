@@ -1,0 +1,9 @@
+[terra]
+name=Terra Packages $releasever
+baseurl=https://subatomic.fyralabs.com/ad37
+type=rpm
+skip_if_unavailable=True
+gpgcheck=0
+repo_gpgcheck=0
+enabled=1
+enabled_metadata=1

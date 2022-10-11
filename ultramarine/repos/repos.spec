@@ -3,7 +3,7 @@
 
 Name: ultramarine-repos
 Version: %{_dist_version}
-Release: 1%{?dist}
+Release: 2%{?dist}
 License: MIT
 Summary: Repositories for Ultramarine Linux
 Requires: %{name}-common = %{version}-%{release}
@@ -17,6 +17,7 @@ Metapackage for Ultramarine Linux repositories
 Summary: Common repository for Ultramarine Linux
 Requires: fedora-repos(%{version})
 Source100: ultramarine.repo
+Source101: terra.repo
 %description common
 Common repository file for Ultramarine Linux
 
@@ -54,6 +55,8 @@ mkdir -p %{buildroot}/%{_sysconfdir}/yum.repos.d/
 
 #common
 cp -avx %{SOURCE100} %{buildroot}/%{_sysconfdir}/yum.repos.d/
+cp -avx %{SOURCE101} %{buildroot}/%{_sysconfdir}/yum.repos.d/
+
 #extras
 cp -avx %{SOURCE205} %{buildroot}/%{_sysconfdir}/yum.repos.d/
 cp -avx %{SOURCE206} %{buildroot}/%{_sysconfdir}/yum.repos.d/
@@ -68,6 +71,7 @@ cp -avx %{SOURCE200} %{buildroot}/%{_sysconfdir}/flatpak/remotes.d/
 
 %files common
 %{_sysconfdir}/yum.repos.d/ultramarine.repo
+%{_sysconfdir}/yum.repos.d/terra.repo
 %files extras
 %{_sysconfdir}/flatpak/remotes.d/flathub.flatpakrepo
 %{_sysconfdir}/yum.repos.d/akmods-secureboot.repo
