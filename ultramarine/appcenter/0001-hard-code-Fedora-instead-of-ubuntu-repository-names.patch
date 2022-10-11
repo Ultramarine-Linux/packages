@@ -1,0 +1,92 @@
+From ac6bc6c4d5cdf65d4d6e3633bf3eb18082ec7460 Mon Sep 17 00:00:00 2001
+From: Fabio Valentini <decathorpe@gmail.com>
+Date: Fri, 17 Sep 2021 13:31:46 +0200
+Subject: [PATCH 1/2] hard-code Fedora instead of ubuntu repository names
+
+---
+ src/Core/Package.vala | 47 +++++++++++++++++++++++++++++++++----------
+ 1 file changed, 36 insertions(+), 11 deletions(-)
+
+diff --git a/src/Core/Package.vala b/src/Core/Package.vala
+index bd2c5ef3..dcaed31a 100644
+--- a/src/Core/Package.vala
++++ b/src/Core/Package.vala
+@@ -42,8 +42,21 @@ public enum RuntimeStatus {
+ }
+ 
+ public class AppCenterCore.Package : Object {
++    // locally installed packages
+     public const string APPCENTER_PACKAGE_ORIGIN = "appcenter";
+-    private const string ELEMENTARY_STABLE_PACKAGE_ORIGIN = "elementary-stable-focal-main";
++
++    // Fedora repositories
++    private const string FEDORA_STABLE_PACKAGE_ORIGIN = "fedora";
++    private const string FEDORA_UPDATES_PACKAGE_ORIGIN = "updates";
++    private const string FEDORA_TESTING_PACKAGE_ORIGIN = "updates-testing";
++
++    // RPMFusion repositories
++    private const string RPMFUSION_FREE_STABLE_PACKAGE_ORIGIN = "rpmfusion-free";
++    private const string RPMFUSION_FREE_UPDATES_PACKAGE_ORIGIN = "rpmfusion-free-updates";
++    private const string RPMFUSION_FREE_TESTING_PACKAGE_ORIGIN = "rpmfusion-free-updates-testing";
++    private const string RPMFUSION_NONFREE_STABLE_PACKAGE_ORIGIN = "rpmfusion-nonfree";
++    private const string RPMFUSION_NONFREE_UPDATES_PACKAGE_ORIGIN = "rpmfusion-nonfree-updates";
++    private const string RPMFUSION_NONFREE_TESTING_PACKAGE_ORIGIN = "rpmfusion-nonfree-updates-testing";
+ 
+     public RuntimeStatus runtime_status { get; set; default = RuntimeStatus.UP_TO_DATE; }
+ 
+@@ -221,8 +234,9 @@ public class AppCenterCore.Package : Object {
+     public bool is_native {
+         get {
+             switch (component.get_origin ()) {
+-                case APPCENTER_PACKAGE_ORIGIN:
+-                case ELEMENTARY_STABLE_PACKAGE_ORIGIN:
++                case FEDORA_STABLE_PACKAGE_ORIGIN:
++                case FEDORA_UPDATES_PACKAGE_ORIGIN:
++                case FEDORA_TESTING_PACKAGE_ORIGIN:
+                     return true;
+                 default:
+                     return false;
+@@ -339,12 +353,25 @@ public class AppCenterCore.Package : Object {
+         owned get {
+             unowned string origin = component.get_origin ();
+             if (backend is PackageKitBackend) {
+-                if (origin == APPCENTER_PACKAGE_ORIGIN) {
+-                    return _("AppCenter");
+-                } else if (origin == ELEMENTARY_STABLE_PACKAGE_ORIGIN) {
+-                    return _("elementary Updates");
+-                } else if (origin.has_prefix ("ubuntu-")) {
+-                    return _("Ubuntu (non-curated)");
++                switch (origin) {
++                    case FEDORA_STABLE_PACKAGE_ORIGIN:
++                        return "Fedora";
++                    case FEDORA_UPDATES_PACKAGE_ORIGIN:
++                        return "Fedora Updates";
++                    case FEDORA_TESTING_PACKAGE_ORIGIN:
++                        return "Fedora Updates (Testing)";
++                    case RPMFUSION_FREE_STABLE_PACKAGE_ORIGIN:
++                        return "RPMFusion";
++                    case RPMFUSION_FREE_UPDATES_PACKAGE_ORIGIN:
++                        return "RPMFusion Updates";
++                    case RPMFUSION_FREE_TESTING_PACKAGE_ORIGIN:
++                        return "RPMFusion Updates (Testing)";
++                    case RPMFUSION_NONFREE_STABLE_PACKAGE_ORIGIN:
++                        return "RPMFusion (Non-free Software)";
++                    case RPMFUSION_NONFREE_UPDATES_PACKAGE_ORIGIN:
++                        return "RPMFusion (Non-free Software) Updates";
++                    case RPMFUSION_NONFREE_TESTING_PACKAGE_ORIGIN:
++                        return "RPMFusion (Non-free Software) Updates (Testing)";
+                 }
+             } else if (backend is FlatpakBackend) {
+                 var fp_package = this as FlatpakPackage;
+@@ -353,8 +380,6 @@ public class AppCenterCore.Package : Object {
+                 }
+ 
+                 return origin;
+-            } else if (backend is UbuntuDriversBackend) {
+-                return _("Ubuntu Drivers");
+             }
+ 
+             return _("Unknown Origin (non-curated)");
+-- 
+2.34.1
+
