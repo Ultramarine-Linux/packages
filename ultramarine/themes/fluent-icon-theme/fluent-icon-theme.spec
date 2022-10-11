@@ -1,4 +1,3 @@
-%undefine _disable_source_fetch
 
 Name:           fluent-icon-theme
 Version:        031021
