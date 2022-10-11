@@ -41,8 +41,8 @@ enabled=1
 enabled_metadata=1
 priority=50
 
-[andaman-common]
-name=andaman-common
+[terra]
+name=terra
 baseurl=https://subatomic.fyralabs.com/ad$releasever/
 type=rpm
 skip_if_unavailable=True
