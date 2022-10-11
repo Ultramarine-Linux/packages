@@ -1,6 +1,7 @@
 %undefine   _disable_source_fetch
 Name:       mock-core-configs
-Version:    37.4
+Version:    37.8
+Epoch:      1
 Release:    3%{?dist}
 Summary:    Mock core config files basic chroots
 
