@@ -55,7 +55,7 @@ Name:           mesa-full
 Summary:        Mesa graphics libraries (patched to include all codecs again)
 %global ver 22.2.0
 Version:        %{lua:ver = string.gsub(rpm.expand("%{ver}"), "-", "~"); print(ver)}
-Release:        2%{?dist}
+Release:        3%{?dist}
 License:        MIT
 URL:            http://www.mesa3d.org
 
@@ -205,7 +205,7 @@ Provides:       mesa-libEGL-devel = %{?epoch:%{epoch}:}%{version}-%{release}
 %package dri-drivers
 Summary:        Mesa-based DRI drivers
 Requires:       %{name}-filesystem%{?_isa} = %{?epoch:%{epoch}:}%{version}-%{release}
-Requires:       mesa-dri-drivers = %{?epoch:%{epoch}:}%{version}-%{release}
+Provides:       mesa-dri-drivers = %{?epoch:%{epoch}:}%{version}-%{release}
 
 %description dri-drivers
 %{summary}.
@@ -214,7 +214,7 @@ Requires:       mesa-dri-drivers = %{?epoch:%{epoch}:}%{version}-%{release}
 %package omx-drivers
 Summary:        Mesa-based OMX drivers
 Requires:       %{name}-filesystem%{?_isa} = %{?epoch:%{epoch}:}%{version}-%{release}
-Requires:       mesa-omx-drivers = %{?epoch:%{epoch}:}%{version}-%{release}
+Provides:       mesa-omx-drivers = %{?epoch:%{epoch}:}%{version}-%{release}
 
 %description omx-drivers
 %{summary}.
