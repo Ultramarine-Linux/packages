@@ -2,7 +2,7 @@ Summary: Config files for kde
 Name:    kde-settings
 Epoch:   1
 Version: 37.1
-Release: 2%{?dist}
+Release: 3%{?dist}
 
 License: MIT
 Url:     https://github.com/Ultramarine-Linux/kde-settings
@@ -64,23 +64,6 @@ Requires: google-noto-sans-mono-fonts
 %description plasma
 %{summary}.
 
-# FIXME/TODO: can probably consider dropping this subpkg now that we
-# have good comps and soft dependencies support -- rex
-%package pulseaudio
-Summary: Enable pulseaudio support in KDE
-# nothing here to license
-License: Public Domain
-Requires: %{name} = %{version}-%{release}
-%if 0%{?rhel} && 0%{?rhel} < 9
-Requires: pulseaudio
-%else
-Requires: pulseaudio-daemon
-%endif
-## legacy apps
-Requires: (pipewire-alsa if pipewire-pulseaudio)
-Requires: (alsa-plugins-pulseaudio if pulseaudio)
-%description pulseaudio
-%{summary}.
 
 %package -n qt-settings
 Summary: Configuration files for Qt
@@ -233,9 +216,6 @@ test -f %{_datadir}/wallpapers/F%{version_maj} || ls -l %{_datadir}/wallpapers
 %{_datadir}/plasma/look-and-feel/org.ultramarinelinux.ultramarine.desktop/
 %{_datadir}/plasma/shells/org.kde.latte.shell/contents/templates/Ultramarine.layout.latte
 %{_sysconfdir}/skel/.config/lattedockrc
-
-%files pulseaudio
-# nothing, this is a metapackage
 
 %files -n qt-settings
 %license COPYING
