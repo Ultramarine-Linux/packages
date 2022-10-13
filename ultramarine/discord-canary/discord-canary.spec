@@ -32,6 +32,9 @@ install discord.png %{buildroot}%{_datadir}/pixmaps/discord-canary.png
 %{_datadir}/pixmaps/discord-canary.png
 
 %changelog
+* Thu Oct 13 2022 windowsboy111 <wboy111@outlook.com>
+- Ported to Anda (0.0.139)
+
 * Tue Feb 22 2022 Ultramarine Release Tracking Service - 0.0.133-2
 - Mass rebuild for release um36
 
