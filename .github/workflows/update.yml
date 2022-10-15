@@ -10,7 +10,7 @@ jobs:
   get-chkupdate-scripts:
     runs-on: ubuntu-latest
     outputs:
-      scripts: ${{ steps.list_scr.outputs.scripts }}
+      scripts: ${{ steps.list_scr.outputs.script_matrix }}
     
     steps:
       - name: Checkout
@@ -29,21 +29,23 @@ jobs:
              scripts+=("${folder:12}")
             fi
           done
-          echo "::set-output name=scripts::$scripts"
+          echo "::set-output name=script_matrix::$(echo "$scripts" | jq -R . | jq -s . | jq -c .)"
   update:
     needs: get-chkupdate-scripts
     strategy:
       matrix:
-        scr: ${{ needs.get-chkupdate-scripts.outputs.scripts }}
+        scr: ${{ fromJson(needs.get-chkupdate-scripts.outputs.script_matrix) }}
     runs-on: ubuntu-latest
     steps:
+      - name: checkout
+        uses: actions/checkout@v2
       - name: Setup Python
         uses: actions/setup-python@v4
-        with: python-version: '3.10'
+        with:
+          python-version: '3.10'
       - name: 'Run Script: ${{ matrix.scr }}'
         run: python ultramarine/${{ matrix.scr }}/chkupdate.py
       - name: Save
-        uses: actions/checkout@v2
         run: |
           git config user.name "Package Update Checker"
           git config user.email "<>"
