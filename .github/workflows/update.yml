@@ -45,7 +45,9 @@ jobs:
 
       - name: Save
         run: |
-          git config user.name "Package Update Checker"
-          git config user.email "<>"
-          git commit -a -m "Automatic Update by chkupdate.py"
-          git push origin master
+          if [[ `git status --porcelain` ]]; then
+            git config user.name "Package Update Checker"
+            git config user.email "<>"
+            git commit -a -m "Automatic Update by chkupdate.py"
+            git push origin master
+          fi
