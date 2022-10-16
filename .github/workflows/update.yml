@@ -5,12 +5,11 @@ name: Automatically check for updates
 on:
   schedule:
     - cron: '0 */2 * * *'
+  workflow_dispatch:
 
 jobs:
   get-chkupdate-scripts:
     runs-on: ubuntu-latest
-    outputs:
-      scripts: ${{ steps.list_scr.outputs.scripts }}
     
     steps:
       - name: Checkout
@@ -19,33 +18,19 @@ jobs:
           fetch-depth: 2
       - run: git fetch
 
-      - name: List out the Update Scripts
-        id: list_scr
-        # folder:12 is to substr out 'ultramarine/'
-        run: |
-          scripts=()
-          for folder in ultramarine/*; do
-            if [ -f "$folder/chkupdate.py" ]; then
-             scripts+=("${folder:12}")
-            fi
-          done
-          echo "::set-output name=scripts::$scripts"
-  update:
-    needs: get-chkupdate-scripts
-    strategy:
-      matrix:
-        scr: ${{ needs.get-chkupdate-scripts.outputs.scripts }}
-    runs-on: ubuntu-latest
-    steps:
       - name: Setup Python
         uses: actions/setup-python@v4
-        with: python-version: '3.10'
-      - name: 'Run Script: ${{ matrix.scr }}'
-        run: python ultramarine/${{ matrix.scr }}/chkupdate.py
+        with:
+          python-version: '3.10'
+
+      - name: Run Update
+        run: ./update.sh
+
       - name: Save
-        uses: actions/checkout@v2
         run: |
-          git config user.name "Package Update Checker"
-          git config user.email "<>"
-          git commit -a -m "Automatic Update by chkupdate.py"
-          git push origin master
+          if [[ `git status --porcelain` ]]; then
+            git config user.name "Package Update Checker"
+            git config user.email "<>"
+            git commit -a -m "Automatic Update by chkupdate.py"
+            git push origin master
+          fi
