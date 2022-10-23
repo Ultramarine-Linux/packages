@@ -70,7 +70,7 @@ jobs:
         with:
           name: "${{ matrix.pkg }}pkg"
           mockConfig: ultramarine-37-${{ matrix.arch }}
-          andaRepo: https://github.com/andaman-common-pkgs/subatomic-repos/raw/main/ad37.repo
+          andaRepo: https://github.com/andaman-common-pkgs/subatomic-repos/raw/main/terra37.repo
 
       - name: Install Subatomic client
         run: sudo dnf install -y subatomic-cli

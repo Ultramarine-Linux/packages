@@ -15,7 +15,6 @@ BuildArch:      noarch
 
 %description
 
-
 %prep
 
 

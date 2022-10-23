@@ -18,6 +18,7 @@ Requires:       bat
 Requires:       starship
 Requires:       most
 
+
 BuildArch:      noarch
 %description
 This is a very long description of ultramarine-shell-config.
