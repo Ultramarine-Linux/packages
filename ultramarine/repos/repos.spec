@@ -10,6 +10,7 @@ Requires: %{name}-common = %{version}-%{release}
 Recommends: %{name}-extras = %{version}-%{release}
 Suggests: %{name}-extras-jam = %{version}-%{release}
 Provides: ultramarine-repos(%{_dist_version}) = %{_dist_version}
+
 %description
 Metapackage for Ultramarine Linux repositories
 
@@ -33,7 +34,6 @@ Source200: https://flathub.org/repo/flathub.flatpakrepo
 #Source202: rpmfusion-free-updates.repo
 #Source203: rpmfusion-nonfree.repo
 #Source204: rpmfusion-nonfree-updates.repo
-Source205: docker-ce.repo
 Source206: vscodium.repo
 Source209: akmods-secureboot.repo
 %description extras
@@ -58,7 +58,6 @@ cp -avx %{SOURCE100} %{buildroot}/%{_sysconfdir}/yum.repos.d/
 cp -avx %{SOURCE101} %{buildroot}/%{_sysconfdir}/yum.repos.d/
 
 #extras
-cp -avx %{SOURCE205} %{buildroot}/%{_sysconfdir}/yum.repos.d/
 cp -avx %{SOURCE206} %{buildroot}/%{_sysconfdir}/yum.repos.d/
 cp -avx %{SOURCE209} %{buildroot}/%{_sysconfdir}/yum.repos.d/
 
@@ -75,7 +74,6 @@ cp -avx %{SOURCE200} %{buildroot}/%{_sysconfdir}/flatpak/remotes.d/
 %files extras
 %{_sysconfdir}/flatpak/remotes.d/flathub.flatpakrepo
 %{_sysconfdir}/yum.repos.d/akmods-secureboot.repo
-%{_sysconfdir}/yum.repos.d/docker-ce.repo
 %{_sysconfdir}/yum.repos.d/vscodium.repo
 #%%{_sysconfdir}/yum.repos.d/rpmfusion-free.repo
 #%%{_sysconfdir}/yum.repos.d/rpmfusion-free-updates.repo
