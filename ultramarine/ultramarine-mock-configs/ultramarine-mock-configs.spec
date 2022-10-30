@@ -1,6 +1,6 @@
 Name:           ultramarine-mock-configs
 Version:        1.0
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Ultramarine Linux mock configs
 
 License:        MIT
@@ -14,7 +14,6 @@ Source6:        ultramarine-37-aarch64.cfg
 BuildArch:      noarch
 
 %description
-
 
 %prep
 

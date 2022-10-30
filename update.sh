@@ -21,3 +21,5 @@ search() {
 }
 
 search ultramarine
+
+exit 0
