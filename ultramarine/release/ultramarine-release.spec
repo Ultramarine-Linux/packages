@@ -288,7 +288,7 @@ install %{SOURCE10} %{buildroot}%{_datadir}/glib-2.0/schemas/
 #Budgie config
 mkdir -p %{buildroot}%{_sysconfdir}/lightdm/lightdm.conf.d/
 install %{SOURCE13} %{buildroot}%{_sysconfdir}/lightdm/lightdm.conf.d/
-install %{SOURCE14} %{buildroot}%{_sysconfdir}/lightdm/lightdm.conf.d/50-ultramarine-lightdm-gtk-greeter.conf
+install %{SOURCE14} %{buildroot}%{_sysconfdir}/lightdm/lightdm-gtk-greeter.conf
 
 #set up Cutefish config
 mkdir -p %{buildroot}%{_sysconfdir}/skel/.config/cutefishos/
@@ -390,7 +390,7 @@ ln -s %{_swidtagdir} %{buildroot}%{_sysconfdir}/swid/swidtags.d/ultramarine-linu
 
 %files flagship
 %{_sysconfdir}/lightdm/lightdm.conf.d/60-ultramarine-presets.conf
-%{_sysconfdir}/lightdm/lightdm.conf.d/50-ultramarine-lightdm-gtk-greeter.conf
+%{_sysconfdir}/lightdm/lightdm-gtk-greeter.conf
 
 %files cutefish
 %{_sysconfdir}/skel/.config/cutefishos/theme.conf
