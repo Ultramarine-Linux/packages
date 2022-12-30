@@ -1,7 +1,7 @@
 Summary: Config files for KDE
 Name:    kde-settings
 Epoch:   1
-Version: 37.1
+Version: 37.2
 Release: 4%{?dist}
 
 License: MIT
@@ -9,9 +9,6 @@ Url:     https://github.com/Ultramarine-Linux/kde-settings
 Source0: https://github.com/Ultramarine-Linux/kde-settings/archive/refs/heads/master.tar.gz#/kde-settings.tar.gz
 Source1: COPYING
 Source2: https://github.com/Ultramarine-Linux/ultramarine-kde-theme/archive/refs/heads/main.zip#/ultramarine-kde-theme.zip
-Source3: org.kde.latte-dock.desktop
-Source4: lattedockrc
-Source5: Ultramarine.layout.latte
 
 BuildArch: noarch
 
@@ -92,7 +89,6 @@ Summary: Configuration files for Qt
 
 %package -n ultramarine-plasma-theme
 Summary:  Plasma theme for Ultramarine
-Recommends: latte-dock
 Requires: papirus-icon-theme
 Requires: lightly
 %description -n ultramarine-plasma-theme
@@ -141,13 +137,6 @@ desktop-file-install \
   --add-only-show-in=KDE
 %endif
 
-# Install latte-dock autostart script
-desktop-file-install \
-  %{SOURCE3} \
-  --dir=%{buildroot}%{_sysconfdir}/xdg/autostart \
-  --remove-key=X-GNOME-Autostart-Phase \
-  --add-only-show-in=KDE
-
 %if 0%{?rhel} && 0%{?rhel} < 9
 # for rhel 8 and older with older noto fonts
 sed -e "s/Noto Sans Mono/Noto Mono/g" \
@@ -159,12 +148,6 @@ install -p -m644 -D %{SOURCE10} %{buildroot}%{_sysconfdir}/xdg/plasma-workspace/
 
 
 
-# latte dock config
-mkdir -p %{buildroot}%{_datadir}/plasma/shells/org.kde.latte.shell/contents/templates/
-cp -a %{SOURCE5} %{buildroot}%{_datadir}/plasma/shells/org.kde.latte.shell/contents/templates/
-
-mkdir -p %{buildroot}%{_sysconfdir}/skel/.config
-cp -av %{SOURCE4} %{buildroot}%{_sysconfdir}/skel/.config/
 
 # copy theme from SOURCE2
 cp -a ultramarine-kde-theme-main %{buildroot}%{_datadir}/plasma/look-and-feel/org.ultramarinelinux.ultramarine.desktop
@@ -175,9 +158,6 @@ rm -rfv %{buildroot}/.package_note*
 
 
 rm -rf %{buildroot}/ultramarine-kde-theme-*
-
-%post -n ultramarine-plasma-theme
-cp -v %{_datadir}/plasma/shells/org.kde.latte.shell/contents/templates/Ultramarine.layout.latte %{_datadir}/plasma/shells/org.kde.latte.shell/contents/templates/Default.layout.latte
 
 %check
 %if 0%{?version_maj:1} && 1%{?flatpak} == 0
@@ -216,7 +196,6 @@ test -f %{_datadir}/wallpapers/F%{version_maj} || ls -l %{_datadir}/wallpapers
 %{_datadir}/plasma/shells/org.kde.plasma.desktop/contents/updates/00-start-here-2.js
 %if 0%{?flatpak} == 0
 %{_sysconfdir}/xdg/autostart/xdg-user-dirs-kde.desktop
-%{_sysconfdir}/xdg/autostart/org.kde.latte-dock.desktop
 %endif 
 %{_sysconfdir}/xdg/plasma-workspace/env/env.sh
 %{_sysconfdir}/xdg/plasma-workspace/env/gtk2_rc_files.sh
@@ -234,8 +213,6 @@ test -f %{_datadir}/wallpapers/F%{version_maj} || ls -l %{_datadir}/wallpapers
 
 %files -n ultramarine-plasma-theme
 %{_datadir}/plasma/look-and-feel/org.ultramarinelinux.ultramarine.desktop/
-%{_datadir}/plasma/shells/org.kde.latte.shell/contents/templates/Ultramarine.layout.latte
-%{_sysconfdir}/skel/.config/lattedockrc
 
 %files -n qt-settings
 %license COPYING

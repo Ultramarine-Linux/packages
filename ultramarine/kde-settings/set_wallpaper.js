@@ -7,5 +7,5 @@ for (var i = 0; i < screenCount; ++i) {
 
     // Walpaper
     desktop.currentConfigGroup = Array("Wallpaper", "image")    
-    desktop.writeConfig( "wallpaper",  "/usr/share/backgrounds/default.png" )
+    desktop.writeConfig( "wallpaper",  "/usr/share/backgrounds/ultramarine-linux/default/ultramarine-dark.png" )
 }
