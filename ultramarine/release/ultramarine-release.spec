@@ -211,9 +211,9 @@ EOF
 install -d $RPM_BUILD_ROOT/etc/upstream-release
 cat << EOF >>$RPM_BUILD_ROOT/etc/upstream-release/lsb-release
 ID=Fedora
-VERSION_ID=36
-VERSION_CODENAME="Thirty Six"
-PRETTY_NAME="Fedora Linux 36 (Thirty Six)"
+VERSION_ID=37
+VERSION_CODENAME="Thirty Seven"
+PRETTY_NAME="Fedora Linux 37 (Thirty Seven)"
 EOF
 
 # Create custom Anaconda config
