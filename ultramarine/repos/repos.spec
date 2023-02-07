@@ -45,6 +45,14 @@ Additional repository files for Ultramarine Linux that provides access to popula
     - Docker CE (disabled by default)
     - VSCodium (enabled by default)
 
+%package ostree
+Summary: OSTree repository for Ultramarine Linux
+Source300: ultramarine.conf
+
+%description ostree
+OSTree repository for Ultramarine Linux
+
+
 %prep
 
 %build
@@ -66,6 +74,9 @@ cp -avx %{SOURCE209} %{buildroot}/%{_sysconfdir}/yum.repos.d/
 mkdir -p %{buildroot}/%{_sysconfdir}/flatpak/remotes.d
 cp -avx %{SOURCE200} %{buildroot}/%{_sysconfdir}/flatpak/remotes.d/
 
+mkdir -p %{buildroot}/%{_sysconfdir}/ostree/remotes.d
+cp -avx %{SOURCE300} %{buildroot}/%{_sysconfdir}/ostree/remotes.d/
+
 %files
 
 %files common
@@ -80,3 +91,5 @@ cp -avx %{SOURCE200} %{buildroot}/%{_sysconfdir}/flatpak/remotes.d/
 #%%{_sysconfdir}/yum.repos.d/rpmfusion-nonfree.repo
 #%%{_sysconfdir}/yum.repos.d/rpmfusion-nonfree-updates.repo
 
+%files ostree
+%{_sysconfdir}/ostree/remotes.d/ultramarine.conf
