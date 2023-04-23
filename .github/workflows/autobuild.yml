@@ -63,7 +63,7 @@ jobs:
       - name: Install repositories
         run: |
           sudo dnf install -y dnf-plugins-core
-          sudo dnf config-manager --add-repo https://github.com/andaman-common-pkgs/subatomic-repos/raw/main/um${{ matrix.version }}.repo
+          sudo dnf config-manager --add-repo https://github.com/andaman-common-pkgs/subatomic-repos/raw/main/um.repo
           sudo dnf install -y ultramarine-mock-configs subatomic-cli anda mock rpm-build
 
       - uses: andaman-common-pkgs/anda-build@main
@@ -71,7 +71,7 @@ jobs:
         with:
           name: "${{ matrix.pkg }}pkg"
           mockConfig: ultramarine-${{ matrix.version }}-${{ matrix.arch }}
-          andaRepo: https://github.com/andaman-common-pkgs/subatomic-repos/raw/main/terra${{ matrix.version }}.repo
+          andaRepo: https://github.com/andaman-common-pkgs/subatomic-repos/raw/main/terra.repo
 
       - name: Install Subatomic client
         run: sudo dnf install -y subatomic-cli
