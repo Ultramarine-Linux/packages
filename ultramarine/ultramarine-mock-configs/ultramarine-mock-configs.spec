@@ -31,6 +31,8 @@ cp -v %{SOURCE3} %{buildroot}/etc/mock/templates
 cp -v %{SOURCE4} %{buildroot}/etc/mock/
 cp -v %{SOURCE5} %{buildroot}/etc/mock/
 cp -v %{SOURCE6} %{buildroot}/etc/mock/
+cp -v %{SOURCE7} %{buildroot}/etc/mock/
+cp -v %{SOURCE8} %{buildroot}/etc/mock/
 
 
 %files
