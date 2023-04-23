@@ -23,7 +23,7 @@ jobs:
       - uses: andaman-common-pkgs/anda-build@main
         with:
           name: "ultramarine/ultramarine-mock-configs/pkg"
-          mockConfig: ultramarine-${{ matrix.version }}-${{ matrix.arch }}
+          mockConfig: fedora-${{ matrix.version }}-${{ matrix.arch }}
           andaRepo: https://github.com/andaman-common-pkgs/subatomic-repos/raw/main/terra.repo
 
       - name: Upload packages to subatomic
