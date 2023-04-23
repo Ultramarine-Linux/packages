@@ -27,7 +27,6 @@ jobs:
           andaRepo: https://github.com/andaman-common-pkgs/subatomic-repos/raw/main/terra.repo
 
       - name: Upload packages to subatomic
-        if: ${{ !fromJson(needs.manifest.outputs.is_empty) }}
         run: |
           subatomic-cli upload --prune \
             --server https://subatomic.fyralabs.com \
