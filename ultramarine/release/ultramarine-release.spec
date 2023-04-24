@@ -1,7 +1,7 @@
 %global is_rawhide 0
-%global release_name thirtyseven
+%global release_name thirtyeight
 
-%define dist_version 37
+%define dist_version 38
 
 %if %{is_rawhide}
 %define bug_version rawhide
@@ -16,7 +16,7 @@
 
 Summary:	Ultramarine Linux release files
 Name:		ultramarine-release
-Version:	37
+Version:	38
 Release:	%autorelease
 License:	MIT
 Source0:	LICENSE
@@ -198,22 +198,22 @@ LOGO=ultramarine
 CPE_NAME="cpe:/o:ultramarine:um:%{dist_version}"
 HOME_URL="http://ultramarine-linux.org"
 SUPPORT_URL="https://discord.com/invite/bUuQasHdrF"
-BUG_REPORT_URL="https://youtu.be/HxkmXnRQblE"
+BUG_REPORT_URL="https://github.com/Ultramarine-Linux/ultramarine"
 DOCUMENTATION_URL="https://wiki.ultramarine-linux.org"
 REDHAT_BUGZILLA_PRODUCT="Fedora Linux"
 REDHAT_BUGZILLA_PRODUCT_VERSION=%{dist_version}
 REDHAT_SUPPORT_PRODUCT="Fedora Linux"
 REDHAT_SUPPORT_PRODUCT_VERSION=%{dist_version}
-PRIVACY_POLICY_URL="https://youtu.be/dQw4w9WgXcQ"
+PRIVACY_POLICY_URL="fyralabs.com/privacy"
 EOF
 
 # provide upstream-release files for debian based apps
 install -d $RPM_BUILD_ROOT/etc/upstream-release
 cat << EOF >>$RPM_BUILD_ROOT/etc/upstream-release/lsb-release
 ID=Fedora
-VERSION_ID=36
-VERSION_CODENAME="Thirty Six"
-PRETTY_NAME="Fedora Linux 36 (Thirty Six)"
+VERSION_ID=38
+VERSION_CODENAME="Thirty Eight"
+PRETTY_NAME="Fedora Linux 38 (Thirty Eight)"
 EOF
 
 # Create custom Anaconda config
