@@ -26,6 +26,8 @@ jobs:
         id: generate_build_matrix
         # generate build matrix by checking out changes in ultramarine/
         run: |
+          git config --global user.email "you@example.com"
+          git config --global user.name "Your Name"
           init=$(git rev-list HEAD | tail -n 1)
           git diff ${init}..HEAD > a.diff
           git checkout $init
