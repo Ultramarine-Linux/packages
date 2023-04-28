@@ -3,6 +3,7 @@
 name: Mass Rebuild
 on:
   workflow_dispatch:
+  workflow_call:
 
 jobs:
   manifest:
@@ -25,10 +26,13 @@ jobs:
         id: generate_build_matrix
         # generate build matrix by checking out changes in ultramarine/
         run: |
-          build_matrix=$(find ultramarine/ | grep -oP 'ultramarine\/(.+)\/' | sort -u | jq -R -s -c 'split("\n")[:-1]')
-          # create build matrix with { changed_folders: [ "folder1", "folder2" ] }
-
-          echo "::set-output name=build_matrix::$build_matrix"
+          init=$(git rev-list HEAD | tail -n 1)
+          git diff ${init}..HEAD > a.diff
+          git checkout $init
+          git apply a.diff
+          git add *
+          git commit -a -m a
+          anda ci >> $GITHUB_OUTPUT
   build:
     needs: manifest
     strategy:
@@ -50,12 +54,17 @@ jobs:
           sudo dnf install -y ultramarine-mock-configs subatomic-cli anda mock rpm-build
 
       - uses: andaman-common-pkgs/anda-build@main
+        if: ${{ !fromJson(needs.manifest.outputs.is_empty) }}
         with:
           name: "${{ matrix.pkg }}pkg"
           mockConfig: ultramarine-${{ matrix.version }}-${{ matrix.arch }}
           andaRepo: https://github.com/andaman-common-pkgs/subatomic-repos/raw/main/terra.repo
 
+      - name: Install Subatomic client
+        run: sudo dnf install -y subatomic-cli
+
       - name: Upload packages to subatomic
+        if: ${{ !fromJson(needs.manifest.outputs.is_empty) }}
         run: |
           subatomic-cli upload --prune \
             --server https://subatomic.fyralabs.com \
