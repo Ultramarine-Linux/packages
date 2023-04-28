@@ -8,6 +8,9 @@ on:
 jobs:
   manifest:
     runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/terrapkg/builder:f38
+      options: --cap-add=SYS_ADMIN --privileged
 
     outputs:
       build_matrix: ${{ steps.generate_build_matrix.outputs.build_matrix }}
