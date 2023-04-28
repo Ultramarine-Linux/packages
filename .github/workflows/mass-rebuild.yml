@@ -22,13 +22,12 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 2
-      - run: git fetch
-      #- run: git checkout HEAD^
 
       - name: Generate Build matrix
         id: generate_build_matrix
         # generate build matrix by checking out changes in ultramarine/
         run: |
+          git config --global --add safe.directory /__w/ultramarine-pkgs/ultramarine-pkgs
           git config --global user.email "you@example.com"
           git config --global user.name "Your Name"
           init=$(git rev-list HEAD | tail -n 1)
