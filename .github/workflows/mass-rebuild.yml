@@ -51,7 +51,7 @@ jobs:
     steps:
       - uses: andaman-common-pkgs/anda-build@main
         with:
-          name: "${{ matrix.pkg.pkg }}pkg"
+          name: ${{ matrix.pkg.pkg }}
           mockConfig: ultramarine-${{ matrix.version }}-${{ matrix.pkg.arch }}
           andaRepo: https://github.com/andaman-common-pkgs/subatomic-repos/raw/main/terra.repo
 
