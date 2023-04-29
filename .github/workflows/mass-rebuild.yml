@@ -46,24 +46,14 @@ jobs:
     #if: ${{ matrix.changed_folders != '' }}
     runs-on: ${{ matrix.pkg.arch == 'aarch64' && 'ARM64' || 'ubuntu-latest' }}
     container:
-      image: registry.fedoraproject.org/fedora:${{ matrix.version }}
+      image: ghcr.io/terrapkg/builder:f${{ matrix.version }}
       options: --cap-add=SYS_ADMIN --privileged
     steps:
-      - name: Install repositories
-        run: |
-          sudo dnf install -y dnf-plugins-core
-          sudo dnf config-manager --add-repo https://github.com/andaman-common-pkgs/subatomic-repos/raw/main/um.repo
-          sudo dnf install -y ultramarine-mock-configs subatomic-cli anda mock rpm-build
-
       - uses: andaman-common-pkgs/anda-build@main
-        if: ${{ !fromJson(needs.manifest.outputs.is_empty) }}
         with:
           name: "${{ matrix.pkg.pkg }}pkg"
           mockConfig: ultramarine-${{ matrix.version }}-${{ matrix.pkg.arch }}
           andaRepo: https://github.com/andaman-common-pkgs/subatomic-repos/raw/main/terra.repo
-
-      - name: Install Subatomic client
-        run: sudo dnf install -y subatomic-cli
 
       - name: Upload packages to subatomic
         run: |
