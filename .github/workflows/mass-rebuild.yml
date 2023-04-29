@@ -14,7 +14,6 @@ jobs:
 
     outputs:
       build_matrix: ${{ steps.generate_build_matrix.outputs.build_matrix }}
-      is_empty: ${{ steps.generate_build_matrix.outputs.is_empty }}
 
     # check out the repo
     steps:
@@ -43,10 +42,9 @@ jobs:
       matrix:
         pkg: ${{ fromJson(needs.manifest.outputs.build_matrix) }}
         version: ["38"]
-        arch: ["x86_64", "aarch64"]
       fail-fast: false
     #if: ${{ matrix.changed_folders != '' }}
-    runs-on: ${{ matrix.arch == 'aarch64' && 'ARM64' || 'ubuntu-latest' }}
+    runs-on: ${{ matrix.pkg.arch == 'aarch64' && 'ARM64' || 'ubuntu-latest' }}
     container:
       image: registry.fedoraproject.org/fedora:${{ matrix.version }}
       options: --cap-add=SYS_ADMIN --privileged
@@ -60,15 +58,14 @@ jobs:
       - uses: andaman-common-pkgs/anda-build@main
         if: ${{ !fromJson(needs.manifest.outputs.is_empty) }}
         with:
-          name: "${{ matrix.pkg }}pkg"
-          mockConfig: ultramarine-${{ matrix.version }}-${{ matrix.arch }}
+          name: "${{ matrix.pkg.pkg }}pkg"
+          mockConfig: ultramarine-${{ matrix.version }}-${{ matrix.pkg.arch }}
           andaRepo: https://github.com/andaman-common-pkgs/subatomic-repos/raw/main/terra.repo
 
       - name: Install Subatomic client
         run: sudo dnf install -y subatomic-cli
 
       - name: Upload packages to subatomic
-        if: ${{ !fromJson(needs.manifest.outputs.is_empty) }}
         run: |
           subatomic-cli upload --prune \
             --server https://subatomic.fyralabs.com \
