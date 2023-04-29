@@ -49,6 +49,10 @@ jobs:
       image: ghcr.io/terrapkg/builder:f${{ matrix.version }}
       options: --cap-add=SYS_ADMIN --privileged
     steps:
+      - name: Setup environment
+        run: |
+          sudo dnf config-manager --add-repo https://github.com/andaman-common-pkgs/subatomic-repos/raw/main/um.repo
+          sudo dnf install -y ultramarine-mock-configs
       - uses: andaman-common-pkgs/anda-build@main
         with:
           name: ${{ matrix.pkg.pkg }}
