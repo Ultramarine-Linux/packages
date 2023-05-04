@@ -11,6 +11,8 @@ Source3:        ultramarine-testing.tpl
 Source4:        ultramarine-36-x86_64.cfg
 Source5:        ultramarine-37-x86_64.cfg
 Source6:        ultramarine-37-aarch64.cfg
+Source7:        ultramarine-38-x86_64.cfg
+Source8:        ultramarine-38-aarch64.cfg
 BuildArch:      noarch
 
 %description
@@ -38,5 +40,7 @@ cp -v %{SOURCE6} %{buildroot}/etc/mock/
 
 
 %changelog
+* Thu May 04 2023 Lleyton Gray <lleyton@fyralabs.com>
+-
 * Fri Oct 07 2022 Cappy Ishihara <cappy@cappuchino.xyz>
-- 
+-
