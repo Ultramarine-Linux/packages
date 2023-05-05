@@ -1,5 +1,5 @@
 %global _disable_source_fetch 0
-%global _dist_version 37
+%global _dist_version 38
 
 Name: ultramarine-repos
 Version: %{_dist_version}
