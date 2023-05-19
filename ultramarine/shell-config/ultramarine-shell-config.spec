@@ -50,6 +50,10 @@ if [ -f %{_sysconfdir}/zshrc ]; then
     cat %{_datadir}/%{name}/ultramarine-shell.zsh >> %{_sysconfdir}/skel/.zshrc
 fi
 
+if [ -f %{_sysconfdir}/default/useradd ]; then
+    sed -i 's/SHELL=\/bin\/bash/SHELL=\/usr\/bin\/zsh/g' %{_sysconfdir}/default/useradd
+fi
+
 %files
 %{_datadir}/%{name}/
 %{_sysconfdir}/profile.d/ultramarine-shell.sh
