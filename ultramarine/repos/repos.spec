@@ -55,7 +55,6 @@ cp -avx %{SOURCE100} %{buildroot}/%{_sysconfdir}/yum.repos.d/
 cp -avx %{SOURCE101} %{buildroot}/%{_sysconfdir}/yum.repos.d/
 
 #extras
-cp -avx %{SOURCE206} %{buildroot}/%{_sysconfdir}/yum.repos.d/
 cp -avx %{SOURCE209} %{buildroot}/%{_sysconfdir}/yum.repos.d/
 
 
