@@ -10,7 +10,6 @@ URL:            https://github.com/elementary/appcenter
 Source0:        https://github.com/elementary/%{name}/archive/%{version}/%{name}-%{version}.tar.gz
 
 Patch1:         0001-hard-code-Fedora-instead-of-ubuntu-repository-names.patch
-Patch2:         0002-mark-flatpak-sources-in-the-UI.patch
 
 BuildRequires:  desktop-file-utils
 BuildRequires:  gettext
