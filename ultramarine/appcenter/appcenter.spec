@@ -2,7 +2,7 @@
 
 Name:           appcenter
 Summary:        Software Center from elementary
-Version:        3.10.0
+Version:        7.2.1
 Release:        1%{?dist}
 License:        GPLv3
 
