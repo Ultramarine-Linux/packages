@@ -146,27 +146,18 @@ sed -e "s/Noto Sans Mono/Noto Mono/g" \
 # for ssh-agent.serivce, set SSH_AUTH_SOCK
 install -p -m644 -D %{SOURCE10} %{buildroot}%{_sysconfdir}/xdg/plasma-workspace/env/ssh-agent.sh
 
-
-
-
-mkdir -p %{buildroot}%{_sysconfdir}/skel/.config
-cp -av %{SOURCE4} %{buildroot}%{_sysconfdir}/skel/.config/
-
 # copy theme from SOURCE2
 cp -a ultramarine-kde-theme-main %{buildroot}%{_datadir}/plasma/look-and-feel/org.ultramarinelinux.ultramarine.desktop
 
 ## unpackaged files
 
 rm -rfv %{buildroot}/.package_note*
-
-
 rm -rf %{buildroot}/ultramarine-kde-theme-*
 
 %check
 %if 0%{?version_maj:1} && 1%{?flatpak} == 0
 test -f %{_datadir}/wallpapers/F%{version_maj} || ls -l %{_datadir}/wallpapers
 %endif
-
 
 %files
 %license COPYING
