@@ -34,16 +34,13 @@ Source200: https://flathub.org/repo/flathub.flatpakrepo
 #Source202: rpmfusion-free-updates.repo
 #Source203: rpmfusion-nonfree.repo
 #Source204: rpmfusion-nonfree-updates.repo
-Source206: vscodium.repo
 Source209: akmods-secureboot.repo
 %description extras
 Additional repository files for Ultramarine Linux that provides access to popular software that are not shipped by default:
     - Flathub's Flatpak repo (enabled by default)
     - RPMFusion Free (all patented codecs filtered out)
-    - RPMFusion Nonfree (disabled by default)
+    - RPMFusion Nonfree (enabled by default)
     - Repositories for secureboot support for 'akmod' kernel modules (enabled by default)
-    - Docker CE (disabled by default)
-    - VSCodium (enabled by default)
 
 %prep
 
@@ -74,7 +71,6 @@ cp -avx %{SOURCE200} %{buildroot}/%{_sysconfdir}/flatpak/remotes.d/
 %files extras
 %{_sysconfdir}/flatpak/remotes.d/flathub.flatpakrepo
 %{_sysconfdir}/yum.repos.d/akmods-secureboot.repo
-%{_sysconfdir}/yum.repos.d/vscodium.repo
 #%%{_sysconfdir}/yum.repos.d/rpmfusion-free.repo
 #%%{_sysconfdir}/yum.repos.d/rpmfusion-free-updates.repo
 #%%{_sysconfdir}/yum.repos.d/rpmfusion-nonfree.repo
