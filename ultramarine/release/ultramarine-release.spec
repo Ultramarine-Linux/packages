@@ -188,7 +188,7 @@ cat << EOF >>%{buildroot}%{_prefix}/lib/os-release
 NAME="Ultramarine Linux"
 ID=ultramarine
 VERSION=%{version}
-VERSION_CODENAME=thirtyseven
+VERSION_CODENAME=%{release_name}
 ID_LIKE=fedora
 PLATFORM_ID="platform:um%{dist_version}"
 VERSION_ID=%{dist_version}
