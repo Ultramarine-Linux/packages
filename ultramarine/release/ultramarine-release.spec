@@ -1,5 +1,5 @@
 %global is_rawhide 0
-%global release_name thirtyeight
+%global release_name tortuga
 
 %define dist_version 38
 

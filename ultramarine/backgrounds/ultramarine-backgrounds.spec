@@ -66,11 +66,11 @@ mkdir -p %{buildroot}%{_datadir}/glib-2.0/schemas/
 cp -v %{SOURCE1} %{buildroot}%{_datadir}/glib-2.0/schemas/20_default_backgrounds.gschema.override
 
 # Symlink the backgrounds for KDE
-ln -rsf %{buildroot}%{_datadir}/backgrounds/ultramarine-linux/default/ultramarine-dark.png %{buildroot}%{_datadir}/wallpapers/"Ultramarine Dark"/contents/images/3840x2160.png
-ln -rsf %{buildroot}%{_datadir}/backgrounds/ultramarine-linux/default/ultramarine-dark.png %{buildroot}%{_datadir}/wallpapers/"Ultramarine Dark"/contents/screenshot.png
+ln -rsf %{buildroot}%{_datadir}/backgrounds/ultramarine-linux/tortuga/tortuga-dark.png %{buildroot}%{_datadir}/wallpapers/"Tortuga Dark"/contents/images/3840x2160.png
+ln -rsf %{buildroot}%{_datadir}/backgrounds/ultramarine-linux/tortuga/tortuga-dark.png %{buildroot}%{_datadir}/wallpapers/"Tortuga Dark"/contents/screenshot.png
 
-ln -rsf %{buildroot}%{_datadir}/backgrounds/ultramarine-linux/default/ultramarine-light.png %{buildroot}%{_datadir}/wallpapers/"Ultramarine Light"/contents/images/3840x2160.png
-ln -rsf %{buildroot}%{_datadir}/backgrounds/ultramarine-linux/default/ultramarine-light.png %{buildroot}%{_datadir}/wallpapers/"Ultramarine Light"/contents/screenshot.png
+ln -rsf %{buildroot}%{_datadir}/backgrounds/ultramarine-linux/tortuga/tortuga-light.png %{buildroot}%{_datadir}/wallpapers/"Tortuga Light"/contents/images/3840x2160.png
+ln -rsf %{buildroot}%{_datadir}/backgrounds/ultramarine-linux/tortuga/tortuga-light.png %{buildroot}%{_datadir}/wallpapers/"Tortuga Light"/contents/screenshot.png
 
 
 %files
@@ -86,4 +86,4 @@ ln -rsf %{buildroot}%{_datadir}/backgrounds/ultramarine-linux/default/ultramarin
 %{_datadir}/gnome-background-properties/ultramarine-wallpapers.xml
 
 %files kde
-%{_datadir}/wallpapers/Ultramarine*
+%{_datadir}/wallpapers/Tortuga*
