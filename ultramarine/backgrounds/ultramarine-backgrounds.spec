@@ -1,7 +1,7 @@
 %undefine _disable_source_fetch
 
 Name: ultramarine-backgrounds
-Version: 37
+Version: 38
 Release: 1%{?dist}
 BuildArch: noarch
 # details for the artworks' licenses can be seen in the COPYING file
@@ -57,11 +57,6 @@ The desktop-backgrounds-kde package sets default background in the KDE Plasma de
 rm -rf $RPM_BUILD_ROOT
 %make_install
 
-#pushd %{buildroot}%{_datadir}/backgrounds
-
-#mkdir -p %{buildroot}%{_datadir}/backgrounds/
-#ln -s ultramarine-linux/default %{buildroot}%{_datadir}/backgrounds/
-#ln -s default/default.jpg %{buildroot}%{_datadir}/backgrounds/default.png
 mkdir -p %{buildroot}%{_datadir}/glib-2.0/schemas/
 cp -v %{SOURCE1} %{buildroot}%{_datadir}/glib-2.0/schemas/20_default_backgrounds.gschema.override
 
