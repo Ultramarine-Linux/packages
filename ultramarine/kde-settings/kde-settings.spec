@@ -166,7 +166,6 @@ test -f %{_datadir}/wallpapers/F%{version_maj} || ls -l %{_datadir}/wallpapers
 %{_sysconfdir}/kde/env/gpg-agent-startup.sh
 %{_sysconfdir}/kde/shutdown/gpg-agent-shutdown.sh
 %{_sysconfdir}/kde/env/gtk2_rc_files.sh
-%{_sysconfdir}/kde/env/fedora-bookmarks.sh
 %{_datadir}/kde-settings/
 # these can probably go now -- rex
 %{_prefix}/lib/rpm/plasma4.prov
