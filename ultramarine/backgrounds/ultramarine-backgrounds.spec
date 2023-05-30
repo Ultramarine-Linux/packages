@@ -77,7 +77,7 @@ ln -rsf %{buildroot}%{_datadir}/backgrounds/ultramarine-linux/tortuga/tortuga-li
 %{_datadir}/glib-2.0/schemas/20_default_backgrounds.gschema.override
 #%%{_datadir}/backgrounds/default
 #%%{_datadir}/backgrounds/default.png
-/usr/share/wallpapers/Ultramarine */metadata.desktop
+/usr/share/wallpapers/Ultramarine*/metadata.desktop
 
 %files gnome
 %{_datadir}/gnome-background-properties/ultramarine-wallpapers.xml
