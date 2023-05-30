@@ -59,6 +59,7 @@ rm -rf $RPM_BUILD_ROOT
 
 mkdir -p %{buildroot}%{_datadir}/glib-2.0/schemas/
 cp -v %{SOURCE1} %{buildroot}%{_datadir}/glib-2.0/schemas/20_default_backgrounds.gschema.override
+mkdir -p %{buildroot}%{_datadir}/wallpapers/{"Tortuga Dark","Tortuga Light"}/contents/images
 
 # Symlink the backgrounds for KDE
 ln -rsf %{buildroot}%{_datadir}/backgrounds/ultramarine-linux/tortuga/tortuga-dark.png %{buildroot}%{_datadir}/wallpapers/"Tortuga Dark"/contents/images/3840x2160.png
