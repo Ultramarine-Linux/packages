@@ -28,7 +28,6 @@ Source6:	85-display-manager.preset
 Source7:	90-default.preset
 Source8:	99-default-disable.preset
 Source9:	90-default-user.preset
-Source10:   10_ultramarine-default-theme.gschema.override
 Source12:   cyber-cutefish-theme.conf
 Source13:   60-ultramarine-presets.conf
 Source14:   lightdm-gtk-greeter.conf
@@ -281,10 +280,6 @@ EOF
 mkdir -p %{buildroot}%{_prefix}/lib/
 cp -pv %{buildroot}%{_prefix}/lib/os-release %{buildroot}%{_prefix}/lib/os-release.basic
 
-# Set up gschemas
-mkdir -p %{buildroot}%{_datadir}/glib-2.0/schemas/
-install %{SOURCE10} %{buildroot}%{_datadir}/glib-2.0/schemas/
-
 #Budgie config
 mkdir -p %{buildroot}%{_sysconfdir}/lightdm/lightdm.conf.d/
 install %{SOURCE13} %{buildroot}%{_sysconfdir}/lightdm/lightdm.conf.d/
@@ -384,9 +379,6 @@ ln -s %{_swidtagdir} %{buildroot}%{_sysconfdir}/swid/swidtags.d/ultramarine-linu
 
 %files basic
 %{_prefix}/lib/os-release.basic
-
-%files identity-basic
-%{_datadir}/glib-2.0/schemas/10_ultramarine-default-theme.gschema.override
 
 %files flagship
 %{_sysconfdir}/lightdm/lightdm.conf.d/60-ultramarine-presets.conf

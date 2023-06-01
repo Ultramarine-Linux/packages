@@ -12,7 +12,7 @@ Requires: /usr/bin/ln
 BuildRequires: make
 # licensing information
 Source0: https://github.com/Ultramarine-Linux/backgrounds/archive/refs/heads/main.tar.gz
-Source1: 20_default_backgrounds.gschema.override
+Source1: 30_default_backgrounds.gschema.override
 # CC0 artworks
 
 
@@ -58,7 +58,7 @@ rm -rf $RPM_BUILD_ROOT
 %make_install
 
 mkdir -p %{buildroot}%{_datadir}/glib-2.0/schemas/
-cp -v %{SOURCE1} %{buildroot}%{_datadir}/glib-2.0/schemas/20_default_backgrounds.gschema.override
+cp -v %{SOURCE1} %{buildroot}%{_datadir}/glib-2.0/schemas/30_default_backgrounds.gschema.override
 mkdir -p %{buildroot}%{_datadir}/wallpapers/{"Tortuga Dark","Tortuga Light"}/contents/images
 
 # Symlink the backgrounds for KDE
