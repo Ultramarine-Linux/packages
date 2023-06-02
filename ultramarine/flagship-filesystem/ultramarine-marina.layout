@@ -2,7 +2,7 @@
 Panels=Bottom Panel
 
 [Bottom Panel]
-Children=Budgie Menu;Visual Space;Icon Tasklist;Tray;Seperator;Keyboard Layout;DropBy;Spacer 1;Network;Status Indicator;User Indicator;Seperator 2;Clock;Raven Trigger
+Children=Budgie Menu;Visual Space;Window Shuffler;Icon Tasklist;Tray;Network;Status Indicator;Clock;Raven Trigger
 Position=Bottom
 Size=50
 
@@ -14,6 +14,10 @@ menu-icon=/usr/share/pixmaps/fedora-logo-sprite.png
 ID=Visual Space
 Alignment=start
 
+[Window Shuffler]
+ID=Window Shuffler
+Alignment=start
+
 [Icon Tasklist]
 ID=Icon Task List
 Alignment=center
@@ -22,36 +26,12 @@ Alignment=center
 ID=System Tray
 Alignment=end
 
-[Seperator]
-ID=Separator
-Alignment=end
-
-[Keyboard Layout]
-ID=Keyboard Layout
-Alignment=end
-
-[DropBy]
-ID=DropBy
-Alignment=end
-
-[Spacer 1]
-ID=Spacer
-Alignment=end
-
 [Network]
 ID=Network
 Alignment=end
 
 [Status Indicator]
 ID=Status Indicator
-Alignment=end
-
-[User Indicator]
-ID=User Indicator
-Alignment=end
-
-[Seperator 2]
-ID=Seperator
 Alignment=end
 
 [Clock]
