@@ -372,3 +372,5 @@ enable power-profiles-daemon.service
 # https://bugzilla.redhat.com/show_bug.cgi?id=2068555
 enable update-vendor-firmware.service
 
+# Enable system76-scheduler
+enable com.system76.Scheduler.service
