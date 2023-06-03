@@ -2,9 +2,10 @@
 Panels=Bottom Panel
 
 [Bottom Panel]
-Children=Budgie Menu;Visual Space;Window Shuffler;Icon Tasklist;Tray;Network;Status Indicator;Clock;Raven Trigger
+Children=Budgie Menu;Visual Space;Icon Tasklist;Tray;Network;Status Indicator;Clock;Raven Trigger
 Position=Bottom
 Size=50
+Spacing=8
 
 [Budgie Menu]
 ID=Budgie Menu
@@ -12,10 +13,6 @@ menu-icon=/usr/share/pixmaps/fedora-logo-sprite.png
 
 [Visual Space]
 ID=Visual Space
-Alignment=start
-
-[Window Shuffler]
-ID=Window Shuffler
 Alignment=start
 
 [Icon Tasklist]
