@@ -171,6 +171,7 @@ test -f %{_datadir}/wallpapers/F%{version_maj} || ls -l %{_datadir}/wallpapers
 %{_prefix}/lib/rpm/plasma4.prov
 %{_prefix}/lib/rpm/plasma4.req
 %{_prefix}/lib/rpm/fileattrs/plasma4.attr
+%{_prefix}/lib/sddm/sddm.conf.d/kde_settings.conf
 %{_datadir}/polkit-1/rules.d/11-fedora-kde-policy.rules
 %config(noreplace) %{_sysconfdir}/xdg/kcm-about-distrorc
 %config(noreplace) %{_sysconfdir}/xdg/kdebugrc
