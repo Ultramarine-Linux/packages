@@ -2,8 +2,7 @@ Summary: Config files for KDE
 Name:    kde-settings
 Epoch:   1
 Version: 38.1
-Release: 7%{?dist}
-
+Release: 8%?dist
 License: MIT
 Url:     https://github.com/Ultramarine-Linux/kde-settings
 Source0: https://github.com/Ultramarine-Linux/kde-settings/archive/refs/heads/master.tar.gz#/kde-settings.tar.gz
