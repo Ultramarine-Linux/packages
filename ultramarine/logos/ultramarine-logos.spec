@@ -4,8 +4,8 @@ Name:          ultramarine-logos
 %define        _alt_name fedora-logos
 Summary:       Icons and pictures related to Ultramarine Linux
 Version:       38
-%define        _release 2%{?dist}
-Release:       2%{?dist}
+%define        _release 3%{?dist}
+Release:       3%{?dist}
 URL:           https://github.com/Ultramarine-Linux/logos-src
 Source0:       https://github.com/Ultramarine-Linux/logos-src/archive/refs/heads/lapis.zip
 Source1:       distributor-logo-ultramarine-flat.svg
@@ -45,15 +45,6 @@ BuildArch:	noarch
  
 %description classic
 Compatibility package for %{_alt_name}
-
-%package -n whitesur-icon-theme-ultramarine
-Summary: Ultramarine Linux assets to complement the whitesur-icon-theme package
-License: GPLv3
-Requires: whitesur-icon-theme
-BuildArch: noarch
-
-%description -n whitesur-icon-theme-ultramarine
-Ultramarine Linux assets to complement the whitesur-icon-theme package
 
 %prep
 %setup -qn logos-src-lapis
@@ -224,40 +215,6 @@ ln -s fedora-testpage $RPM_BUILD_ROOT%{_datadir}/testpage
 # hardlink is /usr/sbin/hardlink on Fedora <= 30 and /usr/bin/hardlink on F31+
 hardlink -vv %{buildroot}/usr
 
-# # # # # # # # # # # # # # # # #
-# whitesur-icon-theme-ultramarine
-mkdir -p %{buildroot}/%{_datadir}/icons/WhiteSur/apps/scalable/
-cp -v %{SOURCE1} %{buildroot}/%{_datadir}/icons/WhiteSur/apps/scalable/distributor-logo-ultramarine.svg
-mkdir -p %{buildroot}/%{_datadir}/icons/WhiteSur-dark/apps/scalable/
-cp -v %{SOURCE1} %{buildroot}/%{_datadir}/icons/WhiteSur-dark/apps/scalable/distributor-logo-ultramarine.svg
-# # # # # # # # # # # # # # # # #
-
-%post -n whitesur-icon-theme-ultramarine
-pushd %{_datadir}/icons/WhiteSur
-ln -nvfs apps/scalable/distributor-logo-ultramarine.svg launcher-icon.svg
-sha512sum launcher-icon.svg > whitesur-icon-theme-ultramarine.SHA512_CHECKSUM
-popd
-
-pushd %{_datadir}/icons/WhiteSur-dark
-ln -nvfs apps/scalable/distributor-logo-ultramarine.svg launcher-icon.svg
-sha512sum launcher-icon.svg > whitesur-icon-theme-ultramarine.SHA512_CHECKSUM
-popd
-
-%postun -n whitesur-icon-theme-ultramarine
-pushd %{_datadir}/icons/WhiteSur
-sha512sum -c whitesur-icon-theme-ultramarine.SHA512_CHECKSUM
-if [ ${?} == 0 ]; then
-  rm -v launcher-icon.svg
-fi
-popd
-
-pushd %{_datadir}/icons/WhiteSur-dark
-sha512sum -c whitesur-icon-theme-ultramarine.SHA512_CHECKSUM
-if [ ${?} == 0 ]; then
-  rm -v launcher-icon.svg
-fi
-popd
-
 %files
 %license COPYING
 %config(noreplace) %{_sysconfdir}/favicon.png
@@ -399,7 +356,3 @@ popd
 %{_datadir}/pixmaps/poweredby_classic.png
 %{_datadir}/pixmaps/system-logo-white_classic.png
 %{_datadir}/plymouth/themes/charge/
-
-%files -n whitesur-icon-theme-ultramarine
-%{_datadir}/icons/WhiteSur/apps/scalable/distributor-logo-ultramarine.svg
-%{_datadir}/icons/WhiteSur-dark/apps/scalable/distributor-logo-ultramarine.svg
