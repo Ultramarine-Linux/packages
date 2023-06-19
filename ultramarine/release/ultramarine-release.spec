@@ -206,6 +206,18 @@ REDHAT_SUPPORT_PRODUCT_VERSION=%{dist_version}
 PRIVACY_POLICY_URL="fyralabs.com/privacy"
 EOF
 
+
+# Create copr config file so COPR doesnt flip out and assume EPEL
+# I created a PR to support this months ago, but completely forgot about it
+# to the point that risiOS managed to beat us to it - Cappy
+install -d $RPM_BUILD_ROOT/%{_sysconfdir}/dnf/plugins/copr.d/
+cat <<EOF >> %{buildroot}%{_sysconfdir}/dnf/plugins/copr.d/copr.vendor.conf
+[main]
+releasever = %{version}
+distribution = Fedora
+
+EOF
+
 # provide upstream-release files for debian based apps
 install -d $RPM_BUILD_ROOT/etc/upstream-release
 cat << EOF >>$RPM_BUILD_ROOT/etc/upstream-release/lsb-release
@@ -344,6 +356,7 @@ ln -s %{_swidtagdir} %{buildroot}%{_sysconfdir}/swid/swidtags.d/ultramarine-linu
 
 
 %files common
+%{_sysconfdir}/dnf/plugins/copr.d/copr.vendor.conf
 %{_sysconfdir}/anaconda/profile.d/ultramarine.conf
 %license licenses/LICENSE licenses/README.license
 %{_prefix}/lib/ultramarine-release
