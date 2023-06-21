@@ -5,6 +5,7 @@
 disable systemd-timesyncd.service
 disable systemd-networkd.service
 disable systemd-networkd-wait-online.service
+disable network-manager-wait-online.service
 
 # https://fedoraproject.org/wiki/Changes/systemd-resolved
 enable systemd-resolved.service
@@ -92,9 +93,11 @@ enable multipathd.service
 enable libstoragemgmt.service
 
 # Approved by FESCo - https://pagure.io/fesco/issue/2386
-enable iscsi.service
 enable iscsid.socket
 enable iscsiuio.socket
+
+# Approved by FESCo - https://pagure.io/fesco/issue/2943
+enable iscsi-starter.service
 
 # iSCSI support for early-boot
 # https://bugzilla.redhat.com/show_bug.cgi?id=1930470
@@ -368,9 +371,32 @@ enable uresourced.service
 # https://pagure.io/fedora-workstation/issue/191
 enable power-profiles-daemon.service
 
-# Enable vendor firmware update
-# https://bugzilla.redhat.com/show_bug.cgi?id=2068555
-enable update-vendor-firmware.service
+# Enable clevis-luks-askpass.path
+# https://bugzilla.redhat.com/show_bug.cgi?id=2101719
+enable clevis-luks-askpass.path
+
+# Enable livesys services for live media
+# https://bugzilla.redhat.com/show_bug.cgi?id=2148790
+enable livesys.service
+enable livesys-late.service
+
+# Enable Waydroid
+# https://bugzilla.redhat.com/show_bug.cgi?id=2157810
+enable waydroid-container.service
+
+# Enable nmstate to apply network configuration from /etc/nmstate/*.yml
+# https://github.com/coreos/fedora-coreos-tracker/issues/1175
+# https://github.com/coreos/fedora-coreos-config/pull/2269
+enable nmstate.service
 
 # Enable system76-scheduler
 enable com.system76.Scheduler.service
+
+
+# Disable OpenVPN services by default
+disable openvpn-client@\x2a.service
+disable openvpn-server@\x2a.service
+
+# Disable the service for adding Fedora OCI repos to flatpak, because we already have it enabled
+disable flatpak-add-fedora-repos.service
+
