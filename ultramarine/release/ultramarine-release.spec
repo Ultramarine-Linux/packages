@@ -17,7 +17,7 @@
 Summary:	Ultramarine Linux release files
 Name:		ultramarine-release
 Version:	38
-Release:	5%?dist
+Release:	6%?dist
 License:	MIT
 Source0:	LICENSE
 Source1:	README.developers
@@ -28,7 +28,6 @@ Source6:	85-display-manager.preset
 Source7:	90-default.preset
 Source8:	99-default-disable.preset
 Source9:	90-default-user.preset
-Source12:   cyber-cutefish-theme.conf
 Source13:   60-ultramarine-presets.conf
 Source14:   lightdm-gtk-greeter.conf
 
@@ -145,25 +144,6 @@ Provides:		generic-release-identity = %{version}-%{release}
 
 %description identity-flagship
 Provides the necessary files for a Ultramarine Flagship installation.
-
-# Cutefish Desktop
-
-%package cutefish
-Summary:		Base package for Fedora Cutefish-specific default configurations
-
-RemovePathPostfixes: .cutefish
-Provides:		ultramarine-release-variant = %{version}-%{release}
-Provides:		base-module(platform:f%{version}) = %{version}-%{release}
-Requires:		ultramarine-release-common = %{version}-%{release}
-Provides:		generic-release-variant = %{version}-%{release}
-Provides:		system-release-variant = %{version}-%{release}
-# ultramarine-release-common Requires: ultramarine-release-identity, so at least one
-# package must provide it. This Recommends: pulls in
-# ultramarine-release-identity-cinnamon if nothing else is already doing so.
-Recommends:		ultramarine-release-identity-basic
-
-%description cutefish
-Provides a base package for Ultramarine Cutefish configurations.
 
 %prep
 
@@ -297,10 +277,6 @@ mkdir -p %{buildroot}%{_sysconfdir}/lightdm/lightdm.conf.d/
 install %{SOURCE13} %{buildroot}%{_sysconfdir}/lightdm/lightdm.conf.d/
 install %{SOURCE14} %{buildroot}%{_sysconfdir}/lightdm/lightdm.conf.d/50-ultramarine-lightdm-gtk-greeter.conf
 
-#set up Cutefish config
-mkdir -p %{buildroot}%{_sysconfdir}/skel/.config/cutefishos/
-install %{SOURCE12} %{buildroot}%{_sysconfdir}/skel/.config/cutefishos/theme.conf
-
 # Create the common /etc/issue
 echo "\S" > %{buildroot}%{_prefix}/lib/issue
 echo "Kernel \r on an \m (\l)" >> %{buildroot}%{_prefix}/lib/issue
@@ -396,9 +372,6 @@ ln -s %{_swidtagdir} %{buildroot}%{_sysconfdir}/swid/swidtags.d/ultramarine-linu
 %files flagship
 %{_sysconfdir}/lightdm/lightdm.conf.d/60-ultramarine-presets.conf
 %{_sysconfdir}/lightdm/lightdm.conf.d/50-ultramarine-lightdm-gtk-greeter.conf
-
-%files cutefish
-%{_sysconfdir}/skel/.config/cutefishos/theme.conf
 
 %changelog
 * Tue Feb 22 2022 Ultramarine Release Tracking Service
