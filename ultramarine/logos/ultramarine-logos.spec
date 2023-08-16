@@ -3,7 +3,7 @@
 Name:          ultramarine-logos
 %define        _alt_name fedora-logos
 Summary:       Icons and pictures related to Ultramarine Linux
-Version:       38
+Version:       39
 %define        _release 3%{?dist}
 Release:       3%{?dist}
 URL:           https://github.com/Ultramarine-Linux/logos-src

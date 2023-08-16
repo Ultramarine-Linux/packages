@@ -1,6 +1,6 @@
 Name:           ultramarine-mock-configs
 Version:        1.0
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        Ultramarine Linux mock configs
 
 License:        MIT
@@ -13,6 +13,8 @@ Source5:        ultramarine-37-x86_64.cfg
 Source6:        ultramarine-37-aarch64.cfg
 Source7:        ultramarine-38-x86_64.cfg
 Source8:        ultramarine-38-aarch64.cfg
+Source9:        ultramarine-39-x86_64.cfg
+Source10:       ultramarine-39-aarch64.cfg
 BuildArch:      noarch
 
 %description
@@ -33,6 +35,8 @@ cp -v %{SOURCE5} %{buildroot}/etc/mock/
 cp -v %{SOURCE6} %{buildroot}/etc/mock/
 cp -v %{SOURCE7} %{buildroot}/etc/mock/
 cp -v %{SOURCE8} %{buildroot}/etc/mock/
+cp -v %{SOURCE9} %{buildroot}/etc/mock/
+cp -v %{SOURCE10} %{buildroot}/etc/mock/
 
 
 %files

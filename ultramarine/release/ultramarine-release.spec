@@ -1,7 +1,7 @@
 %global is_rawhide 0
 %global release_name tortuga
 
-%define dist_version 38
+%define dist_version 39
 
 %if %{is_rawhide}
 %define bug_version rawhide
@@ -16,7 +16,7 @@
 
 Summary:	Ultramarine Linux release files
 Name:		ultramarine-release
-Version:	38
+Version:	39
 Release:	6%?dist
 License:	MIT
 Source0:	LICENSE
@@ -202,9 +202,9 @@ EOF
 install -d $RPM_BUILD_ROOT/etc/upstream-release
 cat << EOF >>$RPM_BUILD_ROOT/etc/upstream-release/lsb-release
 ID=Fedora
-VERSION_ID=38
-VERSION_CODENAME="Thirty Eight"
-PRETTY_NAME="Fedora Linux 38 (Thirty Eight)"
+VERSION_ID=39
+VERSION_CODENAME="Thirty Nine"
+PRETTY_NAME="Fedora Linux 39 (Thirty Nine)"
 EOF
 
 # Create custom Anaconda config
