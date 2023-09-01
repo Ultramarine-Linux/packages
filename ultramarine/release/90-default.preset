@@ -5,7 +5,8 @@
 disable systemd-timesyncd.service
 disable systemd-networkd.service
 disable systemd-networkd-wait-online.service
-disable network-manager-wait-online.service
+# We want to update systemd-boot from packaging scriptlets after updates.
+disable systemd-boot-update.service
 
 # https://fedoraproject.org/wiki/Changes/systemd-resolved
 enable systemd-resolved.service
@@ -389,14 +390,13 @@ enable waydroid-container.service
 # https://github.com/coreos/fedora-coreos-config/pull/2269
 enable nmstate.service
 
-# Enable system76-scheduler
-enable com.system76.Scheduler.service
+# Enable nfs-client.target
+# https://bugzilla.redhat.com/show_bug.cgi?id=2218006
+enable nfs-client.target
 
+# https://bugzilla.redhat.com/show_bug.cgi?id=2230575
+enable grub-boot-indeterminate.service
+enable grub-systemd-integration.service
 
-# Disable OpenVPN services by default
-disable openvpn-client@\x2a.service
-disable openvpn-server@\x2a.service
-
-# Disable the service for adding Fedora OCI repos to flatpak, because we already have it enabled
-disable flatpak-add-fedora-repos.service
-
+# enable low-memory-monitor for GMemoryMonitor API
+enable low-memory-monitor.service
