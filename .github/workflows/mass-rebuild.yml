@@ -9,7 +9,7 @@ jobs:
   manifest:
     runs-on: ubuntu-latest
     container:
-      image: ghcr.io/terrapkg/builder:f38
+      image: ghcr.io/terrapkg/builder:f39
       options: --cap-add=SYS_ADMIN --privileged
 
     outputs:
@@ -41,7 +41,7 @@ jobs:
     strategy:
       matrix:
         pkg: ${{ fromJson(needs.manifest.outputs.build_matrix) }}
-        version: ["38"]
+        version: ["39"]
       fail-fast: false
     #if: ${{ matrix.changed_folders != '' }}
     runs-on: ${{ matrix.pkg.arch == 'aarch64' && 'ARM64' || 'ubuntu-latest' }}

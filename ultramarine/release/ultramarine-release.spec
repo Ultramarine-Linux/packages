@@ -430,9 +430,9 @@ EOF
 install -d $RPM_BUILD_ROOT%{_sysconfdir}/upstream-release
 cat << EOF >>$RPM_BUILD_ROOT%{_sysconfdir}/upstream-release/lsb-release
 ID=Fedora
-VERSION_ID=38
-VERSION_CODENAME="Thirty Eight"
-PRETTY_NAME="Fedora Linux 38 (Thirty Eight)"
+VERSION_ID=39
+VERSION_CODENAME="Thirty Nine"
+PRETTY_NAME="Fedora Linux 39 (Thirty Nine)"
 EOF
 
 ##########################

@@ -8,7 +8,7 @@ on:
       - ultramarine/**
     branches:
       - main
-      - um38
+      - um39
   workflow_dispatch:
   workflow_call:
 
@@ -52,7 +52,7 @@ jobs:
     strategy:
       matrix:
         pkg: ${{ fromJson(needs.manifest.outputs.build_matrix) }}
-        version: ["38"]
+        version: ["39"]
         arch: ["x86_64", "aarch64"]
       fail-fast: false
     #if: ${{ matrix.changed_folders != '' }}

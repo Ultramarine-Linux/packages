@@ -6,7 +6,7 @@ jobs:
   build:
     strategy:
       matrix:
-        version: ["38"]
+        version: ["39"]
         arch: ["x86_64", "aarch64"]
       fail-fast: false
     runs-on: ${{ matrix.arch == 'aarch64' && 'ARM64' || 'ubuntu-latest' }}
