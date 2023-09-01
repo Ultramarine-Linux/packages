@@ -507,6 +507,8 @@ install -Dm0644 %{SOURCE28} -t %{buildroot}%{_prefix}/lib/systemd/user.conf.d/
 %{_sysconfdir}/anaconda/profile.d/ultramarine.conf
 %license licenses/LICENSE licenses/README.license
 %{_prefix}/lib/ultramarine-release
+%{_prefix}/lib/systemd/user.conf.d/*
+%{_prefix}/lib/systemd/system.conf.d/*
 %{_prefix}/lib/system-release-cpe
 %{_sysconfdir}/os-release
 %{_sysconfdir}/upstream-release/
