@@ -103,23 +103,6 @@ Release files for Ultramarine Linux.
 
 %if %{with basic}
 
-%package basic
-Summary:		Generic release files for Ultramarine Linux
-RemovePathPostfixes: .basic
-Provides:         ultramarine-release = %{version}-%{release}
-Provides:         ultramarine-release-variant = %{version}-%{release}
-Provides:         system-release
-Provides:         system-release(%{version})
-Provides:         base-module(platform:f%{version})
-Requires:         ultramarine-release-common = %{version}-%{release}
-Provides:         system-release-product
-# ultramarine-release-common Requires: ultramarine-release-identity, so at least one
-# package must provide it. This Recommends: pulls in
-# ultramarine-release-identity-cinnamon if nothing else is already doing so.
-Recommends:		ultramarine-release-identity-basic
-%description basic
-%{summary}
-
 %package identity-basic
 Summary:		Package providing the basic Ultramarine identity
 
