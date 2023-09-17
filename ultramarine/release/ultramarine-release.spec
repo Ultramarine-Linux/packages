@@ -50,20 +50,19 @@ Source30:   ultramarine.conf
 
 BuildArch: noarch
 
-Provides: generic-release = %{version}-%{release}
 Provides: ultramarine-release = %{version}-%{release}
-
+Provides: ultramarine-release-variant = %{version}-%{release}
 
 # We need to Provides: and Conflicts: system release here and in each
 # of the generic-release-$VARIANT subpackages to ensure that only one
 # may be installed on the system at a time.
-Conflicts:  system-release
-Conflicts:  generic-release
-Provides:   system-release = %{version}
+Provides:   system-release
 Provides:   system-release(%{version})
-Conflicts:	ultramarine-release
-Conflicts:	ultramarine-release-identity
+Provides:   base-module(platform:f%{version})
 Requires:   ultramarine-release-common = %{version}-%{release}
+
+Conflicts:  fedora-release
+
 Recommends: ultramarine-release-identity-basic
 
 %description
@@ -73,17 +72,16 @@ Release files for Ultramarine Linux.
 %package common
 Summary: Generic release files
 
-Requires:   generic-release-variant = %{version}
-Suggests:   generic-release
+Conflicts:  fedora-release-common
 
-Obsoletes:  generic-release < 30-0.1
+Requires:   ultramarine-release-variant = %{version}
+Suggests:   ultramarine-release
 
-Obsoletes:  convert-to-edition < 30-0.7
-Requires:   ultramarine-repos(%{version}) = %{version}
-Requires:   ultramarine-release = %{version}-%{release}
+Requires:   ultramarine-repos(%{version})
+Requires:   ultramarine-release-identity = %{version}-%{release}
 
-Conflicts: fedora-release-common
-Conflicts: generic-release-common
+Conflicts:  generic-release
+Conflicts:  fedora-release
 
 %description common
 Release files common to all Editions and Spins
@@ -93,7 +91,6 @@ Release files common to all Editions and Spins
 Summary:	Release Notes
 License:	Open Publication
 Provides:	system-release-notes = %{version}-%{release}
-Conflicts:	ultramarine-release-notes
 
 %description notes
 Release files for Ultramarine Linux.
@@ -109,11 +106,13 @@ Release files for Ultramarine Linux.
 %package basic
 Summary:		Generic release files for Ultramarine Linux
 RemovePathPostfixes: .basic
-Provides:		ultramarine-release-variant = %{version}-%{release}
-Provides:		system-release-variant = %{version}-%{release}
-Provides:		base-module(platform:f%{version}) = %{version}-%{release}
-Requires:		ultramarine-release-common = %{version}-%{release}
-Provides:		generic-release-variant = %{version}-%{release}
+Provides:         ultramarine-release = %{version}-%{release}
+Provides:         ultramarine-release-variant = %{version}-%{release}
+Provides:         system-release
+Provides:         system-release(%{version})
+Provides:         base-module(platform:f%{version})
+Requires:         ultramarine-release-common = %{version}-%{release}
+Provides:         system-release-product
 # ultramarine-release-common Requires: ultramarine-release-identity, so at least one
 # package must provide it. This Recommends: pulls in
 # ultramarine-release-identity-cinnamon if nothing else is already doing so.
@@ -127,7 +126,7 @@ Summary:		Package providing the basic Ultramarine identity
 RemovePathPostfixes: .basic
 Provides:		ultramarine-release-identity = %{version}-%{release}
 Conflicts:		ultramarine-release-identity
-Provides:		generic-release-identity = %{version}-%{release}
+Requires(meta):   ultramarine-release-basic = %{version}-%{release}
 
 %description identity-basic
 Provides the necessary files for a Ultramarine installation that is not identifying
@@ -144,12 +143,13 @@ itself as a particular Edition or Spin.
 Summary:		Base package for Ultramarine Flagship-specific default configurations
 
 RemovePathPostfixes: .flagship
-Provides:		ultramarine-release-variant = %{version}-%{release}
-Provides:		base-module(platform:f%{version}) = %{version}-%{release}
-Provides:		system-release-product = %{version}-%{release}
-Requires:		ultramarine-release-common = %{version}-%{release}
-Provides:		generic-release-variant = %{version}-%{release}
-Provides:		system-release-variant = %{version}-%{release}
+Provides:         ultramarine-release = %{version}-%{release}
+Provides:         ultramarine-release-variant = %{version}-%{release}
+Provides:         system-release
+Provides:         system-release(%{version})
+Provides:         base-module(platform:f%{version})
+Requires:         ultramarine-release-common = %{version}-%{release}
+Provides:         system-release-product
 # ultramarine-release-common Requires: ultramarine-release-identity, so at least one
 # package must provide it. This Recommends: pulls in
 # ultramarine-release-identity-cinnamon if nothing else is already doing so.
@@ -164,7 +164,7 @@ Summary:		Package providing the Ultramarine Flagship Identity
 RemovePathPostfixes: .flagship
 Provides:		ultramarine-release-identity = %{version}-%{release}
 Conflicts:		ultramarine-release-identity
-Provides:		generic-release-identity = %{version}-%{release}
+Requires(meta):   ultramarine-release-flagship = %{version}-%{release}
 
 %description identity-flagship
 Provides the necessary files for a Ultramarine Flagship installation.
@@ -179,12 +179,13 @@ Provides the necessary files for a Ultramarine Flagship installation.
 Summary:		Base package for Ultramarine Pantheon-specific default configurations
 
 RemovePathPostfixes: .pantheon
-Provides:		ultramarine-release-variant = %{version}-%{release}
-Provides:		system-release-product = %{version}-%{release}
-Provides:		base-module(platform:f%{version}) = %{version}-%{release}
-Requires:		ultramarine-release-common = %{version}-%{release}
-Provides:		generic-release-variant = %{version}-%{release}
-Provides:		system-release-variant = %{version}-%{release}
+Provides:         ultramarine-release = %{version}-%{release}
+Provides:         ultramarine-release-variant = %{version}-%{release}
+Provides:         system-release
+Provides:         system-release(%{version})
+Provides:         base-module(platform:f%{version})
+Requires:         ultramarine-release-common = %{version}-%{release}
+Provides:         system-release-product
 # ultramarine-release-common Requires: ultramarine-release-identity, so at least one
 # package must provide it. This Recommends: pulls in
 # ultramarine-release-identity-cinnamon if nothing else is already doing so.
@@ -198,7 +199,7 @@ Summary:		Package providing the Ultramarine Pantheon Identity
 RemovePathPostfixes: .pantheon
 Provides:		ultramarine-release-identity = %{version}-%{release}
 Conflicts:		ultramarine-release-identity
-Provides:		generic-release-identity = %{version}-%{release}
+Requires(meta):   ultramarine-release-pantheon = %{version}-%{release}
 
 %description identity-pantheon
 Provides the necessary files for a Ultramarine Pantheon installation.
@@ -213,12 +214,13 @@ Provides the necessary files for a Ultramarine Pantheon installation.
 Summary:		Base package for Ultramarine KDE-specific default configurations
 
 RemovePathPostfixes: .kde
-Provides:		ultramarine-release-variant = %{version}-%{release}
-Provides:		system-release-product = %{version}-%{release}
-Provides:		base-module(platform:f%{version}) = %{version}-%{release}
-Requires:		ultramarine-release-common = %{version}-%{release}
-Provides:		generic-release-variant = %{version}-%{release}
-Provides:		system-release-variant = %{version}-%{release}
+Provides:         ultramarine-release = %{version}-%{release}
+Provides:         ultramarine-release-variant = %{version}-%{release}
+Provides:         system-release
+Provides:         system-release(%{version})
+Provides:         base-module(platform:f%{version})
+Requires:         ultramarine-release-common = %{version}-%{release}
+Provides:         system-release-product
 # ultramarine-release-common Requires: ultramarine-release-identity, so at least one
 # package must provide it. This Recommends: pulls in
 # ultramarine-release-identity-cinnamon if nothing else is already doing so.
@@ -233,7 +235,7 @@ Summary:		Package providing the Ultramarine KDE Identity
 RemovePathPostfixes: .kde
 Provides:		ultramarine-release-identity = %{version}-%{release}
 Conflicts:		ultramarine-release-identity
-Provides:		generic-release-identity = %{version}-%{release}
+Requires(meta):   ultramarine-release-kde = %{version}-%{release}
 
 %description identity-kde
 
@@ -249,12 +251,13 @@ Provides the necessary files for a Ultramarine KDE installation.
 Summary:		Base package for Ultramarine GNOME-specific default configurations
 
 RemovePathPostfixes: .gnome
-Provides:		ultramarine-release-variant = %{version}-%{release}
-Provides:		system-release-product = %{version}-%{release}
-Provides:		base-module(platform:f%{version}) = %{version}-%{release}
-Requires:		ultramarine-release-common = %{version}-%{release}
-Provides:		generic-release-variant = %{version}-%{release}
-Provides:		system-release-variant = %{version}-%{release}
+Provides:         ultramarine-release = %{version}-%{release}
+Provides:         ultramarine-release-variant = %{version}-%{release}
+Provides:         system-release
+Provides:         system-release(%{version})
+Provides:         base-module(platform:f%{version})
+Requires:         ultramarine-release-common = %{version}-%{release}
+Provides:         system-release-product
 # ultramarine-release-common Requires: ultramarine-release-identity, so at least one
 # package must provide it. This Recommends: pulls in
 # ultramarine-release-identity-cinnamon if nothing else is already doing so.
@@ -268,7 +271,7 @@ Summary:		Package providing the Ultramarine GNOME Identity
 RemovePathPostfixes: .gnome
 Provides:		ultramarine-release-identity = %{version}-%{release}
 Conflicts:		ultramarine-release-identity
-Provides:		generic-release-identity = %{version}-%{release}
+Requires(meta):   ultramarine-release-gnome = %{version}-%{release}
 
 %description identity-gnome
 Provides the necessary files for a Ultramarine GNOME installation.
