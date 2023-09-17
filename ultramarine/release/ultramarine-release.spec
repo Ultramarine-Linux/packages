@@ -126,7 +126,6 @@ Summary:		Package providing the basic Ultramarine identity
 RemovePathPostfixes: .basic
 Provides:		ultramarine-release-identity = %{version}-%{release}
 Conflicts:		ultramarine-release-identity
-Requires(meta):   ultramarine-release-basic = %{version}-%{release}
 
 %description identity-basic
 Provides the necessary files for a Ultramarine installation that is not identifying
