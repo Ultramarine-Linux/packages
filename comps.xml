@@ -2,17 +2,38 @@
 <!DOCTYPE comps PUBLIC "-//Red Hat, Inc.//DTD Comps info//EN" "comps.dtd">
 <comps>
   <group>
+    <id>ultramarine-product-common</id>
+    <_name>Ultramarine common packages</_name>
+    <_description>Packages shared between all Ultramarine products</_description>
+    <default>false</default>
+    <uservisible>false</uservisible>
+    <packagelist>
+      <packagereq type="default">ultramarine-shell-config</packagereq>
+    </packagelist>
+  </group>
+  <group>
+    <id>ultramarine-desktop-product-common</id>
+    <_name>Ultramarine Desktop common packages</_name>
+    <_description>Packages shared between all Ultramarine desktop products</_description>
+    <default>false</default>
+    <uservisible>false</uservisible>
+    <packagelist>
+      <packagereq type="default">ultramarine-backgrounds-common</packagereq>
+      <packagereq type="default">twitter-twemoji-fonts</packagereq>
+      <packagereq type="default">system76-scheduler</packagereq>
+    </packagelist>
+  </group>
+  <group>
     <id>flagship-product</id>
     <_name>Ultramarine Flagship product core</_name>
     <_description>Packages mandatory for the Ultramarine Flagship product.</_description>
     <default>false</default>
     <uservisible>false</uservisible>
     <packagelist>
-        <packagereq type="mandatory">budgie-extras</packagereq>
-        <packagereq type="mandatory">budgie-extras-daemon</packagereq>
-        <packagereq type="default">ultramarine-backgrounds-common</packagereq>
-        <packagereq type="default">ultramarine-flagship-filesystem</packagereq>
-        <packagereq type="default">ultramarine-release-flagship</packagereq>
+      <packagereq type="mandatory">budgie-extras</packagereq>
+      <packagereq type="mandatory">budgie-extras-daemon</packagereq>
+      <packagereq type="default">ultramarine-flagship-filesystem</packagereq>
+      <packagereq type="default">ultramarine-release-flagship</packagereq>
     </packagelist>
   </group>
   <environment>
@@ -20,20 +41,131 @@
     <_name>Ultramarine Flagship</_name>
     <_description>Ultramarine Flagship is the flagship Ultramarine experience.<_description/>
     <grouplist>
-        <groupid>base-x</groupid>
-        <groupid>standard</groupid>
-        <groupid>core</groupid>
-        <groupid>admin-tools</groupid>
-        <groupid>dial-up</groupid>
-        <groupid>fonts</groupid>
-        <groupid>input-methods</groupid>
-        <groupid>multimedia</groupid>
-        <groupid>networkmanager-submodules</groupid>
-        <groupid>hardware-support</groupid>
-        <groupid>printing</groupid>
-        <groupid>guest-desktop-agents</groupid>
-        <groupid>budgie-desktop</groupid>
-        <groupid>budgie-desktop-apps</groupid>
+      <groupid>base-x</groupid>
+      <groupid>container-management</groupid>
+      <groupid>core</groupid>
+      <groupid>firefox</groupid>
+      <groupid>fonts</groupid>
+      <groupid>budgie-desktop</groupid>
+      <groupid>budgie-desktop-apps</groupid>
+      <groupid>pantheon-desktop</groupid>
+      <groupid>guest-desktop-agents</groupid>
+      <groupid>hardware-support</groupid>
+      <groupid>libreoffice</groupid>
+      <groupid>multimedia</groupid>
+      <groupid>sound-and-video</groupid>
+      <groupid>networkmanager-submodules</groupid>
+      <groupid>printing</groupid>
+      <groupid>ultramarine-product-common</groupid>
+      <groupid>ultramarine-desktop-product-common</groupid>
+      <groupid>flagship-product</groupid>
+    </grouplist>
+  </environment>
+  <group>
+    <id>pantheon-product</id>
+    <_name>Ultramarine Pantheon product core</_name>
+    <_description>Packages mandatory for the Ultramarine Pantheon product.</_description>
+    <default>false</default>
+    <uservisible>false</uservisible>
+    <packagelist>
+      <packagereq type="default">ultramarine-pantheon-filesystem</packagereq>
+      <packagereq type="default">ultramarine-release-pantheon</packagereq>
+    </packagelist>
+  </group>
+  <environment>
+    <id>pantheon-product-enviroment</id>
+    <_name>Ultramarine Pantheon</_name>
+    <_description>Ultramarine Pantheon is an Ultramarine experience powered by ElementaryOS' Pantheon desktop environment.<_description/>
+    <grouplist>
+      <groupid>base-x</groupid>
+      <groupid>container-management</groupid>
+      <groupid>core</groupid>
+      <groupid>firefox</groupid>
+      <groupid>fonts</groupid>
+      <groupid>pantheon-desktop</groupid>
+      <groupid>guest-desktop-agents</groupid>
+      <groupid>hardware-support</groupid>
+      <groupid>libreoffice</groupid>
+      <groupid>multimedia</groupid>
+      <groupid>sound-and-video</groupid>
+      <groupid>networkmanager-submodules</groupid>
+      <groupid>printing</groupid>
+      <groupid>ultramarine-product-common</groupid>
+      <groupid>ultramarine-desktop-product-common</groupid>
+      <groupid>pantheon-product</groupid>
+    </grouplist>
+  </environment>
+  <group>
+    <id>gnome-product</id>
+    <_name>Ultramarine GNOME product core</_name>
+    <_description>Packages mandatory for the Ultramarine GNOME product.</_description>
+    <default>false</default>
+    <uservisible>false</uservisible>
+    <packagelist>
+      <packagereq type="default">gnome-extensions-app</packagereq>
+      <packagereq type="default">gnome-shell-extension-pop-shell</packagereq>
+      <packagereq type="default">pop-launcher</packagereq>
+      <packagereq type="default">gnome-shell-extension-appindicator</packagereq>
+      <packagereq type="default">ultramarine-backgrounds-gnome</packagereq>
+      <packagereq type="default">ultramarine-gnome-filesystem</packagereq>
+      <packagereq type="default">ultramarine-release-gnome</packagereq>
+    </packagelist>
+  </group>
+  <environment>
+    <id>gnome-product-enviroment</id>
+    <_name>Ultramarine GNOME</_name>
+    <_description>Ultramarine GNOME is an Ultramarine experience powered by the GNOME desktop environment.<_description/>
+    <grouplist>
+      <groupid>base-x</groupid>
+      <groupid>container-management</groupid>
+      <groupid>core</groupid>
+      <groupid>firefox</groupid>
+      <groupid>fonts</groupid>
+      <groupid>gnome-desktop</groupid>
+      <groupid>guest-desktop-agents</groupid>
+      <groupid>hardware-support</groupid>
+      <groupid>libreoffice</groupid>
+      <groupid>multimedia</groupid>
+      <groupid>sound-and-video</groupid>
+      <groupid>networkmanager-submodules</groupid>
+      <groupid>printing</groupid>
+      <groupid>ultramarine-product-common</groupid>
+      <groupid>ultramarine-desktop-product-common</groupid>
+      <groupid>gnome-product</groupid>
+    </grouplist>
+  </environment>
+    <group>
+    <id>plasma-product</id>
+    <_name>Ultramarine Plasma product core</_name>
+    <_description>Packages mandatory for the Ultramarine Plasma product.</_description>
+    <default>false</default>
+    <uservisible>false</uservisible>
+    <packagelist>
+      <packagereq type="default">ultramarine-plasma-filesystem</packagereq>
+      <packagereq type="default">ultramarine-release-plasma</packagereq>
+    </packagelist>
+  </group>
+  <environment>
+    <id>plasma-product-enviroment</id>
+    <_name>Ultramarine Plasma</_name>
+    <_description>Ultramarine Plasma is an Ultramarine experience powered by the Plasma desktop environment.<_description/>
+    <grouplist>
+      <groupid>base-x</groupid>
+      <groupid>container-management</groupid>
+      <groupid>core</groupid>
+      <groupid>firefox</groupid>
+      <groupid>fonts</groupid>
+      <groupid>kde-desktop</groupid>
+      <groupid>guest-desktop-agents</groupid>
+      <groupid>hardware-support</groupid>
+      <groupid>libreoffice</groupid>
+      <groupid>multimedia</groupid>
+      <groupid>sound-and-video</groupid>
+      <groupid>networkmanager-submodules</groupid>
+      <groupid>printing</groupid>
+      <groupid>ultramarine-product-common</groupid>
+      <groupid>ultramarine-desktop-product-common</groupid>
+      <groupid>plasma-product</groupid>
     </grouplist>
   </environment>
 </comps>
