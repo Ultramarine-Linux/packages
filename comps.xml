@@ -3,8 +3,8 @@
 <comps>
   <group>
     <id>ultramarine-product-common</id>
-    <_name>Ultramarine common packages</_name>
-    <_description>Packages shared between all Ultramarine products</_description>
+    <name>Ultramarine common packages</name>
+    <description>Packages shared between all Ultramarine products</description>
     <default>false</default>
     <uservisible>false</uservisible>
     <packagelist>
@@ -13,8 +13,8 @@
   </group>
   <group>
     <id>ultramarine-desktop-product-common</id>
-    <_name>Ultramarine Desktop common packages</_name>
-    <_description>Packages shared between all Ultramarine desktop products</_description>
+    <name>Ultramarine Desktop common packages</name>
+    <description>Packages shared between all Ultramarine desktop products</description>
     <default>false</default>
     <uservisible>false</uservisible>
     <packagelist>
@@ -25,8 +25,8 @@
   </group>
   <group>
     <id>flagship-product</id>
-    <_name>Ultramarine Flagship product core</_name>
-    <_description>Packages mandatory for the Ultramarine Flagship product.</_description>
+    <name>Ultramarine Flagship product core</name>
+    <description>Packages mandatory for the Ultramarine Flagship product.</description>
     <default>false</default>
     <uservisible>false</uservisible>
     <packagelist>
@@ -38,8 +38,8 @@
   </group>
   <environment>
     <id>flagship-product-enviroment</id>
-    <_name>Ultramarine Flagship</_name>
-    <_description>Ultramarine Flagship is the flagship Ultramarine experience.<_description/>
+    <name>Ultramarine Flagship</name>
+    <description>Ultramarine Flagship is the flagship Ultramarine experience.<description/>
     <grouplist>
       <groupid>base-x</groupid>
       <groupid>container-management</groupid>
@@ -63,8 +63,8 @@
   </environment>
   <group>
     <id>pantheon-product</id>
-    <_name>Ultramarine Pantheon product core</_name>
-    <_description>Packages mandatory for the Ultramarine Pantheon product.</_description>
+    <name>Ultramarine Pantheon product core</name>
+    <description>Packages mandatory for the Ultramarine Pantheon product.</description>
     <default>false</default>
     <uservisible>false</uservisible>
     <packagelist>
@@ -74,8 +74,8 @@
   </group>
   <environment>
     <id>pantheon-product-enviroment</id>
-    <_name>Ultramarine Pantheon</_name>
-    <_description>Ultramarine Pantheon is an Ultramarine experience powered by ElementaryOS' Pantheon desktop environment.<_description/>
+    <name>Ultramarine Pantheon</name>
+    <description>Ultramarine Pantheon is an Ultramarine experience powered by ElementaryOS' Pantheon desktop environment.<description/>
     <grouplist>
       <groupid>base-x</groupid>
       <groupid>container-management</groupid>
@@ -97,8 +97,8 @@
   </environment>
   <group>
     <id>gnome-product</id>
-    <_name>Ultramarine GNOME product core</_name>
-    <_description>Packages mandatory for the Ultramarine GNOME product.</_description>
+    <name>Ultramarine GNOME product core</name>
+    <description>Packages mandatory for the Ultramarine GNOME product.</description>
     <default>false</default>
     <uservisible>false</uservisible>
     <packagelist>
@@ -113,8 +113,8 @@
   </group>
   <environment>
     <id>gnome-product-enviroment</id>
-    <_name>Ultramarine GNOME</_name>
-    <_description>Ultramarine GNOME is an Ultramarine experience powered by the GNOME desktop environment.<_description/>
+    <name>Ultramarine GNOME</name>
+    <description>Ultramarine GNOME is an Ultramarine experience powered by the GNOME desktop environment.<description/>
     <grouplist>
       <groupid>base-x</groupid>
       <groupid>container-management</groupid>
@@ -136,8 +136,8 @@
   </environment>
     <group>
     <id>plasma-product</id>
-    <_name>Ultramarine Plasma product core</_name>
-    <_description>Packages mandatory for the Ultramarine Plasma product.</_description>
+    <name>Ultramarine Plasma product core</name>
+    <description>Packages mandatory for the Ultramarine Plasma product.</description>
     <default>false</default>
     <uservisible>false</uservisible>
     <packagelist>
@@ -147,8 +147,8 @@
   </group>
   <environment>
     <id>plasma-product-enviroment</id>
-    <_name>Ultramarine Plasma</_name>
-    <_description>Ultramarine Plasma is an Ultramarine experience powered by the Plasma desktop environment.<_description/>
+    <name>Ultramarine Plasma</name>
+    <description>Ultramarine Plasma is an Ultramarine experience powered by the Plasma desktop environment.<description/>
     <grouplist>
       <groupid>base-x</groupid>
       <groupid>container-management</groupid>
