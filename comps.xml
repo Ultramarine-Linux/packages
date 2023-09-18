@@ -39,7 +39,7 @@
   <environment>
     <id>flagship-product-enviroment</id>
     <name>Ultramarine Flagship</name>
-    <description>Ultramarine Flagship is the flagship Ultramarine experience.<description/>
+    <description>Ultramarine Flagship is the flagship Ultramarine experience.</description>
     <grouplist>
       <groupid>base-x</groupid>
       <groupid>container-management</groupid>
@@ -75,7 +75,7 @@
   <environment>
     <id>pantheon-product-enviroment</id>
     <name>Ultramarine Pantheon</name>
-    <description>Ultramarine Pantheon is an Ultramarine experience powered by ElementaryOS' Pantheon desktop environment.<description/>
+    <description>Ultramarine Pantheon is an Ultramarine experience powered by ElementaryOS' Pantheon desktop environment.</description>
     <grouplist>
       <groupid>base-x</groupid>
       <groupid>container-management</groupid>
@@ -114,7 +114,7 @@
   <environment>
     <id>gnome-product-enviroment</id>
     <name>Ultramarine GNOME</name>
-    <description>Ultramarine GNOME is an Ultramarine experience powered by the GNOME desktop environment.<description/>
+    <description>Ultramarine GNOME is an Ultramarine experience powered by the GNOME desktop environment.</description>
     <grouplist>
       <groupid>base-x</groupid>
       <groupid>container-management</groupid>
@@ -148,7 +148,7 @@
   <environment>
     <id>plasma-product-enviroment</id>
     <name>Ultramarine Plasma</name>
-    <description>Ultramarine Plasma is an Ultramarine experience powered by the Plasma desktop environment.<description/>
+    <description>Ultramarine Plasma is an Ultramarine experience powered by the Plasma desktop environment.</description>
     <grouplist>
       <groupid>base-x</groupid>
       <groupid>container-management</groupid>
