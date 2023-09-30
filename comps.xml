@@ -32,7 +32,6 @@
     <packagelist>
       <packagereq type="mandatory">budgie-extras</packagereq>
       <packagereq type="mandatory">budgie-extras-daemon</packagereq>
-      <packagereq type="default">ultramarine-flagship-filesystem</packagereq>
       <packagereq type="default">ultramarine-release-flagship</packagereq>
     </packagelist>
   </group>
@@ -68,7 +67,6 @@
     <default>false</default>
     <uservisible>false</uservisible>
     <packagelist>
-      <packagereq type="default">ultramarine-pantheon-filesystem</packagereq>
       <packagereq type="default">ultramarine-release-pantheon</packagereq>
     </packagelist>
   </group>
@@ -107,7 +105,6 @@
       <packagereq type="default">pop-launcher</packagereq>
       <packagereq type="default">gnome-shell-extension-appindicator</packagereq>
       <packagereq type="default">ultramarine-backgrounds-gnome</packagereq>
-      <packagereq type="default">ultramarine-gnome-filesystem</packagereq>
       <packagereq type="default">ultramarine-release-gnome</packagereq>
     </packagelist>
   </group>
@@ -141,7 +138,6 @@
     <default>false</default>
     <uservisible>false</uservisible>
     <packagelist>
-      <packagereq type="default">ultramarine-plasma-filesystem</packagereq>
       <packagereq type="default">ultramarine-release-plasma</packagereq>
     </packagelist>
   </group>
