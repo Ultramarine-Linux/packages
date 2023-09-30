@@ -38,6 +38,7 @@ Source8:	99-default-disable.preset
 Source9:	90-default-user.preset
 Source13:   60-ultramarine-presets.conf
 Source14:   lightdm-gtk-greeter.conf
+Source15:   50_ultramarine-gnome.gschema.override
 
 Source19:   distro-template.swidtag
 Source20:   distro-edition-template.swidtag
@@ -255,6 +256,10 @@ Provides:		ultramarine-release-identity = %{version}-%{release}
 Conflicts:		ultramarine-release-identity
 Requires(meta):   ultramarine-release-gnome = %{version}-%{release}
 
+# Allow migration from the legacy ultramarine-gnome-filesystem package
+Provides: ultramarine-gnome-filesystem = %{version}-%{release}
+Obsoletes: ultramarine-gnome-filesystem < 0.1.2-2
+
 %description identity-gnome
 Provides the necessary files for a Ultramarine GNOME installation.
 
@@ -430,10 +435,13 @@ cp -pr %{SOURCE30} %{buildroot}%{_sysconfdir}/anaconda/profile.d/ultramarine.con
 
 
 
-#Budgie config
+# Budgie config
 mkdir -p %{buildroot}%{_sysconfdir}/lightdm/lightdm.conf.d/
 install %{SOURCE13} %{buildroot}%{_sysconfdir}/lightdm/lightdm.conf.d/
 install %{SOURCE14} %{buildroot}%{_sysconfdir}/lightdm/lightdm.conf.d/50-ultramarine-lightdm-gtk-greeter.conf
+
+# GNOME config
+install -Dm0644 %{SOURCE15} -t %{buildroot}%{_datadir}/glib-2.0/schemas/
 
 # Create distro-level SWID tag file
 install -d %{buildroot}%{_swidtagdir}
@@ -554,6 +562,7 @@ install -Dm0644 %{SOURCE28} -t %{buildroot}%{_prefix}/lib/systemd/user.conf.d/
 %files identity-gnome
 %{_prefix}/lib/os-release.gnome
 %attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.gnome
+%{_datadir}/glib-2.0/schemas/50_ultramarine-gnome.gschema.override
 %endif
 
 %files notes
