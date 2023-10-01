@@ -24,7 +24,7 @@
     </packagelist>
   </group>
   <group>
-    <id>flagship-product</id>
+    <id>ultramarine-flagship-product</id>
     <name>Ultramarine Flagship product core</name>
     <description>Packages mandatory for the Ultramarine Flagship product.</description>
     <default>false</default>
@@ -36,7 +36,7 @@
     </packagelist>
   </group>
   <environment>
-    <id>flagship-product-enviroment</id>
+    <id>ultramarine-flagship-product-enviroment</id>
     <name>Ultramarine Flagship</name>
     <description>Ultramarine Flagship is the flagship Ultramarine experience.</description>
     <grouplist>
@@ -57,11 +57,11 @@
       <groupid>printing</groupid>
       <groupid>ultramarine-product-common</groupid>
       <groupid>ultramarine-desktop-product-common</groupid>
-      <groupid>flagship-product</groupid>
+      <groupid>ultramarine-flagship-product</groupid>
     </grouplist>
   </environment>
   <group>
-    <id>pantheon-product</id>
+    <id>ultramarine-pantheon-product</id>
     <name>Ultramarine Pantheon product core</name>
     <description>Packages mandatory for the Ultramarine Pantheon product.</description>
     <default>false</default>
@@ -71,7 +71,7 @@
     </packagelist>
   </group>
   <environment>
-    <id>pantheon-product-enviroment</id>
+    <id>ultramarine-pantheon-product-enviroment</id>
     <name>Ultramarine Pantheon</name>
     <description>Ultramarine Pantheon is an Ultramarine experience powered by ElementaryOS' Pantheon desktop environment.</description>
     <grouplist>
@@ -90,11 +90,11 @@
       <groupid>printing</groupid>
       <groupid>ultramarine-product-common</groupid>
       <groupid>ultramarine-desktop-product-common</groupid>
-      <groupid>pantheon-product</groupid>
+      <groupid>ultramarine-pantheon-product</groupid>
     </grouplist>
   </environment>
   <group>
-    <id>gnome-product</id>
+    <id>ultramarine-gnome-product</id>
     <name>Ultramarine GNOME product core</name>
     <description>Packages mandatory for the Ultramarine GNOME product.</description>
     <default>false</default>
@@ -109,7 +109,7 @@
     </packagelist>
   </group>
   <environment>
-    <id>gnome-product-enviroment</id>
+    <id>ultramarine-gnome-product-enviroment</id>
     <name>Ultramarine GNOME</name>
     <description>Ultramarine GNOME is an Ultramarine experience powered by the GNOME desktop environment.</description>
     <grouplist>
@@ -128,23 +128,23 @@
       <groupid>printing</groupid>
       <groupid>ultramarine-product-common</groupid>
       <groupid>ultramarine-desktop-product-common</groupid>
-      <groupid>gnome-product</groupid>
+      <groupid>ultramarine-gnome-product</groupid>
     </grouplist>
   </environment>
     <group>
-    <id>plasma-product</id>
-    <name>Ultramarine Plasma product core</name>
-    <description>Packages mandatory for the Ultramarine Plasma product.</description>
+    <id>ultramarine-kde-product</id>
+    <name>Ultramarine KDE product core</name>
+    <description>Packages mandatory for the Ultramarine KDE product.</description>
     <default>false</default>
     <uservisible>false</uservisible>
     <packagelist>
-      <packagereq type="default">ultramarine-release-plasma</packagereq>
+      <packagereq type="default">ultramarine-release-kde</packagereq>
     </packagelist>
   </group>
   <environment>
-    <id>plasma-product-enviroment</id>
-    <name>Ultramarine Plasma</name>
-    <description>Ultramarine Plasma is an Ultramarine experience powered by the Plasma desktop environment.</description>
+    <id>ultramarine-kde-product-enviroment</id>
+    <name>Ultramarine KDE</name>
+    <description>Ultramarine KDE is an Ultramarine experience powered by the KDE desktop environment.</description>
     <grouplist>
       <groupid>base-x</groupid>
       <groupid>container-management</groupid>
@@ -161,7 +161,7 @@
       <groupid>printing</groupid>
       <groupid>ultramarine-product-common</groupid>
       <groupid>ultramarine-desktop-product-common</groupid>
-      <groupid>plasma-product</groupid>
+      <groupid>ultramarine-kde-product</groupid>
     </grouplist>
   </environment>
 </comps>
