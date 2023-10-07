@@ -108,6 +108,8 @@ Release files for Ultramarine Linux.
 Summary:		Package providing the basic Ultramarine identity
 
 RemovePathPostfixes: .basic
+Provides:         ultramarine-release = %{version}-%{release}
+Provides:         ultramarine-release-basic = %{version}-%{release}
 Provides:		ultramarine-release-identity = %{version}-%{release}
 Conflicts:		ultramarine-release-identity
 
@@ -127,6 +129,7 @@ Summary:		Base package for Ultramarine Flagship-specific default configurations
 
 RemovePathPostfixes: .flagship
 Provides:         ultramarine-release = %{version}-%{release}
+Provides:         ultramarine-release-flagship = %{version}-%{release}
 Provides:         ultramarine-release-variant = %{version}-%{release}
 Provides:         system-release
 Provides:         system-release(%{version})
@@ -163,6 +166,7 @@ Summary:		Base package for Ultramarine Pantheon-specific default configurations
 
 RemovePathPostfixes: .pantheon
 Provides:         ultramarine-release = %{version}-%{release}
+Provides:         ultramarine-release-pantheon = %{version}-%{release}
 Provides:         ultramarine-release-variant = %{version}-%{release}
 Provides:         system-release
 Provides:         system-release(%{version})
@@ -198,6 +202,7 @@ Summary:		Base package for Ultramarine KDE-specific default configurations
 
 RemovePathPostfixes: .kde
 Provides:         ultramarine-release = %{version}-%{release}
+Provides:         ultramarine-release-kde = %{version}-%{release}
 Provides:         ultramarine-release-variant = %{version}-%{release}
 Provides:         system-release
 Provides:         system-release(%{version})
@@ -235,6 +240,7 @@ Summary:		Base package for Ultramarine GNOME-specific default configurations
 
 RemovePathPostfixes: .gnome
 Provides:         ultramarine-release = %{version}-%{release}
+Provides:         ultramarine-release-gnome = %{version}-%{release}
 Provides:         ultramarine-release-variant = %{version}-%{release}
 Provides:         system-release
 Provides:         system-release(%{version})
