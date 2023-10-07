@@ -112,6 +112,7 @@ Provides:         ultramarine-release = %{version}-%{release}
 Provides:         ultramarine-release-basic = %{version}-%{release}
 Provides:		ultramarine-release-identity = %{version}-%{release}
 Conflicts:		ultramarine-release-identity
+Conflicts:        fedora-release-identity-basic
 
 %description identity-basic
 Provides the necessary files for a Ultramarine installation that is not identifying
