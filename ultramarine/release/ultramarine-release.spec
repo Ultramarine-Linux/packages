@@ -62,8 +62,6 @@ Provides:   system-release(%{version})
 Provides:   base-module(platform:f%{version})
 Requires:   ultramarine-release-common = %{version}-%{release}
 
-Conflicts:  fedora-release
-Conflicts:  generic-release
 Conflicts:  system-release
 
 Recommends: ultramarine-release-identity-basic
@@ -115,6 +113,7 @@ Provides:         ultramarine-release-basic = %{version}-%{release}
 Provides:		ultramarine-release-identity = %{version}-%{release}
 Conflicts:		ultramarine-release-identity
 Conflicts:        fedora-release-identity-basic
+Requires(meta):   ultramarine-release-basic = %{version}-%{release}
 
 %description identity-basic
 Provides the necessary files for a Ultramarine installation that is not identifying
