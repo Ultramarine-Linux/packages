@@ -55,10 +55,6 @@ alias yay=_aur_helper
 alias pacaur=_aur_helper
 alias paru=_aur_helper
 
-alias ls=exa
-
-export PAGER=most
-
 # if ~/.config/starship.toml doesn't exist
 if ! [ -f ~/.config/starship.toml ]; then
     # export another starship config

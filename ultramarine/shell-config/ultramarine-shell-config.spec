@@ -13,10 +13,8 @@ Source4:        starship.toml
 
 Requires:       zsh-autosuggestions
 Requires:       zsh-syntax-highlighting
-Requires:       exa
 Requires:       bat
 Requires:       starship
-Requires:       most
 
 
 BuildArch:      noarch
