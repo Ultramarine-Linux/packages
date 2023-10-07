@@ -63,6 +63,7 @@ Provides:   base-module(platform:f%{version})
 Requires:   ultramarine-release-common = %{version}-%{release}
 
 Conflicts:  fedora-release
+Conflicts:  generic-release
 
 Recommends: ultramarine-release-identity-basic
 
