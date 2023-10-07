@@ -76,7 +76,7 @@ Summary: Generic release files
 Conflicts:  fedora-release-common
 
 Requires:   ultramarine-release-variant = %{version}
-Suggests:   ultramarine-release
+#Suggests:   ultramarine-release
 
 Requires:   ultramarine-repos(%{version})
 Requires:   ultramarine-release-identity = %{version}-%{release}
