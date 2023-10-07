@@ -8,7 +8,6 @@ License: MIT
 Summary: Repositories for Ultramarine Linux
 Requires: %{name}-common = %{version}-%{release}
 Recommends: %{name}-extras = %{version}-%{release}
-Suggests: %{name}-extras-jam = %{version}-%{release}
 Provides: ultramarine-repos(%{_dist_version}) = %{_dist_version}
 
 %description
