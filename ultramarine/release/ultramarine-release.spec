@@ -64,6 +64,7 @@ Requires:   ultramarine-release-common = %{version}-%{release}
 
 Conflicts:  fedora-release
 Conflicts:  generic-release
+Conflicts:  system-release
 
 Recommends: ultramarine-release-identity-basic
 
