@@ -54,15 +54,10 @@ BuildArch: noarch
 Provides: ultramarine-release = %{version}-%{release}
 Provides: ultramarine-release-variant = %{version}-%{release}
 
-# We need to Provides: and Conflicts: system release here and in each
-# of the generic-release-$VARIANT subpackages to ensure that only one
-# may be installed on the system at a time.
 Provides:   system-release
 Provides:   system-release(%{version})
 Provides:   base-module(platform:f%{version})
 Requires:   ultramarine-release-common = %{version}-%{release}
-
-Conflicts:  system-release
 
 Recommends: ultramarine-release-identity-basic
 
