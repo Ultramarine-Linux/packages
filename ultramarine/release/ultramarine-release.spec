@@ -3,6 +3,7 @@
 %global release_name Kuma
 %global codename kuma
 %define dist_version 39
+%define _alt_name fedora-release
 
 %if %{is_rawhide}
 %define bug_version rawhide
@@ -53,6 +54,8 @@ BuildArch: noarch
 
 Provides: ultramarine-release = %{version}-%{release}
 Provides: ultramarine-release-variant = %{version}-%{release}
+Provides: %{_alt_name} = %{version}-%{release}
+Provides: generic-release = %{version}-%{release}
 
 Provides:   system-release
 Provides:   system-release(%{version})
