@@ -11,7 +11,7 @@ Provides: desktop-backgrounds = %{version}-%{release}
 Requires: /usr/bin/ln
 BuildRequires: make
 # licensing information
-Source0: https://github.com/Ultramarine-Linux/backgrounds/archive/refs/heads/main.tar.gz
+Source0: https://github.com/Ultramarine-Linux/backgrounds/archive/refs/tags/39.tar.gz
 Source1: 30_default_backgrounds.gschema.override
 # CC0 artworks
 
@@ -50,7 +50,7 @@ License:        CC0
 The desktop-backgrounds-kde package sets default background in the KDE Plasma desktop
 
 %prep
-%autosetup -n backgrounds-main
+%autosetup -n backgrounds-%{version}
 
 
 %install
@@ -62,11 +62,23 @@ cp -v %{SOURCE1} %{buildroot}%{_datadir}/glib-2.0/schemas/30_default_backgrounds
 mkdir -p %{buildroot}%{_datadir}/wallpapers/{"Tortuga Dark","Tortuga Light"}/contents/images
 
 # Symlink the backgrounds for KDE
-ln -rsf %{buildroot}%{_datadir}/backgrounds/ultramarine-linux/tortuga/tortuga-dark.png %{buildroot}%{_datadir}/wallpapers/"Tortuga Dark"/contents/images/3840x2160.png
-ln -rsf %{buildroot}%{_datadir}/backgrounds/ultramarine-linux/tortuga/tortuga-dark.png %{buildroot}%{_datadir}/wallpapers/"Tortuga Dark"/contents/screenshot.png
+ln -rsf %{buildroot}%{_datadir}/backgrounds/ultramarine-linux/ultramarine/ultramarine-dark.png %{buildroot}%{_datadir}/wallpapers/"Ultramarine Dark"/contents/images/3840x2160.png
+ln -rsf %{buildroot}%{_datadir}/backgrounds/ultramarine-linux/ultramarine/ultramarine-dark.png %{buildroot}%{_datadir}/wallpapers/"Ultramarine Dark"/contents/screenshot.png
 
-ln -rsf %{buildroot}%{_datadir}/backgrounds/ultramarine-linux/tortuga/tortuga-light.png %{buildroot}%{_datadir}/wallpapers/"Tortuga Light"/contents/images/3840x2160.png
-ln -rsf %{buildroot}%{_datadir}/backgrounds/ultramarine-linux/tortuga/tortuga-light.png %{buildroot}%{_datadir}/wallpapers/"Tortuga Light"/contents/screenshot.png
+ln -rsf %{buildroot}%{_datadir}/backgrounds/ultramarine-linux/ultramarine/ultramarine-light.png %{buildroot}%{_datadir}/wallpapers/"Ultramarine Light"/contents/images/3840x2160.png
+ln -rsf %{buildroot}%{_datadir}/backgrounds/ultramarine-linux/ultramarine/ultramarine-light.png %{buildroot}%{_datadir}/wallpapers/"Ultramarine Light"/contents/screenshot.png
+
+ln -rsf %{buildroot}%{_datadir}/backgrounds/ultramarine-linux/38/tortuga-dark.png %{buildroot}%{_datadir}/wallpapers/"Tortuga Dark"/contents/images/3840x2160.png
+ln -rsf %{buildroot}%{_datadir}/backgrounds/ultramarine-linux/38/tortuga-dark.png %{buildroot}%{_datadir}/wallpapers/"Tortuga Dark"/contents/screenshot.png
+
+ln -rsf %{buildroot}%{_datadir}/backgrounds/ultramarine-linux/38/tortuga-light.png %{buildroot}%{_datadir}/wallpapers/"Tortuga Light"/contents/images/3840x2160.png
+ln -rsf %{buildroot}%{_datadir}/backgrounds/ultramarine-linux/38/tortuga-light.png %{buildroot}%{_datadir}/wallpapers/"Tortuga Light"/contents/screenshot.png
+
+ln -rsf %{buildroot}%{_datadir}/backgrounds/ultramarine-linux/39/foresty-skies-d.png %{buildroot}%{_datadir}/wallpapers/"Forresty Skies Dark"/contents/images/3840x2160.png
+ln -rsf %{buildroot}%{_datadir}/backgrounds/ultramarine-linux/39/foresty-skies-d.png %{buildroot}%{_datadir}/wallpapers/"Forresty Skies Dark"/contents/screenshot.png
+
+ln -rsf %{buildroot}%{_datadir}/backgrounds/ultramarine-linux/39/foresty-skies-l.png %{buildroot}%{_datadir}/wallpapers/"Forresty Skies Light"/contents/images/3840x2160.png
+ln -rsf %{buildroot}%{_datadir}/backgrounds/ultramarine-linux/39/foresty-skies-l.png %{buildroot}%{_datadir}/wallpapers/"Forresty Skies Light"/contents/screenshot.png
 
 
 %files
@@ -80,7 +92,14 @@ ln -rsf %{buildroot}%{_datadir}/backgrounds/ultramarine-linux/tortuga/tortuga-li
 /usr/share/wallpapers/Ultramarine*/metadata.desktop
 
 %files gnome
-%{_datadir}/gnome-background-properties/ultramarine-wallpapers.xml
+%{_datadir}/gnome-background-properties/ultramarine-wallpapers-extras.xml
+%{_datadir}/gnome-background-properties/ultramarine.xml
 
 %files kde
 %{_datadir}/wallpapers/Tortuga*
+%{_datadir}/wallpapers/Ultramarine*
+%{_datadir}/wallpapers/Forresty*
+
+
+%changelog
+%autochangelog -p -l 5 -s -c -o $PWD/ultramarine-backgrounds.spec
