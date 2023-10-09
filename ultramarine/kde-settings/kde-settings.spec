@@ -214,6 +214,9 @@ test -f %{_datadir}/wallpapers/F%{version_maj} || ls -l %{_datadir}/wallpapers
 
 
 %changelog
+* Tue Oct 10 2023 Cappy Ishihara <cappy@cappuchino.xyz> - 39-10
+- 39-10
+
 * Mon Aug 15 2022 Timothée Ravier <tim@siosm.fr> - 37.0-1
 - 37.0
 
