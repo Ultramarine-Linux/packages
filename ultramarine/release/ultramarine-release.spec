@@ -54,8 +54,6 @@ BuildArch: noarch
 
 Provides: ultramarine-release = %{version}-%{release}
 Provides: ultramarine-release-variant = %{version}-%{release}
-Provides: %{_alt_name} = %{version}-%{release}
-Provides: generic-release = %{version}-%{release}
 
 Provides:   system-release
 Provides:   system-release(%{version})
@@ -81,6 +79,9 @@ Requires:   ultramarine-release-identity = %{version}-%{release}
 
 Conflicts:  generic-release
 Conflicts:  fedora-release
+Provides: %{_alt_name} = %{version}-%{release}
+Provides: generic-release = %{version}-%{release}
+
 
 %description common
 Release files common to all Editions and Spins
