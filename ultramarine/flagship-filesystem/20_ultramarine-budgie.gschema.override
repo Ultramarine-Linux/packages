@@ -7,7 +7,7 @@ edge-tiling = true
 attach-modal-dialogs = true
 
 [org.gnome.desktop.wm.preferences]
-button-layout = 'appmenu:minimize,maximize,close'
+button-layout = 'close,minimize,maximize:appmenu'
 titlebar-font='Manrope Bold 10'
 
 
@@ -50,7 +50,7 @@ show-power-strip=true
 
 
 [com.solus-project.budgie-wm]
-button-layout='appmenu:minimize,maximize,close'
+button-layout='close,minimize,maximize:appmenu'
 # Button style will be aligned to the left, according to our CXO's wishes
 button-style='left'
 caffeine-mode=false
