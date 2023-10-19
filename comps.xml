@@ -19,7 +19,6 @@
     <uservisible>false</uservisible>
     <packagelist>
       <packagereq type="default">ultramarine-backgrounds-common</packagereq>
-      <packagereq type="default">twitter-twemoji-fonts</packagereq>
       <packagereq type="default">system76-scheduler</packagereq>
     </packagelist>
   </group>
@@ -32,7 +31,15 @@
     <packagelist>
       <packagereq type="mandatory">budgie-extras</packagereq>
       <packagereq type="mandatory">budgie-extras-daemon</packagereq>
-      <packagereq type="default">ultramarine-release-flagship</packagereq>
+      <packagereq type="mandatory">ultramarine-release-flagship</packagereq>
+      <packagereq type="default">nemo</packagereq>
+      <packagereq type="default">nemo-fileroller</packagereq>
+      <packagereq type="default">nemo-terminal</packagereq>
+      <packagereq type="default">nemo-python</packagereq>
+      <packagereq type="default">nemo-preview</packagereq>
+      <packagereq type="default">nemo-emblems</packagereq>
+      <packagereq type="default">fluent-theme</packagereq>
+      <packagereq type="default">tau-hydrogen</packagereq>
     </packagelist>
   </group>
   <environment>

@@ -8,6 +8,8 @@ attach-modal-dialogs = true
 
 [org.gnome.desktop.wm.preferences]
 button-layout = 'appmenu:minimize,maximize,close'
+titlebar-font='Manrope Bold 10'
+
 
 [org.gnome.desktop.screensaver]
 picture-uri='file:///usr/share/backgrounds/ultramarine-linux/39/foresty-skies-d.png'
@@ -16,9 +18,14 @@ picture-uri='file:///usr/share/backgrounds/ultramarine-linux/39/foresty-skies-d.
 scheme='textmate'
 
 [org.gnome.desktop.interface]
-gtk-theme='Fluent-round-Dark'
-icon-theme='Fluent-dark'
+gtk-theme='Fluent-green-Dark'
+icon-theme='Hydrogen'
 color-scheme='prefer-dark'
+font-name='Manrope 10'
+document-font-name='Manrope 10'
+# Cursor Theme
+cursor-theme='Hydrogen'
+
 
 [org.gnome.nm-applet]
 show-applet=false
@@ -33,14 +40,18 @@ layout='ultramarine-marina'
 [org.buddiesofbudgie.budgie-desktop-view]
 show=true
 click-policy='double'
+show-active-mounts=true
+
+[org.ubuntubudgie.budgie-wpreviews]
+enable-previews=true
 
 [com.solus-project.budgie-raven]
 show-power-strip=true
+
 
 [com.solus-project.budgie-wm]
 button-layout='appmenu:minimize,maximize,close'
 button-style='traditional'
 caffeine-mode=false
 center-windows=false
-show-all-windows-tabswitcher=false
 
