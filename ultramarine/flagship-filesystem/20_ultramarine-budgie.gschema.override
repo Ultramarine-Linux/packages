@@ -21,7 +21,7 @@ scheme='textmate'
 gtk-theme='Fluent-green-Dark'
 icon-theme='Hydrogen'
 color-scheme='prefer-dark'
-font-name='Manrope 10'
+font-name='Manrope 11'
 document-font-name='Manrope 10'
 # Cursor Theme
 cursor-theme='Hydrogen'

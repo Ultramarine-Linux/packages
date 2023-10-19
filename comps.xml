@@ -34,7 +34,6 @@
       <packagereq type="mandatory">ultramarine-release-flagship</packagereq>
       <packagereq type="default">nemo</packagereq>
       <packagereq type="default">nemo-fileroller</packagereq>
-      <packagereq type="default">nemo-terminal</packagereq>
       <packagereq type="default">nemo-python</packagereq>
       <packagereq type="default">nemo-preview</packagereq>
       <packagereq type="default">nemo-emblems</packagereq>
