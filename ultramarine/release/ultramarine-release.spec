@@ -502,7 +502,7 @@ install -Dm0644 %{SOURCE28} -t %{buildroot}%{_prefix}/lib/systemd/user.conf.d/
 
 
 %files common
-%{_datadir}/dnf/plugins/copr.d/copr.vendor.conf
+%{_datadir}/dnf/plugins/copr.vendor.conf
 %{_sysconfdir}/anaconda/profile.d/ultramarine.conf
 %license licenses/LICENSE licenses/README.license
 %{_prefix}/lib/ultramarine-release
