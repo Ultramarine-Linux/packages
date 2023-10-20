@@ -415,12 +415,11 @@ sed -e "s#\$version#%{bug_version}#g" -e 's/$edition/GNOME/;s/<!--.*-->//;/^$/d'
 # Create copr config file so COPR doesnt flip out and assume EPEL
 # I created a PR to support this months ago, but completely forgot about it
 # to the point that risiOS managed to beat us to it - Cappy
-install -d $RPM_BUILD_ROOT/%{_datadir}/dnf/plugins/copr.d/
-cat <<EOF >> %{buildroot}%{_datadir}/dnf/plugins/copr.d/copr.vendor.conf
+install -d %{buildroot}%{_datadir}/dnf/plugins
+cat >> %{buildroot}%{_datadir}/dnf/plugins/copr.vendor.conf << EOF
 [main]
-releasever = %{version}
 distribution = fedora
-
+releasever = %{releasever}
 EOF
 
 # provide upstream-release files for debian based apps
