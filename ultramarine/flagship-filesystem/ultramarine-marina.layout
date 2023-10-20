@@ -4,7 +4,7 @@ Panels=Bottom Panel
 [Bottom Panel]
 Children=Budgie Menu;Visual Space;Icon Tasklist;Tray;Network;Status Indicator;Clock;Raven Trigger
 Position=Bottom
-Size=50
+Size=46
 Spacing=8
 
 [Budgie Menu]
