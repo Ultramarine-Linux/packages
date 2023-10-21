@@ -418,7 +418,7 @@ sed -e "s#\$version#%{bug_version}#g" -e 's/$edition/GNOME/;s/<!--.*-->//;/^$/d'
 install -d %{buildroot}%{_datadir}/dnf/plugins
 cat >> %{buildroot}%{_datadir}/dnf/plugins/copr.vendor.conf << EOF
 [main]
-distribution = fedora
+distribution = Fedora
 releasever = %{releasever}
 EOF
 
