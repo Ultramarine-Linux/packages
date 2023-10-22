@@ -30,6 +30,7 @@
     <uservisible>false</uservisible>
     <packagelist>
       <packagereq type="mandatory">budgie-extras</packagereq>
+      <packagereq type="mandatory">budgie-desktop</packagereq>
       <packagereq type="mandatory">budgie-extras-daemon</packagereq>
       <packagereq type="mandatory">ultramarine-release-flagship</packagereq>
       <packagereq type="default">nemo</packagereq>
@@ -39,6 +40,13 @@
       <packagereq type="default">nemo-emblems</packagereq>
       <packagereq type="default">fluent-theme</packagereq>
       <packagereq type="default">tau-hydrogen</packagereq>
+      <packagereq type="default">gnome-terminal</packagereq>
+      <packagereq type="default">seahorse</packagereq>
+      <packagereq type="default">gnome-system-monitor</packagereq>
+      <packagereq type="default">gnome-calculator</packagereq>
+      <packagereq type="default">gnome-software</packagereq>
+      <packagereq type="default">xdg-user-dirs-gtk</packagereq>
+      <packagereq type="default">xdg-desktop-portal-gtk</packagereq>
     </packagelist>
   </group>
   <environment>
@@ -53,6 +61,7 @@
       <groupid>fonts</groupid>
       <groupid>budgie-desktop</groupid>
       <groupid>budgie-desktop-apps</groupid>
+      <groupid>budgie-desktop-environment</groupid>
       <groupid>pantheon-desktop</groupid>
       <groupid>guest-desktop-agents</groupid>
       <groupid>hardware-support</groupid>
