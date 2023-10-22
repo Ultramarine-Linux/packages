@@ -1,6 +1,6 @@
 Name:           ultramarine-flagship-filesystem
 Version:        39
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Assets for Ultramarine Linux Flagship
 
 License:        MIT
@@ -9,12 +9,12 @@ Source0:        20_ultramarine-budgie.gschema.override
 Source1:        ultramarine-marina.layout
 
 Requires:       budgie-desktop
-Suggests:       budgie-extras
-Suggests:       budgie-extras-daemon
+Requires:       budgie-extras
+Requires:       budgie-extras-daemon
 Suggests:       fluent-theme
 #Suggests:       papirus-icon-theme
-Suggests:       tau-hydrogen
-Suggests:       rsms-inter-fonts
+Requires:       tau-hydrogen
+Requires:       rsms-inter-fonts
 
 %description
 
