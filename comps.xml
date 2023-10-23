@@ -33,6 +33,8 @@
       <packagereq type="mandatory">budgie-desktop</packagereq>
       <packagereq type="mandatory">budgie-extras-daemon</packagereq>
       <packagereq type="mandatory">ultramarine-release-flagship</packagereq>
+      <packagereq type="default">ultramarine-release-identity-flagship</packagereq>
+      <packagereq type="default">ultramarine-flagship-filesystem</packagereq>
       <packagereq type="default">nemo</packagereq>
       <packagereq type="default">nemo-fileroller</packagereq>
       <packagereq type="default">nemo-python</packagereq>
