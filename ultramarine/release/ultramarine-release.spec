@@ -109,6 +109,7 @@ Summary:		Package providing the basic Ultramarine identity
 RemovePathPostfixes: .basic
 Provides:         ultramarine-release = %{version}-%{release}
 Provides:         ultramarine-release-basic = %{version}-%{release}
+Obsoletes:        ultramarine-release-basic
 Provides:		ultramarine-release-identity = %{version}-%{release}
 Conflicts:		ultramarine-release-identity
 Conflicts:        fedora-release-identity-basic
