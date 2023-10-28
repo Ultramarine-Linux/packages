@@ -17,7 +17,7 @@ picture-uri='file:///usr/share/backgrounds/ultramarine-linux/39/foresty-skies-d.
 [org.gnome.gedit.preferences.editor]
 scheme='textmate'
 
-[org.gnome.desktop.interface]
+[org.gnome.desktop.interface:Budgie]
 gtk-theme='Fluent-green-Dark'
 icon-theme='Hydrogen'
 color-scheme='prefer-dark'
