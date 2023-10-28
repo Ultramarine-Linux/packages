@@ -2,16 +2,14 @@
 picture-uri='file:///usr/share/backgrounds/ultramarine-linux/39/foresty-skies-l.png'
 picture-uri-dark='file:///usr/share/backgrounds/ultramarine-linux/39/foresty-skies-d.png'
 
-[org.gnome.mutter]
-edge-tiling = true
-attach-modal-dialogs = true
+
 
 [org.gnome.desktop.wm.preferences]
 button-layout = 'close,minimize,maximize:appmenu'
-titlebar-font='Inter Bold 10'
+titlebar-font='Inter Bold 11'
 
 
-[org.gnome.desktop.screensaver]
+[org.gnome.desktop.screensaver:Budgie]
 picture-uri='file:///usr/share/backgrounds/ultramarine-linux/39/foresty-skies-d.png'
 
 [org.gnome.gedit.preferences.editor]
@@ -22,7 +20,7 @@ gtk-theme='Fluent-green-Dark'
 icon-theme='Hydrogen'
 color-scheme='prefer-dark'
 font-name='Inter 11'
-document-font-name='Inter 10'
+document-font-name='Inter 11'
 # Cursor Theme
 cursor-theme='Hydrogen'
 
