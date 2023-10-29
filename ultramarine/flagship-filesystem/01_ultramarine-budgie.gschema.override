@@ -1,21 +1,19 @@
-[org.gnome.desktop.background:Budgie]
+[org.gnome.desktop.background]
 picture-uri='file:///usr/share/backgrounds/ultramarine-linux/39/foresty-skies-l.png'
 picture-uri-dark='file:///usr/share/backgrounds/ultramarine-linux/39/foresty-skies-d.png'
-
-
 
 [org.gnome.desktop.wm.preferences]
 button-layout = 'close,minimize,maximize:appmenu'
 titlebar-font='Inter Bold 11'
 
 
-[org.gnome.desktop.screensaver:Budgie]
+[org.gnome.desktop.screensaver]
 picture-uri='file:///usr/share/backgrounds/ultramarine-linux/39/foresty-skies-d.png'
 
 [org.gnome.gedit.preferences.editor]
 scheme='textmate'
 
-[org.gnome.desktop.interface:Budgie]
+[org.gnome.desktop.interface]
 gtk-theme='Fluent-green-Dark'
 icon-theme='Hydrogen'
 color-scheme='prefer-dark'
@@ -42,10 +40,6 @@ show-active-mounts=true
 
 [org.ubuntubudgie.budgie-wpreviews]
 enable-previews=true
-
-[com.solus-project.budgie-raven]
-show-power-strip=true
-
 
 [com.solus-project.budgie-wm]
 button-layout='close,minimize,maximize:appmenu'
