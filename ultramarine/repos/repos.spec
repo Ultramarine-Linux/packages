@@ -3,7 +3,7 @@
 
 Name: ultramarine-repos
 Version: %{_dist_version}
-Release: 5%{?dist}
+Release: 6%{?dist}
 License: MIT
 Summary: Repositories for Ultramarine Linux
 Requires: %{name}-common = %{version}-%{release}
@@ -33,7 +33,6 @@ Source200: https://flathub.org/repo/flathub.flatpakrepo
 #Source202: rpmfusion-free-updates.repo
 #Source203: rpmfusion-nonfree.repo
 #Source204: rpmfusion-nonfree-updates.repo
-Source209: akmods-secureboot.repo
 %description extras
 Additional repository files for Ultramarine Linux that provides access to popular software that are not shipped by default:
     - Flathub's Flatpak repo (enabled by default)
@@ -53,10 +52,6 @@ mkdir -p %{buildroot}/%{_sysconfdir}/yum.repos.d/
 cp -avx %{SOURCE100} %{buildroot}/%{_sysconfdir}/yum.repos.d/
 cp -avx %{SOURCE101} %{buildroot}/%{_sysconfdir}/yum.repos.d/
 
-#extras
-cp -avx %{SOURCE209} %{buildroot}/%{_sysconfdir}/yum.repos.d/
-
-
 # Flatpak remotes
 mkdir -p %{buildroot}/%{_sysconfdir}/flatpak/remotes.d
 cp -avx %{SOURCE200} %{buildroot}/%{_sysconfdir}/flatpak/remotes.d/
@@ -68,7 +63,6 @@ cp -avx %{SOURCE200} %{buildroot}/%{_sysconfdir}/flatpak/remotes.d/
 %{_sysconfdir}/yum.repos.d/terra.repo
 %files extras
 %{_sysconfdir}/flatpak/remotes.d/flathub.flatpakrepo
-%{_sysconfdir}/yum.repos.d/akmods-secureboot.repo
 #%%{_sysconfdir}/yum.repos.d/rpmfusion-free.repo
 #%%{_sysconfdir}/yum.repos.d/rpmfusion-free-updates.repo
 #%%{_sysconfdir}/yum.repos.d/rpmfusion-nonfree.repo
