@@ -24,6 +24,8 @@
       <packagereq type="default">orca</packagereq>
       <packagereq type="default">speech-dispatcher-espeak-ng</packagereq>
       <packagereq type="default">sipa-fonts</packagereq>
+      <packagereq type="default">ibus-mozc</packagereq>
+      <packagereq type="default">mozc</packagereq>
     </packagelist>
   </group>
   <group>
