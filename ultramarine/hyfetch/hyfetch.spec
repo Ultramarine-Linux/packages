@@ -34,6 +34,7 @@ Recommends:     xwininfo
 Summary:        Replacement for neofetch
 
 Obsoletes:      neofetch < 7.1.0
+Version:        7.3.1
 Provides:       neofetch = 7.3.1-%{release}
 Requires:       bash >= 3.2
 Requires:       bind-utils
