@@ -43,6 +43,7 @@
       <packagereq type="mandatory">ultramarine-flagship-filesystem</packagereq>
       <packagereq type="default">ultramarine-backgrounds-gnome</packagereq>
       <packagereq type="default">ultramarine-backgrounds</packagereq>
+      <packagereq type="default">lightdm-gtk</packagereq>
       <packagereq type="default">nemo</packagereq>
       <packagereq type="default">nemo-fileroller</packagereq>
       <packagereq type="default">nemo-python</packagereq>
