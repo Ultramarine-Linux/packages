@@ -114,7 +114,7 @@ Provides:		ultramarine-release-identity = %{version}-%{release}
 Conflicts:		ultramarine-release-identity
 Conflicts:        fedora-release-identity-basic
 Requires(meta):   ultramarine-release-basic = %{version}-%{release}
-Obsoletes:        ultramarine-release-basic = < 38
+Obsoletes:        ultramarine-release-basic < 38
 
 %description identity-basic
 Provides the necessary files for a Ultramarine installation that is not identifying
