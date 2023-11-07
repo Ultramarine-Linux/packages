@@ -131,6 +131,7 @@
       <packagereq type="default">qalculate</packagereq>
       <packagereq type="default">gnome-shell-extension-appindicator</packagereq>
       <packagereq type="default">ultramarine-backgrounds-gnome</packagereq>
+      <packagereq type="default">ultramarine-backgrounds-common</packagereq>
       <packagereq type="default">ultramarine-release-gnome</packagereq>
     </packagelist>
   </group>
