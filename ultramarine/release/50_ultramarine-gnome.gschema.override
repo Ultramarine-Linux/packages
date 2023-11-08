@@ -1,2 +1,4 @@
 [org.gnome.shell]
-enabled-extensions = ['appindicatorsupport@rgcjonas.gmail.com', 'pop-shell@system76.com']
+enabled-extensions = ['appindicatorsupport@rgcjonas.gmail.com' , 'forge@jmmaranan.com', 'caffeine@patapon.info', 'windowsNavigator@gnome-shell-extensions.gcampax.github.com']
+[org.gnome.shell.extensions.forge]
+tiling-mode-enabled = false
