@@ -137,6 +137,7 @@
       <packagereq type="default">ultramarine-backgrounds-gnome</packagereq>
       <packagereq type="default">ultramarine-backgrounds-common</packagereq>
       <packagereq type="default">ultramarine-release-gnome</packagereq>
+      <packagereq type="default">ultramarine-release-identity-gnome</packagereq>
     </packagelist>
   </group>
   <environment>
