@@ -8,6 +8,9 @@ disable systemd-networkd-wait-online.service
 # We want to update systemd-boot from packaging scriptlets after updates.
 disable systemd-boot-update.service
 
+# On Ultramarine, we just use Flathub
+disable flatpak-add-fedora-repos.service
+
 # https://fedoraproject.org/wiki/Changes/systemd-resolved
 enable systemd-resolved.service
 
