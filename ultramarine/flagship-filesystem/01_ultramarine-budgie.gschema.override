@@ -15,7 +15,7 @@ scheme='textmate'
 
 [org.gnome.desktop.interface]
 gtk-theme='Fluent-green-Dark'
-icon-theme='Hydrogen'
+icon-theme='Papirus'
 color-scheme='prefer-dark'
 font-name='Inter 11'
 document-font-name='Inter 11'
