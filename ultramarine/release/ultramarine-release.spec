@@ -250,7 +250,7 @@ Provides:         system-release(%{version})
 Provides:         base-module(platform:f%{version})
 Requires:         ultramarine-release-common = %{version}-%{release}
 Provides:         system-release-product
-Recommends:       gnome-shell-extension-forge
+Recommends:       gnome-shell-extension-pop-shell
 Recommends:       gnome-shell-extension-caffeine
 Recommends:       gnome-shell-extension-appindicator
 Recommends:       gnome-shell-extension-pop-shell
