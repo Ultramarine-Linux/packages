@@ -61,7 +61,7 @@
     </packagelist>
   </group>
   <environment>
-    <id>ultramarine-flagship-product-enviroment</id>
+    <id>ultramarine-flagship-product-environment</id>
     <name>Ultramarine Flagship</name>
     <description>Ultramarine Flagship is the flagship Ultramarine experience.</description>
     <grouplist>
@@ -96,7 +96,7 @@
     </packagelist>
   </group>
   <environment>
-    <id>ultramarine-pantheon-product-enviroment</id>
+    <id>ultramarine-pantheon-product-environment</id>
     <name>Ultramarine Pantheon</name>
     <description>Ultramarine Pantheon is an Ultramarine experience powered by ElementaryOS' Pantheon desktop environment.</description>
     <grouplist>
@@ -141,7 +141,7 @@
     </packagelist>
   </group>
   <environment>
-    <id>ultramarine-gnome-product-enviroment</id>
+    <id>ultramarine-gnome-product-environment</id>
     <name>Ultramarine GNOME</name>
     <description>Ultramarine GNOME is an Ultramarine experience powered by the GNOME desktop environment.</description>
     <grouplist>
@@ -174,7 +174,7 @@
     </packagelist>
   </group>
   <environment>
-    <id>ultramarine-kde-product-enviroment</id>
+    <id>ultramarine-kde-product-environment</id>
     <name>Ultramarine KDE</name>
     <description>Ultramarine KDE is an Ultramarine experience powered by the KDE desktop environment.</description>
     <grouplist>
