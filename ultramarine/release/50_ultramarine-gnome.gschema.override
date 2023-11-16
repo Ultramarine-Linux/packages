@@ -1,2 +1,2 @@
 [org.gnome.shell]
-enabled-extensions = ['appindicatorsupport@rgcjonas.gmail.com' , 'pop-shell@system76.com', 'caffeine@patapon.info', 'windowsNavigator@gnome-shell-extensions.gcampax.github.com']
+enabled-extensions = ['appindicatorsupport@rgcjonas.gmail.com' , 'pop-shell@system76.com', 'windowsNavigator@gnome-shell-extensions.gcampax.github.com']

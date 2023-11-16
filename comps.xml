@@ -130,8 +130,6 @@
       <packagereq type="default">pop-launcher</packagereq>
       <packagereq type="default">qalculate</packagereq>
       <packagereq type="default">gnome-shell-extension-appindicator</packagereq>
-      <packagereq type="default">gnome-shell-extension-pop-shell-shortcut-overrides</packagereq>
-      <packagereq type="default">gnome-shell-extension-caffeine</packagereq>
       <packagereq type="default">gnome-shell-extension-pop-shell</packagereq>
       <packagereq type="default">gnome-shell-extension-windowsNavigator</packagereq>
       <packagereq type="default">ultramarine-backgrounds-gnome</packagereq>
