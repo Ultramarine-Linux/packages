@@ -93,6 +93,7 @@
     <uservisible>false</uservisible>
     <packagelist>
       <packagereq type="default">ultramarine-release-pantheon</packagereq>
+      <packagereq type="default">ultramarine-release-identity-pantheon</packagereq>
     </packagelist>
   </group>
   <environment>
@@ -126,12 +127,12 @@
     <uservisible>false</uservisible>
     <packagelist>
       <packagereq type="default">gnome-extensions-app</packagereq>
-      <packagereq type="default">gnome-shell-extension-pop-shell</packagereq>
       <packagereq type="default">pop-launcher</packagereq>
       <packagereq type="default">qalculate</packagereq>
       <packagereq type="default">gnome-shell-extension-appindicator</packagereq>
       <packagereq type="default">gnome-shell-extension-pop-shell</packagereq>
       <packagereq type="default">gnome-shell-extension-windowsNavigator</packagereq>
+      <packagereq type="default">gnome-shell-extension-appmenu-is-back</packagereq>
       <packagereq type="default">ultramarine-backgrounds-gnome</packagereq>
       <packagereq type="default">ultramarine-backgrounds-common</packagereq>
       <packagereq type="default">ultramarine-release-gnome</packagereq>
@@ -168,7 +169,9 @@
     <default>false</default>
     <uservisible>false</uservisible>
     <packagelist>
+      <packagereq type="default">kwin-system76-scheduler-integration</packagereq>
       <packagereq type="default">ultramarine-release-kde</packagereq>
+      <packagereq type="default">ultramarine-release-identity-kde</packagereq>
     </packagelist>
   </group>
   <environment>

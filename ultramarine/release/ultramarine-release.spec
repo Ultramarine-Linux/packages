@@ -253,6 +253,7 @@ Provides:         system-release-product
 Recommends:       gnome-shell-extension-pop-shell
 Recommends:       gnome-shell-extension-appindicator
 Recommends:       gnome-shell-extension-windowsNavigator
+Recommends:       gnome-shell-extension-appmenu-is-back
 
 # ultramarine-release-common Requires: ultramarine-release-identity, so at least one
 # package must provide it. This Recommends: pulls in
