@@ -28,6 +28,3 @@ enable snapd.session-agent.socket
 enable obex.service
 enable grub-boot-success.timer
 enable pulseaudio.socket
-
-# Ultramarine specific services here
-enable com.system76.Scheduler.service

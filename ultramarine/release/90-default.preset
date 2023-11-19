@@ -403,3 +403,6 @@ enable grub-systemd-integration.service
 
 # enable low-memory-monitor for GMemoryMonitor API
 enable low-memory-monitor.service
+
+# Enable Ultramarine specific services here
+enable com.system76.Scheduler.service
