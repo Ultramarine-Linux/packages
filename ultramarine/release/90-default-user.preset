@@ -30,4 +30,4 @@ enable grub-boot-success.timer
 enable pulseaudio.socket
 
 # Ultramarine specific services here
-enable com.system76.Scheduler
+enable com.system76.Scheduler.service
