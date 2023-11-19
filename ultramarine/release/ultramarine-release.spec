@@ -25,7 +25,7 @@
 Summary:	Ultramarine Linux release files
 Name:		ultramarine-release
 Version:	39
-Release:	0.5%{?dist}
+Release:	0.6%{?dist}
 License:	MIT
 Source0:	LICENSE
 URL:        https://ultramarine-linux.org
