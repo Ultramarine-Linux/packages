@@ -4,6 +4,7 @@ picture-uri-dark='file:///usr/share/backgrounds/ultramarine-linux/39/foresty-ski
 
 [org.gnome.desktop.wm.preferences]
 button-layout = 'appmenu:minimize,maximize,close'
+titlebar-font='Inter Bold 11'
 
 [org.gnome.desktop.screensaver]
 picture-uri='file:///usr/share/backgrounds/ultramarine-linux/39/foresty-skies-d.png'
@@ -15,6 +16,8 @@ scheme='textmate'
 gtk-theme='Fluent-round-Dark'
 icon-theme='Fluent-dark'
 color-scheme='prefer-dark'
+font-name='Inter 11'
+document-font-name='Inter 11'
 
 [org.ubuntubudgie.windowshuffler]
 runshuffler=true
