@@ -50,7 +50,7 @@
       <packagereq type="default">nemo-preview</packagereq>
       <packagereq type="default">nemo-emblems</packagereq>
       <packagereq type="default">fluent-theme</packagereq>
-      <packagereq type="default">tau-hydrogen</packagereq>
+      <packagereq type="default">fluent-icon-theme</packagereq>
       <packagereq type="default">gnome-terminal</packagereq>
       <packagereq type="default">seahorse</packagereq>
       <packagereq type="default">gnome-system-monitor</packagereq>

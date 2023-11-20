@@ -3,9 +3,7 @@ picture-uri='file:///usr/share/backgrounds/ultramarine-linux/39/foresty-skies-l.
 picture-uri-dark='file:///usr/share/backgrounds/ultramarine-linux/39/foresty-skies-d.png'
 
 [org.gnome.desktop.wm.preferences]
-button-layout = 'close,minimize,maximize:appmenu'
-titlebar-font='Inter Bold 11'
-
+button-layout = 'appmenu:minimize,maximize,close'
 
 [org.gnome.desktop.screensaver]
 picture-uri='file:///usr/share/backgrounds/ultramarine-linux/39/foresty-skies-d.png'
@@ -14,13 +12,9 @@ picture-uri='file:///usr/share/backgrounds/ultramarine-linux/39/foresty-skies-d.
 scheme='textmate'
 
 [org.gnome.desktop.interface]
-gtk-theme='Fluent-green-Dark'
-icon-theme='Papirus'
+gtk-theme='Fluent-round-Dark'
+icon-theme='Fluent-dark'
 color-scheme='prefer-dark'
-font-name='Inter 11'
-document-font-name='Inter 11'
-# Cursor Theme
-#cursor-theme='Hydrogen'
 
 [org.ubuntubudgie.windowshuffler]
 runshuffler=true
@@ -44,9 +38,8 @@ show-active-mounts=true
 enable-previews=true
 
 [com.solus-project.budgie-wm]
-button-layout='close,minimize,maximize:appmenu'
-# Button style will be aligned to the left, according to our CXO's wishes
-button-style='left'
+button-layout='appmenu:minimize,maximize,close'
+button-style='traditional'
 caffeine-mode=false
 center-windows=false
 
