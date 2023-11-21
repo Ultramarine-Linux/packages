@@ -3,7 +3,7 @@
 
 Name: ultramarine-repos
 Version: %{_dist_version}
-Release: 6%{?dist}
+Release: 7%{?dist}
 License: MIT
 Summary: Repositories for Ultramarine Linux
 Requires: %{name}-common = %{version}-%{release}
@@ -40,6 +40,15 @@ Additional repository files for Ultramarine Linux that provides access to popula
     - RPMFusion Nonfree (enabled by default)
     - Repositories for secureboot support for 'akmod' kernel modules (enabled by default)
 
+
+%package appcenter
+Summary: AppCenter repository for Ultramarine Linux
+Requires: %{name}-extras = %{version}-%{release}
+Source201: https://flatpak.elementary.io/repo.flatpakrepo
+
+%description appcenter
+AppCenter repository file for Ultramarine Linux
+
 %prep
 
 %build
@@ -55,6 +64,7 @@ cp -avx %{SOURCE101} %{buildroot}/%{_sysconfdir}/yum.repos.d/
 # Flatpak remotes
 mkdir -p %{buildroot}/%{_sysconfdir}/flatpak/remotes.d
 cp -avx %{SOURCE200} %{buildroot}/%{_sysconfdir}/flatpak/remotes.d/
+cp -avx %{SOURCE201} %{buildroot}/%{_sysconfdir}/flatpak/remotes.d/appcenter.flatpakrepo
 
 %files
 
@@ -63,6 +73,8 @@ cp -avx %{SOURCE200} %{buildroot}/%{_sysconfdir}/flatpak/remotes.d/
 %{_sysconfdir}/yum.repos.d/terra.repo
 %files extras
 %{_sysconfdir}/flatpak/remotes.d/flathub.flatpakrepo
+%files appcenter
+%{_sysconfdir}/flatpak/remotes.d/appcenter.flatpakrepo
 #%%{_sysconfdir}/yum.repos.d/rpmfusion-free.repo
 #%%{_sysconfdir}/yum.repos.d/rpmfusion-free-updates.repo
 #%%{_sysconfdir}/yum.repos.d/rpmfusion-nonfree.repo
