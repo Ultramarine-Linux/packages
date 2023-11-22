@@ -2,13 +2,14 @@
 
 Name: ultramarine-backgrounds
 Version: 39
-Release: 2%{?dist}
+Release: 3%{?dist}
 BuildArch: noarch
 # details for the artworks' licenses can be seen in the COPYING file
 License: CC-BY-SA 4.0 and CC0
 Summary: Ultramarine Linux backgrounds
 Provides: desktop-backgrounds = %{version}-%{release}
 Requires: /usr/bin/ln
+Recommends: ultramarine-backgrounds-compat = %{version}-%{release}
 BuildRequires: make
 # licensing information
 Source0: https://github.com/Ultramarine-Linux/backgrounds/archive/refs/tags/39.tar.gz
@@ -49,6 +50,15 @@ License:        CC0
 %description    kde
 The desktop-backgrounds-kde package sets default background in the KDE Plasma desktop
 
+%package        compat
+Summary:        Compatibility package for ultramarine-backgrounds
+Requires:   ultramarine-backgrounds-common = %{version}-%{release}
+Provides: desktop-backgrounds-compat = %{version}-%{release}
+License:        CC0
+
+%description    compat
+The desktop-backgrounds-compat package contains compatibility symlinks for other desktop environments.
+
 %prep
 %autosetup -n backgrounds-%{version}
 
@@ -80,6 +90,23 @@ ln -rsf %{buildroot}%{_datadir}/backgrounds/ultramarine-linux/39/foresty-skies-d
 ln -rsf %{buildroot}%{_datadir}/backgrounds/ultramarine-linux/39/foresty-skies-l.png %{buildroot}%{_datadir}/wallpapers/"Forresty Skies Light"/contents/images/3840x2160.png
 ln -rsf %{buildroot}%{_datadir}/backgrounds/ultramarine-linux/39/foresty-skies-l.png %{buildroot}%{_datadir}/wallpapers/"Forresty Skies Light"/contents/screenshot.png
 
+# Compat files
+
+ln -rsf %{buildroot}%{_datadir}/backgrounds/ultramarine-linux/39/foresty-skies-d.png %{buildroot}%{_datadir}/backgrounds/default-dark.png
+ln -rsf %{buildroot}%{_datadir}/backgrounds/ultramarine-linux/39/foresty-skies-l.png %{buildroot}%{_datadir}/backgrounds/default.png
+ln -rsf %{buildroot}%{_datadir}/backgrounds/ultramarine-linux/39/foresty-skies.xml %{buildroot}%{_datadir}/backgrounds/default.xml
+
+mkdir -p %{buildroot}%{_datadir}/backgrounds/images/
+
+ln -rsf %{buildroot}%{_datadir}/backgrounds/ultramarine-linux/39/foresty-skies-l.png %{buildroot}%{_datadir}/backgrounds/images/default.png
+ln -rsf %{buildroot}%{_datadir}/backgrounds/ultramarine-linux/39/foresty-skies-l.png %{buildroot}%{_datadir}/backgrounds/images/default-5_4.png
+ln -rsf %{buildroot}%{_datadir}/backgrounds/ultramarine-linux/39/foresty-skies-l.png %{buildroot}%{_datadir}/backgrounds/images/default-16_9.png
+ln -rsf %{buildroot}%{_datadir}/backgrounds/ultramarine-linux/39/foresty-skies-l.png %{buildroot}%{_datadir}/backgrounds/images/default-16_10.png
+
+ln -rsf %{buildroot}%{_datadir}/backgrounds/ultramarine-linux/39/foresty-skies-d.png %{buildroot}%{_datadir}/backgrounds/images/default-dark.png
+ln -rsf %{buildroot}%{_datadir}/backgrounds/ultramarine-linux/39/foresty-skies-d.png %{buildroot}%{_datadir}/backgrounds/images/default-dark-5_4.png
+ln -rsf %{buildroot}%{_datadir}/backgrounds/ultramarine-linux/39/foresty-skies-d.png %{buildroot}%{_datadir}/backgrounds/images/default-dark-16_9.png
+ln -rsf %{buildroot}%{_datadir}/backgrounds/ultramarine-linux/39/foresty-skies-d.png %{buildroot}%{_datadir}/backgrounds/images/default-dark-16_10.png
 
 %files
 %license COPYING
@@ -87,8 +114,6 @@ ln -rsf %{buildroot}%{_datadir}/backgrounds/ultramarine-linux/39/foresty-skies-l
 %files common
 %{_datadir}/backgrounds/ultramarine-linux/
 %{_datadir}/glib-2.0/schemas/30_default_backgrounds.gschema.override
-#%%{_datadir}/backgrounds/default
-#%%{_datadir}/backgrounds/default.png
 /usr/share/wallpapers/Ultramarine*/metadata.desktop
 
 %files gnome
@@ -99,6 +124,13 @@ ln -rsf %{buildroot}%{_datadir}/backgrounds/ultramarine-linux/39/foresty-skies-l
 %{_datadir}/wallpapers/Tortuga*
 %{_datadir}/wallpapers/Ultramarine*
 %{_datadir}/wallpapers/Forresty*
+
+%files compat
+%dir %{_datadir}/backgrounds/images/
+%{_datadir}/backgrounds/images/default*
+%{_datadir}/backgrounds/default.png
+%{_datadir}/backgrounds/default-dark.png
+%{_datadir}/backgrounds/default.xml
 
 
 %changelog
