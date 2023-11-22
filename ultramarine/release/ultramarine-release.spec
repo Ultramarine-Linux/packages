@@ -216,6 +216,7 @@ Provides:         system-release-product
 # package must provide it. This Recommends: pulls in
 # ultramarine-release-identity-cinnamon if nothing else is already doing so.
 Recommends:		ultramarine-release-identity-kde
+Source401:        enable-kwin-system76-scheduler-integration.service
 %description kde
 Provides a base package for Ultramarine KDE configurations.
 
@@ -406,6 +407,9 @@ echo "VARIANT=\"KDE Plasma Edition\"" >> %{buildroot}%{_prefix}/lib/os-release.k
 echo "VARIANT_ID=KDE" >> %{buildroot}%{_prefix}/lib/os-release.kde
 sed -i -e "s|(%{release_name}%{?prerelease})|(KDE Plasma Edition%{?prerelease})|g" %{buildroot}%{_prefix}/lib/os-release.kde
 sed -e "s#\$version#%{bug_version}#g" -e 's/$edition/KDE Plasma/;s/<!--.*-->//;/^$/d' %{SOURCE20} > %{buildroot}%{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.kde
+
+install -Dm644 %{SOURCE401} %{buildroot}%{_userunitdir}/enable-kwin-system76-scheduler-integration.service
+
 %endif
 
 %if %{with gnome}
@@ -505,7 +509,16 @@ install -Dm0644 %{SOURCE9} -t $RPM_BUILD_ROOT%{_prefix}/lib/systemd/user-preset/
 install -Dm0644 %{SOURCE28} -t %{buildroot}%{_prefix}/lib/systemd/system.conf.d/
 install -Dm0644 %{SOURCE28} -t %{buildroot}%{_prefix}/lib/systemd/user.conf.d/
 
+# the funny KDE system76 scheduler integration
+%if %{with kde}
 
+%post identity-kde
+%systemd_user_post enable-kwin-system76-scheduler-integration.service
+
+%preun identity-kde
+%systemd_user_preun enable-kwin-system76-scheduler-integration.service
+
+%endif
 
 
 %files common
@@ -568,6 +581,7 @@ install -Dm0644 %{SOURCE28} -t %{buildroot}%{_prefix}/lib/systemd/user.conf.d/
 %files identity-kde
 %{_prefix}/lib/os-release.kde
 %attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.kde
+%config %_userunitdir/enable-kwin-system76-scheduler-integration.service
 %endif
 
 %if %{with gnome}
