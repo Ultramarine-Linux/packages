@@ -25,7 +25,7 @@
 Summary:	Ultramarine Linux release files
 Name:		ultramarine-release
 Version:	39
-Release:	0.6%{?dist}
+Release:	0.7%{?dist}
 License:	MIT
 Source0:	LICENSE
 URL:        https://ultramarine-linux.org
@@ -255,6 +255,8 @@ Recommends:       gnome-shell-extension-pop-shell
 Recommends:       gnome-shell-extension-appindicator
 Recommends:       gnome-shell-extension-windowsNavigator
 Recommends:       gnome-shell-extension-appmenu-is-back
+Requires:         kwin-system76-scheduler-integration
+BuildRequires:    systemd-rpm-macros
 
 # ultramarine-release-common Requires: ultramarine-release-identity, so at least one
 # package must provide it. This Recommends: pulls in
