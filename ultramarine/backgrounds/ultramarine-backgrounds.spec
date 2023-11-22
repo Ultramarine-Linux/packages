@@ -2,7 +2,7 @@
 
 Name: ultramarine-backgrounds
 Version: 39
-Release: 4%{?dist}
+Release: 5%{?dist}
 BuildArch: noarch
 # details for the artworks' licenses can be seen in the COPYING file
 License: CC-BY-SA 4.0 and CC0
@@ -55,7 +55,7 @@ Summary:        Compatibility package for ultramarine-backgrounds
 Requires:   ultramarine-backgrounds-common = %{version}-%{release}
 Provides: desktop-backgrounds-compat = %{version}-%{release}
 License:        CC0
-Obsoletes:		desktop-backgrounds-compat = 38.0.0
+Obsoletes:		desktop-backgrounds-compat = 39.0.0-3
 
 %description    compat
 The desktop-backgrounds-compat package contains compatibility symlinks for other desktop environments.
