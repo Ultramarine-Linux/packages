@@ -186,6 +186,8 @@
       <groupid>firefox</groupid>
       <groupid>fonts</groupid>
       <groupid>kde-desktop</groupid>
+      <groupid>kde-apps</groupid>
+      <groupid>kde-media</groupid>
       <groupid>guest-desktop-agents</groupid>
       <groupid>hardware-support</groupid>
       <groupid>libreoffice</groupid>
