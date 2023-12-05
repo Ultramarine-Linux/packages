@@ -25,10 +25,14 @@
 %bcond_without atomic_kde
 %bcond_without atomic_gnome
 
+%if %{with atomic_flagship} || %{with atomic_pantheon} || %{with atomic_kde} || %{with atomic_gnome}
+%global with_atomic_desktop 1
+%endif
+
 Summary:	Ultramarine Linux release files
 Name:		ultramarine-release
 Version:	39
-Release:	0.8%{?dist}
+Release:	0.9%{?dist}
 License:	MIT
 Source0:	LICENSE
 URL:        https://ultramarine-linux.org
@@ -47,13 +51,13 @@ Source15:   50_ultramarine-gnome.gschema.override
 Source19:   distro-template.swidtag
 Source20:   distro-edition-template.swidtag
 
-
 Source28:   longer-default-shutdown-timeout.conf
-
 
 Source30:   ultramarine.conf
 
 Source31:  enable-kwin-system76-scheduler-integration.service
+
+Source32:  org.projectatomic.rpmostree1.rules
 
 BuildArch: noarch
 
@@ -181,6 +185,7 @@ Provides:         system-release
 Provides:         system-release(%{version})
 Provides:         base-module(platform:f%{version})
 Requires:         ultramarine-release-common = %{version}-%{release}
+Requires:         ultramarine-release-atomic-desktop = %{version}-%{release}
 Provides:         system-release-product
 # ultramarine-release-common Requires: ultramarine-release-identity, so at least one
 # package must provide it. This Recommends: pulls in
@@ -255,6 +260,7 @@ Provides:         system-release
 Provides:         system-release(%{version})
 Provides:         base-module(platform:f%{version})
 Requires:         ultramarine-release-common = %{version}-%{release}
+Requires:         ultramarine-release-atomic-desktop = %{version}-%{release}
 Provides:         system-release-product
 # ultramarine-release-common Requires: ultramarine-release-identity, so at least one
 # package must provide it. This Recommends: pulls in
@@ -330,6 +336,7 @@ Provides:         system-release
 Provides:         system-release(%{version})
 Provides:         base-module(platform:f%{version})
 Requires:         ultramarine-release-common = %{version}-%{release}
+Requires:         ultramarine-release-atomic-desktop = %{version}-%{release}
 Provides:         system-release-product
 # ultramarine-release-common Requires: ultramarine-release-identity, so at least one
 # package must provide it. This Recommends: pulls in
@@ -417,6 +424,7 @@ Provides:         system-release
 Provides:         system-release(%{version})
 Provides:         base-module(platform:f%{version})
 Requires:         ultramarine-release-common = %{version}-%{release}
+Requires:         ultramarine-release-atomic-desktop = %{version}-%{release}
 Provides:         system-release-product
 Recommends:       gnome-shell-extension-pop-shell
 Recommends:       gnome-shell-extension-appindicator
@@ -443,6 +451,20 @@ Requires(meta):   ultramarine-release-atomic-gnome = %{version}-%{release}
 %description identity-atomic-gnome
 Provides the necessary files for a Ultramarine Atomic GNOME installation.
 
+%endif
+
+######################################################################
+#### Accessory packages
+######################################################################
+
+####### Atomic Desktop (OSTree) #######
+
+%if %{with atomic_desktop}
+%package atomic-desktop
+Summary:        Common configuration package for atomic desktop variants
+ 
+%description atomic-desktop
+Common configuration package for atomic desktop variants
 %endif
 
 %prep
@@ -737,7 +759,13 @@ install -Dm0644 %{SOURCE28} -t %{buildroot}%{_prefix}/lib/systemd/user.conf.d/
 %systemd_user_preun enable-kwin-system76-scheduler-integration.service
 
 %endif
+	
+%if %{with atomic_desktop}
 
+# Install rpm-ostree polkit rules
+install -Dm0644 %{SOURCE32} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
+
+%endif
 
 %files common
 %{_datadir}/dnf/plugins/copr.vendor.conf
@@ -840,6 +868,11 @@ install -Dm0644 %{SOURCE28} -t %{buildroot}%{_prefix}/lib/systemd/user.conf.d/
 %{_prefix}/lib/os-release.atomic-gnome
 %attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.atomic-gnome
 %{_datadir}/glib-2.0/schemas/50_ultramarine-gnome.gschema.override
+%endif
+
+%if %{with atomic_desktop}
+%files atomic-desktop
+%attr(0644,root,root) %{_prefix}/share/polkit-1/rules.d/org.projectatomic.rpmostree1.rules
 %endif
 
 %files notes
