@@ -462,7 +462,7 @@ Provides the necessary files for a Ultramarine Atomic GNOME installation.
 %if %{with atomic_desktop}
 %package atomic-desktop
 Summary:        Common configuration package for atomic desktop variants
- 
+
 %description atomic-desktop
 Common configuration package for atomic desktop variants
 %endif
@@ -739,6 +739,13 @@ install -Dm0644 %{SOURCE9} -t $RPM_BUILD_ROOT%{_prefix}/lib/systemd/user-preset/
 install -Dm0644 %{SOURCE28} -t %{buildroot}%{_prefix}/lib/systemd/system.conf.d/
 install -Dm0644 %{SOURCE28} -t %{buildroot}%{_prefix}/lib/systemd/user.conf.d/
 
+%if %{with atomic_desktop}
+
+# Install rpm-ostree polkit rules
+install -Dm0644 %{SOURCE32} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
+
+%endif
+
 # the funny KDE system76 scheduler integration
 %if %{with kde}
 
@@ -757,13 +764,6 @@ install -Dm0644 %{SOURCE28} -t %{buildroot}%{_prefix}/lib/systemd/user.conf.d/
 
 %preun identity-atomic-kde
 %systemd_user_preun enable-kwin-system76-scheduler-integration.service
-
-%endif
-	
-%if %{with atomic_desktop}
-
-# Install rpm-ostree polkit rules
-install -Dm0644 %{SOURCE32} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
 
 %endif
 
