@@ -32,7 +32,7 @@
 Summary:	Ultramarine Linux release files
 Name:		ultramarine-release
 Version:	39
-Release:	0.9%{?dist}
+Release:	0.10%{?dist}
 License:	MIT
 Source0:	LICENSE
 URL:        https://ultramarine-linux.org
@@ -54,6 +54,7 @@ Source20:   distro-edition-template.swidtag
 Source28:   longer-default-shutdown-timeout.conf
 
 Source30:   ultramarine.conf
+Source31:   50-ultramarine-networking.conf
 
 Source31:  enable-kwin-system76-scheduler-integration.service
 
@@ -678,6 +679,10 @@ EOF
 mkdir -p %{buildroot}%{_sysconfdir}/anaconda/profile.d/
 cp -pr %{SOURCE30} %{buildroot}%{_sysconfdir}/anaconda/profile.d/ultramarine.conf
 
+# sysctls
+mkdir -p %{buildroot}%{_prefix}/lib/sysctl.d/
+cp -pr %{SOURCE31} %{buildroot}%{_prefix}/lib/sysctl.d/50-ultramarine-networking.conf
+
 #########################
 
 
@@ -770,6 +775,7 @@ install -Dm0644 %{SOURCE32} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
 %files common
 %{_datadir}/dnf/plugins/copr.vendor.conf
 %{_sysconfdir}/anaconda/profile.d/ultramarine.conf
+%{_prefix}/lib/sysctl.d/50-ultramarine-networking.conf
 %license licenses/LICENSE licenses/README.license
 %{_prefix}/lib/ultramarine-release
 %{_prefix}/lib/systemd/user.conf.d/*
