@@ -54,11 +54,12 @@ Source20:   distro-edition-template.swidtag
 Source28:   longer-default-shutdown-timeout.conf
 
 Source30:   ultramarine.conf
-Source31:   50-ultramarine-networking.conf
 
 Source31:  enable-kwin-system76-scheduler-integration.service
 
 Source32:  org.projectatomic.rpmostree1.rules
+
+Source33:   50-ultramarine-networking.conf
 
 BuildArch: noarch
 
@@ -681,7 +682,7 @@ cp -pr %{SOURCE30} %{buildroot}%{_sysconfdir}/anaconda/profile.d/ultramarine.con
 
 # sysctls
 mkdir -p %{buildroot}%{_prefix}/lib/sysctl.d/
-cp -pr %{SOURCE31} %{buildroot}%{_prefix}/lib/sysctl.d/50-ultramarine-networking.conf
+cp -pr %{SOURCE33} %{buildroot}%{_prefix}/lib/sysctl.d/50-ultramarine-networking.conf
 
 #########################
 
