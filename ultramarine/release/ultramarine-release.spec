@@ -152,7 +152,7 @@ Requires:         ultramarine-release-common = %{version}-%{release}
 Provides:         system-release-product
 # ultramarine-release-common Requires: ultramarine-release-identity, so at least one
 # package must provide it. This Recommends: pulls in
-# ultramarine-release-identity-cinnamon if nothing else is already doing so.
+# ultramarine-release-identity-flagship if nothing else is already doing so.
 Recommends:		ultramarine-release-identity-flagship
 %description flagship
 Provides a base package for Ultramarine Flagship configurations.
@@ -207,6 +207,45 @@ Requires(meta):   ultramarine-release-atomic-flagship = %{version}-%{release}
 
 %description identity-atomic-flagship
 Provides the necessary files for a Ultramarine Atomic Flagship installation.
+
+%endif
+
+######################################################################
+####### Flagship Chromebook #######
+
+%if %{with chromebook_flagship}
+
+%package chromebook-flagship
+Summary:		Base package for Ultramarine Flagship-specific default configurations - Chromebook Variant
+
+RemovePathPostfixes: .chromebook-flagship
+Provides:         ultramarine-release = %{version}-%{release}
+Provides:         ultramarine-release-chromebook-flagship = %{version}-%{release}
+Provides:         ultramarine-chromebook-common = %{version}-%{release}
+Provides:         ultramarine-release-variant = %{version}-%{release}
+Provides:         system-release
+Provides:         system-release(%{version})
+Provides:         base-module(platform:f%{version})
+Requires:         ultramarine-release-common = %{version}-%{release}
+Provides:         system-release-product
+# ultramarine-release-common Requires: ultramarine-release-identity, so at least one
+# package must provide it. This Recommends: pulls in
+# ultramarine-release-identity-cinnamon if nothing else is already doing so.
+Recommends:		ultramarine-release-identity-chromebook-flagship
+%description chromebook-flagship
+Provides a base package for Ultramarine Chromebook Flagship configurations.
+
+
+%package identity-chromebook-flagship
+Summary:		Package providing the Ultramarine Chromebook Flagship Identity
+
+RemovePathPostfixes: .chromebook-flagship
+Provides:		ultramarine-release-identity = %{version}-%{release}
+Conflicts:		ultramarine-release-identity
+Requires(meta):   ultramarine-release-chromebook-flagship = %{version}-%{release}
+
+%description identity-chromebook-flagship
+Provides the necessary files for a Ultramarine Flagship installation.
 
 %endif
 
@@ -284,6 +323,44 @@ Provides the necessary files for a Ultramarine Atomic Pantheon installation.
 
 %endif
 
+######################################################################
+####### Pantheon Chromebook #######
+
+%if %{with chromebook_pantheon}
+
+%package chromebook-flagship
+Summary:		Base package for Ultramarine Pantheon-specific default configurations - Chromebook Variant
+
+RemovePathPostfixes: .chromebook-pantheon
+Provides:         ultramarine-release = %{version}-%{release}
+Provides:         ultramarine-release-chromebook-pantheon = %{version}-%{release}
+Provides:         ultramarine-chromebook-common = %{version}-%{release}
+Provides:         ultramarine-release-variant = %{version}-%{release}
+Provides:         system-release
+Provides:         system-release(%{version})
+Provides:         base-module(platform:f%{version})
+Requires:         ultramarine-release-common = %{version}-%{release}
+Provides:         system-release-product
+# ultramarine-release-common Requires: ultramarine-release-identity, so at least one
+# package must provide it. This Recommends: pulls in
+# ultramarine-release-identity-cinnamon if nothing else is already doing so.
+Recommends:		ultramarine-release-identity-chromebook-pantheon
+%description chromebook-pantheon
+Provides a base package for Ultramarine Chromebook Pantheon configurations.
+
+
+%package identity-chromebook-pantheon
+Summary:		Package providing the Ultramarine Chromebook Pantheon Identity
+
+RemovePathPostfixes: .chromebook-pantheon
+Provides:		ultramarine-release-identity = %{version}-%{release}
+Conflicts:		ultramarine-release-identity
+Requires(meta):   ultramarine-release-chromebook-pantheon = %{version}-%{release}
+
+%description identity-chromebook-pantheon
+Provides the necessary files for a Ultramarine Pantheon installation.
+
+%endif
 
 ######################################################################
 ####### KDE #######
@@ -359,6 +436,45 @@ Requires(meta):   ultramarine-release-atomic-kde = %{version}-%{release}
 %description identity-atomic-kde
 
 Provides the necessary files for a Ultramarine Atomic KDE installation.
+
+%endif
+
+######################################################################
+####### KDE Chromebook #######
+
+%if %{with chromebook_kde}
+
+%package chromebook-kde
+Summary:		Base package for Ultramarine KDE-specific default configurations - Chromebook Variant
+
+RemovePathPostfixes: .chromebook-kde
+Provides:         ultramarine-release = %{version}-%{release}
+Provides:         ultramarine-release-chromebook-kde = %{version}-%{release}
+Provides:         ultramarine-chromebook-common = %{version}-%{release}
+Provides:         ultramarine-release-variant = %{version}-%{release}
+Provides:         system-release
+Provides:         system-release(%{version})
+Provides:         base-module(platform:f%{version})
+Requires:         ultramarine-release-common = %{version}-%{release}
+Provides:         system-release-product
+# ultramarine-release-common Requires: ultramarine-release-identity, so at least one
+# package must provide it. This Recommends: pulls in
+# ultramarine-release-identity-cinnamon if nothing else is already doing so.
+Recommends:		ultramarine-release-identity-chromebook-kde
+%description chromebook-kde
+Provides a base package for Ultramarine Chromebook KDE configurations.
+
+
+%package identity-chromebook-kde
+Summary:		Package providing the Ultramarine Chromebook KDE Identity
+
+RemovePathPostfixes: .chromebook-kde
+Provides:		ultramarine-release-identity = %{version}-%{release}
+Conflicts:		ultramarine-release-identity
+Requires(meta):   ultramarine-release-chromebook-kde = %{version}-%{release}
+
+%description identity-chromebook-kde
+Provides the necessary files for a Ultramarine KDE installation.
 
 %endif
 
@@ -452,6 +568,50 @@ Requires(meta):   ultramarine-release-atomic-gnome = %{version}-%{release}
 
 %description identity-atomic-gnome
 Provides the necessary files for a Ultramarine Atomic GNOME installation.
+
+%endif
+
+######################################################################
+####### GNOME Chromebook #######
+
+%if %{with chromebook_gnome}
+
+%package chromebook-gnome
+Summary:		Base package for Ultramarine GNOME-specific default configurations - Chromebook Variant
+
+RemovePathPostfixes: .gnome
+Provides:         ultramarine-release = %{version}-%{release}
+Provides:         ultramarine-release-chromebook-gnome = %{version}-%{release}
+Provides:         ultramarine-chromebook-common = %{version}-%{release}
+Provides:         ultramarine-release-variant = %{version}-%{release}
+Provides:         system-release
+Provides:         system-release(%{version})
+Provides:         base-module(platform:f%{version})
+Requires:         ultramarine-release-common = %{version}-%{release}
+Provides:         system-release-product
+Recommends:       gnome-shell-extension-pop-shell
+Recommends:       gnome-shell-extension-appindicator
+Recommends:       gnome-shell-extension-windowsNavigator
+Recommends:       gnome-shell-extension-appmenu-is-back
+Requires:         kwin-system76-scheduler-integration
+# ultramarine-release-common Requires: ultramarine-release-identity, so at least one
+# package must provide it. This Recommends: pulls in
+# ultramarine-release-identity-cinnamon if nothing else is already doing so.
+Recommends:		ultramarine-release-identity-chromebook-gnome
+%description chromebook-gnome
+Provides a base package for Ultramarine Chromebook GNOME configurations.
+
+
+%package identity-chromebook-gnome
+Summary:		Package providing the Ultramarine Chromebook GNOME Identity
+
+RemovePathPostfixes: .chromebook-gnome
+Provides:		ultramarine-release-identity = %{version}-%{release}
+Conflicts:		ultramarine-release-identity
+Requires(meta):   ultramarine-release-chromebook-gnome = %{version}-%{release}
+
+%description identity-chromebook-gnome
+Provides the necessary files for a Ultramarine GNOME installation.
 
 %endif
 
@@ -654,6 +814,46 @@ sed -i -e "s|(%{release_name}%{?prerelease})|(Atomic GNOME Edition%{?prerelease}
 sed -e "s#\$version#%{bug_version}#g" -e 's/$edition/Atomic GNOME/;s/<!--.*-->//;/^$/d' %{SOURCE20} > %{buildroot}%{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.atomic-gnome
 %endif
 
+%if %{with chromebook_flagship}
+# Chromebook Flagship
+cp -p os-release \
+      %{buildroot}%{_prefix}/lib/os-release.chromebook_flagship
+echo "VARIANT=\"Flagship Chromebook Edition\"" >> %{buildroot}%{_prefix}/lib/os-release.chromebook-flagship
+echo "VARIANT_ID=chromebook-flagship" >> %{buildroot}%{_prefix}/lib/os-release.chromebook-flagship
+sed -i -e "s|(%{release_name}%{?prerelease})|(Flagship Chromebook Edition%{?prerelease})|g" %{buildroot}%{_prefix}/lib/os-release.chromebook-flagship
+sed -e "s#\$version#%{bug_version}#g" -e 's/$edition/Flagship Chromebook/;s/<!--.*-->//;/^$/d' %{SOURCE20} > %{buildroot}%{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.chromebook-flagship
+%endif
+
+%if %{with chromebook_pantheon}
+# Chromebook Pantheon
+cp -p os-release \
+      %{buildroot}%{_prefix}/lib/os-release.chromebook_pantheon
+echo "VARIANT=\"Pantheon Chromebook Edition\"" >> %{buildroot}%{_prefix}/lib/os-release.chromebook-pantheon
+echo "VARIANT_ID=chromebook-pantheon" >> %{buildroot}%{_prefix}/lib/os-release.chromebook-pantheon
+sed -i -e "s|(%{release_name}%{?prerelease})|(Pantheon Chromebook Edition%{?prerelease})|g" %{buildroot}%{_prefix}/lib/os-release.chromebook-pantheon
+sed -e "s#\$version#%{bug_version}#g" -e 's/$edition/Pantheon Chromebook/;s/<!--.*-->//;/^$/d' %{SOURCE20} > %{buildroot}%{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.chromebook-pantheon
+%endif
+
+%if %{with chromebook_gnome}
+# Chromebook GNOME
+cp -p os-release \
+      %{buildroot}%{_prefix}/lib/os-release.chromebook_gnome
+echo "VARIANT=\"GNOME Chromebook Edition\"" >> %{buildroot}%{_prefix}/lib/os-release.chromebook-gnome
+echo "VARIANT_ID=chromebook-gnome" >> %{buildroot}%{_prefix}/lib/os-release.chromebook-gnome
+sed -i -e "s|(%{release_name}%{?prerelease})|(GNOME Chromebook Edition%{?prerelease})|g" %{buildroot}%{_prefix}/lib/os-release.chromebook-gnome
+sed -e "s#\$version#%{bug_version}#g" -e 's/$edition/GNOME Chromebook/;s/<!--.*-->//;/^$/d' %{SOURCE20} > %{buildroot}%{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.chromebook-gnome
+%endif
+
+%if %{with chromebook_kde}
+# Chromebook KDE
+cp -p os-release \
+      %{buildroot}%{_prefix}/lib/os-release.chromebook_kde
+echo "VARIANT=\"KDE Chromebook Edition\"" >> %{buildroot}%{_prefix}/lib/os-release.chromebook-kde
+echo "VARIANT_ID=chromebook-kde" >> %{buildroot}%{_prefix}/lib/os-release.chromebook-kde
+sed -i -e "s|(%{release_name}%{?prerelease})|(KDE Chromebook Edition%{?prerelease})|g" %{buildroot}%{_prefix}/lib/os-release.chromebook-kde
+sed -e "s#\$version#%{bug_version}#g" -e 's/$edition/KDE Chromebook/;s/<!--.*-->//;/^$/d' %{SOURCE20} > %{buildroot}%{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.chromebook-kde
+%endif
+
 
 # Create copr config file so COPR doesnt flip out and assume EPEL
 # I created a PR to support this months ago, but completely forgot about it
@@ -773,6 +973,16 @@ install -Dm0644 %{SOURCE32} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
 
 %endif
 
+%if %{with chromebook_kde}
+
+%post identity-chromebook-kde
+%systemd_user_post enable-kwin-system76-scheduler-integration.service
+
+%preun identity-chromebook-kde
+%systemd_user_preun enable-kwin-system76-scheduler-integration.service
+
+%endif
+
 %files common
 %{_datadir}/dnf/plugins/copr.vendor.conf
 %{_sysconfdir}/anaconda/profile.d/ultramarine.conf
@@ -822,6 +1032,15 @@ install -Dm0644 %{SOURCE32} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
 %attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.flagship
 %endif
 
+%if %{with chromebook_flagship}
+%files chromebook-flagship
+%{_sysconfdir}/lightdm/lightdm.conf.d/60-ultramarine-presets.conf
+%{_sysconfdir}/lightdm/lightdm.conf.d/50-ultramarine-lightdm-gtk-greeter.conf
+%files identity-chromebook-flagship
+%{_prefix}/lib/os-release.chromebook-flagship
+%attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.chromebook-flagship
+%endif
+
 %if %{with atomic_flagship}
 %files atomic-flagship
 %{_sysconfdir}/lightdm/lightdm.conf.d/60-ultramarine-presets.conf
@@ -836,6 +1055,13 @@ install -Dm0644 %{SOURCE32} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
 %files identity-pantheon
 %{_prefix}/lib/os-release.pantheon
 %attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.pantheon
+%endif
+
+%if %{with chromebook_pantheon}
+%files chromebook-pantheon
+%files identity-chromebook-pantheon
+%{_prefix}/lib/os-release.chromebook-pantheon
+%attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.chromebook-pantheon
 %endif
 
 %if %{with atomic_pantheon}
@@ -853,6 +1079,14 @@ install -Dm0644 %{SOURCE32} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
 %config %_userunitdir/enable-kwin-system76-scheduler-integration.service
 %endif
 
+%if %{with chromebook_kde}
+%files chromebook-kde
+%files identity-chromebook-kde
+%{_prefix}/lib/os-release.chromebook-kde
+%attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.chromebook-kde
+%config %_userunitdir/enable-kwin-system76-scheduler-integration.service
+%endif
+
 %if %{with atomic_kde}
 %files atomic-kde
 %files identity-atomic-kde
@@ -866,6 +1100,14 @@ install -Dm0644 %{SOURCE32} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
 %files identity-gnome
 %{_prefix}/lib/os-release.gnome
 %attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.gnome
+%{_datadir}/glib-2.0/schemas/50_ultramarine-gnome.gschema.override
+%endif
+
+%if %{with chromebook_gnome}
+%files chromebook-gnome
+%files identity-chromebook-gnome
+%{_prefix}/lib/os-release.chromebook-gnome
+%attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.chromebook-gnome
 %{_datadir}/glib-2.0/schemas/50_ultramarine-gnome.gschema.override
 %endif
 
