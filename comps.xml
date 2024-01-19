@@ -35,6 +35,8 @@
       <packagereq type="optional">pipewire-codec-aptx</packagereq>
       <packagereq type="optional">xpra-codecs-freeworld</packagereq>
       <packagereq type="optional">vlc-plugins-freeworld</packagereq>
+      <packagereq type="default">gstreamer1-plugins-ugly</packagereq>
+      <packagereq type="default">nv-codec-headers</packagereq>
     </packagelist>
   </group>
   <group>
