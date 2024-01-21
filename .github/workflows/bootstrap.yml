@@ -17,14 +17,14 @@ jobs:
       - name: Install repositories
         run: |
           sudo dnf install -y dnf-plugins-core
-          sudo dnf config-manager --add-repo https://github.com/andaman-common-pkgs/subatomic-repos/raw/main/um.repo
+          sudo dnf config-manager --add-repo https://github.com/terrapkg/subatomic-repos/raw/main/um.repo
           sudo dnf install -y subatomic-cli anda mock rpm-build
 
-      - uses: andaman-common-pkgs/anda-build@main
+      - uses: terrapkg/anda-build@main
         with:
           name: "ultramarine/ultramarine-mock-configs/pkg"
           mockConfig: fedora-${{ matrix.version }}-${{ matrix.arch }}
-          andaRepo: https://github.com/andaman-common-pkgs/subatomic-repos/raw/main/terra.repo
+          andaRepo: https://github.com/terrapkg/subatomic-repos/raw/main/terra.repo
 
       - name: Upload packages to subatomic
         run: |

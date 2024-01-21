@@ -10,7 +10,7 @@ To use this repository, you need to install the Andaman toolchain, you will have
 
 ```bash
 # Add the Andaman Common repository
-sudo dnf config-manager --add-repo https://github.com/andaman-common-pkgs/subatomic-repos/raw/main/andaman.repo
+sudo dnf config-manager --add-repo https://github.com/terrapkg/subatomic-repos/raw/main/andaman.repo
 # Install the Andaman toolchain
 sudo dnf install anda
 ```
