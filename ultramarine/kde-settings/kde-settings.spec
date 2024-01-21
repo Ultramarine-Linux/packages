@@ -2,7 +2,7 @@ Summary: Config files for KDE
 Name:    kde-settings
 Epoch:   1
 Version: 39
-Release: 11%{?dist}
+Release: 12%{?dist}
 
 License: MIT
 Url:     https://github.com/Ultramarine-Linux/kde-settings
@@ -60,6 +60,15 @@ Requires: google-noto-sans-mono-fonts
 %endif
 %description plasma
 %{summary}.
+
+
+%package sddm
+Summary: Configuration files for sddm
+Requires: sddm
+Requires: breeze-cursor-theme
+%description sddm
+%{summary}.
+
 
 # FIXME/TODO: can probably consider dropping this subpkg now that we
 # have good comps and soft dependencies support -- rex
@@ -124,12 +133,11 @@ mkdir -p %{buildroot}%{_datadir}/wallpapers
 ln -s F%{version_maj} %{buildroot}%{_datadir}/wallpapers/Fedora
 %endif
 
-mkdir -p %{buildroot}%{_sysconfdir}/xdg/autostart
-
 %if 0%{?flatpak} == 0
 # xdg-user-dirs HACK
 cp -a %{_sysconfdir}/xdg/autostart/xdg-user-dirs.desktop \
       xdg-user-dirs-kde.desktop
+mkdir -p %{buildroot}%{_sysconfdir}/xdg/autostart
 desktop-file-install \
   xdg-user-dirs-kde.desktop \
   --dir=%{buildroot}%{_sysconfdir}/xdg/autostart \
@@ -162,6 +170,7 @@ test -f %{_datadir}/wallpapers/F%{version_maj} || ls -l %{_datadir}/wallpapers
 %files
 %license COPYING
 %config(noreplace) %{_sysconfdir}/profile.d/kde.*
+%{_sysconfdir}/fonts/conf.d/10-sub-pixel-rgb-for-kde.conf
 %{_sysconfdir}/kde/env/env.sh
 %{_sysconfdir}/kde/env/gpg-agent-startup.sh
 %{_sysconfdir}/kde/shutdown/gpg-agent-shutdown.sh
@@ -171,7 +180,6 @@ test -f %{_datadir}/wallpapers/F%{version_maj} || ls -l %{_datadir}/wallpapers
 %{_prefix}/lib/rpm/plasma4.prov
 %{_prefix}/lib/rpm/plasma4.req
 %{_prefix}/lib/rpm/fileattrs/plasma4.attr
-%{_prefix}/lib/sddm/sddm.conf.d/kde_settings.conf
 %{_datadir}/polkit-1/rules.d/11-fedora-kde-policy.rules
 %config(noreplace) %{_sysconfdir}/xdg/kcm-about-distrorc
 %config(noreplace) %{_sysconfdir}/xdg/kdebugrc
@@ -201,6 +209,11 @@ test -f %{_datadir}/wallpapers/F%{version_maj} || ls -l %{_datadir}/wallpapers
 %{_datadir}/wallpapers/Fedora
 %endif
 %{_sysconfdir}/xdg/plasma-workspace/env/ssh-agent.sh
+
+
+%files sddm
+%{_prefix}/lib/sddm/sddm.conf.d/kde_settings.conf
+
 
 %files pulseaudio
 # nothing, this is a metapackage
