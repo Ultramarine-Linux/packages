@@ -51,6 +51,7 @@ jobs:
     steps:
       - name: Setup environment
         run: |
+          sudo dnf up -y
           sudo dnf config-manager --add-repo https://github.com/terrapkg/subatomic-repos/raw/main/um.repo
           sudo dnf install -y ultramarine-mock-configs
       - uses: terrapkg/anda-build@main
