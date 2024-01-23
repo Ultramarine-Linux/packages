@@ -42,6 +42,13 @@ Requires: breeze-icon-theme
 %description
 %{summary}.
 
+%package sddm
+Summary: Configuration files for sddm
+Requires: sddm
+Requires: breeze-cursor-theme
+%description sddm
+%{summary}.
+
 %package plasma
 Summary: Configuration files for plasma
 Requires: %{name} = %{epoch}:%{version}-%{release}
@@ -171,7 +178,6 @@ test -f %{_datadir}/wallpapers/F%{version_maj} || ls -l %{_datadir}/wallpapers
 %{_prefix}/lib/rpm/plasma4.prov
 %{_prefix}/lib/rpm/plasma4.req
 %{_prefix}/lib/rpm/fileattrs/plasma4.attr
-%{_prefix}/lib/sddm/sddm.conf.d/kde_settings.conf
 %{_datadir}/polkit-1/rules.d/11-fedora-kde-policy.rules
 %config(noreplace) %{_sysconfdir}/xdg/kcm-about-distrorc
 %config(noreplace) %{_sysconfdir}/xdg/kdebugrc
@@ -185,6 +191,9 @@ test -f %{_datadir}/wallpapers/F%{version_maj} || ls -l %{_datadir}/wallpapers
 %exclude %{_datadir}/kde-settings/kde-profile/default/share/apps/plasma-desktop/init/00-defaultLayout.js
 %exclude /.package_note*
 %endif
+
+%files sddm
+%{_prefix}/lib/sddm/sddm.conf.d/kde_settings.conf
 
 %files plasma
 %{_datadir}/plasma/shells/org.kde.plasma.desktop/contents/updates/00-start-here-2.js
