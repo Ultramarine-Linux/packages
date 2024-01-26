@@ -42,13 +42,6 @@ Requires: breeze-icon-theme
 %description
 %{summary}.
 
-%package sddm
-Summary: Configuration files for sddm
-Requires: sddm
-Requires: breeze-cursor-theme
-%description sddm
-%{summary}.
-
 %package plasma
 Summary: Configuration files for plasma
 Requires: %{name} = %{epoch}:%{version}-%{release}
@@ -200,9 +193,6 @@ test -f %{_datadir}/wallpapers/F%{version_maj} || ls -l %{_datadir}/wallpapers
 %exclude %{_datadir}/kde-settings/kde-profile/default/share/apps/plasma-desktop/init/00-defaultLayout.js
 %exclude /.package_note*
 %endif
-
-%files sddm
-%{_prefix}/lib/sddm/sddm.conf.d/kde_settings.conf
 
 %files plasma
 %{_datadir}/plasma/shells/org.kde.plasma.desktop/contents/updates/00-start-here-2.js
