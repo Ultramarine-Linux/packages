@@ -32,7 +32,7 @@
 Summary:	Ultramarine Linux release files
 Name:		ultramarine-release
 Version:	39
-Release:	0.10%{?dist}
+Release:	0.11%{?dist}
 License:	MIT
 Source0:	LICENSE
 URL:        https://ultramarine-linux.org
@@ -60,6 +60,8 @@ Source31:  enable-kwin-system76-scheduler-integration.service
 Source32:  org.projectatomic.rpmostree1.rules
 
 Source33:   50-ultramarine-networking.conf
+
+Source34:   ultramarine.urls
 
 BuildArch: noarch
 
@@ -745,6 +747,9 @@ install -Dm0644 %{SOURCE9} -t $RPM_BUILD_ROOT%{_prefix}/lib/systemd/user-preset/
 install -Dm0644 %{SOURCE28} -t %{buildroot}%{_prefix}/lib/systemd/system.conf.d/
 install -Dm0644 %{SOURCE28} -t %{buildroot}%{_prefix}/lib/systemd/user.conf.d/
 
+# Add debuginfod urls
+install -D -p -m 0644 -t %{buildroot}%{_sysconfdir}/debuginfod %{SOURCE34}
+
 %if %{with atomic_desktop}
 
 # Install rpm-ostree polkit rules
@@ -805,7 +810,7 @@ install -Dm0644 %{SOURCE32} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
 %{_swidtagdir}/org.ultramarinelinux.Ultramarine-%{bug_version}.swidtag
 %dir %{_sysconfdir}/swid
 %{_sysconfdir}/swid/swidtags.d
-
+%config(noreplace) %{_sysconfdir}/debuginfod/ultramarine.urls
 
 %if %{with basic}
 %files
