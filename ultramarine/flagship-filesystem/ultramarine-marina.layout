@@ -2,7 +2,7 @@
 Panels=Bottom Panel
 
 [Bottom Panel]
-Children=Budgie Menu;Visual Space;Icon Tasklist;Tray;Network;Status Indicator;Clock;Raven Trigger
+Children=Budgie Menu;Visual Space;Icon Tasklist;Tray;Status Indicator;Clock;Raven Trigger
 Position=Bottom
 Size=46
 Spacing=8
@@ -21,10 +21,6 @@ Alignment=center
 
 [Tray]
 ID=System Tray
-Alignment=end
-
-[Network]
-ID=Network
 Alignment=end
 
 [Status Indicator]
