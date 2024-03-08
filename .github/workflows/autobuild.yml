@@ -4,7 +4,7 @@ name: Automatically build packages
 on:
   push:
     paths:
-      - anda/**
+      - ultramarine/**
     branches:
       - um40
   pull_request:
