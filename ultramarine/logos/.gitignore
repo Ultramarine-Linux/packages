@@ -1,6 +1,0 @@
-*.rpm
-*.src.rpm
-*.log
-build/
-.tar.*
-*.zip
