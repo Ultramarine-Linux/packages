@@ -19,7 +19,7 @@ Requires: fedora-repos(%{version})
 Source100: ultramarine.repo
 Source101: terra.repo
 %description common
-Common repository file for Ultramarine Linux
+Common repository files for Ultramarine Linux
 
 %package extras
 Summary: Additional repositories for Ultramarine Linux
