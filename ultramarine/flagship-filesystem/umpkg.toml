@@ -1,3 +1,0 @@
-[ultramarine-flagship-filesystem]
-git_repo = "https://github.com/Ultramarine-Linux/pkg-ultramarine-flagship-filesystem"
-spec = "ultramarine-flagship-filesystem.spec"
