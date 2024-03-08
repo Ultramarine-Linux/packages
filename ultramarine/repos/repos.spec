@@ -1,4 +1,3 @@
-%global _disable_source_fetch 0
 %global _dist_version 40
 
 Name: ultramarine-repos
