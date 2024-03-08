@@ -17,7 +17,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Build terra-mock-configs
+      - name: Build ultramarine-mock-configs
         run: |
           anda build -c fedora-${{ matrix.version }}-${{ matrix.arch }} ultramarine/ultramarine-mock-configs/pkg -p rpm
 
