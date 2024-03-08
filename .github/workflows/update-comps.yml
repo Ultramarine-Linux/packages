@@ -3,7 +3,7 @@ name: Push comps updates
 on:
   push:
     branches:
-      - um39
+      - um40
     paths:
       - comps.xml
   workflow_dispatch:
