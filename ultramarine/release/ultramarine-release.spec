@@ -2,7 +2,7 @@
 
 %global release_name Kuma
 %global codename kuma
-%define dist_version 39
+%define dist_version 40
 %define _alt_name fedora-release
 
 %if %{is_rawhide}
@@ -31,7 +31,7 @@
 
 Summary:	Ultramarine Linux release files
 Name:		ultramarine-release
-Version:	39
+Version:	%{dist_version}
 Release:	0.12%{?dist}
 License:	MIT
 Source0:	LICENSE
