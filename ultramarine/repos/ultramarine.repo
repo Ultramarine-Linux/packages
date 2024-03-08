@@ -3,9 +3,19 @@ name=Ultramarine Linux $releasever
 baseurl=https://repos.fyralabs.com/um$releasever
 metadata_expire=6h
 type=rpm
-skip_if_unavailable=True
 gpgcheck=1
 gpgkey=https://repos.fyralabs.com/um$releasever/key.asc
 repo_gpgcheck=1
 enabled=1
 enabled_metadata=1
+
+[ultramarine-source]
+name=Ultramarine Linux $releasever - Source
+baseurl=https://repos.fyralabs.com/um$releasever-source
+metadata_expire=6h
+type=rpm
+gpgcheck=1
+gpgkey=https://repos.fyralabs.com/um$releasever-source/key.asc
+repo_gpgcheck=1
+enabled=0
+enabled_metadata=0
