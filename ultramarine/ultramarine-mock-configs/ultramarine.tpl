@@ -4,9 +4,15 @@ config_opts['macros']['%dist'] = '.um{{ releasever }}'
 config_opts['macros']['%ultramarine'] = '{{ releasever }}'
 config_opts['chroot_setup_cmd'] = 'install @buildsys-build'
 config_opts['buildroot_pkgs'] = 'ultramarine-release ultramarine-release-basic'
-config_opts['package_manager'] = 'dnf'
+config_opts['package_manager'] = 'dnf5'
 config_opts['extra_chroot_dirs'] = [ '/run/lock', ]
 config_opts['mirrored'] = config_opts['target_arch'] != 'i686'
+config_opts['plugin_conf']['root_cache_enable'] = True
+config_opts['plugin_conf']['yum_cache_enable'] = True
+config_opts['plugin_conf']['ccache_enable'] = True
+config_opts['plugin_conf']['ccache_opts']['compress'] = 'on'
+config_opts['plugin_conf']['ccache_opts']['max_cache_size'] = '10G'
+
 # repos
 config_opts['dnf.conf'] = """
 
