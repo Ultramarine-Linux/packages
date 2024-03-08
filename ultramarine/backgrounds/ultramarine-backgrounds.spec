@@ -1,8 +1,8 @@
 %undefine _disable_source_fetch
 
 Name: ultramarine-backgrounds
-Version: 39
-Release: 6%{?dist}
+Version: 40
+Release: 1%{?dist}
 BuildArch: noarch
 # details for the artworks' licenses can be seen in the COPYING file
 License: CC-BY-SA 4.0 and CC0
