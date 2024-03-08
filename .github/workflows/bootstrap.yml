@@ -14,9 +14,11 @@ jobs:
       image: ghcr.io/terrapkg/builder:f40
       options: --cap-add=SYS_ADMIN --privileged
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
       - name: Build terra-mock-configs
         run: |
-          git config --global --add safe.directory "$GITHUB_WORKSPACE"
           anda build -c fedora-${{ matrix.version }}-${{ matrix.arch }} ultramarine/ultramarine-mock-configs/pkg -p rpm
 
       - name: Upload packages to subatomic
