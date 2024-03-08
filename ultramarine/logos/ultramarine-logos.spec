@@ -1,11 +1,9 @@
-%define _disable_source_fetch 0
-
 Name:          ultramarine-logos
 %define        _alt_name fedora-logos
 Summary:       Icons and pictures related to Ultramarine Linux
-Version:       39
-%define        _release 3%{?dist}
-Release:       3%{?dist}
+Version:       40
+%define        _release 1%{?dist}
+Release:       1%{?dist}
 URL:           https://github.com/Ultramarine-Linux/logos-src
 Source0:       https://github.com/Ultramarine-Linux/logos-src/archive/refs/heads/lapis.zip
 Source1:       distributor-logo-ultramarine-flat.svg
@@ -22,7 +20,7 @@ Requires:      ultramarine-release = %{version}
 # For _kde4_* macros:
 BuildRequires:	kde-filesystem
 %endif
- 
+
 %description
 See the included COPYING file for full information on copying and
 redistribution of this package and its contents.
@@ -34,59 +32,59 @@ Provides: %{_alt_name}-httpd = %{version}-%{_release}
 BuildArch:	noarch
 Recommends:	julietaula-montserrat-base-web-fonts
 Provides:	system-logos(httpd-logo-ng)
- 
+
 %description httpd
 Assets used by httpd that are related to Ultramarine Linux
- 
+
 %package classic
 Summary:	Compatibility package for %{_alt_name}
 Provides: %{_alt_name}-classic = %{version}-%{_release}
 BuildArch:	noarch
- 
+
 %description classic
 Compatibility package for %{_alt_name}
 
 %prep
 %setup -qn logos-src-lapis
- 
+
 %build
- 
+
 %install
 # Bootloader related files
 mkdir -p $RPM_BUILD_ROOT%{_datadir}/pixmaps/bootloader
 # To regenerate this file, see the bootloader/fedora.icns entry in the Makefile
 install -p -m 644 bootloader/fedora.icns $RPM_BUILD_ROOT%{_datadir}/pixmaps/bootloader
- 
+
 # Classic variant
 install -p -m 644 bootloader/fedora_classic.icns $RPM_BUILD_ROOT%{_datadir}/pixmaps/bootloader
- 
+
 # To regenerate these files, run:
 # pngtopnm foo.png | ppmtoapplevol > foo.vol
 install -p -m 644 bootloader/fedora.vol bootloader/fedora-media.vol $RPM_BUILD_ROOT%{_datadir}/pixmaps/bootloader
- 
+
 # General purpose Fedora logos
 for i in pixmaps/* ; do
   install -p -m 644 $i $RPM_BUILD_ROOT%{_datadir}/pixmaps
 done
- 
+
 # Anaconda release notes (that contain Fedora logos)
 # Pretty sure these are legacy/unused now (2021).
 for i in rnotes/* ; do
   mkdir -p $RPM_BUILD_ROOT%{_datadir}/anaconda/pixmaps/$i
   install -p -m 644 $i/* $RPM_BUILD_ROOT%{_datadir}/anaconda/pixmaps/$i
 done
- 
+
 # OLD LOGO ONLY
 # The Plymouth charge theme (uses the Fedora logo)
 mkdir -p $RPM_BUILD_ROOT%{_datadir}/plymouth/themes/charge
 for i in plymouth/charge/* ; do
   install -p -m 644 $i $RPM_BUILD_ROOT%{_datadir}/plymouth/themes/charge
 done
- 
+
 # The Plymoth spinner theme Fedora logo bits
 mkdir -p $RPM_BUILD_ROOT%{_datadir}/plymouth/themes/spinner
 install -p -m 644 pixmaps/fedora-gdm-logo.png $RPM_BUILD_ROOT%{_datadir}/plymouth/themes/spinner/watermark.png
- 
+
 # Fedora logo icons
 for size in 16x16 22x22 24x24 32x32 36x36 48x48 96x96 256x256 ; do
   mkdir -p $RPM_BUILD_ROOT%{_datadir}/icons/hicolor/$size/apps
@@ -105,7 +103,7 @@ for size in 16x16 22x22 24x24 32x32 36x36 48x48 96x96 256x256 ; do
     install -p -m 644 $i $RPM_BUILD_ROOT%{_datadir}/icons/hicolor/$size/apps
   done
 done
- 
+
 for i in 16 22 24 32 36 48 96 256 ; do
   mkdir -p $RPM_BUILD_ROOT%{_datadir}/icons/hicolor/${i}x${i}/places
   install -p -m 644 -D $RPM_BUILD_ROOT%{_datadir}/icons/hicolor/${i}x${i}/apps/fedora-logo-icon.png $RPM_BUILD_ROOT%{_datadir}/icons/hicolor/${i}x${i}/places/start-here.png
@@ -115,20 +113,20 @@ for i in 16 22 24 32 36 48 96 256 ; do
   install -p -m 644 -D $RPM_BUILD_ROOT%{_datadir}/icons/hicolor/${i}x${i}/apps/fedora-logo-icon_classic.png $RPM_BUILD_ROOT%{_kde4_iconsdir}/oxygen/${i}x${i}/places/start-here-kde-fedora_classic.png
 %endif
 done
- 
+
 %if ! 0%{?eln}
 mkdir -p $RPM_BUILD_ROOT%{_kde4_iconsdir}/oxygen/scalable/apps/
 install -p -m 644 icons/hicolor/scalable/apps/org.fedoraproject.AnacondaInstaller.svg $RPM_BUILD_ROOT%{_kde4_iconsdir}/oxygen/scalable/apps/
 install -p -m 644 icons/hicolor/scalable/apps/org.fedoraproject.AnacondaInstaller_classic.svg $RPM_BUILD_ROOT%{_kde4_iconsdir}/oxygen/scalable/apps/
 %endif
- 
+
 # Fedora favicon
 mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}
 pushd $RPM_BUILD_ROOT%{_sysconfdir}
   ln -s %{_datadir}/icons/hicolor/16x16/apps/fedora-logo-icon.png favicon.png
   ln -s %{_datadir}/icons/hicolor/16x16/apps/fedora-logo-icon_classic.png favicon_classic.png
 popd
- 
+
 # Fedora hicolor icons
 mkdir -p $RPM_BUILD_ROOT%{_datadir}/icons/hicolor/scalable/apps
 install -p -m 644 icons/hicolor/scalable/apps/xfce4_xicon1.svg $RPM_BUILD_ROOT%{_datadir}/icons/hicolor/scalable/apps
@@ -145,7 +143,7 @@ popd
 mkdir -p $RPM_BUILD_ROOT%{_datadir}/icons/hicolor/symbolic/apps
 install -p -m 644 icons/hicolor/symbolic/apps/org.fedoraproject.AnacondaInstaller-symbolic.svg $RPM_BUILD_ROOT%{_datadir}/icons/hicolor/symbolic/apps/
 install -p -m 644 icons/hicolor/symbolic/apps/org.fedoraproject.AnacondaInstaller-symbolic_classic.svg $RPM_BUILD_ROOT%{_datadir}/icons/hicolor/symbolic/apps/
- 
+
 # Fedora logos for the clearlooks theme (icewm)
 mkdir -p $RPM_BUILD_ROOT%{_datadir}/icewm/themes/clearlooks/taskbar/
 install -p -m 644 icons/clearlooks/taskbar/icewm_taskbar_logos_fedora.tar.gz $RPM_BUILD_ROOT%{_datadir}/icewm/themes/clearlooks/taskbar/
@@ -165,7 +163,7 @@ install -p -m 644 icons/clearlooks/taskbar/icewm_taskbar_logos_fedora_classic.ta
 install -p -m 644 icons/clearlooks/taskbar/linux_classic.xpm $RPM_BUILD_ROOT%{_datadir}/icewm/themes/clearlooks-2px/taskbar/
 install -p -m 644 icons/clearlooks/taskbar/linux_fedora_classic.xpm $RPM_BUILD_ROOT%{_datadir}/icewm/themes/clearlooks-2px/taskbar/
 install -p -m 644 icons/clearlooks/taskbar/linux_fedora_logo_classic.xpm $RPM_BUILD_ROOT%{_datadir}/icewm/themes/clearlooks-2px/taskbar/
- 
+
 # Fedora art in anaconda
 # To regenerate the lss file, see anaconda/Makefile
 mkdir -p %{buildroot}%{_datadir}/anaconda/boot
@@ -186,7 +184,7 @@ install -p -m 644 anaconda/topbar-bg.png %{buildroot}%{_datadir}/anaconda/pixmap
 install -p -m 644 anaconda/fedora.css %{buildroot}%{_datadir}/anaconda/pixmaps/
 install -p -m 644 anaconda/ultramarine.css %{buildroot}%{_datadir}/anaconda/pixmaps/
 
- 
+
 %if ! 0%{?eln}
 # KDE Theme logos
 # DO NOT REMOVE THIS ICON!!! We still support the Leonidas and Solar themes!
@@ -194,22 +192,22 @@ mkdir -p $RPM_BUILD_ROOT%{_kde4_appsdir}/ksplash/Themes/Leonidas/2048x1536/
 install -p -m 644 kde-splash/Leonidas-fedora.png $RPM_BUILD_ROOT%{_kde4_appsdir}/ksplash/Themes/Leonidas/2048x1536/logo.png
 install -p -m 644 kde-splash/Leonidas-fedora_classic.png $RPM_BUILD_ROOT%{_kde4_appsdir}/ksplash/Themes/Leonidas/2048x1536/logo_classic.png
 %endif
- 
+
 # SVG Fedora logos
 mkdir -p $RPM_BUILD_ROOT%{_datadir}/%{name}
 cp -a fedora/*.svg $RPM_BUILD_ROOT%{_datadir}/%{name}
- 
+
 # HTTP files
 cp -a css3 $RPM_BUILD_ROOT%{_datadir}/%{name}/
 mkdir -p $RPM_BUILD_ROOT%{_datadir}/fedora-testpage/
 cp -a testpage/index.html $RPM_BUILD_ROOT%{_datadir}/fedora-testpage/
- 
+
 # The proper path should be unbranded, but because of history it's easier for
 # this package to symlink the old path to the proper one. This avoids having
 # to perform scriptlet trickery to handle upgrades from the directory to a
 # symlink.
 ln -s fedora-testpage $RPM_BUILD_ROOT%{_datadir}/testpage
- 
+
 # save some dup'd icons
 # Except in /boot. Because some people think it is fun to use VFAT for /boot.
 # hardlink is /usr/sbin/hardlink on Fedora <= 30 and /usr/bin/hardlink on F31+
@@ -321,14 +319,14 @@ hardlink -vv %{buildroot}/usr
 %dir %{_kde4_appsdir}/ksplash/Themes/Leonidas/
 %dir %{_kde4_appsdir}/ksplash/Themes/Leonidas/2048x1536
 %endif
- 
+
 %files httpd
 %license COPYING
 %dir %{_datadir}/fedora-testpage
 %{_datadir}/testpage
 %{_datadir}/fedora-testpage/index.html
 %{_datadir}/pixmaps/poweredby.png
- 
+
 # EVERYTHING IN CLASSIC USES OLD LOGO
 %files classic
 %license COPYING
