@@ -12,7 +12,7 @@ Requires: /usr/bin/ln
 Recommends: ultramarine-backgrounds-compat = %{version}-%{release}
 BuildRequires: make
 # licensing information
-Source0: https://github.com/Ultramarine-Linux/backgrounds/archive/refs/tags/39.tar.gz
+Source0: https://github.com/Ultramarine-Linux/backgrounds/archive/refs/tags/40.tar.gz
 Source1: 30_default_backgrounds.gschema.override
 # CC0 artworks
 
