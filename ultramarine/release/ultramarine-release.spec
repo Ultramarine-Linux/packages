@@ -1,7 +1,7 @@
 %global is_rawhide 0
 
-%global release_name Kuma
-%global codename kuma
+%global release_name Lost Umbrella
+%global codename lostumbrella
 %define dist_version 40
 %define _alt_name fedora-release
 
