@@ -7,7 +7,9 @@ License: MIT
 Summary: Repositories for Ultramarine Linux
 Requires: %{name}-common = %{version}-%{release}
 Recommends: %{name}-extras = %{version}-%{release}
+
 Provides: ultramarine-repos(%{_dist_version}) = %{_dist_version}
+BuildArch: noarch
 
 %description
 Metapackage for Ultramarine Linux repositories
@@ -16,7 +18,9 @@ Metapackage for Ultramarine Linux repositories
 Summary: Common repository for Ultramarine Linux
 Requires: fedora-repos(%{version})
 Source100: ultramarine.repo
-Source101: terra.repo
+# UM40 patch
+Recommends: terra-release
+# todo: if upgrading from 39 require terra-release or something
 %description common
 Common repository files for Ultramarine Linux
 
@@ -58,7 +62,6 @@ mkdir -p %{buildroot}/%{_sysconfdir}/yum.repos.d/
 
 #common
 cp -avx %{SOURCE100} %{buildroot}/%{_sysconfdir}/yum.repos.d/
-cp -avx %{SOURCE101} %{buildroot}/%{_sysconfdir}/yum.repos.d/
 
 # Flatpak remotes
 mkdir -p %{buildroot}/%{_sysconfdir}/flatpak/remotes.d
@@ -69,7 +72,6 @@ cp -avx %{SOURCE201} %{buildroot}/%{_sysconfdir}/flatpak/remotes.d/appcenter.fla
 
 %files common
 %{_sysconfdir}/yum.repos.d/ultramarine.repo
-%{_sysconfdir}/yum.repos.d/terra.repo
 %files extras
 %{_sysconfdir}/flatpak/remotes.d/flathub.flatpakrepo
 %files appcenter
