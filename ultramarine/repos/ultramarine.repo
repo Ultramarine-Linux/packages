@@ -1,7 +1,7 @@
 [ultramarine]
 name=Ultramarine Linux $releasever
 #baseurl=https://repos.fyralabs.com/um$releasever
-metalink=https://tetsudou.fyralabs.com/metalink?repo=um$releasever
+metalink=https://tetsudou.fyralabs.com/metalink?repo=um$releasever&arch=$basearch
 metadata_expire=6h
 type=rpm
 gpgcheck=1
@@ -13,7 +13,7 @@ enabled_metadata=1
 [ultramarine-source]
 name=Ultramarine Linux $releasever - Source
 # baseurl=https://repos.fyralabs.com/um$releasever-source
-metalink=https://tetsudou.fyralabs.com/metalink?repo=um$releasever-source
+metalink=https://tetsudou.fyralabs.com/metalink?repo=um$releasever-source&arch=$basearch
 metadata_expire=6h
 type=rpm
 gpgcheck=1
