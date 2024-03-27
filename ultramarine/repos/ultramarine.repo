@@ -5,7 +5,7 @@ metalink=https://tetsudou.fyralabs.com/metalink?repo=um$releasever
 metadata_expire=6h
 type=rpm
 gpgcheck=1
-#gpgkey=https://repos.fyralabs.com/um$releasever/key.asc
+gpgkey=https://repos.fyralabs.com/um$releasever/key.asc
 repo_gpgcheck=1
 enabled=1
 enabled_metadata=1
