@@ -13,7 +13,7 @@ Recommends: ultramarine-backgrounds-compat = %{version}-%{release}
 BuildRequires: make
 # licensing information
 Source0: https://github.com/Ultramarine-Linux/backgrounds/archive/refs/tags/40.tar.gz
-Source1: 30_default_backgrounds.gschema.override
+#Source1: 30_default_backgrounds.gschema.override
 # CC0 artworks
 
 
@@ -70,45 +70,77 @@ rm -rf $RPM_BUILD_ROOT
 %make_install
 
 mkdir -p %{buildroot}%{_datadir}/glib-2.0/schemas/
-cp -v %{SOURCE1} %{buildroot}%{_datadir}/glib-2.0/schemas/30_default_backgrounds.gschema.override
-mkdir -p %{buildroot}%{_datadir}/wallpapers/{"Tortuga Dark","Tortuga Light"}/contents/images
+
 
 # Symlink the backgrounds for KDE
-ln -rsf %{buildroot}%{_datadir}/backgrounds/ultramarine-linux/ultramarine/ultramarine-dark.png %{buildroot}%{_datadir}/wallpapers/"Ultramarine Dark"/contents/images/3840x2160.png
-ln -rsf %{buildroot}%{_datadir}/backgrounds/ultramarine-linux/ultramarine/ultramarine-dark.png %{buildroot}%{_datadir}/wallpapers/"Ultramarine Dark"/contents/screenshot.png
 
-ln -rsf %{buildroot}%{_datadir}/backgrounds/ultramarine-linux/ultramarine/ultramarine-light.png %{buildroot}%{_datadir}/wallpapers/"Ultramarine Light"/contents/images/3840x2160.png
-ln -rsf %{buildroot}%{_datadir}/backgrounds/ultramarine-linux/ultramarine/ultramarine-light.png %{buildroot}%{_datadir}/wallpapers/"Ultramarine Light"/contents/screenshot.png
+%define kde_link() \
+    %define _file_path "%1" \
+    %define _wallname %2 \
+    #mkdir -p %{buildroot}%{_datadir}/wallpapers/"%{_wallname}"/contents/images/ && \
+    ln -rsf %{buildroot}%{_datadir}/backgrounds/ultramarine-linux/%{_file_path} "%{buildroot}%{_datadir}/wallpapers/%{_wallname}/contents/images/3840x2160.png" \
+    ln -rsf %{buildroot}%{_datadir}/backgrounds/ultramarine-linux/%{_file_path} %{buildroot}%{_datadir}/wallpapers/"%{_wallname}"/contents/screenshot.png
 
-ln -rsf %{buildroot}%{_datadir}/backgrounds/ultramarine-linux/38/tortuga-dark.png %{buildroot}%{_datadir}/wallpapers/"Tortuga Dark"/contents/images/3840x2160.png
-ln -rsf %{buildroot}%{_datadir}/backgrounds/ultramarine-linux/38/tortuga-dark.png %{buildroot}%{_datadir}/wallpapers/"Tortuga Dark"/contents/screenshot.png
+kde_link() {
+    local file=$1
+    local wallname=$2
+    ln -rsf "%{buildroot}%{_datadir}/backgrounds/ultramarine-linux/$file" "%{buildroot}%{_datadir}/wallpapers/$wallname/contents/images/3840x2160.png"
+    ln -rsf "%{buildroot}%{_datadir}/backgrounds/ultramarine-linux/$file" "%{buildroot}%{_datadir}/wallpapers/$wallname/contents/screenshot.png"
+}
 
-ln -rsf %{buildroot}%{_datadir}/backgrounds/ultramarine-linux/38/tortuga-light.png %{buildroot}%{_datadir}/wallpapers/"Tortuga Light"/contents/images/3840x2160.png
-ln -rsf %{buildroot}%{_datadir}/backgrounds/ultramarine-linux/38/tortuga-light.png %{buildroot}%{_datadir}/wallpapers/"Tortuga Light"/contents/screenshot.png
 
-ln -rsf %{buildroot}%{_datadir}/backgrounds/ultramarine-linux/39/foresty-skies-d.png %{buildroot}%{_datadir}/wallpapers/"Forresty Skies Dark"/contents/images/3840x2160.png
-ln -rsf %{buildroot}%{_datadir}/backgrounds/ultramarine-linux/39/foresty-skies-d.png %{buildroot}%{_datadir}/wallpapers/"Forresty Skies Dark"/contents/screenshot.png
+kde_link 38/tortuga-dark.png "Tortuga Dark"
+kde_link 38/tortuga-light.png "Tortuga Light"
 
-ln -rsf %{buildroot}%{_datadir}/backgrounds/ultramarine-linux/39/foresty-skies-l.png %{buildroot}%{_datadir}/wallpapers/"Forresty Skies Light"/contents/images/3840x2160.png
-ln -rsf %{buildroot}%{_datadir}/backgrounds/ultramarine-linux/39/foresty-skies-l.png %{buildroot}%{_datadir}/wallpapers/"Forresty Skies Light"/contents/screenshot.png
+kde_link 39/foresty-skies-d.png "Forresty Skies Dark"
+kde_link 39/foresty-skies-l.png "Forresty Skies Light"
+
+kde_link 40/lost-dark.png "Lost Dark"
+kde_link 40/lost-light.png "Lost Light"
+
+kde_link 40/umbrella-dark.png "Umbrella Dark"
+kde_link 40/umbrella-light.png "Umbrella Light"
+
+kde_link ultramarine/ultramarine-dark.png "Ultramarine Dark"
+kde_link ultramarine/ultramarine-light.png "Ultramarine Light"
 
 # Compat files
 
-ln -rsf %{buildroot}%{_datadir}/backgrounds/ultramarine-linux/39/foresty-skies-d.png %{buildroot}%{_datadir}/backgrounds/default-dark.png
-ln -rsf %{buildroot}%{_datadir}/backgrounds/ultramarine-linux/39/foresty-skies-l.png %{buildroot}%{_datadir}/backgrounds/default.png
-ln -rsf %{buildroot}%{_datadir}/backgrounds/ultramarine-linux/39/foresty-skies.xml %{buildroot}%{_datadir}/backgrounds/default.xml
+compat_link() {
+    local file=$1
+    local dest=$2
+    ln -rsf "%{buildroot}%{_datadir}/backgrounds/ultramarine-linux/$file" "%{buildroot}%{_datadir}/backgrounds/$dest"
+}
+
+
+DEFAULT_WALL="40/lost-light.png"
+DEFAULT_DARK_WALL="40/lost-dark.png"
+DEFAULT_XML="40/lost.xml"
+
+# Let's generate our default gschema override file
+
+cat << EOF > %{buildroot}%{_datadir}/glib-2.0/schemas/30_default_backgrounds.gschema.override
+[org.gnome.desktop.background]
+picture-uri='file://%{_datadir}/backgrounds/ultramarine-linux/$DEFAULT_WALL'
+picture-uri-dark='file:///usr/share/backgrounds/ultramarine-linux/$DEFAULT_DARK_WALL'
+EOF
+
+
+compat_link $DEFAULT_WALL default.png
+compat_link $DEFAULT_DARK_WALL default-dark.png
+compat_link $DEFAULT_XML default.xml
 
 mkdir -p %{buildroot}%{_datadir}/backgrounds/images/
 
-ln -rsf %{buildroot}%{_datadir}/backgrounds/ultramarine-linux/39/foresty-skies-l.png %{buildroot}%{_datadir}/backgrounds/images/default.png
-ln -rsf %{buildroot}%{_datadir}/backgrounds/ultramarine-linux/39/foresty-skies-l.png %{buildroot}%{_datadir}/backgrounds/images/default-5_4.png
-ln -rsf %{buildroot}%{_datadir}/backgrounds/ultramarine-linux/39/foresty-skies-l.png %{buildroot}%{_datadir}/backgrounds/images/default-16_9.png
-ln -rsf %{buildroot}%{_datadir}/backgrounds/ultramarine-linux/39/foresty-skies-l.png %{buildroot}%{_datadir}/backgrounds/images/default-16_10.png
+compat_link $DEFAULT_WALL images/default.png
+compat_link $DEFAULT_WALL images/default-5_4.png
+compat_link $DEFAULT_WALL images/default-16_9.png
+compat_link $DEFAULT_WALL images/default-16_10.png
 
-ln -rsf %{buildroot}%{_datadir}/backgrounds/ultramarine-linux/39/foresty-skies-d.png %{buildroot}%{_datadir}/backgrounds/images/default-dark.png
-ln -rsf %{buildroot}%{_datadir}/backgrounds/ultramarine-linux/39/foresty-skies-d.png %{buildroot}%{_datadir}/backgrounds/images/default-dark-5_4.png
-ln -rsf %{buildroot}%{_datadir}/backgrounds/ultramarine-linux/39/foresty-skies-d.png %{buildroot}%{_datadir}/backgrounds/images/default-dark-16_9.png
-ln -rsf %{buildroot}%{_datadir}/backgrounds/ultramarine-linux/39/foresty-skies-d.png %{buildroot}%{_datadir}/backgrounds/images/default-dark-16_10.png
+compat_link $DEFAULT_DARK_WALL images/default-dark.png
+compat_link $DEFAULT_DARK_WALL images/default-dark-5_4.png
+compat_link $DEFAULT_DARK_WALL images/default-dark-16_9.png
+compat_link $DEFAULT_DARK_WALL images/default-dark-16_10.png
 
 %files
 %license COPYING
@@ -123,9 +155,7 @@ ln -rsf %{buildroot}%{_datadir}/backgrounds/ultramarine-linux/39/foresty-skies-d
 %{_datadir}/gnome-background-properties/ultramarine.xml
 
 %files kde
-%{_datadir}/wallpapers/Tortuga*
-%{_datadir}/wallpapers/Ultramarine*
-%{_datadir}/wallpapers/Forresty*
+%{_datadir}/wallpapers/*
 
 %files compat
 %dir %{_datadir}/backgrounds/images/
