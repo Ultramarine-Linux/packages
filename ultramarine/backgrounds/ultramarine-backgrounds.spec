@@ -74,12 +74,6 @@ mkdir -p %{buildroot}%{_datadir}/glib-2.0/schemas/
 
 # Symlink the backgrounds for KDE
 
-%define kde_link() \
-    %define _file_path "%1" \
-    %define _wallname %2 \
-    #mkdir -p %{buildroot}%{_datadir}/wallpapers/"%{_wallname}"/contents/images/ && \
-    ln -rsf %{buildroot}%{_datadir}/backgrounds/ultramarine-linux/%{_file_path} "%{buildroot}%{_datadir}/wallpapers/%{_wallname}/contents/images/3840x2160.png" \
-    ln -rsf %{buildroot}%{_datadir}/backgrounds/ultramarine-linux/%{_file_path} %{buildroot}%{_datadir}/wallpapers/"%{_wallname}"/contents/screenshot.png
 
 kde_link() {
     local file=$1
