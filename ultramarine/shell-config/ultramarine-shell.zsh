@@ -14,7 +14,7 @@ bindkey "^[[1;5C" forward-word
 bindkey '^H' backward-kill-word
 bindkey '^[[3;5~' kill-word
 
-# ALt + Backspack/Delete Keybinds
+# ALt + Backspace/Delete Keybinds
 bindkey "^[[3~" delete-char
 bindkey -M emacs '^[[3;3~' kill-word
 
