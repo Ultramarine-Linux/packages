@@ -18,7 +18,7 @@ Requires:      ultramarine-release = %{version}
 
 %if ! 0%{?eln}
 # For _kde4_* macros:
-BuildRequires:	kde-filesystem
+BuildRequires:	kde4-macros(api)
 %endif
 
 %description
@@ -30,7 +30,7 @@ Summary: Assets used by httpd that are related to Ultramarine Linux
 Provides:	system-logos-httpd = %{version}-%{_release}
 Provides: %{_alt_name}-httpd = %{version}-%{_release}
 BuildArch:	noarch
-Recommends:	julietaula-montserrat-base-web-fonts
+Recommends:	julietaula-montserrat-fonts
 Provides:	system-logos(httpd-logo-ng)
 
 %description httpd
@@ -61,6 +61,10 @@ install -p -m 644 bootloader/fedora_classic.icns $RPM_BUILD_ROOT%{_datadir}/pixm
 # To regenerate these files, run:
 # pngtopnm foo.png | ppmtoapplevol > foo.vol
 install -p -m 644 bootloader/fedora.vol bootloader/fedora-media.vol $RPM_BUILD_ROOT%{_datadir}/pixmaps/bootloader
+
+# m1n1 logos, see Makefile for how to regenerate
+install -p -m 644 bootloader/bootlogo_128.png $RPM_BUILD_ROOT%{_datadir}/pixmaps/bootloader/bootlogo_128.png
+install -p -m 644 bootloader/bootlogo_256.png $RPM_BUILD_ROOT%{_datadir}/pixmaps/bootloader/bootlogo_256.png
 
 # General purpose Fedora logos
 for i in pixmaps/* ; do
