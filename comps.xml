@@ -223,4 +223,58 @@
       <groupid>ultramarine-kde-product</groupid>
     </grouplist>
   </environment>
+  <group>
+    <id>ultramarine-xfce-product</id>
+    <name>Ultramarine Xfce product core</name>
+    <description>Packages mandatory for the Ultramarine Xfce product.</description>
+    <default>false</default>
+    <uservisible>false</uservisible>
+    <packagelist>
+      <packagereq type="mandatory">ultramarine-release-xfce</packagereq>
+      <packagereq type="mandatory">ultramarine-release-identity-xfce</packagereq>
+      <packagereq type="mandatory">ultramarine-xfce-filesystem</packagereq>
+      <packagereq type="mandatory">lightdm-gtk</packagereq>
+      <packagereq type="default">ultramarine-backgrounds-gnome</packagereq>
+      <packagereq type="default">ultramarine-backgrounds</packagereq>
+      <packagereq type="default">fluent-theme</packagereq>
+      <packagereq type="default">fluent-icon-theme</packagereq>
+      <packagereq type="default">seahorse</packagereq>
+      <packagereq type="default">gnome-software</packagereq>
+      <packagereq type="default">evince</packagereq>
+      <packagereq type="default">catfish</packagereq>
+      <packagereq type="default">geary</packagereq>
+      <packagereq type="default">firefox</packagereq>
+      <packagereq type="default">gnome-calculator</packagereq>
+      <packagereq type="default">mousepad</packagereq>
+      <packagereq type="default">ristretto</packagereq>
+      <packagereq type="default">xarchiver</packagereq>
+      <packagereq type="default">xfce4-clipman-plugi</packagereq>
+      <packagereq type="default">xfce4-dict-plugin</packagereq>
+      </packagelist>
+  </group>
+  <environment>
+    <id>ultramarine-xfce-product-environment</id>
+    <name>Ultramarine Xfce</name>
+    <description>Ultramarine Xfce is the Ultramarine experience powered by the Xfce desktop.</description>
+    <grouplist>
+      <groupid>base-x</groupid>
+      <groupid>container-management</groupid>
+      <groupid>core</groupid>
+      <groupid>standard</groupid>
+      <groupid>firefox</groupid>
+      <groupid>fonts</groupid>
+      <groupid>xfce-desktop</groupid>
+      <groupid>xfce-extra-plugins</groupid>
+      <groupid>guest-desktop-agents</groupid>
+      <groupid>hardware-support</groupid>
+      <groupid>libreoffice</groupid>
+      <groupid>multimedia</groupid>
+      <groupid>sound-and-video</groupid>
+      <groupid>networkmanager-submodules</groupid>
+      <groupid>printing</groupid>
+      <groupid>ultramarine-product-common</groupid>
+      <groupid>ultramarine-desktop-product-common</groupid>
+      <groupid>ultramarine-xfce-product</groupid>
+    </grouplist>
+  </environment>
 </comps>
