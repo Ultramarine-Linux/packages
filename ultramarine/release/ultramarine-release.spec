@@ -456,7 +456,7 @@ Summary:	Package that excludes other redundant packages for XFCE
 Conflicts:	abrt-desktop
 Conflicts:	dnfdragora-updater
 
-%description
+%description xfce-pkgexcl
 This package excludes some packages included in Fedora groups that are
 pulled into Ultramarine as weak/optional dependencies.
 This is done by marking them as conflicts in this package.
