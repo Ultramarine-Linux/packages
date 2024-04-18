@@ -302,6 +302,7 @@ Provides:   system-release-product
 # package must provide it. This Recommends: pulls in
 # ultramarine-release-identity-cinnamon if nothing else is already doing so.
 Recommends:	ultramarine-release-identity-kde
+Recommends:	kwin-system76-scheduler-integration
 
 %description kde
 Provides a base package for Ultramarine KDE configurations.
