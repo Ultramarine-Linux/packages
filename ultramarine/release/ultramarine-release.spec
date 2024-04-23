@@ -1,6 +1,7 @@
 %global is_rawhide 0
 
 %global release_name Lost Umbrella
+%global fedora_codename Forty
 %global codename lostumbrella
 %define dist_version 40
 %define _alt_name fedora-release
@@ -20,14 +21,20 @@
 %bcond_without pantheon
 %bcond_without kde
 %bcond_without gnome
+%bcond_without xfce
 %bcond_without atomic_flagship
 %bcond_without atomic_pantheon
 %bcond_without atomic_kde
 %bcond_without atomic_gnome
+%bcond_without atomic_xfce
 
-%if %{with atomic_flagship} || %{with atomic_pantheon} || %{with atomic_kde} || %{with atomic_gnome}
+%if %{with atomic_flagship} || %{with atomic_pantheon} || %{with atomic_kde} || %{with atomic_gnome} || %{with atomic_xfce}
 %global with_atomic_desktop 1
 %endif
+
+## ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+## ┃ Ultramarine Linux Release Package ┃
+## ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 
 Summary:	Ultramarine Linux release files
 Name:		ultramarine-release
@@ -36,6 +43,18 @@ Release:	1%{?dist}
 License:	MIT
 Source0:	LICENSE
 URL:        https://ultramarine-linux.org
+Recommends: ultramarine-release-identity-basic
+BuildArch:  noarch
+
+Provides:   ultramarine-release = %{version}-%{release}
+Provides:   ultramarine-release-variant = %{version}-%{release}
+
+Provides:   system-release
+Provides:   system-release(%{version})
+Provides:   base-module(platform:f%{version})
+
+Requires:   ultramarine-release-common = %{version}-%{release}
+
 Source1:	README.developers
 Source2:	README.Ultramarine-Release-Notes
 Source3:	README.license
@@ -44,6 +63,7 @@ Source6:	85-display-manager.preset
 Source7:	90-default.preset
 Source8:	99-default-disable.preset
 Source9:	90-default-user.preset
+
 Source13:   60-ultramarine-presets.conf
 Source14:   lightdm-gtk-greeter.conf
 Source15:   50_ultramarine-gnome.gschema.override
@@ -54,47 +74,32 @@ Source20:   distro-edition-template.swidtag
 Source28:   longer-default-shutdown-timeout.conf
 
 Source30:   ultramarine.conf
-
-Source31:  enable-kwin-system76-scheduler-integration.service
-
-Source32:  org.projectatomic.rpmostree1.rules
-
+Source31:   enable-kwin-system76-scheduler-integration.service
+Source32:   org.projectatomic.rpmostree1.rules
 Source33:   50-ultramarine-networking.conf
-
 Source34:   ultramarine.urls
 
-BuildArch: noarch
-
-Provides: ultramarine-release = %{version}-%{release}
-Provides: ultramarine-release-variant = %{version}-%{release}
-
-Provides:   system-release
-Provides:   system-release(%{version})
-Provides:   base-module(platform:f%{version})
-Requires:   ultramarine-release-common = %{version}-%{release}
-
-Recommends: ultramarine-release-identity-basic
+BuildRequires:    systemd-rpm-macros
 
 %description
 Release files for Ultramarine Linux.
 
 
+## ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+## ┃ Common Files and Release Notes ┃
+## ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
 %package common
-Summary: Generic release files
-
-Conflicts:  fedora-release-common
-
+Summary:    Generic release files
 Requires:   ultramarine-release-variant = %{version}
-#Suggests:   ultramarine-release
-
 Requires:   ultramarine-repos(%{version})
 Requires:   ultramarine-release-identity = %{version}-%{release}
-
+Recommends: system76-scheduler
 Conflicts:  generic-release
 Conflicts:  fedora-release
-Provides: %{_alt_name} = %{version}-%{release}
-Provides: generic-release = %{version}-%{release}
-
+Conflicts:  fedora-release-common
+Provides:   %{_alt_name} = %{version}-%{release}
+Provides:   generic-release = %{version}-%{release}
 
 %description common
 Release files common to all Editions and Spins
@@ -118,16 +123,13 @@ Release files for Ultramarine Linux.
 
 %package identity-basic
 Summary:		Package providing the basic Ultramarine identity
-
 RemovePathPostfixes: .basic
-Provides:         ultramarine-release = %{version}-%{release}
-Provides:         ultramarine-release-basic = %{version}-%{release}
-Obsoletes:        ultramarine-release-basic
+Provides:		ultramarine-release = %{version}-%{release}
+Provides:		ultramarine-release-basic = %{version}-%{release}
 Provides:		ultramarine-release-identity = %{version}-%{release}
 Conflicts:		ultramarine-release-identity
-Conflicts:        fedora-release-identity-basic
-Requires(meta):   ultramarine-release-basic = %{version}-%{release}
-Obsoletes:        ultramarine-release-basic < 38
+Conflicts:		fedora-release-identity-basic
+Requires(meta):	ultramarine-release-basic = %{version}-%{release}
 
 %description identity-basic
 Provides the necessary files for a Ultramarine installation that is not identifying
@@ -141,32 +143,30 @@ itself as a particular Edition or Spin.
 %if %{with flagship}
 
 %package flagship
-Summary:		Base package for Ultramarine Flagship-specific default configurations
-
+Summary:	Base package for Ultramarine Flagship-specific default configurations
 RemovePathPostfixes: .flagship
-Provides:         ultramarine-release = %{version}-%{release}
-Provides:         ultramarine-release-flagship = %{version}-%{release}
-Provides:         ultramarine-release-variant = %{version}-%{release}
-Provides:         system-release
-Provides:         system-release(%{version})
-Provides:         base-module(platform:f%{version})
-Requires:         ultramarine-release-common = %{version}-%{release}
-Provides:         system-release-product
+Provides:   ultramarine-release = %{version}-%{release}
+Provides:   ultramarine-release-flagship = %{version}-%{release}
+Provides:   ultramarine-release-variant = %{version}-%{release}
+Provides:   system-release
+Provides:   system-release(%{version})
+Provides:   base-module(platform:f%{version})
+Requires:   ultramarine-release-common = %{version}-%{release}
+Provides:   system-release-product
 # ultramarine-release-common Requires: ultramarine-release-identity, so at least one
 # package must provide it. This Recommends: pulls in
 # ultramarine-release-identity-cinnamon if nothing else is already doing so.
-Recommends:		ultramarine-release-identity-flagship
+Recommends:	ultramarine-release-identity-flagship
+
 %description flagship
 Provides a base package for Ultramarine Flagship configurations.
 
-
 %package identity-flagship
 Summary:		Package providing the Ultramarine Flagship Identity
-
 RemovePathPostfixes: .flagship
 Provides:		ultramarine-release-identity = %{version}-%{release}
 Conflicts:		ultramarine-release-identity
-Requires(meta):   ultramarine-release-flagship = %{version}-%{release}
+Requires(meta):	ultramarine-release-flagship = %{version}-%{release}
 
 %description identity-flagship
 Provides the necessary files for a Ultramarine Flagship installation.
@@ -179,33 +179,31 @@ Provides the necessary files for a Ultramarine Flagship installation.
 %if %{with atomic_flagship}
 
 %package atomic-flagship
-Summary:		Base package for Ultramarine Atomic Flagship-specific default configurations
-
+Summary:	Base package for Ultramarine Atomic Flagship-specific default configurations
 RemovePathPostfixes: .atomic-flagship
-Provides:         ultramarine-release = %{version}-%{release}
-Provides:         ultramarine-release-atomic-flagship = %{version}-%{release}
-Provides:         ultramarine-release-variant = %{version}-%{release}
-Provides:         system-release
-Provides:         system-release(%{version})
-Provides:         base-module(platform:f%{version})
-Requires:         ultramarine-release-common = %{version}-%{release}
-Requires:         ultramarine-release-atomic-desktop = %{version}-%{release}
-Provides:         system-release-product
+Provides:   ultramarine-release = %{version}-%{release}
+Provides:   ultramarine-release-atomic-flagship = %{version}-%{release}
+Provides:   ultramarine-release-variant = %{version}-%{release}
+Provides:   system-release
+Provides:   system-release(%{version})
+Provides:   base-module(platform:f%{version})
+Requires:   ultramarine-release-common = %{version}-%{release}
+Requires:   ultramarine-release-atomic-desktop = %{version}-%{release}
+Provides:   system-release-product
 # ultramarine-release-common Requires: ultramarine-release-identity, so at least one
 # package must provide it. This Recommends: pulls in
 # ultramarine-release-identity-cinnamon if nothing else is already doing so.
-Recommends:		ultramarine-release-identity-atomic-flagship
+Recommends:	ultramarine-release-identity-atomic-flagship
+
 %description atomic-flagship
 Provides a base package for Ultramarine Atomic Flagship configurations.
 
-
 %package identity-atomic-flagship
 Summary:		Package providing the Ultramarine Atomic Flagship Identity
-
 RemovePathPostfixes: .atomic-flagship
 Provides:		ultramarine-release-identity = %{version}-%{release}
 Conflicts:		ultramarine-release-identity
-Requires(meta):   ultramarine-release-atomic-flagship = %{version}-%{release}
+Requires(meta):	ultramarine-release-atomic-flagship = %{version}-%{release}
 
 %description identity-atomic-flagship
 Provides the necessary files for a Ultramarine Atomic Flagship installation.
@@ -218,31 +216,30 @@ Provides the necessary files for a Ultramarine Atomic Flagship installation.
 
 %if %{with pantheon}
 %package pantheon
-Summary:		Base package for Ultramarine Pantheon-specific default configurations
-
+Summary:	Base package for Ultramarine Pantheon-specific default configurations
 RemovePathPostfixes: .pantheon
-Provides:         ultramarine-release = %{version}-%{release}
-Provides:         ultramarine-release-pantheon = %{version}-%{release}
-Provides:         ultramarine-release-variant = %{version}-%{release}
-Provides:         system-release
-Provides:         system-release(%{version})
-Provides:         base-module(platform:f%{version})
-Requires:         ultramarine-release-common = %{version}-%{release}
-Provides:         system-release-product
+Provides:   ultramarine-release = %{version}-%{release}
+Provides:   ultramarine-release-pantheon = %{version}-%{release}
+Provides:   ultramarine-release-variant = %{version}-%{release}
+Provides:   system-release
+Provides:   system-release(%{version})
+Provides:   base-module(platform:f%{version})
+Requires:   ultramarine-release-common = %{version}-%{release}
+Provides:   system-release-product
 # ultramarine-release-common Requires: ultramarine-release-identity, so at least one
 # package must provide it. This Recommends: pulls in
 # ultramarine-release-identity-cinnamon if nothing else is already doing so.
-Recommends:		ultramarine-release-identity-pantheon
+Recommends:	ultramarine-release-identity-pantheon
+
 %description pantheon
 Provides a base package for Ultramarine Pantheon configurations.
 
 %package identity-pantheon
 Summary:		Package providing the Ultramarine Pantheon Identity
-
 RemovePathPostfixes: .pantheon
 Provides:		ultramarine-release-identity = %{version}-%{release}
 Conflicts:		ultramarine-release-identity
-Requires(meta):   ultramarine-release-pantheon = %{version}-%{release}
+Requires(meta):	ultramarine-release-pantheon = %{version}-%{release}
 
 %description identity-pantheon
 Provides the necessary files for a Ultramarine Pantheon installation.
@@ -254,32 +251,31 @@ Provides the necessary files for a Ultramarine Pantheon installation.
 
 %if %{with atomic_pantheon}
 %package atomic-pantheon
-Summary:		Base package for Ultramarine Atomic Pantheon-specific default configurations
-
+Summary:	Base package for Ultramarine Atomic Pantheon-specific default configurations
 RemovePathPostfixes: .atomic-pantheon
-Provides:         ultramarine-release = %{version}-%{release}
-Provides:         ultramarine-release-atomic-pantheon = %{version}-%{release}
-Provides:         ultramarine-release-variant = %{version}-%{release}
-Provides:         system-release
-Provides:         system-release(%{version})
-Provides:         base-module(platform:f%{version})
-Requires:         ultramarine-release-common = %{version}-%{release}
-Requires:         ultramarine-release-atomic-desktop = %{version}-%{release}
-Provides:         system-release-product
+Provides:   ultramarine-release = %{version}-%{release}
+Provides:   ultramarine-release-atomic-pantheon = %{version}-%{release}
+Provides:   ultramarine-release-variant = %{version}-%{release}
+Provides:   system-release
+Provides:   system-release(%{version})
+Provides:   base-module(platform:f%{version})
+Requires:   ultramarine-release-common = %{version}-%{release}
+Requires:   ultramarine-release-atomic-desktop = %{version}-%{release}
+Provides:   system-release-product
 # ultramarine-release-common Requires: ultramarine-release-identity, so at least one
 # package must provide it. This Recommends: pulls in
 # ultramarine-release-identity-cinnamon if nothing else is already doing so.
-Recommends:		ultramarine-release-identity-atomic-pantheon
+Recommends:	ultramarine-release-identity-atomic-pantheon
+
 %description atomic-pantheon
 Provides a base package for Ultramarine Atomic Pantheon configurations.
 
 %package identity-atomic-pantheon
 Summary:		Package providing the Ultramarine Atomic Pantheon Identity
-
 RemovePathPostfixes: .atomic-pantheon
 Provides:		ultramarine-release-identity = %{version}-%{release}
 Conflicts:		ultramarine-release-identity
-Requires(meta):   ultramarine-release-atomic-pantheon = %{version}-%{release}
+Requires(meta):	ultramarine-release-atomic-pantheon = %{version}-%{release}
 
 %description identity-atomic-pantheon
 Provides the necessary files for a Ultramarine Atomic Pantheon installation.
@@ -292,35 +288,33 @@ Provides the necessary files for a Ultramarine Atomic Pantheon installation.
 
 %if %{with kde}
 %package kde
-Summary:		Base package for Ultramarine KDE-specific default configurations
-
+Summary:	Base package for Ultramarine KDE-specific default configurations
 RemovePathPostfixes: .kde
-Provides:         ultramarine-release = %{version}-%{release}
-Provides:         ultramarine-release-kde = %{version}-%{release}
-Provides:         ultramarine-release-variant = %{version}-%{release}
-Provides:         system-release
-Provides:         system-release(%{version})
-Provides:         base-module(platform:f%{version})
-Requires:         ultramarine-release-common = %{version}-%{release}
-Provides:         system-release-product
+Provides:   ultramarine-release = %{version}-%{release}
+Provides:   ultramarine-release-kde = %{version}-%{release}
+Provides:   ultramarine-release-variant = %{version}-%{release}
+Provides:   system-release
+Provides:   system-release(%{version})
+Provides:   base-module(platform:f%{version})
+Requires:   ultramarine-release-common = %{version}-%{release}
+Provides:   system-release-product
 # ultramarine-release-common Requires: ultramarine-release-identity, so at least one
 # package must provide it. This Recommends: pulls in
 # ultramarine-release-identity-cinnamon if nothing else is already doing so.
-Recommends:		ultramarine-release-identity-kde
+Recommends:	ultramarine-release-identity-kde
+Recommends:	kwin-system76-scheduler-integration
+
 %description kde
 Provides a base package for Ultramarine KDE configurations.
 
 %package identity-kde
-
 Summary:		Package providing the Ultramarine KDE Identity
-
 RemovePathPostfixes: .kde
 Provides:		ultramarine-release-identity = %{version}-%{release}
 Conflicts:		ultramarine-release-identity
-Requires(meta):   ultramarine-release-kde = %{version}-%{release}
+Requires(meta):	ultramarine-release-kde = %{version}-%{release}
 
 %description identity-kde
-
 Provides the necessary files for a Ultramarine KDE installation.
 
 %endif
@@ -330,36 +324,34 @@ Provides the necessary files for a Ultramarine KDE installation.
 
 %if %{with atomic_kde}
 %package atomic-kde
-Summary:		Base package for Ultramarine Atomic KDE-specific default configurations
+Summary:	Base package for Ultramarine Atomic KDE-specific default configurations
 
 RemovePathPostfixes: .atomic-kde
-Provides:         ultramarine-release = %{version}-%{release}
-Provides:         ultramarine-release-atomic-kde = %{version}-%{release}
-Provides:         ultramarine-release-variant = %{version}-%{release}
-Provides:         system-release
-Provides:         system-release(%{version})
-Provides:         base-module(platform:f%{version})
-Requires:         ultramarine-release-common = %{version}-%{release}
-Requires:         ultramarine-release-atomic-desktop = %{version}-%{release}
-Provides:         system-release-product
+Provides:   ultramarine-release = %{version}-%{release}
+Provides:   ultramarine-release-atomic-kde = %{version}-%{release}
+Provides:   ultramarine-release-variant = %{version}-%{release}
+Provides:   system-release
+Provides:   system-release(%{version})
+Provides:   base-module(platform:f%{version})
+Requires:   ultramarine-release-common = %{version}-%{release}
+Requires:   ultramarine-release-atomic-desktop = %{version}-%{release}
+Provides:   system-release-product
 # ultramarine-release-common Requires: ultramarine-release-identity, so at least one
 # package must provide it. This Recommends: pulls in
 # ultramarine-release-identity-cinnamon if nothing else is already doing so.
-Recommends:		ultramarine-release-identity-atomic-kde
+Recommends:	ultramarine-release-identity-atomic-kde
+
 %description atomic-kde
 Provides a base package for Ultramarine Atomic KDE configurations.
 
 %package identity-atomic-kde
-
 Summary:		Package providing the Ultramarine Atomic KDE Identity
-
 RemovePathPostfixes: .atomic-kde
 Provides:		ultramarine-release-identity = %{version}-%{release}
 Conflicts:		ultramarine-release-identity
-Requires(meta):   ultramarine-release-atomic-kde = %{version}-%{release}
+Requires(meta):	ultramarine-release-atomic-kde = %{version}-%{release}
 
 %description identity-atomic-kde
-
 Provides the necessary files for a Ultramarine Atomic KDE installation.
 
 %endif
@@ -370,38 +362,34 @@ Provides the necessary files for a Ultramarine Atomic KDE installation.
 %if %{with gnome}
 
 %package gnome
-Summary:		Base package for Ultramarine GNOME-specific default configurations
-
+Summary:	Base package for Ultramarine GNOME-specific default configurations
 RemovePathPostfixes: .gnome
-Provides:         ultramarine-release = %{version}-%{release}
-Provides:         ultramarine-release-gnome = %{version}-%{release}
-Provides:         ultramarine-release-variant = %{version}-%{release}
-Provides:         system-release
-Provides:         system-release(%{version})
-Provides:         base-module(platform:f%{version})
-Requires:         ultramarine-release-common = %{version}-%{release}
-Provides:         system-release-product
-Recommends:       gnome-shell-extension-pop-shell
-Recommends:       gnome-shell-extension-appindicator
-Recommends:       gnome-shell-extension-windowsNavigator
-Recommends:       gnome-shell-extension-appmenu-is-back
-Requires:         kwin-system76-scheduler-integration
-BuildRequires:    systemd-rpm-macros
-
+Provides:   ultramarine-release = %{version}-%{release}
+Provides:   ultramarine-release-gnome = %{version}-%{release}
+Provides:   ultramarine-release-variant = %{version}-%{release}
+Provides:   system-release
+Provides:   system-release(%{version})
+Provides:   base-module(platform:f%{version})
+Requires:   ultramarine-release-common = %{version}-%{release}
+Provides:   system-release-product
+Recommends: gnome-shell-extension-pop-shell
+Recommends: gnome-shell-extension-appindicator
+Recommends: gnome-shell-extension-windowsNavigator
+Recommends: gnome-shell-extension-appmenu-is-back
 # ultramarine-release-common Requires: ultramarine-release-identity, so at least one
 # package must provide it. This Recommends: pulls in
 # ultramarine-release-identity-cinnamon if nothing else is already doing so.
-Recommends:		ultramarine-release-identity-gnome
+Recommends:	ultramarine-release-identity-gnome
+
 %description gnome
 Provides a base package for Ultramarine GNOME configurations.
 
 %package identity-gnome
 Summary:		Package providing the Ultramarine GNOME Identity
-
 RemovePathPostfixes: .gnome
 Provides:		ultramarine-release-identity = %{version}-%{release}
 Conflicts:		ultramarine-release-identity
-Requires(meta):   ultramarine-release-gnome = %{version}-%{release}
+Requires(meta):	ultramarine-release-gnome = %{version}-%{release}
 
 # Allow migration from the legacy ultramarine-gnome-filesystem package
 Provides: ultramarine-gnome-filesystem = %{version}-%{release}
@@ -418,42 +406,132 @@ Provides the necessary files for a Ultramarine GNOME installation.
 %if %{with atomic_gnome}
 
 %package atomic-gnome
-Summary:		Base package for Ultramarine Atomic GNOME-specific default configurations
-
+Summary:	Base package for Ultramarine Atomic GNOME-specific default configurations
 RemovePathPostfixes: .atomic-gnome
-Provides:         ultramarine-release = %{version}-%{release}
-Provides:         ultramarine-release-atomic-gnome = %{version}-%{release}
-Provides:         ultramarine-release-variant = %{version}-%{release}
-Provides:         system-release
-Provides:         system-release(%{version})
-Provides:         base-module(platform:f%{version})
-Requires:         ultramarine-release-common = %{version}-%{release}
-Requires:         ultramarine-release-atomic-desktop = %{version}-%{release}
-Provides:         system-release-product
-Recommends:       gnome-shell-extension-pop-shell
-Recommends:       gnome-shell-extension-appindicator
-Recommends:       gnome-shell-extension-windowsNavigator
-Recommends:       gnome-shell-extension-appmenu-is-back
-Requires:         kwin-system76-scheduler-integration
-BuildRequires:    systemd-rpm-macros
-
+Provides:   ultramarine-release = %{version}-%{release}
+Provides:   ultramarine-release-atomic-gnome = %{version}-%{release}
+Provides:   ultramarine-release-variant = %{version}-%{release}
+Provides:   system-release
+Provides:   system-release(%{version})
+Provides:   base-module(platform:f%{version})
+Requires:   ultramarine-release-common = %{version}-%{release}
+Requires:   ultramarine-release-atomic-desktop = %{version}-%{release}
+Provides:   system-release-product
+Recommends: gnome-shell-extension-pop-shell
+Recommends: gnome-shell-extension-appindicator
+Recommends: gnome-shell-extension-windowsNavigator
+Recommends: gnome-shell-extension-appmenu-is-back
 # ultramarine-release-common Requires: ultramarine-release-identity, so at least one
 # package must provide it. This Recommends: pulls in
 # ultramarine-release-identity-cinnamon if nothing else is already doing so.
-Recommends:		ultramarine-release-identity-atomic-gnome
+Recommends:	ultramarine-release-identity-atomic-gnome
+
 %description atomic-gnome
 Provides a base package for Ultramarine Atomic GNOME configurations.
 
 %package identity-atomic-gnome
 Summary:		Package providing the Ultramarine Atomic GNOME Identity
-
 RemovePathPostfixes: .atomic-gnome
 Provides:		ultramarine-release-identity = %{version}-%{release}
 Conflicts:		ultramarine-release-identity
-Requires(meta):   ultramarine-release-atomic-gnome = %{version}-%{release}
+Requires(meta):	ultramarine-release-atomic-gnome = %{version}-%{release}
 
 %description identity-atomic-gnome
 Provides the necessary files for a Ultramarine Atomic GNOME installation.
+
+%endif
+
+
+######################################################################
+####### XFCE #######
+
+%if %{with xfce}
+
+## ━━━ pkgexcl ━━━
+## A Special package that conflicts with packages provided by various
+## Fedora groups. These packages are removed to make it as lightweight
+## as possible.
+
+%package xfce-pkgexcl
+Summary:	Package that excludes other redundant packages for XFCE
+Conflicts:	abrt-desktop
+Conflicts:	dnfdragora-updater
+
+%description xfce-pkgexcl
+This package excludes some packages included in Fedora groups that are
+pulled into Ultramarine as weak/optional dependencies.
+This is done by marking them as conflicts in this package.
+
+
+%package xfce
+Summary:	Base package for Ultramarine XFCE-specific default configurations
+RemovePathPostfixes: .xfce
+Provides:   ultramarine-release = %{version}-%{release}
+Provides:   ultramarine-release-xfce = %{version}-%{release}
+Provides:   ultramarine-release-variant = %{version}-%{release}
+Provides:   system-release
+Provides:   system-release(%{version})
+Provides:   base-module(platform:f%{version})
+Requires:   ultramarine-release-common = %{version}-%{release}
+Provides:   system-release-product
+# ultramarine-release-common Requires: ultramarine-release-identity, so at least one
+# package must provide it. This Recommends: pulls in
+# ultramarine-release-identity-cinnamon if nothing else is already doing so.
+# mado: what? cinammon?? cappy???
+Recommends:	ultramarine-release-identity-xfce
+Recommends: ultramarine-release-xfce-pkgexcl
+
+%description xfce
+Provides a base package for Ultramarine XFCE configurations.
+
+%package identity-xfce
+Summary:		Package providing the Ultramarine XFCE Identity
+RemovePathPostfixes: .xfce
+Provides:		ultramarine-release-identity = %{version}-%{release}
+Conflicts:		ultramarine-release-identity
+Requires(meta): ultramarine-release-xfce = %{version}-%{release}
+
+%description identity-xfce
+Provides the necessary files for a Ultramarine XFCE installation.
+
+%endif
+
+######################################################################
+####### Atomic XFCE #######
+
+%if %{with atomic_xfce}
+
+%package atomic-xfce
+Summary:	Base package for Ultramarine Atomic XFCE-specific default configurations
+
+RemovePathPostfixes: .atomic-xfce
+Provides:   ultramarine-release = %{version}-%{release}
+Provides:   ultramarine-release-atomic-xfce = %{version}-%{release}
+Provides:   ultramarine-release-variant = %{version}-%{release}
+Provides:   system-release
+Provides:   system-release(%{version})
+Provides:   base-module(platform:f%{version})
+Requires:   ultramarine-release-common = %{version}-%{release}
+Requires:   ultramarine-release-atomic-desktop = %{version}-%{release}
+Provides:   system-release-product
+# ultramarine-release-common Requires: ultramarine-release-identity, so at least one
+# package must provide it. This Recommends: pulls in
+# ultramarine-release-identity-cinnamon if nothing else is already doing so.
+Recommends:	ultramarine-release-identity-atomic-xfce
+Recommends: ultramarine-release-xfce-pkgexcl
+
+%description atomic-xfce
+Provides a base package for Ultramarine Atomic XFCE configurations.
+
+%package identity-atomic-xfce
+Summary:		Package providing the Ultramarine Atomic XFCE Identity
+RemovePathPostfixes: .atomic-xfce
+Provides:		ultramarine-release-identity = %{version}-%{release}
+Conflicts:		ultramarine-release-identity
+Requires(meta): ultramarine-release-atomic-xfce = %{version}-%{release}
+
+%description identity-atomic-xfce
+Provides the necessary files for a Ultramarine Atomic XFCE installation.
 
 %endif
 
@@ -489,36 +567,35 @@ ln -s ultramarine-release %{buildroot}%{_sysconfdir}/fedora-release
 ln -s ultramarine-release %{buildroot}%{_sysconfdir}/system-release
 
 # Create the common os-release file
-# Create the common os-release file
 %{lua:
   function starts_with(str, start)
    return str:sub(1, #start) == start
   end
 }
 
-# -------------------------------------------------------------------------
-# Definitions for /etc/os-release and for macros in macros.dist.  These
-# macros are useful for spec files where distribution-specific identifiers
-# are used to customize packages.
-
-# Name of vendor / name of distribution. Typically used to identify where
-# the binary comes from in --help or --version messages of programs.
-# Examples: gdb.spec, clang.spec
+# ╭────────────────────────────────────────────────────────────────────────────
+# │ Definitions for /etc/os-release and for macros in macros.dist. These macros
+# │ are useful for spec files where distribution-specific identifiers are used
+# │ to customize packages.
+# │
+# │ Name of vendor / name of distribution. Typically used to identify where the
+# │ binary comes from in --help or --version messages of programs.
+# │ Examples: gdb.spec, clang.spec
 
 %global dist_vendor Ultramarine
 %global dist_name   Ultramarine Linux
 
-# URL of the homepage of the distribution
-# Example: gstreamer1-plugins-base.spec
+# │ URL of the homepage of the distribution
+# │ Example: gstreamer1-plugins-base.spec
 %global dist_home_url https://ultramarine-linux.org/
 
-# Bugzilla / bug reporting URLs shown to users.
-# Examples: gcc.spec
+# │ Bugzilla / bug reporting URLs shown to users.
+# │ Examples: gcc.spec
 %global dist_bug_report_url https://github.com/Ultramarine-Linux/ultramarine/
 
-# debuginfod server, as used in elfutils.spec.
+# │ debuginfod server, as used in elfutils.spec.
 %global dist_debuginfod_url https://debuginfod.fedoraproject.org/
-# -------------------------------------------------------------------------
+# ╰────────────────────────────────────────────────────────────────────────────
 
 install -d $RPM_BUILD_ROOT/usr/lib/os.release.d/
 cat << EOF >> os-release
@@ -535,7 +612,7 @@ LOGO=ultramarine
 CPE_NAME="cpe:/o:ultramarine:um:%{dist_version}"
 DEFAULT_HOSTNAME="ultramarine"
 HOME_URL="http://ultramarine-linux.org"
-SUPPORT_URL="https://discord.com/invite/bUuQasHdrF"
+SUPPORT_URL="https://discord.gg/5fdPuxTg5Q"
 BUG_REPORT_URL="https://github.com/Ultramarine-Linux/ultramarine"
 DOCUMENTATION_URL="https://wiki.ultramarine-linux.org"
 REDHAT_BUGZILLA_PRODUCT="Fedora"
@@ -656,6 +733,26 @@ sed -i -e "s|(%{release_name}%{?prerelease})|(Atomic GNOME Edition%{?prerelease}
 sed -e "s#\$version#%{bug_version}#g" -e 's/$edition/Atomic GNOME/;s/<!--.*-->//;/^$/d' %{SOURCE20} > %{buildroot}%{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.atomic-gnome
 %endif
 
+%if %{with xfce}
+# XFCE
+cp -p os-release \
+      %{buildroot}%{_prefix}/lib/os-release.xfce
+echo "VARIANT=\"XFCE Edition\"" >> %{buildroot}%{_prefix}/lib/os-release.xfce
+echo "VARIANT_ID=xfce" >> %{buildroot}%{_prefix}/lib/os-release.xfce
+sed -i -e "s|(%{release_name}%{?prerelease})|(XFCE Edition%{?prerelease})|g" %{buildroot}%{_prefix}/lib/os-release.xfce
+sed -e "s#\$version#%{bug_version}#g" -e 's/$edition/XFCE/;s/<!--.*-->//;/^$/d' %{SOURCE20} > %{buildroot}%{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.xfce
+%endif
+
+%if %{with atomic_xfce}
+# Atomic XFCE
+cp -p os-release \
+      %{buildroot}%{_prefix}/lib/os-release.atomic-xfce
+echo "VARIANT=\"Atomic XFCE Edition\"" >> %{buildroot}%{_prefix}/lib/os-release.atomic-xfce
+echo "VARIANT_ID=atomic-xfce" >> %{buildroot}%{_prefix}/lib/os-release.atomic-xfce
+sed -i -e "s|(%{release_name}%{?prerelease})|(Atomic XFCE Edition%{?prerelease})|g" %{buildroot}%{_prefix}/lib/os-release.atomic-xfce
+sed -e "s#\$version#%{bug_version}#g" -e 's/$edition/Atomic XFCE/;s/<!--.*-->//;/^$/d' %{SOURCE20} > %{buildroot}%{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.atomic-xfce
+%endif
+
 
 # Create copr config file so COPR doesnt flip out and assume EPEL
 # I created a PR to support this months ago, but completely forgot about it
@@ -671,9 +768,9 @@ EOF
 install -d $RPM_BUILD_ROOT%{_sysconfdir}/upstream-release
 cat << EOF >>$RPM_BUILD_ROOT%{_sysconfdir}/upstream-release/lsb-release
 ID=Fedora
-VERSION_ID=39
-VERSION_CODENAME="Thirty Nine"
-PRETTY_NAME="Fedora Linux 39 (Thirty Nine)"
+VERSION_ID=%dist_version
+VERSION_CODENAME="%fedora_codename"
+PRETTY_NAME="Fedora Linux %dist_version (%fedora_codename)"
 EOF
 
 ##########################
@@ -716,9 +813,9 @@ install -d -m 755 $RPM_BUILD_ROOT%{_rpmconfigdir}/macros.d
 cat >> $RPM_BUILD_ROOT%{_rpmconfigdir}/macros.d/macros.dist << EOF
 # dist macros.
 
-%%fedora			%{dist_version}
-%%dist			    %%{?distprefix}.um%{dist_version}%%{?with_bootstrap:~bootstrap}
-%%ultramarine		%{dist_version}
+%%fedora			  %{dist_version}
+%%dist			      %%{?distprefix}.um%{dist_version}%%{?with_bootstrap:~bootstrap}
+%%ultramarine		  %{dist_version}
 %%dist_vendor         %{dist_vendor}
 %%dist_name           %{dist_name}
 %%dist_home_url       %{dist_home_url}
@@ -880,6 +977,20 @@ install -Dm0644 %{SOURCE32} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
 %{_prefix}/lib/os-release.atomic-gnome
 %attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.atomic-gnome
 %{_datadir}/glib-2.0/schemas/50_ultramarine-gnome.gschema.override
+%endif
+
+%if %{with xfce}
+%files xfce
+%files identity-xfce
+%{_prefix}/lib/os-release.xfce
+%attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.xfce
+%endif
+
+%if %{with atomic_xfce}
+%files atomic-xfce
+%files identity-atomic-xfce
+%{_prefix}/lib/os-release.atomic-xfce
+%attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.atomic-xfce
 %endif
 
 %if %{with atomic_desktop}
