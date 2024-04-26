@@ -7,6 +7,7 @@ Summary:		Additional secret/hidden files for ultramarine Linux
 License:		MIT
 URL:			https://ultramarine-linux.org
 Source0:		secrets.tar.gz
+BuildArch:      noarch
 BuildRequires:	git-core
 
 %description
