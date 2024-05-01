@@ -29,6 +29,7 @@
     <packagelist>
       <packagereq type="default">ultramarine-shell-config</packagereq>
       <packagereq type="default">ultramarine-release</packagereq>
+      <packagereq type="default">git</packagereq>
     </packagelist>
   </group>
   <group>
@@ -46,6 +47,8 @@
       <packagereq type="default">sipa-fonts</packagereq>
       <packagereq type="default">ibus-mozc</packagereq>
       <packagereq type="default">mozc</packagereq>
+      <!--<packagereq type="default">umupgrader</packagereq>-->
+      <!--enable this when UM40 ready-->
     </packagelist>
   </group>
   <group>
