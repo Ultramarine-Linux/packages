@@ -14,7 +14,7 @@ BuildRequires:  nim git-core pkgconfig(gtk4) pkgconfig(libadwaita-1) anda-srpm-m
 %autosetup
 
 %build
-nimble build umupgrader -y -t:-fPIE -l:-pie -d:release -t:"$CFLAGS" -l:"$LDFLAGS"
+nimble build umupgrader -y -t:'%nim_tflags' -l:'%nim_lflags' --debuginfo:on
 
 %install
 mkdir -p %buildroot%_bindir %buildroot%_datadir/polkit-1/actions
