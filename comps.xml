@@ -104,6 +104,7 @@
       <groupid>networkmanager-submodules</groupid>
       <groupid>printing</groupid>
       <groupid>desktop-accessibility</groupid>
+      <groupid>input-methods</groupid>
       <groupid>ultramarine-product-common</groupid>
       <groupid>ultramarine-desktop-product-common</groupid>
       <groupid>ultramarine-flagship-product</groupid>
@@ -140,6 +141,7 @@
       <groupid>networkmanager-submodules</groupid>
       <groupid>printing</groupid>
       <groupid>desktop-accessibility</groupid>
+      <groupid>input-methods</groupid>
       <groupid>ultramarine-product-common</groupid>
       <groupid>ultramarine-desktop-product-common</groupid>
       <groupid>ultramarine-pantheon-product</groupid>
@@ -185,6 +187,7 @@
       <groupid>networkmanager-submodules</groupid>
       <groupid>printing</groupid>
       <groupid>desktop-accessibility</groupid>
+      <!-- <groupid>input-methods</groupid> While the other groups incluide this, Fedora doesn't have this group in the workstation comp, going to trust them-->
       <groupid>ultramarine-product-common</groupid>
       <groupid>ultramarine-desktop-product-common</groupid>
       <groupid>ultramarine-gnome-product</groupid>
@@ -224,6 +227,7 @@
       <groupid>networkmanager-submodules</groupid>
       <groupid>printing</groupid>
       <groupid>desktop-accessibility</groupid>
+      <groupid>input-methods</groupid>
       <groupid>ultramarine-product-common</groupid>
       <groupid>ultramarine-desktop-product-common</groupid>
       <groupid>ultramarine-kde-product</groupid>
@@ -279,6 +283,7 @@
       <groupid>networkmanager-submodules</groupid>
       <groupid>printing</groupid>
       <groupid>desktop-accessibility</groupid>
+      <groupid>input-methods</groupid>
       <groupid>ultramarine-product-common</groupid>
       <groupid>ultramarine-desktop-product-common</groupid>
       <groupid>ultramarine-xfce-product</groupid>
