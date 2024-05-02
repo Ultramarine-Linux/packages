@@ -5,7 +5,7 @@ Summary:        A GUI System Upgrader for Ultramarine Linux
 License:        MIT
 URL:            https://github.com/Ultramarine-Linux/umupgrader
 Source0:        %url/archive/refs/tags/%version.tar.gz
-BuildRequires:  nim git-core pkgconfig(gtk4) pkgconfig(libadwaita-1)
+BuildRequires:  nim git-core pkgconfig(gtk4) pkgconfig(libadwaita-1) anda-srpm-macros
 
 %description
 %summary.
@@ -14,7 +14,7 @@ BuildRequires:  nim git-core pkgconfig(gtk4) pkgconfig(libadwaita-1)
 %autosetup
 
 %build
-nimble build -y -d:release -t %nim_tflags -l %nim_lflags
+nimble build . -y -d:release -t:'%nim_tflags' -l:'%nim_lflags'
 
 %install
 mkdir -p %buildroot%_bindir %buildroot%_datadir/polkit-1/actions
