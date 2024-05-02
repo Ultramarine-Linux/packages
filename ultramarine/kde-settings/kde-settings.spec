@@ -1,12 +1,18 @@
+%if 0%{?fedora} >= 40 || 0%{?rhel} >= 10
+%bcond initialsetup_gui_backend 1
+%else
+%bcond initialsetup_gui_backend 0
+%endif
+
 Summary: Config files for KDE
 Name:    kde-settings
 Epoch:   1
-Version: 39
-Release: 13%{?dist}
+Version: 40
+Release: 1%{?dist}
 
 License: MIT
 Url:     https://github.com/Ultramarine-Linux/kde-settings
-Source0: https://github.com/Ultramarine-Linux/kde-settings/archive/refs/heads/master.tar.gz#/kde-settings.tar.gz
+Source0: https://github.com/Ultramarine-Linux/kde-settings/archive/refs/heads/um40.tar.gz#/kde-settings.tar.gz
 Source1: COPYING
 Source2: https://github.com/Ultramarine-Linux/ultramarine-kde-theme/archive/refs/heads/main.zip#/ultramarine-kde-theme.zip
 
@@ -38,6 +44,8 @@ Requires: pam
 Requires: xdg-user-dirs
 ## add breeze deps here? probably, need more too -- rex
 Requires: breeze-icon-theme
+# Baseline mimeapps associations, e.g. LibreOffice
+Requires: shared-mime-info
 
 %description
 %{summary}.
@@ -51,8 +59,8 @@ Requires: ultramarine-backgrounds-kde
 %endif
 Requires: system-logos
 Requires: google-noto-sans-fonts
-# Not used strictly, but users expect general noto "family" to be present, so that includes serif too -- rdieter
-Requires: google-noto-serif-fonts
+# Not required but expected by users as we use other fonts from the noto "family"
+Recommends: google-noto-serif-fonts
 %if 0%{?rhel} && 0%{?rhel} < 9
 Requires: google-noto-mono-fonts
 %else
@@ -103,9 +111,25 @@ Requires: lightly
 %description -n ultramarine-plasma-theme
 %{summary}.
 
+%if %{with initialsetup_gui_backend}
+%package -n initial-setup-gui-wayland-plasma
+Summary: Run initial-setup GUI on Plasma Wayland
+Provides: firstboot(gui-backend)
+Conflicts: firstboot(gui-backend)
+Requires: kwin-wayland
+Requires: maliit-keyboard
+Requires: xorg-x11-server-Xwayland
+Requires: initial-setup-gui >= 0.3.99
+Supplements: ((initial-setup or initial-setup-gui) and kwin-wayland)
+Enhances: (initial-setup-gui and kwin-wayland)
+
+%description -n initial-setup-gui-wayland-plasma
+%{summary}.
+%endif
+
 
 %prep
-%autosetup -p1 -n %{name}-master -a 2
+%autosetup -p1 -n %{name}-um40 -a 2
 
 # omit crud
 rm -fv Makefile
@@ -157,6 +181,10 @@ install -p -m644 -D %{SOURCE10} %{buildroot}%{_sysconfdir}/xdg/plasma-workspace/
 # copy theme from SOURCE2
 cp -a ultramarine-kde-theme-main %{buildroot}%{_datadir}/plasma/look-and-feel/org.ultramarinelinux.ultramarine.desktop
 
+%if ! %{with initialsetup_gui_backend}
+rm -rv %{buildroot}%{_libexecdir}/initial-setup
+%endif
+
 ## unpackaged files
 
 rm -rfv %{buildroot}/.package_note*
@@ -175,12 +203,14 @@ test -f %{_datadir}/wallpapers/F%{version_maj} || ls -l %{_datadir}/wallpapers
 %{_sysconfdir}/kde/env/gpg-agent-startup.sh
 %{_sysconfdir}/kde/shutdown/gpg-agent-shutdown.sh
 %{_sysconfdir}/kde/env/gtk2_rc_files.sh
+%if 0%{?fedora} || 0%{?rhel} > 7
 %{_datadir}/kde-settings/
 # these can probably go now -- rex
 %{_prefix}/lib/rpm/plasma4.prov
 %{_prefix}/lib/rpm/plasma4.req
 %{_prefix}/lib/rpm/fileattrs/plasma4.attr
 %{_datadir}/polkit-1/rules.d/11-fedora-kde-policy.rules
+%endif
 %config(noreplace) %{_sysconfdir}/xdg/kcm-about-distrorc
 %config(noreplace) %{_sysconfdir}/xdg/kdebugrc
 %config(noreplace) %{_sysconfdir}/pam.d/kcheckpass
@@ -188,10 +218,8 @@ test -f %{_datadir}/wallpapers/F%{version_maj} || ls -l %{_datadir}/wallpapers
 # drop noreplace, so we can be sure to get the new kiosk bits
 %config %{_sysconfdir}/kderc
 %config %{_sysconfdir}/kde4rc
-%{_datadir}/applications/kde-mimeapps.list
 %if 0%{?rhel} && 0%{?rhel} <= 7
 %exclude %{_datadir}/kde-settings/kde-profile/default/share/apps/plasma-desktop/init/00-defaultLayout.js
-%exclude /.package_note*
 %endif
 
 %files plasma
@@ -225,10 +253,70 @@ test -f %{_datadir}/wallpapers/F%{version_maj} || ls -l %{_datadir}/wallpapers
 %license COPYING
 %config(noreplace) %{_sysconfdir}/Trolltech.conf
 
+%if %{with initialsetup_gui_backend}
+%files -n initial-setup-gui-wayland-plasma
+%{_libexecdir}/initial-setup/run-gui-backend
+%endif
+
 
 %changelog
+* Thu Mar 07 2024 Neal Gompa <ngompa@fedoraproject.org> - 40.0-1
+- Bump for F40 backgrounds
+- Enable login/logout sounds for a11y
+
+* Tue Feb 20 2024 Alessandro Astone <ales.astone@gmail.com> - 39.1-7
+- Enable maliit-keyboard by default
+- Provide default mimeapps associations overrides over plasma-desktop
+
+* Fri Feb 02 2024 Alessandro Astone <ales.astone@gmail.com> - 39.1-6
+- Re-enable kwin blur plugin
+
+* Wed Jan 24 2024 Fedora Release Engineering <releng@fedoraproject.org> - 39.1-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 39.1-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Fri Jan 05 2024 Alessandro Astone <ales.astone@gmail.com> - 39.1-3
+- Fix initial-setup-gui version requirement
+
+* Wed Jan 03 2024 Neal Gompa <ngompa@fedoraproject.org> - 39.1-2
+- Add initial-setup-gui-wayland-plasma subpackage for f40+/epel10+
+
+* Wed Jan 03 2024 Neal Gompa <ngompa@fedoraproject.org> - 39.1-1
+- Add fontconfig snippet to enable RGBA subpixel rendering for KDE
+- Reland: feat: remove KDE Action Restrictions
+- Set the default theme for sddm
+
+* Fri Oct 13 2023 Timothée Ravier <tim@siosm.fr> - 39.0-2
+- Switch google-noto-serif-fonts to a Recommends
+
 * Tue Oct 10 2023 Cappy Ishihara <cappy@cappuchino.xyz> - 39-10
 - 39-10
+
+* Fri Sep 01 2023 Adam Williamson <awilliam@redhat.com> - 39.0-1
+- New release 39.0 (to pick up Fedora 39 backgrounds)
+
+* Mon Aug 07 2023 Neal Gompa <ngompa@fedoraproject.org> - 38.3-1
+- kwinrc: Disable the Blur plugin in kwin by default
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 38.2-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Mon Mar 13 2023 Marc Deop i Argemí <marcdeop@fedoraproject.org> - 38.2-2
+- Add Requires: breeze-cursor-theme to sddm subpackage
+
+* Sun Mar 12 2023 Marc Deop i Argemí <marcdeop@fedoraproject.org> - 38.2-1
+- Add sddm subpackage containing sddm config files
+
+* Mon Feb 20 2023 Neal Gompa <ngompa@fedoraproject.org> - 38.1-1
+- Disable fast user switching again (#2171316)
+
+* Tue Feb 07 2023 Marc Deop i Argemí <marcdeop@fedoraproject.org> - 38.0-1
+- 38.0
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 37.0-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
 
 * Mon Aug 15 2022 Timothée Ravier <tim@siosm.fr> - 37.0-1
 - 37.0
