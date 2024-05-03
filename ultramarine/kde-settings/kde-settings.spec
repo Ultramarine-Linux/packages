@@ -8,13 +8,13 @@ Summary: Config files for KDE
 Name:    kde-settings
 Epoch:   1
 Version: 40
-Release: 1%{?dist}
+Release: 2%{?dist}
 
 License: MIT
 Url:     https://github.com/Ultramarine-Linux/kde-settings
 Source0: https://github.com/Ultramarine-Linux/kde-settings/archive/refs/heads/um40.tar.gz#/kde-settings.tar.gz
 Source1: COPYING
-Source2: https://github.com/Ultramarine-Linux/ultramarine-kde-theme/archive/refs/heads/main.zip#/ultramarine-kde-theme.zip
+Source2: https://github.com/Ultramarine-Linux/ultramarine-kde-theme/archive/refs/heads/um40.zip#/ultramarine-kde-theme.zip
 
 BuildArch: noarch
 
@@ -106,8 +106,6 @@ Summary: Configuration files for Qt
 
 %package -n ultramarine-plasma-theme
 Summary:  Plasma theme for Ultramarine
-Requires: papirus-icon-theme
-Requires: lightly
 %description -n ultramarine-plasma-theme
 %{summary}.
 
@@ -179,7 +177,7 @@ sed -e "s/Noto Sans Mono/Noto Mono/g" \
 install -p -m644 -D %{SOURCE10} %{buildroot}%{_sysconfdir}/xdg/plasma-workspace/env/ssh-agent.sh
 
 # copy theme from SOURCE2
-cp -a ultramarine-kde-theme-main %{buildroot}%{_datadir}/plasma/look-and-feel/org.ultramarinelinux.ultramarine.desktop
+cp -a ultramarine-kde-theme-um40 %{buildroot}%{_datadir}/plasma/look-and-feel/org.ultramarine-linux.ultramarine.desktop
 
 %if ! %{with initialsetup_gui_backend}
 rm -rv %{buildroot}%{_libexecdir}/initial-setup
@@ -247,7 +245,7 @@ test -f %{_datadir}/wallpapers/F%{version_maj} || ls -l %{_datadir}/wallpapers
 # nothing, this is a metapackage
 
 %files -n ultramarine-plasma-theme
-%{_datadir}/plasma/look-and-feel/org.ultramarinelinux.ultramarine.desktop/
+%{_datadir}/plasma/look-and-feel/org.ultramarine-linux.ultramarine.desktop/
 
 %files -n qt-settings
 %license COPYING
