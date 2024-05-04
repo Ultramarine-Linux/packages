@@ -1,13 +1,13 @@
 [org.gnome.desktop.background]
-picture-uri='file:///usr/share/backgrounds/ultramarine-linux/39/foresty-skies-l.png'
-picture-uri-dark='file:///usr/share/backgrounds/ultramarine-linux/39/foresty-skies-d.png'
+picture-uri='file:///usr/share/backgrounds/ultramarine-linux/40/lost-light.png'
+picture-uri-dark='file:///usr/share/backgrounds/ultramarine-linux/40/lost-dark.png'
 
 [org.gnome.desktop.wm.preferences]
 button-layout = 'appmenu:minimize,maximize,close'
 titlebar-font='Inter Bold 11'
 
 [org.gnome.desktop.screensaver]
-picture-uri='file:///usr/share/backgrounds/ultramarine-linux/39/foresty-skies-d.png'
+picture-uri='file:///usr/share/backgrounds/ultramarine-linux/40/lost-dark.png'
 
 [org.gnome.gedit.preferences.editor]
 scheme='textmate'
