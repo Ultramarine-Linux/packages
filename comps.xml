@@ -76,6 +76,7 @@
       <packagereq type="default">gnome-system-monitor</packagereq>
       <packagereq type="default">gnome-calculator</packagereq>
       <packagereq type="default">gnome-software</packagereq>
+      <packagereq type="default">gs-plugin-ultramarine-pkgdb-collections</packagereq>
       <packagereq type="default">xdg-user-dirs-gtk</packagereq>
       <packagereq type="default">xdg-desktop-portal-gtk</packagereq>
     </packagelist>
@@ -159,6 +160,7 @@
       <packagereq type="default">ultramarine-backgrounds-common</packagereq>
       <packagereq type="default">ultramarine-release-gnome</packagereq>
       <packagereq type="default">ultramarine-release-identity-gnome</packagereq>
+      <packagereq type="default">gs-plugin-ultramarine-pkgdb-collections</packagereq>
     </packagelist>
   </group>
   <environment>
