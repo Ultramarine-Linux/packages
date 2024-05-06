@@ -32,7 +32,7 @@
 Summary:	Ultramarine Linux release files
 Name:		ultramarine-release
 Version:	39
-Release:	0.13%{?dist}
+Release:	0.14%{?dist}
 License:	MIT
 Source0:	LICENSE
 URL:        https://ultramarine-linux.org
@@ -160,7 +160,7 @@ Recommends:		ultramarine-release-identity-flagship
 # Updating the comps won't push it to existing systems until they major upgrade.
 # Therefore for 39, we we'll add a weak requires to the release package
 # This should be removed post 39
-Recommends:		(gs-plugin-ultramarine-pkgdb-collections if gnome-software)
+Recommends:		(gs-plugin-ultramarine-pkgdb-collections%{?_isa} if gnome-software%{?_isa})
 %description flagship
 Provides a base package for Ultramarine Flagship configurations.
 
@@ -204,7 +204,7 @@ Recommends:		ultramarine-release-identity-atomic-flagship
 # Updating the comps won't push it to existing systems until they major upgrade.
 # Therefore for 39, we we'll add a weak requires to the release package
 # This should be removed post 39
-Recommends:		(gs-plugin-ultramarine-pkgdb-collections if gnome-software)
+Recommends:		(gs-plugin-ultramarine-pkgdb-collections%{?_isa} if gnome-software%{?_isa})
 %description atomic-flagship
 Provides a base package for Ultramarine Atomic Flagship configurations.
 
@@ -406,7 +406,7 @@ Recommends:		ultramarine-release-identity-gnome
 # Updating the comps won't push it to existing systems until they major upgrade.
 # Therefore for 39, we we'll add a weak requires to the release package
 # This should be removed post 39
-Recommends:		(gs-plugin-ultramarine-pkgdb-collections if gnome-software)
+Recommends:		(gs-plugin-ultramarine-pkgdb-collections%{?_isa} if gnome-software%{?_isa})
 %description gnome
 Provides a base package for Ultramarine GNOME configurations.
 
@@ -460,7 +460,7 @@ Recommends:		ultramarine-release-identity-atomic-gnome
 # Updating the comps won't push it to existing systems until they major upgrade.
 # Therefore for 39, we we'll add a weak requires to the release package
 # This should be removed post 39
-Recommends:		(gs-plugin-ultramarine-pkgdb-collections if gnome-software)
+Recommends:		(gs-plugin-ultramarine-pkgdb-collections%{?_isa} if gnome-software%{?_isa})
 %description atomic-gnome
 Provides a base package for Ultramarine Atomic GNOME configurations.
 
