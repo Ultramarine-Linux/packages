@@ -1,5 +1,5 @@
 project "pkg" {
     rpm {
-        spec = "ultramarine-shell-config.spec"
+        spec = "ultramarine-appstream-metadata.spec"
     }
 }
