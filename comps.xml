@@ -195,6 +195,7 @@
     <uservisible>false</uservisible>
     <packagelist>
       <packagereq type="default">kwin-system76-scheduler-integration</packagereq>
+      <packagereq type="default">ultramarine-appstream-metadata</packagereq>
       <packagereq type="default">ultramarine-release-kde</packagereq>
       <packagereq type="default">ultramarine-release-identity-kde</packagereq>
     </packagelist>
