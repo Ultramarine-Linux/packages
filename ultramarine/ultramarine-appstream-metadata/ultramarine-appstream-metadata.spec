@@ -24,7 +24,6 @@ sed -i '/<release / s/type="snapshot"/type="development"/' org.ultramarine-linux
 install -Dpm 0644 org.ultramarine-linux.ultramarine.metainfo.xml %{buildroot}%{_datadir}/metainfo/org.ultramarine-linux.ultramarine.metainfo.xml
 
 %files
-%license LICENSE
 %{_datadir}/metainfo/org.ultramarine-linux.ultramarine.metainfo.xml
 
 %changelog
