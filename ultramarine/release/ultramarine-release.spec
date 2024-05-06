@@ -317,6 +317,11 @@ Provides:         system-release-product
 # package must provide it. This Recommends: pulls in
 # ultramarine-release-identity-cinnamon if nothing else is already doing so.
 Recommends:		ultramarine-release-identity-kde
+# Appstream metadata used by KDE Discover for system upgrades since we introduced this mid-cycle.
+# Updating the comps won't push it to existing systems until they major upgrade.
+# Therefore for 39, we we'll add a conditional requires to the release package
+# This should be removed post 39
+Requires:		(ultramarine-appstream-metadata if plasma-discover)
 %description kde
 Provides a base package for Ultramarine KDE configurations.
 
@@ -356,6 +361,11 @@ Provides:         system-release-product
 # package must provide it. This Recommends: pulls in
 # ultramarine-release-identity-cinnamon if nothing else is already doing so.
 Recommends:		ultramarine-release-identity-atomic-kde
+# Appstream metadata used by KDE Discover for system upgrades since we introduced this mid-cycle.
+# Updating the comps won't push it to existing systems until they major upgrade.
+# Therefore for 39, we we'll add a conditional requires to the release package
+# This should be removed post 39
+Requires:		(ultramarine-appstream-metadata if plasma-discover)
 %description atomic-kde
 Provides a base package for Ultramarine Atomic KDE configurations.
 
