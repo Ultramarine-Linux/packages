@@ -32,7 +32,7 @@
 Summary:	Ultramarine Linux release files
 Name:		ultramarine-release
 Version:	39
-Release:	0.12%{?dist}
+Release:	0.13%{?dist}
 License:	MIT
 Source0:	LICENSE
 URL:        https://ultramarine-linux.org
@@ -156,6 +156,11 @@ Provides:         system-release-product
 # package must provide it. This Recommends: pulls in
 # ultramarine-release-identity-cinnamon if nothing else is already doing so.
 Recommends:		ultramarine-release-identity-flagship
+# GNOME Software plugin for system upgrades since we introduced this mid-cycle.
+# Updating the comps won't push it to existing systems until they major upgrade.
+# Therefore for 39, we we'll add a weak requires to the release package
+# This should be removed post 39
+Recommends:		(gs-plugin-ultramarine-pkgdb-collections if gnome-software)
 %description flagship
 Provides a base package for Ultramarine Flagship configurations.
 
@@ -195,6 +200,11 @@ Provides:         system-release-product
 # package must provide it. This Recommends: pulls in
 # ultramarine-release-identity-cinnamon if nothing else is already doing so.
 Recommends:		ultramarine-release-identity-atomic-flagship
+# GNOME Software plugin for system upgrades since we introduced this mid-cycle.
+# Updating the comps won't push it to existing systems until they major upgrade.
+# Therefore for 39, we we'll add a weak requires to the release package
+# This should be removed post 39
+Recommends:		(gs-plugin-ultramarine-pkgdb-collections if gnome-software)
 %description atomic-flagship
 Provides a base package for Ultramarine Atomic Flagship configurations.
 
@@ -392,6 +402,11 @@ BuildRequires:    systemd-rpm-macros
 # package must provide it. This Recommends: pulls in
 # ultramarine-release-identity-cinnamon if nothing else is already doing so.
 Recommends:		ultramarine-release-identity-gnome
+# GNOME Software plugin for system upgrades since we introduced this mid-cycle.
+# Updating the comps won't push it to existing systems until they major upgrade.
+# Therefore for 39, we we'll add a weak requires to the release package
+# This should be removed post 39
+Recommends:		(gs-plugin-ultramarine-pkgdb-collections if gnome-software)
 %description gnome
 Provides a base package for Ultramarine GNOME configurations.
 
@@ -441,6 +456,11 @@ BuildRequires:    systemd-rpm-macros
 # package must provide it. This Recommends: pulls in
 # ultramarine-release-identity-cinnamon if nothing else is already doing so.
 Recommends:		ultramarine-release-identity-atomic-gnome
+# GNOME Software plugin for system upgrades since we introduced this mid-cycle.
+# Updating the comps won't push it to existing systems until they major upgrade.
+# Therefore for 39, we we'll add a weak requires to the release package
+# This should be removed post 39
+Recommends:		(gs-plugin-ultramarine-pkgdb-collections if gnome-software)
 %description atomic-gnome
 Provides a base package for Ultramarine Atomic GNOME configurations.
 
