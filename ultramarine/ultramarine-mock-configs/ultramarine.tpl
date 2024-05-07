@@ -6,19 +6,18 @@ config_opts['chroot_setup_cmd'] = 'install @buildsys-build'
 config_opts['buildroot_pkgs'] = 'ultramarine-release ultramarine-release-basic'
 config_opts['package_manager'] = 'dnf5'
 config_opts['extra_chroot_dirs'] = [ '/run/lock', ]
-config_opts['mirrored'] = config_opts['target_arch'] != 'i686'
+config_opts['mirrored'] = True
 config_opts['plugin_conf']['root_cache_enable'] = True
 config_opts['plugin_conf']['yum_cache_enable'] = True
 config_opts['plugin_conf']['ccache_enable'] = True
 config_opts['plugin_conf']['ccache_opts']['compress'] = 'on'
 config_opts['plugin_conf']['ccache_opts']['max_cache_size'] = '10G'
-
 # repos
-config_opts['dnf.conf'] = """
+dnf_conf = """
 
 [main]
 keepcache=1
-debuglevel=2
+debuglevel=2a
 reposdir=/dev/null
 logfile=/var/log/yum.log
 retries=20
@@ -48,23 +47,17 @@ enabled_metadata=1
 priority=50
 
 [terra]
-name=terra
-baseurl=https://repos.fyralabs.com/terra$releasever/
+name=Terra $releasever
+baseurl=https://repos.fyralabs.com/terra$releasever
 type=rpm
 skip_if_unavailable=True
 gpgcheck=1
-gpgkey=https://repos.fyralabs.com/terra$releasever/key.asc
 repo_gpgcheck=1
+gpgkey=https://repos.fyralabs.com/terra$releasever/key.asc
 enabled=1
-enabled_metadata=1s
+enabled_metadata=1
+metadata_expire=4h
 
-[local]
-name=local
-baseurl=https://kojipkgs.fedoraproject.org/repos/f{{ releasever }}-build/latest/$basearch/
-cost=2000
-enabled={{ not mirrored }}
-skip_if_unavailable=False
-assumeyes=True
 
 {% if mirrored %}
 [fedora]
@@ -198,3 +191,7 @@ gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-fedora-$releasever-$basearch
 skip_if_unavailable=False
 {% endif %}
 """
+
+
+config_opts['dnf.conf'] = dnf_conf
+config_opts['dnf5.conf'] = dnf_conf
