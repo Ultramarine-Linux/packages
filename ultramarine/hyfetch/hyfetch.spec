@@ -1,6 +1,6 @@
 Name:           hyfetch
 Version:        1.4.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        neofetch with pride flags <3
 URL:            https://github.com/hykilpikonna/hyfetch
 Source0:        %{url}/archive/refs/tags/1.4.1.tar.gz
