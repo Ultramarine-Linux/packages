@@ -29,6 +29,7 @@
     <packagelist>
       <packagereq type="default">ultramarine-shell-config</packagereq>
       <packagereq type="default">ultramarine-release</packagereq>
+      <packagereq type="default">ultramarine-fun</packagereq>
       <packagereq type="default">git</packagereq>
     </packagelist>
   </group>
