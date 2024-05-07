@@ -5,7 +5,7 @@ Version:        20240507
 Release:        %autorelease
 License:        MIT
 URL:            https://ultramarine-linux.org/
-Source0:        https://github.com/Ultramarine-Linux/ultramarine-appstream-metadata/archive/refs/tags/20240506.tar.gz
+Source0:        https://github.com/Ultramarine-Linux/ultramarine-appstream-metadata/archive/refs/tags/%version.tar.gz
 BuildArch:      noarch
 
 %description
