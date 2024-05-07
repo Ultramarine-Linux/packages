@@ -1,5 +1,5 @@
 Name:           umupgrader
-Version:        0.1.0
+Version:        0.1.1
 Release:        1%?dist
 Summary:        A GUI System Upgrader for Ultramarine Linux 
 License:        MIT
