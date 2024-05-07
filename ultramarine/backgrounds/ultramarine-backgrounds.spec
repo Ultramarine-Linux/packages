@@ -1,7 +1,7 @@
 %undefine _disable_source_fetch
 
 Name: ultramarine-backgrounds
-Version: 40
+Version: 40.1
 Release: 1%{?dist}
 BuildArch: noarch
 # details for the artworks' licenses can be seen in the COPYING file
@@ -12,7 +12,7 @@ Requires: /usr/bin/ln
 Recommends: ultramarine-backgrounds-compat = %{version}-%{release}
 BuildRequires: make
 # licensing information
-Source0: https://github.com/Ultramarine-Linux/backgrounds/archive/refs/tags/40.tar.gz
+Source0: https://github.com/Ultramarine-Linux/backgrounds/archive/refs/tags/%version.tar.gz
 #Source1: 30_default_backgrounds.gschema.override
 # CC0 artworks
 
