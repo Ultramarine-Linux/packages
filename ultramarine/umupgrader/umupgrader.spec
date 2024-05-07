@@ -14,16 +14,15 @@ BuildRequires:  nim git-core pkgconfig(gtk4) pkgconfig(libadwaita-1) anda-srpm-m
 %autosetup
 
 %build
-nimble build umupgrader -y -t:'%nim_tflags' -l:'%nim_lflags' --debuginfo:on
+BASEDIR=%buildroot%_prefix nim install.nims umupgrader -y -t:'%nim_tflags' -l:'%nim_lflags' --debuginfo:on
 
 %install
-mkdir -p %buildroot%_bindir %buildroot%_datadir/polkit-1/actions
-install -Dm755 %name %buildroot%_bindir/
-install -Dm644 com.fyralabs.umupgrader.policy %buildroot%_datadir/polkit-1/actions/
+mv %buildroot%_datadir/applications/umupgrader.desktop %buildroot%_datadir/applications/com.fyralabs.umupgrader.desktop
 
 %files
 %_bindir/%name
 %_datadir/polkit-1/actions/com.fyralabs.umupgrader.policy
+%_datadir/applications/com.fyralabs.umupgrader.desktop
 
 %changelog
 %autochangelog
