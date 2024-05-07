@@ -1,2 +1,2 @@
 [org.gnome.shell]
-enabled-extensions = ['appindicatorsupport@rgcjonas.gmail.com' , 'pop-shell@system76.com', 'windowsNavigator@gnome-shell-extensions.gcampax.github.com', 'appmenu-is-back@fthx']
+enabled-extensions = ['appindicatorsupport@rgcjonas.gmail.com' , 'pop-shell@system76.com', 'windowsNavigator@gnome-shell-extensions.gcampax.github.com', 'appmenu-is-back@fthx', 'dash-to-dock@micxgx.gmail.com']
