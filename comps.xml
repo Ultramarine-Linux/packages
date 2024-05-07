@@ -157,7 +157,6 @@
     <uservisible>false</uservisible>
     <packagelist>
       <packagereq type="default">gnome-extensions-app</packagereq>
-      <packagereq type="default">gnome-shell-extension-dash-to-dock</packagereq>
       <packagereq type="default">pop-launcher</packagereq>
       <packagereq type="default">qalculate</packagereq>
       <packagereq type="default">gnome-shell-extension-appindicator</packagereq>
