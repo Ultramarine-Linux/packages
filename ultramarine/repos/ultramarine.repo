@@ -12,7 +12,7 @@ enabled_metadata=1
 
 [ultramarine-source]
 name=Ultramarine Linux $releasever - Source
-# baseurl=https://repos.fyralabs.com/um$releasever-source
+#baseurl=https://repos.fyralabs.com/um$releasever-source
 metalink=https://tetsudou.fyralabs.com/metalink?repo=um$releasever-source&arch=$basearch
 metadata_expire=6h
 type=rpm
