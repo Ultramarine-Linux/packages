@@ -4,6 +4,7 @@ Name:       dnf5-default-package-manager
 Version:    0
 Release:    1%?dist
 Summary:    Package that sets dnf5 as the default package manager
+License:    MIT
 URL:        https://wiki.ultramarine-linux.org/en/usage/um40-dnf5/
 Requires:   dnf5
 
