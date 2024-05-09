@@ -1,7 +1,7 @@
 [terra]
 name=Terra $releasever
 #baseurl=https://repos.fyralabs.com/terra$releasever
-metalink=https://tetsudou.fyralabs.com/metalink?repo=um$releasever&arch=$basearch
+metalink=https://tetsudou.fyralabs.com/metalink?repo=terra$releasever&arch=$basearch
 metadata_expire=6h
 type=rpm
 gpgcheck=1
@@ -13,7 +13,7 @@ enabled_metadata=1
 [terra-source]
 name=Terra $releasever - Source
 #baseurl=https://repos.fyralabs.com/terra$releasever-source
-metalink=https://tetsudou.fyralabs.com/metalink?repo=um$releasever-source&arch=$basearch
+metalink=https://tetsudou.fyralabs.com/metalink?repo=terra$releasever-source&arch=$basearch
 metadata_expire=6h
 type=rpm
 gpgcheck=1
