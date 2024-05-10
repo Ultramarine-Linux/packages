@@ -478,9 +478,9 @@ Requires:   ultramarine-release-common = %{version}-%{release}
 Provides:   system-release-product
 # ultramarine-release-common Requires: ultramarine-release-identity, so at least one
 # package must provide it. This Recommends: pulls in
-# ultramarine-release-identity-cinnamon if nothing else is already doing so.
-# mado: what? cinammon?? cappy???
 Recommends:	ultramarine-release-identity-xfce
+Recommends: materia-gtk-theme
+Recommends: papirus-icon-theme
 Recommends: ultramarine-release-xfce-pkgexcl
 
 %description xfce
@@ -743,6 +743,17 @@ echo "VARIANT=\"XFCE Edition\"" >> %{buildroot}%{_prefix}/lib/os-release.xfce
 echo "VARIANT_ID=xfce" >> %{buildroot}%{_prefix}/lib/os-release.xfce
 sed -i -e "s|(%{release_name}%{?prerelease})|(XFCE Edition%{?prerelease})|g" %{buildroot}%{_prefix}/lib/os-release.xfce
 sed -e "s#\$version#%{bug_version}#g" -e 's/$edition/XFCE/;s/<!--.*-->//;/^$/d' %{SOURCE20} > %{buildroot}%{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.xfce
+
+# install xfce configs
+
+mkdir -p %{buildroot}%{_sysconfdir}/skel
+
+# the file just contains a .config
+# remove the first directory from the extract path, so it's just a .config
+
+tar -xvf %{SOURCE40} -C %{buildroot}%{_sysconfdir}/skel --strip-components=1
+
+
 %endif
 
 %if %{with atomic_xfce}
@@ -877,16 +888,6 @@ install -Dm0644 %{SOURCE32} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
 
 %endif
 
-%if %{with xfce}
-# install xfce configs
-
-mkdir -p %{buildroot}%{_sysconfdir}/skel
-
-# the file just contains a .config
-
-tar -xvf %{SOURCE40} -C %{buildroot}%{_sysconfdir}/skel/
-
-%endif
 
 %files common
 %{_datadir}/dnf/plugins/copr.vendor.conf
