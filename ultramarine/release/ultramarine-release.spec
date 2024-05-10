@@ -79,6 +79,8 @@ Source32:   org.projectatomic.rpmostree1.rules
 Source33:   50-ultramarine-networking.conf
 Source34:   ultramarine.urls
 
+Source40:   https://github.com/Ultramarine-Linux/xfce-config/archive/32686812f39b78e8994cefcb4387e41998346b3a.tar.gz
+
 BuildRequires:    systemd-rpm-macros
 
 %description
@@ -875,6 +877,17 @@ install -Dm0644 %{SOURCE32} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
 
 %endif
 
+%if %{with xfce}
+# install xfce configs
+
+mkdir -p %{buildroot}%{_sysconfdir}/skel
+
+# the file just contains a .config
+
+tar -xvf %{SOURCE40} -C %{buildroot}%{_sysconfdir}/skel/
+
+%endif
+
 %files common
 %{_datadir}/dnf/plugins/copr.vendor.conf
 %{_sysconfdir}/anaconda/profile.d/ultramarine.conf
@@ -984,6 +997,7 @@ install -Dm0644 %{SOURCE32} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
 %files identity-xfce
 %{_prefix}/lib/os-release.xfce
 %attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.xfce
+%{_sysconfdir}/skel/.config/xfce4/
 %endif
 
 %if %{with atomic_xfce}
