@@ -2,7 +2,7 @@
 
 Name: ultramarine-repos
 Version: %{_dist_version}
-Release: 3%{?dist}
+Release: 4%{?dist}
 License: MIT
 Summary: Repositories for Ultramarine Linux
 Requires: %{name}-common = %{version}-%{release}
@@ -19,7 +19,7 @@ Summary: Common repository for Ultramarine Linux
 Requires: fedora-repos(%{version})
 Source100: ultramarine.repo
 # UM40 patch
-Recommends: terra-release
+Requires: terra-release
 # todo: if upgrading from 39 require terra-release or something
 %description common
 Common repository files for Ultramarine Linux
