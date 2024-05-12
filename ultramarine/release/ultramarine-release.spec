@@ -6,6 +6,8 @@
 %define dist_version 40
 %define _alt_name fedora-release
 
+%define xfce_conf_commit 66fb8cdbc5c28a94cea8db85b06840976ba4db1a
+
 %if %{is_rawhide}
 %define bug_version rawhide
 %define releasever rawhide
@@ -79,7 +81,7 @@ Source32:   org.projectatomic.rpmostree1.rules
 Source33:   50-ultramarine-networking.conf
 Source34:   ultramarine.urls
 
-Source40:   https://github.com/Ultramarine-Linux/xfce-config/archive/32686812f39b78e8994cefcb4387e41998346b3a.tar.gz
+Source40:   https://github.com/Ultramarine-Linux/xfce-config/archive/%{xfce_conf_commit}.tar.gz
 
 BuildRequires:    systemd-rpm-macros
 
@@ -481,6 +483,8 @@ Provides:   system-release-product
 Recommends:	ultramarine-release-identity-xfce
 Recommends: materia-gtk-theme
 Recommends: papirus-icon-theme
+# The config replaces the default app menu with whisker menu
+Recommends: xfce4-whiskermenu-plugin
 Recommends: ultramarine-release-xfce-pkgexcl
 
 %description xfce
