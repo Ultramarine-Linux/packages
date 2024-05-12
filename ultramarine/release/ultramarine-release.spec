@@ -6,6 +6,8 @@
 %define dist_version 40
 %define _alt_name fedora-release
 
+%define xfce_conf_commit 66fb8cdbc5c28a94cea8db85b06840976ba4db1a
+
 %if %{is_rawhide}
 %define bug_version rawhide
 %define releasever rawhide
@@ -78,6 +80,8 @@ Source31:   enable-kwin-system76-scheduler-integration.service
 Source32:   org.projectatomic.rpmostree1.rules
 Source33:   50-ultramarine-networking.conf
 Source34:   ultramarine.urls
+
+Source40:   https://github.com/Ultramarine-Linux/xfce-config/archive/%{xfce_conf_commit}.tar.gz
 
 BuildRequires:    systemd-rpm-macros
 
@@ -476,9 +480,11 @@ Requires:   ultramarine-release-common = %{version}-%{release}
 Provides:   system-release-product
 # ultramarine-release-common Requires: ultramarine-release-identity, so at least one
 # package must provide it. This Recommends: pulls in
-# ultramarine-release-identity-cinnamon if nothing else is already doing so.
-# mado: what? cinammon?? cappy???
 Recommends:	ultramarine-release-identity-xfce
+Recommends: materia-gtk-theme
+Recommends: papirus-icon-theme
+# The config replaces the default app menu with whisker menu
+Recommends: xfce4-whiskermenu-plugin
 Recommends: ultramarine-release-xfce-pkgexcl
 
 %description xfce
@@ -741,6 +747,17 @@ echo "VARIANT=\"XFCE Edition\"" >> %{buildroot}%{_prefix}/lib/os-release.xfce
 echo "VARIANT_ID=xfce" >> %{buildroot}%{_prefix}/lib/os-release.xfce
 sed -i -e "s|(%{release_name}%{?prerelease})|(XFCE Edition%{?prerelease})|g" %{buildroot}%{_prefix}/lib/os-release.xfce
 sed -e "s#\$version#%{bug_version}#g" -e 's/$edition/XFCE/;s/<!--.*-->//;/^$/d' %{SOURCE20} > %{buildroot}%{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.xfce
+
+# install xfce configs
+
+mkdir -p %{buildroot}%{_sysconfdir}/skel
+
+# the file just contains a .config
+# remove the first directory from the extract path, so it's just a .config
+
+tar -xvf %{SOURCE40} -C %{buildroot}%{_sysconfdir}/skel --strip-components=1
+
+
 %endif
 
 %if %{with atomic_xfce}
@@ -875,6 +892,7 @@ install -Dm0644 %{SOURCE32} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
 
 %endif
 
+
 %files common
 %{_datadir}/dnf/plugins/copr.vendor.conf
 %{_sysconfdir}/anaconda/profile.d/ultramarine.conf
@@ -984,6 +1002,7 @@ install -Dm0644 %{SOURCE32} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
 %files identity-xfce
 %{_prefix}/lib/os-release.xfce
 %attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.xfce
+%{_sysconfdir}/skel/.config/xfce4/
 %endif
 
 %if %{with atomic_xfce}
