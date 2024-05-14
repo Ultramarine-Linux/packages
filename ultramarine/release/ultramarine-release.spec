@@ -6,7 +6,7 @@
 %define dist_version 40
 %define _alt_name fedora-release
 
-%define xfce_conf_commit ff8a4ed445c6febb318e55f61a3066167dc246d6
+%define xfce_conf_commit e399a0c77c225850a8c090f895d78d06d06047dc
 
 %if %{is_rawhide}
 %define bug_version rawhide
