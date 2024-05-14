@@ -249,10 +249,12 @@
       <packagereq type="mandatory">ultramarine-release-identity-xfce</packagereq>
       <packagereq type="mandatory">ultramarine-xfce-filesystem</packagereq>
       <packagereq type="mandatory">lightdm-gtk</packagereq>
-      <packagereq type="default">ultramarine-backgrounds-gnome</packagereq>
+      <packagereq type="default">xfce4-whiskermenu-plugin</packagereq>
+      <packagereq type="default">materia-gtk-theme</packagereq>
+      <packagereq type="default">papirus-icon-theme</packagereq>
       <packagereq type="default">ultramarine-backgrounds</packagereq>
-      <packagereq type="default">fluent-theme</packagereq>
-      <packagereq type="default">fluent-icon-theme</packagereq>
+      <packagereq type="default">ultramarine-backgrounds-gnome</packagereq>
+      <packagereq type="default">ultramarine-backgrounds-common</packagereq>
       <packagereq type="default">seahorse</packagereq>
       <packagereq type="default">gnome-software</packagereq>
       <packagereq type="default">evince</packagereq>
@@ -263,7 +265,7 @@
       <packagereq type="default">mousepad</packagereq>
       <packagereq type="default">ristretto</packagereq>
       <packagereq type="default">xarchiver</packagereq>
-      <packagereq type="default">xfce4-clipman-plugi</packagereq>
+      <packagereq type="default">xfce4-clipman-plugin</packagereq>
       <packagereq type="default">xfce4-dict-plugin</packagereq>
       </packagelist>
   </group>
