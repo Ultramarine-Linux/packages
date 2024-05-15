@@ -7,6 +7,7 @@ Summary:    Package that sets dnf5 as the default package manager
 License:    MIT
 URL:        https://wiki.ultramarine-linux.org/en/usage/um40-dnf5/
 Requires:   dnf5
+Recommends: dnf5-plugins
 
 %description
 This package contains post-install hooks that symlinks %_bindir/dnf
