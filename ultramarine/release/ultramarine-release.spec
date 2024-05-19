@@ -485,6 +485,7 @@ Recommends: materia-gtk-theme
 Recommends: papirus-icon-theme
 # The config replaces the default app menu with whisker menu
 Recommends: xfce4-whiskermenu-plugin
+Recommends: xfce4-docklike-plugin
 Recommends: ultramarine-release-xfce-pkgexcl
 
 %description xfce
