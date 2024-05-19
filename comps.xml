@@ -250,6 +250,7 @@
       <packagereq type="mandatory">ultramarine-xfce-filesystem</packagereq>
       <packagereq type="mandatory">lightdm-gtk</packagereq>
       <packagereq type="default">xfce4-whiskermenu-plugin</packagereq>
+      <packagereq type="default">xfce4-docklike-plugin</packagereq>
       <packagereq type="default">materia-gtk-theme</packagereq>
       <packagereq type="default">papirus-icon-theme</packagereq>
       <packagereq type="default">ultramarine-backgrounds</packagereq>
