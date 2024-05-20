@@ -55,7 +55,7 @@ Summary:        Compatibility package for ultramarine-backgrounds
 Requires:   ultramarine-backgrounds-common = %{version}-%{release}
 Provides: desktop-backgrounds-compat = %{version}-%{release}
 License:        CC0
-Obsoletes:		desktop-backgrounds-compat = 39.0.0-3
+Obsoletes:		desktop-backgrounds-compat = 40.0.0-1
 Conflicts:    desktop-backgrounds-compat
 
 %description    compat
