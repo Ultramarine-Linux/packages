@@ -99,6 +99,7 @@ Requires:   ultramarine-release-variant = %{version}
 Requires:   ultramarine-repos(%{version})
 Requires:   ultramarine-release-identity = %{version}-%{release}
 Recommends: system76-scheduler
+Recommends: ultramarine-phony-bookmarks
 Conflicts:  generic-release
 Conflicts:  fedora-release
 Conflicts:  fedora-release-common
