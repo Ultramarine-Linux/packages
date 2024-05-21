@@ -1,12 +1,13 @@
 Name:       ultramarine-phony-bookmarks
 Version:    0
-Release:    1%?dist
+Release:    2%?dist
 Summary:    A substitute for fedora-bookmarks
 License:    CC0
 URL:        https://ultramarine-linux.org
 Provides:   system-bookmarks
 Conflicts:  system-bookmarks
 Enhances:   ultramarine-release
+BuildArch:  noarch
 
 %description
 This package substitutes / replaces fedora-bookmarks, which might be annoying
