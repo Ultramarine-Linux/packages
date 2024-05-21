@@ -1,0 +1,11 @@
+[Unit]
+Description= Expand rootfs
+After=multi-user.target
+
+[Service]
+Type=oneshot
+ExecStart=/sbin/grow-root.sh
+RemainAfterExit=true
+
+[Install]
+WantedBy=multi-user.target
