@@ -41,7 +41,7 @@
 Summary:	Ultramarine Linux release files
 Name:		ultramarine-release
 Version:	%{dist_version}
-Release:	1%{?dist}
+Release:	2%{?dist}
 License:	MIT
 Source0:	LICENSE
 URL:        https://ultramarine-linux.org
@@ -99,6 +99,7 @@ Requires:   ultramarine-release-variant = %{version}
 Requires:   ultramarine-repos(%{version})
 Requires:   ultramarine-release-identity = %{version}-%{release}
 Recommends: system76-scheduler
+Recommends: ultramarine-phony-bookmarks
 Conflicts:  generic-release
 Conflicts:  fedora-release
 Conflicts:  fedora-release-common
