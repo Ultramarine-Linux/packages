@@ -41,7 +41,7 @@
 Summary:	Ultramarine Linux release files
 Name:		ultramarine-release
 Version:	%{dist_version}
-Release:	2%{?dist}
+Release:	3%{?dist}
 License:	MIT
 Source0:	LICENSE
 URL:        https://ultramarine-linux.org
@@ -75,14 +75,18 @@ Source20:   distro-edition-template.swidtag
 
 Source28:   longer-default-shutdown-timeout.conf
 
-Source30:   ultramarine.conf
 Source31:   enable-kwin-system76-scheduler-integration.service
 Source32:   org.projectatomic.rpmostree1.rules
 Source33:   50-ultramarine-networking.conf
 Source34:   ultramarine.urls
-Source35:   ultramarine-initial-setup.conf
 
 Source40:   https://github.com/Ultramarine-Linux/xfce-config/archive/%{xfce_conf_commit}.tar.gz
+
+Source50:   ultramarine.conf
+Source51:   ultramarine-flagship.conf
+Source52:   ultramarine-gnome.conf
+Source53:   ultramarine-kde.conf
+Source54:   ultramarine-xfce.conf
 
 BuildRequires:    systemd-rpm-macros
 
@@ -797,15 +801,15 @@ EOF
 
 # Create custom Anaconda config
 mkdir -p %{buildroot}%{_sysconfdir}/anaconda/profile.d/
-cp -pr %{SOURCE30} %{buildroot}%{_sysconfdir}/anaconda/profile.d/ultramarine.conf
+cp -pr %{SOURCE50} %{buildroot}%{_sysconfdir}/anaconda/profile.d/ultramarine.conf
+cp -pr %{SOURCE51} %{buildroot}%{_sysconfdir}/anaconda/profile.d/ultramarine-flagship.conf
+cp -pr %{SOURCE52} %{buildroot}%{_sysconfdir}/anaconda/profile.d/ultramarine-gnome.conf
+cp -pr %{SOURCE53} %{buildroot}%{_sysconfdir}/anaconda/profile.d/ultramarine-kde.conf
+cp -pr %{SOURCE54} %{buildroot}%{_sysconfdir}/anaconda/profile.d/ultramarine-xfce.conf
 
 # sysctls
 mkdir -p %{buildroot}%{_prefix}/lib/sysctl.d/
 cp -pr %{SOURCE33} %{buildroot}%{_prefix}/lib/sysctl.d/50-ultramarine-networking.conf
-
-# initial-setup
-mkdir -p %{buildroot}%{_sysconfdir}/initial-setup/conf.d/
-cp -pr %{SOURCE35} %{buildroot}%{_sysconfdir}/initial-setup/conf.d/ultramarine.conf
 
 
 #########################
@@ -904,7 +908,10 @@ install -Dm0644 %{SOURCE32} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
 %files common
 %{_datadir}/dnf/plugins/copr.vendor.conf
 %{_sysconfdir}/anaconda/profile.d/ultramarine.conf
-%{_sysconfdir}/initial-setup/conf.d/ultramarine.conf
+%{_sysconfdir}/anaconda/profile.d/ultramarine-flagship.conf
+%{_sysconfdir}/anaconda/profile.d/ultramarine-gnome.conf
+%{_sysconfdir}/anaconda/profile.d/ultramarine-kde.conf
+%{_sysconfdir}/anaconda/profile.d/ultramarine-xfce.conf
 %{_prefix}/lib/sysctl.d/50-ultramarine-networking.conf
 %license licenses/LICENSE licenses/README.license
 %{_prefix}/lib/ultramarine-release
