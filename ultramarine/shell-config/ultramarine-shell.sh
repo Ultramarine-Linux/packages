@@ -1,12 +1,19 @@
 # Global and common shell config for Ultramarine Linux
 
-# if apt is not installed
+um=$(cat<<EOF
+Ultramarine Linux is a Fedora-based distribution, meaning system packages are installed via the dnf-3/dnf5 package manager.
+You should always try to use the `dnf` command or the `flatpak` command to install system software or user applications respectively.
+If you are running this command by following instructions from the Internet, you are most likely following the wrong instructions.
+Try following instructions for Fedora Linux, or CentOS/RHEL if they are not available.
+EOF
+)
+tryinstall="You may manually install `%` to stop this message, but YOU HAVE BEEN WARNED that this is going to be NOT what you want unless you know what you're doing."
+
 if ! [ -x "$(command -v apt)" ]; then
     apt() {
-        # print arguments
-        echo "Ultramarine Linux uses the DNF package manager. If you're running this command by following instructions from the internet, you are probably following the wrong instructions."
-        echo "Try following the instructions for Fedora Linux, or CentOS/RHEL if they're not available."
-        echo "If you want stop this message from showing, manually install apt by running \"sudo dnf install apt\"."
+        echo $um
+        echo "Installing packages made for Debian-based distributions may cause your system to become unstable and even break, causing DATA LOSS."
+        echo $tryinstall | sed 's/%/apt/g'
         return 1
     }
 fi
@@ -14,40 +21,31 @@ fi
 
 if ! [ -x "$(command -v dpkg)" ]; then
     dpkg() {
-        # print arguments
         echo "It seems like you're trying to install a DEB package. Debian packages are not supported in Ultramarine Linux."
-        echo "While it may be possible to actually install a DEB package in Ultramarine Linux, you should always try to install RPMs (or Flatpaks) whenever possible."
-        echo "Installing DEB packages on Ultramarine Linux may cause your system to become unstable, and may even break your system, causing DATA LOSS."
-        echo "If you want stop this message from showing and you know what you're doing, manually install dpkg by running \"sudo dnf install dpkg\"."
+        echo $um
+        echo "Installing packages made for Debian-based distributions may cause your system to become unstable and even break, causing DATA LOSS."
+        echo $tryinstall | sed 's/%/dpkg/g'
         return 1
     }
 fi
 
-# pacman
 if ! [ -x "$(command -v pacman)" ]; then
     pacman() {
-        # print arguments
-        echo "Ultramarine Linux is a Fedora-based distribution, which means Ultramarine uses the DNF package manager. Ultramarine Linux is *not* an Arch-based distribution."
-        echo "Please use dnf instead of pacman."
-        echo "If you still would like to use pacman, install pacman manually."
-        echo "WARNING: pacman is *not* supported by Ultramarine Linux, and using pacman may result in unexpected behavior. YOU HAVE BEEN WARNED."
+        echo $um
+        echo $tryinstall | sed 's/%/pacman/g'
         return 1
     }
 fi
 
-# emerge
-emerge(){
-    # print arguments
+emerge() {
     echo "It seems like you're trying to install a Gentoo package. Gentoo packages are not supported in Ultramarine Linux."
-    echo "Portage is not available in Ultramarine Linux. However, if you would like a similar solution, you can try out umpkg https://github.com/Ultramarine-Linux/umpkg"
+    echo "Portage is not available in Ultramarine Linux. However, if you would like a similar solution, you can try out anda: https://developer.fyralabs.com/andaman"
     return 1
 }
 
-# AUR helpers
 _aur_helper() {
-    # print arguments
     echo "It seems like you're trying to install an AUR package. As with the case with Arch Linux packages, AUR packages are not supported in Ultramarine Linux."
-    echo "If you would like a similar solution, try umpkg https://github.com/Ultramarine-Linux/umpkg"
+    echo "If you would like a similar solution, try anda: https://developer.fyralabs.com/andaman"
     return 1
 }
 
