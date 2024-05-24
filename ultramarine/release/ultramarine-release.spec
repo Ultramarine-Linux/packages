@@ -41,7 +41,7 @@
 Summary:	Ultramarine Linux release files
 Name:		ultramarine-release
 Version:	%{dist_version}
-Release:	4%{?dist}
+Release:	5%{?dist}
 License:	MIT
 Source0:	LICENSE
 URL:        https://ultramarine-linux.org
@@ -66,8 +66,9 @@ Source7:	90-default.preset
 Source8:	99-default-disable.preset
 Source9:	90-default-user.preset
 
-Source13:   60-ultramarine-presets.conf
-Source14:   lightdm-gtk-greeter.conf
+Source12:   60-ultramarine-presets.conf
+Source13:   lightdm-gtk-greeter-flagship.conf
+Source14:   lightdm-gtk-greeter-xfce.conf
 Source15:   50_ultramarine-gnome.gschema.override
 
 Source19:   distro-template.swidtag
@@ -818,8 +819,11 @@ cp -pr %{SOURCE33} %{buildroot}%{_prefix}/lib/sysctl.d/50-ultramarine-networking
 
 # Budgie config
 mkdir -p %{buildroot}%{_sysconfdir}/lightdm/lightdm.conf.d/
-install %{SOURCE13} %{buildroot}%{_sysconfdir}/lightdm/lightdm.conf.d/
-install %{SOURCE14} %{buildroot}%{_sysconfdir}/lightdm/lightdm.conf.d/50-ultramarine-lightdm-gtk-greeter.conf
+install %{SOURCE12} %{buildroot}%{_sysconfdir}/lightdm/lightdm.conf.d/
+install %{SOURCE13} %{buildroot}%{_sysconfdir}/lightdm/lightdm.conf.d/50-ultramarine-flagship-lightdm-gtk-greeter.conf
+
+# XFCE config
+install %{SOURCE14} %{buildroot}%{_sysconfdir}/lightdm/lightdm.conf.d/50-ultramarine-xfce-lightdm-gtk-greeter.conf
 
 # GNOME config
 install -Dm0644 %{SOURCE15} -t %{buildroot}%{_datadir}/glib-2.0/schemas/
@@ -951,20 +955,20 @@ install -Dm0644 %{SOURCE32} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
 
 %if %{with flagship}
 %files flagship
-%{_sysconfdir}/lightdm/lightdm.conf.d/60-ultramarine-presets.conf
-%{_sysconfdir}/lightdm/lightdm.conf.d/50-ultramarine-lightdm-gtk-greeter.conf
 %files identity-flagship
 %{_prefix}/lib/os-release.flagship
 %attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.flagship
+%{_sysconfdir}/lightdm/lightdm.conf.d/60-ultramarine-presets.conf
+%{_sysconfdir}/lightdm/lightdm.conf.d/50-ultramarine-flagship-lightdm-gtk-greeter.conf
 %endif
 
 %if %{with atomic_flagship}
 %files atomic-flagship
-%{_sysconfdir}/lightdm/lightdm.conf.d/60-ultramarine-presets.conf
-%{_sysconfdir}/lightdm/lightdm.conf.d/50-ultramarine-lightdm-gtk-greeter.conf
 %files identity-atomic-flagship
 %{_prefix}/lib/os-release.atomic-flagship
 %attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.atomic-flagship
+%{_sysconfdir}/lightdm/lightdm.conf.d/60-ultramarine-presets.conf
+%{_sysconfdir}/lightdm/lightdm.conf.d/50-ultramarine-flagship-lightdm-gtk-greeter.conf
 %endif
 
 %if %{with pantheon}
@@ -1019,6 +1023,8 @@ install -Dm0644 %{SOURCE32} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
 %{_prefix}/lib/os-release.xfce
 %attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.xfce
 %{_sysconfdir}/skel/.config/xfce4/
+%{_sysconfdir}/lightdm/lightdm.conf.d/60-ultramarine-presets.conf
+%{_sysconfdir}/lightdm/lightdm.conf.d/50-ultramarine-xfce-lightdm-gtk-greeter.conf
 %endif
 
 %if %{with atomic_xfce}
@@ -1026,6 +1032,9 @@ install -Dm0644 %{SOURCE32} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
 %files identity-atomic-xfce
 %{_prefix}/lib/os-release.atomic-xfce
 %attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.atomic-xfce
+%{_sysconfdir}/skel/.config/xfce4/
+%{_sysconfdir}/lightdm/lightdm.conf.d/60-ultramarine-presets.conf
+%{_sysconfdir}/lightdm/lightdm.conf.d/50-ultramarine-xfce-lightdm-gtk-greeter.conf
 %endif
 
 %if %{with atomic_desktop}
