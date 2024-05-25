@@ -30,6 +30,10 @@
 %bcond_without atomic_gnome
 %bcond_without atomic_xfce
 
+%if %{with flagship} || %{with pantheon} || %{with kde} || %{with gnome} || %{with xfce} || %{with atomic_flagship} || %{with atomic_pantheon} || %{with atomic_kde} || %{with atomic_gnome} || %{with atomic_xfce}
+%global with_desktop 1
+%endif
+
 %if %{with atomic_flagship} || %{with atomic_pantheon} || %{with atomic_kde} || %{with atomic_gnome} || %{with atomic_xfce}
 %global with_atomic_desktop 1
 %endif
@@ -61,6 +65,8 @@ Source1:	README.developers
 Source2:	README.Ultramarine-Release-Notes
 Source3:	README.license
 
+Source4:	80-workstation.preset
+Source5:	81-desktop.preset
 Source6:	85-display-manager.preset
 Source7:	90-default.preset
 Source8:	99-default-disable.preset
@@ -163,6 +169,7 @@ Provides:   system-release
 Provides:   system-release(%{version})
 Provides:   base-module(platform:f%{version})
 Requires:   ultramarine-release-common = %{version}-%{release}
+Requires:   ultramarine-release-desktop = %{version}-%{release}
 Provides:   system-release-product
 # ultramarine-release-common Requires: ultramarine-release-identity, so at least one
 # package must provide it. This Recommends: pulls in
@@ -199,6 +206,7 @@ Provides:   system-release
 Provides:   system-release(%{version})
 Provides:   base-module(platform:f%{version})
 Requires:   ultramarine-release-common = %{version}-%{release}
+Requires:   ultramarine-release-desktop = %{version}-%{release}
 Requires:   ultramarine-release-atomic-desktop = %{version}-%{release}
 Provides:   system-release-product
 # ultramarine-release-common Requires: ultramarine-release-identity, so at least one
@@ -236,6 +244,7 @@ Provides:   system-release
 Provides:   system-release(%{version})
 Provides:   base-module(platform:f%{version})
 Requires:   ultramarine-release-common = %{version}-%{release}
+Requires:   ultramarine-release-desktop = %{version}-%{release}
 Provides:   system-release-product
 # ultramarine-release-common Requires: ultramarine-release-identity, so at least one
 # package must provide it. This Recommends: pulls in
@@ -271,6 +280,7 @@ Provides:   system-release
 Provides:   system-release(%{version})
 Provides:   base-module(platform:f%{version})
 Requires:   ultramarine-release-common = %{version}-%{release}
+Requires:   ultramarine-release-desktop = %{version}-%{release}
 Requires:   ultramarine-release-atomic-desktop = %{version}-%{release}
 Provides:   system-release-product
 # ultramarine-release-common Requires: ultramarine-release-identity, so at least one
@@ -308,6 +318,7 @@ Provides:   system-release
 Provides:   system-release(%{version})
 Provides:   base-module(platform:f%{version})
 Requires:   ultramarine-release-common = %{version}-%{release}
+Requires:   ultramarine-release-desktop = %{version}-%{release}
 Provides:   system-release-product
 # ultramarine-release-common Requires: ultramarine-release-identity, so at least one
 # package must provide it. This Recommends: pulls in
@@ -345,6 +356,7 @@ Provides:   system-release
 Provides:   system-release(%{version})
 Provides:   base-module(platform:f%{version})
 Requires:   ultramarine-release-common = %{version}-%{release}
+Requires:   ultramarine-release-desktop = %{version}-%{release}
 Requires:   ultramarine-release-atomic-desktop = %{version}-%{release}
 Provides:   system-release-product
 # ultramarine-release-common Requires: ultramarine-release-identity, so at least one
@@ -382,6 +394,7 @@ Provides:   system-release
 Provides:   system-release(%{version})
 Provides:   base-module(platform:f%{version})
 Requires:   ultramarine-release-common = %{version}-%{release}
+Requires:   ultramarine-release-desktop = %{version}-%{release}
 Provides:   system-release-product
 Recommends: gnome-shell-extension-pop-shell
 Recommends: gnome-shell-extension-appindicator
@@ -426,6 +439,7 @@ Provides:   system-release
 Provides:   system-release(%{version})
 Provides:   base-module(platform:f%{version})
 Requires:   ultramarine-release-common = %{version}-%{release}
+Requires:   ultramarine-release-desktop = %{version}-%{release}
 Requires:   ultramarine-release-atomic-desktop = %{version}-%{release}
 Provides:   system-release-product
 Recommends: gnome-shell-extension-pop-shell
@@ -484,6 +498,7 @@ Provides:   system-release
 Provides:   system-release(%{version})
 Provides:   base-module(platform:f%{version})
 Requires:   ultramarine-release-common = %{version}-%{release}
+Requires:   ultramarine-release-desktop = %{version}-%{release}
 Provides:   system-release-product
 # ultramarine-release-common Requires: ultramarine-release-identity, so at least one
 # package must provide it. This Recommends: pulls in
@@ -526,6 +541,7 @@ Provides:   system-release
 Provides:   system-release(%{version})
 Provides:   base-module(platform:f%{version})
 Requires:   ultramarine-release-common = %{version}-%{release}
+Requires:   ultramarine-release-desktop = %{version}-%{release}
 Requires:   ultramarine-release-atomic-desktop = %{version}-%{release}
 Provides:   system-release-product
 # ultramarine-release-common Requires: ultramarine-release-identity, so at least one
@@ -552,6 +568,16 @@ Provides the necessary files for a Ultramarine Atomic XFCE installation.
 ######################################################################
 #### Accessory packages
 ######################################################################
+
+####### Desktop #######
+
+%if %{with desktop}
+%package desktop
+Summary:        Common configuration package for desktop variants
+
+%description desktop
+Common configuration package for desktop variants
+%endif
 
 ####### Atomic Desktop (OSTree) #######
 
@@ -877,6 +903,20 @@ install -Dm0644 %{SOURCE9} -t $RPM_BUILD_ROOT%{_prefix}/lib/systemd/user-preset/
 install -Dm0644 %{SOURCE28} -t %{buildroot}%{_prefix}/lib/systemd/system.conf.d/
 install -Dm0644 %{SOURCE28} -t %{buildroot}%{_prefix}/lib/systemd/user.conf.d/
 
+%if %{with desktop}
+
+# Install systemd presets for desktop
+install -Dm0644 %{SOURCE5} -t $RPM_BUILD_ROOT%{_prefix}/lib/systemd/system-preset/
+
+%endif
+
+%if %{with gnome} || %{with atomic_gnome}
+
+# Install systemd presets for gnome
+install -Dm0644 %{SOURCE4} -t $RPM_BUILD_ROOT%{_prefix}/lib/systemd/system-preset/
+
+%endif
+
 # Add debuginfod urls
 install -D -p -m 0644 -t %{buildroot}%{_sysconfdir}/debuginfod %{SOURCE34}
 
@@ -1007,6 +1047,7 @@ install -Dm0644 %{SOURCE32} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
 %{_prefix}/lib/os-release.gnome
 %attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.gnome
 %{_datadir}/glib-2.0/schemas/50_ultramarine-gnome.gschema.override
+%{_prefix}/lib/systemd/system-preset/80-workstation.preset
 %endif
 
 %if %{with atomic_gnome}
@@ -1015,6 +1056,7 @@ install -Dm0644 %{SOURCE32} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
 %{_prefix}/lib/os-release.atomic-gnome
 %attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.atomic-gnome
 %{_datadir}/glib-2.0/schemas/50_ultramarine-gnome.gschema.override
+%{_prefix}/lib/systemd/system-preset/80-workstation.preset
 %endif
 
 %if %{with xfce}
@@ -1035,6 +1077,11 @@ install -Dm0644 %{SOURCE32} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
 %{_sysconfdir}/skel/.config/xfce4/
 %{_sysconfdir}/lightdm/lightdm.conf.d/60-ultramarine-presets.conf
 %{_sysconfdir}/lightdm/lightdm.conf.d/50-ultramarine-xfce-lightdm-gtk-greeter.conf
+%endif
+
+%if %{with desktop}
+%files desktop
+%{_prefix}/lib/systemd/system-preset/81-desktop.preset
 %endif
 
 %if %{with atomic_desktop}

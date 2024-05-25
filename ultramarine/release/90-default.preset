@@ -43,6 +43,9 @@ enable ModemManager.service
 # Approved by FESCo - https://fedorahosted.org/fesco/ticket/1311
 enable auditd.service
 
+# https://bugzilla.redhat.com/show_bug.cgi?id=2258520
+enable audit-rules.service
+
 # Locally-running service
 enable restorecond.service
 
@@ -73,18 +76,57 @@ enable firewalld.service
 enable virtqemud.service
 enable virtxend.service
 enable virtlxcd.service
+enable virtvboxd.service
 
-# Compatibility with libvirtd sockets for old clients and expose TCP sockets
+# Sockets for the services listed above, to support socket activation
+# after the initial timeout
+enable virtqemud.socket
+enable virtqemud-ro.socket
+enable virtqemud-admin.socket
+enable virtxend.socket
+enable virtxend-ro.socket
+enable virtxend-admin.socket
+enable virtlxcd.socket
+enable virtlxcd-ro.socket
+enable virtlxcd-admin.socket
+enable virtvboxd.socket
+enable virtvboxd-ro.socket
+enable virtvboxd-admin.socket
+
+# Compatibility with libvirtd sockets for old clients (socket activated
+# only when required). Note that the -tcp and -tls sockets are kept disabled
+# by default, as they require additional configuration before they can work
 enable virtproxyd.socket
+enable virtproxyd-ro.socket
+enable virtproxyd-admin.socket
 
 # Secondary drivers providing supporting functionality to main virtualization
-# drivers, socket activated only when required
+# drivers (socket activated only when required)
 enable virtinterfaced.socket
+enable virtinterfaced-ro.socket
+enable virtinterfaced-admin.socket
 enable virtnetworkd.socket
+enable virtnetworkd-ro.socket
+enable virtnetworkd-admin.socket
 enable virtnodedevd.socket
+enable virtnodedevd-ro.socket
+enable virtnodedevd-admin.socket
 enable virtnwfilterd.socket
+enable virtnwfilterd-ro.socket
+enable virtnwfilterd-admin.socket
 enable virtsecretd.socket
+enable virtsecretd-ro.socket
+enable virtsecretd-admin.socket
 enable virtstoraged.socket
+enable virtstoraged-ro.socket
+enable virtstoraged-admin.socket
+
+# Non-driver support services (socket activated only when required, no
+# read-only socket)
+enable virtlogd.socket
+enable virtlogd-admin.socket
+enable virtlockd.socket
+enable virtlockd-admin.socket
 
 # https://fedoraproject.org/w/index.php?title=Starting_services_by_default&oldid=377748
 enable xinetd.service
@@ -359,6 +401,10 @@ enable google-guest-agent.service
 enable google-startup-scripts.service
 enable google-shutdown-scripts.service
 
+# Support service for Azure
+# Approved by FESCo: https://pagure.io/fesco/issue/2849
+enable waagent.service
+
 # Certbot (Let's Encrypt)
 # https://bugzilla.redhat.com/show_bug.cgi?id=1940211
 enable certbot-renew.timer
@@ -397,12 +443,17 @@ enable nmstate.service
 # https://bugzilla.redhat.com/show_bug.cgi?id=2218006
 enable nfs-client.target
 
-# https://bugzilla.redhat.com/show_bug.cgi?id=2230575
-enable grub-boot-indeterminate.service
-enable grub-systemd-integration.service
+# Enable cloud-init services
+# https://bugzilla.redhat.com/show_bug.cgi?id=2233948
+enable cloud-config.service
+enable cloud-final.service
+enable cloud-init.service
+enable cloud-init-local.service
 
-# enable low-memory-monitor for GMemoryMonitor API
-enable low-memory-monitor.service
+# Enable  kernel-bootcfg-boot-successful.service
+# https://bugzilla.redhat.com/show_bug.cgi?id=2239607
+enable kernel-bootcfg-boot-successful.service
 
-# Enable Ultramarine specific services here
-enable com.system76.Scheduler.service
+# Enable pd-mapper service for Thinkpad X13s
+# https://bugzilla.redhat.com/show_bug.cgi?id=2255318
+enable pd-mapper.service
