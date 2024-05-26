@@ -2,7 +2,7 @@
 
 This repository is a monorepo containing all the distribution packages for Ultramarine Linux.
 
-This repository uses the [Andaman](https://github.com/FyraLabs/anda) toolchain to manage its packages, created by Fyra Labs (the company which is now behind Ultramarine Linux).
+This repository uses the [Andaman](https://github.com/FyraLabs/anda) toolchain to manage its packages, created by Fyra Labs (the company behind Ultramarine Linux).
 
 ## Usage
 
