@@ -1,7 +1,7 @@
 
 Name:           ultramarine-shell-config
-Version:        1.2.2
-Release:        2%{?dist}
+Version:        1.2.3
+Release:        1%{?dist}
 Summary:        Shell configuration for Ultramarine Linux
 License:        MIT
 
@@ -19,7 +19,7 @@ Requires:       starship
 
 BuildArch:      noarch
 %description
-This is a very long description of ultramarine-shell-config.
+This package contains shell configurations made for Ultramarine Linux.
 
 %prep
 
