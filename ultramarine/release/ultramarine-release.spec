@@ -50,6 +50,7 @@ Source6:	85-display-manager.preset
 Source7:	90-default.preset
 Source8:	99-default-disable.preset
 Source9:	90-default-user.preset
+Source10:	89-ultramarine-default.preset
 Source13:   60-ultramarine-presets.conf
 Source14:   lightdm-gtk-greeter.conf
 Source15:   50_ultramarine-gnome.gschema.override
@@ -793,6 +794,7 @@ mkdir -p $RPM_BUILD_ROOT%{_prefix}/lib/systemd/system-preset/
 install -Dm0644 %{SOURCE6} -t $RPM_BUILD_ROOT%{_prefix}/lib/systemd/system-preset/
 install -Dm0644 %{SOURCE7} -t $RPM_BUILD_ROOT%{_prefix}/lib/systemd/system-preset/
 install -Dm0644 %{SOURCE8} -t $RPM_BUILD_ROOT%{_prefix}/lib/systemd/system-preset/
+install -Dm0644 %{SOURCE10} -t $RPM_BUILD_ROOT%{_prefix}/lib/systemd/system-preset/
 install -Dm0644 %{SOURCE9} -t $RPM_BUILD_ROOT%{_prefix}/lib/systemd/user-preset/
 install -Dm0644 %{SOURCE28} -t %{buildroot}%{_prefix}/lib/systemd/system.conf.d/
 install -Dm0644 %{SOURCE28} -t %{buildroot}%{_prefix}/lib/systemd/user.conf.d/
