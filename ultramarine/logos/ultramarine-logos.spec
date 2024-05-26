@@ -4,8 +4,8 @@ Summary:       Icons and pictures related to Ultramarine Linux
 Version:       40
 %define        _release 1%{?dist}
 Release:       1%{?dist}
-URL:           https://github.com/Ultramarine-Linux/logos-src
-Source0:       https://github.com/Ultramarine-Linux/logos-src/archive/refs/heads/lapis.zip
+URL:           https://github.com/Ultramarine-Linux/logos
+Source0:       https://github.com/Ultramarine-Linux/logos/archive/refs/heads/lapis.zip
 Source1:       distributor-logo-ultramarine-flat.svg
 License:       Licensed only for approved usage, see COPYING for details.
 Provides:      redhat-logos = %{version}-%{_release}
@@ -45,7 +45,7 @@ BuildArch:	noarch
 Compatibility package for %{_alt_name}
 
 %prep
-%setup -qn logos-src-lapis
+%setup -qn logos-lapis
 
 %build
 
