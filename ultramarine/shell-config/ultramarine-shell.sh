@@ -2,12 +2,12 @@
 
 um=$(cat<<EOF
 Ultramarine Linux is a Fedora-based distribution, meaning system packages are installed via the dnf-3/dnf5 package manager.
-You should always try to use the `dnf` command or the `flatpak` command to install system software or user applications respectively.
+You should always try to use the 'dnf' command or the 'flatpak' command to install system software or user applications respectively.
 If you are running this command by following instructions from the Internet, you are most likely following the wrong instructions.
 Try following instructions for Fedora Linux, or CentOS/RHEL if they are not available.
 EOF
 )
-tryinstall="You may manually install `%` to stop this message, but YOU HAVE BEEN WARNED that this is going to be NOT what you want unless you know what you're doing."
+tryinstall="You may manually install '%' to stop this message, but YOU HAVE BEEN WARNED that this is going to be NOT what you want unless you know what you're doing."
 
 if ! [ -x "$(command -v apt)" ]; then
     apt() {
