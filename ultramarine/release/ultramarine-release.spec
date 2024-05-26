@@ -79,6 +79,8 @@ Provides:   system-release(%{version})
 Provides:   base-module(platform:f%{version})
 Requires:   ultramarine-release-common = %{version}-%{release}
 
+BuildRequires:    systemd-rpm-macros
+
 Recommends: ultramarine-release-identity-basic
 
 %description
