@@ -1,0 +1,7 @@
+# Enable Ultramarine specific services in this file
+
+# We ship system76-scheduler by default
+enable com.system76.Scheduler.service
+
+# On Ultramarine, we just use Flathub
+disable flatpak-add-fedora-repos.service
