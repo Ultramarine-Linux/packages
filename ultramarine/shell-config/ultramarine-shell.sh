@@ -37,6 +37,14 @@ if ! [ -x "$(command -v pacman)" ]; then
     }
 fi
 
+if ! [ -x "$(command -v snap)" ]; then
+    snap() {
+        echo $um
+        echo $tryinstall | sed 's/%/snapd/g'
+        return 1
+    }
+fi
+
 emerge() {
     echo "It seems like you're trying to install a Gentoo package. Gentoo packages are not supported in Ultramarine Linux."
     echo "Portage is not available in Ultramarine Linux. However, if you would like a similar solution, you can try out anda: https://developer.fyralabs.com/andaman"
