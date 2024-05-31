@@ -1,6 +1,6 @@
 Name:       ultramarine-phony-bookmarks
 Version:    0
-Release:    3%?dist
+Release:    4%?dist
 Summary:    A substitute for fedora-bookmarks
 License:    CC0
 URL:        https://ultramarine-linux.org
@@ -16,16 +16,7 @@ This package substitutes / replaces fedora-bookmarks, which might be annoying
 especially for Firefox users.
 
 %prep
-cat<<EOF > README
-The `%name` package substitutes fedora-bookmarks.
-This prevents Firefox users from getting Fedora bookmarks.
-EOF
 
 %build
 
 %install
-
-%files
-%doc README
-
-%changelog
