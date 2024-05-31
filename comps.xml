@@ -30,8 +30,8 @@
       <packagereq type="default">ultramarine-shell-config</packagereq>
       <packagereq type="default">ultramarine-release</packagereq>
       <packagereq type="default">ultramarine-fun</packagereq>
-      <packagereq type="optional">dnf5-default-package-manager</packagereq>
-      <packagereq type="optional">ultramarine-phony-bookmarks</packagereq>
+      <packagereq type="default">dnf5-default-package-manager</packagereq>
+      <packagereq type="default">ultramarine-phony-bookmarks</packagereq>
       <packagereq type="default">git</packagereq>
     </packagelist>
   </group>
