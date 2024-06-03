@@ -2,7 +2,7 @@
 
 Name:			ultramarine-fun
 Version:		40
-Release:		2%?dist
+Release:		3%?dist
 Summary:		Additional secret/hidden files for ultramarine Linux
 License:		MIT
 URL:			https://ultramarine-linux.org
