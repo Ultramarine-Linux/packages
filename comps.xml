@@ -51,8 +51,7 @@
       <packagereq type="default">sipa-fonts</packagereq>
       <packagereq type="default">ibus-mozc</packagereq>
       <packagereq type="default">mozc</packagereq>
-      <!--<packagereq type="default">umupgrader</packagereq>-->
-      <!--enable this when UM40 ready-->
+      <packagereq type="default">linux-firmware</packagereq>
     </packagelist>
   </group>
   <group>
