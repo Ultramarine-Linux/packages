@@ -33,6 +33,7 @@
       <packagereq type="default">dnf5-default-package-manager</packagereq>
       <packagereq type="default">ultramarine-phony-bookmarks</packagereq>
       <packagereq type="default">git</packagereq>
+      <packagereq type="default">linux-firmware</packagereq>
     </packagelist>
   </group>
   <group>
@@ -51,7 +52,6 @@
       <packagereq type="default">sipa-fonts</packagereq>
       <packagereq type="default">ibus-mozc</packagereq>
       <packagereq type="default">mozc</packagereq>
-      <packagereq type="default">linux-firmware</packagereq>
     </packagelist>
   </group>
   <group>
