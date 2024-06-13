@@ -7,6 +7,7 @@ URL:            https://github.com/FyraLabs/readymade
 Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz
 BuildRequires:	anda-srpm-macros rust-packaging
 BuildRequires:  pkgconfig(libhelium-1)
+BuildRequires:  pkgconfig(gnome-desktop-4)
 BuildRequires:  clang-devel
 
 %description
