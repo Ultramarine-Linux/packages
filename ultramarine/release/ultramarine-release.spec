@@ -45,7 +45,7 @@
 Summary:	Ultramarine Linux release files
 Name:		ultramarine-release
 Version:	%{dist_version}
-Release:	7%{?dist}
+Release:	8%{?dist}
 License:	MIT
 Source0:	LICENSE
 URL:        https://ultramarine-linux.org
@@ -95,6 +95,11 @@ Source51:   ultramarine-flagship.conf
 Source52:   ultramarine-gnome.conf
 Source53:   ultramarine-kde.conf
 Source54:   ultramarine-xfce.conf
+
+Source60:   ultramarine-flagship-protected.conf
+Source61:   ultramarine-gnome-protected.conf
+Source62:   ultramarine-kde-protected.conf
+Source63:   ultramarine-xfce-protected.conf
 
 BuildRequires:    systemd-rpm-macros
 
@@ -696,6 +701,8 @@ echo "VARIANT=\"Flagship Edition\"" >> %{buildroot}%{_prefix}/lib/os-release.fla
 echo "VARIANT_ID=flagship" >> %{buildroot}%{_prefix}/lib/os-release.flagship
 sed -i -e "s|(%{release_name}%{?prerelease})|(Flagship Edition%{?prerelease})|g" %{buildroot}%{_prefix}/lib/os-release.flagship
 sed -e "s#\$version#%{bug_version}#g" -e 's/$edition/Flagship/;s/<!--.*-->//;/^$/d' %{SOURCE20} > %{buildroot}%{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.flagship
+
+install -Dm0644 %{SOURCE60} %{buildroot}%{_sysconfdir}/dnf/protected.d/ultramarine-flagship.conf
 %endif
 
 %if %{with atomic_flagship}
@@ -737,6 +744,8 @@ echo "VARIANT_ID=kde" >> %{buildroot}%{_prefix}/lib/os-release.kde
 sed -i -e "s|(%{release_name}%{?prerelease})|(KDE Plasma Edition%{?prerelease})|g" %{buildroot}%{_prefix}/lib/os-release.kde
 sed -e "s#\$version#%{bug_version}#g" -e 's/$edition/KDE Plasma/;s/<!--.*-->//;/^$/d' %{SOURCE20} > %{buildroot}%{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.kde
 
+install -Dm0644 %{SOURCE62} %{buildroot}%{_sysconfdir}/dnf/protected.d/ultramarine-kde.conf
+
 install -Dm644 %{SOURCE31} %{buildroot}%{_userunitdir}/enable-kwin-system76-scheduler-integration.service
 
 %endif
@@ -762,6 +771,8 @@ echo "VARIANT=\"GNOME Edition\"" >> %{buildroot}%{_prefix}/lib/os-release.gnome
 echo "VARIANT_ID=gnome" >> %{buildroot}%{_prefix}/lib/os-release.gnome
 sed -i -e "s|(%{release_name}%{?prerelease})|(GNOME Edition%{?prerelease})|g" %{buildroot}%{_prefix}/lib/os-release.gnome
 sed -e "s#\$version#%{bug_version}#g" -e 's/$edition/GNOME/;s/<!--.*-->//;/^$/d' %{SOURCE20} > %{buildroot}%{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.gnome
+
+install -Dm0644 %{SOURCE61} %{buildroot}%{_sysconfdir}/dnf/protected.d/ultramarine-gnome.conf
 %endif
 
 %if %{with atomic_gnome}
@@ -782,6 +793,8 @@ echo "VARIANT=\"XFCE Edition\"" >> %{buildroot}%{_prefix}/lib/os-release.xfce
 echo "VARIANT_ID=xfce" >> %{buildroot}%{_prefix}/lib/os-release.xfce
 sed -i -e "s|(%{release_name}%{?prerelease})|(XFCE Edition%{?prerelease})|g" %{buildroot}%{_prefix}/lib/os-release.xfce
 sed -e "s#\$version#%{bug_version}#g" -e 's/$edition/XFCE/;s/<!--.*-->//;/^$/d' %{SOURCE20} > %{buildroot}%{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.xfce
+
+install -Dm0644 %{SOURCE63} %{buildroot}%{_sysconfdir}/dnf/protected.d/ultramarine-xfce.conf
 
 # install xfce configs
 
@@ -1001,6 +1014,7 @@ install -Dm0644 %{SOURCE32} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
 %files identity-flagship
 %{_prefix}/lib/os-release.flagship
 %attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.flagship
+%{_sysconfdir}/dnf/protected.d/ultramarine-flagship.conf
 %{_sysconfdir}/lightdm/lightdm.conf.d/60-ultramarine-presets.conf
 %{_sysconfdir}/lightdm/lightdm.conf.d/50-ultramarine-flagship-lightdm-gtk-greeter.conf
 %endif
@@ -1033,6 +1047,7 @@ install -Dm0644 %{SOURCE32} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
 %files identity-kde
 %{_prefix}/lib/os-release.kde
 %attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.kde
+%{_sysconfdir}/dnf/protected.d/ultramarine-kde.conf
 %config %_userunitdir/enable-kwin-system76-scheduler-integration.service
 %endif
 
@@ -1049,6 +1064,7 @@ install -Dm0644 %{SOURCE32} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
 %files identity-gnome
 %{_prefix}/lib/os-release.gnome
 %attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.gnome
+%{_sysconfdir}/dnf/protected.d/ultramarine-gnome.conf
 %{_datadir}/glib-2.0/schemas/50_ultramarine-gnome.gschema.override
 %{_prefix}/lib/systemd/system-preset/80-workstation.preset
 %endif
@@ -1067,6 +1083,7 @@ install -Dm0644 %{SOURCE32} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
 %files identity-xfce
 %{_prefix}/lib/os-release.xfce
 %attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.xfce
+%{_sysconfdir}/dnf/protected.d/ultramarine-xfce.conf
 %{_sysconfdir}/skel/.config/xfce4/
 %{_sysconfdir}/lightdm/lightdm.conf.d/60-ultramarine-presets.conf
 %{_sysconfdir}/lightdm/lightdm.conf.d/50-ultramarine-xfce-lightdm-gtk-greeter.conf
