@@ -254,6 +254,8 @@
       <packagereq type="default">xfce4-docklike-plugin</packagereq>
       <packagereq type="default">materia-gtk-theme</packagereq>
       <packagereq type="default">papirus-icon-theme</packagereq>
+      <packagereq type="default">papirus-icon-theme-dark</packagereq>
+      <packagereq type="default">papirus-icon-theme-light</packagereq>
       <packagereq type="default">ultramarine-backgrounds</packagereq>
       <packagereq type="default">ultramarine-backgrounds-gnome</packagereq>
       <packagereq type="default">ultramarine-backgrounds-common</packagereq>
