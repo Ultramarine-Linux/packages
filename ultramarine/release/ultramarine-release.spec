@@ -513,6 +513,7 @@ Recommends: materia-gtk-theme
 Recommends: papirus-icon-theme
 Recommends: papirus-icon-theme-dark
 Recommends: papirus-icon-theme-light
+Recommends: mugshot
 # The config replaces the default app menu with whisker menu
 Recommends: xfce4-whiskermenu-plugin
 Recommends: xfce4-docklike-plugin
