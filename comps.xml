@@ -272,6 +272,7 @@
       <packagereq type="default">xfce4-clipman-plugin</packagereq>
       <packagereq type="default">xfce4-dict-plugin</packagereq>
       <packagereq type="default">system-config-printer</packagereq>
+      <packagereq type="default">mugshot</packagereq>
       </packagelist>
   </group>
   <environment>

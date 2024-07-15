@@ -45,7 +45,7 @@
 Summary:	Ultramarine Linux release files
 Name:		ultramarine-release
 Version:	%{dist_version}
-Release:	9%{?dist}
+Release:	10%{?dist}
 License:	MIT
 Source0:	LICENSE
 URL:        https://ultramarine-linux.org
@@ -513,6 +513,7 @@ Recommends: materia-gtk-theme
 Recommends: papirus-icon-theme
 Recommends: papirus-icon-theme-dark
 Recommends: papirus-icon-theme-light
+Recommends: mugshot
 # The config replaces the default app menu with whisker menu
 Recommends: xfce4-whiskermenu-plugin
 Recommends: xfce4-docklike-plugin
