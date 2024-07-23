@@ -9,6 +9,7 @@ gpgkey=https://repos.fyralabs.com/um$releasever/key.asc
 repo_gpgcheck=1
 enabled=1
 enabled_metadata=1
+countme=1
 
 [ultramarine-source]
 name=Ultramarine Linux $releasever - Source
