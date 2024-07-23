@@ -3,7 +3,7 @@
 
 Name: ultramarine-repos
 Version: %{_dist_version}
-Release: 7%{?dist}
+Release: 8%{?dist}
 License: MIT
 Summary: Repositories for Ultramarine Linux
 Requires: %{name}-common = %{version}-%{release}
@@ -79,4 +79,3 @@ cp -avx %{SOURCE201} %{buildroot}/%{_sysconfdir}/flatpak/remotes.d/appcenter.fla
 #%%{_sysconfdir}/yum.repos.d/rpmfusion-free-updates.repo
 #%%{_sysconfdir}/yum.repos.d/rpmfusion-nonfree.repo
 #%%{_sysconfdir}/yum.repos.d/rpmfusion-nonfree-updates.repo
-
