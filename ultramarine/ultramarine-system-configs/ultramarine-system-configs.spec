@@ -53,12 +53,12 @@ install -Dm644 %{SOURCE4} %{buildroot}/etc/modules-load.d/bbr.conf
 
 %files core
 %defattr(-,root,root,-)
-%config /etc/tmpfiles.d/tmpfiles-cleanup.conf
 %config /etc/sysctl.d/50-networking-tweaks.conf
 %config /etc/modules-load.d/bbr.conf
 
 %files desktop
 %defattr(-,root,root,-)
+%config /etc/tmpfiles.d/tmpfiles-cleanup.conf
 %config /etc/systemd/journald.conf.d/journal-cleanup.conf
 %config /etc/logrotate.d/ultramarine-logrotate.conf
 
