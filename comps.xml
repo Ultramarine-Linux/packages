@@ -46,6 +46,7 @@
       <packagereq type="mandatory">ultramarine-repos-extras</packagereq>
       <packagereq type="default">ultramarine-backgrounds-common</packagereq>
       <packagereq type="default">ultramarine-backgrounds-compat</packagereq>
+      <packagereq type="default">ultramarine-system-configs</packagereq>
       <packagereq type="default">system76-scheduler</packagereq>
       <packagereq type="default">orca</packagereq>
       <packagereq type="default">speech-dispatcher-espeak-ng</packagereq>
