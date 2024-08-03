@@ -12,7 +12,20 @@ Source3:        networking-tweaks.conf
 Source4:        bbr.conf
 
 BuildRequires:  /usr/bin/install
-Requires:       systemd
+
+%package core
+Summary:        Core system tweaks for Ultramarine Linux
+
+%description core
+This package provides various systemd configurations that improve system performance
+and resource usage on Ultramarine Linux.
+
+%package desktop
+Summary:        Desktop-specific tweaks for Ultramarine Linux
+
+%description desktop
+This package provides various systemd configurations that optimize desktop resource usage
+and performance on Ultramarine Linux.
 
 
 %description
@@ -36,14 +49,18 @@ install -Dm644 %{SOURCE3} %{buildroot}/etc/sysctl.d/50-networking-tweaks.conf
 install -Dm644 %{SOURCE4} %{buildroot}/etc/modules-load.d/bbr.conf
 
 %files
+
+
+%files core
 %defattr(-,root,root,-)
-%config /etc/systemd/journald.conf.d/journal-cleanup.conf
 %config /etc/tmpfiles.d/tmpfiles-cleanup.conf
-%config /etc/logrotate.d/ultramarine-logrotate.conf
 %config /etc/sysctl.d/50-networking-tweaks.conf
 %config /etc/modules-load.d/bbr.conf
 
-
+%files desktop
+%defattr(-,root,root,-)
+%config /etc/systemd/journald.conf.d/journal-cleanup.conf
+%config /etc/logrotate.d/ultramarine-logrotate.conf
 
 %changelog
 * Sat Aug 03 2024 Cappy Ishihara <cappy@cappuchino.xyz>
