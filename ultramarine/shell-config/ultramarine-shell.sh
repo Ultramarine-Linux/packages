@@ -63,11 +63,11 @@ alias paru=_aur_helper
 
 if ! [ -x "$(command -v neofetch)" ]; then
     neofetch() {
-        echo 'neofetch is not installed.'
-        echo 'While it is available via `sudo dnf in neofetch`, it does not come with the Ultramarine logo.'
-        echo 'We recommend fastfetch instead, which may be installed via:'
+        echo 'Neofetch is not installed.'
+        echo 'While neofetch is available in Ultramarine, it does not come with our logo, and is no longer maintained.'
+        echo 'We recommend fastfetch instead, which may be installed using:'
         echo
-        echo '  sudo dnf in fastfetch'
+        echo '  sudo dnf install fastfetch'
         echo
         echo 'You may disable this message by installing hyfetch-neofetch or neofetch.'
         return 1
