@@ -6,10 +6,10 @@ on:
     paths:
       - ultramarine/**
     branches:
-      - um40
+      - um41
   pull_request:
     branches:
-      - um40
+      - um41
   workflow_dispatch:
   workflow_call:
 
@@ -19,7 +19,7 @@ jobs:
     outputs:
       build_matrix: ${{ steps.generate_build_matrix.outputs.build_matrix }}
     container:
-      image: ghcr.io/terrapkg/builder:f40
+      image: ghcr.io/terrapkg/builder:f41
       options: --cap-add=SYS_ADMIN --privileged
     steps:
       - name: Set workspace as safe
@@ -35,7 +35,7 @@ jobs:
     needs: manifest
     strategy:
       matrix:
-        version: ["40"]
+        version: ["41"]
         pkg: ${{ fromJson(needs.manifest.outputs.build_matrix) }}
       fail-fast: false
     runs-on: ${{ matrix.pkg.arch == 'aarch64' && 'ARM64' || 'ubuntu-latest' }}
@@ -44,7 +44,7 @@ jobs:
       options: --cap-add=SYS_ADMIN --privileged
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - name: Set up git repository
@@ -71,7 +71,7 @@ jobs:
           x=${NAME//\//@}
           echo "name=$x" >> $GITHUB_OUTPUT
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: ${{ steps.art.outputs.name }}
           path: |

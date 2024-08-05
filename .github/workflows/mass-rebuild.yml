@@ -9,7 +9,7 @@ jobs:
   manifest:
     runs-on: ubuntu-latest
     container:
-      image: ghcr.io/terrapkg/builder:f40
+      image: ghcr.io/terrapkg/builder:f41
       options: --cap-add=SYS_ADMIN --privileged
 
     outputs:
@@ -18,7 +18,7 @@ jobs:
     # check out the repo
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
@@ -41,7 +41,7 @@ jobs:
     strategy:
       matrix:
         pkg: ${{ fromJson(needs.manifest.outputs.build_matrix) }}
-        version: ["40"]
+        version: ["41"]
       fail-fast: false
     #if: ${{ matrix.changed_folders != '' }}
     runs-on: ${{ matrix.pkg.arch == 'aarch64' && 'ARM64' || 'ubuntu-latest' }}
@@ -50,7 +50,7 @@ jobs:
       options: --cap-add=SYS_ADMIN --privileged
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - name: Set up git repository
@@ -70,7 +70,7 @@ jobs:
           x=${NAME//\//@}
           echo "name=$x" >> $GITHUB_OUTPUT
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: ${{ steps.art.outputs.name }}
           path: |
