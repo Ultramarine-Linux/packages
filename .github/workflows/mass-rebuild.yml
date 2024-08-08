@@ -30,7 +30,7 @@ jobs:
           git config --global user.email "you@example.com"
           git config --global user.name "Your Name"
           init=$(git rev-list HEAD | tail -n 1)
-          git diff ${init}..HEAD > a.diff
+          git diff ${init}..HEAD --binary > a.diff
           git checkout $init
           git apply a.diff
           git add *
