@@ -45,7 +45,7 @@
 Summary:	Ultramarine Linux release files
 Name:		ultramarine-release
 Version:	%{dist_version}
-Release:	10%{?dist}
+Release:	11%{?dist}
 License:	MIT
 Source0:	LICENSE
 URL:        https://ultramarine-linux.org
@@ -828,7 +828,7 @@ sed -e "s#\$version#%{bug_version}#g" -e 's/$edition/Atomic XFCE/;s/<!--.*-->//;
 install -d %{buildroot}%{_datadir}/dnf/plugins
 cat >> %{buildroot}%{_datadir}/dnf/plugins/copr.vendor.conf << EOF
 [main]
-distribution = Fedora
+distribution = fedora
 releasever = %{releasever}
 EOF
 
