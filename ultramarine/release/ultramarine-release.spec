@@ -3,7 +3,7 @@
 %global release_name Lost Umbrella
 %global fedora_codename Forty
 %global codename lostumbrella
-%define dist_version 40
+%define dist_version 41
 %define _alt_name fedora-release
 
 %define xfce_conf_commit 24fae98d5cf148b5017d6273e442d9b46bf41e91
@@ -45,12 +45,13 @@
 Summary:	Ultramarine Linux release files
 Name:		ultramarine-release
 Version:	%{dist_version}
-Release:	11%{?dist}
+Release:	1%{?dist}
 License:	MIT
 Source0:	LICENSE
 URL:        https://ultramarine-linux.org
 Recommends: ultramarine-release-identity-basic
 BuildArch:  noarch
+Obsoletes:  dnf5-default-package-manager
 
 Provides:   ultramarine-release = %{version}-%{release}
 Provides:   ultramarine-release-variant = %{version}-%{release}
