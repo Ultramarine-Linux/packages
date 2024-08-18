@@ -1127,6 +1127,11 @@ install -Dm0644 %{SOURCE32} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
 %{_prefix}/lib/systemd/system-preset/81-desktop.preset
 %endif
 
+%if %{with chromebook}
+%files chromebook
+%{_prefix}/lib/systemd/system-preset/88-ultramarine-chromebook-default.preset
+%endif
+
 %if %{with atomic_desktop}
 %files atomic-desktop
 %attr(0644,root,root) %{_prefix}/share/polkit-1/rules.d/org.projectatomic.rpmostree1.rules
