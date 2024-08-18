@@ -7,7 +7,7 @@ URL:        https://ultramarine-linux.org
 Provides:   system-bookmarks
 Conflicts:  system-bookmarks
 Conflicts:  fedora-bookmarks
-Obsoletes:  fedora-bookmarks < 28-31
+Obsoletes:  fedora-bookmarks
 Enhances:   ultramarine-release
 BuildArch:  noarch
 
