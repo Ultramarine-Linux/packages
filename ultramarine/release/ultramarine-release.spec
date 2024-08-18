@@ -944,7 +944,7 @@ install -Dm0644 %{SOURCE5} -t $RPM_BUILD_ROOT%{_prefix}/lib/systemd/system-prese
 %if %{with chromebook}
 
 # Install systemd presets for chromebook
-install -Dm0644 %{SOURCE} -t $RPM_BUILD_ROOT%{_prefix}/lib/systemd/system-preset/
+install -Dm0644 %{SOURCE64} -t $RPM_BUILD_ROOT%{_prefix}/lib/systemd/system-preset/
 
 %endif
 
