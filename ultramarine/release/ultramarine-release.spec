@@ -586,7 +586,7 @@ Provides the necessary files for a Ultramarine Atomic XFCE installation.
 %package        chromebook
 Summary:        Common configuration package for chromebook variants
 
-%description desktop
+%description chromebook
 Common configuration package for chromebook variants
 %endif
 
