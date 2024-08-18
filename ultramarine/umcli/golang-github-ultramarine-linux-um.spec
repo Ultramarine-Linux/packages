@@ -30,6 +30,7 @@ URL:            %{gourl}
 Source:         https://github.com/Ultramarine-Linux/um/archive/%commit.tar.gz
 Provides:       umcli
 Provides:       um
+BuildRequires:  git-core
 BuildRequires:  pkgconfig(rpm)
 BuildRequires:  pkgconfig(flatpak)
 
