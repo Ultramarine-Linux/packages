@@ -101,6 +101,8 @@ Source61:   ultramarine-gnome-protected.conf
 Source62:   ultramarine-kde-protected.conf
 Source63:   ultramarine-xfce-protected.conf
 
+Source64:   88-ultramarine-chromebook-default.preset
+
 BuildRequires:    systemd-rpm-macros
 
 %description
@@ -578,6 +580,16 @@ Provides the necessary files for a Ultramarine Atomic XFCE installation.
 #### Accessory packages
 ######################################################################
 
+####### Chromebook #######
+
+%if %{with chromebook}
+%package        chromebook
+Summary:        Common configuration package for chromebook variants
+
+%description desktop
+Common configuration package for chromebook variants
+%endif
+
 ####### Desktop #######
 
 %if %{with desktop}
@@ -925,6 +937,13 @@ install -Dm0644 %{SOURCE28} -t %{buildroot}%{_prefix}/lib/systemd/user.conf.d/
 
 # Install systemd presets for desktop
 install -Dm0644 %{SOURCE5} -t $RPM_BUILD_ROOT%{_prefix}/lib/systemd/system-preset/
+
+%endif
+
+%if %{with chromebook}
+
+# Install systemd presets for chromebook
+install -Dm0644 %{SOURCE} -t $RPM_BUILD_ROOT%{_prefix}/lib/systemd/system-preset/
 
 %endif
 
