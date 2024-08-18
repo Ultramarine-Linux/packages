@@ -2,7 +2,7 @@
 
 %global release_name Lost Umbrella
 %global fedora_codename Forty
-%global codename lostumbrella
+%global codename cyberia
 %define dist_version 41
 %define _alt_name fedora-release
 
