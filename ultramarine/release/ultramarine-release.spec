@@ -29,6 +29,7 @@
 %bcond_without atomic_kde
 %bcond_without atomic_gnome
 %bcond_without atomic_xfce
+%bcond_without chromebook
 
 %if %{with flagship} || %{with pantheon} || %{with kde} || %{with gnome} || %{with xfce} || %{with atomic_flagship} || %{with atomic_pantheon} || %{with atomic_kde} || %{with atomic_gnome} || %{with atomic_xfce}
 %global with_desktop 1
