@@ -34,7 +34,8 @@ Recommends:     xwininfo
 %package -n     hyfetch-neofetch
 Summary:        Replacement for neofetch
 
-Obsoletes:      neofetch
+Obsoletes:      neofetch <= 7.3
+Conflicts:      hyfetch
 Provides:       neofetch = 7.3.1-%{release}
 Requires:       bash >= 3.2
 Requires:       bind-utils
@@ -56,8 +57,11 @@ Recommends:     xwininfo
 %description -n hyfetch-neofetch
 %{summary}.
 %files -n hyfetch-neofetch
+%{_bindir}/neowofetch
 %{_bindir}/neofetch
 %{_mandir}/man1/neofetch.1.gz
+%{_mandir}/man1/neowofetch.1.gz
+/usr/lib/python*/site-packages/HyFetch-%version-py*.egg/
 
 
 %description
@@ -74,9 +78,11 @@ Recommends:     xwininfo
 #%%pyproject_wheel
 
 %install
-%make_install
+make install PREFIX=%buildroot%_prefix
+make install-doc DESTDIR=%{?buildroot} INSTALL="%{__install} -p"
 mv %buildroot%_bindir/{hyfetch,neofetch}
-mv %buildroot%_mandir/man1/{hyfetch,neofetch}.1.gz
+mv %buildroot%_mandir/man1/{hyfetch,neofetch}.1
+sed -i 's@#!/usr/bin/python@#!/usr/bin/python3@' %buildroot%_bindir/neofetch
 #%%pyproject_install
 #%%pyproject_save_files hyfetch
 # bash commands
