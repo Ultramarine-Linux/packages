@@ -18,6 +18,8 @@
       <packagereq type="optional">vlc-plugins-freeworld</packagereq>
       <packagereq type="default">gstreamer1-plugins-ugly</packagereq>
       <packagereq type="default">nv-codec-headers</packagereq>
+      <packagereq type="default">mesa-va-drivers-freeworld</packagereq>
+      <packagereq type="default">mesa-vdpau-drivers-freeworld</packagereq>
     </packagelist>
   </group>
   <group>
