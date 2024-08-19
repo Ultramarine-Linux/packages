@@ -13,6 +13,7 @@ BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-wheel
 BuildRequires:  python3-pip
+BuildRequires:  python-unversioned-command
 Requires:       bash >= 3.2
 Requires:       bind-utils
 Requires:       catimg
