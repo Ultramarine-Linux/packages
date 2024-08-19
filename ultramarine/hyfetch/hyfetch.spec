@@ -75,6 +75,8 @@ Recommends:     xwininfo
 
 %install
 %make_install
+mv %buildroot%_bindir/{hyfetch,neofetch}
+mv %buildroot%_mandir/man1/{hyfetch,neofetch}.1.gz
 #%%pyproject_install
 #%%pyproject_save_files hyfetch
 # bash commands
