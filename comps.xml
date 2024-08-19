@@ -34,6 +34,7 @@
       <packagereq type="default">ultramarine-phony-bookmarks</packagereq>
       <packagereq type="default">git</packagereq>
       <packagereq type="default">linux-firmware</packagereq>
+      <packagereq type="default">nmtui</packagereq>
     </packagelist>
   </group>
   <group>
