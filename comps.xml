@@ -35,6 +35,7 @@
       <packagereq type="default">um</packagereq>
       <packagereq type="default">fastfetch</packagereq>
       <packagereq type="default">linux-firmware</packagereq>
+      <packagereq type="default">nmtui</packagereq>
     </packagelist>
   </group>
   <group>
