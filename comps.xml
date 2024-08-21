@@ -163,38 +163,32 @@
     </grouplist>
   </environment>
     <group>
-    <id>ultramarine-plasma-product</id>
-    <name>Ultramarine Plasma product core</name>
-    <description>Packages mandatory for the Ultramarine Plasma product.</description>
+    <id>ultramarine-kde-product</id>
+    <name>Ultramarine KDE product core</name>
+    <description>Packages mandatory for the Ultramarine KDE product.</description>
     <default>false</default>
     <uservisible>false</uservisible>
     <packagelist>
       <packagereq type="default">kwin-system76-scheduler-integration</packagereq>
       <packagereq type="default">ultramarine-appstream-metadata</packagereq>
-      <packagereq type="default">ultramarine-release-plasma</packagereq>
-      <packagereq type="default">ultramarine-release-identity-plasma</packagereq>
-      <packagereq type="default">okular</packagereq>
-      <packagereq type="default">gwenview</packagereq>
-      <packagereq type="default">kamoso</packagereq>
-      <packagereq type="default">kolourpaint</packagereq>
-      <packagereq type="default">kate</packagereq>
-      <packagereq type="default">kmail</packagereq>
-      <packagereq type="default">vlc</packagereq>
+      <packagereq type="default">ultramarine-release-kde</packagereq>
+      <packagereq type="default">ultramarine-release-identity-kde</packagereq>
     </packagelist>
   </group>
   <environment>
-    <id>ultramarine-plasma-product-environment</id>
-    <name>Ultramarine plasma</name>
-    <description>Ultramarine Plasma is an Ultramarine experience powered by the Plasma desktop environment.</description>
+    <id>ultramarine-kde-product-environment</id>
+    <name>Ultramarine KDE</name>
+    <description>Ultramarine KDE is an Ultramarine experience powered by the KDE desktop environment.</description>
     <grouplist>
       <groupid>base-graphical</groupid>
       <groupid>container-management</groupid>
       <groupid>core</groupid>
-      <groupid>standard</groupid>     
+      <groupid>standard</groupid>
       <groupid>firefox</groupid>
       <groupid>fonts</groupid>
       <groupid>kde-desktop</groupid>
-      <groupid>critical-path-kde</groupid>
+      <groupid>kde-apps</groupid>
+      <groupid>kde-media</groupid>
       <groupid>guest-desktop-agents</groupid>
       <groupid>hardware-support</groupid>
       <groupid>libreoffice</groupid>
@@ -206,7 +200,7 @@
       <groupid>input-methods</groupid>
       <groupid>ultramarine-product-common</groupid>
       <groupid>ultramarine-desktop-product-common</groupid>
-      <groupid>ultramarine-plasma-product</groupid>
+      <groupid>ultramarine-kde-product</groupid>
     </grouplist>
   </environment>
   <group>
