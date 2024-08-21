@@ -20,22 +20,20 @@
 
 %bcond_without basic
 %bcond_without flagship
-%bcond_without pantheon
 %bcond_without kde
 %bcond_without gnome
 %bcond_without xfce
 %bcond_without atomic_flagship
-%bcond_without atomic_pantheon
 %bcond_without atomic_kde
 %bcond_without atomic_gnome
 %bcond_without atomic_xfce
 %bcond_without chromebook
 
-%if %{with flagship} || %{with pantheon} || %{with kde} || %{with gnome} || %{with xfce} || %{with atomic_flagship} || %{with atomic_pantheon} || %{with atomic_kde} || %{with atomic_gnome} || %{with atomic_xfce}
+%if %{with flagship} || %{with kde} || %{with gnome} || %{with xfce} || %{with atomic_flagship} || %{with atomic_kde} || %{with atomic_gnome} || %{with atomic_xfce}
 %global with_desktop 1
 %endif
 
-%if %{with atomic_flagship} || %{with atomic_pantheon} || %{with atomic_kde} || %{with atomic_gnome} || %{with atomic_xfce}
+%if %{with atomic_flagship} || %{with atomic_kde} || %{with atomic_gnome} || %{with atomic_xfce}
 %global with_atomic_desktop 1
 %endif
 
@@ -160,7 +158,7 @@ Requires(meta):	ultramarine-release-basic = %{version}-%{release}
 
 %description identity-basic
 Provides the necessary files for a Ultramarine installation that is not identifying
-itself as a particular Edition or Spin.
+itself as a particular Edition.
 
 %endif
 
@@ -238,81 +236,6 @@ Requires(meta):	ultramarine-release-atomic-flagship = %{version}-%{release}
 Provides the necessary files for a Ultramarine Atomic Flagship installation.
 
 %endif
-
-
-######################################################################
-####### Pantheon #######
-
-%if %{with pantheon}
-%package pantheon
-Summary:	Base package for Ultramarine Pantheon-specific default configurations
-RemovePathPostfixes: .pantheon
-Provides:   ultramarine-release = %{version}-%{release}
-Provides:   ultramarine-release-pantheon = %{version}-%{release}
-Provides:   ultramarine-release-variant = %{version}-%{release}
-Provides:   system-release
-Provides:   system-release(%{version})
-Provides:   base-module(platform:f%{version})
-Requires:   ultramarine-release-common = %{version}-%{release}
-Requires:   ultramarine-release-desktop = %{version}-%{release}
-Provides:   system-release-product
-# ultramarine-release-common Requires: ultramarine-release-identity, so at least one
-# package must provide it. This Recommends: pulls in
-# ultramarine-release-identity-cinnamon if nothing else is already doing so.
-Recommends:	ultramarine-release-identity-pantheon
-
-%description pantheon
-Provides a base package for Ultramarine Pantheon configurations.
-
-%package identity-pantheon
-Summary:		Package providing the Ultramarine Pantheon Identity
-RemovePathPostfixes: .pantheon
-Provides:		ultramarine-release-identity = %{version}-%{release}
-Conflicts:		ultramarine-release-identity
-Requires(meta):	ultramarine-release-pantheon = %{version}-%{release}
-
-%description identity-pantheon
-Provides the necessary files for a Ultramarine Pantheon installation.
-
-%endif
-
-######################################################################
-####### Atomic Pantheon #######
-
-%if %{with atomic_pantheon}
-%package atomic-pantheon
-Summary:	Base package for Ultramarine Atomic Pantheon-specific default configurations
-RemovePathPostfixes: .atomic-pantheon
-Provides:   ultramarine-release = %{version}-%{release}
-Provides:   ultramarine-release-atomic-pantheon = %{version}-%{release}
-Provides:   ultramarine-release-variant = %{version}-%{release}
-Provides:   system-release
-Provides:   system-release(%{version})
-Provides:   base-module(platform:f%{version})
-Requires:   ultramarine-release-common = %{version}-%{release}
-Requires:   ultramarine-release-desktop = %{version}-%{release}
-Requires:   ultramarine-release-atomic-desktop = %{version}-%{release}
-Provides:   system-release-product
-# ultramarine-release-common Requires: ultramarine-release-identity, so at least one
-# package must provide it. This Recommends: pulls in
-# ultramarine-release-identity-cinnamon if nothing else is already doing so.
-Recommends:	ultramarine-release-identity-atomic-pantheon
-
-%description atomic-pantheon
-Provides a base package for Ultramarine Atomic Pantheon configurations.
-
-%package identity-atomic-pantheon
-Summary:		Package providing the Ultramarine Atomic Pantheon Identity
-RemovePathPostfixes: .atomic-pantheon
-Provides:		ultramarine-release-identity = %{version}-%{release}
-Conflicts:		ultramarine-release-identity
-Requires(meta):	ultramarine-release-atomic-pantheon = %{version}-%{release}
-
-%description identity-atomic-pantheon
-Provides the necessary files for a Ultramarine Atomic Pantheon installation.
-
-%endif
-
 
 ######################################################################
 ####### KDE #######
@@ -732,26 +655,6 @@ sed -i -e "s|(%{release_name}%{?prerelease})|(Atomic Flagship Edition%{?prerelea
 sed -e "s#\$version#%{bug_version}#g" -e 's/$edition/Atomic Flagship/;s/<!--.*-->//;/^$/d' %{SOURCE20} > %{buildroot}%{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.atomic-flagship
 %endif
 
-%if %{with pantheon}
-# Pantheon
-cp -p os-release \
-      %{buildroot}%{_prefix}/lib/os-release.pantheon
-echo "VARIANT=\"Pantheon Edition\"" >> %{buildroot}%{_prefix}/lib/os-release.pantheon
-echo "VARIANT_ID=pantheon" >> %{buildroot}%{_prefix}/lib/os-release.pantheon
-sed -i -e "s|(%{release_name}%{?prerelease})|(Pantheon Edition%{?prerelease})|g" %{buildroot}%{_prefix}/lib/os-release.pantheon
-sed -e "s#\$version#%{bug_version}#g" -e 's/$edition/Pantheon/;s/<!--.*-->//;/^$/d' %{SOURCE20} > %{buildroot}%{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.pantheon
-%endif
-
-%if %{with atomic_pantheon}
-# Atomic Pantheon
-cp -p os-release \
-      %{buildroot}%{_prefix}/lib/os-release.atomic-pantheon
-echo "VARIANT=\"Atomic Pantheon Edition\"" >> %{buildroot}%{_prefix}/lib/os-release.atomic-pantheon
-echo "VARIANT_ID=atomic-pantheon" >> %{buildroot}%{_prefix}/lib/os-release.atomic-pantheon
-sed -i -e "s|(%{release_name}%{?prerelease})|(Atomic Pantheon Edition%{?prerelease})|g" %{buildroot}%{_prefix}/lib/os-release.atomic-pantheon
-sed -e "s#\$version#%{bug_version}#g" -e 's/$edition/Atomic Pantheon/;s/<!--.*-->//;/^$/d' %{SOURCE20} > %{buildroot}%{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.atomic-pantheon
-%endif
-
 %if %{with kde}
 # KDE
 cp -p os-release \
@@ -1050,20 +953,6 @@ install -Dm0644 %{SOURCE32} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
 %attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.atomic-flagship
 %{_sysconfdir}/lightdm/lightdm.conf.d/60-ultramarine-presets.conf
 %{_sysconfdir}/lightdm/lightdm.conf.d/50-ultramarine-flagship-lightdm-gtk-greeter.conf
-%endif
-
-%if %{with pantheon}
-%files pantheon
-%files identity-pantheon
-%{_prefix}/lib/os-release.pantheon
-%attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.pantheon
-%endif
-
-%if %{with atomic_pantheon}
-%files atomic-pantheon
-%files identity-atomic-pantheon
-%{_prefix}/lib/os-release.atomic-pantheon
-%attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.atomic-pantheon
 %endif
 
 %if %{with kde}

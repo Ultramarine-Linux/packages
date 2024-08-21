@@ -116,43 +116,6 @@
     </grouplist>
   </environment>
   <group>
-    <id>ultramarine-pantheon-product</id>
-    <name>Ultramarine Pantheon product core</name>
-    <description>Packages mandatory for the Ultramarine Pantheon product.</description>
-    <default>false</default>
-    <uservisible>false</uservisible>
-    <packagelist>
-      <packagereq type="default">ultramarine-release-pantheon</packagereq>
-      <packagereq type="default">ultramarine-release-identity-pantheon</packagereq>
-    </packagelist>
-  </group>
-  <environment>
-    <id>ultramarine-pantheon-product-environment</id>
-    <name>Ultramarine Pantheon</name>
-    <description>Ultramarine Pantheon is an Ultramarine experience powered by ElementaryOS' Pantheon desktop environment.</description>
-    <grouplist>
-      <groupid>base-x</groupid>
-      <groupid>container-management</groupid>
-      <groupid>core</groupid>
-      <groupid>standard</groupid>
-      <groupid>firefox</groupid>
-      <groupid>fonts</groupid>
-      <groupid>pantheon-desktop</groupid>
-      <groupid>guest-desktop-agents</groupid>
-      <groupid>hardware-support</groupid>
-      <groupid>libreoffice</groupid>
-      <groupid>multimedia</groupid>
-      <groupid>sound-and-video</groupid>
-      <groupid>networkmanager-submodules</groupid>
-      <groupid>printing</groupid>
-      <groupid>desktop-accessibility</groupid>
-      <groupid>input-methods</groupid>
-      <groupid>ultramarine-product-common</groupid>
-      <groupid>ultramarine-desktop-product-common</groupid>
-      <groupid>ultramarine-pantheon-product</groupid>
-    </grouplist>
-  </environment>
-  <group>
     <id>ultramarine-gnome-product</id>
     <name>Ultramarine GNOME product core</name>
     <description>Packages mandatory for the Ultramarine GNOME product.</description>
