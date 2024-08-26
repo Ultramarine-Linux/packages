@@ -211,6 +211,11 @@
       <packagereq type="default">ultramarine-appstream-metadata</packagereq>
       <packagereq type="default">ultramarine-release-kde</packagereq>
       <packagereq type="default">ultramarine-release-identity-kde</packagereq>
+      <packagereq type="default">fcitx5-mozc</packagereq>
+      <packagereq type="default">fcitx5-gtk</packagereq>
+      <packagereq type="default">fcitx5-qt</packagereq>
+      <packagereq type="default">fcitx5-configtool</packagereq>
+      <packagereq type="default">kcm-fcitx5</packagereq>
     </packagelist>
   </group>
   <environment>
