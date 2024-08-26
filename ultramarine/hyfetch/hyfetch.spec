@@ -83,7 +83,7 @@ make install-doc DESTDIR=%{?buildroot} INSTALL="%{__install} -p"
 mv %buildroot%_bindir/{hyfetch,neofetch}
 mv %buildroot%_mandir/man1/{hyfetch,neofetch}.1
 sed -i 's@#!/usr/bin/python@#!/usr/bin/python3@' %buildroot%_bindir/neofetch
-rm /usr/lib/python*/site-packages/typing_extensions-*.egg
+rm %buildroot/usr/lib/python*/site-packages/typing_extensions-*.egg
 #%%pyproject_install
 #%%pyproject_save_files hyfetch
 # bash commands
