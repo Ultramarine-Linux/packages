@@ -2,8 +2,8 @@
 
 %global release_name Lost Umbrella
 %global fedora_codename Forty
-%global codename lostumbrella
-%define dist_version 40
+%global codename cyberia
+%define dist_version 41
 %define _alt_name fedora-release
 
 %define xfce_conf_commit 24fae98d5cf148b5017d6273e442d9b46bf41e91
@@ -29,6 +29,7 @@
 %bcond_without atomic_kde
 %bcond_without atomic_gnome
 %bcond_without atomic_xfce
+%bcond_without chromebook
 
 %if %{with flagship} || %{with pantheon} || %{with kde} || %{with gnome} || %{with xfce} || %{with atomic_flagship} || %{with atomic_pantheon} || %{with atomic_kde} || %{with atomic_gnome} || %{with atomic_xfce}
 %global with_desktop 1
@@ -45,12 +46,13 @@
 Summary:	Ultramarine Linux release files
 Name:		ultramarine-release
 Version:	%{dist_version}
-Release:	11%{?dist}
+Release:	1%{?dist}
 License:	MIT
 Source0:	LICENSE
 URL:        https://ultramarine-linux.org
 Recommends: ultramarine-release-identity-basic
 BuildArch:  noarch
+Obsoletes:  dnf5-default-package-manager
 
 Provides:   ultramarine-release = %{version}-%{release}
 Provides:   ultramarine-release-variant = %{version}-%{release}
@@ -100,6 +102,8 @@ Source60:   ultramarine-flagship-protected.conf
 Source61:   ultramarine-gnome-protected.conf
 Source62:   ultramarine-kde-protected.conf
 Source63:   ultramarine-xfce-protected.conf
+
+Source64:   88-ultramarine-chromebook-default.preset
 
 BuildRequires:    systemd-rpm-macros
 
@@ -578,6 +582,16 @@ Provides the necessary files for a Ultramarine Atomic XFCE installation.
 #### Accessory packages
 ######################################################################
 
+####### Chromebook #######
+
+%if %{with chromebook}
+%package        chromebook
+Summary:        Common configuration package for chromebook variants
+
+%description chromebook
+Common configuration package for chromebook variants
+%endif
+
 ####### Desktop #######
 
 %if %{with desktop}
@@ -928,6 +942,13 @@ install -Dm0644 %{SOURCE5} -t $RPM_BUILD_ROOT%{_prefix}/lib/systemd/system-prese
 
 %endif
 
+%if %{with chromebook}
+
+# Install systemd presets for chromebook
+install -Dm0644 %{SOURCE64} -t $RPM_BUILD_ROOT%{_prefix}/lib/systemd/system-preset/
+
+%endif
+
 %if %{with gnome} || %{with atomic_gnome}
 
 # Install systemd presets for gnome
@@ -1105,6 +1126,11 @@ install -Dm0644 %{SOURCE32} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
 %if %{with desktop}
 %files desktop
 %{_prefix}/lib/systemd/system-preset/81-desktop.preset
+%endif
+
+%if %{with chromebook}
+%files chromebook
+%{_prefix}/lib/systemd/system-preset/88-ultramarine-chromebook-default.preset
 %endif
 
 %if %{with atomic_desktop}

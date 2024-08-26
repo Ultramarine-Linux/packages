@@ -1,0 +1,5 @@
+# Enable Ultramarine Chromebook Edition specific services in this file
+
+# Enable chromebook-specific keyboard mappings
+enable cros-keyboard-map.service
+enable keyd.service

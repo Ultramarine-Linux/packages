@@ -61,6 +61,19 @@ alias yay=_aur_helper
 alias pacaur=_aur_helper
 alias paru=_aur_helper
 
+if ! [ -x "$(command -v neofetch)" ]; then
+    neofetch() {
+        echo 'Neofetch is not installed.'
+        echo 'Neofetch is no longer maintained, and it does not come with our logo.'
+        echo 'We recommend fastfetch instead, which may be installed using:'
+        echo
+        echo '  sudo dnf install fastfetch'
+        echo
+        echo 'You may disable this message by installing hyfetch-neofetch.'
+        return 1
+    }
+fi
+
 # if ~/.config/starship.toml doesn't exist
 if ! [ -f ~/.config/starship.toml ]; then
     # export another starship config
