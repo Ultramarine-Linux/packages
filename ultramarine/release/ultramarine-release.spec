@@ -46,7 +46,7 @@
 Summary:	Ultramarine Linux release files
 Name:		ultramarine-release
 Version:	%{dist_version}
-Release:	1%{?dist}
+Release:	2%{?dist}
 License:	MIT
 Source0:	LICENSE
 URL:        https://ultramarine-linux.org
@@ -151,16 +151,13 @@ Release files for Ultramarine Linux.
 %package identity-basic
 Summary:		Package providing the basic Ultramarine identity
 RemovePathPostfixes: .basic
-Provides:		ultramarine-release = %{version}-%{release}
-Provides:		ultramarine-release-basic = %{version}-%{release}
 Provides:		ultramarine-release-identity = %{version}-%{release}
 Conflicts:		ultramarine-release-identity
 Conflicts:		fedora-release-identity-basic
-Requires(meta):	ultramarine-release-basic = %{version}-%{release}
 
 %description identity-basic
 Provides the necessary files for a Ultramarine installation that is not identifying
-itself as a particular Edition or Spin.
+itself as a particular Edition.
 
 %endif
 
