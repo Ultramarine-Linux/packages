@@ -14,7 +14,7 @@ body:
         If you are requesting packages for software that **works fine on other Linux distributions
         or operating systems**, chances are you should [submit this to Terra] instead.
 
-      However, if the package for some reason will not meet [Terra's packaging policies], we do
+        However, if the package for some reason will not meet [Terra's packaging policies], we do
         welcome such submissions to be included into Ultramarine exclusively instead. Possible
         cases include:
         - packages that alters existing Fedora installations/setups significantly
