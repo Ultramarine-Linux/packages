@@ -1,0 +1,64 @@
+name: Package Request
+description: Request a package to be patched and added to Ultramarine Linux repos
+title: "[Request] "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        # README
+        You are submitting a package request in the **[Ultramarine-Linux/packages]** repository.
+        This repository only hosts packages specific to Ultramarine Linux, such as OS identity files,
+        branding files, desktop configurations, release files, etc.
+
+        If you are requesting packages for software that **works fine on other Linux distributions
+        or operating systems**, chances are you should [submit this to Terra] instead.
+
+        However, if the package for some reason will not meet [Terra's packaging policies], we do
+        welcome such submissions to be included into Ultramarine exclusively instead. Possible
+        cases include:
+        - packages that alters existing Fedora installations/setups significantly
+          - e.g. a version of `uutils-coreutils` that replaces the `coreutils` package in Fedora
+          - e.g. replacing Fedora kernels with the Liquorix kernels
+        - packages that only works on Ultramarine
+          - e.g. [Ultramarine Hop] (`umswitch`, allowing users to switch between editions)
+          - but not [dive] (chroot utility for Ultramrine but works on other distros too)
+
+        **TL;DR: When in doubt, [submit this to Terra] instead.**
+
+        [Ultramarine-Linux/packages]: https://github.com/Ultramarine-Linux/packages
+        [Submit this to Terra]: https://github.com/terrapkg/packages/issues
+        [Terra's packaging policies]: https://developer.fyralabs.com/terra/policy
+        [Ultramarine Hop]: https://github.com/Ultramarine-Linux/hop
+        [dive]: https://github.com/Ultramarine-Linux/dive
+  - type: textarea
+    id: pkgs
+    attributes:
+      labels: List of packages to add
+      description: Also include their links if applicable.
+      placeholder: |
+        - nya (https://example.com)
+        - fyra (https://fyralabs.com)
+    validations:
+      required: true
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      options:
+        - label: Package is not already in the Ultramarine repositories
+          required: true
+        - label: Package is not in [Fedora repositories](https://packages.fedoraproject.org/), unless it is a patched/forked version or an upstream version
+          required: true
+        - label: Package is not deprecated or obsolete
+          required: true
+        - label: Package is not a private package or illegal to distribute (e.g a cracked copy or a package that is not publicly available for download)
+          required: true
+        - label: Package is buildable and tested
+          required: true
+    validations:
+      required: true
+  - type: input
+    id: maintainer
+    attributes:
+      label: Nominate a Maintainer
