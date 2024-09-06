@@ -254,7 +254,7 @@ Requires:   ultramarine-release-common = %{version}-%{release}
 Requires:   ultramarine-release-desktop = %{version}-%{release}
 Provides:   system-release-product
 Provides: ultramarine-release-kde = 41-1
-Obsoletes: ultramarine-release-kde < 40-11
+Obsoletes: ultramarine-release-kde < 40-12
 # ultramarine-release-common Requires: ultramarine-release-identity, so at least one
 # package must provide it. This Recommends: pulls in
 # ultramarine-release-identity-cinnamon if nothing else is already doing so.
