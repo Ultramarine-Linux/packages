@@ -302,7 +302,7 @@ Recommends:	ultramarine-release-identity-atomic-plasma
 %description atomic-plasma
 Provides a base package for Ultramarine Atomic Plasma configurations.
 
-%package identity-atomic-Plasma
+%package identity-atomic-plasma
 Summary:		Package providing the Ultramarine Atomic Plasma Identity
 RemovePathPostfixes: .atomic-plasma
 Provides:		ultramarine-release-identity = %{version}-%{release}
