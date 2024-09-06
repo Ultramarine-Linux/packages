@@ -266,7 +266,7 @@ Summary:		Package providing the Ultramarine Plasma Identity
 RemovePathPostfixes: .plasma
 Provides:		ultramarine-release-identity = %{version}-%{release}
 Conflicts:		ultramarine-release-identity
-Requires(meta):	ultramarine-release-Plasma = %{version}-%{release}
+Requires(meta):	ultramarine-release-plasma = %{version}-%{release}
 
 %description identity-plasma
 Provides the necessary files for a Ultramarine Plasma installation.
