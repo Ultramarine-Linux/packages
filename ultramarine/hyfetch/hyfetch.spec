@@ -1,9 +1,9 @@
 Name:           hyfetch
-Version:        1.4.1
-Release:        2%{?dist}
+Version:        1.4.11
+Release:        1%{?dist}
 Summary:        neofetch with pride flags <3
 URL:            https://github.com/hykilpikonna/hyfetch
-Source0:        %{url}/archive/refs/tags/1.4.1.tar.gz
+Source0:        %{url}/archive/refs/tags/%version.tar.gz
 License:        MIT
 
 BuildArch:      noarch
@@ -13,6 +13,7 @@ BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-wheel
 BuildRequires:  python3-pip
+BuildRequires:  python-unversioned-command
 Requires:       bash >= 3.2
 Requires:       bind-utils
 Requires:       catimg
@@ -33,7 +34,8 @@ Recommends:     xwininfo
 %package -n     hyfetch-neofetch
 Summary:        Replacement for neofetch
 
-Obsoletes:      neofetch < 7.1.0
+Obsoletes:      neofetch <= 7.3
+Conflicts:      hyfetch
 Provides:       neofetch = 7.3.1-%{release}
 Requires:       bash >= 3.2
 Requires:       bind-utils
@@ -55,8 +57,11 @@ Recommends:     xwininfo
 %description -n hyfetch-neofetch
 %{summary}.
 %files -n hyfetch-neofetch
+%{_bindir}/neowofetch
 %{_bindir}/neofetch
 %{_mandir}/man1/neofetch.1.gz
+%{_mandir}/man1/neowofetch.1.gz
+%python3_sitelib/HyFetch-%version-py%{python3_version}.egg-info
 
 
 %description
@@ -73,7 +78,12 @@ Recommends:     xwininfo
 #%%pyproject_wheel
 
 %install
-%make_install
+make install PREFIX=%buildroot%_prefix
+make install-doc DESTDIR=%{?buildroot} INSTALL="%{__install} -p"
+mv %buildroot%_bindir/{hyfetch,neofetch}
+mv %buildroot%_mandir/man1/{hyfetch,neofetch}.1
+sed -i 's@#!/usr/bin/python@#!/usr/bin/python3@' %buildroot%_bindir/neofetch
+rm -rf %buildroot/usr/lib/python*/site-packages/typing_extensions-*.egg
 #%%pyproject_install
 #%%pyproject_save_files hyfetch
 # bash commands
