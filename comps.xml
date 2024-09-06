@@ -122,7 +122,6 @@
     <uservisible>false</uservisible>
     <packagelist>
       <packagereq type="default">gnome-extensions-app</packagereq>
-      <packagereq type="default">qalculate</packagereq>
       <packagereq type="default">gnome-shell-extension-appindicator</packagereq>
       <packagereq type="default">gnome-shell-extension-windowsNavigator</packagereq>
       <packagereq type="default">gnome-shell-extension-appmenu-is-back</packagereq>
@@ -177,6 +176,7 @@
       <packagereq type="default">kate</packagereq>
       <packagereq type="default">kmail</packagereq>
       <packagereq type="default">vlc</packagereq>
+      <packagereq type="default">kalk</packagereq>
     </packagelist>
   </group>
   <environment>
