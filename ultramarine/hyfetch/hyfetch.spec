@@ -61,8 +61,7 @@ Recommends:     xwininfo
 %{_bindir}/neofetch
 %{_mandir}/man1/neofetch.1.gz
 %{_mandir}/man1/neowofetch.1.gz
-/usr/lib/python*/site-packages/HyFetch-%version-py%{python3_version}.egg-info
-%python3_sitelib/HyFetch-%version-
+%python3_sitelib/HyFetch-%version-py%{python3_version}.egg-info
 
 
 %description
