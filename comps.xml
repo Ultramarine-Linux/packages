@@ -32,10 +32,10 @@
       <packagereq type="default">ultramarine-fun</packagereq>
       <packagereq type="default">ultramarine-phony-bookmarks</packagereq>
       <packagereq type="default">git</packagereq>
-      <packagereq type="default">um</packagereq>
+      <packagereq type="default">golang-github-ultramarine-linux-um</packagereq>
       <packagereq type="default">fastfetch</packagereq>
       <packagereq type="default">linux-firmware</packagereq>
-      <packagereq type="default">nmtui</packagereq>
+      <packagereq type="default">NetworkManager-tui</packagereq>
     </packagelist>
   </group>
   <group>
@@ -72,8 +72,6 @@
       <packagereq type="default">ultramarine-backgrounds-gnome</packagereq>
       <packagereq type="default">ultramarine-backgrounds</packagereq>
       <packagereq type="default">lightdm-gtk</packagereq>
-      <packagereq type="default">nemo</packagereq>
-      <packagereq type="default">nemo-fileroller</packagereq>
       <packagereq type="default">nemo-python</packagereq>
       <packagereq type="default">nemo-preview</packagereq>
       <packagereq type="default">nemo-emblems</packagereq>
@@ -117,43 +115,6 @@
     </grouplist>
   </environment>
   <group>
-    <id>ultramarine-pantheon-product</id>
-    <name>Ultramarine Pantheon product core</name>
-    <description>Packages mandatory for the Ultramarine Pantheon product.</description>
-    <default>false</default>
-    <uservisible>false</uservisible>
-    <packagelist>
-      <packagereq type="default">ultramarine-release-pantheon</packagereq>
-      <packagereq type="default">ultramarine-release-identity-pantheon</packagereq>
-    </packagelist>
-  </group>
-  <environment>
-    <id>ultramarine-pantheon-product-environment</id>
-    <name>Ultramarine Pantheon</name>
-    <description>Ultramarine Pantheon is an Ultramarine experience powered by ElementaryOS' Pantheon desktop environment.</description>
-    <grouplist>
-      <groupid>base-x</groupid>
-      <groupid>container-management</groupid>
-      <groupid>core</groupid>
-      <groupid>standard</groupid>
-      <groupid>firefox</groupid>
-      <groupid>fonts</groupid>
-      <groupid>pantheon-desktop</groupid>
-      <groupid>guest-desktop-agents</groupid>
-      <groupid>hardware-support</groupid>
-      <groupid>libreoffice</groupid>
-      <groupid>multimedia</groupid>
-      <groupid>sound-and-video</groupid>
-      <groupid>networkmanager-submodules</groupid>
-      <groupid>printing</groupid>
-      <groupid>desktop-accessibility</groupid>
-      <groupid>input-methods</groupid>
-      <groupid>ultramarine-product-common</groupid>
-      <groupid>ultramarine-desktop-product-common</groupid>
-      <groupid>ultramarine-pantheon-product</groupid>
-    </grouplist>
-  </environment>
-  <group>
     <id>ultramarine-gnome-product</id>
     <name>Ultramarine GNOME product core</name>
     <description>Packages mandatory for the Ultramarine GNOME product.</description>
@@ -161,10 +122,7 @@
     <uservisible>false</uservisible>
     <packagelist>
       <packagereq type="default">gnome-extensions-app</packagereq>
-      <packagereq type="default">pop-launcher</packagereq>
-      <packagereq type="default">qalculate</packagereq>
       <packagereq type="default">gnome-shell-extension-appindicator</packagereq>
-      <packagereq type="default">gnome-shell-extension-pop-shell</packagereq>
       <packagereq type="default">gnome-shell-extension-windowsNavigator</packagereq>
       <packagereq type="default">gnome-shell-extension-appmenu-is-back</packagereq>
       <packagereq type="default">ultramarine-backgrounds-gnome</packagereq>
@@ -201,37 +159,44 @@
     </grouplist>
   </environment>
     <group>
-    <id>ultramarine-kde-product</id>
-    <name>Ultramarine KDE product core</name>
-    <description>Packages mandatory for the Ultramarine KDE product.</description>
+    <id>ultramarine-plasma-product</id>
+    <name>Ultramarine Plasma product core</name>
+    <description>Packages mandatory for the Ultramarine Plasma product.</description>
     <default>false</default>
     <uservisible>false</uservisible>
     <packagelist>
       <packagereq type="default">kwin-system76-scheduler-integration</packagereq>
       <packagereq type="default">ultramarine-appstream-metadata</packagereq>
-      <packagereq type="default">ultramarine-release-kde</packagereq>
-      <packagereq type="default">ultramarine-release-identity-kde</packagereq>
+      <packagereq type="default">ultramarine-release-plasma</packagereq>
+      <packagereq type="default">ultramarine-release-identity-plasma</packagereq>
       <packagereq type="default">fcitx5-mozc</packagereq>
       <packagereq type="default">fcitx5-gtk</packagereq>
       <packagereq type="default">fcitx5-qt</packagereq>
       <packagereq type="default">fcitx5-configtool</packagereq>
       <packagereq type="default">kcm-fcitx5</packagereq>
+      <packagereq type="default">okular</packagereq>
+      <packagereq type="default">gwenview</packagereq>
+      <packagereq type="default">kamoso</packagereq>
+      <packagereq type="default">kolourpaint</packagereq>
+      <packagereq type="default">kate</packagereq>
+      <packagereq type="default">kmail</packagereq>
+      <packagereq type="default">vlc</packagereq>
+      <packagereq type="default">kalk</packagereq>
     </packagelist>
   </group>
   <environment>
-    <id>ultramarine-kde-product-environment</id>
-    <name>Ultramarine KDE</name>
-    <description>Ultramarine KDE is an Ultramarine experience powered by the KDE desktop environment.</description>
+    <id>ultramarine-plasma-product-environment</id>
+    <name>Ultramarine plasma</name>
+    <description>Ultramarine Plasma is an Ultramarine experience powered by the Plasma desktop environment.</description>
     <grouplist>
       <groupid>base-graphical</groupid>
       <groupid>container-management</groupid>
       <groupid>core</groupid>
-      <groupid>standard</groupid>
+      <groupid>standard</groupid>     
       <groupid>firefox</groupid>
       <groupid>fonts</groupid>
       <groupid>kde-desktop</groupid>
-      <groupid>kde-apps</groupid>
-      <groupid>kde-media</groupid>
+      <groupid>critical-path-kde</groupid>
       <groupid>guest-desktop-agents</groupid>
       <groupid>hardware-support</groupid>
       <groupid>libreoffice</groupid>
@@ -243,7 +208,7 @@
       <groupid>input-methods</groupid>
       <groupid>ultramarine-product-common</groupid>
       <groupid>ultramarine-desktop-product-common</groupid>
-      <groupid>ultramarine-kde-product</groupid>
+      <groupid>ultramarine-plasma-product</groupid>
     </grouplist>
   </environment>
   <group>
@@ -268,7 +233,7 @@
       <packagereq type="default">ultramarine-backgrounds-common</packagereq>
       <packagereq type="default">seahorse</packagereq>
       <packagereq type="default">gnome-software</packagereq>
-      <packagereq type="default">evince</packagereq>
+      <packagereq type="default">atril</packagereq>
       <packagereq type="default">catfish</packagereq>
       <packagereq type="default">geary</packagereq>
       <packagereq type="default">firefox</packagereq>
