@@ -169,6 +169,11 @@
       <packagereq type="default">ultramarine-appstream-metadata</packagereq>
       <packagereq type="default">ultramarine-release-plasma</packagereq>
       <packagereq type="default">ultramarine-release-identity-plasma</packagereq>
+      <packagereq type="default">fcitx5-mozc</packagereq>
+      <packagereq type="default">fcitx5-gtk</packagereq>
+      <packagereq type="default">fcitx5-qt</packagereq>
+      <packagereq type="default">fcitx5-configtool</packagereq>
+      <packagereq type="default">kcm-fcitx5</packagereq>
       <packagereq type="default">okular</packagereq>
       <packagereq type="default">gwenview</packagereq>
       <packagereq type="default">kamoso</packagereq>
