@@ -13,7 +13,6 @@
 
 # https://github.com/Ultramarine-Linux/um
 %global goipath         github.com/Ultramarine-Linux/um
-%global commit          96fdeefb7586626b80f218771e0cb53b9a93309c
 
 %global common_description %{expand:
 A CLI tool for managing an Ultramarine Linux system.}
@@ -21,13 +20,13 @@ A CLI tool for managing an Ultramarine Linux system.}
 %global godocs          README.md
 
 Name:           golang-github-ultramarine-linux-um
-Version:        0
+Version:        0.1.0
 Release:        %autorelease -p
 Summary:        A CLI tool for managing an Ultramarine Linux system
 
 License:        GPL-3.0-or-later
 URL:            %{gourl}
-Source:         https://github.com/Ultramarine-Linux/um/archive/%commit.tar.gz
+Source:         https://github.com/Ultramarine-Linux/um/archive/v%version.tar.gz
 Provides:       umcli
 Provides:       um
 BuildRequires:  git-core
@@ -39,7 +38,7 @@ BuildRequires:  pkgconfig(flatpak)
 %gopkg
 
 %prep
-%autosetup -n um-%commit -p1
+%autosetup -n um-v%version -p1
 go mod download
 
 %build
