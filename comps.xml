@@ -67,7 +67,7 @@
       <packagereq type="mandatory">budgie-desktop</packagereq>
       <packagereq type="mandatory">budgie-extras-daemon</packagereq>
       <packagereq type="mandatory">ultramarine-release-flagship</packagereq>
-      <packagereq type="mandatory">ultramarine-release-identity-flagship</packagereq>
+      <packagereq type="optional">ultramarine-release-identity-flagship</packagereq>
       <packagereq type="mandatory">ultramarine-flagship-filesystem</packagereq>
       <packagereq type="default">ultramarine-backgrounds-gnome</packagereq>
       <packagereq type="default">ultramarine-backgrounds</packagereq>
@@ -128,7 +128,7 @@
       <packagereq type="default">ultramarine-backgrounds-gnome</packagereq>
       <packagereq type="default">ultramarine-backgrounds-common</packagereq>
       <packagereq type="default">ultramarine-release-gnome</packagereq>
-      <packagereq type="default">ultramarine-release-identity-gnome</packagereq>
+      <packagereq type="optional">ultramarine-release-identity-gnome</packagereq>
       <packagereq type="default">gs-plugin-ultramarine-pkgdb-collections</packagereq>
     </packagelist>
   </group>
@@ -168,7 +168,7 @@
       <packagereq type="default">kwin-system76-scheduler-integration</packagereq>
       <packagereq type="default">ultramarine-appstream-metadata</packagereq>
       <packagereq type="default">ultramarine-release-plasma</packagereq>
-      <packagereq type="default">ultramarine-release-identity-plasma</packagereq>
+      <packagereq type="optional">ultramarine-release-identity-plasma</packagereq>
       <packagereq type="default">fcitx5-mozc</packagereq>
       <packagereq type="default">fcitx5-gtk</packagereq>
       <packagereq type="default">fcitx5-qt</packagereq>
@@ -219,7 +219,7 @@
     <uservisible>false</uservisible>
     <packagelist>
       <packagereq type="mandatory">ultramarine-release-xfce</packagereq>
-      <packagereq type="mandatory">ultramarine-release-identity-xfce</packagereq>
+      <packagereq type="optional">ultramarine-release-identity-xfce</packagereq>
       <packagereq type="mandatory">ultramarine-xfce-filesystem</packagereq>
       <packagereq type="mandatory">lightdm-gtk</packagereq>
       <packagereq type="default">xfce4-whiskermenu-plugin</packagereq>
