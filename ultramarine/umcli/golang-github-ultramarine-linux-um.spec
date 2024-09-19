@@ -38,7 +38,7 @@ BuildRequires:  pkgconfig(flatpak)
 %gopkg
 
 %prep
-%autosetup -n um-v%version -p1
+%autosetup -n um-%version -p1
 go mod download
 
 %build
