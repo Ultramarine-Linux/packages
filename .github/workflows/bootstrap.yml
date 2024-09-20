@@ -6,16 +6,16 @@ jobs:
   build:
     strategy:
       matrix:
-        version: ["40"]
+        version: ["41"]
         arch: ["x86_64", "aarch64"]
       fail-fast: false
     runs-on: ${{ matrix.arch == 'aarch64' && 'ARM64' || 'ubuntu-latest' }}
     container:
-      image: ghcr.io/terrapkg/builder:f40
+      image: ghcr.io/terrapkg/builder:f41
       options: --cap-add=SYS_ADMIN --privileged
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Build ultramarine-mock-configs
         run: |

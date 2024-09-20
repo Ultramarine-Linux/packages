@@ -2,8 +2,8 @@
 
 %global release_name Lost Umbrella
 %global fedora_codename Forty
-%global codename lostumbrella
-%define dist_version 40
+%global codename cyberia
+%define dist_version 41
 %define _alt_name fedora-release
 
 %define xfce_conf_commit 24fae98d5cf148b5017d6273e442d9b46bf41e91
@@ -20,21 +20,20 @@
 
 %bcond_without basic
 %bcond_without flagship
-%bcond_without pantheon
-%bcond_without kde
+%bcond_without plasma
 %bcond_without gnome
 %bcond_without xfce
 %bcond_without atomic_flagship
-%bcond_without atomic_pantheon
-%bcond_without atomic_kde
+%bcond_without atomic_plasma
 %bcond_without atomic_gnome
 %bcond_without atomic_xfce
+%bcond_without chromebook
 
-%if %{with flagship} || %{with pantheon} || %{with kde} || %{with gnome} || %{with xfce} || %{with atomic_flagship} || %{with atomic_pantheon} || %{with atomic_kde} || %{with atomic_gnome} || %{with atomic_xfce}
+%if %{with flagship} || %{with plasma} || %{with gnome} || %{with xfce} || %{with atomic_flagship} || %{with atomic_plasma} || %{with atomic_gnome} || %{with atomic_xfce}
 %global with_desktop 1
 %endif
 
-%if %{with atomic_flagship} || %{with atomic_pantheon} || %{with atomic_kde} || %{with atomic_gnome} || %{with atomic_xfce}
+%if %{with atomic_flagship} || %{with atomic_plasma} || %{with atomic_gnome} || %{with atomic_xfce}
 %global with_atomic_desktop 1
 %endif
 
@@ -45,12 +44,13 @@
 Summary:	Ultramarine Linux release files
 Name:		ultramarine-release
 Version:	%{dist_version}
-Release:	11%{?dist}
+Release:	2%{?dist}
 License:	MIT
 Source0:	LICENSE
 URL:        https://ultramarine-linux.org
 Recommends: ultramarine-release-identity-basic
 BuildArch:  noarch
+Obsoletes:  dnf5-default-package-manager
 
 Provides:   ultramarine-release = %{version}-%{release}
 Provides:   ultramarine-release-variant = %{version}-%{release}
@@ -92,13 +92,15 @@ Source40:   https://github.com/Ultramarine-Linux/xfce-config/archive/%{xfce_conf
 Source50:   ultramarine.conf
 Source51:   ultramarine-flagship.conf
 Source52:   ultramarine-gnome.conf
-Source53:   ultramarine-kde.conf
+Source53:   ultramarine-plasma.conf
 Source54:   ultramarine-xfce.conf
 
 Source60:   ultramarine-flagship-protected.conf
 Source61:   ultramarine-gnome-protected.conf
-Source62:   ultramarine-kde-protected.conf
+Source62:   ultramarine-plasma-protected.conf
 Source63:   ultramarine-xfce-protected.conf
+
+Source64:   88-ultramarine-chromebook-default.preset
 
 BuildRequires:    systemd-rpm-macros
 
@@ -146,16 +148,13 @@ Release files for Ultramarine Linux.
 %package identity-basic
 Summary:		Package providing the basic Ultramarine identity
 RemovePathPostfixes: .basic
-Provides:		ultramarine-release = %{version}-%{release}
-Provides:		ultramarine-release-basic = %{version}-%{release}
 Provides:		ultramarine-release-identity = %{version}-%{release}
 Conflicts:		ultramarine-release-identity
 Conflicts:		fedora-release-identity-basic
-Requires(meta):	ultramarine-release-basic = %{version}-%{release}
 
 %description identity-basic
 Provides the necessary files for a Ultramarine installation that is not identifying
-itself as a particular Edition or Spin.
+itself as a particular Edition.
 
 %endif
 
@@ -234,16 +233,15 @@ Provides the necessary files for a Ultramarine Atomic Flagship installation.
 
 %endif
 
-
 ######################################################################
-####### Pantheon #######
+####### Plasma #######
 
-%if %{with pantheon}
-%package pantheon
-Summary:	Base package for Ultramarine Pantheon-specific default configurations
-RemovePathPostfixes: .pantheon
+%if %{with plasma}
+%package plasma
+Summary:	Base package for Ultramarine Plasma-specific default configurations
+RemovePathPostfixes: .plasma
 Provides:   ultramarine-release = %{version}-%{release}
-Provides:   ultramarine-release-pantheon = %{version}-%{release}
+Provides:   ultramarine-release-plasma = %{version}-%{release}
 Provides:   ultramarine-release-variant = %{version}-%{release}
 Provides:   system-release
 Provides:   system-release(%{version})
@@ -251,111 +249,39 @@ Provides:   base-module(platform:f%{version})
 Requires:   ultramarine-release-common = %{version}-%{release}
 Requires:   ultramarine-release-desktop = %{version}-%{release}
 Provides:   system-release-product
+Provides: ultramarine-release-kde = %{version}-%{release}
+Obsoletes: ultramarine-release-kde < 40-12
 # ultramarine-release-common Requires: ultramarine-release-identity, so at least one
 # package must provide it. This Recommends: pulls in
 # ultramarine-release-identity-cinnamon if nothing else is already doing so.
-Recommends:	ultramarine-release-identity-pantheon
-
-%description pantheon
-Provides a base package for Ultramarine Pantheon configurations.
-
-%package identity-pantheon
-Summary:		Package providing the Ultramarine Pantheon Identity
-RemovePathPostfixes: .pantheon
-Provides:		ultramarine-release-identity = %{version}-%{release}
-Conflicts:		ultramarine-release-identity
-Requires(meta):	ultramarine-release-pantheon = %{version}-%{release}
-
-%description identity-pantheon
-Provides the necessary files for a Ultramarine Pantheon installation.
-
-%endif
-
-######################################################################
-####### Atomic Pantheon #######
-
-%if %{with atomic_pantheon}
-%package atomic-pantheon
-Summary:	Base package for Ultramarine Atomic Pantheon-specific default configurations
-RemovePathPostfixes: .atomic-pantheon
-Provides:   ultramarine-release = %{version}-%{release}
-Provides:   ultramarine-release-atomic-pantheon = %{version}-%{release}
-Provides:   ultramarine-release-variant = %{version}-%{release}
-Provides:   system-release
-Provides:   system-release(%{version})
-Provides:   base-module(platform:f%{version})
-Requires:   ultramarine-release-common = %{version}-%{release}
-Requires:   ultramarine-release-desktop = %{version}-%{release}
-Requires:   ultramarine-release-atomic-desktop = %{version}-%{release}
-Provides:   system-release-product
-# ultramarine-release-common Requires: ultramarine-release-identity, so at least one
-# package must provide it. This Recommends: pulls in
-# ultramarine-release-identity-cinnamon if nothing else is already doing so.
-Recommends:	ultramarine-release-identity-atomic-pantheon
-
-%description atomic-pantheon
-Provides a base package for Ultramarine Atomic Pantheon configurations.
-
-%package identity-atomic-pantheon
-Summary:		Package providing the Ultramarine Atomic Pantheon Identity
-RemovePathPostfixes: .atomic-pantheon
-Provides:		ultramarine-release-identity = %{version}-%{release}
-Conflicts:		ultramarine-release-identity
-Requires(meta):	ultramarine-release-atomic-pantheon = %{version}-%{release}
-
-%description identity-atomic-pantheon
-Provides the necessary files for a Ultramarine Atomic Pantheon installation.
-
-%endif
-
-
-######################################################################
-####### KDE #######
-
-%if %{with kde}
-%package kde
-Summary:	Base package for Ultramarine KDE-specific default configurations
-RemovePathPostfixes: .kde
-Provides:   ultramarine-release = %{version}-%{release}
-Provides:   ultramarine-release-kde = %{version}-%{release}
-Provides:   ultramarine-release-variant = %{version}-%{release}
-Provides:   system-release
-Provides:   system-release(%{version})
-Provides:   base-module(platform:f%{version})
-Requires:   ultramarine-release-common = %{version}-%{release}
-Requires:   ultramarine-release-desktop = %{version}-%{release}
-Provides:   system-release-product
-# ultramarine-release-common Requires: ultramarine-release-identity, so at least one
-# package must provide it. This Recommends: pulls in
-# ultramarine-release-identity-cinnamon if nothing else is already doing so.
-Recommends:	ultramarine-release-identity-kde
+Recommends:	ultramarine-release-identity-plasma
 Recommends:	kwin-system76-scheduler-integration
 
-%description kde
-Provides a base package for Ultramarine KDE configurations.
+%description plasma
+Provides a base package for Ultramarine Plasma configurations.
 
-%package identity-kde
-Summary:		Package providing the Ultramarine KDE Identity
-RemovePathPostfixes: .kde
+%package identity-plasma
+Summary:		Package providing the Ultramarine Plasma Identity
+RemovePathPostfixes: .plasma
 Provides:		ultramarine-release-identity = %{version}-%{release}
 Conflicts:		ultramarine-release-identity
-Requires(meta):	ultramarine-release-kde = %{version}-%{release}
+Requires(meta):	ultramarine-release-plasma = %{version}-%{release}
 
-%description identity-kde
-Provides the necessary files for a Ultramarine KDE installation.
+%description identity-plasma
+Provides the necessary files for a Ultramarine Plasma installation.
 
 %endif
 
 ######################################################################
-####### Atomic KDE #######
+####### Atomic Plasma #######
 
-%if %{with atomic_kde}
-%package atomic-kde
-Summary:	Base package for Ultramarine Atomic KDE-specific default configurations
+%if %{with atomic_plasma}
+%package atomic-plasma
+Summary:	Base package for Ultramarine Atomic Plasma-specific default configurations
 
-RemovePathPostfixes: .atomic-kde
+RemovePathPostfixes: .atomic-plasma
 Provides:   ultramarine-release = %{version}-%{release}
-Provides:   ultramarine-release-atomic-kde = %{version}-%{release}
+Provides:   ultramarine-release-atomic-plasma = %{version}-%{release}
 Provides:   ultramarine-release-variant = %{version}-%{release}
 Provides:   system-release
 Provides:   system-release(%{version})
@@ -367,20 +293,20 @@ Provides:   system-release-product
 # ultramarine-release-common Requires: ultramarine-release-identity, so at least one
 # package must provide it. This Recommends: pulls in
 # ultramarine-release-identity-cinnamon if nothing else is already doing so.
-Recommends:	ultramarine-release-identity-atomic-kde
+Recommends:	ultramarine-release-identity-atomic-plasma
 
-%description atomic-kde
-Provides a base package for Ultramarine Atomic KDE configurations.
+%description atomic-plasma
+Provides a base package for Ultramarine Atomic Plasma configurations.
 
-%package identity-atomic-kde
-Summary:		Package providing the Ultramarine Atomic KDE Identity
-RemovePathPostfixes: .atomic-kde
+%package identity-atomic-plasma
+Summary:		Package providing the Ultramarine Atomic Plasma Identity
+RemovePathPostfixes: .atomic-plasma
 Provides:		ultramarine-release-identity = %{version}-%{release}
 Conflicts:		ultramarine-release-identity
-Requires(meta):	ultramarine-release-atomic-kde = %{version}-%{release}
+Requires(meta):	ultramarine-release-atomic-plasma = %{version}-%{release}
 
-%description identity-atomic-kde
-Provides the necessary files for a Ultramarine Atomic KDE installation.
+%description identity-atomic-plasma
+Provides the necessary files for a Ultramarine Atomic Plasma installation.
 
 %endif
 
@@ -577,6 +503,16 @@ Provides the necessary files for a Ultramarine Atomic XFCE installation.
 #### Accessory packages
 ######################################################################
 
+####### Chromebook #######
+
+%if %{with chromebook}
+%package        chromebook
+Summary:        Common configuration package for chromebook variants
+
+%description chromebook
+Common configuration package for chromebook variants
+%endif
+
 ####### Desktop #######
 
 %if %{with desktop}
@@ -717,49 +653,29 @@ sed -i -e "s|(%{release_name}%{?prerelease})|(Atomic Flagship Edition%{?prerelea
 sed -e "s#\$version#%{bug_version}#g" -e 's/$edition/Atomic Flagship/;s/<!--.*-->//;/^$/d' %{SOURCE20} > %{buildroot}%{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.atomic-flagship
 %endif
 
-%if %{with pantheon}
-# Pantheon
+%if %{with plasma}
+# Plasma
 cp -p os-release \
-      %{buildroot}%{_prefix}/lib/os-release.pantheon
-echo "VARIANT=\"Pantheon Edition\"" >> %{buildroot}%{_prefix}/lib/os-release.pantheon
-echo "VARIANT_ID=pantheon" >> %{buildroot}%{_prefix}/lib/os-release.pantheon
-sed -i -e "s|(%{release_name}%{?prerelease})|(Pantheon Edition%{?prerelease})|g" %{buildroot}%{_prefix}/lib/os-release.pantheon
-sed -e "s#\$version#%{bug_version}#g" -e 's/$edition/Pantheon/;s/<!--.*-->//;/^$/d' %{SOURCE20} > %{buildroot}%{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.pantheon
-%endif
+      %{buildroot}%{_prefix}/lib/os-release.plasma
+echo "VARIANT=\"Plasma Edition\"" >> %{buildroot}%{_prefix}/lib/os-release.plasma
+echo "VARIANT_ID=plasma" >> %{buildroot}%{_prefix}/lib/os-release.plasma
+sed -i -e "s|(%{release_name}%{?prerelease})|(Plasma Edition%{?prerelease})|g" %{buildroot}%{_prefix}/lib/os-release.plasma
+sed -e "s#\$version#%{bug_version}#g" -e 's/$edition/Plasma/;s/<!--.*-->//;/^$/d' %{SOURCE20} > %{buildroot}%{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.plasma
 
-%if %{with atomic_pantheon}
-# Atomic Pantheon
-cp -p os-release \
-      %{buildroot}%{_prefix}/lib/os-release.atomic-pantheon
-echo "VARIANT=\"Atomic Pantheon Edition\"" >> %{buildroot}%{_prefix}/lib/os-release.atomic-pantheon
-echo "VARIANT_ID=atomic-pantheon" >> %{buildroot}%{_prefix}/lib/os-release.atomic-pantheon
-sed -i -e "s|(%{release_name}%{?prerelease})|(Atomic Pantheon Edition%{?prerelease})|g" %{buildroot}%{_prefix}/lib/os-release.atomic-pantheon
-sed -e "s#\$version#%{bug_version}#g" -e 's/$edition/Atomic Pantheon/;s/<!--.*-->//;/^$/d' %{SOURCE20} > %{buildroot}%{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.atomic-pantheon
-%endif
-
-%if %{with kde}
-# KDE
-cp -p os-release \
-      %{buildroot}%{_prefix}/lib/os-release.kde
-echo "VARIANT=\"KDE Plasma Edition\"" >> %{buildroot}%{_prefix}/lib/os-release.kde
-echo "VARIANT_ID=kde" >> %{buildroot}%{_prefix}/lib/os-release.kde
-sed -i -e "s|(%{release_name}%{?prerelease})|(KDE Plasma Edition%{?prerelease})|g" %{buildroot}%{_prefix}/lib/os-release.kde
-sed -e "s#\$version#%{bug_version}#g" -e 's/$edition/KDE Plasma/;s/<!--.*-->//;/^$/d' %{SOURCE20} > %{buildroot}%{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.kde
-
-install -Dm0644 %{SOURCE62} %{buildroot}%{_sysconfdir}/dnf/protected.d/ultramarine-kde.conf
+install -Dm0644 %{SOURCE62} %{buildroot}%{_sysconfdir}/dnf/protected.d/ultramarine-plasma.conf
 
 install -Dm644 %{SOURCE31} %{buildroot}%{_userunitdir}/enable-kwin-system76-scheduler-integration.service
 
 %endif
 
-%if %{with atomic_kde}
-# Atomic KDE
+%if %{with atomic_plasma}
+# Atomic Plasma
 cp -p os-release \
-      %{buildroot}%{_prefix}/lib/os-release.atomic-kde
-echo "VARIANT=\"Atomic KDE Plasma Edition\"" >> %{buildroot}%{_prefix}/lib/os-release.atomic-kde
-echo "VARIANT_ID=atomic-kde" >> %{buildroot}%{_prefix}/lib/os-release.atomic-kde
-sed -i -e "s|(%{release_name}%{?prerelease})|(Atomic KDE Plasma Edition%{?prerelease})|g" %{buildroot}%{_prefix}/lib/os-release.atomic-kde
-sed -e "s#\$version#%{bug_version}#g" -e 's/$edition/Atomic KDE Plasma/;s/<!--.*-->//;/^$/d' %{SOURCE20} > %{buildroot}%{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.atomic-kde
+      %{buildroot}%{_prefix}/lib/os-release.atomic-plasma
+echo "VARIANT=\"Atomic Plasma Edition\"" >> %{buildroot}%{_prefix}/lib/os-release.atomic-plasma
+echo "VARIANT_ID=atomic-plasma" >> %{buildroot}%{_prefix}/lib/os-release.atomic-plasma
+sed -i -e "s|(%{release_name}%{?prerelease})|(Atomic Plasma Edition%{?prerelease})|g" %{buildroot}%{_prefix}/lib/os-release.atomic-plasma
+sed -e "s#\$version#%{bug_version}#g" -e 's/$edition/Atomic Plasma/;s/<!--.*-->//;/^$/d' %{SOURCE20} > %{buildroot}%{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.atomic-plasma
 
 install -Dm644 %{SOURCE31} %{buildroot}%{_userunitdir}/enable-kwin-system76-scheduler-integration.service
 
@@ -827,7 +743,7 @@ sed -e "s#\$version#%{bug_version}#g" -e 's/$edition/Atomic XFCE/;s/<!--.*-->//;
 install -d %{buildroot}%{_datadir}/dnf/plugins
 cat >> %{buildroot}%{_datadir}/dnf/plugins/copr.vendor.conf << EOF
 [main]
-distribution = Fedora
+distribution = fedora
 releasever = %{releasever}
 EOF
 
@@ -847,7 +763,7 @@ mkdir -p %{buildroot}%{_sysconfdir}/anaconda/profile.d/
 cp -pr %{SOURCE50} %{buildroot}%{_sysconfdir}/anaconda/profile.d/ultramarine.conf
 cp -pr %{SOURCE51} %{buildroot}%{_sysconfdir}/anaconda/profile.d/ultramarine-flagship.conf
 cp -pr %{SOURCE52} %{buildroot}%{_sysconfdir}/anaconda/profile.d/ultramarine-gnome.conf
-cp -pr %{SOURCE53} %{buildroot}%{_sysconfdir}/anaconda/profile.d/ultramarine-kde.conf
+cp -pr %{SOURCE53} %{buildroot}%{_sysconfdir}/anaconda/profile.d/ultramarine-plasma.conf
 cp -pr %{SOURCE54} %{buildroot}%{_sysconfdir}/anaconda/profile.d/ultramarine-xfce.conf
 
 # sysctls
@@ -926,6 +842,13 @@ install -Dm0644 %{SOURCE5} -t $RPM_BUILD_ROOT%{_prefix}/lib/systemd/system-prese
 
 %endif
 
+%if %{with chromebook}
+
+# Install systemd presets for chromebook
+install -Dm0644 %{SOURCE64} -t $RPM_BUILD_ROOT%{_prefix}/lib/systemd/system-preset/
+
+%endif
+
 %if %{with gnome} || %{with atomic_gnome}
 
 # Install systemd presets for gnome
@@ -943,23 +866,23 @@ install -Dm0644 %{SOURCE32} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
 
 %endif
 
-# the funny KDE system76 scheduler integration
-%if %{with kde}
+# the funny Plasma system76 scheduler integration
+%if %{with plasma}
 
-%post identity-kde
+%post identity-plasma
 %systemd_user_post enable-kwin-system76-scheduler-integration.service
 
-%preun identity-kde
+%preun identity-plasma
 %systemd_user_preun enable-kwin-system76-scheduler-integration.service
 
 %endif
 
-%if %{with atomic_kde}
+%if %{with atomic_plasma}
 
-%post identity-atomic-kde
+%post identity-atomic-plasma
 %systemd_user_post enable-kwin-system76-scheduler-integration.service
 
-%preun identity-atomic-kde
+%preun identity-atomic-plasma
 %systemd_user_preun enable-kwin-system76-scheduler-integration.service
 
 %endif
@@ -970,7 +893,7 @@ install -Dm0644 %{SOURCE32} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
 %{_sysconfdir}/anaconda/profile.d/ultramarine.conf
 %{_sysconfdir}/anaconda/profile.d/ultramarine-flagship.conf
 %{_sysconfdir}/anaconda/profile.d/ultramarine-gnome.conf
-%{_sysconfdir}/anaconda/profile.d/ultramarine-kde.conf
+%{_sysconfdir}/anaconda/profile.d/ultramarine-plasma.conf
 %{_sysconfdir}/anaconda/profile.d/ultramarine-xfce.conf
 %license licenses/LICENSE licenses/README.license
 %{_prefix}/lib/ultramarine-release
@@ -1028,34 +951,20 @@ install -Dm0644 %{SOURCE32} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
 %{_sysconfdir}/lightdm/lightdm.conf.d/50-ultramarine-flagship-lightdm-gtk-greeter.conf
 %endif
 
-%if %{with pantheon}
-%files pantheon
-%files identity-pantheon
-%{_prefix}/lib/os-release.pantheon
-%attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.pantheon
-%endif
-
-%if %{with atomic_pantheon}
-%files atomic-pantheon
-%files identity-atomic-pantheon
-%{_prefix}/lib/os-release.atomic-pantheon
-%attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.atomic-pantheon
-%endif
-
-%if %{with kde}
-%files kde
-%files identity-kde
-%{_prefix}/lib/os-release.kde
-%attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.kde
-%{_sysconfdir}/dnf/protected.d/ultramarine-kde.conf
+%if %{with plasma}
+%files plasma
+%files identity-plasma
+%{_prefix}/lib/os-release.plasma
+%attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.plasma
+%{_sysconfdir}/dnf/protected.d/ultramarine-plasma.conf
 %config %_userunitdir/enable-kwin-system76-scheduler-integration.service
 %endif
 
-%if %{with atomic_kde}
-%files atomic-kde
-%files identity-atomic-kde
-%{_prefix}/lib/os-release.atomic-kde
-%attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.atomic-kde
+%if %{with atomic_plasma}
+%files atomic-plasma
+%files identity-atomic-plasma
+%{_prefix}/lib/os-release.atomic-plasma
+%attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.atomic-plasma
 %config %_userunitdir/enable-kwin-system76-scheduler-integration.service
 %endif
 
@@ -1102,6 +1011,11 @@ install -Dm0644 %{SOURCE32} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
 %if %{with desktop}
 %files desktop
 %{_prefix}/lib/systemd/system-preset/81-desktop.preset
+%endif
+
+%if %{with chromebook}
+%files chromebook
+%{_prefix}/lib/systemd/system-preset/88-ultramarine-chromebook-default.preset
 %endif
 
 %if %{with atomic_desktop}

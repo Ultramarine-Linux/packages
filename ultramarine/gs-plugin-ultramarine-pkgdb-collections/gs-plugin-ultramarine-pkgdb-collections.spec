@@ -25,7 +25,7 @@ A GNOME Software plugin for the ultramarine pkgdb collections, allowing for syst
 %meson_install
 
 %files
-%{_libdir}/gnome-software/plugins-20/libgs_plugin_ultramarine-pkgdb-collections.so
+%{_libdir}/gnome-software/plugins-*/libgs_plugin_ultramarine-pkgdb-collections.so
 %{_metainfodir}/org.gnome.Software.Plugin.UltramarinePkgdbCollections.metainfo.xml
 
 %changelog

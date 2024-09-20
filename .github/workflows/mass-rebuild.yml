@@ -9,7 +9,7 @@ jobs:
   manifest:
     runs-on: ubuntu-latest
     container:
-      image: ghcr.io/terrapkg/builder:f40
+      image: ghcr.io/terrapkg/builder:f41
       options: --cap-add=SYS_ADMIN --privileged
 
     outputs:
@@ -18,7 +18,7 @@ jobs:
     # check out the repo
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
@@ -26,11 +26,11 @@ jobs:
         id: generate_build_matrix
         # generate build matrix by checking out changes in ultramarine/
         run: |
-          git config --global --add safe.directory /__w/ultramarine-pkgs/ultramarine-pkgs
+          git config --global --add safe.directory /__w/packages/packages
           git config --global user.email "you@example.com"
           git config --global user.name "Your Name"
           init=$(git rev-list HEAD | tail -n 1)
-          git diff ${init}..HEAD > a.diff
+          git diff ${init}..HEAD --binary > a.diff
           git checkout $init
           git apply a.diff
           git add *
@@ -41,7 +41,7 @@ jobs:
     strategy:
       matrix:
         pkg: ${{ fromJson(needs.manifest.outputs.build_matrix) }}
-        version: ["40"]
+        version: ["41"]
       fail-fast: false
     #if: ${{ matrix.changed_folders != '' }}
     runs-on: ${{ matrix.pkg.arch == 'aarch64' && 'ARM64' || 'ubuntu-latest' }}
@@ -50,7 +50,7 @@ jobs:
       options: --cap-add=SYS_ADMIN --privileged
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - name: Set up git repository
@@ -70,7 +70,7 @@ jobs:
           x=${NAME//\//@}
           echo "name=$x" >> $GITHUB_OUTPUT
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: ${{ steps.art.outputs.name }}
           path: |
@@ -78,7 +78,6 @@ jobs:
             anda-build/rpm/srpm/*
 
       - name: Upload packages to subatomic
-        if: github.event_name == 'push'
         run: |
           subatomic-cli upload --prune \
             --server https://subatomic.fyralabs.com \
@@ -86,7 +85,6 @@ jobs:
             um${{ matrix.version }} anda-build/rpm/rpms/*
 
       - name: Upload source packages to subatomic
-        if: github.event_name == 'push'
         run: |
           subatomic-cli upload --prune \
             --server https://subatomic.fyralabs.com \
