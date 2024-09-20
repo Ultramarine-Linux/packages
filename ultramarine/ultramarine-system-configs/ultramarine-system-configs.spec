@@ -5,7 +5,6 @@ Summary:        Various configuration files for a more comfortable Ultramarine d
 BuildArch:      noarch
 License:        MIT
 URL:            https://ultramarine-linux.org
-Source0:        journal-cleanup.conf
 Source1:        tmpfiles-cleanup.conf
 Source2:        ultramarine-logrotate.conf
 Source3:        networking-tweaks.conf
@@ -43,7 +42,6 @@ cleaning up of unused temporary files periodically.
 
 
 %install
-install -Dm644 %{SOURCE0} %{buildroot}/etc/systemd/journald.conf.d/journal-cleanup.conf
 install -Dm644 %{SOURCE1} %{buildroot}/etc/tmpfiles.d/tmpfiles-cleanup.conf
 install -Dm644 %{SOURCE2} %{buildroot}/etc/logrotate.d/ultramarine-logrotate.conf
 install -Dm644 %{SOURCE3} %{buildroot}/etc/sysctl.d/50-networking-tweaks.conf
@@ -61,7 +59,6 @@ install -Dm644 %{SOURCE5} %{buildroot}/etc/sysctl.d/50-mtu-probing.conf
 %files desktop
 %defattr(-,root,root,-)
 %config /etc/tmpfiles.d/tmpfiles-cleanup.conf
-%config /etc/systemd/journald.conf.d/journal-cleanup.conf
 %config /etc/logrotate.d/ultramarine-logrotate.conf
 %config /etc/sysctl.d/50-mtu-probing.conf
 
