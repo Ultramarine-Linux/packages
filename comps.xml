@@ -130,6 +130,7 @@
       <packagereq type="default">ultramarine-release-gnome</packagereq>
       <packagereq type="optional">ultramarine-release-identity-gnome</packagereq>
       <packagereq type="default">gs-plugin-ultramarine-pkgdb-collections</packagereq>
+      <packagereq type="default">geary</packagereq>
     </packagelist>
   </group>
   <environment>
