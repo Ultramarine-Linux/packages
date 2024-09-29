@@ -1,7 +1,8 @@
+%define ver 41-beta
 %undefine _disable_source_fetch
 
 Name: ultramarine-backgrounds
-Version: 40.1
+Version: %(echo %ver | sed 's/-/~/g')
 Release: 1%{?dist}
 BuildArch: noarch
 # details for the artworks' licenses can be seen in the COPYING file
@@ -12,7 +13,7 @@ Requires: /usr/bin/ln
 Recommends: ultramarine-backgrounds-compat = %{version}-%{release}
 BuildRequires: make
 # licensing information
-Source0: https://github.com/Ultramarine-Linux/backgrounds/archive/refs/tags/%version.tar.gz
+Source0: https://github.com/Ultramarine-Linux/backgrounds/archive/refs/tags/%ver.tar.gz
 #Source1: 30_default_backgrounds.gschema.override
 # CC0 artworks
 
@@ -62,7 +63,7 @@ Conflicts:    desktop-backgrounds-compat
 The desktop-backgrounds-compat package contains compatibility symlinks for other desktop environments.
 
 %prep
-%autosetup -n backgrounds-%{version}
+%autosetup -n backgrounds-%{ver}
 
 
 %install
@@ -95,6 +96,8 @@ kde_link 40/lost-light.png "Lost Light"
 kde_link 40/umbrella-dark.png "Umbrella Dark"
 kde_link 40/umbrella-light.png "Umbrella Light"
 
+kde_link 41~beta/um41-beta.png "Ultramarine 41 Beta"
+
 kde_link ultramarine/ultramarine-dark.png "Ultramarine Dark"
 kde_link ultramarine/ultramarine-light.png "Ultramarine Light"
 
@@ -107,8 +110,8 @@ compat_link() {
 }
 
 
-DEFAULT_WALL="40/lost-light.png"
-DEFAULT_DARK_WALL="40/lost-dark.png"
+DEFAULT_WALL="41~beta/um41-beta.png"
+DEFAULT_DARK_WALL="41~beta/um41-beta.png"
 DEFAULT_XML="40/lost.xml"
 
 # Let's generate our default gschema override file
