@@ -104,7 +104,7 @@
       <groupid>hardware-support</groupid>
       <groupid>libreoffice</groupid>
       <groupid>multimedia</groupid>
-      <groupid>sound-and-video</groupid>
+      <!-- <groupid>sound-and-video</groupid> -->
       <groupid>networkmanager-submodules</groupid>
       <groupid>printing</groupid>
       <groupid>desktop-accessibility</groupid>
@@ -149,7 +149,7 @@
       <groupid>hardware-support</groupid>
       <groupid>libreoffice</groupid>
       <groupid>multimedia</groupid>
-      <groupid>sound-and-video</groupid>
+      <!-- <groupid>sound-and-video</groupid> -->
       <groupid>networkmanager-submodules</groupid>
       <groupid>printing</groupid>
       <groupid>desktop-accessibility</groupid>
@@ -181,8 +181,8 @@
       <packagereq type="default">kolourpaint</packagereq>
       <packagereq type="default">kate</packagereq>
       <packagereq type="default">kmail</packagereq>
-      <packagereq type="default">vlc</packagereq>
-      <packagereq type="default">kalk</packagereq>
+      <packagereq type="default">haruna</packagereq>
+      <packagereq type="default">kcalc</packagereq>
     </packagelist>
   </group>
   <environment>
@@ -202,11 +202,12 @@
       <groupid>hardware-support</groupid>
       <groupid>libreoffice</groupid>
       <groupid>multimedia</groupid>
-      <groupid>sound-and-video</groupid>
+      <!-- <groupid>sound-and-video</groupid> -->
       <groupid>networkmanager-submodules</groupid>
       <groupid>printing</groupid>
       <groupid>desktop-accessibility</groupid>
-      <groupid>input-methods</groupid>
+      <!-- <groupid>input-methods</groupid> -->
+      <!-- We should use fcitx5 in plasma instead -->
       <groupid>ultramarine-product-common</groupid>
       <groupid>ultramarine-desktop-product-common</groupid>
       <groupid>ultramarine-plasma-product</groupid>
@@ -265,7 +266,7 @@
       <groupid>hardware-support</groupid>
       <groupid>libreoffice</groupid>
       <groupid>multimedia</groupid>
-      <groupid>sound-and-video</groupid>
+      <!-- <groupid>sound-and-video</groupid> -->
       <groupid>networkmanager-submodules</groupid>
       <groupid>printing</groupid>
       <groupid>desktop-accessibility</groupid>
