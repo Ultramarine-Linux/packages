@@ -77,7 +77,7 @@
       <packagereq type="default">nemo-emblems</packagereq>
       <packagereq type="default">helium-gtk-theme</packagereq>
       <packagereq type="default">hydrogen-icon-theme</packagereq>
-      <packagereq type="default">gnome-terminal</packagereq>
+      <packagereq type="default">ptyxis</packagereq>
       <packagereq type="default">seahorse</packagereq>
       <packagereq type="default">gnome-system-monitor</packagereq>
       <packagereq type="default">gnome-calculator</packagereq>
@@ -234,7 +234,7 @@
       <packagereq type="default">ultramarine-backgrounds-common</packagereq>
       <packagereq type="default">seahorse</packagereq>
       <packagereq type="default">gnome-software</packagereq>
-      <packagereq type="default">atril</packagereq>
+      <packagereq type="default">evince</packagereq>
       <packagereq type="default">catfish</packagereq>
       <packagereq type="default">geary</packagereq>
       <packagereq type="default">firefox</packagereq>
