@@ -79,7 +79,7 @@
       <packagereq type="default">nemo-emblems</packagereq>
       <packagereq type="default">helium-gtk-theme</packagereq>
       <packagereq type="default">hydrogen-icon-theme</packagereq>
-      <packagereq type="default">gnome-terminal</packagereq>
+      <packagereq type="default">ptyxis</packagereq>
       <packagereq type="default">seahorse</packagereq>
       <packagereq type="default">gnome-system-monitor</packagereq>
       <packagereq type="default">gnome-calculator</packagereq>
@@ -106,7 +106,7 @@
       <groupid>hardware-support</groupid>
       <groupid>libreoffice</groupid>
       <groupid>multimedia</groupid>
-      <groupid>sound-and-video</groupid>
+      <!-- <groupid>sound-and-video</groupid> -->
       <groupid>networkmanager-submodules</groupid>
       <groupid>printing</groupid>
       <groupid>desktop-accessibility</groupid>
@@ -132,6 +132,7 @@
       <packagereq type="default">ultramarine-release-gnome</packagereq>
       <packagereq type="optional">ultramarine-release-identity-gnome</packagereq>
       <packagereq type="default">gs-plugin-ultramarine-pkgdb-collections</packagereq>
+      <packagereq type="default">geary</packagereq>
     </packagelist>
   </group>
   <environment>
@@ -150,7 +151,7 @@
       <groupid>hardware-support</groupid>
       <groupid>libreoffice</groupid>
       <groupid>multimedia</groupid>
-      <groupid>sound-and-video</groupid>
+      <!-- <groupid>sound-and-video</groupid> -->
       <groupid>networkmanager-submodules</groupid>
       <groupid>printing</groupid>
       <groupid>desktop-accessibility</groupid>
@@ -182,8 +183,8 @@
       <packagereq type="default">kolourpaint</packagereq>
       <packagereq type="default">kate</packagereq>
       <packagereq type="default">kmail</packagereq>
-      <packagereq type="default">vlc</packagereq>
-      <packagereq type="default">kalk</packagereq>
+      <packagereq type="default">haruna</packagereq>
+      <packagereq type="default">kcalc</packagereq>
     </packagelist>
   </group>
   <environment>
@@ -203,11 +204,12 @@
       <groupid>hardware-support</groupid>
       <groupid>libreoffice</groupid>
       <groupid>multimedia</groupid>
-      <groupid>sound-and-video</groupid>
+      <!-- <groupid>sound-and-video</groupid> -->
       <groupid>networkmanager-submodules</groupid>
       <groupid>printing</groupid>
       <groupid>desktop-accessibility</groupid>
-      <groupid>input-methods</groupid>
+      <!-- <groupid>input-methods</groupid> -->
+      <!-- We should use fcitx5 in plasma instead -->
       <groupid>ultramarine-product-common</groupid>
       <groupid>ultramarine-desktop-product-common</groupid>
       <groupid>ultramarine-plasma-product</groupid>
@@ -235,7 +237,7 @@
       <packagereq type="default">ultramarine-backgrounds-common</packagereq>
       <packagereq type="default">seahorse</packagereq>
       <packagereq type="default">gnome-software</packagereq>
-      <packagereq type="default">atril</packagereq>
+      <packagereq type="default">evince</packagereq>
       <packagereq type="default">catfish</packagereq>
       <packagereq type="default">geary</packagereq>
       <packagereq type="default">firefox</packagereq>
@@ -266,7 +268,7 @@
       <groupid>hardware-support</groupid>
       <groupid>libreoffice</groupid>
       <groupid>multimedia</groupid>
-      <groupid>sound-and-video</groupid>
+      <!-- <groupid>sound-and-video</groupid> -->
       <groupid>networkmanager-submodules</groupid>
       <groupid>printing</groupid>
       <groupid>desktop-accessibility</groupid>
