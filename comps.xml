@@ -32,6 +32,7 @@
       <packagereq type="default">ultramarine-shell-config</packagereq>
       <packagereq type="default">ultramarine-release</packagereq>
       <packagereq type="default">ultramarine-fun</packagereq>
+      <packagereq type="default">ultramarine-system-configs-core</packagereq>
       <packagereq type="default">ultramarine-phony-bookmarks</packagereq>
       <packagereq type="default">git</packagereq>
       <packagereq type="default">golang-github-ultramarine-linux-um</packagereq>
@@ -50,6 +51,7 @@
       <packagereq type="mandatory">ultramarine-repos-extras</packagereq>
       <packagereq type="default">ultramarine-backgrounds-common</packagereq>
       <packagereq type="default">ultramarine-backgrounds-compat</packagereq>
+      <packagereq type="default">ultramarine-system-configs-desktop</packagereq>
       <packagereq type="default">system76-scheduler</packagereq>
       <packagereq type="default">orca</packagereq>
       <packagereq type="default">speech-dispatcher-espeak-ng</packagereq>

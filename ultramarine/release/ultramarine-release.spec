@@ -85,7 +85,6 @@ Source28:   longer-default-shutdown-timeout.conf
 
 Source31:   enable-kwin-system76-scheduler-integration.service
 Source32:   org.projectatomic.rpmostree1.rules
-Source33:   50-ultramarine-networking.conf
 Source34:   ultramarine.urls
 
 Source40:   https://github.com/Ultramarine-Linux/xfce-config/archive/%{xfce_conf_commit}.tar.gz
@@ -769,7 +768,6 @@ cp -pr %{SOURCE54} %{buildroot}%{_sysconfdir}/anaconda/profile.d/ultramarine-xfc
 
 # sysctls
 mkdir -p %{buildroot}%{_prefix}/lib/sysctl.d/
-cp -pr %{SOURCE33} %{buildroot}%{_prefix}/lib/sysctl.d/50-ultramarine-networking.conf
 
 
 #########################
@@ -897,7 +895,6 @@ install -Dm0644 %{SOURCE32} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
 %{_sysconfdir}/anaconda/profile.d/ultramarine-gnome.conf
 %{_sysconfdir}/anaconda/profile.d/ultramarine-plasma.conf
 %{_sysconfdir}/anaconda/profile.d/ultramarine-xfce.conf
-%{_prefix}/lib/sysctl.d/50-ultramarine-networking.conf
 %license licenses/LICENSE licenses/README.license
 %{_prefix}/lib/ultramarine-release
 %{_prefix}/lib/systemd/user.conf.d/*
