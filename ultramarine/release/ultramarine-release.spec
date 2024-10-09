@@ -1,7 +1,7 @@
 %global is_rawhide 0
 
-%global release_name Lost Umbrella
-%global fedora_codename Forty
+%global release_name Cyberia
+%global fedora_codename Forty One
 %global codename cyberia
 %define dist_version 41
 %define _alt_name fedora-release
@@ -44,7 +44,7 @@
 Summary:	Ultramarine Linux release files
 Name:		ultramarine-release
 Version:	%{dist_version}
-Release:	2%{?dist}
+Release:	3%{?dist}
 License:	MIT
 Source0:	LICENSE
 URL:        https://ultramarine-linux.org
