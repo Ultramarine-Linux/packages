@@ -1,6 +1,6 @@
 %global is_rawhide 0
 
-%global release_name Lost Umbrella
+%global release_name Cyberia
 %global fedora_codename Forty
 %global codename cyberia
 %define dist_version 41
