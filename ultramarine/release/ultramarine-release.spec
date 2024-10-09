@@ -1,7 +1,7 @@
 %global is_rawhide 0
 
 %global release_name Cyberia
-%global fedora_codename Forty
+%global fedora_codename Forty One
 %global codename cyberia
 %define dist_version 41
 %define _alt_name fedora-release
