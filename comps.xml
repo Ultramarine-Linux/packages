@@ -187,6 +187,7 @@
       <packagereq type="default">kmail</packagereq>
       <packagereq type="default">haruna</packagereq>
       <packagereq type="default">kcalc</packagereq>
+      <packagereq type="default">krdp</packagereq>
     </packagelist>
   </group>
   <environment>
