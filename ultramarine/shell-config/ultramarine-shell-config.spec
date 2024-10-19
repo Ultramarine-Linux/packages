@@ -15,6 +15,7 @@ Requires:       zsh-autosuggestions
 Requires:       zsh-syntax-highlighting
 Requires:       bat
 Requires:       starship
+Requires:       fzf
 
 
 BuildArch:      noarch
