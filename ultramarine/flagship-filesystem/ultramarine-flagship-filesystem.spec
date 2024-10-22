@@ -10,7 +10,7 @@ Source1:        ultramarine-marina.layout
 
 Requires:       budgie-desktop
 Requires:       budgie-applet-visualspace
-Suggests:       budgie-extras
+Recommends:     budgie-extras
 Suggests:       fluent-theme
 Suggests:       fluent-icon-theme
 Requires:       rsms-inter-fonts
