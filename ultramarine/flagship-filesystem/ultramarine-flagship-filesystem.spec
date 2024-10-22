@@ -9,8 +9,8 @@ Source0:        40_ultramarine-budgie.gschema.override
 Source1:        ultramarine-marina.layout
 
 Requires:       budgie-desktop
-Requires:       budgie-extras
-Requires:       budgie-extras-daemon
+Requires:       budgie-applet-visualspace
+Suggests:       budgie-extras
 Suggests:       fluent-theme
 Suggests:       fluent-icon-theme
 Requires:       rsms-inter-fonts
