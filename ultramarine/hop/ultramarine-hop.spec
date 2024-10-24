@@ -4,7 +4,6 @@ Release:        1%?dist
 Summary:        Hop between desktop environments and editions easily!
 License:        GPL-3.0
 URL:            https://github.com/Ultramarine-Linux/hop
-Source0:        %url/archive/v%version.tar.gz
 Requires:       dnf5
 Requires:       ultramarine-release
 BuildRequires:  pkgconfig(gtk4)
@@ -20,7 +19,7 @@ switch between editions or install multiple desktop environments on their
 system.
 
 %prep
-%autosetup -n hop-%version
+%git_clone %url v%version
 %nim_prep
 
 %build
