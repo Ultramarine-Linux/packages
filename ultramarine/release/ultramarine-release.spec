@@ -265,6 +265,7 @@ Summary:		Package providing the Ultramarine Plasma Identity
 RemovePathPostfixes: .plasma
 Provides:		ultramarine-release-identity = %{version}-%{release}
 Conflicts:		ultramarine-release-identity
+Obsoletes:        ultramarine-release-identity-kde < 40-12
 Requires(meta):	ultramarine-release-plasma = %{version}-%{release}
 
 %description identity-plasma
