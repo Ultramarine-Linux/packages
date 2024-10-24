@@ -1,5 +1,5 @@
 Name:           ultramarine-hop
-Version:        0.1.4
+Version:        0.1.5
 Release:        1%?dist
 Summary:        Hop between desktop environments and editions easily!
 License:        GPL-3.0
@@ -19,7 +19,7 @@ switch between editions or install multiple desktop environments on their
 system.
 
 %prep
-%git_clone %url master
+%git_clone %url v%version
 %nim_prep
 
 %build
