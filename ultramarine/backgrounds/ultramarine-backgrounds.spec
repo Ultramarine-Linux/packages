@@ -98,7 +98,7 @@ kde_link 40/umbrella-light.png "Umbrella Light"
 
 kde_link 41~beta/um41-beta.png "Ultramarine 41 Beta"
 
-kde_link preview/blueprint.png "Ultramarine Preview (Blueprint)"
+kde_link preview/Ultramarine\Preview/blueprint.png "Ultramarine Preview (Blueprint)"
 
 kde_link ultramarine/ultramarine-dark.png "Ultramarine Dark"
 kde_link ultramarine/ultramarine-light.png "Ultramarine Light"
