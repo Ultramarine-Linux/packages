@@ -328,7 +328,7 @@ Provides:   base-module(platform:f%{version})
 Requires:   ultramarine-release-common = %{version}-%{release}
 Requires:   ultramarine-release-desktop = %{version}-%{release}
 Provides:   system-release-product
-Recommends: gnome-shell-extension-pop-shell
+Recommends: terra-gnome-shell-extension-pop-shell
 Recommends: gnome-shell-extension-appindicator
 Recommends: gnome-shell-extension-windowsNavigator
 Recommends: gnome-shell-extension-appmenu-is-back
