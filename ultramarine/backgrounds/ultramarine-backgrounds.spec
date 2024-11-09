@@ -1,4 +1,4 @@
-%define ver 41-beta.1
+%define ver 41
 %undefine _disable_source_fetch
 
 Name: ultramarine-backgrounds
@@ -98,6 +98,12 @@ kde_link 40/umbrella-light.png "Umbrella Light"
 
 kde_link 41~beta/um41-beta.png "Ultramarine 41 Beta"
 
+kde_link 41/viewports-light.png "Viewports Light"
+kde_link 41/viewports-dark.png "Viewports Dark"
+kde_link 41/viewport-fake-dark.png "Viewports Fake Dark"
+
+kde_link preview/blueprint.png "Ultramarine Preview"
+
 kde_link ultramarine/ultramarine-dark.png "Ultramarine Dark"
 kde_link ultramarine/ultramarine-light.png "Ultramarine Light"
 
@@ -110,9 +116,9 @@ compat_link() {
 }
 
 
-DEFAULT_WALL="41~beta/um41-beta.png"
-DEFAULT_DARK_WALL="41~beta/um41-beta.png"
-DEFAULT_XML="40/lost.xml"
+DEFAULT_WALL="41/viewports-light.png"
+DEFAULT_DARK_WALL="41/viewports-dark.png"
+DEFAULT_XML="41/lost.xml"
 
 # Let's generate our default gschema override file
 
