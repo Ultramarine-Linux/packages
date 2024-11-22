@@ -49,7 +49,7 @@
 Summary:	Ultramarine Linux release files
 Name:		ultramarine-release
 Version:	%{dist_version}
-Release:	4%{?dist}
+Release:	5%{?dist}
 License:	MIT
 Source0:	LICENSE
 URL:        https://ultramarine-linux.org
@@ -108,6 +108,11 @@ Source63:   ultramarine-xfce-protected.conf
 Source64:   88-ultramarine-chromebook-default.preset
 
 Source65:   91-ultramarine-surface-default.preset
+
+Source70:   polycrystal-ultramarine-flaghsip.json
+Source71:   polycrystal-ultramarine-gnome.json
+Source72:   polycrystal-ultramarine-plasma.json
+Source73:   polycrystal-ultramarine-xfce.json
 
 BuildRequires:    systemd-rpm-macros
 
@@ -181,6 +186,7 @@ Provides:   system-release(%{version})
 Provides:   base-module(platform:f%{version})
 Requires:   ultramarine-release-common = %{version}-%{release}
 Requires:   ultramarine-release-desktop = %{version}-%{release}
+Requires:   polycrystal
 Provides:   system-release-product
 # ultramarine-release-common Requires: ultramarine-release-identity, so at least one
 # package must provide it. This Recommends: pulls in
@@ -219,6 +225,7 @@ Provides:   base-module(platform:f%{version})
 Requires:   ultramarine-release-common = %{version}-%{release}
 Requires:   ultramarine-release-desktop = %{version}-%{release}
 Requires:   ultramarine-release-atomic-desktop = %{version}-%{release}
+Requires:   polycrystal
 Provides:   system-release-product
 # ultramarine-release-common Requires: ultramarine-release-identity, so at least one
 # package must provide it. This Recommends: pulls in
@@ -255,6 +262,7 @@ Provides:   system-release(%{version})
 Provides:   base-module(platform:f%{version})
 Requires:   ultramarine-release-common = %{version}-%{release}
 Requires:   ultramarine-release-desktop = %{version}-%{release}
+Requires:   polycrystal
 Provides:   system-release-product
 Provides: ultramarine-release-kde = %{version}-%{release}
 Obsoletes: ultramarine-release-kde < 40-12
@@ -297,6 +305,7 @@ Provides:   base-module(platform:f%{version})
 Requires:   ultramarine-release-common = %{version}-%{release}
 Requires:   ultramarine-release-desktop = %{version}-%{release}
 Requires:   ultramarine-release-atomic-desktop = %{version}-%{release}
+Requires:   polycrystal
 Provides:   system-release-product
 # ultramarine-release-common Requires: ultramarine-release-identity, so at least one
 # package must provide it. This Recommends: pulls in
@@ -334,6 +343,7 @@ Provides:   system-release(%{version})
 Provides:   base-module(platform:f%{version})
 Requires:   ultramarine-release-common = %{version}-%{release}
 Requires:   ultramarine-release-desktop = %{version}-%{release}
+Requires:   polycrystal
 Provides:   system-release-product
 Recommends: gnome-shell-extension-pop-shell
 Recommends: gnome-shell-extension-appindicator
@@ -380,6 +390,7 @@ Provides:   base-module(platform:f%{version})
 Requires:   ultramarine-release-common = %{version}-%{release}
 Requires:   ultramarine-release-desktop = %{version}-%{release}
 Requires:   ultramarine-release-atomic-desktop = %{version}-%{release}
+Requires:   polycrystal
 Provides:   system-release-product
 Recommends: gnome-shell-extension-pop-shell
 Recommends: gnome-shell-extension-appindicator
@@ -438,6 +449,7 @@ Provides:   system-release(%{version})
 Provides:   base-module(platform:f%{version})
 Requires:   ultramarine-release-common = %{version}-%{release}
 Requires:   ultramarine-release-desktop = %{version}-%{release}
+Requires:   polycrystal
 Provides:   system-release-product
 # ultramarine-release-common Requires: ultramarine-release-identity, so at least one
 # package must provide it. This Recommends: pulls in
@@ -485,6 +497,7 @@ Provides:   base-module(platform:f%{version})
 Requires:   ultramarine-release-common = %{version}-%{release}
 Requires:   ultramarine-release-desktop = %{version}-%{release}
 Requires:   ultramarine-release-atomic-desktop = %{version}-%{release}
+Requires:   polycrystal
 Provides:   system-release-product
 # ultramarine-release-common Requires: ultramarine-release-identity, so at least one
 # package must provide it. This Recommends: pulls in
@@ -790,7 +803,16 @@ mkdir -p %{buildroot}%{_prefix}/lib/sysctl.d/
 
 #########################
 
+#########################
 
+# Polycrystal entries
+mkdir -p %{buildroot}%{_sysconfdir}/polycrystal/entries
+install %{SOURCE70} %{buildroot}%{_sysconfdir}/polycrystal/entries/ultramarine-flagship.conf
+install %{SOURCE71} %{buildroot}%{_sysconfdir}/polycrystal/entries/ultramarine-gnome.conf
+install %{SOURCE72} %{buildroot}%{_sysconfdir}/polycrystal/entries/ultramarine-plasma.conf
+install %{SOURCE73} %{buildroot}%{_sysconfdir}/polycrystal/entries/ultramarine-xfce.conf
+
+#########################
 
 # Budgie config
 mkdir -p %{buildroot}%{_sysconfdir}/lightdm/lightdm.conf.d/
@@ -963,6 +985,7 @@ install -Dm0644 %{SOURCE32} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
 %{_prefix}/lib/os-release.flagship
 %attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.flagship
 %{_sysconfdir}/dnf/protected.d/ultramarine-flagship.conf
+%config %{_sysconfdir}/polycrystal/entries/ultramarine-flagship.json
 %{_sysconfdir}/lightdm/lightdm.conf.d/60-ultramarine-presets.conf
 %{_sysconfdir}/lightdm/lightdm.conf.d/50-ultramarine-flagship-lightdm-gtk-greeter.conf
 %endif
@@ -972,6 +995,7 @@ install -Dm0644 %{SOURCE32} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
 %files identity-atomic-flagship
 %{_prefix}/lib/os-release.atomic-flagship
 %attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.atomic-flagship
+%config %{_sysconfdir}/polycrystal/entries/ultramarine-flagship.json
 %{_sysconfdir}/lightdm/lightdm.conf.d/60-ultramarine-presets.conf
 %{_sysconfdir}/lightdm/lightdm.conf.d/50-ultramarine-flagship-lightdm-gtk-greeter.conf
 %endif
@@ -981,6 +1005,7 @@ install -Dm0644 %{SOURCE32} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
 %files identity-plasma
 %{_prefix}/lib/os-release.plasma
 %attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.plasma
+%config %{_sysconfdir}/polycrystal/entries/ultramarine-plasma.json
 %{_sysconfdir}/dnf/protected.d/ultramarine-plasma.conf
 %config %_userunitdir/enable-kwin-system76-scheduler-integration.service
 %endif
@@ -990,6 +1015,7 @@ install -Dm0644 %{SOURCE32} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
 %files identity-atomic-plasma
 %{_prefix}/lib/os-release.atomic-plasma
 %attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.atomic-plasma
+%config %{_sysconfdir}/polycrystal/entries/ultramarine-plasma.json
 %config %_userunitdir/enable-kwin-system76-scheduler-integration.service
 %endif
 
@@ -999,6 +1025,7 @@ install -Dm0644 %{SOURCE32} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
 %{_prefix}/lib/os-release.gnome
 %attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.gnome
 %{_sysconfdir}/dnf/protected.d/ultramarine-gnome.conf
+%config %{_sysconfdir}/polycrystal/entries/ultramarine-gnome.json
 %{_datadir}/glib-2.0/schemas/50_ultramarine-gnome.gschema.override
 %{_prefix}/lib/systemd/system-preset/80-workstation.preset
 %endif
@@ -1008,6 +1035,7 @@ install -Dm0644 %{SOURCE32} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
 %files identity-atomic-gnome
 %{_prefix}/lib/os-release.atomic-gnome
 %attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.atomic-gnome
+%config %{_sysconfdir}/polycrystal/entries/ultramarine-gnome.json
 %{_datadir}/glib-2.0/schemas/50_ultramarine-gnome.gschema.override
 %{_prefix}/lib/systemd/system-preset/80-workstation.preset
 %endif
@@ -1018,6 +1046,7 @@ install -Dm0644 %{SOURCE32} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
 %{_prefix}/lib/os-release.xfce
 %attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.xfce
 %{_sysconfdir}/dnf/protected.d/ultramarine-xfce.conf
+%config %{_sysconfdir}/polycrystal/entries/ultramarine-xfce.json
 %{_sysconfdir}/skel/.config/xfce4/
 %{_sysconfdir}/lightdm/lightdm.conf.d/60-ultramarine-presets.conf
 %{_sysconfdir}/lightdm/lightdm.conf.d/50-ultramarine-xfce-lightdm-gtk-greeter.conf
@@ -1028,6 +1057,7 @@ install -Dm0644 %{SOURCE32} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
 %files identity-atomic-xfce
 %{_prefix}/lib/os-release.atomic-xfce
 %attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.atomic-xfce
+%config %{_sysconfdir}/polycrystal/entries/ultramarine-xfce.json
 %{_sysconfdir}/skel/.config/xfce4/
 %{_sysconfdir}/lightdm/lightdm.conf.d/60-ultramarine-presets.conf
 %{_sysconfdir}/lightdm/lightdm.conf.d/50-ultramarine-xfce-lightdm-gtk-greeter.conf

@@ -1,0 +1,72 @@
+[
+  {
+    "id": "org.gnome.Extensions",
+    "remote": "flathub",
+    "branch": "stable"
+  },
+  {
+    "id": "org.gnome.Geary",
+    "remote": "flathub",
+    "branch": "stable"
+  },
+  {
+    "id": "org.gnome.Connections",
+    "remote": "flathub",
+    "branch": "stable"
+  },
+  {
+    "id": "org.gnome.TextEditor",
+    "remote": "flathub",
+    "branch": "stable"
+  },
+  {
+    "id": "org.gnome.Calculator",
+    "remote": "flathub",
+    "branch": "stable"
+  },
+  {
+    "id": "org.gnome.Calendar",
+    "remote": "flathub",
+    "branch": "stable"
+  },
+  {
+    "id": "org.gnome.clocks",
+    "remote": "flathub",
+    "branch": "stable"
+  },
+  {
+    "id": "org.gnome.Contacts",
+    "remote": "flathub",
+    "branch": "stable"
+  },
+  {
+    "id": "org.gnome.Maps",
+    "remote": "flathub",
+    "branch": "stable"
+  },
+  {
+    "id": "org.gnome.Weather",
+    "remote": "flathub",
+    "branch": "stable"
+  },
+  {
+    "id": "org.gnome.Snapshot",
+    "remote": "flathub",
+    "branch": "stable"
+  },
+  {
+    "id": "org.gnome.Showtime",
+    "remote": "flathub",
+    "branch": "stable"
+  },
+  {
+    "id": "org.gnome.Papers",
+    "remote": "flathub",
+    "branch": "stable"
+  },
+  {
+    "id": "org.gnome.Decibels",
+    "remote": "flathub",
+    "branch": "stable"
+  }
+]

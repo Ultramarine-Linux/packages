@@ -1,0 +1,17 @@
+[
+  {
+    "id": "org.gnome.Calculator",
+    "remote": "flathub",
+    "branch": "stable"
+  },
+  {
+    "id": "org.gnome.Evince",
+    "remote": "flathub",
+    "branch": "stable"
+  },
+  {
+    "id": "org.gnome.Geary",
+    "remote": "flathub",
+    "branch": "stable"
+  }
+]

@@ -1,0 +1,37 @@
+[
+  {
+    "id": "org.kde.haruna",
+    "remote": "flathub",
+    "branch": "stable"
+  },
+  {
+    "id": "org.kde.kamoso",
+    "remote": "flathub",
+    "branch": "stable"
+  },
+  {
+    "id": "org.kde.kcalc",
+    "remote": "flathub",
+    "branch": "stable"
+  },
+  {
+    "id": "org.kde.kolourpaint",
+    "remote": "flathub",
+    "branch": "stable"
+  },
+  {
+    "id": "org.kde.kwrite",
+    "remote": "flathub",
+    "branch": "stable"
+  },
+  {
+    "id": "org.kde.okular",
+    "remote": "flathub",
+    "branch": "stable"
+  },
+  {
+    "id": "org.kde.elisa",
+    "remote": "flathub",
+    "branch": "stable"
+  }
+]
