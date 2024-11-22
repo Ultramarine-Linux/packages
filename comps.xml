@@ -58,6 +58,7 @@
       <packagereq type="default">sipa-fonts</packagereq>
       <packagereq type="default">ibus-mozc</packagereq>
       <packagereq type="default">mozc</packagereq>
+      <packagereq type="default">polycrystal</packagereq>
     </packagelist>
   </group>
   <group>
