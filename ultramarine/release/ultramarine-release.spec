@@ -186,6 +186,7 @@ Provides:   system-release(%{version})
 Provides:   base-module(platform:f%{version})
 Requires:   ultramarine-release-common = %{version}-%{release}
 Requires:   ultramarine-release-desktop = %{version}-%{release}
+Requires:   polycrystal
 Provides:   system-release-product
 # ultramarine-release-common Requires: ultramarine-release-identity, so at least one
 # package must provide it. This Recommends: pulls in
@@ -224,6 +225,7 @@ Provides:   base-module(platform:f%{version})
 Requires:   ultramarine-release-common = %{version}-%{release}
 Requires:   ultramarine-release-desktop = %{version}-%{release}
 Requires:   ultramarine-release-atomic-desktop = %{version}-%{release}
+Requires:   polycrystal
 Provides:   system-release-product
 # ultramarine-release-common Requires: ultramarine-release-identity, so at least one
 # package must provide it. This Recommends: pulls in
@@ -260,6 +262,7 @@ Provides:   system-release(%{version})
 Provides:   base-module(platform:f%{version})
 Requires:   ultramarine-release-common = %{version}-%{release}
 Requires:   ultramarine-release-desktop = %{version}-%{release}
+Requires:   polycrystal
 Provides:   system-release-product
 Provides: ultramarine-release-kde = %{version}-%{release}
 Obsoletes: ultramarine-release-kde < 40-12
@@ -302,6 +305,7 @@ Provides:   base-module(platform:f%{version})
 Requires:   ultramarine-release-common = %{version}-%{release}
 Requires:   ultramarine-release-desktop = %{version}-%{release}
 Requires:   ultramarine-release-atomic-desktop = %{version}-%{release}
+Requires:   polycrystal
 Provides:   system-release-product
 # ultramarine-release-common Requires: ultramarine-release-identity, so at least one
 # package must provide it. This Recommends: pulls in
@@ -339,6 +343,7 @@ Provides:   system-release(%{version})
 Provides:   base-module(platform:f%{version})
 Requires:   ultramarine-release-common = %{version}-%{release}
 Requires:   ultramarine-release-desktop = %{version}-%{release}
+Requires:   polycrystal
 Provides:   system-release-product
 Recommends: gnome-shell-extension-pop-shell
 Recommends: gnome-shell-extension-appindicator
@@ -385,6 +390,7 @@ Provides:   base-module(platform:f%{version})
 Requires:   ultramarine-release-common = %{version}-%{release}
 Requires:   ultramarine-release-desktop = %{version}-%{release}
 Requires:   ultramarine-release-atomic-desktop = %{version}-%{release}
+Requires:   polycrystal
 Provides:   system-release-product
 Recommends: gnome-shell-extension-pop-shell
 Recommends: gnome-shell-extension-appindicator
@@ -443,6 +449,7 @@ Provides:   system-release(%{version})
 Provides:   base-module(platform:f%{version})
 Requires:   ultramarine-release-common = %{version}-%{release}
 Requires:   ultramarine-release-desktop = %{version}-%{release}
+Requires:   polycrystal
 Provides:   system-release-product
 # ultramarine-release-common Requires: ultramarine-release-identity, so at least one
 # package must provide it. This Recommends: pulls in
@@ -490,6 +497,7 @@ Provides:   base-module(platform:f%{version})
 Requires:   ultramarine-release-common = %{version}-%{release}
 Requires:   ultramarine-release-desktop = %{version}-%{release}
 Requires:   ultramarine-release-atomic-desktop = %{version}-%{release}
+Requires:   polycrystal
 Provides:   system-release-product
 # ultramarine-release-common Requires: ultramarine-release-identity, so at least one
 # package must provide it. This Recommends: pulls in
