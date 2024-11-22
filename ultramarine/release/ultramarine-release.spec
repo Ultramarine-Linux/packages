@@ -799,10 +799,10 @@ mkdir -p %{buildroot}%{_prefix}/lib/sysctl.d/
 
 # Polycrystal entries
 mkdir -p %{buildroot}%{_sysconfdir}/polycrystal/entries
-install %{SOURCE70} %{buildroot}%{_sysconfdir}/polycrystal/entries/ultramarine-flagship.conf
-install %{SOURCE71} %{buildroot}%{_sysconfdir}/polycrystal/entries/ultramarine-gnome.conf
-install %{SOURCE72} %{buildroot}%{_sysconfdir}/polycrystal/entries/ultramarine-plasma.conf
-install %{SOURCE73} %{buildroot}%{_sysconfdir}/polycrystal/entries/ultramarine-xfce.conf
+install %{SOURCE70} %{buildroot}%{_sysconfdir}/polycrystal/entries/ultramarine-flagship.json
+install %{SOURCE71} %{buildroot}%{_sysconfdir}/polycrystal/entries/ultramarine-gnome.json
+install %{SOURCE72} %{buildroot}%{_sysconfdir}/polycrystal/entries/ultramarine-plasma.json
+install %{SOURCE73} %{buildroot}%{_sysconfdir}/polycrystal/entries/ultramarine-xfce.json
 
 #########################
 
