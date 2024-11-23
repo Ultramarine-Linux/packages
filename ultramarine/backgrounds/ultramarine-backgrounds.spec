@@ -124,8 +124,8 @@ DEFAULT_XML="41/viewports.xml"
 
 cat << EOF > %{buildroot}%{_datadir}/glib-2.0/schemas/30_default_backgrounds.gschema.override
 [org.gnome.desktop.background]
-picture-uri='file://%{_datadir}/backgrounds/ultramarine-linux/$DEFAULT_WALL'
-picture-uri-dark='file:///%{_datadir}/backgrounds/ultramarine-linux/$DEFAULT_DARK_WALL'
+picture-uri='file://%{_datadir}/backgrounds/ultramarine-linux/default.png'
+picture-uri-dark='file:///%{_datadir}/backgrounds/ultramarine-linux/default-dark.png'
 EOF
 
 
