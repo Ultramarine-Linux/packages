@@ -3,7 +3,7 @@
 
 Name: ultramarine-backgrounds
 Version: %(echo %ver | sed 's/-/~/g')
-Release: 1%{?dist}
+Release: 2%{?dist}
 BuildArch: noarch
 # details for the artworks' licenses can be seen in the COPYING file
 License: CC-BY-SA 4.0 and CC0
@@ -118,7 +118,7 @@ compat_link() {
 
 DEFAULT_WALL="41/viewports-light.png"
 DEFAULT_DARK_WALL="41/viewports-dark.png"
-DEFAULT_XML="41/lost.xml"
+DEFAULT_XML="41/viewports.xml"
 
 # Let's generate our default gschema override file
 
