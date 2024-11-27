@@ -49,7 +49,7 @@
 Summary:	Ultramarine Linux release files
 Name:		ultramarine-release
 Version:	%{dist_version}
-Release:	9%{?dist}
+Release:	10%{?dist}
 License:	MIT
 Source0:	LICENSE
 URL:        https://ultramarine-linux.org
@@ -129,8 +129,8 @@ Summary:    Generic release files
 Requires:   ultramarine-release-variant = %{version}
 Requires:   ultramarine-repos(%{version})
 Requires:   ultramarine-release-identity = %{version}-%{release}
-Recommends: system76-scheduler
-Recommends: ultramarine-phony-bookmarks
+Recommends: fastfetch
+Recommends: golang-github-ultramarine-linux-um
 Conflicts:  generic-release
 Conflicts:  fedora-release
 Conflicts:  fedora-release-common
@@ -545,6 +545,9 @@ Common configuration package for surface variants
 %if %{with desktop}
 %package desktop
 Summary:        Common configuration package for desktop variants
+
+Recommends: system76-scheduler
+Recommends: ultramarine-phony-bookmarks
 
 %description desktop
 Common configuration package for desktop variants
