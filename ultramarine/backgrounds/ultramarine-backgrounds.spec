@@ -3,7 +3,7 @@
 
 Name: ultramarine-backgrounds
 Version: %(echo %ver | sed 's/-/~/g')
-Release: 2.1%{?dist}
+Release: 2.2%{?dist}
 BuildArch: noarch
 # details for the artworks' licenses can be seen in the COPYING file
 License: CC-BY-SA 4.0 and CC0
@@ -101,6 +101,9 @@ kde_link 41~beta/um41-beta.png "Ultramarine 41 Beta"
 kde_link 41/viewports-light.png "Viewports Light"
 kde_link 41/viewports-dark.png "Viewports Dark"
 kde_link 41/viewport-fake-dark.png "Viewports Fake Dark"
+
+kde_link 41/paradise-light.png "Paradise Light"
+kde_link 41/paradise-dark.png "Paradise Dark"
 
 kde_link preview/blueprint.png "Ultramarine Preview"
 
