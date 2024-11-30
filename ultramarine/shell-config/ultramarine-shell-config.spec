@@ -12,7 +12,7 @@ Source3:        ultramarine-shell.sh
 Source4:        starship.toml
 
 Requires:       zsh-autosuggestions
-Requires:       zsh-syntax-highlighting
+Requires:       F-Sy-H
 Requires:       bat
 Requires:       starship
 

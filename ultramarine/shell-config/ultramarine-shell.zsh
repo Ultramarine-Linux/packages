@@ -3,7 +3,7 @@
 # initialize starship
 eval "$(starship init zsh)"
 
-source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/F-Sy-H/F-Sy-H.plugin.zsh
 source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # Ctrl + Arrow keybindings
