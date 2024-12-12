@@ -91,7 +91,7 @@
       <packagereq type="default">nemo-python</packagereq>
       <packagereq type="default">nemo-preview</packagereq>
       <packagereq type="default">nemo-emblems</packagereq>
-      <packagereq type="default">fluent-gtk-theme</packagereq>
+      <packagereq type="default">fluent-theme</packagereq>
       <packagereq type="default">fluent-icon-theme</packagereq>
       <packagereq type="default">ptyxis</packagereq>
       <packagereq type="default">gnome-system-monitor</packagereq>
@@ -101,22 +101,24 @@
       <packagereq type="default">xdg-desktop-portal-gtk</packagereq>
     </packagelist>
   </group>
-  <id>ultramarine-flagship-apps</id>
-  <_name>Ultramarine Flagship Applications</_name>
-  <_description>Apps included with Ultramarine Flagship</_description>
-  <packagelist>
-    <packagereq type="default">eog</packagereq>
-    <packagereq type="default">firefox</packagereq>
-    <packagereq type="default">gedit</packagereq>
-    <!-- <packagereq type="default">gnome-calculator</packagereq> flatpak'd -->
-    <packagereq type="default">gnome-disk-utility</packagereq>
-    <packagereq type="default">gnome-system-monitor</packagereq>
-    <packagereq type="default">nemo</packagereq>
-    <packagereq type="default">nemo-fileroller</packagereq>
-    <packagereq type="default">nemo-seahorse</packagereq>
-    <packagereq type="default">parole</packagereq>
-    <packagereq type="default">seahorse</packagereq>
-  </packagelist>
+  <group>
+    <id>ultramarine-flagship-apps</id>
+    <name>Ultramarine Flagship Applications</name>
+    <description>Apps included with Ultramarine Flagship</description>
+    <packagelist>
+      <packagereq type="default">eog</packagereq>
+      <packagereq type="default">firefox</packagereq>
+      <packagereq type="default">gedit</packagereq>
+      <!-- <packagereq type="default">gnome-calculator</packagereq> flatpak'd -->
+      <packagereq type="default">gnome-disk-utility</packagereq>
+      <packagereq type="default">gnome-system-monitor</packagereq>
+      <packagereq type="default">nemo</packagereq>
+      <packagereq type="default">nemo-fileroller</packagereq>
+      <packagereq type="default">nemo-seahorse</packagereq>
+      <packagereq type="default">parole</packagereq>
+      <packagereq type="default">seahorse</packagereq>
+    </packagelist>
+  </group>
   <environment>
     <id>ultramarine-flagship-product-environment</id>
     <name>Ultramarine Flagship</name>
