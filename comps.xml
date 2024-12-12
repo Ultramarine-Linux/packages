@@ -375,7 +375,6 @@
     <packagelist>
       <packagereq type="mandatory">ultramarine-release-xfce</packagereq>
       <packagereq type="optional">ultramarine-release-identity-xfce</packagereq>
-      <packagereq type="mandatory">ultramarine-xfce-filesystem</packagereq>
       <packagereq type="mandatory">lightdm-gtk</packagereq>
       <packagereq type="default">xfce4-whiskermenu-plugin</packagereq>
       <packagereq type="default">xfce4-docklike-plugin</packagereq>
