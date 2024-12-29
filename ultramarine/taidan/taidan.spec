@@ -37,7 +37,7 @@ Linux, written in Rust and the Helium toolkit.
 for category in catalogue/*; do
     install -Dpm644 $category -t %buildroot%_sysconfdir/com.FyraLabs.Taidan/catalogue/
 done
-install -Dpm644 data%_sysusersdir/taidan.conf -t %buildroot%_sysusersdir
+install -Dpm644 data/sysusers.d/taidan.conf -t %buildroot%_sysusersdir
 install -Dpm644 data/polkit-1/rules.d/100-taidan.rules -t %buildroot%_datadir/polkit-1/rules.d/
 
 %files
