@@ -1,5 +1,5 @@
 Name:           taidan
-Version:        0.1.1
+Version:        0.1.2
 Release:        1%?dist
 Summary:        Out-Of-Box-Experience (OOBE) and Welcome App
 SourceLicense:  GPL-3.0-or-later
@@ -27,7 +27,6 @@ Linux, written in Rust and the Helium toolkit.
 %prep
 %autosetup
 %cargo_prep_online
-sed -i 's@version = "0.7.2"@version = "=0.7.0"@' Cargo.toml
 
 %build
 %cargo_license_summary_online
@@ -35,7 +34,7 @@ sed -i 's@version = "0.7.2"@version = "=0.7.0"@' Cargo.toml
 
 %install
 %cargo_install
-for category in catalogue/; do
+for category in catalogue/*; do
     install -Dpm644 $category -t %buildroot%_sysconfdir/com.FyraLabs.Taidan/catalogue/
 done
 install -Dpm644 data%_sysusersdir/taidan.conf -t %buildroot%_sysusersdir
