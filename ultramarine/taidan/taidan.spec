@@ -6,11 +6,11 @@ SourceLicense:  GPL-3.0-or-later
 License:        (0BSD OR MIT OR Apache-2.0) AND Apache-2.0 AND (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR ISC OR MIT) AND (Apache-2.0 OR MIT) AND (Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT) AND MIT AND (MIT OR Apache-2.0) AND (MIT OR Zlib OR Apache-2.0) AND Unicode-3.0 AND (Unlicense OR MIT) AND Zlib
 URL:            https://github.com/Ultramarine-Linux/taidan
 Source0:        %url/archive/refs/tags/v%version.tar.gz
-Requires:       (gsettings or (plasma-apply-colorscheme with kwriteconfig6))
+Requires:       (gsettings or (plasma-apply-colorscheme and kwriteconfig6))
 Requires:       shadow-utils
 Requires:       systemd-udev
 Requires:       sh
-Requires:       (dnf5 with dnf5-command(copr))
+Requires:       (dnf5 and dnf5-command(copr))
 Requires:       flatpak
 BuildRequires:  anda-srpm-macros mold cargo rust-packaging perl
 BuildRequires:  pkgconfig(libhelium-1)
