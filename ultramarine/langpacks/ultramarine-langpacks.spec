@@ -1670,8 +1670,8 @@ for i = 1, #langpacks_package_list do
   defcorepkg(lang, fclang, langname)
 
   --Generate langpacks-* meta packages
-  local metadeps = (tonumber(rpm.expand("0%{?fedora}")) ~= 0 and langpacks_package_list[i]["meta"]["fedora_requires"] ~= nil and langpacks_package_list[i]["meta"]["fedora_requires"] or langpacks_package_list[i]["meta"]["requires"])
-  local metarecd = (tonumber(rpm.expand("0%{?fedora}")) ~= 0 and langpacks_package_list[i]["meta"]["fedora_recommends"] ~= nil and langpacks_package_list[i]["meta"]["fedora_recommends"] or langpacks_package_list[i]["meta"]["recommends"])
+  local metadeps = {}
+  local metarecd = {}
   local deps = build_deps("", "Requires", drop_duplicate(metadeps))
   deps = build_deps(deps, "Recommends", drop_duplicate(metarecd))
   defmetapkg(lang, fclang, langname, deps)
