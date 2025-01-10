@@ -1613,15 +1613,15 @@ for i = 1, #langpacks_package_list do
           table.insert(default_deps, current[k])
         end
         -- Make sure default-fonts-<language code> pulled in by langpacks-fonts-<language code>
-        table.insert(extra_deps, "default-fonts-" .. string.gsub(fclang, "-", "_") .. " = %{version}-%{release}")
+        table.insert(extra_deps, "default-fonts-" .. string.gsub(fclang, "-", "_") .. " = %{?epoch:%epoch}%{version}-%{release}")
         -- Provide font(:lang=) deps for default face only
         prov = append_fontprov("", lowerorth)
 
         if is_nonlatin(lang) then
           if is_cjk(lang) then
-            table.insert(cjk_deps[face[j]], "default-fonts-" .. string.gsub(fclang, "-", "_") .. " = %{version}-%{release}")
+            table.insert(cjk_deps[face[j]], "default-fonts-" .. string.gsub(fclang, "-", "_") .. " = %{?epoch:%epoch}%{version}-%{release}")
           else
-            table.insert(other_deps[face[j]], "default-fonts-" .. string.gsub(fclang, "-", "_") .. " = %{version}-%{release}")
+            table.insert(other_deps[face[j]], "default-fonts-" .. string.gsub(fclang, "-", "_") .. " = %{?epoch:%epoch}%{version}-%{release}")
           end
         end
       else
