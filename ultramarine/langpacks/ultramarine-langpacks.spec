@@ -1368,6 +1368,7 @@ end
 local function defcorepkg(lang, fontlang, langname)
   local templ = [[
 %package core-%{_lang}
+Epoch: 0%?epoch
 Summary: %{_langname} langpacks core meta-package
 Requires: default-fonts-%{_fontlang}
 Conflicts: langpacks-core-%{_lang}
@@ -1397,6 +1398,7 @@ end
 local function _deffontpkg(pkgname, summary1, summary2, deps, files)
   local templ = [[
 %package -n ultramarine-%{_pkgname}
+Epoch: 0%?epoch
 Summary:    Metapackage to install %{_summary1} for %{_summary2}
 Conflicts:  %{_pkgname}
 Provides:   %{_pkgname} = %{?epoch:%epoch:}%version-%release
@@ -1448,6 +1450,7 @@ end
 local function defmetapkg(lang, fontlang, langname, deps)
   local templ = [[
 %package %{_lang}
+Epoch: 0%?epoch
 Summary: %{_langname} langpacks meta-package
 Requires: %{name}-core-%{_lang}
 Requires: %{name}-fonts-%{_fontlang}
@@ -1712,6 +1715,7 @@ end
 } # %%{lua:}
 
 %package -n ultramarine-default-fonts
+Epoch: 0%?epoch
 Summary: Meta package to install all the default fonts
 Requires: default-fonts-core = %{?epoch:%epoch:}%version-%release
 Requires: default-fonts-cjk = %{?epoch:%epoch:}%version-%release
@@ -1727,6 +1731,7 @@ for all the languages.
 %{_datadir}/metainfo/org.fedoraproject.default-fonts.metainfo.xml
 
 %package -n ultramarine-default-fonts-core
+Epoch: 0%?epoch
 Summary: Meta package to install sans/serif/mono/emoji/math default fonts meta packages for Western characters
 Requires: default-fonts-core-sans = %{?epoch:%epoch:}%version-%release
 Requires: default-fonts-core-serif = %{?epoch:%epoch:}%version-%release
@@ -1744,6 +1749,7 @@ meta packages for Western characters.
 %{_datadir}/metainfo/org.fedoraproject.default-fonts-core.metainfo.xml
 
 %package -n ultramarine-default-fonts-cjk
+Epoch: 0%?epoch
 Summary: Meta package to install sans/serif/mono/emoji/math default fonts meta packages for CJK
 Requires: default-fonts-cjk-sans = %{?epoch:%epoch:}%version-%release
 Requires: default-fonts-cjk-serif = %{?epoch:%epoch:}%version-%release
@@ -1759,6 +1765,7 @@ meta packages for CJK languages.
 %{_datadir}/metainfo/org.fedoraproject.default-fonts-cjk.metainfo.xml
 
 %package -n ultramarine-default-fonts-other
+Epoch: 0%?epoch
 Summary: Meta package to install sans/serif/mono/emoji/math default fonts meta packages for non-CJK
 Requires: default-fonts-other-sans = %{?epoch:%epoch:}%version-%release
 Requires: default-fonts-other-serif = %{?epoch:%epoch:}%version-%release
