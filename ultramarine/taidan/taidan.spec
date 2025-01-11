@@ -45,5 +45,5 @@ install -Dpm644 data/polkit-1/rules.d/100-taidan.rules -t %buildroot%_datadir/po
 %license LICENSE.md LICENSE.dependencies
 %_bindir/taidan
 %_datadir/polkit-1/rules.d/100-taidan.rules
-%_sysconfdir/com.fyraLabs.Taidan/
+%_sysconfdir/com.fyralabs.Taidan/
 %_sysusersdir/taidan.conf
