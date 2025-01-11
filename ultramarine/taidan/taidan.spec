@@ -1,6 +1,6 @@
 Name:           taidan
 Version:        0.1.3
-Release:        1%?dist
+Release:        2%?dist
 Summary:        Out-Of-Box-Experience (OOBE) and Welcome App
 SourceLicense:  GPL-3.0-or-later
 License:        (0BSD OR MIT OR Apache-2.0) AND Apache-2.0 AND (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR ISC OR MIT) AND (Apache-2.0 OR MIT) AND (Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT) AND MIT AND (MIT OR Apache-2.0) AND (MIT OR Zlib OR Apache-2.0) AND Unicode-3.0 AND (Unlicense OR MIT) AND Zlib
@@ -35,7 +35,7 @@ Linux, written in Rust and the Helium toolkit.
 %install
 %cargo_install
 for category in catalogue/*; do
-    install -Dpm644 $category -t %buildroot%_sysconfdir/com.FyraLabs.Taidan/catalogue/
+    install -Dpm644 $category -t %buildroot%_sysconfdir/com.fyralabs.Taidan/catalogue/
 done
 install -Dpm644 data/sysusers.d/taidan.conf -t %buildroot%_sysusersdir
 install -Dpm644 data/polkit-1/rules.d/100-taidan.rules -t %buildroot%_datadir/polkit-1/rules.d/
@@ -45,5 +45,5 @@ install -Dpm644 data/polkit-1/rules.d/100-taidan.rules -t %buildroot%_datadir/po
 %license LICENSE.md LICENSE.dependencies
 %_bindir/taidan
 %_datadir/polkit-1/rules.d/100-taidan.rules
-%_sysconfdir/com.FyraLabs.Taidan/
+%_sysconfdir/com.fyraLabs.Taidan/
 %_sysusersdir/taidan.conf
