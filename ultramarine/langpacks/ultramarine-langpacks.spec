@@ -1651,7 +1651,7 @@ for i = 1, #langpacks_package_list do
     if not is_nonlatin(lang) then
       if has_default then
         -- We may need to take care of them separately.
-        table.insert(core_deps, "default-fonts-" .. lang .. " = %{version}-%{release}")
+        table.insert(core_deps, "default-fonts-" .. lang .. " = %{?epoch:%epoch:}%{version}-%{release}")
       else
         table.insert(core_langs, lang)
       end
@@ -1659,7 +1659,7 @@ for i = 1, #langpacks_package_list do
       if is_cjk(lang) then
         if has_default then
           -- We may need to take care of them separately.
-          table.insert(cjk_sans_deps, "default-fonts-" .. lang .. " = %{version}-%{release}")
+          table.insert(cjk_sans_deps, "default-fonts-" .. lang .. " = %{?epoch:%epoch:}%{version}-%{release}")
           deffontpkg("default-fonts-" .. lang, "default fonts", langname, append_obsolete(default_deps, "langpacks-core-font-" .. lang))
         else
           table.insert(cjk_langs, lang)
