@@ -1,5 +1,5 @@
 Name:           taidan
-Version:        0.1.4
+Version:        0.1.5
 Release:        1%?dist
 Summary:        Out-Of-Box-Experience (OOBE) and Welcome App
 SourceLicense:  GPL-3.0-or-later
@@ -14,6 +14,7 @@ Requires:       (dnf5 and dnf5-command(copr))
 Requires:       flatpak
 Requires:       libwebp
 Requires:       webp-pixbuf-loader
+Requires:       xhost
 BuildRequires:  anda-srpm-macros mold cargo rust-packaging perl
 BuildRequires:  pkgconfig(libhelium-1)
 BuildRequires:  pkgconfig(openssl)
