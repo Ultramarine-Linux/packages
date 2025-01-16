@@ -19,18 +19,17 @@
     <default>false</default>
     <uservisible>false</uservisible>
     <packagelist>
-      <packagereq type="default">x264</packagereq>
-      <packagereq type="default">x265</packagereq>
+    <!-- All my homies hate MPEG LA -->
+      <!-- <packagereq type="default">x264</packagereq> -->
+      <!-- <packagereq type="default">x265</packagereq> -->
       <packagereq type="default">flac</packagereq>
       <packagereq type="optional">lame</packagereq>
       <packagereq type="default">opus</packagereq>
       <packagereq type="optional">pipewire-codec-aptx</packagereq>
-      <packagereq type="optional">xpra-codecs-freeworld</packagereq>
-      <packagereq type="optional">vlc-plugins-freeworld</packagereq>
-      <packagereq type="default">gstreamer1-plugins-ugly</packagereq>
+      <!-- <packagereq type="optional">xpra-codecs-freeworld</packagereq> -->
+      <!-- <packagereq type="optional">vlc-plugins-freeworld</packagereq> -->
+      <!-- <packagereq type="default">gstreamer1-plugins-ugly</packagereq> -->
       <packagereq type="default">nv-codec-headers</packagereq>
-      <packagereq type="default">mesa-va-drivers-freeworld</packagereq>
-      <packagereq type="default">mesa-vdpau-drivers-freeworld</packagereq>
     </packagelist>
   </group>
   <group>
