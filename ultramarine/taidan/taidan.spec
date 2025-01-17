@@ -14,6 +14,7 @@ Requires:       (dnf5 and dnf5-command(copr))
 Requires:       flatpak
 Requires:       libwebp
 Requires:       webp-pixbuf-loader
+Requires:       xhost
 BuildRequires:  anda-srpm-macros mold cargo rust-packaging perl
 BuildRequires:  pkgconfig(libhelium-1)
 BuildRequires:  pkgconfig(openssl)
