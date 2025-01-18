@@ -2,7 +2,7 @@
 
 Name: ultramarine-repos
 Version: %{_dist_version}
-Release: 1%{?dist}
+Release: 2%{?dist}
 License: MIT
 Summary: Repositories for Ultramarine Linux
 Requires: %{name}-common = %{version}-%{release}
@@ -28,6 +28,7 @@ Common repository files for Ultramarine Linux
 Summary: Additional repositories for Ultramarine Linux
 Requires: distribution-gpg-keys
 Requires: flatpak
+Requires: terra-release-extras
 Source200: https://flathub.org/repo/flathub.flatpakrepo
 
 # Don't own the rpmfusion repositories, let it be overridden by the real packages
@@ -52,6 +53,13 @@ Source201: https://flatpak.elementary.io/repo.flatpakrepo
 %description appcenter
 AppCenter repository file for Ultramarine Linux
 
+%package rpi
+Summary: Additional repo for Raspberry Pi Kernel
+Source300: https://copr.fedorainfracloud.org/coprs/dwrobel/kernel-rpi/repo/fedora-%{version}/dwrobel-kernel-rpi-fedora-%{version}.repo
+
+%description rpi
+Additional repository for Raspberry Pi Kernel
+
 %prep
 
 %build
@@ -68,6 +76,9 @@ mkdir -p %{buildroot}/%{_sysconfdir}/flatpak/remotes.d
 cp -avx %{SOURCE200} %{buildroot}/%{_sysconfdir}/flatpak/remotes.d/
 cp -avx %{SOURCE201} %{buildroot}/%{_sysconfdir}/flatpak/remotes.d/appcenter.flatpakrepo
 
+# Raspberry Pi
+cp -avx %{SOURCE300} %{buildroot}/%{_sysconfdir}/yum.repos.d/
+
 %files
 
 %files common
@@ -80,3 +91,5 @@ cp -avx %{SOURCE201} %{buildroot}/%{_sysconfdir}/flatpak/remotes.d/appcenter.fla
 #%%{_sysconfdir}/yum.repos.d/rpmfusion-free-updates.repo
 #%%{_sysconfdir}/yum.repos.d/rpmfusion-nonfree.repo
 #%%{_sysconfdir}/yum.repos.d/rpmfusion-nonfree-updates.repo
+%files rpi
+%{_sysconfdir}/yum.repos.d/dwrobel-kernel-rpi-fedora-%{version}.repo

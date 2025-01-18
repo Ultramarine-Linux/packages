@@ -1,5 +1,5 @@
 Name:           readymade
-Version:        0.3.4
+Version:        0.8.0
 Release:        1%?dist
 Summary:        Install ready-made distribution images!
 License:        MIT
@@ -9,6 +9,8 @@ BuildRequires:	anda-srpm-macros rust-packaging mold
 BuildRequires:  pkgconfig(libhelium-1)
 BuildRequires:  pkgconfig(gnome-desktop-4)
 BuildRequires:  clang-devel
+
+Requires:  efibootmgr
 
 %description
 Readymade is a Linux Distribution installer based on the great distinst library by System76.
@@ -34,4 +36,5 @@ ln -sf %{_datadir}/applications/com.fyralabs.Readymade.desktop %{buildroot}%{_da
 %_datadir/applications/com.fyralabs.Readymade.desktop
 %_datadir/applications/liveinst.desktop
 %_datadir/readymade
+%_datadir/icons/hicolor/scalable/apps/com.fyralabs.Readymade.svg
 %_sysconfdir/readymade.toml
