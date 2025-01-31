@@ -9,6 +9,7 @@ BuildRequires:	anda-srpm-macros rust-packaging mold
 BuildRequires:  pkgconfig(libhelium-1)
 BuildRequires:  pkgconfig(gnome-desktop-4)
 BuildRequires:  clang-devel
+BuildRequires:  cmake
 
 Requires:  efibootmgr
 
