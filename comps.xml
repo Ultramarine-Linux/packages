@@ -99,6 +99,7 @@
       <packagereq type="default">gs-plugin-ultramarine-pkgdb-collections</packagereq>
       <packagereq type="default">xdg-user-dirs-gtk</packagereq>
       <packagereq type="default">xdg-desktop-portal-gtk</packagereq>
+      <packagereq type="optional">ultramarine-backgrounds-community-gnome</packagereq>
     </packagelist>
   </group>
   <group>
@@ -252,6 +253,7 @@
         <packagereq type="default">xdg-desktop-portal-gtk</packagereq>
         <packagereq type="default">xdg-user-dirs-gtk</packagereq>
         <packagereq type="default">seahorse</packagereq>
+        <packagereq type="optional">ultramarine-backgrounds-community-gnome</packagereq>
     </packagelist>
   </group>
 
@@ -307,6 +309,7 @@
       <!-- <packagereq type="default">haruna</packagereq> flatpak'd -->
       <!-- <packagereq type="default">kcalc</packagereq> flatpak'd -->
       <packagereq type="default">krdp</packagereq>
+      <packagereq type="optional">ultramarine-backgrounds-community-kde</packagereq>
     </packagelist>
   </group>
   <environment>
@@ -399,6 +402,7 @@
       <packagereq type="default">xfce4-dict-plugin</packagereq>
       <packagereq type="default">system-config-printer</packagereq>
       <packagereq type="default">mugshot</packagereq>
+      <packagereq type="optional">ultramarine-backgrounds-community-gnome</packagereq>
       </packagelist>
   </group>
   <environment>
