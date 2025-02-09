@@ -399,6 +399,7 @@
       <packagereq type="default">xfce4-dict-plugin</packagereq>
       <packagereq type="default">system-config-printer</packagereq>
       <packagereq type="default">mugshot</packagereq>
+      <packagereq type="default">mate-user-admin</packagereq>
       </packagelist>
   </group>
   <environment>
