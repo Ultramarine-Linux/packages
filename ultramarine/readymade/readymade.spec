@@ -1,6 +1,6 @@
 Name:           readymade
-Version:        0.8.0
-Release:        1%?dist
+Version:        0.10.0
+Release:        2%?dist
 Summary:        Install ready-made distribution images!
 License:        MIT
 URL:            https://github.com/FyraLabs/readymade
@@ -9,6 +9,7 @@ BuildRequires:	anda-srpm-macros rust-packaging mold
 BuildRequires:  pkgconfig(libhelium-1)
 BuildRequires:  pkgconfig(gnome-desktop-4)
 BuildRequires:  clang-devel
+BuildRequires:  cmake
 
 Requires:  efibootmgr
 

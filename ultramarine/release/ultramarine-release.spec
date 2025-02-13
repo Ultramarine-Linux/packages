@@ -49,7 +49,7 @@
 Summary:	Ultramarine Linux release files
 Name:		ultramarine-release
 Version:	%{dist_version}
-Release:	11%{?dist}
+Release:	12%{?dist}
 License:	MIT
 Source0:	LICENSE
 URL:        https://ultramarine-linux.org
@@ -281,6 +281,7 @@ Provides:		ultramarine-release-identity = %{version}-%{release}
 Conflicts:		ultramarine-release-identity
 Obsoletes:        ultramarine-release-identity-kde < 40-12
 Requires(meta):	ultramarine-release-plasma = %{version}-%{release}
+Requires(post): bash systemd
 
 %description identity-plasma
 Provides the necessary files for a Ultramarine Plasma installation.
@@ -319,6 +320,7 @@ RemovePathPostfixes: .atomic-plasma
 Provides:		ultramarine-release-identity = %{version}-%{release}
 Conflicts:		ultramarine-release-identity
 Requires(meta):	ultramarine-release-atomic-plasma = %{version}-%{release}
+Requires(post): bash systemd
 
 %description identity-atomic-plasma
 Provides the necessary files for a Ultramarine Atomic Plasma installation.
