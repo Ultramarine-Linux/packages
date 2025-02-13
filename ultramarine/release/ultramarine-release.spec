@@ -28,6 +28,7 @@
 %bcond_without atomic_gnome
 %bcond_without atomic_xfce
 %bcond_without chromebook
+%bcond_without raspberry_pi
 %ifarch x86_64
 %bcond_without surface
 %else
@@ -113,6 +114,8 @@ Source70:   polycrystal-ultramarine-flagship.json
 Source71:   polycrystal-ultramarine-gnome.json
 Source72:   polycrystal-ultramarine-plasma.json
 Source73:   polycrystal-ultramarine-xfce.json
+
+Source80:   https://github.com/Ultramarine-Linux/anywhere
 
 BuildRequires:    systemd-rpm-macros
 
@@ -540,6 +543,16 @@ Summary:        Common configuration package for surface variants
 Common configuration package for surface variants
 %endif
 
+####### Raspberry Pi #######
+
+%if %{with raspberry_pi}
+%package        raspberry_pi
+Summary:        Common configuration package for raspberry pi variants
+
+%description raspberry_pi
+Common configuration package for raspberry pi variants
+%endif
+
 ####### Desktop #######
 
 %if %{with desktop}
@@ -895,6 +908,13 @@ install -Dm0644 %{SOURCE65} -t $RPM_BUILD_ROOT%{_prefix}/lib/systemd/system-pres
 
 %endif
 
+%if %{with raspberry_pi}
+
+# Install bootloader configuration file for raspberry pis
+install -Dm0644 %{SOURCE80}/raspberry-pi/config.txt %{buildroot}%{_bootdir}/efi/
+
+%endif
+
 %if %{with gnome} || %{with atomic_gnome}
 
 # Install systemd presets for gnome
@@ -1075,6 +1095,11 @@ install -Dm0644 %{SOURCE32} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
 %if %{with surface}
 %files surface
 %{_prefix}/lib/systemd/system-preset/91-ultramarine-surface-default.preset
+%endif
+
+%if %{with raspberry_pi}
+%files raspberry_pi
+%{_bootdir}/efi/config.txt
 %endif
 
 %if %{with atomic_desktop}
