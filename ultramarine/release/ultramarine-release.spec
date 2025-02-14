@@ -115,9 +115,8 @@ Source71:   polycrystal-ultramarine-gnome.json
 Source72:   polycrystal-ultramarine-plasma.json
 Source73:   polycrystal-ultramarine-xfce.json
 
-Source80:   https://github.com/Ultramarine-Linux/anywhere
-
 BuildRequires:    systemd-rpm-macros
+BuildRequires:    git
 
 %description
 Release files for Ultramarine Linux.
@@ -546,10 +545,10 @@ Common configuration package for surface variants
 ####### Raspberry Pi #######
 
 %if %{with raspberry_pi}
-%package        raspberry_pi
+%package        raspberry-pi
 Summary:        Common configuration package for raspberry pi variants
 
-%description raspberry_pi
+%description raspberry-pi
 Common configuration package for raspberry pi variants
 %endif
 
@@ -909,10 +908,10 @@ install -Dm0644 %{SOURCE65} -t $RPM_BUILD_ROOT%{_prefix}/lib/systemd/system-pres
 %endif
 
 %if %{with raspberry_pi}
-
 # Install bootloader configuration file for raspberry pis
-install -Dm0644 %{SOURCE80}/raspberry-pi/config.txt %{buildroot}%{_bootdir}/efi/
-
+git clone https://github.com/Ultramarine-Linux/anywhere
+mkdir -p $RPM_BUILD_ROOT/boot/efi/
+install -Dm0644 anywhere/raspberry-pi/config.txt $RPM_BUILD_ROOT/boot/efi/config.txt
 %endif
 
 %if %{with gnome} || %{with atomic_gnome}
@@ -1098,8 +1097,8 @@ install -Dm0644 %{SOURCE32} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
 %endif
 
 %if %{with raspberry_pi}
-%files raspberry_pi
-%{_bootdir}/efi/config.txt
+%files raspberry-pi
+/boot/efi/config.txt
 %endif
 
 %if %{with atomic_desktop}
