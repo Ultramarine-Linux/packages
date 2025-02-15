@@ -115,6 +115,8 @@ Source71:   polycrystal-ultramarine-gnome.json
 Source72:   polycrystal-ultramarine-plasma.json
 Source73:   polycrystal-ultramarine-xfce.json
 
+Source80:   https://github.com/Ultramarine-Linux/anywhere/archive/refs/heads/main.tar.gz
+
 BuildRequires:    systemd-rpm-macros
 BuildRequires:    git
 
@@ -909,9 +911,9 @@ install -Dm0644 %{SOURCE65} -t $RPM_BUILD_ROOT%{_prefix}/lib/systemd/system-pres
 
 %if %{with raspberry_pi}
 # Install bootloader configuration file for raspberry pis
-git clone https://github.com/Ultramarine-Linux/anywhere
+tar xvf %{SOURCE80}
 mkdir -p $RPM_BUILD_ROOT/boot/efi/
-install -Dm0644 anywhere/raspberry-pi/config.txt $RPM_BUILD_ROOT/boot/efi/config.txt
+install -Dm0644 anywhere-main/raspberry-pi/config.txt $RPM_BUILD_ROOT/boot/efi/config.txt
 %endif
 
 %if %{with gnome} || %{with atomic_gnome}
