@@ -55,7 +55,7 @@ Source0:	LICENSE
 URL:        https://ultramarine-linux.org
 Recommends: ultramarine-release-identity-basic
 BuildArch:  noarch
-#Obsoletes:  dnf5-default-package-manager
+Obsoletes:  dnf5-default-package-manager
 
 Provides:   ultramarine-release = %{version}-%{release}
 Provides:   ultramarine-release-variant = %{version}-%{release}
