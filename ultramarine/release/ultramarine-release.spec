@@ -118,7 +118,6 @@ Source73:   polycrystal-ultramarine-xfce.json
 Source80:   https://github.com/Ultramarine-Linux/anywhere/archive/refs/heads/main.tar.gz
 
 BuildRequires:    systemd-rpm-macros
-BuildRequires:    git
 
 %description
 Release files for Ultramarine Linux.
