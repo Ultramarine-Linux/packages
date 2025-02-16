@@ -55,7 +55,7 @@ Source0:	LICENSE
 URL:        https://ultramarine-linux.org
 Recommends: ultramarine-release-identity-basic
 BuildArch:  noarch
-Obsoletes:  dnf5-default-package-manager
+#Obsoletes:  dnf5-default-package-manager
 
 Provides:   ultramarine-release = %{version}-%{release}
 Provides:   ultramarine-release-variant = %{version}-%{release}
@@ -108,6 +108,7 @@ Source63:   ultramarine-xfce-protected.conf
 Source64:   88-ultramarine-chromebook-default.preset
 
 Source65:   91-ultramarine-surface-default.preset
+Source66:   linux-surface.repo
 
 Source70:   polycrystal-ultramarine-flagship.json
 Source71:   polycrystal-ultramarine-gnome.json
@@ -894,6 +895,7 @@ install -Dm0644 %{SOURCE64} -t $RPM_BUILD_ROOT%{_prefix}/lib/systemd/system-pres
 
 # Install systemd presets for surface
 install -Dm0644 %{SOURCE65} -t $RPM_BUILD_ROOT%{_prefix}/lib/systemd/system-preset/
+install -Dm0644 %{SOURCE66} -t $RPM_BUILD_ROOT/etc/yum.repos.d/
 
 %endif
 
@@ -1077,6 +1079,7 @@ install -Dm0644 %{SOURCE32} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
 %if %{with surface}
 %files surface
 %{_prefix}/lib/systemd/system-preset/91-ultramarine-surface-default.preset
+/etc/yum.repos.d//linux-surface.repo
 %endif
 
 %if %{with atomic_desktop}
