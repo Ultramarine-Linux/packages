@@ -1,6 +1,6 @@
 [linux-surface]
 name=Surface Kernel
-baseurl=https://pkg.surfacelinux.com/fedora/f41/
+baseurl=https://pkg.surfacelinux.com/fedora/f$releasever/
 enabled=1
 skip_if_unavailable=1
 gpgkey=https://raw.githubusercontent.com/linux-surface/linux-surface/master/pkg/keys/surface.asc
