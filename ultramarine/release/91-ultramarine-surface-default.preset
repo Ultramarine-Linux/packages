@@ -3,3 +3,4 @@
 # Enable Surface services
 enable surface-dtx-daemon.service
 enable surface-dtx-userd.service
+enable linux-surface-default-watchdog.path
