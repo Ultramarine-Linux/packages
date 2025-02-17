@@ -1,6 +1,6 @@
 Name:           readymade
-Version:        0.10.0
-Release:        2%?dist
+Version:        0.11.1
+Release:        1%?dist
 Summary:        Install ready-made distribution images!
 License:        MIT
 URL:            https://github.com/FyraLabs/readymade
