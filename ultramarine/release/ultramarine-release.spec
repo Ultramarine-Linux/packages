@@ -8,6 +8,8 @@
 
 %define xfce_conf_commit db16bb9fdc2c5777389db1fcab81ba3489393e4e
 
+%define anywhere_conf_commit 240cd1e95d5abb7bbea4cefbe19d328fd6bacac7
+
 %if %{is_rawhide}
 %define bug_version rawhide
 %define releasever rawhide
@@ -28,6 +30,7 @@
 %bcond_without atomic_gnome
 %bcond_without atomic_xfce
 %bcond_without chromebook
+%bcond_without raspberry_pi
 %ifarch x86_64
 %bcond_without surface
 %else
@@ -114,6 +117,8 @@ Source70:   polycrystal-ultramarine-flagship.json
 Source71:   polycrystal-ultramarine-gnome.json
 Source72:   polycrystal-ultramarine-plasma.json
 Source73:   polycrystal-ultramarine-xfce.json
+
+Source80:   https://github.com/Ultramarine-Linux/anywhere/archive/%{anywhere_conf_commit}.tar.gz
 
 BuildRequires:    systemd-rpm-macros
 
@@ -543,6 +548,16 @@ Summary:        Common configuration package for surface variants
 Common configuration package for surface variants
 %endif
 
+####### Raspberry Pi #######
+
+%if %{with raspberry_pi}
+%package        raspberry-pi
+Summary:        Common configuration package for raspberry pi variants
+
+%description raspberry-pi
+Common configuration package for raspberry pi variants
+%endif
+
 ####### Desktop #######
 
 %if %{with desktop}
@@ -899,6 +914,13 @@ install -Dm0644 %{SOURCE66} -t $RPM_BUILD_ROOT/etc/yum.repos.d/
 
 %endif
 
+%if %{with raspberry_pi}
+# Install bootloader configuration file for raspberry pis
+tar xvf %{SOURCE80}
+mkdir -p $RPM_BUILD_ROOT/boot/efi/
+install -Dm0644 anywhere-%{anywhere_conf_commit}/raspberry-pi/config.txt $RPM_BUILD_ROOT/boot/efi/config.txt
+%endif
+
 %if %{with gnome} || %{with atomic_gnome}
 
 # Install systemd presets for gnome
@@ -1080,6 +1102,11 @@ install -Dm0644 %{SOURCE32} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
 %files surface
 %{_prefix}/lib/systemd/system-preset/91-ultramarine-surface-default.preset
 /etc/yum.repos.d//linux-surface.repo
+%endif
+
+%if %{with raspberry_pi}
+%files raspberry-pi
+/boot/efi/config.txt
 %endif
 
 %if %{with atomic_desktop}
