@@ -8,6 +8,8 @@
 
 %define xfce_conf_commit db16bb9fdc2c5777389db1fcab81ba3489393e4e
 
+%define anywhere_conf_commit 240cd1e95d5abb7bbea4cefbe19d328fd6bacac7
+
 %if %{is_rawhide}
 %define bug_version rawhide
 %define releasever rawhide
@@ -50,7 +52,7 @@
 Summary:	Ultramarine Linux release files
 Name:		ultramarine-release
 Version:	%{dist_version}
-Release:	12%{?dist}
+Release:	11%{?dist}
 License:	MIT
 Source0:	LICENSE
 URL:        https://ultramarine-linux.org
@@ -115,7 +117,7 @@ Source71:   polycrystal-ultramarine-gnome.json
 Source72:   polycrystal-ultramarine-plasma.json
 Source73:   polycrystal-ultramarine-xfce.json
 
-Source80:   https://github.com/Ultramarine-Linux/anywhere/archive/refs/heads/main.tar.gz
+Source80:   https://github.com/Ultramarine-Linux/anywhere/archive/%{anywhere_conf_commit}.tar.gz
 
 BuildRequires:    systemd-rpm-macros
 
@@ -912,7 +914,7 @@ install -Dm0644 %{SOURCE65} -t $RPM_BUILD_ROOT%{_prefix}/lib/systemd/system-pres
 # Install bootloader configuration file for raspberry pis
 tar xvf %{SOURCE80}
 mkdir -p $RPM_BUILD_ROOT/boot/efi/
-install -Dm0644 anywhere-main/raspberry-pi/config.txt $RPM_BUILD_ROOT/boot/efi/config.txt
+install -Dm0644 anywhere-%{anywhere_conf_commit}/raspberry-pi/config.txt $RPM_BUILD_ROOT/boot/efi/config.txt
 %endif
 
 %if %{with gnome} || %{with atomic_gnome}
