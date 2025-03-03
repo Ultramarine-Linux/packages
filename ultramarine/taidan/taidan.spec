@@ -1,5 +1,5 @@
 Name:           taidan
-Version:        0.1.9
+Version:        0.1.10
 Release:        1%?dist
 Summary:        Out-Of-Box-Experience (OOBE) and Welcome App
 SourceLicense:  GPL-3.0-or-later AND GPL-2.0-or-later
@@ -15,13 +15,13 @@ Requires:       flatpak
 Requires:       libwebp
 Requires:       webp-pixbuf-loader
 Requires:       xhost
-BuildRequires:  anda-srpm-macros mold cargo rust-packaging perl
+Requires:       cage
+BuildRequires:  anda-srpm-macros mold cargo rust-packaging perl systemd-rpm-macros
 BuildRequires:  pkgconfig(libhelium-1)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  clang-libs
 BuildRequires:  pkgconfig(libacl)
 BuildRequires:  pkgconfig(libattr)
-BuildRequires:  pkgconfig(gnome-desktop-4)
 
 %description
 Taidan is a GUI Out-Of-Box-Experience (OOBE) and Welcome App for Ultramarine
@@ -39,17 +39,13 @@ Linux, written in Rust and the Helium toolkit.
 %cargo_install
 DESTDIR=%buildroot ./scripts/install.sh
 
-%find_lang com.fyralabs.Taidan
-
-%files -f com.fyralabs.Taidan.lang
+%files
 %doc README.md
 %license LICENSE.md LICENSE.dependencies
-%license scripts/libexec/COPYING
 %_bindir/taidan
 %_datadir/polkit-1/rules.d/100-taidan.rules
-%_datadir/taidan/
-%_libexecdir/taidan/
 %_sysconfdir/com.fyralabs.Taidan/
+%_sysconfdir/pam.d/taidan
 %_sysusersdir/taidan.conf
 %_unitdir/taidan-initial-setup.service
 %_unitdir/taidan-initial-setup-reconfiguration.service
