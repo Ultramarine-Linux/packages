@@ -15,13 +15,13 @@ Requires:       flatpak
 Requires:       libwebp
 Requires:       webp-pixbuf-loader
 Requires:       xhost
+Requires:       cage
 BuildRequires:  anda-srpm-macros mold cargo rust-packaging perl
 BuildRequires:  pkgconfig(libhelium-1)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  clang-libs
 BuildRequires:  pkgconfig(libacl)
 BuildRequires:  pkgconfig(libattr)
-BuildRequires:  pkgconfig(gnome-desktop-4)
 
 %description
 Taidan is a GUI Out-Of-Box-Experience (OOBE) and Welcome App for Ultramarine
@@ -44,9 +44,8 @@ DESTDIR=%buildroot ./scripts/install.sh
 %license LICENSE.md LICENSE.dependencies
 %_bindir/taidan
 %_datadir/polkit-1/rules.d/100-taidan.rules
-%_datadir/taidan/
-%_libexecdir/taidan/
 %_sysconfdir/com.fyralabs.Taidan/
+%_sysconfdir/pam.d/taidan
 %_sysusersdir/taidan.conf
 %_unitdir/taidan-initial-setup.service
 %_unitdir/taidan-initial-setup-reconfiguration.service
