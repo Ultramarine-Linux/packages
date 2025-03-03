@@ -1,5 +1,5 @@
 Name:           taidan
-Version:        0.1.9
+Version:        0.1.10
 Release:        1%?dist
 Summary:        Out-Of-Box-Experience (OOBE) and Welcome App
 SourceLicense:  GPL-3.0-or-later AND GPL-2.0-or-later
@@ -39,12 +39,9 @@ Linux, written in Rust and the Helium toolkit.
 %cargo_install
 DESTDIR=%buildroot ./scripts/install.sh
 
-%find_lang com.fyralabs.Taidan
-
-%files -f com.fyralabs.Taidan.lang
+%files
 %doc README.md
 %license LICENSE.md LICENSE.dependencies
-%license scripts/libexec/COPYING
 %_bindir/taidan
 %_datadir/polkit-1/rules.d/100-taidan.rules
 %_datadir/taidan/
