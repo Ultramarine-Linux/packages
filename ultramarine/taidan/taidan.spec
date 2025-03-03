@@ -1,5 +1,5 @@
 Name:           taidan
-Version:        0.1.10
+Version:        0.1.12
 Release:        1%?dist
 Summary:        Out-Of-Box-Experience (OOBE) and Welcome App
 SourceLicense:  GPL-3.0-or-later AND GPL-2.0-or-later
@@ -44,6 +44,7 @@ DESTDIR=%buildroot ./scripts/install.sh
 %license LICENSE.md LICENSE.dependencies
 %_bindir/taidan
 %_datadir/polkit-1/rules.d/100-taidan.rules
+%_presetdir/95-taidan.preset
 %_sysconfdir/com.fyralabs.Taidan/
 %_sysconfdir/pam.d/taidan
 %_sysusersdir/taidan.conf
