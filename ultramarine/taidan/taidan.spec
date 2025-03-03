@@ -44,6 +44,7 @@ DESTDIR=%buildroot ./scripts/install.sh
 %license LICENSE.md LICENSE.dependencies
 %_bindir/taidan
 %_datadir/polkit-1/rules.d/100-taidan.rules
+%_presetdir/95-taidan.preset
 %_sysconfdir/com.fyralabs.Taidan/
 %_sysconfdir/pam.d/taidan
 %_sysusersdir/taidan.conf
