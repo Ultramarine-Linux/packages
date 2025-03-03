@@ -16,7 +16,7 @@ Requires:       libwebp
 Requires:       webp-pixbuf-loader
 Requires:       xhost
 Requires:       cage
-BuildRequires:  anda-srpm-macros mold cargo rust-packaging perl
+BuildRequires:  anda-srpm-macros mold cargo rust-packaging perl systemd-rpm-macros
 BuildRequires:  pkgconfig(libhelium-1)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  clang-libs
