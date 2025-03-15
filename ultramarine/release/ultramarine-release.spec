@@ -1,9 +1,9 @@
 %global is_rawhide 0
 
-%global release_name Cyberia
-%global fedora_codename Forty One
-%global codename cyberia
-%define dist_version 41
+%global release_name Heart of Gold
+%global fedora_codename Forty Two
+%global codename heart_of_gold
+%define dist_version 42
 %define _alt_name fedora-release
 
 %define xfce_conf_commit db16bb9fdc2c5777389db1fcab81ba3489393e4e
@@ -52,7 +52,7 @@
 Summary:	Ultramarine Linux release files
 Name:		ultramarine-release
 Version:	%{dist_version}
-Release:	13%{?dist}
+Release:	1%{?dist}
 License:	MIT
 Source0:	LICENSE
 URL:        https://ultramarine-linux.org
