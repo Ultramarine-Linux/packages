@@ -6,12 +6,12 @@ jobs:
   build:
     strategy:
       matrix:
-        version: ["41"]
+        version: ["42"]
         arch: ["x86_64", "aarch64"]
       fail-fast: false
     runs-on: ${{ matrix.arch == 'aarch64' && 'ubuntu-22.04-arm' || 'ubuntu-latest' }}
     container:
-      image: ghcr.io/terrapkg/builder:f41
+      image: ghcr.io/terrapkg/builder:f42
       options: --cap-add=SYS_ADMIN --privileged
     steps:
       - name: Checkout

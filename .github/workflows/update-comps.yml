@@ -3,7 +3,7 @@ name: Push comps updates
 on:
   push:
     branches:
-      - um41
+      - um42
     paths:
       - comps.xml
   workflow_dispatch:
@@ -12,7 +12,7 @@ jobs:
   update-comps:
     runs-on: ubuntu-latest
     container:
-      image: ghcr.io/terrapkg/builder:f41
+      image: ghcr.io/terrapkg/builder:f42
     steps:
       - uses: actions/checkout@v4
       - name: Push to subatomic
