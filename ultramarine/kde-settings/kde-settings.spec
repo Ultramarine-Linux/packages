@@ -7,7 +7,7 @@
 Summary: Config files for KDE
 Name:    kde-settings
 Epoch:   1
-Version: 41
+Version: 42
 Release: 5%{?dist}
 
 License: MIT
