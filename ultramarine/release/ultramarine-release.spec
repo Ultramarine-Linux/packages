@@ -6,7 +6,7 @@
 %define dist_version 41
 %define _alt_name fedora-release
 
-%define xfce_conf_commit db16bb9fdc2c5777389db1fcab81ba3489393e4e
+%define xfce_conf_commit d2ecec2c00250224d7762c6a2b7e15fbc8621783
 
 %define anywhere_conf_commit 240cd1e95d5abb7bbea4cefbe19d328fd6bacac7
 
@@ -52,7 +52,7 @@
 Summary:	Ultramarine Linux release files
 Name:		ultramarine-release
 Version:	%{dist_version}
-Release:	13%{?dist}
+Release:	14%{?dist}
 License:	MIT
 Source0:	LICENSE
 URL:        https://ultramarine-linux.org
