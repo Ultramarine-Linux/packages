@@ -4,7 +4,7 @@ config_opts['macros']['%dist'] = '.um{{ releasever }}'
 config_opts['macros']['%ultramarine'] = '{{ releasever }}'
 config_opts['chroot_setup_cmd'] = 'install @buildsys-build terra-release terra-release-extras'
 config_opts['buildroot_pkgs'] = 'terra-release terra-release-extras ultramarine-release ultramarine-release-basic'
-config_opts['package_manager'] = 'dnf'
+config_opts['package_manager'] = 'dnf5'
 config_opts['extra_chroot_dirs'] = [ '/run/lock', ]
 config_opts['mirrored'] = True
 config_opts['plugin_conf']['root_cache_enable'] = True
@@ -49,14 +49,14 @@ priority=50
 [terra]
 name=Terra $releasever
 baseurl=https://repos.fyralabs.com/terra$releasever
-type=rpm
+type=rpm-md
 skip_if_unavailable=False
 gpgcheck=1
-repo_gpgcheck=1
 gpgkey=https://repos.fyralabs.com/terra$releasever/key.asc
+repo_gpgcheck=1
 enabled=1
 enabled_metadata=1
-metadata_expire=4h
+#metadata_expire=4h
 
 
 {% if mirrored %}
