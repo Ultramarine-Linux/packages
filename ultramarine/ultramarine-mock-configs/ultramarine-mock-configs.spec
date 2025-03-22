@@ -1,6 +1,6 @@
 Name:           ultramarine-mock-configs
 Version:        1.2
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Mock configs for`ultramarine-linux`
 
 License:        MIT

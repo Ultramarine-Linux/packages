@@ -3,7 +3,7 @@ config_opts['dist'] = 'um{{ releasever }}'  # only useful for --resultdir variab
 config_opts['macros']['%dist'] = '.um{{ releasever }}'
 config_opts['macros']['%ultramarine'] = '{{ releasever }}'
 config_opts['chroot_setup_cmd'] = 'install @buildsys-build'
-config_opts['buildroot_pkgs'] = 'ultramarine-release ultramarine-release-basic terra-release terra-release-extras'
+config_opts['buildroot_pkgs'] = 'terra-release terra-release-extras ultramarine-release ultramarine-release-basic'
 config_opts['package_manager'] = 'dnf'
 config_opts['extra_chroot_dirs'] = [ '/run/lock', ]
 config_opts['mirrored'] = True
@@ -195,3 +195,4 @@ skip_if_unavailable=False
 
 config_opts['dnf.conf'] = dnf_conf
 config_opts['dnf5.conf'] = dnf_conf
+
