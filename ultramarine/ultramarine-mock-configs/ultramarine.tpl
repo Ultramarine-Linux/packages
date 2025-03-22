@@ -2,7 +2,7 @@ config_opts['root'] = 'ultramarine-{{ releasever }}-{{ target_arch }}'
 config_opts['dist'] = 'um{{ releasever }}'  # only useful for --resultdir variable subst
 config_opts['macros']['%dist'] = '.um{{ releasever }}'
 config_opts['macros']['%ultramarine'] = '{{ releasever }}'
-config_opts['chroot_setup_cmd'] = 'install @buildsys-build'
+config_opts['chroot_setup_cmd'] = 'install @buildsys-build terra-release terra-release-extras'
 config_opts['buildroot_pkgs'] = 'terra-release terra-release-extras ultramarine-release ultramarine-release-basic'
 config_opts['package_manager'] = 'dnf'
 config_opts['extra_chroot_dirs'] = [ '/run/lock', ]
@@ -195,4 +195,3 @@ skip_if_unavailable=False
 
 config_opts['dnf.conf'] = dnf_conf
 config_opts['dnf5.conf'] = dnf_conf
-
