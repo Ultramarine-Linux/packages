@@ -52,7 +52,7 @@
 Summary:	Ultramarine Linux release files
 Name:		ultramarine-release
 Version:	%{dist_version}
-Release:	14%{?dist}
+Release:	15%{?dist}
 License:	MIT
 Source0:	LICENSE
 URL:        https://ultramarine-linux.org
@@ -276,6 +276,7 @@ Obsoletes: ultramarine-release-kde < 40-12
 # ultramarine-release-identity-cinnamon if nothing else is already doing so.
 Recommends:	ultramarine-release-identity-plasma
 Recommends:	kwin-system76-scheduler-integration
+Recommends: pipewire-systemd-mask
 
 %description plasma
 Provides a base package for Ultramarine Plasma configurations.
@@ -316,6 +317,8 @@ Provides:   system-release-product
 # package must provide it. This Recommends: pulls in
 # ultramarine-release-identity-cinnamon if nothing else is already doing so.
 Recommends:	ultramarine-release-identity-atomic-plasma
+Recommends: kwin-system76-scheduler-integration
+Recommends: pipewire-systemd-mask
 
 %description atomic-plasma
 Provides a base package for Ultramarine Atomic Plasma configurations.
