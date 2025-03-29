@@ -13,7 +13,7 @@ There is a bug where Pipewire runs when sudo is executed, causing
 the audio to reset to 41 every single time. This fixes the issue.
 
 %install
-mkdir -p %buildroot%_sysconfdir/systemd/system
+mkdir -p %buildroot%_sysconfdir/systemd/system %buildroot/root/.config/systemd/user
 ln -s /dev/null %buildroot%_sysconfdir/systemd/system/pipewire.socket
 ln -s /dev/null %buildroot%_sysconfdir/systemd/system/pipewire.service
 ln -s /dev/null %buildroot/root/.config/systemd/user/pipewire.socket
