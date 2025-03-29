@@ -16,8 +16,8 @@ the audio to reset to 41 every single time. This fixes the issue.
 mkdir -p %buildroot%_sysconfdir/systemd/system
 ln -s /dev/null %buildroot%_sysconfdir/systemd/system/pipewire.socket
 ln -s /dev/null %buildroot%_sysconfdir/systemd/system/pipewire.service
-ln -s /dev/null /root/.config/systemd/user/pipewire.socket
-ln -s /dev/null /root/.config/systemd/user/pipewire.service
+ln -s /dev/null %buildroot/root/.config/systemd/user/pipewire.socket
+ln -s /dev/null %buildroot/root/.config/systemd/user/pipewire.service
 
 %files
 %_sysconfdir/systemd/system/pipewire.socket
