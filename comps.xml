@@ -49,6 +49,7 @@
       <packagereq type="default">fastfetch</packagereq>
       <packagereq type="default">linux-firmware</packagereq>
       <packagereq type="default">NetworkManager-tui</packagereq>
+      <packagereq type="default">zstd</packagereq>
     </packagelist>
   </group>
   <group>
