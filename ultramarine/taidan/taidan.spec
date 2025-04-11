@@ -15,7 +15,7 @@ Requires:       flatpak
 Requires:       libwebp
 Requires:       webp-pixbuf-loader
 Requires:       xhost
-Requires:       cage
+Requires:       labwc
 Requires:       swaybg
 BuildRequires:  anda-srpm-macros mold cargo rust-packaging perl systemd-rpm-macros
 BuildRequires:  pkgconfig(libhelium-1)
