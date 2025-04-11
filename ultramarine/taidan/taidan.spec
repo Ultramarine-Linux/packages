@@ -50,3 +50,5 @@ DESTDIR=%buildroot ./scripts/install.sh
 %_sysusersdir/taidan.conf
 %_unitdir/taidan-initial-setup.service
 %_unitdir/taidan-initial-setup-reconfiguration.service
+%dir %_prefix/lib/taidan/
+%_prefix/lib/taidan/labwc/*
