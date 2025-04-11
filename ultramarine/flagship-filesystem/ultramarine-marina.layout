@@ -9,7 +9,7 @@ Spacing=8
 
 [Budgie Menu]
 ID=Budgie Menu
-menu-icon=ultramarine
+menu-icon='ultramarine'
 
 [Visual Space]
 ID=Visual Space
