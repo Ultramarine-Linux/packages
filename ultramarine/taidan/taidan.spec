@@ -17,6 +17,7 @@ Requires:       webp-pixbuf-loader
 Requires:       xhost
 Requires:       labwc
 Requires:       swaybg
+Requires:       nm-connection-editor
 BuildRequires:  anda-srpm-macros mold cargo rust-packaging perl systemd-rpm-macros
 BuildRequires:  pkgconfig(libhelium-1)
 BuildRequires:  pkgconfig(openssl)
