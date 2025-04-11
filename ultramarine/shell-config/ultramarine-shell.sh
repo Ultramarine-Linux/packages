@@ -78,4 +78,6 @@ fi
 if ! [ -f ~/.config/starship.toml ]; then
     # export another starship config
     export STARSHIP_CONFIG=/usr/share/ultramarine-shell-config/starship.toml
+else
+    unset STARSHIP_CONFIG
 fi
