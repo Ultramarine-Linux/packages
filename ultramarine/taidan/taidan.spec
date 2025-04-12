@@ -1,5 +1,5 @@
 Name:           taidan
-Version:        0.1.17
+Version:        0.1.17.1
 Release:        2%?dist
 Summary:        Out-Of-Box-Experience (OOBE) and Welcome App
 SourceLicense:  GPL-3.0-or-later AND GPL-2.0-or-later
@@ -15,7 +15,8 @@ Requires:       flatpak
 Requires:       libwebp
 Requires:       webp-pixbuf-loader
 Requires:       xhost
-Requires:       labwc
+# Requires:       labwc
+Requires:       cage
 Requires:       swaybg
 Requires:       nm-connection-editor
 BuildRequires:  anda-srpm-macros mold cargo rust-packaging perl systemd-rpm-macros
