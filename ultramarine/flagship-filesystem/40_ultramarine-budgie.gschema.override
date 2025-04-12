@@ -1,3 +1,6 @@
+[com.solus-project.budgie-menu]
+menu-icon='ultramarine'
+
 [org.gnome.desktop.wm.preferences:Budgie]
 button-layout = 'appmenu:minimize,maximize,close'
 titlebar-font='Inter Bold 11'
