@@ -5,7 +5,7 @@
 
 Name:           ultramarine-wsl-filesystem
 Version:        1.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Ultramarine for WSL configuration files
 URL:            ultramarine-linux.org
 
@@ -14,6 +14,8 @@ Source1:        wsl-distribution.conf
 Source2:        oobe.sh
 Source3:        wsl-filesystem-tmpfiles.conf
 Source4:        wsl-filesystem-user-tmpfiles.conf
+
+Requires:       system-logos
 
 BuildRequires:  systemd-rpm-macros
 
