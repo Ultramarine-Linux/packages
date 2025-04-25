@@ -30,6 +30,7 @@
 %bcond_without atomic_xfce
 %bcond_without chromebook
 %bcond_without raspberry_pi
+%bcond_without wsl
 %ifarch x86_64
 %bcond_without surface
 %else
@@ -51,7 +52,7 @@
 Summary:	Ultramarine Linux release files
 Name:		ultramarine-release
 Version:	%{dist_version}
-Release:	17%{?dist}
+Release:	18%{?dist}
 License:	MIT
 Source0:	LICENSE
 URL:        https://ultramarine-linux.org
@@ -527,6 +528,45 @@ Provides the necessary files for a Ultramarine Atomic XFCE installation.
 %endif
 
 ######################################################################
+####### WSL #######
+
+%if %{with wsl}
+
+%package wsl
+Summary:	Base package for Ultramarine WSL-specific default configurations
+RemovePathPostfixes: .wsl
+Provides:   ultramarine-release = %{version}-%{release}
+Provides:   ultramarine-release-wsl = %{version}-%{release}
+Provides:   ultramarine-release-variant = %{version}-%{release}
+Provides:   system-release
+Provides:   system-release(%{version})
+Provides:   base-module(platform:f%{version})
+Requires:   ultramarine-release-common = %{version}-%{release}
+Requires:   ultramarine-release-desktop = %{version}-%{release}
+Provides:   system-release-product
+# ultramarine-release-common Requires: ultramarine-release-identity, so at least one
+# package must provide it. This Recommends: pulls in
+# ultramarine-release-identity-cinnamon if nothing else is already doing so.
+Recommends:	ultramarine-release-identity-wsl
+
+Requires:	ultramarine-wsl-filesystem
+
+%description wsl
+Provides a base package for Ultramarine WSL configurations.
+
+%package identity-wsl
+Summary:		Package providing the Ultramarine WSL Identity
+RemovePathPostfixes: .wsl
+Provides:		ultramarine-release-identity = %{version}-%{release}
+Conflicts:		ultramarine-release-identity
+Requires(meta):	ultramarine-release-wsl = %{version}-%{release}
+
+%description identity-wsl
+Provides the necessary files for a Ultramarine WSL installation.
+
+%endif
+
+######################################################################
 #### Accessory packages
 ######################################################################
 
@@ -786,6 +826,15 @@ sed -i -e "s|(%{release_name}%{?prerelease})|(Atomic XFCE Edition%{?prerelease})
 sed -e "s#\$version#%{bug_version}#g" -e 's/$edition/Atomic XFCE/;s/<!--.*-->//;/^$/d' %{SOURCE20} > %{buildroot}%{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.atomic-xfce
 %endif
 
+%if %{with wsl}
+# WSL
+cp -p os-release \
+      %{buildroot}%{_prefix}/lib/os-release.wsl
+echo "VARIANT=\"WSL Edition\"" >> %{buildroot}%{_prefix}/lib/os-release.wsl
+echo "VARIANT_ID=wsl" >> %{buildroot}%{_prefix}/lib/os-release.wsl
+sed -i -e "s|(%{release_name}%{?prerelease})|(WSL Edition%{?prerelease})|g" %{buildroot}%{_prefix}/lib/os-release.wsl
+sed -e "s#\$version#%{bug_version}#g" -e 's/$edition/WSL/;s/<!--.*-->//;/^$/d' %{SOURCE20} > %{buildroot}%{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.wsl
+%endif
 
 # Create copr config file so COPR doesnt flip out and assume EPEL
 # I created a PR to support this months ago, but completely forgot about it
@@ -1088,6 +1137,13 @@ install -Dm0644 %{SOURCE32} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
 %{_sysconfdir}/skel/.config/xfce4/
 %{_sysconfdir}/lightdm/lightdm.conf.d/60-ultramarine-presets.conf
 %{_sysconfdir}/lightdm/lightdm.conf.d/50-ultramarine-xfce-slick-greeter.conf
+%endif
+
+%if %{with wsl}
+%files wsl
+%files identity-wsl
+%{_prefix}/lib/os-release.wsl
+%attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.wsl
 %endif
 
 %if %{with desktop}
