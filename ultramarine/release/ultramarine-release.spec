@@ -4,7 +4,6 @@
 %global fedora_codename Forty One
 %global codename cyberia
 %define dist_version 41
-%define _alt_name fedora-release
 
 %define xfce_conf_commit d2ecec2c00250224d7762c6a2b7e15fbc8621783
 
@@ -52,7 +51,7 @@
 Summary:	Ultramarine Linux release files
 Name:		ultramarine-release
 Version:	%{dist_version}
-Release:	16%{?dist}
+Release:	17%{?dist}
 License:	MIT
 Source0:	LICENSE
 URL:        https://ultramarine-linux.org
@@ -139,8 +138,8 @@ Recommends: fastfetch
 Recommends: golang-github-ultramarine-linux-um
 Conflicts:  generic-release
 Conflicts:  fedora-release
+Provides:   fedora-release-common
 Conflicts:  fedora-release-common
-Provides:   %{_alt_name} = %{version}-%{release}
 Provides:   generic-release = %{version}-%{release}
 
 %description common
