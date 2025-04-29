@@ -1,6 +1,6 @@
 Name:           ultramarine-flagship-filesystem
-Version:        41
-Release:        8%{?dist}
+Version:        42
+Release:        1%{?dist}
 Summary:        Assets for Ultramarine Linux Flagship
 
 License:        MIT
