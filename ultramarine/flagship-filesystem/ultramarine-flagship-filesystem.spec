@@ -1,6 +1,6 @@
 Name:           ultramarine-flagship-filesystem
 Version:        41
-Release:        6.2%{?dist}
+Release:        8%{?dist}
 Summary:        Assets for Ultramarine Linux Flagship
 
 License:        MIT
@@ -37,6 +37,9 @@ install %{SOURCE1} %{buildroot}%{_datadir}/budgie-desktop/panel.ini
 
 
 %changelog
+* Fri Apr 11 2025 Jaiden Riordan <jade@fyralabs.com> - 7
+- Fix the missing logo on start menu
+
 * Wed Jun 08 2022 Cappy Ishihara <cappy@cappuchino.xyz> - 0.1.1
 - Updated layouts and config files
 
