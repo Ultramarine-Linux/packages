@@ -1,5 +1,5 @@
 Name:           taidan
-Version:        0.1.22
+Version:        0.1.23
 Release:        1%?dist
 Summary:        Out-Of-Box-Experience (OOBE) and Welcome App
 SourceLicense:  GPL-3.0-or-later AND GPL-2.0-or-later
@@ -16,9 +16,9 @@ Requires:       libwebp
 Requires:       webp-pixbuf-loader
 Requires:       xhost
 # Requires:       labwc
-Requires:       cage
-# Requires:       swaybg
-Requires:       nm-connection-editor
+# Requires:       cage
+Requires:       kwin-wayland swaybg
+# Requires:       nm-connection-editor
 BuildRequires:  anda-srpm-macros mold cargo rust-packaging perl systemd-rpm-macros
 BuildRequires:  pkgconfig(libhelium-1)
 BuildRequires:  pkgconfig(openssl)
@@ -46,6 +46,7 @@ DESTDIR=%buildroot ./scripts/install.sh
 %doc README.md
 %license LICENSE.md LICENSE.dependencies
 %_bindir/taidan
+%_libexecdir/start-taidan
 %_datadir/polkit-1/rules.d/100-taidan.rules
 %_presetdir/95-taidan.preset
 %_sysconfdir/com.fyralabs.Taidan/
