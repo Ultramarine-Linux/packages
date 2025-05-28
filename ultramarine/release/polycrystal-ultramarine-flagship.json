@@ -10,7 +10,7 @@
     "branch": "stable"
   },
   {
-    "id": "org.gnome.Lollypop",
+    "id": "org.gnome.Music",
     "remote": "flathub",
     "branch": "stable"
   }
