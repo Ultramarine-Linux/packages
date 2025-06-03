@@ -16,13 +16,13 @@ Requires:       libwebp
 Requires:       webp-pixbuf-loader
 Requires:       xhost
 # Requires:       labwc
-Requires:       cage
-# Requires:       swaybg
-Requires:       nm-connection-editor
-BuildRequires:  anda-srpm-macros mold cargo rust-packaging perl systemd-rpm-macros
+# Requires:       cage
+Requires:       kwin-wayland swaybg
+BuildRequires:  anda-srpm-macros mold cargo rust-packaging perl
 BuildRequires:  pkgconfig(libhelium-1)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  clang-libs
+BuildRequires:  clang-devel
 BuildRequires:  pkgconfig(libacl)
 BuildRequires:  pkgconfig(libattr)
 
