@@ -1,4 +1,4 @@
-%define ver 41.2
+%define ver 42.1
 %undefine _disable_source_fetch
 
 Name: ultramarine-backgrounds
@@ -105,6 +105,11 @@ kde_link 41/viewport-fake-dark.png "Viewports Fake Dark"
 kde_link 41/paradise-light.png "Paradise Light"
 kde_link 41/paradise-dark.png "Paradise Dark"
 
+kde_link 42/sea-of-imagination-dark-alt-a.png "Sea of Imagination Dark Alt A"
+kde_link 42/sea-of-imagination-dark-alt-b.png "Sea of Imagination Dark Alt B"
+kde_link 42/sea-of-imagination-dark.png "Sea of Imagination Dark"
+kde_link 42/sea-of-imagination.png "Sea of Imagination"
+
 kde_link preview/blueprint.png "Ultramarine Preview"
 
 kde_link ultramarine/ultramarine-dark.png "Ultramarine Dark"
@@ -119,9 +124,9 @@ compat_link() {
 }
 
 
-DEFAULT_WALL="41/viewports-light.png"
-DEFAULT_DARK_WALL="41/viewports-dark.png"
-DEFAULT_XML="41/viewports.xml"
+DEFAULT_WALL="42/sea-of-imagination.png"
+DEFAULT_DARK_WALL="42/sea-of-imagination-dark.png"
+DEFAULT_XML="42/sea-of-imagination.xml"
 
 # Let's generate our default gschema override file
 
@@ -159,6 +164,7 @@ compat_link $DEFAULT_DARK_WALL images/default-dark-16_10.png
 %files gnome
 %{_datadir}/gnome-background-properties/ultramarine-wallpapers-extras.xml
 %{_datadir}/gnome-background-properties/ultramarine.xml
+%exclude /usr/share/gnome-background-properties/41-community-extras.xml
 
 %files kde
 %{_datadir}/wallpapers/*
