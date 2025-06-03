@@ -175,8 +175,6 @@ compat_link $DEFAULT_DARK_WALL images/default-dark-16_10.png
 %{_datadir}/backgrounds/default.png
 %{_datadir}/backgrounds/default-dark.png
 %{_datadir}/backgrounds/default.xml
-%{_datadir}/backgrounds/sea-of-imagination-dark-alt-a.png
-%{_datadir}/backgrounds/sea-of-imagination-dark-alt-b.png
 
 
 %changelog
