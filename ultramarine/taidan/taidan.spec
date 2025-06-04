@@ -42,10 +42,12 @@ Linux, written in Rust and the Helium toolkit.
 %cargo_install
 DESTDIR=%buildroot ./scripts/install.sh
 
+
 %files
 %doc README.md
 %license LICENSE.md LICENSE.dependencies
 %_bindir/taidan
+%_libexecdir/start-taidan
 %_datadir/polkit-1/rules.d/100-taidan.rules
 %_presetdir/95-taidan.preset
 %_sysconfdir/com.fyralabs.Taidan/
