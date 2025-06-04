@@ -18,7 +18,7 @@ Requires:       xhost
 # Requires:       labwc
 # Requires:       cage
 Requires:       kwin-wayland swaybg
-BuildRequires:  anda-srpm-macros mold cargo rust-packaging perl
+BuildRequires:  anda-srpm-macros mold cargo rust-packaging perl systemd-rpm-macros
 BuildRequires:  pkgconfig(libhelium-1)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  clang-libs
