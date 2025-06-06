@@ -1,7 +1,7 @@
 Summary:        Operating System AppStream Metadata for Ultramarine Linux
 Name:           ultramarine-appstream-metadata
 # Use the time of the last metadata update as version
-Version:        20250605
+Version:        20250606
 Release:        %autorelease
 License:        MIT
 URL:            https://ultramarine-linux.org/
