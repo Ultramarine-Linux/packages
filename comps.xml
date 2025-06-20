@@ -70,6 +70,7 @@
       <packagereq type="default">sipa-fonts</packagereq>
       <packagereq type="default">ibus-mozc</packagereq>
       <packagereq type="default">mozc</packagereq>
+      <packagereq type="default">ffmpegthumbnailer</packagereq>
     </packagelist>
   </group>
   <group>
