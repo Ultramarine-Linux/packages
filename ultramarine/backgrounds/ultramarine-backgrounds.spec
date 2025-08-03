@@ -1,4 +1,4 @@
-%define ver 42.1
+%define ver 42.2
 %undefine _disable_source_fetch
 
 Name: ultramarine-backgrounds
@@ -114,6 +114,8 @@ kde_link preview/blueprint.png "Ultramarine Preview"
 
 kde_link ultramarine/ultramarine-dark.png "Ultramarine Dark"
 kde_link ultramarine/ultramarine-light.png "Ultramarine Light"
+
+kde_link extras/mizuki.png "Mizuki at Home"
 
 # Compat files
 
