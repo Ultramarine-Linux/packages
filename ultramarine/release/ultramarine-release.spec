@@ -3,7 +3,7 @@
 %global release_name Heart of Gold
 %global fedora_codename Forty Two
 %global codename heart_of_gold
-%define dist_version 42
+%define dist_version 42.0.1
 
 %define xfce_conf_commit d2ecec2c00250224d7762c6a2b7e15fbc8621783
 
