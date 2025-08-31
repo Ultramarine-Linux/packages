@@ -33,7 +33,7 @@ enable chronyd.service
 # https://fedoraproject.org/w/index.php?title=Starting_services_by_default&oldid=377748
 # https://bugzilla.redhat.com/show_bug.cgi?id=1455704
 enable NetworkManager.service
-enable NetworkManager-wait-online.service
+disable NetworkManager-wait-online.service
 enable NetworkManager-dispatcher.service
 enable ModemManager.service
 
