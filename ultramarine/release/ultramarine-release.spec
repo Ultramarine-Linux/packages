@@ -1035,6 +1035,7 @@ install -Dm0644 %{SOURCE32} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
 %attr(0644,root,root) %{_rpmconfigdir}/macros.d/macros.dist
 %dir %{_prefix}/lib/systemd/user-preset/
 %{_prefix}/lib/systemd/user-preset/90-default-user.preset
+%{_prefix}/lib/systemd/user-preset/99-default-disable.preset
 %dir %{_prefix}/lib/systemd/system-preset/
 %{_prefix}/lib/systemd/system-preset/85-display-manager.preset
 %{_prefix}/lib/systemd/system-preset/89-ultramarine-default.preset
