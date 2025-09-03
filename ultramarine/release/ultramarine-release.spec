@@ -52,7 +52,7 @@
 Summary:	Ultramarine Linux release files
 Name:		ultramarine-release
 Version:	%{dist_version}
-Release:	6%{?dist}
+Release:	7%{?dist}
 License:	MIT
 Source0:	LICENSE
 URL:        https://ultramarine-linux.org
@@ -935,13 +935,10 @@ mkdir -p $RPM_BUILD_ROOT/usr/lib/systemd/user-preset/
 mkdir -p $RPM_BUILD_ROOT%{_prefix}/lib/systemd/system-preset/
 
 # Default system wide
-install -Dm0644 %{SOURCE6} -t $RPM_BUILD_ROOT%{_prefix}/lib/systemd/system-preset/
-install -Dm0644 %{SOURCE7} -t $RPM_BUILD_ROOT%{_prefix}/lib/systemd/system-preset/
-install -Dm0644 %{SOURCE8} -t $RPM_BUILD_ROOT%{_prefix}/lib/systemd/system-preset/
-install -Dm0644 %{SOURCE10} -t $RPM_BUILD_ROOT%{_prefix}/lib/systemd/system-preset/
-install -Dm0644 %{SOURCE9} -t $RPM_BUILD_ROOT%{_prefix}/lib/systemd/user-preset/
-install -Dm0644 %{SOURCE28} -t %{buildroot}%{_prefix}/lib/systemd/system.conf.d/
-install -Dm0644 %{SOURCE28} -t %{buildroot}%{_prefix}/lib/systemd/user.conf.d/
+install -Dm0644 %{S:6} %{S:7} %{S:8} %{S:10} -t %buildroot%_presetdir
+install -Dm0644 %{S:8} %{S:9} -t %buildroot%_userpresetdir
+install -Dm0644 %{SOURCE28} -t %buildroot%_systemd_util_dir/system.conf.d/
+install -Dm0644 %{SOURCE28} -t %buildroot%_systemd_util_dir/user.conf.d/
 
 %if %{with desktop}
 
