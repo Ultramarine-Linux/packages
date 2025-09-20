@@ -32,6 +32,10 @@ Provides:       um
 BuildRequires:  git-core
 BuildRequires:  pkgconfig(rpm)
 BuildRequires:  pkgconfig(flatpak)
+Requires:	ansible
+Requires:	ansible-collection-ansible-posix
+
+
 
 %description %{common_description}
 
