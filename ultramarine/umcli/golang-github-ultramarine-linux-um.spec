@@ -52,6 +52,8 @@ go build -ldflags "-B 0x$(head -c20 /dev/urandom|od -An -tx1|tr -d ' \n') -s -w"
 %install
 install -m 0755 -vd                     %{buildroot}%{_bindir}
 install -m 0755 -vp %{gobuilddir}/bin/* %{buildroot}%{_bindir}/
+mkdir -p %{buildroot}%{_datadir}/um
+cp -av data/. %{buildroot}%{_datadir}/um/.
 
 %if %{without bootstrap}
 %if %{with check}
@@ -64,6 +66,7 @@ install -m 0755 -vp %{gobuilddir}/bin/* %{buildroot}%{_bindir}/
 %files
 %doc README.md
 %{_bindir}/um
+%{_datadir}/um
 %endif
 
 %dnl %gopkgfiles
