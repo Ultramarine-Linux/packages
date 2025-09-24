@@ -24,9 +24,10 @@ Requires:       polkit
 BuildRequires:  anda-srpm-macros mold cargo rust-packaging perl systemd-rpm-macros
 BuildRequires:  pkgconfig(libhelium-1)
 BuildRequires:  pkgconfig(openssl)
-BuildRequires:  gcc clang clang-libs
+BuildRequires:  gcc clang clang-libs libclang-devel glibc-devel
 BuildRequires:  pkgconfig(libacl)
 BuildRequires:  pkgconfig(libattr)
+BuildRequires:  pkgconfig(icu-uc)
 BuildRequires:  glibc-all-langpacks
 
 %description
