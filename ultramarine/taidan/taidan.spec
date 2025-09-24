@@ -27,6 +27,8 @@ BuildRequires:  pkgconfig(openssl)
 BuildRequires:  clang-libs
 BuildRequires:  pkgconfig(libacl)
 BuildRequires:  pkgconfig(libattr)
+BuildRequires:  gcc
+BuildRequires:  glibc-all-langpacks
 
 %description
 Taidan is a GUI Out-Of-Box-Experience (OOBE) and Welcome App for Ultramarine
