@@ -1,11 +1,11 @@
 Name:           taidan
-Version:        0.1.22
+Version:        0.1.24
 Release:        1%?dist
 Summary:        Out-Of-Box-Experience (OOBE) and Welcome App
 SourceLicense:  GPL-3.0-or-later AND GPL-2.0-or-later
 License:        (0BSD OR MIT OR Apache-2.0) AND Apache-2.0 AND (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR ISC OR MIT) AND (Apache-2.0 OR MIT) AND (Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT) AND MIT AND (MIT OR Apache-2.0) AND (MIT OR Zlib OR Apache-2.0) AND Unicode-3.0 AND (Unlicense OR MIT) AND Zlib AND GPL-3.0-or-later AND GPL-2.0-or-later
 URL:            https://github.com/Ultramarine-Linux/taidan
-Source0:        %url/archive/refs/tags/v%version.tar.gz
+%dnl Source0:        %url/archive/refs/tags/v%version.tar.gz
 Requires:       (glib2 or (/usr/bin/plasma-apply-colorscheme and kf6-kconfig))
 Requires:       shadow-utils
 Requires:       systemd-udev
@@ -16,22 +16,25 @@ Requires:       libwebp
 Requires:       webp-pixbuf-loader
 Requires:       xhost
 # Requires:       labwc
-Requires:       cage
-# Requires:       swaybg
-Requires:       nm-connection-editor
+# Requires:       cage
+Requires:       kwin-wayland swaybg
+# Requires:       nm-connection-editor
+Requires:       netto
+Requires:       polkit
 BuildRequires:  anda-srpm-macros mold cargo rust-packaging perl systemd-rpm-macros
 BuildRequires:  pkgconfig(libhelium-1)
 BuildRequires:  pkgconfig(openssl)
-BuildRequires:  clang-libs
+BuildRequires:  gcc clang clang-libs
 BuildRequires:  pkgconfig(libacl)
 BuildRequires:  pkgconfig(libattr)
+BuildRequires:  glibc-all-langpacks
 
 %description
 Taidan is a GUI Out-Of-Box-Experience (OOBE) and Welcome App for Ultramarine
 Linux, written in Rust and the Helium toolkit.
 
 %prep
-%autosetup
+%git_clone
 %cargo_prep_online
 
 %build
@@ -46,6 +49,7 @@ DESTDIR=%buildroot ./scripts/install.sh
 %doc README.md
 %license LICENSE.md LICENSE.dependencies
 %_bindir/taidan
+%_libexecdir/start-taidan
 %_datadir/polkit-1/rules.d/100-taidan.rules
 %_presetdir/95-taidan.preset
 %_sysconfdir/com.fyralabs.Taidan/
