@@ -1,7 +1,6 @@
-project pkg {
-    arches = ["x86_64"]
+project "pkg" {
+  arches = ["x86_64"]
     rpm {
-        spec = um-arm-chromebook-install.spec
+        spec = "ultramarine-wsl-filesystem.spec"
     }
 }
-
