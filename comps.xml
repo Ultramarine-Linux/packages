@@ -30,6 +30,7 @@
       <packagereq type="optional">vlc-plugins-freeworld</packagereq>
       <packagereq type="default">gstreamer1-plugins-ugly</packagereq>
       <packagereq type="default">nv-codec-headers</packagereq>
+      <packagereq type="optional">dkms-v4l2loopback</packagereq>
     </packagelist>
   </group>
   <group>
@@ -431,4 +432,67 @@
       <groupid>ultramarine-xfce-product</groupid>
     </grouplist>
   </environment>
+  <group>
+    <id>ultramarine-flagship-no-flatpak-apps</id>
+    <name>Ultramarine Flagship non-Flatpak apps</name>
+    <description>Apps for Ultramarine Flagship without flatpaks</description>
+    <default>false</default>
+    <uservisible>false</uservisible>
+    <packagelist>
+      <packagereq type="default">gnome-calculator</packagereq>
+      <packagereq type="default">evince</packagereq>
+      <packagereq type="default">lollypop</packagereq>
+    </packagelist>
+  </group>
+  <group>
+    <id>ultramarine-gnome-no-flatpak-apps</id>
+    <name>Ultramarine GNOME non-Flatpak apps</name>
+    <description>Apps for Ultramarine GNOME without flatpaks</description>
+    <default>false</default>
+    <uservisible>false</uservisible>
+    <packagelist>
+      <packagereq type="default">geary</packagereq>
+      <packagereq type="default">gnome-connections</packagereq>
+      <packagereq type="default">gnome-text-editor</packagereq>
+      <packagereq type="default">gnome-calculator</packagereq>
+      <packagereq type="default">gnome-calendar</packagereq>
+      <packagereq type="default">gnome-clocks</packagereq>
+      <packagereq type="default">gnome-contacts</packagereq>
+      <packagereq type="default">gnome-maps</packagereq>
+      <packagereq type="default">gnome-weather</packagereq>
+      <packagereq type="default">snapshot</packagereq>
+      <packagereq type="default">showtime</packagereq>
+      <packagereq type="default">papers</packagereq>
+      <packagereq type="default">decibels</packagereq>
+    </packagelist>
+  </group>
+  <group>
+    <id>ultramarine-plasma-no-flatpak-apps</id>
+    <name>Ultramarine Plasma non-Flatpak apps</name>
+    <description>Apps for Ultramarine Plasma without flatpaks</description>
+    <default>false</default>
+    <uservisible>false</uservisible>
+    <packagelist>
+      <packagereq type="default">haruna</packagereq>
+      <packagereq type="default">kamoso</packagereq>
+      <packagereq type="default">kcalc</packagereq>
+      <packagereq type="default">kolourpaint</packagereq>
+      <packagereq type="default">kolourpaint</packagereq>
+      <packagereq type="default">kwriet</packagereq>
+      <packagereq type="default">okular</packagereq>
+      <packagereq type="default">elisa-player</packagereq>
+    </packagelist>
+  </group>
+  <group>
+    <id>ultramarine-xfce-no-flatpak-apps</id>
+    <name>Ultramarine XFCE non-Flatpak apps</name>
+    <description>Apps for Ultramarine XFCE without flatpaks</description>
+    <default>false</default>
+    <uservisible>false</uservisible>
+    <packagelist>
+      <packagereq type="default">gnome-calculator</packagereq>
+      <packagereq type="default">evince</packagereq>
+      <packagereq type="default">geary</packagereq>
+    </packagelist>
+  </group>
 </comps>
