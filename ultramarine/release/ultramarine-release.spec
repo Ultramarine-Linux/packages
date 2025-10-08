@@ -52,7 +52,7 @@
 Summary:	Ultramarine Linux release files
 Name:		ultramarine-release
 Version:	%{dist_version}
-Release:	9%{?dist}
+Release:	10%{?dist}
 License:	MIT
 Source0:	LICENSE
 URL:        https://ultramarine-linux.org
@@ -66,6 +66,7 @@ Provides:   ultramarine-release-variant = %{version}-%{release}
 Provides:   system-release
 Provides:   system-release(%{version})
 Provides:   base-module(platform:f%{version})
+Supplements: ultramarine-release-identity-basic
 
 Requires:   ultramarine-release-common = %{version}-%{release}
 
@@ -137,6 +138,7 @@ Requires:   ultramarine-repos(%{version})
 Requires:   ultramarine-release-identity = %{version}-%{release}
 Recommends: fastfetch
 Recommends: golang-github-ultramarine-linux-um
+Recommends: ultramarine-release-identity-basic
 Conflicts:  generic-release
 Conflicts:  fedora-release
 Provides:   fedora-release-common
