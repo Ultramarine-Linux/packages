@@ -1,5 +1,5 @@
 Name:           taidan
-Version:        0.1.27
+Version:        0.1.28
 Release:        1%?dist
 Summary:        Out-Of-Box-Experience (OOBE) and Welcome App
 SourceLicense:  GPL-3.0-or-later AND GPL-2.0-or-later
@@ -19,8 +19,7 @@ Requires:       xhost
 # Requires:       labwc
 # Requires:       cage
 Requires:       kwin-wayland swaybg
-# Requires:       nm-connection-editor
-Requires:       netto
+Requires:       netto network-manager-applet
 Requires:       polkit
 BuildRequires:  anda-srpm-macros mold cargo rust-packaging perl systemd-rpm-macros
 BuildRequires:  pkgconfig(libhelium-1)
