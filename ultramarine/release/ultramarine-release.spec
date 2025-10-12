@@ -52,7 +52,7 @@
 Summary:	Ultramarine Linux release files
 Name:		ultramarine-release
 Version:	%{dist_version}
-Release:	11%{?dist}
+Release:	12%{?dist}
 License:	MIT
 Source0:	LICENSE
 URL:        https://ultramarine-linux.org
@@ -645,7 +645,7 @@ ln -s ultramarine-release %{buildroot}%{_sysconfdir}/fedora-release
 ln -s ultramarine-release %{buildroot}%{_sysconfdir}/system-release
 
 # dnf configurations
-install -Dpm644 %SOURCE20 %buildroot%_datadir/dnf5/libdnf.conf.d/ultramarine-installonly-2.conf
+install -Dpm644 %SOURCE90 %buildroot%_datadir/dnf5/libdnf.conf.d/ultramarine-installonly-2.conf
 
 # Create the common os-release file
 %{lua:
