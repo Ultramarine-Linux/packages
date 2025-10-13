@@ -52,7 +52,7 @@
 Summary:	Ultramarine Linux release files
 Name:		ultramarine-release
 Version:	%{dist_version}
-Release:	12%{?dist}
+Release:	13%{?dist}
 License:	MIT
 Source0:	LICENSE
 URL:        https://ultramarine-linux.org
@@ -121,7 +121,7 @@ Source73:   polycrystal-ultramarine-xfce.json
 
 Source80:   https://github.com/Ultramarine-Linux/anywhere/archive/%{anywhere_conf_commit}.tar.gz
 
-Source90:   ultramarine-installonly-2.conf
+%dnl Source90:   ultramarine-installonly-2.conf
 
 BuildRequires:    systemd-rpm-macros
 
@@ -645,7 +645,7 @@ ln -s ultramarine-release %{buildroot}%{_sysconfdir}/fedora-release
 ln -s ultramarine-release %{buildroot}%{_sysconfdir}/system-release
 
 # dnf configurations
-install -Dpm644 %SOURCE90 %buildroot%_datadir/dnf5/libdnf.conf.d/ultramarine-installonly-2.conf
+%dnl install -Dpm644 %SOURCE90 %buildroot%_datadir/dnf5/libdnf.conf.d/ultramarine-installonly-2.conf
 
 # Create the common os-release file
 %{lua:
@@ -1016,7 +1016,7 @@ install -Dm0644 %{SOURCE32} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
 
 
 %files common
-%_datadir/dnf5/libdnf.conf.d/ultramarine-installonly-2.conf
+%dnl %_datadir/dnf5/libdnf.conf.d/ultramarine-installonly-2.conf
 %{_datadir}/dnf/plugins/copr.vendor.conf
 %{_sysconfdir}/anaconda/profile.d/ultramarine.conf
 %{_sysconfdir}/anaconda/profile.d/ultramarine-flagship.conf
