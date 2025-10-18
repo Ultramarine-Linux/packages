@@ -3,7 +3,7 @@
 
 Name: ultramarine-backgrounds
 Version: %(echo %ver | sed 's/-/~/g')
-Release: 2%{?dist}
+Release: 3%{?dist}
 BuildArch: noarch
 # details for the artworks' licenses can be seen in the COPYING file
 License: CC-BY-SA 4.0 and CC0
@@ -55,6 +55,7 @@ The desktop-backgrounds-kde package sets default background in the KDE Plasma de
 Summary:        Compatibility package for ultramarine-backgrounds
 Requires:   ultramarine-backgrounds-common = %{version}-%{release}
 Provides: system-backgrounds-compat = %{version}-%{release}
+Provides: desktop-backgrounds-compat  = %{version}-%{release}
 License:        CC0
 
 %description    compat
