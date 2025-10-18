@@ -3,7 +3,7 @@
 
 Name: ultramarine-backgrounds
 Version: %(echo %ver | sed 's/-/~/g')
-Release: 4%{?dist}
+Release: 5%{?dist}
 BuildArch: noarch
 # details for the artworks' licenses can be seen in the COPYING file
 License: CC-BY-SA 4.0 and CC0
@@ -56,7 +56,6 @@ Summary:        Compatibility package for ultramarine-backgrounds
 Requires:   ultramarine-backgrounds-common = %{version}-%{release}
 Provides: system-backgrounds-compat = %{version}-%{release}
 Provides: desktop-backgrounds-compat  = %{version}-%{release}
-Conflicts: desktop-backgrounds-compat
 License:        CC0
 
 %description    compat
