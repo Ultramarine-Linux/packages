@@ -5,7 +5,7 @@
 %global codename heart_of_gold
 %define dist_version 42
 
-%define xfce_conf_commit d2ecec2c00250224d7762c6a2b7e15fbc8621783
+%define xfce_conf_commit 0406ea1b394c825e4eeceded407ff51e535cd72e
 
 %define anywhere_conf_commit 240cd1e95d5abb7bbea4cefbe19d328fd6bacac7
 
@@ -52,7 +52,7 @@
 Summary:	Ultramarine Linux release files
 Name:		ultramarine-release
 Version:	%{dist_version}
-Release:	17%{?dist}
+Release:	18%{?dist}
 License:	MIT
 Source0:	LICENSE
 URL:        https://ultramarine-linux.org
