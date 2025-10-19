@@ -3,7 +3,7 @@
 
 Name: ultramarine-backgrounds
 Version: %(echo %ver | sed 's/-/~/g')
-Release: 5%{?dist}
+Release: 6%{?dist}
 BuildArch: noarch
 # details for the artworks' licenses can be seen in the COPYING file
 License: CC-BY-SA 4.0 and CC0
@@ -11,7 +11,7 @@ Summary: Ultramarine Linux backgrounds
 Provides: desktop-backgrounds = %{version}-%{release}
 Requires: /usr/bin/ln
 Recommends: ultramarine-backgrounds-compat = %{version}-%{release}
-BuildRequires: make
+BuildRequires: make ImageMagick
 # licensing information
 Source0: https://github.com/Ultramarine-Linux/backgrounds/archive/refs/tags/%ver.tar.gz
 #Source1: 30_default_backgrounds.gschema.override
@@ -154,6 +154,25 @@ compat_link $DEFAULT_DARK_WALL images/default-dark-5_4.png
 compat_link $DEFAULT_DARK_WALL images/default-dark-16_9.png
 compat_link $DEFAULT_DARK_WALL images/default-dark-16_10.png
 
+# HACK(42): Remove in 43 once we make JXL the new default format for wallpapers
+# We need JXL for the default wallpaper, for now, for XFCE
+# see: https://src.fedoraproject.org/rpms/desktop-backgrounds/blob/rawhide/f/desktop-backgrounds.spec#_214
+(cd %{buildroot}%{_datadir}/backgrounds/images;
+    convert default.png \
+        -alpha off default.jxl
+    convert default-5_4.png \
+        -alpha off default-5_4.jxl
+    convert default-16_9.png \
+        -alpha off default-16_9.jxl
+    convert default-16_10.png \
+        -alpha off default-16_10.jxl
+)
+
+# Hopefully no XML required for the JXL variant
+ln -rsf "%{buildroot}%{_datadir}/backgrounds/images/default.jxl" "%{buildroot}%{_datadir}/backgrounds/default.jxl"
+ln -rsf "%{buildroot}%{_datadir}/backgrounds/images/default-dark.jxl" "%{buildroot}%{_datadir}/backgrounds/default-dark.jxl"
+# END HACK
+
 %files
 %license COPYING
 
@@ -176,6 +195,8 @@ compat_link $DEFAULT_DARK_WALL images/default-dark-16_10.png
 %{_datadir}/backgrounds/default.png
 %{_datadir}/backgrounds/default-dark.png
 %{_datadir}/backgrounds/default.xml
+%{_datadir}/backgrounds/default.jxl
+%{_datadir}/backgrounds/default-dark.jxl
 
 
 %changelog
