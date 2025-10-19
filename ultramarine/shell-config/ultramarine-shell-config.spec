@@ -1,6 +1,6 @@
 
 Name:           ultramarine-shell-config
-Version:        1.2.6
+Version:        43
 Release:        1%{?dist}
 Summary:        Shell configuration for Ultramarine Linux
 License:        MIT
@@ -58,6 +58,9 @@ fi
 %{_sysconfdir}/profile.d/ultramarine-shell.sh
 
 %changelog
+
+* Sun Oct 19 2025 Jaiden Riordan <jade@fyralabs.com> - 43-1
+- Copy rewrite
 
 * Mon Oct 10 2022 Cappy Ishihara <cappy@cappuchino.xyz> - 1.2.2
 - Move all configs to skel
