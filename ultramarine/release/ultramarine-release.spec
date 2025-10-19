@@ -1,9 +1,9 @@
 %global is_rawhide 0
 
-%global release_name Heart of Gold
-%global fedora_codename Forty Two
-%global codename heart_of_gold
-%define dist_version 42
+%global release_name Gas Meter
+%global fedora_codename Forty Three
+%global codename gas_meter
+%define dist_version 43
 
 %define xfce_conf_commit 0406ea1b394c825e4eeceded407ff51e535cd72e
 
@@ -52,7 +52,7 @@
 Summary:	Ultramarine Linux release files
 Name:		ultramarine-release
 Version:	%{dist_version}
-Release:	18%{?dist}
+Release:	1%{?dist}
 License:	MIT
 Source0:	LICENSE
 URL:        https://ultramarine-linux.org
