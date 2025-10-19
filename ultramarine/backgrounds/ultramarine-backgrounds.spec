@@ -162,15 +162,15 @@ compat_link $DEFAULT_DARK_WALL images/default-dark-16_10.png
         -alpha off default.jxl
     convert default-5_4.png \
         -alpha off default-5_4.jxl
-    convert default-16_9.jxl \
+    convert default-16_9.png \
         -alpha off default-16_9.jxl
-    convert default-16_10.jxl \
+    convert default-16_10.png \
         -alpha off default-16_10.jxl
 )
 
 # Hopefully no XML required for the JXL variant
-ln -rsf "%{buildroot}%{_datadir}/backgrounds/images/default.jxl" "%{buildroot}%{_datadir}/backgrounds/default.png"
-ln -rsf "%{buildroot}%{_datadir}/backgrounds/images/default-dark.jxl" "%{buildroot}%{_datadir}/backgrounds/default-dark.png"
+ln -rsf "%{buildroot}%{_datadir}/backgrounds/images/default.jxl" "%{buildroot}%{_datadir}/backgrounds/default.jxl"
+ln -rsf "%{buildroot}%{_datadir}/backgrounds/images/default-dark.jxl" "%{buildroot}%{_datadir}/backgrounds/default-dark.jxl"
 # END HACK
 
 %files
