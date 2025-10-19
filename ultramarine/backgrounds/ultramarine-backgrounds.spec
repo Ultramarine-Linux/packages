@@ -11,7 +11,7 @@ Summary: Ultramarine Linux backgrounds
 Provides: desktop-backgrounds = %{version}-%{release}
 Requires: /usr/bin/ln
 Recommends: ultramarine-backgrounds-compat = %{version}-%{release}
-BuildRequires: make
+BuildRequires: make ImageMagick
 # licensing information
 Source0: https://github.com/Ultramarine-Linux/backgrounds/archive/refs/tags/%ver.tar.gz
 #Source1: 30_default_backgrounds.gschema.override
