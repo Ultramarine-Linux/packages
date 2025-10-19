@@ -21,6 +21,8 @@ Source13:       ultramarine-41-x86_64.cfg
 Source14:       ultramarine-41-aarch64.cfg
 Source15:       ultramarine-42-x86_64.cfg
 Source16:       ultramarine-42-aarch64.cfg
+Source17:       ultramarine-43-x86_64.cfg
+Source18:       ultramarine-43-aarch64.cfg
 BuildArch:      noarch
 
 %description
@@ -48,12 +50,16 @@ cp -v %{SOURCE13} %{buildroot}/etc/mock/
 cp -v %{SOURCE14} %{buildroot}/etc/mock/
 cp -v %{SOURCE15} %{buildroot}/etc/mock/
 cp -v %{SOURCE16} %{buildroot}/etc/mock/
+cp -v %{SOURCE17} %{buildroot}/etc/mock/
+cp -v %{SOURCE18} %{buildroot}/etc/mock/
 
 %files
 /etc/mock/*
 /etc/mock/templates/*
 
 %changelog
+* Sun Oct 19 2025 Owen Zimmerman <owen@fyralabs.com>
+- Add configs for 43
 * Sat Mar 15 2025 madonuko <mado@fyralabs.com>
 - Add configs for 42
 * Wed Aug 08 2024 madonuko <mado@fyralabs.com>
