@@ -1,18 +1,15 @@
 # Global and common shell config for Ultramarine Linux
 
 um=$(cat<<EOF
-Ultramarine Linux is a Fedora-based distribution, meaning system packages are installed via the dnf-3/dnf5 package manager.
-You should always try to use the 'dnf' command or the 'flatpak' command to install system software or user applications respectively.
-If you are running this command by following instructions from the Internet, you are most likely following the wrong instructions.
-Try following instructions for Fedora Linux, or CentOS/RHEL if they are not available.
+"Try searching for this package with `dnf search` or in your edition's app store."
 EOF
 )
-tryinstall="You may manually install '%' to stop this message, but YOU HAVE BEEN WARNED that this is going to be NOT what you want unless you know what you're doing."
+tryinstall="You can install '%' to hide this message. This probably isn't what you want to do and may have unintended consequences. We aren't responsible for any breakage, thermonuclear war, death of a pet, etc that happens from here. You have been warned."
 
 if ! [ -x "$(command -v apt)" ]; then
     apt() {
+        echo "Debian packages are not supported in Ultramarine."
         echo $um
-        echo "Installing packages made for Debian-based distributions may cause your system to become unstable and even break, causing DATA LOSS."
         echo $tryinstall | sed 's/%/apt/g'
         return 1
     }
@@ -21,9 +18,8 @@ fi
 
 if ! [ -x "$(command -v dpkg)" ]; then
     dpkg() {
-        echo "It seems like you're trying to install a DEB package. Debian packages are not supported in Ultramarine Linux."
+        echo "Debian packages are not supported in Ultramarine."
         echo $um
-        echo "Installing packages made for Debian-based distributions may cause your system to become unstable and even break, causing DATA LOSS."
         echo $tryinstall | sed 's/%/dpkg/g'
         return 1
     }
@@ -31,6 +27,7 @@ fi
 
 if ! [ -x "$(command -v pacman)" ]; then
     pacman() {
+        echo "Arch packages are not supported on Ultramarine."
         echo $um
         echo $tryinstall | sed 's/%/pacman/g'
         return 1
@@ -39,21 +36,22 @@ fi
 
 if ! [ -x "$(command -v snap)" ]; then
     snap() {
+        echo "Ultramarine comes with Flathub and Terra, which should include most of the software you're looking for."
         echo $um
-        echo $tryinstall | sed 's/%/snapd/g'
+        echo "If the software you need is only availible as a Snap, you can install it with `sudo dnf install snapd`"
         return 1
     }
 fi
 
 emerge() {
-    echo "It seems like you're trying to install a Gentoo package. Gentoo packages are not supported in Ultramarine Linux."
-    echo "Portage is not available in Ultramarine Linux. However, if you would like a similar solution, you can try out anda: https://developer.fyralabs.com/andaman"
+    echo "Gentoo packages are not supported on Ultramarine."
+    echo $um
     return 1
 }
 
 _aur_helper() {
-    echo "It seems like you're trying to install an AUR package. As with the case with Arch Linux packages, AUR packages are not supported in Ultramarine Linux."
-    echo "If you would like a similar solution, try anda: https://developer.fyralabs.com/andaman"
+    echo "AUR packages are not supported on Ultramarine."
+    echo $um
     return 1
 }
 
@@ -63,13 +61,9 @@ alias paru=_aur_helper
 
 if ! [ -x "$(command -v neofetch)" ]; then
     neofetch() {
-        echo 'Neofetch is not installed.'
-        echo 'Neofetch is no longer maintained, and it does not come with our logo.'
-        echo 'We recommend fastfetch instead, which may be installed using:'
-        echo
-        echo '  sudo dnf install fastfetch'
-        echo
-        echo 'You may disable this message by installing hyfetch-neofetch.'
+        echo 'Neofetch is no longer maintained.'
+        echo 'Ultramarine comes with fastfetch, give it a try!'
+        echo 'You can disable this message by installing hyfetch-neofetch.'
         return 1
     }
 fi

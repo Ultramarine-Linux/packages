@@ -1,9 +1,9 @@
-%define ver 42.2
+%define ver 43
 %undefine _disable_source_fetch
 
 Name: ultramarine-backgrounds
 Version: %(echo %ver | sed 's/-/~/g')
-Release: 6%{?dist}
+Release: 1%{?dist}
 BuildArch: noarch
 # details for the artworks' licenses can be seen in the COPYING file
 License: CC-BY-SA 4.0 and CC0

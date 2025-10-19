@@ -1,5 +1,5 @@
 Name:           ultramarine-flagship-filesystem
-Version:        42
+Version:        43
 Release:        1%{?dist}
 Summary:        Assets for Ultramarine Linux Flagship
 

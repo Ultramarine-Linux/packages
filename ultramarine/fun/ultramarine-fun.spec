@@ -1,7 +1,7 @@
 %define debug_package %nil
 
 Name:			ultramarine-fun
-Version:		42
+Version:		43
 Release:		1%?dist
 Summary:		Additional secret/hidden files for ultramarine Linux
 License:		MIT
