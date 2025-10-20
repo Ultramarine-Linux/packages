@@ -8,3 +8,7 @@ disable flatpak-add-fedora-repos.service
 
 # We use polycrystal to install Flatpaks
 enable polycrystal.service
+
+# Use timesyncd instead of chronyd
+disable chronyd.service
+enable systemd-timesyncd.service
