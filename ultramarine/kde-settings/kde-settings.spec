@@ -8,7 +8,7 @@ Summary: Config files for KDE
 Name:    kde-settings
 Epoch:   1
 Version: 42
-Release: 5%{?dist}
+Release: 6%{?dist}
 
 License: MIT
 Url:     https://github.com/Ultramarine-Linux/kde-settings
@@ -236,8 +236,6 @@ test -f %{_datadir}/wallpapers/F%{version_maj} || ls -l %{_datadir}/wallpapers
 %{_datadir}/wallpapers/Fedora
 %endif
 %{_sysconfdir}/xdg/plasma-workspace/env/ssh-agent.sh
-%{_sysconfdir}/xdg/plasma-workspace/env/at-spi-xwayland.sh
-
 
 %files sddm
 %{_prefix}/lib/sddm/sddm.conf.d/kde_settings.conf
