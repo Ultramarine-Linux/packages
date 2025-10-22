@@ -20,7 +20,7 @@ A CLI tool for managing an Ultramarine Linux system.}
 %global godocs          README.md
 
 Name:           golang-github-ultramarine-linux-um
-Version:        0.4.4
+Version:        0.4.5
 Release:        %autorelease -p
 Summary:        A CLI tool for managing an Ultramarine Linux system
 
