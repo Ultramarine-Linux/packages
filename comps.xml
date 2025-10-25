@@ -477,7 +477,7 @@
       <packagereq type="default">kcalc</packagereq>
       <packagereq type="default">kolourpaint</packagereq>
       <packagereq type="default">kolourpaint</packagereq>
-      <packagereq type="default">kwriet</packagereq>
+      <packagereq type="default">kwrite</packagereq>
       <packagereq type="default">okular</packagereq>
       <packagereq type="default">elisa-player</packagereq>
     </packagelist>
