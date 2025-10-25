@@ -1,3 +1,5 @@
+%global _distro_extra_cflags -Wincompatible-pointer-types
+
 Name: gs-plugin-ultramarine-pkgdb-collections
 Version: 0.1.0
 Release: 1%{?dist}
