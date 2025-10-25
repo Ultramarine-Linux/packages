@@ -236,7 +236,6 @@ test -f %{_datadir}/wallpapers/F%{version_maj} || ls -l %{_datadir}/wallpapers
 %{_datadir}/wallpapers/Fedora
 %endif
 %{_sysconfdir}/xdg/plasma-workspace/env/ssh-agent.sh
-%{_sysconfdir}/xdg/plasma-workspace/env/at-spi-xwayland.sh
 
 
 %files sddm
