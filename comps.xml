@@ -247,8 +247,8 @@
         <!-- <packagereq type="default">snapshot</packagereq> flatpak'd -->
         <packagereq type="default">sushi</packagereq>
         <packagereq type="default">systemd-oomd-defaults</packagereq>
-        <packagereq type="default">tracker</packagereq>
-        <packagereq type="default">tracker-miners</packagereq>
+        <packagereq type="default">tinysparql</packagereq>
+        <packagereq type="default">localsearch</packagereq>
         <packagereq type="default">xdg-desktop-portal</packagereq>
         <packagereq type="default">xdg-desktop-portal-gnome</packagereq>
         <packagereq type="default">xdg-desktop-portal-gtk</packagereq>
