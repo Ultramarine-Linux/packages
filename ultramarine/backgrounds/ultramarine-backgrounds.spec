@@ -1,4 +1,4 @@
-%define ver 43
+%define ver 43-preview.0
 %undefine _disable_source_fetch
 
 Name: ultramarine-backgrounds
@@ -125,9 +125,9 @@ compat_link() {
 }
 
 
-DEFAULT_WALL="42/sea-of-imagination.png"
-DEFAULT_DARK_WALL="42/sea-of-imagination-dark.png"
-DEFAULT_XML="42/sea-of-imagination.xml"
+DEFAULT_WALL="41/paradise-light.png"
+DEFAULT_DARK_WALL="41/paradise-dark.png"
+DEFAULT_XML="41/paradise.xml"
 
 # Let's generate our default gschema override file
 
