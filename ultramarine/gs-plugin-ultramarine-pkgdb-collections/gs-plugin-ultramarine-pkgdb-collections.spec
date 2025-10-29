@@ -1,5 +1,5 @@
 Name: gs-plugin-ultramarine-pkgdb-collections
-Version: 0.2.0
+Version: 0.3.0
 Release: 1%{?dist}
 URL: https://ultramarine-linux.org
 Source0: https://github.com/Ultramarine-Linux/gs-plugin-ultramarine-pkgdb-collections/archive/refs/tags/v%version.tar.gz
