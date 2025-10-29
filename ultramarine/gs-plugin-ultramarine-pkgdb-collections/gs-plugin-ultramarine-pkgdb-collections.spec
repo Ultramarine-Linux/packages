@@ -1,5 +1,5 @@
 Name: gs-plugin-ultramarine-pkgdb-collections
-Version: 0.1.0
+Version: 0.3.0
 Release: 1%{?dist}
 URL: https://ultramarine-linux.org
 Source0: https://github.com/Ultramarine-Linux/gs-plugin-ultramarine-pkgdb-collections/archive/refs/tags/v%version.tar.gz
@@ -31,4 +31,3 @@ A GNOME Software plugin for the ultramarine pkgdb collections, allowing for syst
 %changelog
 * Fri Apr 5 2024 Lleyton Gray <lleyton@fyralabs.com> - 0.1.0-1
 - Initial version
-
