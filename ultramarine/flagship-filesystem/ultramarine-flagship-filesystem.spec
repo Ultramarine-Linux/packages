@@ -1,6 +1,6 @@
 Name:           ultramarine-flagship-filesystem
 Version:        43
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Assets for Ultramarine Linux Flagship
 
 License:        MIT
@@ -13,7 +13,8 @@ Requires:       budgie-applet-visualspace
 Recommends:     budgie-extras
 Suggests:       fluent-theme
 Suggests:       fluent-icon-theme
-Requires:       rsms-inter-fonts
+Requires:       fyra-labs-natrium-fonts
+Requires:       fyra-labs-natrium-mono-fonts
 
 Provides:       budgie-desktop-defaults
 Conflicts:      budgie-desktop-defaults
