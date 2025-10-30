@@ -12,9 +12,6 @@ picture-uri-dark='file:///usr/share/backgrounds/default-dark.png'
 [org.gnome.desktop.screensaver:Budgie]
 picture-uri='/usr/share/backgrounds/default.png'
 
-[org.gnome.gedit.preferences.editor:Budgie]
-scheme='textmate'
-
 [org.gnome.desktop.interface:Budgie]
 gtk-theme='Fluent-round-Dark'
 icon-theme='Fluent-dark'
