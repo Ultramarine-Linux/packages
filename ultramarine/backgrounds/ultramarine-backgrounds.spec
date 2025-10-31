@@ -3,7 +3,7 @@
 
 Name: ultramarine-backgrounds
 Version: %(echo %ver | sed 's/-/~/g')
-Release: 1%{?dist}
+Release: 2%{?dist}
 BuildArch: noarch
 # details for the artworks' licenses can be seen in the COPYING file
 License: CC-BY-SA 4.0 and CC0
@@ -179,7 +179,7 @@ ln -rsf "%{buildroot}%{_datadir}/backgrounds/images/default-dark.jxl" "%{buildro
 %files common
 %{_datadir}/backgrounds/ultramarine-linux/
 %{_datadir}/glib-2.0/schemas/30_default_backgrounds.gschema.override
-/usr/share/wallpapers/Ultramarine*/metadata.desktop
+/usr/share/wallpapers/Ultramarine*/metadata.json
 
 %files gnome
 %{_datadir}/gnome-background-properties/ultramarine-wallpapers-extras.xml
