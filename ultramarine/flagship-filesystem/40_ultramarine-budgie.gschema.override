@@ -3,7 +3,7 @@ menu-icon='ultramarine'
 
 [org.gnome.desktop.wm.preferences:Budgie]
 button-layout = 'appmenu:minimize,maximize,close'
-titlebar-font='Inter Bold 11'
+titlebar-font='Natrium Bold 11'
 
 [org.gnome.desktop.background:Budgie]
 picture-uri='file:///usr/share/backgrounds/default.png'
@@ -12,15 +12,13 @@ picture-uri-dark='file:///usr/share/backgrounds/default-dark.png'
 [org.gnome.desktop.screensaver:Budgie]
 picture-uri='/usr/share/backgrounds/default.png'
 
-[org.gnome.gedit.preferences.editor:Budgie]
-scheme='textmate'
-
 [org.gnome.desktop.interface:Budgie]
 gtk-theme='Fluent-round-Dark'
 icon-theme='Fluent-dark'
 color-scheme='prefer-dark'
-font-name='Inter 11'
-document-font-name='Inter 11'
+font-name='Natrium 11'
+document-font-name='Natrium 11'
+monospace-font-name='Natrium Mono 11'
 
 [org.ubuntubudgie.windowshuffler:Budgie]
 runshuffler=true
