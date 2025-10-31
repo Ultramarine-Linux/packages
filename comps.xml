@@ -174,7 +174,6 @@
     <default>false</default>
     <uservisible>false</uservisible>
     <packagelist>
-        <!-- <packagereq type="default">geary</packagereq> flatpak'd -->
         <packagereq type="mandatory">dconf</packagereq>
         <packagereq type="mandatory">gdm</packagereq>
         <packagereq type="mandatory">gnome-boxes</packagereq>
@@ -193,10 +192,10 @@
         <packagereq type="default">adobe-source-code-pro-fonts</packagereq>
         <packagereq type="default">avahi</packagereq>
         <packagereq type="default">baobab</packagereq>
-        <!-- <packagereq type="default">evince</packagereq> flatpak'd
-        <packagereq type="default">evince-djvu</packagereq> -->
+        <!-- <packagereq type="default">decibels</packagereq> flatpak'd -->
         <packagereq arch="aarch64,ppc64le,x86_64" type="default">fprintd-pam</packagereq>
         <packagereq type="default">glib-networking</packagereq>
+        <packagereq type="default">glycin-thumbnailer</packagereq>
         <packagereq type="default">gnome-backgrounds</packagereq>
         <packagereq type="default">gnome-bluetooth</packagereq>
         <packagereq type="default">gnome-browser-connector</packagereq>
@@ -227,6 +226,7 @@
         <packagereq type="default">gvfs-smb</packagereq>
         <packagereq type="default">librsvg2</packagereq>
         <packagereq type="default">libsane-hpaio</packagereq>
+        <packagereq type="default">localsearch</packagereq>
         <packagereq type="default">loupe</packagereq>
         <packagereq type="default">mesa-dri-drivers</packagereq>
         <packagereq type="default">mesa-libEGL</packagereq>
@@ -235,25 +235,27 @@
         <packagereq type="default">NetworkManager-openconnect-gnome</packagereq>
         <packagereq type="default">NetworkManager-openvpn-gnome</packagereq>
         <packagereq type="default">NetworkManager-ppp</packagereq>
-        <packagereq type="default">NetworkManager-pptp-gnome</packagereq>
         <packagereq type="default">NetworkManager-ssh-gnome</packagereq>
         <packagereq type="default">NetworkManager-vpnc-gnome</packagereq>
         <packagereq type="default">NetworkManager-wwan</packagereq>
         <packagereq type="default">PackageKit-command-not-found</packagereq>
         <packagereq type="default">PackageKit-gtk3-module</packagereq>
+        <!-- <packagereq type="default">papers</packagereq> flatpak'd -->
+        <!-- <packagereq type="default">papers-nautilus</packagereq> flatpak'd (we can't do this with the flatpak version, the information provided is not that useful regardless) -->
         <packagereq type="default">rygel</packagereq>
         <packagereq type="default">sane-backends-drivers-scanners</packagereq>
+        <!-- <packagereq type="default">showtime</packagereq> flatpak'd -->
         <packagereq type="default">simple-scan</packagereq>
         <!-- <packagereq type="default">snapshot</packagereq> flatpak'd -->
         <packagereq type="default">sushi</packagereq>
         <packagereq type="default">systemd-oomd-defaults</packagereq>
         <packagereq type="default">tinysparql</packagereq>
-        <packagereq type="default">localsearch</packagereq>
+        <packagereq type="default">totem-video-thumbnailer</packagereq>
+        <packagereq type="default">vte-profile</packagereq>
         <packagereq type="default">xdg-desktop-portal</packagereq>
         <packagereq type="default">xdg-desktop-portal-gnome</packagereq>
         <packagereq type="default">xdg-desktop-portal-gtk</packagereq>
         <packagereq type="default">xdg-user-dirs-gtk</packagereq>
-        <packagereq type="default">seahorse</packagereq>
     </packagelist>
   </group>
 
@@ -450,7 +452,6 @@
     <default>false</default>
     <uservisible>false</uservisible>
     <packagelist>
-      <packagereq type="default">geary</packagereq>
       <packagereq type="default">gnome-connections</packagereq>
       <packagereq type="default">gnome-text-editor</packagereq>
       <packagereq type="default">gnome-calculator</packagereq>
