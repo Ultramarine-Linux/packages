@@ -1,4 +1,4 @@
-%define ver 43-preview.0
+%define ver 43-preview.1
 %undefine _disable_source_fetch
 
 Name: ultramarine-backgrounds
@@ -179,7 +179,7 @@ ln -rsf "%{buildroot}%{_datadir}/backgrounds/images/default-dark.jxl" "%{buildro
 %files common
 %{_datadir}/backgrounds/ultramarine-linux/
 %{_datadir}/glib-2.0/schemas/30_default_backgrounds.gschema.override
-/usr/share/wallpapers/Ultramarine*/metadata.desktop
+/usr/share/wallpapers/Ultramarine*/metadata.json
 
 %files gnome
 %{_datadir}/gnome-background-properties/ultramarine-wallpapers-extras.xml
