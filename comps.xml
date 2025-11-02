@@ -74,18 +74,18 @@
     </packagelist>
   </group>
   <group>
-    <id>ultramarine-flagship-product</id>
-    <name>Ultramarine Flagship product core</name>
-    <description>Packages mandatory for the Ultramarine Flagship product.</description>
+    <id>ultramarine-budgie-product</id>
+    <name>Ultramarine Budgie product core</name>
+    <description>Packages mandatory for the Ultramarine Budgie product.</description>
     <default>false</default>
     <uservisible>false</uservisible>
     <packagelist>
       <packagereq type="mandatory">budgie-extras</packagereq>
       <packagereq type="mandatory">budgie-desktop</packagereq>
       <packagereq type="mandatory">budgie-extras-daemon</packagereq>
-      <packagereq type="mandatory">ultramarine-release-flagship</packagereq>
-      <packagereq type="optional">ultramarine-release-identity-flagship</packagereq>
-      <packagereq type="mandatory">ultramarine-flagship-filesystem</packagereq>
+      <packagereq type="mandatory">ultramarine-release-budgie</packagereq>
+      <packagereq type="optional">ultramarine-release-identity-budgie</packagereq>
+      <packagereq type="mandatory">ultramarine-budgie-filesystem</packagereq>
       <packagereq type="default">ultramarine-backgrounds-gnome</packagereq>
       <packagereq type="default">ultramarine-backgrounds</packagereq>
       <packagereq type="mandatory">lightdm</packagereq>
@@ -104,9 +104,9 @@
     </packagelist>
   </group>
   <group>
-    <id>ultramarine-flagship-apps</id>
-    <name>Ultramarine Flagship Applications</name>
-    <description>Apps included with Ultramarine Flagship</description>
+    <id>ultramarine-budgie-apps</id>
+    <name>Ultramarine Budgie Applications</name>
+    <description>Apps included with Ultramarine Budgie</description>
     <packagelist>
       <packagereq type="default">eog</packagereq>
       <packagereq type="default">firefox</packagereq>
@@ -122,9 +122,9 @@
     </packagelist>
   </group>
   <environment>
-    <id>ultramarine-flagship-product-environment</id>
-    <name>Ultramarine Flagship</name>
-    <description>Ultramarine Flagship is the flagship Ultramarine experience.</description>
+    <id>ultramarine-budgie-product-environment</id>
+    <name>Ultramarine Budgie</name>
+    <description>Ultramarine Budgie is the Budgie Ultramarine experience.</description>
     <grouplist>
       <groupid>base-x</groupid>
       <groupid>container-management</groupid>
@@ -133,7 +133,7 @@
       <groupid>firefox</groupid>
       <groupid>fonts</groupid>
       <groupid>budgie-desktop</groupid>
-      <groupid>ultramarine-flagship-apps</groupid>
+      <groupid>ultramarine-budgie-apps</groupid>
       <groupid>guest-desktop-agents</groupid>
       <groupid>hardware-support</groupid>
       <groupid>libreoffice</groupid>
@@ -145,7 +145,7 @@
       <groupid>input-methods</groupid>
       <groupid>ultramarine-product-common</groupid>
       <groupid>ultramarine-desktop-product-common</groupid>
-      <groupid>ultramarine-flagship-product</groupid>
+      <groupid>ultramarine-budgie-product</groupid>
     </grouplist>
   </environment>
   <group>
@@ -434,9 +434,9 @@
     </grouplist>
   </environment>
   <group>
-    <id>ultramarine-flagship-no-flatpak-apps</id>
-    <name>Ultramarine Flagship non-Flatpak apps</name>
-    <description>Apps for Ultramarine Flagship without flatpaks</description>
+    <id>ultramarine-budgie-no-flatpak-apps</id>
+    <name>Ultramarine budgie non-Flatpak apps</name>
+    <description>Apps for Ultramarine Budgie without flatpaks</description>
     <default>false</default>
     <uservisible>false</uservisible>
     <packagelist>

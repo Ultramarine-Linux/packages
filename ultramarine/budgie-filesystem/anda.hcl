@@ -1,6 +1,6 @@
 project "pkg" {
     rpm {
-        spec = "ultramarine-flagship-filesystem.spec"
+        spec = "ultramarine-budgie-filesystem.spec"
         sources =  "."
     }
 }
