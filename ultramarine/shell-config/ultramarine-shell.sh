@@ -1,7 +1,7 @@
 # Global and common shell config for Ultramarine Linux
 
 um=$(cat<<EOF
-"Try searching for this package with `dnf search` or in your edition's app store."
+"Try searching for this package with dnf search or in your edition's app store."
 EOF
 )
 tryinstall="You can install '%' to hide this message. This probably isn't what you want to do and may have unintended consequences. We aren't responsible for any breakage, thermonuclear war, death of a pet, etc that happens from here. You have been warned."
