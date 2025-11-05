@@ -52,7 +52,7 @@
 Summary:	Ultramarine Linux release files
 Name:		ultramarine-release
 Version:	%{dist_version}
-Release:	2%{?dist}
+Release:	3%{?dist}
 License:	MIT
 Source0:	LICENSE
 URL:        https://ultramarine-linux.org
@@ -1000,11 +1000,12 @@ install -Dm0644 %{SOURCE32} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
 # the funny Plasma system76 scheduler integration
 %if %{with plasma}
 
-%post identity-plasma
-%systemd_user_post enable-kwin-system76-scheduler-integration.service
+# BUG: this script trips up rpm for some reason
+#post identity-plasma
+#systemd_user_post enable-kwin-system76-scheduler-integration.service
 
-%preun identity-plasma
-%systemd_user_preun enable-kwin-system76-scheduler-integration.service
+#preun identity-plasma
+#systemd_user_preun enable-kwin-system76-scheduler-integration.service
 
 %endif
 
