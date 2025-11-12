@@ -1,5 +1,5 @@
 Name:           taidan
-Version:        0.1.34
+Version:        0.1.35
 Release:        1%?dist
 Summary:        Out-Of-Box-Experience (OOBE) and Welcome App
 SourceLicense:  GPL-3.0-or-later AND GPL-2.0-or-later
