@@ -150,8 +150,8 @@
   </environment>
   <environment>
     <id>ultramarine-flagship-product-environment</id>
-    <name>Ultramarine Budige (Legacy)</name>
-    <description>Ultramarine Budgie is the Budgie Ultramarine experience.</description>
+    <name>Ultramarine Budgie (Legacy)</name>
+    <description>Ultramarine Budgie is the Budgie Ultramarine experience. (This is a legacy group kept for backwards compatibility.)</description>
     <grouplist>
       <groupid>base-x</groupid>
       <groupid>container-management</groupid>
