@@ -1,4 +1,4 @@
-%define ver 43-preview.1
+%define ver 43
 %undefine _disable_source_fetch
 
 Name: ultramarine-backgrounds
@@ -75,46 +75,35 @@ mkdir -p %{buildroot}%{_datadir}/glib-2.0/schemas/
 # Symlink the backgrounds for KDE
 
 
-kde_link() {
+kde_all() {
+    local light=$1
+    local dark=$2
+    local wallname=$3
+    ln -rsf "%{buildroot}%{_datadir}/backgrounds/ultramarine-linux/$light" "%{buildroot}%{_datadir}/wallpapers/$wallname/contents/images/3840x2160.png"
+    ln -rsf "%{buildroot}%{_datadir}/backgrounds/ultramarine-linux/$dark" "%{buildroot}%{_datadir}/wallpapers/$wallname/contents/images_dark/3840x2160.png"
+}
+
+kde_one() {
     local file=$1
     local wallname=$2
     ln -rsf "%{buildroot}%{_datadir}/backgrounds/ultramarine-linux/$file" "%{buildroot}%{_datadir}/wallpapers/$wallname/contents/images/3840x2160.png"
-    ln -rsf "%{buildroot}%{_datadir}/backgrounds/ultramarine-linux/$file" "%{buildroot}%{_datadir}/wallpapers/$wallname/contents/screenshot.png"
 }
 
 
-kde_link 38/tortuga-dark.png "Tortuga Dark"
-kde_link 38/tortuga-light.png "Tortuga Light"
-
-kde_link 39/foresty-skies-d.png "Forresty Skies Dark"
-kde_link 39/foresty-skies-l.png "Forresty Skies Light"
-
-kde_link 40/lost-dark.png "Lost Dark"
-kde_link 40/lost-light.png "Lost Light"
-
-kde_link 40/umbrella-dark.png "Umbrella Dark"
-kde_link 40/umbrella-light.png "Umbrella Light"
-
-kde_link 41~beta/um41-beta.png "Ultramarine 41 Beta"
-
-kde_link 41/viewports-light.png "Viewports Light"
-kde_link 41/viewports-dark.png "Viewports Dark"
-kde_link 41/viewport-fake-dark.png "Viewports Fake Dark"
-
-kde_link 41/paradise-light.png "Paradise Light"
-kde_link 41/paradise-dark.png "Paradise Dark"
-
-kde_link 42/sea-of-imagination-dark-alt-a.png "Sea of Imagination Dark Alt A"
-kde_link 42/sea-of-imagination-dark-alt-b.png "Sea of Imagination Dark Alt B"
-kde_link 42/sea-of-imagination-dark.png "Sea of Imagination Dark"
-kde_link 42/sea-of-imagination.png "Sea of Imagination"
-
-kde_link preview/blueprint.png "Ultramarine Preview"
-
-kde_link ultramarine/ultramarine-dark.png "Ultramarine Dark"
-kde_link ultramarine/ultramarine-light.png "Ultramarine Light"
-
-kde_link extras/mizuki.png "Mizuki at Home"
+kde_all 38/tortuga-{light,dark}.png "Tortuga"
+kde_all 39/foresty-skies-{l,d}.png "Forresty Skies"
+kde_all 40/lost-{light,dark}.png "Lost"
+kde_all 40/umbrella-{light,dark}.png "Umbrella"
+kde_one 41~beta/um41-beta.png "Ultramarine 41 Beta"
+kde_all 41/viewports-{light,dark}.png "Viewports"
+kde_one 41/viewport-fake-dark.png "Viewports (Fake Dark)"
+kde_all 41/paradise-{light,dark}.png "Paradise"
+kde_one 42/sea-of-imagination-dark-alt-a.png "Sea of Imagination (Dark Alt A)"
+kde_one 42/sea-of-imagination-dark-alt-b.png "Sea of Imagination (Dark Alt B)"
+kde_all 42/sea-of-imagination{,-dark}.png "Sea of Imagination"
+kde_one preview/blueprint.png "Ultramarine Preview"
+kde_all ultramarine/ultramarine-{light,dark}.png "Ultramarine"
+kde_one extras/mizuki.png "Mizuki at Home"
 
 # Compat files
 
@@ -125,9 +114,9 @@ compat_link() {
 }
 
 
-DEFAULT_WALL="41/paradise-light.png"
-DEFAULT_DARK_WALL="41/paradise-dark.png"
-DEFAULT_XML="41/paradise.xml"
+DEFAULT_WALL="43/Valley Bowl Daytime.png"
+DEFAULT_DARK_WALL="43/Valley Bowl Nighttime.png"
+DEFAULT_XML="43/Valley Bowl Daytime.xml"
 
 # Let's generate our default gschema override file
 
@@ -158,13 +147,13 @@ compat_link $DEFAULT_DARK_WALL images/default-dark-16_10.png
 # We need JXL for the default wallpaper, for now, for XFCE
 # see: https://src.fedoraproject.org/rpms/desktop-backgrounds/blob/rawhide/f/desktop-backgrounds.spec#_214
 (cd %{buildroot}%{_datadir}/backgrounds/images;
-    convert default.png \
+    magick default.png \
         -alpha off default.jxl
-    convert default-5_4.png \
+    magick default-5_4.png \
         -alpha off default-5_4.jxl
-    convert default-16_9.png \
+    magick default-16_9.png \
         -alpha off default-16_9.jxl
-    convert default-16_10.png \
+    magick default-16_10.png \
         -alpha off default-16_10.jxl
 )
 
