@@ -2,7 +2,7 @@
 
 Name: ultramarine-repos
 Version: %{_dist_version}
-Release: 1%{?dist}
+Release: 3%{?dist}
 License: MIT
 Summary: Repositories for Ultramarine Linux
 Requires: %{name}-common = %{version}-%{release}
@@ -29,6 +29,7 @@ Summary: Additional repositories for Ultramarine Linux
 Requires: distribution-gpg-keys
 Requires: flatpak
 Requires: terra-release-extras
+Requires: terra-release-mesa
 Source200: https://flathub.org/repo/flathub.flatpakrepo
 
 # Don't own the rpmfusion repositories, let it be overridden by the real packages
