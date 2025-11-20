@@ -127,21 +127,21 @@ picture-uri-dark='file:///%{_datadir}/backgrounds/default-dark.png'
 EOF
 
 
-compat_link $DEFAULT_WALL default.png
-compat_link $DEFAULT_DARK_WALL default-dark.png
-compat_link $DEFAULT_XML default.xml
+compat_link "$DEFAULT_WALL" default.png
+compat_link "$DEFAULT_DARK_WALL" default-dark.png
+compat_link "$DEFAULT_XML" default.xml
 
 mkdir -p %{buildroot}%{_datadir}/backgrounds/images/
 
-compat_link $DEFAULT_WALL images/default.png
-compat_link $DEFAULT_WALL images/default-5_4.png
-compat_link $DEFAULT_WALL images/default-16_9.png
-compat_link $DEFAULT_WALL images/default-16_10.png
+compat_link "$DEFAULT_WALL" images/default.png
+compat_link "$DEFAULT_WALL" images/default-5_4.png
+compat_link "$DEFAULT_WALL" images/default-16_9.png
+compat_link "$DEFAULT_WALL" images/default-16_10.png
 
-compat_link $DEFAULT_DARK_WALL images/default-dark.png
-compat_link $DEFAULT_DARK_WALL images/default-dark-5_4.png
-compat_link $DEFAULT_DARK_WALL images/default-dark-16_9.png
-compat_link $DEFAULT_DARK_WALL images/default-dark-16_10.png
+compat_link "$DEFAULT_DARK_WALL" images/default-dark.png
+compat_link "$DEFAULT_DARK_WALL" images/default-dark-5_4.png
+compat_link "$DEFAULT_DARK_WALL" images/default-dark-16_9.png
+compat_link "$DEFAULT_DARK_WALL" images/default-dark-16_10.png
 
 # HACK(42): Remove in 43 once we make JXL the new default format for wallpapers
 # We need JXL for the default wallpaper, for now, for XFCE
