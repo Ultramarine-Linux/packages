@@ -148,6 +148,33 @@
       <groupid>ultramarine-budgie-product</groupid>
     </grouplist>
   </environment>
+  <environment>
+    <id>ultramarine-flagship-product-environment</id>
+    <name>Ultramarine Budige (Legacy)</name>
+    <description>Ultramarine Budgie is the Budgie Ultramarine experience.</description>
+    <grouplist>
+      <groupid>base-x</groupid>
+      <groupid>container-management</groupid>
+      <groupid>core</groupid>
+      <groupid>standard</groupid>
+      <groupid>firefox</groupid>
+      <groupid>fonts</groupid>
+      <groupid>budgie-desktop</groupid>
+      <groupid>ultramarine-budgie-apps</groupid>
+      <groupid>guest-desktop-agents</groupid>
+      <groupid>hardware-support</groupid>
+      <groupid>libreoffice</groupid>
+      <groupid>multimedia</groupid>
+      <!-- <groupid>sound-and-video</groupid> -->
+      <groupid>networkmanager-submodules</groupid>
+      <groupid>printing</groupid>
+      <groupid>desktop-accessibility</groupid>
+      <groupid>input-methods</groupid>
+      <groupid>ultramarine-product-common</groupid>
+      <groupid>ultramarine-desktop-product-common</groupid>
+      <groupid>ultramarine-budgie-product</groupid>
+    </grouplist>
+  </environment>
   <group>
     <id>ultramarine-gnome-product</id>
     <name>Ultramarine GNOME product core</name>
