@@ -20,11 +20,11 @@
 %endif
 
 %bcond_without basic
-%bcond_without flagship
+%bcond_without budgie
 %bcond_without plasma
 %bcond_without gnome
 %bcond_without xfce
-%bcond_without atomic_flagship
+%bcond_without atomic_budgie
 %bcond_without atomic_plasma
 %bcond_without atomic_gnome
 %bcond_without atomic_xfce
@@ -37,11 +37,11 @@
 %bcond_with surface
 %endif
 
-%if %{with flagship} || %{with plasma} || %{with gnome} || %{with xfce} || %{with atomic_flagship} || %{with atomic_plasma} || %{with atomic_gnome} || %{with atomic_xfce}
+%if %{with budgie} || %{with plasma} || %{with gnome} || %{with xfce} || %{with atomic_budgie} || %{with atomic_plasma} || %{with atomic_gnome} || %{with atomic_xfce}
 %global with_desktop 1
 %endif
 
-%if %{with atomic_flagship} || %{with atomic_plasma} || %{with atomic_gnome} || %{with atomic_xfce}
+%if %{with atomic_budgie} || %{with atomic_plasma} || %{with atomic_gnome} || %{with atomic_xfce}
 %global with_atomic_desktop 1
 %endif
 
@@ -52,7 +52,7 @@
 Summary:	Ultramarine Linux release files
 Name:		ultramarine-release
 Version:	%{dist_version}
-Release:	2%{?dist}
+Release:	4%{?dist}
 License:	MIT
 Source0:	LICENSE
 URL:        https://ultramarine-linux.org
@@ -83,7 +83,7 @@ Source9:	90-default-user.preset
 Source10:	89-ultramarine-default.preset
 
 Source12:   60-ultramarine-presets.conf
-Source13:   slick-greeter-flagship.conf
+Source13:   slick-greeter-budgie.conf
 Source14:   slick-greeter-xfce.conf
 Source15:   50_ultramarine-gnome.gschema.override
 
@@ -99,12 +99,12 @@ Source34:   ultramarine.urls
 Source40:   https://github.com/Ultramarine-Linux/xfce-config/archive/%{xfce_conf_commit}.tar.gz
 
 Source50:   ultramarine.conf
-Source51:   ultramarine-flagship.conf
+Source51:   ultramarine-budgie.conf
 Source52:   ultramarine-gnome.conf
 Source53:   ultramarine-plasma.conf
 Source54:   ultramarine-xfce.conf
 
-Source60:   ultramarine-flagship-protected.conf
+Source60:   ultramarine-budgie-protected.conf
 Source61:   ultramarine-gnome-protected.conf
 Source62:   ultramarine-plasma-protected.conf
 Source63:   ultramarine-xfce-protected.conf
@@ -114,7 +114,7 @@ Source64:   88-ultramarine-chromebook-default.preset
 Source65:   91-ultramarine-surface-default.preset
 Source66:   linux-surface.repo
 
-Source70:   polycrystal-ultramarine-flagship.json
+Source70:   polycrystal-ultramarine-budgie.json
 Source71:   polycrystal-ultramarine-gnome.json
 Source72:   polycrystal-ultramarine-plasma.json
 Source73:   polycrystal-ultramarine-xfce.json
@@ -181,15 +181,15 @@ itself as a particular Edition.
 %endif
 
 ######################################################################
-####### Flagship #######
+####### Budgie #######
 
-%if %{with flagship}
+%if %{with budgie}
 
-%package flagship
-Summary:	Base package for Ultramarine Flagship-specific default configurations
-RemovePathPostfixes: .flagship
+%package budgie
+Summary:	Base package for Ultramarine Budgie-specific default configurations
+RemovePathPostfixes: .budgie
 Provides:   ultramarine-release = %{version}-%{release}
-Provides:   ultramarine-release-flagship = %{version}-%{release}
+Provides:   ultramarine-release-budgie = %{version}-%{release}
 Provides:   ultramarine-release-variant = %{version}-%{release}
 Provides:   system-release
 Provides:   system-release(%{version})
@@ -200,35 +200,37 @@ Provides:   system-release-product
 # ultramarine-release-common Requires: ultramarine-release-identity, so at least one
 # package must provide it. This Recommends: pulls in
 # ultramarine-release-identity-cinnamon if nothing else is already doing so.
-Recommends:	ultramarine-release-identity-flagship
+Recommends:	ultramarine-release-identity-budgie
 # pull in slick greeter for people upgrading
 Recommends: slick-greeter
+Obsoletes:  ultramarine-release-flagship < 43-2
 
-%description flagship
-Provides a base package for Ultramarine Flagship configurations.
+%description budgie
+Provides a base package for Ultramarine budgie configurations.
 
-%package identity-flagship
-Summary:		Package providing the Ultramarine Flagship Identity
-RemovePathPostfixes: .flagship
+%package identity-budgie
+Summary:		Package providing the Ultramarine budgie Identity
+RemovePathPostfixes: .budgie
 Provides:		ultramarine-release-identity = %{version}-%{release}
 Conflicts:		ultramarine-release-identity
-Requires(meta):	ultramarine-release-flagship = %{version}-%{release}
+Requires(meta):	ultramarine-release-budgie = %{version}-%{release}
+Obsoletes:  ultramarine-release-identity-flagship < 43-2
 
-%description identity-flagship
-Provides the necessary files for a Ultramarine Flagship installation.
+%description identity-budgie
+Provides the necessary files for a Ultramarine budgie installation.
 
 %endif
 
 ######################################################################
-####### Atomic Flagship #######
+####### Atomic budgie #######
 
-%if %{with atomic_flagship}
+%if %{with atomic_budgie}
 
-%package atomic-flagship
-Summary:	Base package for Ultramarine Atomic Flagship-specific default configurations
-RemovePathPostfixes: .atomic-flagship
+%package atomic-budgie
+Summary:	Base package for Ultramarine Atomic budgie-specific default configurations
+RemovePathPostfixes: .atomic-budgie
 Provides:   ultramarine-release = %{version}-%{release}
-Provides:   ultramarine-release-atomic-flagship = %{version}-%{release}
+Provides:   ultramarine-release-atomic-budgie = %{version}-%{release}
 Provides:   ultramarine-release-variant = %{version}-%{release}
 Provides:   system-release
 Provides:   system-release(%{version})
@@ -240,20 +242,22 @@ Provides:   system-release-product
 # ultramarine-release-common Requires: ultramarine-release-identity, so at least one
 # package must provide it. This Recommends: pulls in
 # ultramarine-release-identity-cinnamon if nothing else is already doing so.
-Recommends:	ultramarine-release-identity-atomic-flagship
+Recommends:	ultramarine-release-identity-atomic-budgie
+Obsoletes:  ultramarine-release-atomic-flagship < 43-2
 
-%description atomic-flagship
-Provides a base package for Ultramarine Atomic Flagship configurations.
+%description atomic-budgie
+Provides a base package for Ultramarine Atomic budgie configurations.
 
-%package identity-atomic-flagship
-Summary:		Package providing the Ultramarine Atomic Flagship Identity
-RemovePathPostfixes: .atomic-flagship
+%package identity-atomic-budgie
+Summary:		Package providing the Ultramarine Atomic budgie Identity
+RemovePathPostfixes: .atomic-budgie
 Provides:		ultramarine-release-identity = %{version}-%{release}
 Conflicts:		ultramarine-release-identity
-Requires(meta):	ultramarine-release-atomic-flagship = %{version}-%{release}
+Requires(meta):	ultramarine-release-atomic-budgie = %{version}-%{release}
+Obsoletes: ultramarine-release-identity-atomic-flagship < 43-2
 
-%description identity-atomic-flagship
-Provides the necessary files for a Ultramarine Atomic Flagship installation.
+%description identity-atomic-budgie
+Provides the necessary files for a Ultramarine Atomic budgie installation.
 
 %endif
 
@@ -728,26 +732,26 @@ cp -p os-release \
       %{buildroot}%{_prefix}/lib/os-release.basic
 %endif
 
-%if %{with flagship}
-# Flagship
+%if %{with budgie}
+# Budgie
 cp -p os-release \
-      %{buildroot}%{_prefix}/lib/os-release.flagship
-echo "VARIANT=\"Flagship Edition\"" >> %{buildroot}%{_prefix}/lib/os-release.flagship
-echo "VARIANT_ID=flagship" >> %{buildroot}%{_prefix}/lib/os-release.flagship
-sed -i -e "s|(%{release_name}%{?prerelease})|(Flagship Edition%{?prerelease})|g" %{buildroot}%{_prefix}/lib/os-release.flagship
-sed -e "s#\$version#%{bug_version}#g" -e 's/$edition/Flagship/;s/<!--.*-->//;/^$/d' %{SOURCE20} > %{buildroot}%{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.flagship
+      %{buildroot}%{_prefix}/lib/os-release.budgie
+echo "VARIANT=\"Budgie Edition\"" >> %{buildroot}%{_prefix}/lib/os-release.budgie
+echo "VARIANT_ID=budgie" >> %{buildroot}%{_prefix}/lib/os-release.budgie
+sed -i -e "s|(%{release_name}%{?prerelease})|(Budgie Edition%{?prerelease})|g" %{buildroot}%{_prefix}/lib/os-release.budgie
+sed -e "s#\$version#%{bug_version}#g" -e 's/$edition/Budgie/;s/<!--.*-->//;/^$/d' %{SOURCE20} > %{buildroot}%{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.budgie
 
-install -Dm0644 %{SOURCE60} %{buildroot}%{_sysconfdir}/dnf/protected.d/ultramarine-flagship.conf
+install -Dm0644 %{SOURCE60} %{buildroot}%{_sysconfdir}/dnf/protected.d/ultramarine-budgie.conf
 %endif
 
-%if %{with atomic_flagship}
-# Atomic Flagship
+%if %{with atomic_budgie}
+# Atomic Budgie
 cp -p os-release \
-      %{buildroot}%{_prefix}/lib/os-release.atomic-flagship
-echo "VARIANT=\"Atomic Flagship Edition\"" >> %{buildroot}%{_prefix}/lib/os-release.atomic-flagship
-echo "VARIANT_ID=atomic-flagship" >> %{buildroot}%{_prefix}/lib/os-release.atomic-flagship
-sed -i -e "s|(%{release_name}%{?prerelease})|(Atomic Flagship Edition%{?prerelease})|g" %{buildroot}%{_prefix}/lib/os-release.atomic-flagship
-sed -e "s#\$version#%{bug_version}#g" -e 's/$edition/Atomic Flagship/;s/<!--.*-->//;/^$/d' %{SOURCE20} > %{buildroot}%{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.atomic-flagship
+      %{buildroot}%{_prefix}/lib/os-release.atomic-budgie
+echo "VARIANT=\"Atomic Budgie Edition\"" >> %{buildroot}%{_prefix}/lib/os-release.atomic-budgie
+echo "VARIANT_ID=atomic-budgie" >> %{buildroot}%{_prefix}/lib/os-release.atomic-budgie
+sed -i -e "s|(%{release_name}%{?prerelease})|(Atomic Budgie Edition%{?prerelease})|g" %{buildroot}%{_prefix}/lib/os-release.atomic-budgie
+sed -e "s#\$version#%{bug_version}#g" -e 's/$edition/Atomic Budgie/;s/<!--.*-->//;/^$/d' %{SOURCE20} > %{buildroot}%{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.atomic-budgie
 %endif
 
 %if %{with plasma}
@@ -867,7 +871,7 @@ EOF
 # Create custom Anaconda config
 mkdir -p %{buildroot}%{_sysconfdir}/anaconda/profile.d/
 cp -pr %{SOURCE50} %{buildroot}%{_sysconfdir}/anaconda/profile.d/ultramarine.conf
-cp -pr %{SOURCE51} %{buildroot}%{_sysconfdir}/anaconda/profile.d/ultramarine-flagship.conf
+cp -pr %{SOURCE51} %{buildroot}%{_sysconfdir}/anaconda/profile.d/ultramarine-budgie.conf
 cp -pr %{SOURCE52} %{buildroot}%{_sysconfdir}/anaconda/profile.d/ultramarine-gnome.conf
 cp -pr %{SOURCE53} %{buildroot}%{_sysconfdir}/anaconda/profile.d/ultramarine-plasma.conf
 cp -pr %{SOURCE54} %{buildroot}%{_sysconfdir}/anaconda/profile.d/ultramarine-xfce.conf
@@ -882,7 +886,7 @@ mkdir -p %{buildroot}%{_prefix}/lib/sysctl.d/
 
 # Polycrystal entries
 mkdir -p %{buildroot}%{_sysconfdir}/polycrystal/entries
-install %{SOURCE70} %{buildroot}%{_sysconfdir}/polycrystal/entries/ultramarine-flagship.json
+install %{SOURCE70} %{buildroot}%{_sysconfdir}/polycrystal/entries/ultramarine-budgie.json
 install %{SOURCE71} %{buildroot}%{_sysconfdir}/polycrystal/entries/ultramarine-gnome.json
 install %{SOURCE72} %{buildroot}%{_sysconfdir}/polycrystal/entries/ultramarine-plasma.json
 install %{SOURCE73} %{buildroot}%{_sysconfdir}/polycrystal/entries/ultramarine-xfce.json
@@ -892,7 +896,7 @@ install %{SOURCE73} %{buildroot}%{_sysconfdir}/polycrystal/entries/ultramarine-x
 # Budgie config
 mkdir -p %{buildroot}%{_sysconfdir}/lightdm/lightdm.conf.d/
 install %{SOURCE12} %{buildroot}%{_sysconfdir}/lightdm/lightdm.conf.d/
-install %{SOURCE13} %{buildroot}%{_sysconfdir}/lightdm/lightdm.conf.d/50-ultramarine-flagship-slick-greeter.conf
+install %{SOURCE13} %{buildroot}%{_sysconfdir}/lightdm/lightdm.conf.d/50-ultramarine-budgie-slick-greeter.conf
 
 # XFCE config
 install %{SOURCE14} %{buildroot}%{_sysconfdir}/lightdm/lightdm.conf.d/50-ultramarine-xfce-slick-greeter.conf
@@ -996,11 +1000,12 @@ install -Dm0644 %{SOURCE32} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
 # the funny Plasma system76 scheduler integration
 %if %{with plasma}
 
-%post identity-plasma
-%systemd_user_post enable-kwin-system76-scheduler-integration.service
+# BUG: this script trips up rpm for some reason
+#post identity-plasma
+#systemd_user_post enable-kwin-system76-scheduler-integration.service
 
-%preun identity-plasma
-%systemd_user_preun enable-kwin-system76-scheduler-integration.service
+#preun identity-plasma
+#systemd_user_preun enable-kwin-system76-scheduler-integration.service
 
 %endif
 
@@ -1019,7 +1024,7 @@ install -Dm0644 %{SOURCE32} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
 %_datadir/dnf5/libdnf.conf.d/ultramarine-installonly-2.conf
 %{_datadir}/dnf/plugins/copr.vendor.conf
 %{_sysconfdir}/anaconda/profile.d/ultramarine.conf
-%{_sysconfdir}/anaconda/profile.d/ultramarine-flagship.conf
+%{_sysconfdir}/anaconda/profile.d/ultramarine-budgie.conf
 %{_sysconfdir}/anaconda/profile.d/ultramarine-gnome.conf
 %{_sysconfdir}/anaconda/profile.d/ultramarine-plasma.conf
 %{_sysconfdir}/anaconda/profile.d/ultramarine-xfce.conf
@@ -1061,25 +1066,25 @@ install -Dm0644 %{SOURCE32} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
 %{_prefix}/lib/os-release.basic
 %endif
 
-%if %{with flagship}
-%files flagship
-%files identity-flagship
-%{_prefix}/lib/os-release.flagship
-%attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.flagship
-%{_sysconfdir}/dnf/protected.d/ultramarine-flagship.conf
-%config %{_sysconfdir}/polycrystal/entries/ultramarine-flagship.json
+%if %{with budgie}
+%files budgie
+%files identity-budgie
+%{_prefix}/lib/os-release.budgie
+%attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.budgie
+%{_sysconfdir}/dnf/protected.d/ultramarine-budgie.conf
+%config %{_sysconfdir}/polycrystal/entries/ultramarine-budgie.json
 %{_sysconfdir}/lightdm/lightdm.conf.d/60-ultramarine-presets.conf
-%{_sysconfdir}/lightdm/lightdm.conf.d/50-ultramarine-flagship-slick-greeter.conf
+%{_sysconfdir}/lightdm/lightdm.conf.d/50-ultramarine-budgie-slick-greeter.conf
 %endif
 
-%if %{with atomic_flagship}
-%files atomic-flagship
-%files identity-atomic-flagship
-%{_prefix}/lib/os-release.atomic-flagship
-%attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.atomic-flagship
-%config %{_sysconfdir}/polycrystal/entries/ultramarine-flagship.json
+%if %{with atomic_budgie}
+%files atomic-budgie
+%files identity-atomic-budgie
+%{_prefix}/lib/os-release.atomic-budgie
+%attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.atomic-budgie
+%config %{_sysconfdir}/polycrystal/entries/ultramarine-budgie.json
 %{_sysconfdir}/lightdm/lightdm.conf.d/60-ultramarine-presets.conf
-%{_sysconfdir}/lightdm/lightdm.conf.d/50-ultramarine-flagship-slick-greeter.conf
+%{_sysconfdir}/lightdm/lightdm.conf.d/50-ultramarine-budgie-slick-greeter.conf
 %endif
 
 %if %{with plasma}
