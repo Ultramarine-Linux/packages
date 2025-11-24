@@ -5,7 +5,7 @@
 %global codename gas_meter
 %define dist_version 43
 
-%define xfce_conf_commit 0406ea1b394c825e4eeceded407ff51e535cd72e
+%define xfce_conf_commit 462beadb011540b0e1851412f24d1b8d86433b10
 
 %define anywhere_conf_commit 240cd1e95d5abb7bbea4cefbe19d328fd6bacac7
 
