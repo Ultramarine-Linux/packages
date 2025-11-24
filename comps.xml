@@ -410,7 +410,9 @@
       <packagereq type="mandatory">slick-greeter</packagereq>
       <packagereq type="default">xfce4-whiskermenu-plugin</packagereq>
       <packagereq type="default">xfce4-docklike-plugin</packagereq>
-      <packagereq type="default">materia-gtk-theme</packagereq>
+      <packagereq type="default">gtk3-theme-orchis</packagereq>
+      <packagereq type="default">gtk4-theme-orchis</packagereq>
+      <packagereq type="default">xfwm4-theme-orchis</packagereq>
       <packagereq type="default">papirus-icon-theme</packagereq>
       <packagereq type="default">papirus-icon-theme-dark</packagereq>
       <packagereq type="default">papirus-icon-theme-light</packagereq>
