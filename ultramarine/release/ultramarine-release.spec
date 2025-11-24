@@ -468,7 +468,10 @@ Provides:   system-release-product
 # ultramarine-release-common Requires: ultramarine-release-identity, so at least one
 # package must provide it. This Recommends: pulls in
 Recommends:	ultramarine-release-identity-xfce
-Recommends: materia-gtk-theme
+Recommends: gtk3-theme-orchis
+Recommends: gtk4-theme-orchis
+Recommends: xfwm4-theme-orchis
+Recommends: gtk-theme-orchis-common
 Recommends: papirus-icon-theme
 Recommends: papirus-icon-theme-dark
 Recommends: papirus-icon-theme-light
