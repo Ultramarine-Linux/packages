@@ -20,7 +20,7 @@ A CLI tool for managing an Ultramarine Linux system.}
 %global godocs          README.md
 
 Name:           golang-github-ultramarine-linux-um
-Version:        0.4.5
+Version:        0.4.6
 Release:        %autorelease -p
 Summary:        A CLI tool for managing an Ultramarine Linux system
 
@@ -34,6 +34,7 @@ BuildRequires:  pkgconfig(rpm)
 BuildRequires:  pkgconfig(flatpak)
 Requires:	ansible-core
 Requires:	ansible-collection-ansible-posix
+Requires: ansible-collection-community-general
 
 
 
