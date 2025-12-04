@@ -12,7 +12,7 @@ URL:     https://invent.kde.org/plasma/discover
 
 Source0: https://download.kde.org/%{stable_kf6}/plasma/%{version}/%{base_name}-%{version}.tar.xz
 Source1: https://download.kde.org/%{stable_kf6}/plasma/%{version}/%{base_name}-%{version}.tar.xz.sig
-
+# https://bugs.kde.org/show_bug.cgi?id=512957
 Patch1:  Revert-b7ed897e6842002b195c02c6e89f4e06aee12d09.patch
 
 ## downstream patches
