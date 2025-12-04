@@ -52,6 +52,7 @@ BuildRequires: cmake(KF6Declarative)
 BuildRequires: cmake(KF6IconThemes)
 BuildRequires: cmake(KF6IdleTime)
 BuildRequires: cmake(KF6Kirigami2)
+BuildRequires: cmake(KF6StatusNotifierItem)
 
 BuildRequires: pkgconfig(packagekitqt6)
 
