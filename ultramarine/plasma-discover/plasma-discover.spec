@@ -37,12 +37,16 @@ BuildRequires: cmake(KF6ItemModels)
 BuildRequires: extra-cmake-modules
 BuildRequires: kf6-rpm-macros
 
+
 BuildRequires: cmake(KF6Config)
 BuildRequires: cmake(KF6CoreAddons)
 BuildRequires: cmake(KF6DBusAddons)
 BuildRequires: cmake(KF6I18n)
 BuildRequires: cmake(KF6KIO)
+BuildRequires: cmake(KF6KirigamiAddons)
 BuildRequires: cmake(KF6Notifications)
+BuildRequires: cmake(KF6Purpose)
+BuildRequires: cmake(KF6StatusNotifierItem)
 BuildRequires: cmake(KF6WidgetsAddons)
 BuildRequires: cmake(KF6Attica)
 BuildRequires: cmake(KF6Archive)
@@ -51,8 +55,11 @@ BuildRequires: cmake(KF6Crash)
 BuildRequires: cmake(KF6Declarative)
 BuildRequires: cmake(KF6IconThemes)
 BuildRequires: cmake(KF6IdleTime)
+BuildRequires: cmake(KF6NewStuff)
 BuildRequires: cmake(KF6Kirigami2)
-BuildRequires: cmake(KF6StatusNotifierItem)
+BuildRequires: cmake(KF6UserFeedback)
+BuildRequires: cmake(KF6XmlGui)
+BuildRequires: cmake(KF6GuiAddons)
 
 BuildRequires: pkgconfig(packagekitqt6)
 
