@@ -1,3 +1,4 @@
+%global stable_kf6 stable
 %global base_name discover
 # enable fwupd support (or not)
 %global fwupd 0
