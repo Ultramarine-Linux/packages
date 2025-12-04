@@ -1,0 +1,4 @@
+/0001-Fix-build-with-newer-flatpak.patch
+/0003-Only-turn-http-s-links-into-clickable-links.patch
+/*.tar.xz
+/*.src.rpm
