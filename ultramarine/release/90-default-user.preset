@@ -28,3 +28,15 @@ enable snapd.session-agent.socket
 enable obex.service
 enable grub-boot-success.timer
 enable pulseaudio.socket
+	
+# Enable hidpipe
+# https://bugzilla.redhat.com/show_bug.cgi?id=2317288	
+enable hidpipe.socket
+
+# Enable mpris-proxy
+# https://bugzilla.redhat.com/show_bug.cgi?id=2323365
+enable mpris-proxy.service
+
+# Ensure xdg-user-dirs are created properly	
+# https://bugzilla.redhat.com/show_bug.cgi?id=2319081
+enable xdg-user-dirs.service
