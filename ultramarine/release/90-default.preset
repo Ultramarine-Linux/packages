@@ -125,6 +125,12 @@ enable virtlogd-admin.socket
 enable virtlockd.socket
 enable virtlockd-admin.socket
 
+# Intel SGX
+# https://bugzilla.redhat.com/show_bug.cgi?id=2346248
+enable aesmd.service
+enable mpa_registration.service
+enable qgs.service
+
 # https://fedoraproject.org/w/index.php?title=Starting_services_by_default&oldid=377748
 enable xinetd.service
 
@@ -171,8 +177,11 @@ enable dnf-makecache.timer
 # https://bugzilla.redhat.com/show_bug.cgi?id=1995495
 enable rpm-ostree-countme.timer
 
+# Hyper-V guest support daemons
 # https://bugzilla.redhat.com/show_bug.cgi?id=957135
+# https://bugzilla.redhat.com/show_bug.cgi?id=1279322
 enable vmtoolsd.service
+enable vgauthd.service
 
 # https://bugzilla.redhat.com/show_bug.cgi?id=976315
 enable dkms.service
@@ -257,10 +266,6 @@ enable plocate-updatedb.timer
 
 # https://bugzilla.redhat.com/show_bug.cgi?id=1218999
 enable sa-update.timer
-
-# Hyper-V guest support daemons
-# https://bugzilla.redhat.com/show_bug.cgi?id=1279322
-enable vmtoolsd.service
 
 # mcelog is a utility that collects and decodes Machine Check Exception data
 # on x86-32 and x86-64 systems.
@@ -418,6 +423,11 @@ enable uresourced.service
 # https://pagure.io/fedora-workstation/issue/191
 enable power-profiles-daemon.service
 
+# enable tuned and tuned-ppd
+# https://bugzilla.redhat.com/show_bug.cgi?id=2293665
+enable tuned.service
+enable tuned-ppd.service
+
 # Enable clevis-luks-askpass.path
 # https://bugzilla.redhat.com/show_bug.cgi?id=2101719
 enable clevis-luks-askpass.path
@@ -444,13 +454,31 @@ enable nfs-client.target
 # https://bugzilla.redhat.com/show_bug.cgi?id=2233948
 enable cloud-config.service
 enable cloud-final.service
+# Remove the plain cloud-init.service in F44 or later
+# https://src.fedoraproject.org/rpms/fedora-release/pull-request/369
+# https://src.fedoraproject.org/rpms/cloud-init/pull-request/49
 enable cloud-init.service
+enable cloud-init-main.service
 enable cloud-init-local.service
 
 # Enable  kernel-bootcfg-boot-successful.service
 # https://bugzilla.redhat.com/show_bug.cgi?id=2239607
 enable kernel-bootcfg-boot-successful.service
 
-# Enable pd-mapper service for Thinkpad X13s
-# https://bugzilla.redhat.com/show_bug.cgi?id=2255318
-enable pd-mapper.service
+# Enable lvm-devices-import
+# https://bugzilla.redhat.com/show_bug.cgi?id=2301651
+enable /usr/lib/systemd/system/lvm-devices-import.path
+enable /usr/lib/systemd/system/lvm-devices-import.service
+
+# Enable fips-crypto-policy-overlay
+# https://bugzilla.redhat.com/show_bug.cgi?id=2325499
+enable fips-crypto-policy-overlay.service
+
+# Enable gpio-manager.service
+# https://bugzilla.redhat.com/show_bug.cgi?id=2358608
+enable gpio-manager.service
+
+# Enable authselect-apply-changes.service
+# https://bugzilla.redhat.com/show_bug.cgi?id=2397255
+enable authselect-apply-changes.service
+

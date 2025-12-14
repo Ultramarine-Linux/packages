@@ -1,0 +1,2 @@
+# https://fedoraproject.org/wiki/Changes/AutomaticBootloaderUpdatesBootc
+enable bootloader-update.service
