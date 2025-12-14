@@ -1,17 +1,13 @@
 polkit.addRule(function(action, subject) {
-    if (action.id == "org.projectatomic.rpmostree1.repo-refresh" &&
-        subject.active == true && subject.local == true) {
+    if ((action.id == "org.projectatomic.rpmostree1.repo-refresh" ||
+         action.id == "org.projectatomic.rpmostree1.upgrade") &&
+        subject.active == true &&
+        subject.local == true) {
             return polkit.Result.YES;
     }
- 
+
     if ((action.id == "org.projectatomic.rpmostree1.install-uninstall-packages" ||
-         action.id == "org.projectatomic.rpmostree1.install-local-packages" ||
-         action.id == "org.projectatomic.rpmostree1.override" ||
-         action.id == "org.projectatomic.rpmostree1.deploy" ||
-         action.id == "org.projectatomic.rpmostree1.upgrade" ||
-         action.id == "org.projectatomic.rpmostree1.rebase" ||
          action.id == "org.projectatomic.rpmostree1.rollback" ||
-         action.id == "org.projectatomic.rpmostree1.bootconfig" ||
          action.id == "org.projectatomic.rpmostree1.reload-daemon" ||
          action.id == "org.projectatomic.rpmostree1.cancel" ||
          action.id == "org.projectatomic.rpmostree1.cleanup" ||

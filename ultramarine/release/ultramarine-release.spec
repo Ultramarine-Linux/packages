@@ -52,7 +52,7 @@
 Summary:	Ultramarine Linux release files
 Name:		ultramarine-release
 Version:	%{dist_version}
-Release:	8%{?dist}
+Release:	9%{?dist}
 License:	MIT
 Source0:	LICENSE
 URL:        https://ultramarine-linux.org
@@ -81,6 +81,7 @@ Source7:	90-default.preset
 Source8:	99-default-disable.preset
 Source9:	90-default-user.preset
 Source10:	89-ultramarine-default.preset
+Source11:   81-atomic-desktop.preset
 
 Source12:   60-ultramarine-presets.conf
 Source13:   slick-greeter-budgie.conf
@@ -995,6 +996,8 @@ install -D -p -m 0644 -t %{buildroot}%{_sysconfdir}/debuginfod %{SOURCE34}
 
 %if %{with atomic_desktop}
 
+# Install Atomic Desktop specific presets
+install -Dm0644 %{SOURCE11} -t %{buildroot}%{_prefix}/lib/systemd/system-preset/
 # Install rpm-ostree polkit rules
 install -Dm0644 %{SOURCE32} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
 
@@ -1183,6 +1186,7 @@ install -Dm0644 %{SOURCE32} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
 
 %if %{with atomic_desktop}
 %files atomic-desktop
+%{_prefix}/lib/systemd/system-preset/81-atomic-desktop.preset
 %attr(0644,root,root) %{_prefix}/share/polkit-1/rules.d/org.projectatomic.rpmostree1.rules
 %endif
 
