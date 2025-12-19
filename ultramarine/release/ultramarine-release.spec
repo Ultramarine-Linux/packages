@@ -52,7 +52,7 @@
 Summary:	Ultramarine Linux release files
 Name:		ultramarine-release
 Version:	%{dist_version}
-Release:	9%{?dist}
+Release:	10%{?dist}
 License:	MIT
 Source0:	LICENSE
 URL:        https://ultramarine-linux.org
@@ -701,7 +701,7 @@ LOGO=ultramarine
 CPE_NAME="cpe:/o:ultramarine:um:%{dist_version}"
 DEFAULT_HOSTNAME="ultramarine"
 HOME_URL="http://ultramarine-linux.org"
-SUPPORT_URL="https://discord.gg/5fdPuxTg5Q"
+SUPPORT_URL="https://fyralabs.com/discord"
 BUG_REPORT_URL="https://github.com/Ultramarine-Linux/ultramarine"
 DOCUMENTATION_URL="https://wiki.ultramarine-linux.org"
 REDHAT_BUGZILLA_PRODUCT="Fedora"
