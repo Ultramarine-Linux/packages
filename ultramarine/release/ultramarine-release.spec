@@ -5,7 +5,7 @@
 %global codename gas_meter
 %define dist_version 43
 
-%define xfce_conf_commit 6ed7b642f4c5ea195189e0403354f588edf42ad3
+%define xfce_conf_commit 4e69521b5ce48ae3477b62e08c00ccd5f6e3f2ba
 
 %define anywhere_conf_commit 240cd1e95d5abb7bbea4cefbe19d328fd6bacac7
 
@@ -52,7 +52,7 @@
 Summary:	Ultramarine Linux release files
 Name:		ultramarine-release
 Version:	%{dist_version}
-Release:	10%{?dist}
+Release:	11%{?dist}
 License:	MIT
 Source0:	LICENSE
 URL:        https://ultramarine-linux.org
