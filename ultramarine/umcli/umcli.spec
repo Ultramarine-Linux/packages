@@ -19,8 +19,7 @@ BuildRequires:  pkgconfig(flatpak)
 Requires:	ansible-core
 Requires:	ansible-collection-ansible-posix
 
-Obsoletes: golang-github-ultramarine-linux-um <= 0.4.5-0.1
-
+Obsoletes: golang-github-ultramarine-linux-um <= 0.4.5
 
 
 %description
