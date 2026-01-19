@@ -52,5 +52,7 @@ cp -av data/. %{buildroot}%{_datadir}/um/.
 
 %dnl %gopkgfiles
 
+
+%changelog
 * Sun January 18 2026 Jaiden Riordan <jade@fyralabs.com> - 0.4.5-2
 - Rename and cleanup spec
