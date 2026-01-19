@@ -45,7 +45,7 @@
       <packagereq type="default">ultramarine-fun</packagereq>
       <packagereq type="default">ultramarine-system-configs-core</packagereq>
       <packagereq type="default">git</packagereq>
-      <packagereq type="default">golang-github-ultramarine-linux-um</packagereq>
+      <packagereq type="default">umcli</packagereq>
       <packagereq type="default">fastfetch</packagereq>
       <packagereq type="default">linux-firmware</packagereq>
       <packagereq type="default">NetworkManager-tui</packagereq>
