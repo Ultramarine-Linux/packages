@@ -1,3 +1,4 @@
+%define debug_package %nil
 # https://github.com/Ultramarine-Linux/um
 %global goipath         github.com/Ultramarine-Linux/um
 
@@ -5,13 +6,12 @@
 
 Name:           umcli
 Version:        0.4.5
-Release:        2
+Release:        2%dist
 Summary:        A CLI tool for managing an Ultramarine Linux system
 
 License:        GPL-3.0-or-later
 URL:            %{gourl}
 Source:         https://github.com/Ultramarine-Linux/um/archive/v%version.tar.gz
-Provides:       um
 Provides:       golang-github-ultramarine-linux-um
 BuildRequires:  git-core
 BuildRequires:  pkgconfig(rpm)
@@ -23,7 +23,7 @@ Obsoletes: golang-github-ultramarine-linux-um <= 0.4.5-0.1
 
 
 
-%description 
+%description
 %summary.
 
 %gopkg
@@ -47,8 +47,8 @@ cp -av data/. %{buildroot}%{_datadir}/um/.
 
 %files
 %doc README.md
-%{_bindir}/um
-%{_datadir}/um
+%{_bindir}/um/
+%{_datadir}/um/
 
 %dnl %gopkgfiles
 
