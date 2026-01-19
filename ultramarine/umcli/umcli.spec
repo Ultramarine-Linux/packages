@@ -47,7 +47,7 @@ cp -av data/. %{buildroot}%{_datadir}/um/.
 
 %files
 %doc README.md
-%{_bindir}/um/
+%{_bindir}/um
 %{_datadir}/um/
 
 %dnl %gopkgfiles
