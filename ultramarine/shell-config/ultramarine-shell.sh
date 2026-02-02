@@ -4,7 +4,7 @@ um=$(cat<<EOF
 Try searching for this package with dnf search or in your edition's app store.
 EOF
 )
-tryinstall="You should not be installing other package managers on your system unless you really know what you're doing."
+tryinstall="Don't install other package managers unless you really know what you're doing."
 
 if ! [ -x "$(command -v apt)" ]; then
     apt() {
