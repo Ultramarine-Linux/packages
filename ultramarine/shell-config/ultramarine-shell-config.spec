@@ -1,7 +1,7 @@
 
 Name:           ultramarine-shell-config
 Version:        43
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Shell configuration for Ultramarine Linux
 License:        MIT
 
