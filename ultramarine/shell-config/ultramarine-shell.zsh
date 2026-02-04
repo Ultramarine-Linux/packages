@@ -16,7 +16,7 @@ bindkey "^[[1;5C" forward-word
 bindkey '^H' backward-kill-word
 bindkey '^[[3;5~' kill-word
 
-# ALt + Backspace/Delete Keybinds
+# Alt + Backspace/Delete Keybinds
 bindkey "^[[3~" delete-char
 bindkey -M emacs '^[[3;3~' kill-word
 
@@ -26,3 +26,6 @@ SAVEHIST=10000
 setopt appendhistory
 setopt SHARE_HISTORY
 setopt autocd
+
+# Allow Bash-style globbing
+unsetopt nomatch
