@@ -2,7 +2,7 @@
 
 Name: ultramarine-repos
 Version: %{_dist_version}
-Release: 3%{?dist}
+Release: 4%{?dist}
 License: MIT
 Summary: Repositories for Ultramarine Linux
 Requires: %{name}-common = %{version}-%{release}
@@ -17,6 +17,7 @@ Metapackage for Ultramarine Linux repositories
 %package common
 Summary: Common repository for Ultramarine Linux
 Requires: fedora-repos(%{version})
+Requires: ultramarine-gpg-keys
 Source100: ultramarine.repo
 # UM40 patch
 Requires: terra-release
