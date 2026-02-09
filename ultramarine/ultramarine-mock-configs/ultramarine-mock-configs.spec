@@ -1,32 +1,26 @@
 Name:           ultramarine-mock-configs
 Version:        1.2
-Release:        5%{?dist}
-Summary:        Mock configs for`ultramarine-linux`
+Release:        1%{?dist}
+Summary:        Mock configs for `ultramarine-linux`
 
 License:        MIT
 URL:            https://ultramarine-linux.org
-Source0:        ultramarine-35-x86_64.cfg
-Source2:        ultramarine.tpl
-Source3:        ultramarine-testing.tpl
-Source4:        ultramarine-36-x86_64.cfg
-Source5:        ultramarine-37-x86_64.cfg
-Source6:        ultramarine-37-aarch64.cfg
-Source7:        ultramarine-38-x86_64.cfg
-Source8:        ultramarine-38-aarch64.cfg
-Source9:        ultramarine-39-x86_64.cfg
-Source10:       ultramarine-39-aarch64.cfg
-Source11:       ultramarine-40-x86_64.cfg
-Source12:       ultramarine-40-aarch64.cfg
-Source13:       ultramarine-41-x86_64.cfg
-Source14:       ultramarine-41-aarch64.cfg
-Source15:       ultramarine-42-x86_64.cfg
-Source16:       ultramarine-42-aarch64.cfg
-Source17:       ultramarine-43-x86_64.cfg
-Source18:       ultramarine-43-aarch64.cfg
+Source0:        ultramarine.tpl
+Source1:        ultramarine-cheetah.tpl
+Source2:        ultramarine-40-x86_64.cfg
+Source3:        ultramarine-40-aarch64.cfg
+Source4:        ultramarine-41-x86_64.cfg
+Source5:        ultramarine-41-aarch64.cfg
+Source6:        ultramarine-42-x86_64.cfg
+Source7:        ultramarine-42-aarch64.cfg
+Source8:        ultramarine-43-x86_64.cfg
+Source9:        ultramarine-43-aarch64.cfg
+Source10:       ultramarine-44-x86_64.cfg
+Source11:       ultramarine-44-aarch64.cfg
 BuildArch:      noarch
 
 %description
-%{summary}
+%{summary}.
 
 %prep
 
@@ -34,9 +28,10 @@ BuildArch:      noarch
 
 %install
 mkdir -p %{buildroot}/etc/mock/templates
-cp -v %{SOURCE0} %{buildroot}/etc/mock
-cp -v %{SOURCE2} %{buildroot}/etc/mock/templates
-cp -v %{SOURCE3} %{buildroot}/etc/mock/templates
+cp -v %{SOURCE0} %{buildroot}/etc/mock/templates
+cp -v %{SOURCE1} %{buildroot}/etc/mock/templates
+cp -v %{SOURCE2} %{buildroot}/etc/mock/
+cp -v %{SOURCE3} %{buildroot}/etc/mock/
 cp -v %{SOURCE4} %{buildroot}/etc/mock/
 cp -v %{SOURCE5} %{buildroot}/etc/mock/
 cp -v %{SOURCE6} %{buildroot}/etc/mock/
@@ -45,19 +40,14 @@ cp -v %{SOURCE8} %{buildroot}/etc/mock/
 cp -v %{SOURCE9} %{buildroot}/etc/mock/
 cp -v %{SOURCE10} %{buildroot}/etc/mock/
 cp -v %{SOURCE11} %{buildroot}/etc/mock/
-cp -v %{SOURCE12} %{buildroot}/etc/mock/
-cp -v %{SOURCE13} %{buildroot}/etc/mock/
-cp -v %{SOURCE14} %{buildroot}/etc/mock/
-cp -v %{SOURCE15} %{buildroot}/etc/mock/
-cp -v %{SOURCE16} %{buildroot}/etc/mock/
-cp -v %{SOURCE17} %{buildroot}/etc/mock/
-cp -v %{SOURCE18} %{buildroot}/etc/mock/
 
 %files
 /etc/mock/*
 /etc/mock/templates/*
 
 %changelog
+* Mon Feb 09 2026 Owen Zimmerman <owen@fyralabs.com>
+- Add configs for 44, rename testing to Cheetah, remove old configs
 * Sun Oct 19 2025 Owen Zimmerman <owen@fyralabs.com>
 - Add configs for 43
 * Sat Mar 15 2025 madonuko <mado@fyralabs.com>
