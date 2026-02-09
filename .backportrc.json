@@ -1,0 +1,9 @@
+{
+  "repoOwner": "ultramarine-linux",
+  "repoName": "packages",
+  "resetAuthor": true,
+  "targetBranchChoices": ["cheetah", "um44", "um43", "um42"],
+  "branchLabelMapping": {
+    "^sync-(.+)$": "$1"
+  }
+}
