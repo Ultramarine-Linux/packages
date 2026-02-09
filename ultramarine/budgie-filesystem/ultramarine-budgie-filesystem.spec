@@ -1,5 +1,5 @@
 Name:           ultramarine-budgie-filesystem
-Version:        43
+Version:        44
 Release:        1%{?dist}
 Summary:        Assets for Ultramarine Linux Budgie
 

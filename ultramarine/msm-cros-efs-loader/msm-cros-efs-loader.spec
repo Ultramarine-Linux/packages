@@ -1,6 +1,6 @@
 Name:                   msm-cros-efs-loader
 Version:                1.0.2
-Release:                2%?dist
+Release:                1%?dist
 Summary:                EFS loader for Qualcomm-based Chrome OS devices
 Epoch:			1
 License:                GPL-3.0-or-later
@@ -12,16 +12,16 @@ BuildArch:              noarch
 Packager:               WeirdTreeThing <bradyn127@protonmail.com>
 Conflicts:              msm-cros-efs-loader
 Provides:               msm-cros-efs-loader
- 
+
 %{?systemd_requires}
 BuildRequires:  systemd-rpm-macros
- 
+
 %description
 EFS loader for Qualcomm-based Chrome OS devices
- 
+
 %prep
 %autosetup -n msm-cros-efs-loader-v%{version}
- 
+
 %install
 install -Dm755 msm-cros-efs-loader.sh %{buildroot}/usr/bin/msm-cros-efs-loader
 install -Dm644 %SOURCE1 %{buildroot}/%{_unitdir}/msm-cros-efs-loader.service
@@ -35,11 +35,11 @@ install -Dm644 %SOURCE1 %{buildroot}/%{_unitdir}/msm-cros-efs-loader.service
 
 %postun
 %systemd_postun_with_restart msm-cros-efs-loader.service
- 
+
 %files
 %_bindir/msm-cros-efs-loader
 %{_unitdir}/msm-cros-efs-loader.service
- 
+
 %changelog
 * Sat 18 2025 Owen Zimmerman <owen@fyralabs.com>
 - Move to umpkgs, change name back to original and add Epoch

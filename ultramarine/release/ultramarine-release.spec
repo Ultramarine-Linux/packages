@@ -1,9 +1,9 @@
-%global is_rawhide 0
+%global is_rawhide 1
 
-%global release_name Gas Meter
-%global fedora_codename Forty Three
-%global codename gas_meter
-%define dist_version 43
+%global release_name Cheetah
+%global fedora_codename Rawhide
+%global codename cheetah
+%define dist_version cheetah
 
 %define xfce_conf_commit 4ee924020b97cf2b4d30510641a2f63ef06ed148
 
@@ -52,7 +52,7 @@
 Summary:	Ultramarine Linux release files
 Name:		ultramarine-release
 Version:	%{dist_version}
-Release:	12%{?dist}
+Release:	1%{?dist}
 License:	MIT
 Source0:	LICENSE
 URL:        https://ultramarine-linux.org

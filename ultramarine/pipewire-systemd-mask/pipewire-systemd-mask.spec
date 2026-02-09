@@ -1,5 +1,5 @@
 Name:			pipewire-systemd-mask
-Version:		43
+Version:		44
 Release:		1%?dist
 Summary:		Mask pipewire.service and pipewire.socket
 License:		MIT

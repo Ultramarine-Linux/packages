@@ -1,5 +1,5 @@
 Name:           ultramarine-system-configs
-Version:        43
+Version:        44
 Release:        1%{?dist}
 Summary:        Various configuration files for a more comfortable Ultramarine desktop experience
 BuildArch:      noarch
