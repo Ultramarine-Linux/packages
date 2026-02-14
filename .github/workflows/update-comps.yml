@@ -3,7 +3,7 @@ name: Push comps updates
 on:
   push:
     branches:
-      - cheetah
+      - umrawhide
     paths:
       - comps.xml
   workflow_dispatch:

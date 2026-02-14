@@ -6,10 +6,10 @@ on:
     paths:
       - ultramarine/**
     branches:
-      - cheetah
+      - umrawhide
   pull_request:
     branches:
-      - cheetah
+      - umrawhide
   workflow_dispatch:
   workflow_call:
 
