@@ -22,7 +22,7 @@ cp -v ./*.tpl -t %{buildroot}/etc/mock/templates
 cp -v ./*.cfg -t %{buildroot}/etc/mock/
 
 %files
-/etc/mock/*
+/etc/mock/*.cfg
 /etc/mock/templates/*
 
 %changelog
