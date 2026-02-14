@@ -12,7 +12,7 @@ BuildArch:      noarch
 %{summary}.
 
 %prep
-%autosetup -n mock-configs-v%{version}
+%autosetup -n mock-configs-%{version}
 
 %build
 
