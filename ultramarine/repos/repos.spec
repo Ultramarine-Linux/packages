@@ -78,8 +78,8 @@ mkdir -p %{buildroot}/%{_sysconfdir}/flatpak/remotes.d
 cp -avx %{SOURCE200} %{buildroot}/%{_sysconfdir}/flatpak/remotes.d/
 cp -avx %{SOURCE201} %{buildroot}/%{_sysconfdir}/flatpak/remotes.d/appcenter.flatpakrepo
 
-# Raspberry Pi
-cp -avx %{SOURCE300} %{buildroot}/%{_sysconfdir}/yum.repos.d/
+%dnl # Raspberry Pi
+%dnl cp -avx %{SOURCE300} %{buildroot}/%{_sysconfdir}/yum.repos.d/
 
 %files
 
