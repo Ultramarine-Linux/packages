@@ -55,12 +55,12 @@ Source201: https://flatpak.elementary.io/repo.flatpakrepo
 %description appcenter
 AppCenter repository file for Ultramarine Linux
 
-%package rpi
-Summary: Additional repo for Raspberry Pi Kernel
-Source300: https://copr.fedorainfracloud.org/coprs/dwrobel/kernel-rpi/repo/fedora-%{version}/dwrobel-kernel-rpi-fedora-%{version}.repo
+%dnl %package rpi
+%dnl Summary: Additional repo for Raspberry Pi Kernel
+%dnl Source300: https://copr.fedorainfracloud.org/coprs/dwrobel/kernel-rpi/repo/fedora-%{version}/dwrobel-kernel-rpi-fedora-%{version}.repo
 
-%description rpi
-Additional repository for Raspberry Pi Kernel
+%dnl %description rpi
+%dnl Additional repository for Raspberry Pi Kernel
 
 %prep
 
@@ -93,5 +93,5 @@ cp -avx %{SOURCE300} %{buildroot}/%{_sysconfdir}/yum.repos.d/
 #%%{_sysconfdir}/yum.repos.d/rpmfusion-free-updates.repo
 #%%{_sysconfdir}/yum.repos.d/rpmfusion-nonfree.repo
 #%%{_sysconfdir}/yum.repos.d/rpmfusion-nonfree-updates.repo
-%files rpi
-%{_sysconfdir}/yum.repos.d/dwrobel-kernel-rpi-fedora-%{version}.repo
+%dnl %files rpi
+%dnl %{_sysconfdir}/yum.repos.d/dwrobel-kernel-rpi-fedora-%{version}.repo
