@@ -6,10 +6,10 @@ on:
     paths:
       - ultramarine/**
     branches:
-      - umrawhide
+      - um44
   pull_request:
     branches:
-      - umrawhide
+      - um44
   workflow_dispatch:
   workflow_call:
 
@@ -19,7 +19,7 @@ jobs:
     outputs:
       build_matrix: ${{ steps.generate_build_matrix.outputs.build_matrix }}
     container:
-      image: ghcr.io/terrapkg/builder:frawhide
+      image: ghcr.io/terrapkg/builder:f44
       options: --cap-add=SYS_ADMIN --privileged
     steps:
       - name: Set workspace as safe
@@ -35,7 +35,7 @@ jobs:
     needs: manifest
     strategy:
       matrix:
-        version: ["rawhide"]
+        version: ["44"]
         pkg: ${{ fromJson(needs.manifest.outputs.build_matrix) }}
       fail-fast: false
     runs-on: ${{ matrix.pkg.arch == 'aarch64' && 'ubuntu-22.04-arm' || 'ubuntu-22.04' }}

@@ -3,7 +3,7 @@ name: Push comps updates
 on:
   push:
     branches:
-      - umrawhide
+      - um44
     paths:
       - comps.xml
   workflow_dispatch:
@@ -12,7 +12,7 @@ jobs:
   update-comps:
     runs-on: ubuntu-latest
     container:
-      image: ghcr.io/terrapkg/builder:frawhide
+      image: ghcr.io/terrapkg/builder:f44
     steps:
       - uses: actions/checkout@v6
       - name: Push to subatomic

@@ -1,4 +1,4 @@
-%global _dist_version 45
+%global _dist_version 44
 
 Name: ultramarine-repos
 Version: %{_dist_version}

@@ -1,9 +1,9 @@
-%global is_rawhide 1
+%global is_rawhide 0
 
-%global release_name Cheetah
-%global fedora_codename Rawhide
-%global codename cheetah
-%define dist_version 45
+%global release_name Placeholder
+%global fedora_codename 44
+%global codename placeholder
+%define dist_version 44
 
 %define xfce_conf_commit 4ee924020b97cf2b4d30510641a2f63ef06ed148
 
