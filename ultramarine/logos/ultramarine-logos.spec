@@ -14,7 +14,7 @@ Provides:      system-logos = %{version}-%{_release}
 Provides:      %{_alt_name} = %{version}-%{_release}
 BuildArch:     noarch
 BuildRequires: hardlink
-Requires:      ultramarine-release = 43
+Requires:      ultramarine-release = 45
 
 %if ! 0%{?eln}
 # For _kde4_* macros:
