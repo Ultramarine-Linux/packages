@@ -1,8 +1,7 @@
-%define ver %{?fedora}
 %undefine _disable_source_fetch
 
 Name: ultramarine-backgrounds
-Version: %ver
+Version: 43
 Release: 1%{?dist}
 BuildArch: noarch
 # details for the artworks' licenses can be seen in the COPYING file
