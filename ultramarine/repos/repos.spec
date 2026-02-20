@@ -1,8 +1,8 @@
-%global _dist_version 44
+%global _dist_version %{?fedora}
 
 Name: ultramarine-repos
 Version: %{_dist_version}
-Release: 2%{?dist}
+Release: 3%{?dist}
 License: MIT
 Summary: Repositories for Ultramarine Linux
 Requires: %{name}-common = %{version}-%{release}
@@ -12,7 +12,7 @@ Provides: ultramarine-repos(%{_dist_version}) = %{_dist_version}
 BuildArch: noarch
 
 %description
-Metapackage for Ultramarine Linux repositories
+Metapackage for Ultramarine Linux repositories.
 
 %package common
 Summary: Common repository for Ultramarine Linux
@@ -21,6 +21,7 @@ Requires: ultramarine-gpg-keys
 Source100: ultramarine.repo
 # UM40 patch
 Requires: terra-release
+Requires: terra-release-mesa
 # todo: if upgrading from 39 require terra-release or something
 %description common
 Common repository files for Ultramarine Linux
@@ -30,7 +31,6 @@ Summary: Additional repositories for Ultramarine Linux
 Requires: distribution-gpg-keys
 Requires: flatpak
 Requires: terra-release-extras
-Requires: terra-release-mesa
 Source200: https://flathub.org/repo/flathub.flatpakrepo
 
 # Don't own the rpmfusion repositories, let it be overridden by the real packages
@@ -45,6 +45,7 @@ Additional repository files for Ultramarine Linux that provides access to popula
     - RPMFusion Free (all patented codecs filtered out)
     - RPMFusion Nonfree (enabled by default)
     - Repositories for secureboot support for 'akmod' kernel modules (enabled by default)
+    - Terra Extras repo (packages that conflict with Fedora)
 
 
 %package appcenter
@@ -53,7 +54,7 @@ Requires: %{name}-extras = %{version}-%{release}
 Source201: https://flatpak.elementary.io/repo.flatpakrepo
 
 %description appcenter
-AppCenter repository file for Ultramarine Linux
+%{summary}.
 
 %dnl %package rpi
 %dnl Summary: Additional repo for Raspberry Pi Kernel
@@ -89,9 +90,9 @@ cp -avx %{SOURCE201} %{buildroot}/%{_sysconfdir}/flatpak/remotes.d/appcenter.fla
 %{_sysconfdir}/flatpak/remotes.d/flathub.flatpakrepo
 %files appcenter
 %{_sysconfdir}/flatpak/remotes.d/appcenter.flatpakrepo
-#%%{_sysconfdir}/yum.repos.d/rpmfusion-free.repo
-#%%{_sysconfdir}/yum.repos.d/rpmfusion-free-updates.repo
-#%%{_sysconfdir}/yum.repos.d/rpmfusion-nonfree.repo
-#%%{_sysconfdir}/yum.repos.d/rpmfusion-nonfree-updates.repo
+%dnl %{_sysconfdir}/yum.repos.d/rpmfusion-free.repo
+%dnl %{_sysconfdir}/yum.repos.d/rpmfusion-free-updates.repo
+%dnl %{_sysconfdir}/yum.repos.d/rpmfusion-nonfree.repo
+%dnl %{_sysconfdir}/yum.repos.d/rpmfusion-nonfree-updates.repo
 %dnl %files rpi
 %dnl %{_sysconfdir}/yum.repos.d/dwrobel-kernel-rpi-fedora-%{version}.repo
