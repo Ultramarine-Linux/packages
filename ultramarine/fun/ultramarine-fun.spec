@@ -1,5 +1,3 @@
-%define debug_package %nil
-
 Name:			ultramarine-fun
 Version:		44
 Release:		1%?dist

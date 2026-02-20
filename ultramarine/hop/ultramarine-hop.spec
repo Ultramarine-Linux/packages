@@ -1,8 +1,8 @@
 Name:           ultramarine-hop
 Version:        0.1.5
-Release:        1%?dist
+Release:        2%?dist
 Summary:        Hop between desktop environments and editions easily!
-License:        GPL-3.0
+License:        GPL-3.0-or-later
 URL:            https://github.com/Ultramarine-Linux/hop
 Requires:       dnf5
 Requires:       ultramarine-release

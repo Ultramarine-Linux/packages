@@ -16,7 +16,6 @@ Source0: https://github.com/Ultramarine-Linux/backgrounds/archive/refs/tags/%ver
 #Source1: 30_default_backgrounds.gschema.override
 # CC0 artworks
 
-
 %description
 This package contains desktop backgrounds for the Ultramarine Linux default theme.
 
@@ -43,7 +42,7 @@ The desktop-backgrounds-gnome package sets default background in GNOME-based des
 
 %package        kde
 Summary:        The default KDE wallpaper from KDE desktop
-Requires:   ultramarine-backgrounds-common = %{version}-%{release}
+Requires:       ultramarine-backgrounds-common = %{version}-%{release}
 Provides:       system-backgrounds-kde = %{version}-%{release}
 License:        CC0
 
@@ -168,12 +167,12 @@ ln -rsf "%{buildroot}%{_datadir}/backgrounds/images/default-dark.jxl" "%{buildro
 %files common
 %{_datadir}/backgrounds/ultramarine-linux/
 %{_datadir}/glib-2.0/schemas/30_default_backgrounds.gschema.override
-/usr/share/wallpapers/Ultramarine*/metadata.json
+%{_datadir}/wallpapers/Ultramarine*/metadata.json
 
 %files gnome
 %{_datadir}/gnome-background-properties/ultramarine-wallpapers-extras.xml
 %{_datadir}/gnome-background-properties/ultramarine.xml
-%exclude /usr/share/gnome-background-properties/41-community-extras.xml
+%exclude %{_datadir}/gnome-background-properties/41-community-extras.xml
 
 %files kde
 %{_datadir}/wallpapers/*
