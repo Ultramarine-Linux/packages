@@ -1,7 +1,7 @@
 Name:          ultramarine-logos
 %define        _alt_name fedora-logos
 Summary:       Icons and pictures related to Ultramarine Linux
-Version:       43
+Version:       %{?fedora}
 %define        _release 1%{?dist}
 Release:       1%{?dist}
 URL:           https://github.com/Ultramarine-Linux/logos
@@ -14,7 +14,7 @@ Provides:      system-logos = %{version}-%{_release}
 Provides:      %{_alt_name} = %{version}-%{_release}
 BuildArch:     noarch
 BuildRequires: hardlink
-Requires:      ultramarine-release = 43
+Requires:      ultramarine-release = %{version}
 
 %if ! 0%{?eln}
 # For _kde4_* macros:

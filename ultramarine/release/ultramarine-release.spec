@@ -3,7 +3,7 @@
 %global release_name Gas Meter
 %global fedora_codename Forty Three
 %global codename gas_meter
-%define dist_version 43
+%define dist_version %{?fedora}
 
 %define xfce_conf_commit 4ee924020b97cf2b4d30510641a2f63ef06ed148
 

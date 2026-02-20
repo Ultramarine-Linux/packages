@@ -21,14 +21,13 @@ Requires:	ansible-collection-ansible-posix
 
 Obsoletes: golang-github-ultramarine-linux-um <= 0.4.5
 
-
 %description
 %summary.
 
 %gopkg
 
 %prep
-%autosetup -n um-%version -p1
+%autosetup -n um-%version
 go mod download
 
 %build
@@ -48,9 +47,6 @@ cp -av data/. %{buildroot}%{_datadir}/um/.
 %doc README.md
 %{_bindir}/um
 %{_datadir}/um/
-
-%dnl %gopkgfiles
-
 
 %changelog
 * Sun January 18 2026 Jaiden Riordan <jade@fyralabs.com> - 0.4.5-2

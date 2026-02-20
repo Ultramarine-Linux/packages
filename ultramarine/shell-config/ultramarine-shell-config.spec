@@ -1,7 +1,6 @@
-
 Name:           ultramarine-shell-config
-Version:        43
-Release:        6%{?dist}
+Version:        %{?fedora}
+Release:        1%{?dist}
 Summary:        Shell configuration for Ultramarine Linux
 License:        MIT
 
@@ -17,8 +16,8 @@ Requires:       bat
 Requires:       starship
 Requires:       fzf
 
-
 BuildArch:      noarch
+
 %description
 This package contains shell configurations made for Ultramarine Linux.
 
@@ -58,7 +57,6 @@ fi
 %{_sysconfdir}/profile.d/ultramarine-shell.sh
 
 %changelog
-
 * Sun Oct 19 2025 Jaiden Riordan <jade@fyralabs.com> - 43-1
 - Copy rewrite
 
