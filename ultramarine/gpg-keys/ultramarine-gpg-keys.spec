@@ -1,8 +1,8 @@
 %undefine dist
 
 Name:           ultramarine-gpg-keys
-Version:        %{?fedora:%{fedora}}
-Release:        1%?dist
+Version:        %{?fedora}
+Release:        2%?dist
 Summary:        GPG keys for Ultramarine Linux
 Requires:       filesystem >= 3.18-6
 
@@ -20,6 +20,10 @@ Source7:        RPM-GPG-KEY-um42
 Source8:        RPM-GPG-KEY-um42-source
 Source9:        RPM-GPG-KEY-um43
 Source10:       RPM-GPG-KEY-um43-source
+Source11:       RPM-GPG-KEY-um44
+Source12:       RPM-GPG-KEY-um44-source
+Source13:       RPM-GPG-KEY-umrawhide
+Source14:       RPM-GPG-KEY-umrawhide-source
 BuildArch:      noarch
 
 %description
