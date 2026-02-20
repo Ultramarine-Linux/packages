@@ -3,7 +3,7 @@
 %global release_name Cheetah
 %global fedora_codename Rawhide
 %global codename cheetah
-%define dist_version 45
+%define dist_version %{?fedora}
 
 %define xfce_conf_commit 4ee924020b97cf2b4d30510641a2f63ef06ed148
 

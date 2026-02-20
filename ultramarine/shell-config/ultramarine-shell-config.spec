@@ -1,5 +1,5 @@
 Name:           ultramarine-shell-config
-Version:        44
+Version:        %{?fedora}
 Release:        1%{?dist}
 Summary:        Shell configuration for Ultramarine Linux
 License:        MIT

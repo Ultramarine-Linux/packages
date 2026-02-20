@@ -1,4 +1,4 @@
-%define ver 44
+%define ver %{?fedora}
 %undefine _disable_source_fetch
 
 Name: ultramarine-backgrounds
@@ -12,7 +12,7 @@ Provides: desktop-backgrounds = %{version}-%{release}
 Recommends: ultramarine-backgrounds-compat = %{version}-%{release}
 BuildRequires: make ImageMagick
 # licensing information
-Source0: https://github.com/Ultramarine-Linux/backgrounds/archive/refs/tags/%ver.tar.gz
+Source0: https://github.com/Ultramarine-Linux/backgrounds/archive/refs/tags/%version.tar.gz
 #Source1: 30_default_backgrounds.gschema.override
 # CC0 artworks
 
@@ -60,7 +60,7 @@ License:        CC0
 The desktop-backgrounds-compat package contains compatibility symlinks for other desktop environments.
 
 %prep
-%autosetup -n backgrounds-%{ver}
+%autosetup -n backgrounds-%{version}
 
 
 %install

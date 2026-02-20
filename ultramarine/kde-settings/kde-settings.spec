@@ -7,7 +7,7 @@
 Summary: Config files for KDE
 Name:    kde-settings
 Epoch:   1
-Version: 44
+Version: %{?fedora}
 Release: 1%{?dist}
 
 License: MIT
