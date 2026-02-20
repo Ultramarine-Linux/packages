@@ -1,6 +1,7 @@
 %undefine _disable_source_fetch
 
 Name: ultramarine-backgrounds
+# This version tracks the upstream version tag. Do not bump this when branching a new release unless the upstream release matches.
 Version: 43
 Release: 1%{?dist}
 BuildArch: noarch
