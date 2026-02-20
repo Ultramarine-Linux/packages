@@ -4,7 +4,7 @@
 # - https://salsa.debian.org/debian/WSL
 
 Name:           ultramarine-wsl-filesystem
-Version:        44
+Version:        %{?fedora}
 Release:        1%{?dist}
 Summary:        Ultramarine for WSL configuration files
 URL:            ultramarine-linux.org
