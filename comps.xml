@@ -335,8 +335,9 @@
       <packagereq type="default">fcitx5-qt</packagereq>
       <packagereq type="default">fcitx5-configtool</packagereq>
       <packagereq type="default">kcm-fcitx5</packagereq>
+      <packagereq type="default">plasma-milou</packagereq>
       <!-- <packagereq type="default">okular</packagereq> flatpak'd -->
-      <packagereq type="default">gwenview</packagereq>
+      <packagereq type="default">koko</packagereq>
       <!-- <packagereq type="default">kamoso</packagereq> flatpak'd -->
       <!-- <packagereq type="default">kolourpaint</packagereq> flatpak'd -->
       <packagereq type="default">kate</packagereq>
@@ -510,10 +511,10 @@
     <packagelist>
       <packagereq type="default">haruna</packagereq>
       <packagereq type="default">kamoso</packagereq>
-      <packagereq type="default">kcalc</packagereq>
+      <packagereq type="default">kalk</packagereq>
       <packagereq type="default">kolourpaint</packagereq>
-      <packagereq type="default">kolourpaint</packagereq>
-      <packagereq type="default">kwrite</packagereq>
+      <packagereq type="default">plasma-browser-integration</packagereq>
+      <packagereq type="default">kate</packagereq>
       <packagereq type="default">okular</packagereq>
       <packagereq type="default">elisa-player</packagereq>
     </packagelist>
