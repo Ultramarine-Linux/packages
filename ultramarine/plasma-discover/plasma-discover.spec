@@ -5,8 +5,8 @@
 
 Name:    plasma-discover
 Summary: KDE and Plasma resources management GUI
-Version: 6.5.3
-Release: 2%{?dist}
+Version: 6.6.1
+Release: 1%{?dist}
 
 License: BSD-3-Clause AND CC0-1.0 AND GPL-2.0-only AND GPL-2.0-or-later AND GPL-3.0-only AND LGPL-2.0-or-later AND LGPL-2.1-only AND LGPL-3.0-only AND (GPL-2.0-only OR GPL-3.0-only) AND (LGPL-2.1-only OR LGPL-3.0-only)
 URL:     https://invent.kde.org/plasma/discover
@@ -14,7 +14,7 @@ URL:     https://invent.kde.org/plasma/discover
 Source0: https://download.kde.org/%{stable_kf6}/plasma/%{version}/%{base_name}-%{version}.tar.xz
 Source1: https://download.kde.org/%{stable_kf6}/plasma/%{version}/%{base_name}-%{version}.tar.xz.sig
 # https://bugs.kde.org/show_bug.cgi?id=512957
-Patch1:  Revert-b7ed897e6842002b195c02c6e89f4e06aee12d09.patch
+Patch1:  https://invent.kde.org/plasma/discover/-/commit/fa313e8298e8308390f8d09bc2c37994ccd252d1.patch
 
 ## downstream patches
 # Adjust periodic refresh from 1/24hr to 1/12hr
