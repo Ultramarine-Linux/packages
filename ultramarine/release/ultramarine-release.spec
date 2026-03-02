@@ -892,7 +892,7 @@ cp -p os-release \
 echo "VARIANT=\"Container Image\"" >> %{buildroot}%{_prefix}/lib/os-release.container
 echo "VARIANT_ID=container" >> %{buildroot}%{_prefix}/lib/os-release.container
 sed -i -e "s|(%{release_name}%{?prerelease})|(Container Image%{?prerelease})|g" %{buildroot}%{_prefix}/lib/os-release.container
-sed -e "s#\$version#%{bug_version}#g" -e 's/$edition/Container/;s/<!--.*-->//;/^$/d' %{SOURCE20} > %{buildroot}%{_swidtagdir}/org.fedoraproject.Ultramarine-edition.swidtag.container
+sed -e "s#\$version#%{bug_version}#g" -e 's/$edition/Container/;s/<!--.*-->//;/^$/d' %{SOURCE20} > %{buildroot}%{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.container
 %endif
 
 # Create copr config file so COPR doesnt flip out and assume EPEL
