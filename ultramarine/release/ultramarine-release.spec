@@ -31,6 +31,7 @@
 %bcond_without chromebook
 %bcond_without raspberry_pi
 %bcond_without wsl
+%bcond_without container
 %ifarch x86_64
 %bcond_without surface
 %else
@@ -52,7 +53,7 @@
 Summary:	Ultramarine Linux release files
 Name:		ultramarine-release
 Version:	%{dist_version}
-Release:	21%{?dist}
+Release:	22%{?dist}
 License:	MIT
 Source0:	LICENSE
 URL:        https://ultramarine-linux.org
@@ -570,6 +571,39 @@ Provides the necessary files for a Ultramarine WSL installation.
 
 %endif
 
+%if %{with container}
+%package container
+Summary:        Base package for Ultramarine container specific default configurations
+
+RemovePathPostfixes: .container
+Provides:       ultramarine-release = %{version}-%{release}
+Provides:       ultramarine-release-variant = %{version}-%{release}
+Provides:       system-release
+Provides:       system-release(%{version})
+Requires:       ultramarine-release-common = %{version}-%{release}
+
+Recommends:     ultramarine-release-identity-container
+
+
+%description container
+Provides a base package for Ultramarine container specific configuration files to
+depend on as well as container system defaults.
+
+
+%package identity-container
+Summary:        Package providing the identity for Ultramarine Container Base Image
+
+RemovePathPostfixes: .container
+Provides:       ultramarine-release-identity = %{version}-%{release}
+Conflicts:      ultramarine-release-identity
+Requires(meta): ultramarine-release-container = %{version}-%{release}
+
+
+%description identity-container
+Provides the necessary files for an Ultramarine installation that is identifying
+itself as the Ultramarine Container Base Image.
+%endif
+
 ######################################################################
 #### Accessory packages
 ######################################################################
@@ -841,6 +875,16 @@ echo "VARIANT=\"WSL Edition\"" >> %{buildroot}%{_prefix}/lib/os-release.wsl
 echo "VARIANT_ID=wsl" >> %{buildroot}%{_prefix}/lib/os-release.wsl
 sed -i -e "s|(%{release_name}%{?prerelease})|(WSL Edition%{?prerelease})|g" %{buildroot}%{_prefix}/lib/os-release.wsl
 sed -e "s#\$version#%{bug_version}#g" -e 's/$edition/WSL/;s/<!--.*-->//;/^$/d' %{SOURCE20} > %{buildroot}%{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.wsl
+%endif
+
+%if %{with container}
+# Container
+cp -p os-release \
+      %{buildroot}%{_prefix}/lib/os-release.container
+echo "VARIANT=\"Container Image\"" >> %{buildroot}%{_prefix}/lib/os-release.container
+echo "VARIANT_ID=container" >> %{buildroot}%{_prefix}/lib/os-release.container
+sed -i -e "s|(%{release_name}%{?prerelease})|(Container Image%{?prerelease})|g" %{buildroot}%{_prefix}/lib/os-release.container
+sed -e "s#\$version#%{bug_version}#g" -e 's/$edition/Container/;s/<!--.*-->//;/^$/d' %{SOURCE20} > %{buildroot}%{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.container
 %endif
 
 # Create copr config file so COPR doesnt flip out and assume EPEL
@@ -1150,6 +1194,13 @@ install -Dm0644 %{SOURCE32} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
 %files identity-wsl
 %{_prefix}/lib/os-release.wsl
 %attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.wsl
+%endif
+
+%if %{with container}
+%files container
+%files identity-container
+%{_prefix}/lib/os-release.container
+%attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.container
 %endif
 
 %if %{with desktop}
