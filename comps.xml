@@ -344,6 +344,7 @@
       <!-- <packagereq type="default">haruna</packagereq> flatpak'd -->
       <!-- <packagereq type="default">kcalc</packagereq> flatpak'd -->
       <packagereq type="default">krdp</packagereq>
+      <packagereq type="default">lm_sensors</packagereq>
     </packagelist>
   </group>
   <environment>
