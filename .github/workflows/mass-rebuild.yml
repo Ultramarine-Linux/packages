@@ -59,6 +59,7 @@ jobs:
       - name: Include custom build template instead of package default
         run: |
           cp -v ultramarine/ultramarine-mock-configs/ultramarine.tpl /etc/mock/templates/ultramarine.tpl
+          cp -v ultramarine/ultramarine-mock-configs/ultramarine-rawhide.tpl /etc/mock/templates/ultramarine-rawhide.tpl
 
       - name: Build with Andaman
         run: anda build ${{ matrix.pkg.pkg }} --package rpm -c ultramarine/ultramarine-mock-configs/ultramarine-${{ matrix.version }}-${{ matrix.pkg.arch }}.cfg

@@ -1,8 +1,8 @@
-%define ver 44
 %undefine _disable_source_fetch
 
 Name: ultramarine-backgrounds
-Version: %ver
+# This version tracks the upstream version tag. Do not bump this when branching a new release unless the upstream release matches.
+Version: 43
 Release: 1%{?dist}
 BuildArch: noarch
 # details for the artworks' licenses can be seen in the COPYING file
@@ -12,10 +12,9 @@ Provides: desktop-backgrounds = %{version}-%{release}
 Recommends: ultramarine-backgrounds-compat = %{version}-%{release}
 BuildRequires: make ImageMagick
 # licensing information
-Source0: https://github.com/Ultramarine-Linux/backgrounds/archive/refs/tags/%ver.tar.gz
+Source0: https://github.com/Ultramarine-Linux/backgrounds/archive/refs/tags/%version.tar.gz
 #Source1: 30_default_backgrounds.gschema.override
 # CC0 artworks
-
 
 %description
 This package contains desktop backgrounds for the Ultramarine Linux default theme.
@@ -43,7 +42,7 @@ The desktop-backgrounds-gnome package sets default background in GNOME-based des
 
 %package        kde
 Summary:        The default KDE wallpaper from KDE desktop
-Requires:   ultramarine-backgrounds-common = %{version}-%{release}
+Requires:       ultramarine-backgrounds-common = %{version}-%{release}
 Provides:       system-backgrounds-kde = %{version}-%{release}
 License:        CC0
 
@@ -61,7 +60,7 @@ License:        CC0
 The desktop-backgrounds-compat package contains compatibility symlinks for other desktop environments.
 
 %prep
-%autosetup -n backgrounds-%{ver}
+%autosetup -n backgrounds-%{version}
 
 
 %install
@@ -168,12 +167,12 @@ ln -rsf "%{buildroot}%{_datadir}/backgrounds/images/default-dark.jxl" "%{buildro
 %files common
 %{_datadir}/backgrounds/ultramarine-linux/
 %{_datadir}/glib-2.0/schemas/30_default_backgrounds.gschema.override
-/usr/share/wallpapers/Ultramarine*/metadata.json
+%{_datadir}/wallpapers/Ultramarine*/metadata.json
 
 %files gnome
 %{_datadir}/gnome-background-properties/ultramarine-wallpapers-extras.xml
 %{_datadir}/gnome-background-properties/ultramarine.xml
-%exclude /usr/share/gnome-background-properties/41-community-extras.xml
+%exclude %{_datadir}/gnome-background-properties/41-community-extras.xml
 
 %files kde
 %{_datadir}/wallpapers/*
