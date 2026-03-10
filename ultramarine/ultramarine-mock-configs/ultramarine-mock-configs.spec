@@ -1,6 +1,6 @@
 Name:           ultramarine-mock-configs
 Version:        1.3
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Mock configs for `ultramarine-linux`
 
 License:        MIT
@@ -19,6 +19,7 @@ Source10:       ultramarine-44-x86_64.cfg
 Source11:       ultramarine-44-aarch64.cfg
 Source12:       ultramarine-rawhide-x86_64.cfg
 Source13:       ultramarine-rawhide-aarch64.cfg
+Requires:       ultramarine-mock-gpg-keys
 BuildArch:      noarch
 
 %description
