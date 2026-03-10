@@ -52,7 +52,7 @@
 Summary:	Ultramarine Linux release files
 Name:		ultramarine-release
 Version:	%{dist_version}
-Release:	1%{?dist}
+Release:	2%{?dist}
 License:	MIT
 Source0:	LICENSE
 URL:        https://ultramarine-linux.org
@@ -1024,6 +1024,11 @@ install -Dm0644 %{SOURCE32} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
 %systemd_user_preun enable-kwin-system76-scheduler-integration.service
 
 %endif
+
+
+%post desktop
+mkdir -p %{_sysconfdir}/firewalld
+ln -sf firewalld-workstation.conf %{_sysconfdir}/firewalld/firewalld.conf
 
 
 %files common
