@@ -1,26 +1,25 @@
 Name:           ultramarine-mock-configs
-Version:        1.2
-Release:        5%{?dist}
-Summary:        Mock configs for`ultramarine-linux`
+Version:        1.3
+Release:        3%{?dist}
+Summary:        Mock configs for `ultramarine-linux`
 
 License:        MIT
 URL:            https://ultramarine-linux.org
-Source0:        ultramarine-35-x86_64.cfg
-Source2:        ultramarine.tpl
-Source3:        ultramarine-testing.tpl
-Source4:        ultramarine-36-x86_64.cfg
-Source5:        ultramarine-37-x86_64.cfg
-Source6:        ultramarine-37-aarch64.cfg
-Source7:        ultramarine-38-x86_64.cfg
-Source8:        ultramarine-38-aarch64.cfg
-Source9:        ultramarine-39-x86_64.cfg
-Source10:       ultramarine-39-aarch64.cfg
-Source11:       ultramarine-40-x86_64.cfg
-Source12:       ultramarine-40-aarch64.cfg
-Source13:       ultramarine-41-x86_64.cfg
-Source14:       ultramarine-41-aarch64.cfg
-Source15:       ultramarine-42-x86_64.cfg
-Source16:       ultramarine-42-aarch64.cfg
+Source0:        ultramarine.tpl
+Source1:        ultramarine-rawhide.tpl
+Source2:        ultramarine-40-x86_64.cfg
+Source3:        ultramarine-40-aarch64.cfg
+Source4:        ultramarine-41-x86_64.cfg
+Source5:        ultramarine-41-aarch64.cfg
+Source6:        ultramarine-42-x86_64.cfg
+Source7:        ultramarine-42-aarch64.cfg
+Source8:        ultramarine-43-x86_64.cfg
+Source9:        ultramarine-43-aarch64.cfg
+Source10:       ultramarine-44-x86_64.cfg
+Source11:       ultramarine-44-aarch64.cfg
+Source12:       ultramarine-rawhide-x86_64.cfg
+Source13:       ultramarine-rawhide-aarch64.cfg
+Requires:       ultramarine-mock-gpg-keys
 BuildArch:      noarch
 
 %description

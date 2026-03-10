@@ -29,6 +29,12 @@ BuildArch:      noarch
 %description
 GPG keys for Ultramarine Linux, used for verifying RPM package signatures.
 
+%package -n     ultramarine-mock-gpg-keys
+Summary:        Ultramarine GPG keys for Mock
+
+%description -n ultramarine-mock-gpg-keys
+Ultramarine GPG key copies for use in Mock.
+
 %prep
 
 %build
@@ -37,6 +43,13 @@ GPG keys for Ultramarine Linux, used for verifying RPM package signatures.
 install -d -m 755 $RPM_BUILD_ROOT/etc/pki/rpm-gpg
 install -m 644 %{_sourcedir}/RPM-GPG-KEY* $RPM_BUILD_ROOT/etc/pki/rpm-gpg/
 
+install -d -m 755 $RPM_BUILD_ROOT/etc/pki/mock
+install -m 644 %{_sourcedir}/RPM-GPG-KEY* $RPM_BUILD_ROOT/etc/pki/mock/
+
 %files
 %dir /etc/pki/rpm-gpg
 /etc/pki/rpm-gpg/RPM-GPG-KEY-*
+
+%files -n ultramarine-mock-gpg-keys
+%dir /etc/pki/mock
+/etc/pki/mock/RPM-GPG-KEY-*
