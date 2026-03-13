@@ -20,6 +20,10 @@ bindkey '^[[3;5~' kill-word
 bindkey "^[[3~" delete-char
 bindkey -M emacs '^[[3;3~' kill-word
 
+# Home/End Keybinds
+bindkey '^[[H' beginning-of-line
+bindkey '^[[F' end-of-line
+
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
