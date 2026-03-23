@@ -66,6 +66,7 @@
       <packagereq type="default">umcli</packagereq>
       <packagereq type="default">fastfetch</packagereq>
       <packagereq type="default">btop</packagereq>
+      <packagereq type="default">htop</packagereq>
       <packagereq type="default">linux-firmware</packagereq>
       <packagereq type="default">NetworkManager-tui</packagereq>
       <packagereq type="default">zstd</packagereq>
