@@ -1,4 +1,6 @@
 name: Update
+permissions:
+  contents: read
 on:
   schedule:
     - cron: "0 * * * *"
@@ -6,13 +8,15 @@ on:
 
 jobs:
   autoupdate:
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
     container:
       image: ghcr.io/terrapkg/builder:frawhide
       options: --cap-add=SYS_ADMIN --privileged
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           fetch-depth: 0
           ssh-key: ${{ secrets.SSH_AUTHENTICATION_KEY }}
@@ -47,7 +51,8 @@ jobs:
               git add *
               git commit -S -a -m "$msg"
             }
+            copy_over um44 || true
+            copy_over um43 || true
             copy_over um42 || true
-            copy_over um41 || true
             git push -u origin --all
           fi
