@@ -6,7 +6,7 @@ Version: 43
 Release: 1%{?dist}
 BuildArch: noarch
 # details for the artworks' licenses can be seen in the COPYING file
-License: CC-BY-SA 4.0 and CC0
+License: CC-BY-SA-4.0 AND CC0-1.0
 Summary: Ultramarine Linux backgrounds
 Provides: desktop-backgrounds = %{version}-%{release}
 Recommends: ultramarine-backgrounds-compat = %{version}-%{release}
