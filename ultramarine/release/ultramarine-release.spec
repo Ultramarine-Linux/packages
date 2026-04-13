@@ -1,8 +1,8 @@
 %global is_rawhide 0
 
-%global release_name Placeholder
+%global release_name Flying Fish
 %global fedora_codename 44
-%global codename placeholder
+%global codename flyingfish
 %define dist_version %{?fedora}
 
 %define xfce_conf_commit 4ee924020b97cf2b4d30510641a2f63ef06ed148
