@@ -1070,6 +1070,11 @@ install -Dm0644 %{SOURCE32} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
 %endif
 
 
+%post desktop
+mkdir -p %{_sysconfdir}/firewalld
+ln -sf firewalld-workstation.conf %{_sysconfdir}/firewalld/firewalld.conf
+
+
 %files common
 %_datadir/dnf5/libdnf.conf.d/ultramarine-installonly-2.conf
 %{_datadir}/dnf/plugins/copr.vendor.conf
