@@ -2,7 +2,7 @@
 
 Name: ultramarine-backgrounds
 # This version tracks the upstream version tag. Do not bump this when branching a new release unless the upstream release matches.
-Version: 44-preview
+Version: 43
 Release: 1%{?dist}
 BuildArch: noarch
 # details for the artworks' licenses can be seen in the COPYING file
@@ -113,9 +113,9 @@ compat_link() {
 }
 
 
-DEFAULT_WALL="preview/blueprint.png"
-DEFAULT_DARK_WALL="preview/blueprint.png"
-DEFAULT_XML="preview/blueprint.xml"
+DEFAULT_WALL="43/Valley Bowl Daytime.png"
+DEFAULT_DARK_WALL="43/Valley Bowl Nighttime.png"
+DEFAULT_XML="43/Valley Bowl.xml"
 
 # Let's generate our default gschema override file
 
