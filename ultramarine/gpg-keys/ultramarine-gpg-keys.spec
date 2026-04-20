@@ -1,8 +1,8 @@
 %undefine dist
 
 Name:           ultramarine-gpg-keys
-Version:        %{?fedora:%{fedora}}
-Release:        1%?dist
+Version:        %{?fedora}
+Release:        2%?dist
 Summary:        GPG keys for Ultramarine Linux
 Requires:       filesystem >= 3.18-6
 
@@ -20,10 +20,20 @@ Source7:        RPM-GPG-KEY-um42
 Source8:        RPM-GPG-KEY-um42-source
 Source9:        RPM-GPG-KEY-um43
 Source10:       RPM-GPG-KEY-um43-source
+Source11:       RPM-GPG-KEY-um44
+Source12:       RPM-GPG-KEY-um44-source
+Source13:       RPM-GPG-KEY-umrawhide
+Source14:       RPM-GPG-KEY-umrawhide-source
 BuildArch:      noarch
 
 %description
 GPG keys for Ultramarine Linux, used for verifying RPM package signatures.
+
+%package -n     ultramarine-mock-gpg-keys
+Summary:        Ultramarine GPG keys for Mock
+
+%description -n ultramarine-mock-gpg-keys
+Ultramarine GPG key copies for use in Mock.
 
 %prep
 
@@ -33,6 +43,13 @@ GPG keys for Ultramarine Linux, used for verifying RPM package signatures.
 install -d -m 755 $RPM_BUILD_ROOT/etc/pki/rpm-gpg
 install -m 644 %{_sourcedir}/RPM-GPG-KEY* $RPM_BUILD_ROOT/etc/pki/rpm-gpg/
 
+install -d -m 755 $RPM_BUILD_ROOT/etc/pki/mock
+install -m 644 %{_sourcedir}/RPM-GPG-KEY* $RPM_BUILD_ROOT/etc/pki/mock/
+
 %files
 %dir /etc/pki/rpm-gpg
 /etc/pki/rpm-gpg/RPM-GPG-KEY-*
+
+%files -n ultramarine-mock-gpg-keys
+%dir /etc/pki/mock
+/etc/pki/mock/RPM-GPG-KEY-*

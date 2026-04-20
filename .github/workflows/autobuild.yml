@@ -1,6 +1,8 @@
 # for each folder in ultramarine/
 # generate a new workflow for each folder in ultramarine/
 name: Automatically build packages
+permissions:
+  contents: read
 on:
   push:
     paths:
@@ -25,7 +27,7 @@ jobs:
       - name: Set workspace as safe
         run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           fetch-depth: 0
       - name: Generate build matrix
@@ -44,7 +46,7 @@ jobs:
       options: --cap-add=SYS_ADMIN --privileged
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           fetch-depth: 0
       - name: Set up git repository
@@ -52,7 +54,7 @@ jobs:
 
       - name: Cache buildroot
         id: br-cache
-        uses: actions/cache@v5
+        uses: actions/cache@668228422ae6a00e4ad889ee87cd7109ec5666a7 # v5.0.4
         with:
           path: /var/cache
           key: ${{ runner.os }}-br-${{ matrix.version }}-${{ matrix.pkg.arch }}
@@ -72,7 +74,7 @@ jobs:
           x=${NAME//\//@}
           echo "name=$x" >> $GITHUB_OUTPUT
 
-      - uses: actions/upload-artifact@v6
+      - uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
         with:
           name: ${{ steps.art.outputs.name }}
           path: |
@@ -85,7 +87,7 @@ jobs:
           subatomic-cli upload --prune \
             --server https://subatomic.fyralabs.com \
             --token ${{ secrets.SUBATOMIC_TOKEN }} \
-            um${{ matrix.version }} anda-build/rpm/rpms/*
+            um${{ matrix.version }}${{ matrix.pkg.labels['bootc'] && '-bootc' || '' }} anda-build/rpm/rpms/*
 
       - name: Upload source packages to subatomic
         if: github.event_name == 'push'

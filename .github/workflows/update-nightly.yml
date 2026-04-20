@@ -1,16 +1,16 @@
-name: Update
+name: Nightly Update
 permissions:
   contents: read
 on:
   schedule:
-    - cron: "0 * * * *"
+    - cron: "0 0 * * *"
   workflow_dispatch:
 
 jobs:
   autoupdate:
     permissions:
       contents: write
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04-arm
     container:
       image: ghcr.io/terrapkg/builder:frawhide
       options: --cap-add=SYS_ADMIN --privileged
@@ -28,8 +28,8 @@ jobs:
           chmod 0700 ${{ runner.temp }}/signing_key
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
 
-      - name: Run Update
-        run: anda update -vv
+      - name: Run Nightly Update
+        run: anda update --filters nightly=1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           RUST_BACKTRACE: full
@@ -41,14 +41,13 @@ jobs:
             git config user.email "raboneko@fyralabs.com"
             git config gpg.format "ssh"
             git config user.signingkey "${{ runner.temp }}/signing_key"
-            msg="bump: $(git status | grep modified | sed -r 's@.+/([^/]+)/[^/]+\n?@\1 @g' | tr -d '\n')"
+            msg="bump(nightly): $(anda run andax/ci/update_commit_message.rhai)"
             git commit -S -a -m "$msg"
+            git format-patch HEAD^
             copy_over () {
-              git format-patch HEAD^
               git checkout $1
               git apply *.patch || true
-              rm *.patch
-              git add *
+              git add anda
               git commit -S -a -m "$msg"
             }
             copy_over um44 || true

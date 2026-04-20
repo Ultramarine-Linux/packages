@@ -44,12 +44,19 @@
       <packagereq type="default">ultramarine-release</packagereq>
       <packagereq type="default">ultramarine-fun</packagereq>
       <packagereq type="default">ultramarine-system-configs-core</packagereq>
+      <packagereq type="default">ultramarine-repos</packagereq>
       <packagereq type="default">git</packagereq>
+      <packagereq type="default">vim</packagereq>
+      <packagereq type="default">nano</packagereq>
+      <packagereq type="default">htop</packagereq>
+      <packagereq type="default">rsync</packagereq>
+      <packagereq type="default">dive</packagereq>
       <packagereq type="default">umcli</packagereq>
       <packagereq type="default">fastfetch</packagereq>
       <packagereq type="default">linux-firmware</packagereq>
       <packagereq type="default">NetworkManager-tui</packagereq>
       <packagereq type="default">zstd</packagereq>
+      <packagereq type="default">lm_sensors</packagereq>
     </packagelist>
   </group>
   <group>

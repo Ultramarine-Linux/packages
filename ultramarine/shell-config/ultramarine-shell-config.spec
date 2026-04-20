@@ -1,7 +1,6 @@
-
 Name:           ultramarine-shell-config
-Version:        44
-Release:        1%{?dist}
+Version:        %{?fedora}
+Release:        2%{?dist}
 Summary:        Shell configuration for Ultramarine Linux
 License:        MIT
 
@@ -10,6 +9,7 @@ Source1:        ultramarine-shell.zsh
 
 Source3:        ultramarine-shell.sh
 Source4:        starship.toml
+Source5:        50-ultramarine-pwfeedback
 
 Requires:       zsh-autosuggestions
 Requires:       zsh-syntax-highlighting
@@ -17,8 +17,8 @@ Requires:       bat
 Requires:       starship
 Requires:       fzf
 
-
 BuildArch:      noarch
+
 %description
 This package contains shell configurations made for Ultramarine Linux.
 
@@ -36,6 +36,7 @@ install -pm 644 %{SOURCE4} %{buildroot}/%{_datadir}/%{name}
 
 mkdir -p %{buildroot}/%{_sysconfdir}/profile.d
 install -pm 644 %{SOURCE3} %{buildroot}/%{_sysconfdir}/profile.d/
+install -pm 644 %{SOURCE5} %{buildroot}/%{_sysconfdir}/sudoers.d/
 
 
 %post
@@ -56,8 +57,10 @@ fi
 %files
 %{_datadir}/%{name}/
 %{_sysconfdir}/profile.d/ultramarine-shell.sh
+%{_sysconfdir}/sudoers.d/50-ultramarine-pwfeedback
 
 %changelog
+* Wed Mar 25 2026 madonuko <mado@fyralabs.com> - 44-2
 
 * Sun Oct 19 2025 Jaiden Riordan <jade@fyralabs.com> - 43-1
 - Copy rewrite

@@ -1,13 +1,9 @@
-%if 0%{?fedora} >= 40 || 0%{?rhel} >= 10
 %bcond initialsetup_gui_backend 1
-%else
-%bcond initialsetup_gui_backend 0
-%endif
 
 Summary: Config files for KDE
 Name:    kde-settings
 Epoch:   1
-Version: 44
+Version: %{?fedora}
 Release: 1%{?dist}
 
 License: MIT
