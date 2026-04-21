@@ -19,7 +19,7 @@ jobs:
           - um43
           - um42
     container:
-      image: ghcr.io/terrapkg/builder:frawhide
+      image: ghcr.io/ultramarine-linux/builder:um44
       options: --cap-add=SYS_ADMIN --privileged
     steps:
       - name: Checkout
