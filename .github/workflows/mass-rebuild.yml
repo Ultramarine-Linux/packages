@@ -11,7 +11,7 @@ jobs:
   manifest:
     runs-on: ubuntu-latest
     container:
-      image: ghcr.io/terrapkg/builder:f44
+      image: ghcr.io/ultramarine-linux/builder:um44
       options: --cap-add=SYS_ADMIN --privileged
 
     outputs:
@@ -48,7 +48,7 @@ jobs:
     #if: ${{ matrix.changed_folders != '' }}
     runs-on: ${{ matrix.pkg.arch == 'aarch64' && 'ubuntu-22.04-arm' || 'ubuntu-latest' }}
     container:
-      image: ghcr.io/terrapkg/builder:f${{ matrix.version }}
+      image: ghcr.io/ultramarine-linux/builder:um${{ matrix.version }}
       options: --cap-add=SYS_ADMIN --privileged
     steps:
       - name: Checkout
