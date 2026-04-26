@@ -25,7 +25,7 @@ Source12:       RPM-GPG-KEY-um44-source
 Source13:       RPM-GPG-KEY-umrawhide
 Source14:       RPM-GPG-KEY-umrawhide-source
 BuildArch:      noarch
-Obsoletes:      ultramarine-mock-gpg-keys < %{?fedora}-3
+Obsoletes:      ultramarine-mock-gpg-keys < %{version}-3
 
 %description
 GPG keys for Ultramarine Linux, used for verifying RPM package signatures.
