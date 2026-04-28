@@ -531,7 +531,7 @@
     <packagelist>
       <packagereq type="default">haruna</packagereq>
       <packagereq type="default">kamoso</packagereq>
-      <packagereq type="default">kalk</packagereq>
+      <packagereq type="default">kcalc</packagereq>
       <packagereq type="default">kolourpaint</packagereq>
       <packagereq type="default">plasma-browser-integration</packagereq>
       <packagereq type="default">kate</packagereq>
