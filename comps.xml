@@ -30,6 +30,7 @@
       <packagereq type="optional">vlc-plugins-freeworld</packagereq>
       <packagereq type="default">gstreamer1-plugins-ugly</packagereq>
       <packagereq type="default">nv-codec-headers</packagereq>
+      <packagereq type="default">gstreamer1-vaapi</packagereq>
       <packagereq type="optional">dkms-v4l2loopback</packagereq>
     </packagelist>
   </group>
