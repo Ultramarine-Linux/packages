@@ -540,6 +540,9 @@ cp $(ls -1 /boot/config-kernel-*-*|sort -V|tail -1) /boot/config-kernel.inc
 %endif
 
 %changelog
+* Web Apr 29 2026 Jaiden Riordan <jade@fyralabs.com
+- Port to Ultramarine
+
 * Wed Apr 01 2026 Koichiro Iwao <meta@almalinux.org> - 6.18.20-20260329.v8.1
 - Update kernel to v6.18.20 21da81b5
 

@@ -94,6 +94,9 @@ install -c -m 644 debian/config/brcm80211/brcm/brcmfmac43430-sdio.raspberrypi,3-
 - Add subpackage for RPi 3
   https://bugs.almalinux.org/view.php?id=544
 
+* Thu Oct 24 2024 Jaiden Riordan <jade@fyralabs.com>
+- Port to Ultramarine
+
 * Thu Jul 25 2024 Andrew Lukoshko <alukoshko@almalinux.org> - 20240528-5
 - Update to not conflict with linux-firmware-20240603-143.1.el9_4
 
