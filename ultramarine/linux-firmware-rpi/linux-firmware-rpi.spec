@@ -1,3 +1,4 @@
+# This package is taken from AlmaLinux, please sync from this git repo every UM release https://git.almalinux.org/metalefty/linux-firmware-raspberrypi
 # Thank you to Koichiro Iwao (metalefty) from AlmaLinux for their work on this package
 %global	_firmwarepath	/usr/lib/firmware
 %global	fn_commit	223ccf3a3ddb11b3ea829749fbbba4d65b380897

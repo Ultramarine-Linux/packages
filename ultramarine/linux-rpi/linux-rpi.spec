@@ -1,3 +1,6 @@
+# This package is taken from AlmaLinux, please sync from this git repo's testing branch every UM release https://git.almalinux.org/metalefty/raspberrypi
+# Thank you to Koichiro Iwao (metalefty) from AlmaLinux for their work on this package
+#
 %global firmware_tag	1.20250915
 %global version_tag	21da81b5507ac3353013dc093208e6bed53d10e2
 
