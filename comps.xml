@@ -19,7 +19,6 @@
     <default>false</default>
     <uservisible>true</uservisible>
     <packagelist>
-      <packagereq type="default">steam-device-rules</packagereq>
       <packagereq type="default">udev-joystick-blacklist</packagereq>
       <packagereq type="default">android-udev-rules</packagereq>
       <packagereq type="default">8bitdo-udev-rules</packagereq>
