@@ -13,6 +13,18 @@
     </packagelist>
   </group>
   <group>
+    <id>ultramarine-peripheral-support</id>
+    <name>Ultramarine Peripheral Support</name>
+    <description>Additional support for various peripherals</description>
+    <default>false</default>
+    <uservisible>true</uservisible>
+    <packagelist>
+      <packagereq type="default">udev-joystick-blacklist-rm</packagereq>
+      <packagereq type="default">android-udev-rules</packagereq>
+      <packagereq type="default">8bitdo-udev-rules</packagereq>
+    </packagelist>
+  </group>
+  <group>
     <id>multimedia</id>
     <name>Multimedia</name>
     <description>Audio/video framework common to desktops</description>
@@ -48,11 +60,12 @@
       <packagereq type="default">git</packagereq>
       <packagereq type="default">vim</packagereq>
       <packagereq type="default">nano</packagereq>
-      <packagereq type="default">htop</packagereq>
       <packagereq type="default">rsync</packagereq>
       <packagereq type="default">dive</packagereq>
       <packagereq type="default">umcli</packagereq>
       <packagereq type="default">fastfetch</packagereq>
+      <packagereq type="default">btop</packagereq>
+      <packagereq type="default">htop</packagereq>
       <packagereq type="default">linux-firmware</packagereq>
       <packagereq type="default">NetworkManager-tui</packagereq>
       <packagereq type="default">zstd</packagereq>
@@ -152,6 +165,7 @@
       <groupid>input-methods</groupid>
       <groupid>ultramarine-product-common</groupid>
       <groupid>ultramarine-desktop-product-common</groupid>
+      <groupid>ultramarine-peripheral-support</groupid>
       <groupid>ultramarine-budgie-product</groupid>
     </grouplist>
   </environment>
@@ -179,6 +193,7 @@
       <groupid>input-methods</groupid>
       <groupid>ultramarine-product-common</groupid>
       <groupid>ultramarine-desktop-product-common</groupid>
+      <groupid>ultramarine-peripheral-support</groupid>
       <groupid>ultramarine-budgie-product</groupid>
     </grouplist>
   </environment>
@@ -317,6 +332,7 @@
       <!-- <groupid>input-methods</groupid> While the other groups incluide this, Fedora doesn't have this group in the workstation comp, going to trust them-->
       <groupid>ultramarine-product-common</groupid>
       <groupid>ultramarine-desktop-product-common</groupid>
+      <groupid>ultramarine-peripheral-support</groupid>
       <groupid>ultramarine-gnome-product</groupid>
     </grouplist>
   </environment>
@@ -336,8 +352,9 @@
       <packagereq type="default">fcitx5-qt</packagereq>
       <packagereq type="default">fcitx5-configtool</packagereq>
       <packagereq type="default">kcm-fcitx5</packagereq>
+      <packagereq type="default">plasma-milou</packagereq>
       <!-- <packagereq type="default">okular</packagereq> flatpak'd -->
-      <packagereq type="default">gwenview</packagereq>
+      <packagereq type="default">koko</packagereq>
       <!-- <packagereq type="default">kamoso</packagereq> flatpak'd -->
       <!-- <packagereq type="default">kolourpaint</packagereq> flatpak'd -->
       <packagereq type="default">kate</packagereq>
@@ -372,6 +389,7 @@
       <!-- We should use fcitx5 in plasma instead -->
       <groupid>ultramarine-product-common</groupid>
       <groupid>ultramarine-desktop-product-common</groupid>
+      <groupid>ultramarine-peripheral-support</groupid>
       <groupid>ultramarine-plasma-product</groupid>
     </grouplist>
   </environment>
@@ -401,6 +419,7 @@
       <!-- We should use fcitx5 in plasma instead -->
       <groupid>ultramarine-product-common</groupid>
       <groupid>ultramarine-desktop-product-common</groupid>
+      <groupid>ultramarine-peripheral-support</groupid>
       <groupid>ultramarine-plasma-product</groupid>
     </grouplist>
   </environment>
@@ -466,6 +485,7 @@
       <groupid>input-methods</groupid>
       <groupid>ultramarine-product-common</groupid>
       <groupid>ultramarine-desktop-product-common</groupid>
+      <groupid>ultramarine-peripheral-support</groupid>
       <groupid>ultramarine-xfce-product</groupid>
     </grouplist>
   </environment>
@@ -513,8 +533,8 @@
       <packagereq type="default">kamoso</packagereq>
       <packagereq type="default">kcalc</packagereq>
       <packagereq type="default">kolourpaint</packagereq>
-      <packagereq type="default">kolourpaint</packagereq>
-      <packagereq type="default">kwrite</packagereq>
+      <packagereq type="default">plasma-browser-integration</packagereq>
+      <packagereq type="default">kate</packagereq>
       <packagereq type="default">okular</packagereq>
       <packagereq type="default">elisa-player</packagereq>
     </packagelist>
