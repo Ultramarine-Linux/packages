@@ -10,7 +10,7 @@
 
 Name:		linux-firmware-rpi
 Version:	20240528
-Release:	6%{?dist}
+Release:	1%{?dist}
 Summary:	Supplemental firmware used by Linux kernel for some Raspberry Pi models
 BuildArch:	noarch
 ExclusiveArch:	aarch64

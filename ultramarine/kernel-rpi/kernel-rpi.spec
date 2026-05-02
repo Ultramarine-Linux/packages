@@ -16,12 +16,6 @@ ExclusiveArch: aarch64
 %define bcmmodel 2711
 %define extra_version 1
 
-# This originally implies Kernel 4.x for RPi 2 and is not appropriate now.
-# Be careful to change this not to disturb the seamless package update.
-# %define rpisuffix 2
-# %define ksuffix 4
-# Testing without this, we may not need it
-
 %define kversion 6.18
 %define patchlevel 20
 
@@ -40,17 +34,17 @@ ExclusiveArch: aarch64
 # kernel-headers
 %define with_headers   %{?_without_headers:   0} %{?!_without_headers:   1}
 
-Name:           linux-rpi
+Name:           kernel-rpi
 Version:        %{kversion}.%{patchlevel}
 Release:        20260329.%{local_version}.%{extra_version}%{?dist}
 Summary:        Specific kernel and bootcode for Raspberry Pi
 
-License:        GPL-2.0 WITH Linux-syscall-note
+License:        GPL-2.0-only WITH Linux-syscall-note
 URL:            https://github.com/raspberrypi/linux
 Source0:        https://github.com/raspberrypi/linux/archive/%{version_tag}.tar.gz
 Source1:        https://github.com/raspberrypi/firmware/archive/refs/tags/%{firmware_tag}.tar.gz
-Patch100:       config_2711.patch
-Patch101:       config_2712.patch
+Patch1000: config-bcm2711.patch
+Patch1001: config-bcm2712.patch
 # Sources for kernel-tools
 Source2000:    cpupower.service
 Source2001:    cpupower.config
@@ -75,7 +69,7 @@ BuildRequires: rsync
 %description
 Specific kernel and bootcode for Raspberry Pi
 
-%package kernel%{?ksuffix}
+%package kernel
 Group:          System Environment/Kernel
 Summary:        The Linux kernel
 Provides:       kernel = %{version}-%{release}
@@ -83,13 +77,13 @@ Provides:       kernel-core = %{version}-%{release}
 Provides:       installonlypkg(kernel)
 Requires:       coreutils
 Requires:       dracut
-%description kernel%{?ksuffix}
+%description kernel
 The kernel package contains the Linux kernel (vmlinuz), the core of any
 Linux operating system.  The kernel handles the basic functions
 of the operating system: memory allocation, process allocation, device
 input and output, etc.
 
-%package kernel%{?ksuffix}-devel
+%package kernel-devel
 Group:          System Environment/Kernel
 Summary:        Development package for building kernel modules to match the kernel
 Provides:       kernel-devel = %{version}-%{release}
@@ -99,70 +93,70 @@ Autoreq:        no
 Requires(pre):  findutils
 Requires:       findutils
 Requires:       perl-interpreter
-%description kernel%{?ksuffix}-devel
+%description kernel-devel
 This package provides kernel headers and makefiles sufficient to build modules
 against the kernel package.
 
 %if 0%{?rhel} >= 10
-%package kernel%{?ksuffix}-modules
+%package kernel-modules
 Summary:        Pseudo package for kernel modules
 Group:          System Environment/Kernel
 Provides:       installonlypkg(kernel-module)
 Provides:       kernel-modules = %{version}-%{release}
 Provides:       kernel-modules-uname-r = %{version}-%{release}
 Obsoletes:      kernel-modules < %{version}-%{release}
-Requires:       %{name}-kernel%{?ksuffix} = %{version}-%{release}
+Requires:       %{name}-kernel = %{version}-%{release}
 AutoReq:        no
 AutoProv:       yes
-%description kernel%{?ksuffix}-modules
+%description kernel-modules
 This package provides pseudo dependency for the packages that depends on regular
 kernel-modules packages.
 
-%package kernel%{?ksuffix}-modules-core
+%package kernel-modules-core
 Summary:        Pseudo package for core kernel modules
 Group:          System Environment/Kernel
 Provides:       installonlypkg(kernel-module)
 Provides:       kernel-modules-core = %{version}-%{release}
 Provides:       kernel-modules-core-uname-r = %{version}-%{release}
 Obsoletes:      kernel-modules-core < %{version}-%{release}
-Requires:       %{name}-kernel%{?ksuffix} = %{version}-%{release}
+Requires:       %{name}-kernel = %{version}-%{release}
 AutoReq:        no
 AutoProv:       yes
-%description kernel%{?ksuffix}-modules-core
+%description kernel-modules-core
 This package provides pseudo dependency for the packages that depends on regular
 kernel-modules-core packages.
 
-%package kernel%{?ksuffix}-modules-extra
+%package kernel-modules-extra
 Summary:        Pseudo package for extra kernel modules
 Group:          System Environment/Kernel
 Provides:       kernel-modules-extra = %{version}-%{release}
 Provides:       kernel-modules-extra-uname-r = %{version}-%{release}
 Provides:       installonlypkg(kernel-module)
 Obsoletes:      kernel-modules-extra < %{version}-%{release}
-Requires:       %{name}-kernel%{?ksuffix} = %{version}-%{release}
+Requires:       %{name}-kernel = %{version}-%{release}
 AutoReq:        no
 AutoProv:       yes
-%description kernel%{?ksuffix}-modules-extra
+%description kernel-modules-extra
 This package provides pseudo dependency for the packages that depends on regular
 kernel-modules-extra packages.
 
-%package kernel%{?ksuffix}-modules-extra-matched
+%package kernel-modules-extra-matched
 Summary:        Pseudo package for extra kernel modules
 Group:          System Environment/Kernel
 Provides:       kernel-modules-extra-matched = %{version}-%{release}
 Provides:       kernel-modules-extra-matched-uname-r = %{version}-%{release}
 Provides:       installonlypkg(kernel-module)
 Obsoletes:      kernel-modules-extra-matched < %{version}-%{release}
-Requires:       %{name}-kernel%{?ksuffix} = %{version}-%{release}
+Requires:       %{name}-kernel = %{version}-%{release}
 AutoReq:        no
 AutoProv:       yes
-%description kernel%{?ksuffix}-modules-extra-matched
+%description kernel-modules-extra-matched
 This package provides pseudo dependency for the packages that depends on regular
 kernel-modules-extra-matched packages.
 %endif
 
 %if %{with_tools}
-%package kernel%{?ksuffix}-tools
+%package kernel-tools
 Summary: Assortment of tools for the Linux kernel
 Provides:  cpupowerutils = 1:009-0.6.p1
 Obsoletes: cpupowerutils < 1:009-0.6.p1
@@ -171,31 +165,31 @@ Provides:  cpufrequtils = 1:009-0.6.p1
 Obsoletes: cpufreq-utils < 1:009-0.6.p1
 Obsoletes: cpufrequtils < 1:009-0.6.p1
 Obsoletes: cpuspeed < 1:1.5-16
-Requires: %{name}-kernel%{?ksuffix}-tools-libs = %{version}-%{release}
+Requires: %{name}-kernel-tools-libs = %{version}-%{release}
 Obsoletes: kernel-tools < %{version}
 Provides: kernel-tools = %{version}-%{release}
 %define __requires_exclude ^%{_bindir}/python
-%description kernel%{?ksuffix}-tools
+%description kernel-tools
 This package contains the tools/ directory from the kernel source
 and the supporting documentation.
 
-%package kernel%{?ksuffix}-tools-libs
+%package kernel-tools-libs
 Summary: Libraries for the kernels-tools
 Obsoletes: kernel-tools-libs < %{version}
 Provides: kernel-tools-libs = %{version}-%{release}
-%description kernel%{?ksuffix}-tools-libs
+%description kernel-tools-libs
 This package contains the libraries built from the tools/ directory
 from the kernel source.
 
-%package kernel%{?ksuffix}-tools-libs-devel
+%package kernel-tools-libs-devel
 Summary: Assortment of tools for the Linux kernel
-Requires: %{name}-kernel%{?ksuffix}-tools = %{version}-%{release}
+Requires: %{name}-kernel-tools = %{version}-%{release}
 Provides:  cpupowerutils-devel = 1:009-0.6.p1
 Obsoletes: cpupowerutils-devel < 1:009-0.6.p1
-Requires: %{name}-kernel%{?ksuffix}-tools-libs = %{version}-%{release}
+Requires: %{name}-kernel-tools-libs = %{version}-%{release}
 Obsoletes: kernel-tools-libs-devel < %{version}
 Provides: kernel-tools-libs-devel = %{version}-%{release}
-%description kernel%{?ksuffix}-tools-libs-devel
+%description kernel-tools-libs-devel
 This package contains the development files for the tools/ directory from
 the kernel source.
 %endif
@@ -215,14 +209,14 @@ including the kernel bootloader.
 %endif
 
 %if %{with_headers}
-%package kernel%{?ksuffix}-headers
+%package kernel-headers
 Obsoletes: kernel-headers < %{version}
 Provides: kernel-headers = %{version}-%{release}
 Obsoletes: glibc-kernheaders < 3.0-46
 Provides: glibc-kernheaders = 3.0-46
 Summary: Header files for the Linux kernel for use by glibc
 
-%description kernel%{?ksuffix}-headers
+%description kernel-headers
 Kernel-headers includes the C header files that specify the interface
 between the Linux kernel and userspace libraries and programs.  The
 header files define structures and constants that are needed for
@@ -234,6 +228,7 @@ glibc package.
 %setup -q -n linux-%{version_tag}
 %patch -P 100 -p1
 %patch -P 101 -p1
+%patch -P 1100 -p1
 perl -p -i -e "s/^EXTRAVERSION.*/EXTRAVERSION = -%{release}/" Makefile
 perl -p -i -e "s/^CONFIG_LOCALVERSION=.*/CONFIG_LOCALVERSION=/" arch/%{Arch}/configs/bcm2711_defconfig
 perl -p -i -e "s/^CONFIG_LOCALVERSION=.*/CONFIG_LOCALVERSION=/" arch/%{Arch}/configs/bcm2712_defconfig
@@ -280,15 +275,15 @@ popd
 %if %{with_up}
 # kernel
 mkdir -p %{buildroot}/boot/overlays/
-mkdir -p %{buildroot}/usr/share/%{name}-kernel%{?ksuffix}/%{version}-%{release}/boot/overlays
+mkdir -p %{buildroot}/usr/share/%{name}/%{version}-%{release}/boot/overlays
 cp -p -v COPYING %{buildroot}/boot/COPYING.linux-%{kversion}
-cp -p -v arch/%{Arch}/boot/dts/overlays/README %{buildroot}/usr/share/%{name}-kernel%{?ksuffix}/%{version}-%{release}/boot/overlays
+cp -p -v arch/%{Arch}/boot/dts/overlays/README %{buildroot}/usr/share/%{name}-kernel/%{version}-%{release}/boot/overlays
 %ifarch aarch64
-cp -p -v arch/%{Arch}/boot/dts/broadcom/*.dtb %{buildroot}/usr/share/%{name}-kernel%{?ksuffix}/%{version}-%{release}/boot
+cp -p -v arch/%{Arch}/boot/dts/broadcom/*.dtb %{buildroot}/usr/share/%{name}-kernel/%{version}-%{release}/boot
 %else
-cp -p -v arch/%{Arch}/boot/dts/*.dtb %{buildroot}/usr/share/%{name}-kernel%{?ksuffix}/%{version}-%{release}/boot
+cp -p -v arch/%{Arch}/boot/dts/*.dtb %{buildroot}/usr/share/%{name}-kernel%/%{version}-%{release}/boot
 %endif
-cp -p -v arch/%{Arch}/boot/dts/overlays/*.dtb* %{buildroot}/usr/share/%{name}-kernel%{?ksuffix}/%{version}-%{release}/boot/overlays
+cp -p -v arch/%{Arch}/boot/dts/overlays/*.dtb* %{buildroot}/usr/share/%{name}-kernel/%{version}-%{release}/boot/overlays
 cp -p -v arch/%{Arch}/boot/%{build_image} %{buildroot}/boot/kernel-%{version}-%{release}.img
 make INSTALL_MOD_PATH=%{buildroot} modules_install
 cat > %{buildroot}/boot/config-kernel-%{version}-%{release}.inc <<__EOF__
@@ -389,39 +384,39 @@ find %{buildroot}/usr/include \
 %endif
 
 %if %{with_tools}
-%post kernel%{?ksuffix}-tools
+%post kernel-tools
 %systemd_post cpupower.service
 
-%preun kernel%{?ksuffix}-tools
+%preun kernel-tools
 %systemd_preun cpupower.service
 
-%postun kernel%{?ksuffix}-tools
+%postun kernel-tools
 %systemd_postun cpupower.service
 
-%post kernel%{?ksuffix}-tools-libs
+%post kernel-tools-libs
 /sbin/ldconfig
 
-%postun kernel%{?ksuffix}-tools-libs
+%postun kernel-tools-libs
 /sbin/ldconfig
 %endif
 
 %if %{with_up}
-%files kernel%{?ksuffix}
+%files kernel
 %defattr(-,root,root,-)
 /lib/modules/%{version}-%{release}
-/usr/share/%{name}-kernel%{?ksuffix}/%{version}-%{release}
-/usr/share/%{name}-kernel%{?ksuffix}/%{version}-%{release}/boot
-/usr/share/%{name}-kernel%{?ksuffix}/%{version}-%{release}/boot/*.dtb
+/usr/share/%{name}-kernel/%{version}-%{release}
+/usr/share/%{name}-kernel/%{version}-%{release}/boot
+/usr/share/%{name}-kernel/%{version}-%{release}/boot/*.dtb
 /boot/config-%{version}-%{release}
 /boot/overlays/
-/usr/share/%{name}-kernel%{?ksuffix}/%{version}-%{release}/boot/overlays/*
+/usr/share/%{name}-kernel/%{version}-%{release}/boot/overlays/*
 %attr(0755,root,root) /boot/kernel-%{version}-%{release}.img
 %ghost /boot/initramfs-%{version}-%{release}.img
 /boot/config-kernel-%{version}-%{release}.inc
 %doc /boot/COPYING.linux-%{kversion}
 
 
-%posttrans kernel%{?ksuffix}
+%posttrans kernel
 if [ -d /usr/lib/ostree-boot ]; then
   mkdir -p /usr/lib/modules/%{version}-%{release}
   pushd /usr/lib/ostree-boot
@@ -441,16 +436,16 @@ if [ -d /boot ]; then
       # if we have moved to initramfs
       cp /boot/kernel-%{version}-%{release}.img /boot/kernel%{armtarget}.img
   fi
-  cp /usr/share/%{name}-kernel%{?ksuffix}/%{version}-%{release}/boot/*.dtb /boot/
-  cp /usr/share/%{name}-kernel%{?ksuffix}/%{version}-%{release}/boot/overlays/*.dtb* /boot/overlays/
-  cp /usr/share/%{name}-kernel%{?ksuffix}/%{version}-%{release}/boot/overlays/README /boot/overlays/
+  cp /usr/share/%{name}-kernel/%{version}-%{release}/boot/*.dtb /boot/
+  cp /usr/share/%{name}-kernel/%{version}-%{release}/boot/overlays/*.dtb* /boot/overlays/
+  cp /usr/share/%{name}-kernel/%{version}-%{release}/boot/overlays/README /boot/overlays/
   cp /boot/config-kernel-%{version}-%{release}.inc /boot/config-kernel.inc
 
   /usr/bin/dracut --no-hostonly /boot/initramfs-%{version}-%{release}.img %{version}-%{release}
   cp /boot/initramfs-%{version}-%{release}.img /boot/initramfs%{armtarget}
 fi
 
-%postun kernel%{?ksuffix}
+%postun kernel
 if [ -f /boot/kernel%{armtarget}.img ]; then
     #only restore kernel%{armtarget}.img if it exists, we may have moved to initramfs
     cp $(ls -1 /boot/kernel-*-*|sort -V|tail -1) /boot/kernel%{armtarget}.img
@@ -458,37 +453,37 @@ fi
 if [ -f /boot/initramfs%{armtarget} ]; then
     cp $(ls -1 /boot/initramfs-*-*|sort -V| tail -1) /boot/initramfs%{armtarget}
 fi
-cp $(ls -1d /usr/share/%{name}-kernel%{?ksuffix}/*-*/|sort -V|tail -1)/boot/*.dtb /boot/
-cp $(ls -1d /usr/share/%{name}-kernel%{?ksuffix}/*-*/|sort -V|tail -1)/boot/overlays/*.dtb* /boot/overlays/
-cp $(ls -1d /usr/share/%{name}-kernel%{?ksuffix}/*-*/|sort -V|tail -1)/boot/overlays/README /boot/overlays/
+cp $(ls -1d /usr/share/%{name}-kernel/*-*/|sort -V|tail -1)/boot/*.dtb /boot/
+cp $(ls -1d /usr/share/%{name}-kernel/*-*/|sort -V|tail -1)/boot/overlays/*.dtb* /boot/overlays/
+cp $(ls -1d /usr/share/%{name}-kernel/*-*/|sort -V|tail -1)/boot/overlays/README /boot/overlays/
 cp $(ls -1 /boot/config-kernel-*-*|sort -V|tail -1) /boot/config-kernel.inc
 
 
-%files kernel%{?ksuffix}-devel
+%files kernel-devel
 %defattr(-,root,root)
 /usr/src/kernels/%{version}-%{release}
 
 %if 0%{?rhel} >= 10
-%files kernel%{?ksuffix}-modules
+%files kernel-modules
 # empty package
 %defattr(-,root,root)
 
-%files kernel%{?ksuffix}-modules-core
+%files kernel-modules-core
 # empty package
 %defattr(-,root,root)
 
-%files kernel%{?ksuffix}-modules-extra
+%files kernel-modules-extra
 # empty package
 %defattr(-,root,root)
 
-%files kernel%{?ksuffix}-modules-extra-matched
+%files kernel-modules-extra-matched
 # empty package
 %defattr(-,root,root)
 %endif
 %endif
 
 %if %{with_tools}
-%files kernel%{?ksuffix}-tools -f cpupower.lang
+%files kernel-tools -f cpupower.lang
 %{_bindir}/cpupower
 %{_datadir}/bash-completion/completions/cpupower
 %{_unitdir}/cpupower.service
@@ -511,11 +506,11 @@ cp $(ls -1 /boot/config-kernel-*-*|sort -V|tail -1) /boot/config-kernel.inc
 %{_bindir}/page_owner_sort
 %{_bindir}/slabinfo
 
-%files kernel%{?ksuffix}-tools-libs
+%files kernel-tools-libs
 %{_libdir}/libcpupower.so.1
 %{_libdir}/libcpupower.so.1.0.1
 
-%files kernel%{?ksuffix}-tools-libs-devel
+%files kernel-tools-libs-devel
 %{_libdir}/libcpupower.so
 %{_includedir}/cpufreq.h
 %{_includedir}/cpuidle.h
@@ -532,7 +527,7 @@ cp $(ls -1 /boot/config-kernel-*-*|sort -V|tail -1) /boot/config-kernel.inc
 %endif
 
 %if %{with_headers}
-%files kernel%{?ksuffix}-headers
+%files kernel-headers
 /usr/include/*
 %exclude %{_includedir}/cpufreq.h
 %exclude %{_includedir}/internal/
@@ -540,7 +535,7 @@ cp $(ls -1 /boot/config-kernel-*-*|sort -V|tail -1) /boot/config-kernel.inc
 %endif
 
 %changelog
-* Web Apr 29 2026 Jaiden Riordan <jade@fyralabs.com
+* Wed Apr 29 2026 Jaiden Riordan <jade@fyralabs.com
 - Port to Ultramarine
 
 * Wed Apr 01 2026 Koichiro Iwao <meta@almalinux.org> - 6.18.20-20260329.v8.1

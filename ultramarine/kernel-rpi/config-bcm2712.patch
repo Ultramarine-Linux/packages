@@ -1,34 +1,20 @@
-From c6064f14a8c32e3109ee83c736097e2ee03086ca Mon Sep 17 00:00:00 2001
-From: Koichiro Iwao <meta@almalinux.org>
-Date: Mon, 19 May 2025 13:10:35 +0900
-Subject: [PATCH 2/2] Apply config patch for Raspberry Pi (BCM2712)
-
-The patch is originally provided by Pablo Greco <pgreco@centosproject.org>.
-
-Signed-off-by: Koichiro Iwao <meta@almalinux.org>
----
- arch/arm64/configs/bcm2712_defconfig | 42 ++++++++++++++++++++++++++--
- 1 file changed, 40 insertions(+), 2 deletions(-)
-
 diff --git a/arch/arm64/configs/bcm2712_defconfig b/arch/arm64/configs/bcm2712_defconfig
-index 9e2bda050f81..51afa99f75e3 100644
+index 1d2706313..aed9f2585 100644
 --- a/arch/arm64/configs/bcm2712_defconfig
 +++ b/arch/arm64/configs/bcm2712_defconfig
-@@ -1692,8 +1692,6 @@ CONFIG_DLM=m
+@@ -1718,7 +1718,6 @@ CONFIG_DLM=m
  CONFIG_UNICODE=m
  CONFIG_KEY_DH_OPERATIONS=y
  CONFIG_SECURITY=y
 -CONFIG_SECURITY_APPARMOR=y
--CONFIG_LSM=""
+ CONFIG_LSM=""
  CONFIG_CRYPTO_USER=m
- CONFIG_CRYPTO_CRYPTD=m
- CONFIG_CRYPTO_AES=m
-@@ -1744,3 +1742,43 @@ CONFIG_SCHED_TRACER=y
+ CONFIG_CRYPTO_NULL=m
+@@ -1766,3 +1765,42 @@ CONFIG_FTRACE_SYSCALLS=y
  CONFIG_BLK_DEV_IO_TRACE=y
  # CONFIG_UPROBE_EVENTS is not set
  # CONFIG_STRICT_DEVMEM is not set
-+
-+# CentOS/AlmaLinux added
++# Fyra+Alma Added
 +CONFIG_AUDIT=y
 +CONFIG_NETLABEL=y
 +CONFIG_NETFILTER_XT_TARGET_AUDIT=m
@@ -67,6 +53,3 @@ index 9e2bda050f81..51afa99f75e3 100644
 +CONFIG_EROFS_FS_XATTR=y
 +CONFIG_EROFS_POSIX_ACL=y
 +CONFIG_EROFS_FS_SECURITY=y
--- 
-2.49.0
-
