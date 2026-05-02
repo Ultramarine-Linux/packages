@@ -274,7 +274,7 @@ popd
 %if %{with_up}
 # kernel
 mkdir -p %{buildroot}/boot/overlays/
-mkdir -p %{buildroot}/usr/share/%{name}/%{version}-%{release}/boot/overlays
+mkdir -p %{buildroot}/usr/share/%{name}-kernel/%{version}-%{release}/boot/overlays
 cp -p -v COPYING %{buildroot}/boot/COPYING.linux-%{kversion}
 cp -p -v arch/%{Arch}/boot/dts/overlays/README %{buildroot}/usr/share/%{name}-kernel/%{version}-%{release}/boot/overlays
 %ifarch aarch64
