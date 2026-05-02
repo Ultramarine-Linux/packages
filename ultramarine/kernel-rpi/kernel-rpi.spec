@@ -226,9 +226,8 @@ glibc package.
 
 %prep
 %setup -q -n linux-%{version_tag}
-%patch -P 100 -p1
-%patch -P 101 -p1
-%patch -P 1100 -p1
+%patch -P 1000 -p1
+%patch -P 1001 -p1
 perl -p -i -e "s/^EXTRAVERSION.*/EXTRAVERSION = -%{release}/" Makefile
 perl -p -i -e "s/^CONFIG_LOCALVERSION=.*/CONFIG_LOCALVERSION=/" arch/%{Arch}/configs/bcm2711_defconfig
 perl -p -i -e "s/^CONFIG_LOCALVERSION=.*/CONFIG_LOCALVERSION=/" arch/%{Arch}/configs/bcm2712_defconfig
