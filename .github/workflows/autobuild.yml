@@ -60,7 +60,7 @@ jobs:
           key: ${{ runner.os }}-br-${{ matrix.version }}-${{ matrix.pkg.arch }}
 
       - name: Build with Andaman
-        run: anda build -c ultramarine-${{ matrix.version }}-${{ matrix.pkg.arch }} ${{ matrix.pkg.pkg }}
+        run: anda build -D "vendor Ultramarine Linux" -c ultramarine-${{ matrix.version }}-${{ matrix.pkg.arch }} ${{ matrix.pkg.pkg }}
 
       - name: Generating artifact name
         id: art
