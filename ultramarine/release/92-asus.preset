@@ -1,3 +1,2 @@
 # Enable services for Asus ROG devices
 enable asusd.service
-enable superfgxd.service
