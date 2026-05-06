@@ -21,7 +21,11 @@ jobs:
 
       - name: Build ultramarine-mock-configs
         run: |
-          anda build -c fedora-${{ matrix.version }}-${{ matrix.arch }} ultramarine/ultramarine-mock-configs/pkg -p rpm
+          anda build -D "vendor Ultramarine Linux" -c ultramarine-${{ matrix.version }}-${{ matrix.arch }} ultramarine/ultramarine-mock-configs/pkg
+
+      - name: Install ultramarine-mock-configs
+        run: |
+          dnf install -y anda-build/rpm/rpms/ultramarine-mock-configs*.rpm
 
       - name: Upload packages to subatomic
         run: |
