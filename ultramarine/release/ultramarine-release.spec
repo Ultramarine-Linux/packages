@@ -116,6 +116,8 @@ Source64:   88-ultramarine-chromebook-default.preset
 Source65:   91-ultramarine-surface-default.preset
 Source66:   linux-surface.repo
 
+Source67:   92-asus.preset
+
 Source70:   polycrystal-ultramarine-budgie.json
 Source71:   polycrystal-ultramarine-gnome.json
 Source72:   polycrystal-ultramarine-plasma.json
@@ -998,6 +1000,7 @@ install -Dm0644 %{S:6} %{S:7} %{S:8} %{S:10} -t %buildroot%_presetdir
 install -Dm0644 %{S:8} %{S:9} -t %buildroot%_userpresetdir
 install -Dm0644 %{SOURCE28} -t %buildroot%_systemd_util_dir/system.conf.d/
 install -Dm0644 %{SOURCE28} -t %buildroot%_systemd_util_dir/user.conf.d/
+install -Dm0644 %{SOURCE67} -t %buildroot%{_prefix}/lib/systemd/system-preset/
 
 %if %{with desktop}
 
@@ -1104,6 +1107,7 @@ install -Dm0644 %{SOURCE32} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
 %{_prefix}/lib/systemd/system-preset/89-ultramarine-default.preset
 %{_prefix}/lib/systemd/system-preset/90-default.preset
 %{_prefix}/lib/systemd/system-preset/99-default-disable.preset
+%{_prefix}/lib/systemd/system-preset/92-asus.preset
 %dir %{_swidtagdir}
 %{_swidtagdir}/org.ultramarinelinux.Ultramarine-%{bug_version}.swidtag
 %dir %{_sysconfdir}/swid
