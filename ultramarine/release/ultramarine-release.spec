@@ -664,6 +664,7 @@ Recommends:	ultramarine-release-identity-nothing
 
 %description nothing
 Provides a base package for Ultramarine Nothing Shade configurations.
+%endif
 
 ######################################################################
 ####### Sway #######
@@ -691,6 +692,7 @@ Recommends: slick-greeter
 
 %description sway
 Provides a base package for Ultramarine Sway Shade configurations.
+%endif
 
 ######################################################################
 ####### Niri #######
@@ -718,6 +720,7 @@ Recommends: slick-greeter
 
 %description niri
 Provides a base package for Ultramarine Niri configurations.
+%endif
 
 ######################################################################
 ####### Cinnamon #######
@@ -745,6 +748,7 @@ Recommends: slick-greeter
 
 %description cinnamon
 Provides a base package for Ultramarine Cinnamon Shade configurations.
+%endif
 
 ######################################################################
 #### Accessory packages
