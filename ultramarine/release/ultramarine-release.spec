@@ -85,7 +85,6 @@ Source10:	89-ultramarine-default.preset
 Source11:   81-atomic-desktop.preset
 
 Source12:   60-ultramarine-presets.conf
-Source13:   slick-greeter-budgie.conf
 Source14:   slick-greeter-xfce.conf
 Source15:   50_ultramarine-gnome.gschema.override
 
@@ -944,7 +943,6 @@ install %{SOURCE73} %{buildroot}%{_sysconfdir}/polycrystal/entries/ultramarine-x
 # Budgie config
 mkdir -p %{buildroot}%{_sysconfdir}/lightdm/lightdm.conf.d/
 install %{SOURCE12} %{buildroot}%{_sysconfdir}/lightdm/lightdm.conf.d/
-install %{SOURCE13} %{buildroot}%{_sysconfdir}/lightdm/lightdm.conf.d/50-ultramarine-budgie-slick-greeter.conf
 
 # XFCE config
 install %{SOURCE14} %{buildroot}%{_sysconfdir}/lightdm/lightdm.conf.d/50-ultramarine-xfce-slick-greeter.conf
