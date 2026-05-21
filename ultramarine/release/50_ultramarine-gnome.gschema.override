@@ -1,2 +1,11 @@
 [org.gnome.shell]
-enabled-extensions = ['appindicatorsupport@rgcjonas.gmail.com' , 'pop-shell@system76.com', 'windowsNavigator@gnome-shell-extensions.gcampax.github.com', 'appmenu-is-back@fthx']
+enabled-extensions = ['appindicatorsupport@rgcjonas.gmail.com', 'grand-theft-focus@zalckos.github.com', 'batterytime@typeof.pw', 'windowsNavigator@gnome-shell-extensions.gcampax.github.com', 'appmenu-is-back@fthx']
+
+[org.gnome.desktop.interface]
+show-battery-percentage = true
+
+[org.gnome.desktop.wm.preferences]
+button-layout = 'appmenu:minimize,maximize,close'
+
+[org.gnome.desktop.search-providers]
+enabled = ['org.gnome.Calculator.desktop']
