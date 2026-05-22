@@ -940,6 +940,10 @@ install %{SOURCE73} %{buildroot}%{_sysconfdir}/polycrystal/entries/ultramarine-x
 
 #########################
 
+# Budgie config
+mkdir -p %{buildroot}%{_sysconfdir}/lightdm/lightdm.conf.d/
+install %{SOURCE12} %{buildroot}%{_sysconfdir}/lightdm/lightdm.conf.d/
+
 # XFCE config
 install %{SOURCE14} %{buildroot}%{_sysconfdir}/lightdm/lightdm.conf.d/50-ultramarine-xfce-slick-greeter.conf
 
@@ -1122,6 +1126,7 @@ ln -sf firewalld-workstation.conf %{_sysconfdir}/firewalld/firewalld.conf
 %attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.budgie
 %{_sysconfdir}/dnf/protected.d/ultramarine-budgie.conf
 %config %{_sysconfdir}/polycrystal/entries/ultramarine-budgie.json
+%{_sysconfdir}/lightdm/lightdm.conf.d/60-ultramarine-presets.conf
 %endif
 
 %if %{with atomic_budgie}
@@ -1130,6 +1135,7 @@ ln -sf firewalld-workstation.conf %{_sysconfdir}/firewalld/firewalld.conf
 %{_prefix}/lib/os-release.atomic-budgie
 %attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.atomic-budgie
 %config %{_sysconfdir}/polycrystal/entries/ultramarine-budgie.json
+%{_sysconfdir}/lightdm/lightdm.conf.d/60-ultramarine-presets.conf
 %endif
 
 %if %{with plasma}
