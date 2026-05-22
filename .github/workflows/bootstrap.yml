@@ -13,7 +13,7 @@ jobs:
       fail-fast: false
     runs-on: ${{ matrix.arch == 'aarch64' && 'ubuntu-22.04-arm' || 'ubuntu-latest' }}
     container:
-      image: ghcr.io/ultramarine-linux/builder:umrawhide
+      image: ghcr.io/terrapkg/builder:f${{ matrix.version }}
       options: --cap-add=SYS_ADMIN --privileged
     steps:
       - name: Checkout
@@ -24,7 +24,7 @@ jobs:
 
       - name: Build ultramarine-mock-configs
         run: |
-          anda build -rrpmbuild -D "vendor Ultramarine Linux" ultramarine/ultramarine-mock-configs/pkg
+          anda build -D "vendor Ultramarine Linux" -D "dist .um${{ matrix.version }}" -c fedora-${{ matrix.version }}-${{ matrix.arch }} ultramarine/ultramarine-mock-configs/pkg
 
       - name: Install ultramarine-mock-configs
         run: |
@@ -32,7 +32,7 @@ jobs:
 
       - name: Build ultramarine-release
         run: |
-          anda build -D "vendor Ultramarine Linux" -c ultramarine-${{ matrix.version }}-${{ matrix.pkg.arch }} ultramarine/release/pkg
+          anda build -D "vendor Ultramarine Linux" -c ultramarine-${{ matrix.version }}-${{ matrix.arch }} ultramarine/release/pkg
 
       - name: Upload packages to subatomic
         run: |
