@@ -144,8 +144,7 @@
   <environment>
     <id>ultramarine-budgie-product-environment</id>
     <name>Ultramarine Budgie</name>
-    <description
-        >Ultramarine Budgie is the Budgie Ultramarine experience.</description>
+    <description>Ultramarine Budgie is the Budgie Ultramarine experience.</description>
     <grouplist>
       <groupid>base-x</groupid>
       <groupid>container-management</groupid>
@@ -201,8 +200,7 @@
   <group>
     <id>ultramarine-gnome-product</id>
     <name>Ultramarine GNOME product core</name>
-    <description
-        >Packages mandatory for the Ultramarine GNOME product.</description>
+    <description>Packages mandatory for the Ultramarine GNOME product.</description>
     <default>false</default>
     <uservisible>false</uservisible>
     <packagelist>
@@ -210,7 +208,6 @@
       <packagereq type="default">gnome-shell-extension-windowsNavigator</packagereq>
       <packagereq type="default">gnome-shell-extension-appmenu-is-back</packagereq>
       <packagereq type="default">gnome-shell-extension-grand-theft-focus</packagereq>
-      <packagereq>
       <packagereq type="default">gnome-shell-extension-battery_time</packagereq>
       <packagereq type="default">ultramarine-backgrounds-gnome</packagereq>
       <packagereq type="default">ultramarine-backgrounds-common</packagereq>
@@ -223,8 +220,7 @@
     <!-- NOTE: You will want to sync this with the upstream gnome desktop group every major release -->
     <id>ultramarine-gnome-desktop</id>
     <name>Ultramarine GNOME desktop</name>
-    <description
-        >The group for packages comprising the GNOME desktop, based on the upstream set.</description>
+    <description>The group for packages comprising the GNOME desktop, based on the upstream set.</description>
     <default>false</default>
     <uservisible>false</uservisible>
     <packagelist>
@@ -247,10 +243,7 @@
         <packagereq type="default">avahi</packagereq>
         <packagereq type="default">baobab</packagereq>
         <!-- <packagereq type="default">decibels</packagereq> flatpak'd -->
-        <packagereq
-                arch="aarch64,ppc64le,x86_64"
-                type="default"
-            >fprintd-pam</packagereq>
+        <packagereq arch="aarch64,ppc64le,x86_64" type="default">fprintd-pam</packagereq>
         <packagereq type="default">glib-networking</packagereq>
         <packagereq type="default">glycin-thumbnailer</packagereq>
         <packagereq type="default">gnome-backgrounds</packagereq>
