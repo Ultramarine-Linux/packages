@@ -2,8 +2,8 @@
 
 Name: ultramarine-backgrounds
 # This version tracks the upstream version tag. Do not bump this when branching a new release unless the upstream release matches.
-Version: 43
-Release: 2%{?dist}
+Version: 44
+Release: 1%{?dist}
 BuildArch: noarch
 # details for the artworks' licenses can be seen in the COPYING file
 License: CC-BY-SA-4.0 AND CC0-1.0
@@ -11,10 +11,8 @@ Summary: Ultramarine Linux backgrounds
 Provides: desktop-backgrounds = %{version}-%{release}
 Recommends: ultramarine-backgrounds-compat = %{version}-%{release}
 BuildRequires: make ImageMagick
-# licensing information
-Source0: https://github.com/Ultramarine-Linux/backgrounds/archive/refs/tags/%version.tar.gz
-#Source1: 30_default_backgrounds.gschema.override
-# CC0 artworks
+URL:            https://github.com/Ultramarine-Linux/backgrounds
+Source0: %{url}/archive/refs/tags/%{version}.tar.gz
 
 %description
 This package contains desktop backgrounds for the Ultramarine Linux default theme.
@@ -100,6 +98,7 @@ kde_one 42/sea-of-imagination-dark-alt-a.png "Sea of Imagination (Dark Alt A)"
 kde_one 42/sea-of-imagination-dark-alt-b.png "Sea of Imagination (Dark Alt B)"
 kde_all 42/sea-of-imagination{,-dark}.png "Sea of Imagination"
 kde_all 43/"Valley Bowl "{Day,Night}time.png "Valley Bowl"
+kde_all 44/Breakthrough-{Light,Dark}.png "Breakthrough"
 kde_one preview/blueprint.png "Ultramarine Preview"
 kde_all ultramarine/ultramarine-{light,dark}.png "Ultramarine"
 kde_one extras/mizuki.png "Mizuki at Home"
@@ -113,9 +112,9 @@ compat_link() {
 }
 
 
-DEFAULT_WALL="43/Valley Bowl Daytime.png"
-DEFAULT_DARK_WALL="43/Valley Bowl Nighttime.png"
-DEFAULT_XML="43/Valley Bowl.xml"
+DEFAULT_WALL="44/Breakthrough-Light.png"
+DEFAULT_DARK_WALL="44/Breakthrough-Dark.png"
+DEFAULT_XML="44/Breakthrough.xml"
 
 # Let's generate our default gschema override file
 
