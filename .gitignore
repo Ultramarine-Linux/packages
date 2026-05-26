@@ -1,3 +1,10 @@
 anda-build/
 .DS_Store
 .IDEA
+**/*.tar*
+**/*.crate
+**/*.zip
+**/*.minisig
+**/*.nupkg
+**/*.rpm
+**/*.kate-swp
