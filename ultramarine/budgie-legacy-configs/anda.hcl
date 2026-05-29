@@ -1,6 +1,6 @@
 project "pkg" {
     rpm {
-        spec = "budgie-legacy-configs.spec"
+        spec = "budgie-sddm-switch.spec"
         sources =  "."
     }
 }
