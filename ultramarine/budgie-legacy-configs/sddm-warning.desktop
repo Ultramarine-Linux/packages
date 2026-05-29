@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Budgie SDDM Warning
+Exec=/usr/libexec/sddm-warning.sh
+NoDisplay=true
+X-GNOME-Autostart-enabled=true
