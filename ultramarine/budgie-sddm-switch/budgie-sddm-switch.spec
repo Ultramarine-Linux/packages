@@ -3,7 +3,7 @@ Version:        1.0
 Release:        1%{?dist}
 Summary:        LightDM/Slick config + SDDM switching for Ultramarine Budgie
 
-License:        GPL-3.0
+License:        GPL-3.0-or-later
 URL:            https://ultramarine-linux.org
 Source0:        slick-greeter-budgie.conf
 Source1:        sddm-warning.sh
@@ -21,8 +21,6 @@ This package does 3 things:
 - Notifies the user on every login that they should switch to SDDM
 - Gives the user a command to switch to SDDM and stop the notifications
 
-DO NOT REMOVE THIS PACKAGE
-
 %install
 install -Dm644 %{SOURCE0} %{buildroot}%{_sysconfdir}/lightdm/lightdm.conf.d/50-ultramarine-budgie-slick-greeter.conf
 install -Dm755 %{SOURCE1} %{buildroot}%{_libexecdir}/sddm-warning
@@ -38,5 +36,5 @@ install -Dm644 %{SOURCE3} %{buildroot}%{_sysconfdir}/xdg/autostart/sddm-warning.
 
 
 %changelog
-* Fri Apr 11 2025 Jaiden Riordan <jade@fyralabs.com> - 1
+* Sun May 31 2025 Jaiden Riordan <jade@fyralabs.com> - 1
 - Initial package

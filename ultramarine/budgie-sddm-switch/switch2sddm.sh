@@ -36,5 +36,12 @@ pkexec touch "$CHECKFILE"
 
 echo ""
 echo "All Done!"
-echo "You need to reboot, save your work now, then reboot when you're ready"
-read -p "Press enter to reboot" && pkexec reboot
+echo "Your device needs to restart"
+notify-send --wait \
+    --urgency=critical \
+    --app-icon=ultramarine \
+    --app-name="Ultramarine System" \
+    "Switch Complete" \
+    "Save your work and return to the terminal to restart your device"
+read -p "Save your work and press enter when you're ready to reboot" && pkexec systemctl soft-reboot
+# we're gonna test this with a soft reboot

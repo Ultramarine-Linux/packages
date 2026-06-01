@@ -19,6 +19,6 @@ fi
     --app-name="Ultramarine System" \
     --action="default=Open Wiki" \
     "Upgrade Display Manager" \
-    "Ultramarine Budgie is switching to the SDDM display manager, if you don't switch, upgrades to UM45 and beyond will fail. Click this notification to open the wiki.") \
+    "Ultramarine Budgie is switching to the SDDM display manager, if you don't switch, you won't be able to update to the next release. Click this notification to open the wiki.") \
     && [[ "$action" == "default" ]] \
     && xdg-open "https://wiki.ultramarine-linux.org") &
