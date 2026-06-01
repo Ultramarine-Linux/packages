@@ -11,7 +11,7 @@ Source2:        switch2sddm.sh
 Source3:        sddm-warning.desktop
 
 Requires:       ultramarine-budgie-filesystem bash sddm libnotify xdg-utils
-Requires:       ultramarine-release-identity-budgie >= 44
+Requires:       ultramarine-release-identity-budgie >= 43
 
 %description
 This package is for the LightDM->SDDM switch on Budgie Edition in UM44, we don't automatically migrate users, so this package exists to avoid breaking systems.
