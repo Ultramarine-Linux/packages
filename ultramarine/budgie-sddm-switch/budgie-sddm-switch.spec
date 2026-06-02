@@ -9,6 +9,7 @@ Source0:        slick-greeter-budgie.conf
 Source1:        sddm-warning.sh
 Source2:        switch2sddm.sh
 Source3:        sddm-warning.desktop
+Source4:        LICENSE
 
 Requires:       ultramarine-budgie-filesystem bash sddm libnotify xdg-utils
 Requires:       ultramarine-release-identity-budgie >= 43
@@ -26,13 +27,14 @@ install -Dm644 %{SOURCE0} %{buildroot}%{_sysconfdir}/lightdm/lightdm.conf.d/50-u
 install -Dm755 %{SOURCE1} %{buildroot}%{_libexecdir}/sddm-warning
 install -Dm755 %{SOURCE2} %{buildroot}%{_bindir}/switch2sddm
 install -Dm644 %{SOURCE3} %{buildroot}%{_sysconfdir}/xdg/autostart/sddm-warning.desktop
+install -Dm644 %{S:4} %{buildroot}%{_defaultlicensedir}/%{name}/LICENSE
 
 %files
 %{_sysconfdir}/lightdm/lightdm.conf.d/50-ultramarine-budgie-slick-greeter.conf
 %{_libexecdir}/sddm-warning
 %{_sbindir}/switch2sddm
 %{_sysconfdir}/xdg/autostart/sddm-warning.desktop
-
+%license %{_defaultlicensedir}/%{name}/LICENSE
 
 
 %changelog
