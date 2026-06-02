@@ -21,4 +21,4 @@ fi
     "Upgrade Display Manager" \
     "Ultramarine Budgie is switching to the SDDM display manager, if you don't switch, you won't be able to update to the next release. Click this notification to open the wiki.") \
     && [[ "$action" == "default" ]] \
-    && xdg-open "https://wiki.ultramarine-linux.org") &
+    && xdg-open "https://wiki.ultramarine-linux.org/en/release/budgie-sddm") &
