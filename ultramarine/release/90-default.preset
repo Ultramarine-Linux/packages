@@ -12,7 +12,7 @@ disable systemd-boot-update.service
 enable systemd-resolved.service
 
 # https://fedoraproject.org/wiki/Changes/EnableSystemdOomd
-enable systemd-oomd.service
+enable systemd-oomd.*
 
 # These presets were last validated en-masse on 2015-09-09
 # https://fedorahosted.org/fesco/ticket/1472
@@ -255,6 +255,10 @@ enable upower.service
 enable udisks2.service
 enable polkit.service
 
+# https://bugzilla.redhat.com/show_bug.cgi?id=2418550
+#enable plasma-setup.service
+# we deviate from upstream here, taidan is in use instead of plasma KISS
+
 # https://bugzilla.redhat.com/show_bug.cgi?id=1187072
 enable timedatex.service
 
@@ -454,10 +458,6 @@ enable nfs-client.target
 # https://bugzilla.redhat.com/show_bug.cgi?id=2233948
 enable cloud-config.service
 enable cloud-final.service
-# Remove the plain cloud-init.service in F44 or later
-# https://src.fedoraproject.org/rpms/fedora-release/pull-request/369
-# https://src.fedoraproject.org/rpms/cloud-init/pull-request/49
-enable cloud-init.service
 enable cloud-init-main.service
 enable cloud-init-local.service
 
@@ -467,8 +467,8 @@ enable kernel-bootcfg-boot-successful.service
 
 # Enable lvm-devices-import
 # https://bugzilla.redhat.com/show_bug.cgi?id=2301651
-enable /usr/lib/systemd/system/lvm-devices-import.path
-enable /usr/lib/systemd/system/lvm-devices-import.service
+enable lvm-devices-import.path
+enable lvm-devices-import.service
 
 # Enable fips-crypto-policy-overlay
 # https://bugzilla.redhat.com/show_bug.cgi?id=2325499
@@ -482,3 +482,6 @@ enable gpio-manager.service
 # https://bugzilla.redhat.com/show_bug.cgi?id=2397255
 enable authselect-apply-changes.service
 
+# Enable Intel Low Power Model Daemon
+# https://bugzilla.redhat.com/show_bug.cgi?id=2442391
+enable intel_lpmd.service
