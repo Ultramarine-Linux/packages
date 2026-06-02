@@ -110,15 +110,17 @@
       <packagereq type="mandatory">ultramarine-budgie-filesystem</packagereq>
       <packagereq type="default">ultramarine-backgrounds-gnome</packagereq>
       <packagereq type="default">ultramarine-backgrounds</packagereq>
-      <packagereq type="mandatory">lightdm</packagereq>
-      <packagereq type="mandatory">slick-greeter</packagereq>
+      <packagereq type="mandatory">sddm</packagereq>
+      <packagereq type="mandatory">sddm-wayland-generic</packagereq>
+      <packagereq type="mandatory">budgie-sddm-switch</packagereq>
+      <packagereq type="default">bluejay</packagereq>
       <packagereq type="default">nemo-python</packagereq>
       <packagereq type="default">nemo-preview</packagereq>
       <packagereq type="default">nemo-emblems</packagereq>
       <packagereq type="default">fluent-theme</packagereq>
       <packagereq type="default">fluent-icon-theme</packagereq>
       <packagereq type="default">ptyxis</packagereq>
-      <packagereq type="default">gnome-system-monitor</packagereq>
+      <packagereq type="default">mission-center</packagereq>
       <packagereq type="default">gnome-software</packagereq>
       <packagereq type="default">gs-plugin-ultramarine-pkgdb-collections</packagereq>
       <packagereq type="default">xdg-user-dirs-gtk</packagereq>
@@ -207,9 +209,10 @@
     <uservisible>false</uservisible>
     <packagelist>
       <!-- <packagereq type="default">gnome-extensions-app</packagereq> flatpak'd -->
-      <packagereq type="default">gnome-shell-extension-appindicator</packagereq>
       <packagereq type="default">gnome-shell-extension-windowsNavigator</packagereq>
       <packagereq type="default">gnome-shell-extension-appmenu-is-back</packagereq>
+      <packagereq type="default">gnome-shell-extension-grand-theft-focus</packagereq>
+      <packagereq type="default">gnome-shell-extension-battery_time</packagereq>
       <packagereq type="default">ultramarine-backgrounds-gnome</packagereq>
       <packagereq type="default">ultramarine-backgrounds-common</packagereq>
       <packagereq type="default">ultramarine-release-gnome</packagereq>
@@ -263,7 +266,7 @@
         <packagereq type="default">gnome-logs</packagereq>
         <!-- <packagereq type="default">gnome-maps</packagereq> flatpak'd -->
         <packagereq type="default">gnome-remote-desktop</packagereq>
-        <packagereq type="default">gnome-system-monitor</packagereq>
+        <packagereq type="default">mission-center</packagereq>
         <packagereq type="default">gnome-user-docs</packagereq>
         <packagereq type="default">gnome-user-share</packagereq>
         <!-- <packagereq type="default">gnome-weather</packagereq> flatpak'd -->
