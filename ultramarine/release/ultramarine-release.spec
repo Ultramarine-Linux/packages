@@ -52,12 +52,12 @@
 
 ## Shades ##
 
-%bcond_without shades-nothing
-%bcond_without shades-sway
-%bcond_without shades-niri
-%bcond_without shades-cinnamon
+%bcond_without shades_nothing
+%bcond_without shades_sway
+%bcond_without shades_niri
+%bcond_without shades_cinnamon
 
-%if %{with budgie} || %{with plasma} || %{with gnome} || %{with xfce} || %{with atomic_budgie} || %{with atomic_plasma} || %{with atomic_gnome} || %{with atomic_xfce} || %{with shades-nothing} || %{with shades-sway} || %{with shades-niri} || %{with shades-cinnamon}
+%if %{with budgie} || %{with plasma} || %{with gnome} || %{with xfce} || %{with atomic_budgie} || %{with atomic_plasma} || %{with atomic_gnome} || %{with atomic_xfce} || %{with shades_nothing} || %{with shades_sway} || %{with shades_niri} || %{with shades_cinnamon}
 %global with_desktop 1
 %endif
 
@@ -640,7 +640,7 @@ itself as the Ultramarine Container Base Image.
 ######################################################################
 ####### Nothing #######
 
-%if %{with nothing}
+%if %{with shades_nothing}
 
 %package nothing
 Summary:	Base package for Ultramarine nothing-specific default configurations
@@ -664,12 +664,23 @@ Recommends:	ultramarine-release-identity-nothing
 
 %description nothing
 Provides a base package for Ultramarine Nothing Shade configurations.
+
+%package identity-nothing
+Summary:		Package providing the Ultramarine Nothing Shade Identity
+# I don't think we need this?
+%dnl RemovePathPostfixes: .nothing
+Provides:		ultramarine-release-identity = %{version}-%{release}
+Conflicts:		ultramarine-release-identity
+Requires(meta):	ultramarine-release-nothing = %{version}-%{release}
+
+%description identity-nothing
+Provides the necessary files for a Ultramarine Nothing Shade installation.
 %endif
 
 ######################################################################
 ####### Sway #######
 
-%if %{with sway}
+%if %{with shades_sway}
 
 %package sway
 Summary:	Base package for Ultramarine sway-specific default configurations
@@ -692,12 +703,23 @@ Recommends: slick-greeter
 
 %description sway
 Provides a base package for Ultramarine Sway Shade configurations.
+
+%package identity-sway
+Summary:		Package providing the Ultramarine Sway Shade Identity
+RemovePathPostfixes: .sway
+Provides:		ultramarine-release-identity = %{version}-%{release}
+Conflicts:		ultramarine-release-identity
+Requires(meta):	ultramarine-release-sway = %{version}-%{release}
+
+%description identity-sway
+Provides the necessary files for a Ultramarine Sway Shade installation.
+
 %endif
 
 ######################################################################
 ####### Niri #######
 
-%if %{with niri}
+%if %{with shades_niri}
 
 %package niri
 Summary:	Base package for Ultramarine Niri-specific default configurations
@@ -719,13 +741,24 @@ Recommends:	ultramarine-release-identity-niri
 Recommends: slick-greeter
 
 %description niri
-Provides a base package for Ultramarine Niri configurations.
+Provides a base package for Ultramarine Niri Shade configurations.
+
+%package identity-niri
+Summary:		Package providing the Ultramarine Niri Shade Identity
+RemovePathPostfixes: .niri
+Provides:		ultramarine-release-identity = %{version}-%{release}
+Conflicts:		ultramarine-release-identity
+Requires(meta):	ultramarine-release-niri = %{version}-%{release}
+
+%description identity-niri
+Provides the necessary files for a Ultramarine Niri Shade installation.
+
 %endif
 
 ######################################################################
 ####### Cinnamon #######
 
-%if %{with Cinnamon}
+%if %{with shades_cinnamon}
 
 %package cinnamon
 Summary:	Base package for Ultramarine cinnamon-specific default configurations
@@ -748,6 +781,16 @@ Recommends: slick-greeter
 
 %description cinnamon
 Provides a base package for Ultramarine Cinnamon Shade configurations.
+
+%package identity-cinnamon
+Summary:		Package providing the Ultramarine Cinnamon Shade Identity
+RemovePathPostfixes: .cinnamon
+Provides:		ultramarine-release-identity = %{version}-%{release}
+Conflicts:		ultramarine-release-identity
+Requires(meta):	ultramarine-release-cinnamon = %{version}-%{release}
+
+%description identity-cinnamon
+Provides the necessary files for a Ultramarine Cinnamon Shade installation.
 %endif
 
 ######################################################################
@@ -1054,7 +1097,7 @@ EOF
 
 ## Shades ##
 
-%if %{with nothing}
+%if %{with shades_nothing}
 # Nothing
 cp -p os-release \
       %{buildroot}%{_prefix}/lib/os-release.nothing
@@ -1064,7 +1107,7 @@ sed -i -e "s|(%{release_name}%{?prerelease})|(Nothing Shade%{?prerelease})|g" %{
 sed -e "s#\$version#%{bug_version}#g" -e 's/$edition/nothing/;s/<!--.*-->//;/^$/d' %{SOURCE20} > %{buildroot}%{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.nothing
 %endif
 
-%if %{with sway}
+%if %{with shades_sway}
 # Sway
 cp -p os-release \
       %{buildroot}%{_prefix}/lib/os-release.sway
@@ -1074,7 +1117,7 @@ sed -i -e "s|(%{release_name}%{?prerelease})|(Sway Shade%{?prerelease})|g" %{bui
 sed -e "s#\$version#%{bug_version}#g" -e 's/$edition/sway/;s/<!--.*-->//;/^$/d' %{SOURCE20} > %{buildroot}%{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.sway
 %endif
 
-%if %{with niri}
+%if %{with shades_niri}
 # Niri
 cp -p os-release \
       %{buildroot}%{_prefix}/lib/os-release.niri
@@ -1084,7 +1127,7 @@ sed -i -e "s|(%{release_name}%{?prerelease})|(Niri Shade%{?prerelease})|g" %{bui
 sed -e "s#\$version#%{bug_version}#g" -e 's/$edition/niri/;s/<!--.*-->//;/^$/d' %{SOURCE20} > %{buildroot}%{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.niri
 %endif
 
-%if %{with cinnamon}
+%if %{with shades_cinnamon}
 # Cinnamon
 cp -p os-release \
       %{buildroot}%{_prefix}/lib/os-release.cinnamon
@@ -1406,28 +1449,28 @@ ln -sf firewalld-workstation.conf %{_sysconfdir}/firewalld/firewalld.conf
 
 ## Shades ##
 
-%if %{with nothing}
+%if %{with shades_nothing}
 %files nothing
 %files identity-nothing
 %{_prefix}/lib/os-release.nothing
 %attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.nothing
 %endif
 
-%if %{with sway}
+%if %{with shades_sway}
 %files sway
 %files identity-sway
 %{_prefix}/lib/os-release.sway
 %attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.sway
 %endif
 
-%if %{with niri}
+%if %{with shades_niri}
 %files niri
 %files identity-niri
 %{_prefix}/lib/os-release.niri
 %attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.niri
 %endif
 
-%if %{with cinnamon}
+%if %{with shades_cinnamon}
 %files cinnamon
 %files identity-cinnamon
 %{_prefix}/lib/os-release.cinnamon
