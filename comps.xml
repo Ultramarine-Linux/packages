@@ -109,6 +109,7 @@
       <packagereq type="default">ultramarine-backgrounds-gnome</packagereq>
       <packagereq type="default">ultramarine-backgrounds</packagereq>
       <packagereq type="mandatory">sddm</packagereq>
+      <packagereq type="mandatory">sddm-wayland-generic</packagereq>
       <packagereq type="mandatory">fluent-kde-theme</packagereq>
       <packagereq type="mandatory">budgie-sddm-switch</packagereq>
       <packagereq type="default">bluejay</packagereq>
