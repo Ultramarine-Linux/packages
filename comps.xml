@@ -111,7 +111,6 @@
       <packagereq type="default">ultramarine-backgrounds-gnome</packagereq>
       <packagereq type="default">ultramarine-backgrounds</packagereq>
       <packagereq type="mandatory">sddm</packagereq>
-      <packagereq type="mandatory">sddm-wayland-generic</packagereq>
       <packagereq type="mandatory">fluent-kde-theme</packagereq>
       <packagereq type="mandatory">budgie-sddm-switch</packagereq>
       <packagereq type="default">bluejay</packagereq>
@@ -122,10 +121,10 @@
       <packagereq type="default">fluent-icon-theme</packagereq>
       <packagereq type="default">ptyxis</packagereq>
       <packagereq type="default">mission-center</packagereq>
-      <packagereq type="default">gnome-software</packagereq>
       <packagereq type="default">gs-plugin-ultramarine-pkgdb-collections</packagereq>
       <packagereq type="default">xdg-user-dirs-gtk</packagereq>
       <packagereq type="default">xdg-desktop-portal-gtk</packagereq>
+      <packagereq type="default">plasma-discover</packagereq>
     </packagelist>
   </group>
   <group>
