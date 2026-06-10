@@ -93,6 +93,9 @@
       <packagereq type="default">ibus-mozc</packagereq>
       <packagereq type="default">mozc</packagereq>
       <packagereq type="default">ffmpegthumbnailer</packagereq>
+      <packagereq type="default">fprintd-pam</packagereq>
+      <packagereq type="default">fprintd</packagereq>
+
     </packagelist>
   </group>
   <group>
@@ -103,7 +106,6 @@
     <uservisible>false</uservisible>
     <packagelist>
       <packagereq type="mandatory">budgie-extras</packagereq>
-      <packagereq type="mandatory">budgie-desktop</packagereq>
       <packagereq type="mandatory">budgie-extras-daemon</packagereq>
       <packagereq type="mandatory">ultramarine-release-budgie</packagereq>
       <packagereq type="optional">ultramarine-release-identity-budgie</packagereq>
@@ -121,10 +123,38 @@
       <packagereq type="default">fluent-icon-theme</packagereq>
       <packagereq type="default">ptyxis</packagereq>
       <packagereq type="default">mission-center</packagereq>
-      <packagereq type="default">gs-plugin-ultramarine-pkgdb-collections</packagereq>
-      <packagereq type="default">xdg-user-dirs-gtk</packagereq>
-      <packagereq type="default">xdg-desktop-portal-gtk</packagereq>
       <packagereq type="default">plasma-discover</packagereq>
+      <!--imported from upstream, please sync every release-->
+      <packagereq type="mandatory">budgie-desktop</packagereq>
+      <packagereq type="mandatory">dconf</packagereq>
+      <packagereq type="mandatory">gnome-settings-daemon</packagereq>
+      <packagereq type="mandatory">network-manager-applet</packagereq>
+      <packagereq type="mandatory">polkit</packagereq>
+      <packagereq type="default">budgie-backgrounds</packagereq>
+      <packagereq type="default">budgie-control-center</packagereq>
+      <packagereq type="default">budgie-desktop-defaults</packagereq>
+      <packagereq type="default">budgie-desktop-view</packagereq>
+      <packagereq type="default">glib-networking</packagereq>
+      <packagereq type="default">gnome-color-manager</packagereq>
+      <packagereq type="default">gnome-keyring-pam</packagereq>
+      <packagereq type="default">gtklock</packagereq>
+      <packagereq type="default">kio-admin</packagereq>
+      <packagereq type="default">kio-extras</packagereq>
+      <packagereq type="default">kio-fuse</packagereq>
+      <packagereq type="default">ModemManager</packagereq>
+      <packagereq type="default">NetworkManager-adsl</packagereq>
+      <packagereq type="default">NetworkManager-openconnect-gnome</packagereq>
+      <packagereq type="default">NetworkManager-openvpn-gnome</packagereq>
+      <packagereq type="default">NetworkManager-ppp</packagereq>
+      <packagereq type="default">NetworkManager-ssh-gnome</packagereq>
+      <packagereq type="default">NetworkManager-vpnc-gnome</packagereq>
+      <packagereq type="default">NetworkManager-wwan</packagereq>
+      <packagereq type="default">sddm-wayland-miriway</packagereq>
+      <packagereq type="default">wdisplays</packagereq>
+      <packagereq type="default">xdg-desktop-portal</packagereq>
+      <packagereq type="default">xdg-desktop-portal-gtk</packagereq>
+      <packagereq type="default">xdg-desktop-portal-wlr</packagereq>
+      <packagereq type="default">xdg-user-dirs-gtk</packagereq>
     </packagelist>
   </group>
   <group>
@@ -156,7 +186,6 @@
       <groupid>standard</groupid>
       <groupid>firefox</groupid>
       <groupid>fonts</groupid>
-      <groupid>budgie-desktop</groupid>
       <groupid>ultramarine-budgie-apps</groupid>
       <groupid>guest-desktop-agents</groupid>
       <groupid>hardware-support</groupid>
@@ -247,7 +276,6 @@
         <packagereq type="default">avahi</packagereq>
         <packagereq type="default">baobab</packagereq>
         <!-- <packagereq type="default">decibels</packagereq> flatpak'd -->
-        <packagereq arch="aarch64,ppc64le,x86_64" type="default">fprintd-pam</packagereq>
         <packagereq type="default">glib-networking</packagereq>
         <packagereq type="default">glycin-thumbnailer</packagereq>
         <packagereq type="default">gnome-backgrounds</packagereq>
