@@ -132,7 +132,6 @@
       <packagereq type="mandatory">polkit</packagereq>
       <packagereq type="default">budgie-backgrounds</packagereq>
       <packagereq type="default">budgie-control-center</packagereq>
-      <packagereq type="default">budgie-desktop-defaults</packagereq>
       <packagereq type="default">budgie-desktop-view</packagereq>
       <packagereq type="default">glib-networking</packagereq>
       <packagereq type="default">gnome-color-manager</packagereq>
@@ -262,7 +261,6 @@
         <packagereq type="mandatory">gnome-boxes</packagereq>
         <!-- <packagereq type="mandatory">gnome-connections</packagereq> flatpak'd -->
         <packagereq type="mandatory">gnome-control-center</packagereq>
-        <packagereq type="mandatory">gnome-initial-setup</packagereq>
         <packagereq type="mandatory">gnome-session-wayland-session</packagereq>
         <packagereq type="mandatory">gnome-settings-daemon</packagereq>
         <packagereq type="mandatory">gnome-shell</packagereq>
