@@ -123,7 +123,6 @@
       <packagereq type="mandatory">budgie-desktop</packagereq>
       <packagereq type="mandatory">dconf</packagereq>
       <packagereq type="mandatory">gnome-settings-daemon</packagereq>
-      <packagereq type="mandatory">initial-setup-gui-wayland-miriway</packagereq>
       <packagereq type="mandatory">network-manager-applet</packagereq>
       <packagereq type="mandatory">polkit</packagereq>
       <packagereq type="default">budgie-backgrounds</packagereq>
