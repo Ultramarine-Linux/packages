@@ -91,6 +91,9 @@
       <packagereq type="default">ibus-mozc</packagereq>
       <packagereq type="default">mozc</packagereq>
       <packagereq type="default">ffmpegthumbnailer</packagereq>
+      <packagereq type="default">fprintd-pam</packagereq>
+      <packagereq type="default">fprintd</packagereq>
+
     </packagelist>
   </group>
   <group>
@@ -129,7 +132,6 @@
       <packagereq type="default">budgie-control-center</packagereq>
       <packagereq type="default">budgie-desktop-defaults</packagereq>
       <packagereq type="default">budgie-desktop-view</packagereq>
-      <packagereq arch="aarch64,ppc64le,x86_64" type="default">fprintd-pam</packagereq>
       <packagereq type="default">glib-networking</packagereq>
       <packagereq type="default">gnome-color-manager</packagereq>
       <packagereq type="default">gnome-keyring-pam</packagereq>
@@ -272,7 +274,6 @@
         <packagereq type="default">avahi</packagereq>
         <packagereq type="default">baobab</packagereq>
         <!-- <packagereq type="default">decibels</packagereq> flatpak'd -->
-        <packagereq arch="aarch64,ppc64le,x86_64" type="default">fprintd-pam</packagereq>
         <packagereq type="default">glib-networking</packagereq>
         <packagereq type="default">glycin-thumbnailer</packagereq>
         <packagereq type="default">gnome-backgrounds</packagereq>
