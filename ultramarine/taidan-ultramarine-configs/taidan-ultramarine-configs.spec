@@ -30,7 +30,7 @@ Taidan tweaks: %1.
 %git_clone https://github.com/Ultramarine-Linux/taidan main
 
 %install
-install -Dpm755 detect-internet -t %buildroot%_sysconfdir/com.fyralabs.Taidan
+install -Dpm755 %{S:0} -t %buildroot%_sysconfdir/com.fyralabs.Taidan
 mkdir -p %buildroot%_datadir/taidan
 cp -r data/tweaks/ %buildroot%_datadir/taidan/
 
