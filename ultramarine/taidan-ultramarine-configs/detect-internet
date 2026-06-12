@@ -1,0 +1,31 @@
+#!/usr/bin/bash
+. /etc/os-release
+
+release_pkgs=$(rpm -qa 'ultramarine-release-*')
+
+has_pkg() {
+    if grep -q -- "$1" <<< "$release_pkgs"; then
+        echo 1
+    else
+        echo 0
+    fi
+}
+
+is_chromebook=$(has_pkg ultramarine-release-chromebook)
+is_surface=$(has_pkg ultramarine-release-surface)
+is_rpi=$(has_pkg ultramarine-release-raspberry_pi)
+
+curl -X POST https://plausible.fyralabs.com/api/event --json @- <<EOF
+{
+    "name": "pageview",
+    "url": "app://internet/v0.2/$VERSION_ID",
+    "domain": "taidan",
+    "props": {
+        "arch": "$(arch)",
+        "edition": "$VARIANT_ID",
+        "chromebook": "$is_chromebook",
+        "surface": "$is_surface",
+        "rpi": "$is_rpi"
+    }
+}
+EOF || ping -c 1 -W 20 1.1.1.1 > /dev/null
