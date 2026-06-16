@@ -6,9 +6,6 @@ License:        (MIT AND GPL-3.0-or-later)
 Provides:       taidan-configs
 Provides:       initial-setup initial-setup-gui
 
-Obsoletes:      initial-setup-gui <= 0.3.101
-Obsoletes:      initial-setup <= 0.3.101
-
 BuildArch:      noarch
 Source0:        detect-internet
 
