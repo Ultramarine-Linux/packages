@@ -1,9 +1,13 @@
 Name:           taidan-ultramarine-configs
 Version:        44
-Release:        1%?dist
+Release:        2%?dist
 Summary:        Taidan configuration for Ultramarine
 License:        (MIT AND GPL-3.0-or-later)
 Provides:       taidan-configs
+Provides:       initial-setup initial-setup-gui
+
+Obsoletes:      initial-setup-gui <= 0.3.101
+Obsoletes:      initial-setup <= 0.3.101
 
 BuildArch:      noarch
 Source0:        detect-internet
