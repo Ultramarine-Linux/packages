@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE comps PUBLIC "-//Red Hat, Inc.//DTD Comps info//EN" "comps.dtd">
 <comps>
   <group>
@@ -75,8 +75,7 @@
   <group>
     <id>ultramarine-desktop-product-common</id>
     <name>Ultramarine Desktop common packages</name>
-    <description
-        >Packages shared between all Ultramarine desktop products</description>
+    <description>Packages shared between all Ultramarine desktop products</description>
     <default>false</default>
     <uservisible>false</uservisible>
     <packagelist>
@@ -102,17 +101,14 @@
   <group>
     <id>ultramarine-budgie-product</id>
     <name>Ultramarine Budgie product core</name>
-    <description
-        >Packages mandatory for the Ultramarine Budgie product.</description>
+    <description>Packages mandatory for the Ultramarine Budgie product.</description>
     <default>false</default>
     <uservisible>false</uservisible>
     <packagelist>
       <packagereq type="mandatory">budgie-extras</packagereq>
       <packagereq type="mandatory">budgie-extras-daemon</packagereq>
       <packagereq type="mandatory">ultramarine-release-budgie</packagereq>
-      <packagereq
-                type="optional"
-            >ultramarine-release-identity-budgie</packagereq>
+      <packagereq type="optional">ultramarine-release-identity-budgie</packagereq>
       <packagereq type="mandatory">ultramarine-budgie-filesystem</packagereq>
       <packagereq type="default">ultramarine-backgrounds-gnome</packagereq>
       <packagereq type="default">ultramarine-backgrounds</packagereq>
@@ -181,8 +177,7 @@
   <environment>
     <id>ultramarine-budgie-product-environment</id>
     <name>Ultramarine Budgie</name>
-    <description
-        >Ultramarine Budgie is the Budgie Ultramarine experience.</description>
+    <description>Ultramarine Budgie is the Budgie Ultramarine experience.</description>
     <grouplist>
       <groupid>base-x</groupid>
       <groupid>container-management</groupid>
@@ -209,8 +204,7 @@
   <environment>
     <id>ultramarine-flagship-product-environment</id>
     <name>Ultramarine Budgie (Legacy)</name>
-    <description
-        >Ultramarine Budgie is the Budgie Ultramarine experience. (This is a legacy group kept for backwards compatibility.)</description>
+    <description>Ultramarine Budgie is the Budgie Ultramarine experience. (This is a legacy group kept for backwards compatibility.)</description>
     <grouplist>
       <groupid>base-x</groupid>
       <groupid>container-management</groupid>
@@ -238,39 +232,27 @@
   <group>
     <id>ultramarine-gnome-product</id>
     <name>Ultramarine GNOME product core</name>
-    <description
-        >Packages mandatory for the Ultramarine GNOME product.</description>
+    <description>Packages mandatory for the Ultramarine GNOME product.</description>
     <default>false</default>
     <uservisible>false</uservisible>
     <packagelist>
       <!-- <packagereq type="default">gnome-extensions-app</packagereq> flatpak'd -->
-      <packagereq
-                type="default"
-            >gnome-shell-extension-windowsNavigator</packagereq>
-      <packagereq
-                type="default"
-            >gnome-shell-extension-appmenu-is-back</packagereq>
-      <packagereq
-                type="default"
-            >gnome-shell-extension-grand-theft-focus</packagereq>
+      <packagereq type="default">gnome-shell-extension-windowsNavigator</packagereq>
+      <packagereq type="default">gnome-shell-extension-appmenu-is-back</packagereq>
+      <packagereq type="default">gnome-shell-extension-grand-theft-focus</packagereq>
       <packagereq type="default">gnome-shell-extension-battery_time</packagereq>
       <packagereq type="default">ultramarine-backgrounds-gnome</packagereq>
       <packagereq type="default">ultramarine-backgrounds-common</packagereq>
       <packagereq type="default">ultramarine-release-gnome</packagereq>
-      <packagereq
-                type="optional"
-            >ultramarine-release-identity-gnome</packagereq>
-      <packagereq
-                type="default"
-            >gs-plugin-ultramarine-pkgdb-collections</packagereq>
+      <packagereq type="optional">ultramarine-release-identity-gnome</packagereq>
+      <packagereq type="default">gs-plugin-ultramarine-pkgdb-collections</packagereq>
     </packagelist>
   </group>
   <group>
     <!-- NOTE: You will want to sync this with the upstream gnome desktop group every major release -->
     <id>ultramarine-gnome-desktop</id>
     <name>Ultramarine GNOME desktop</name>
-    <description
-        >The group for packages comprising the GNOME desktop, based on the upstream set.</description>
+    <description>The group for packages comprising the GNOME desktop, based on the upstream set.</description>
     <default>false</default>
     <uservisible>false</uservisible>
     <packagelist>
@@ -314,22 +296,13 @@
         <packagereq type="default">gnome-user-docs</packagereq>
         <packagereq type="default">gnome-user-share</packagereq>
         <!-- <packagereq type="default">gnome-weather</packagereq> flatpak'd -->
-        <packagereq
-                arch="aarch64,ppc64le,x86_64"
-                type="default"
-            >gvfs-afc</packagereq>
+        <packagereq arch="aarch64,ppc64le,x86_64" type="default">gvfs-afc</packagereq>
         <packagereq type="default">gvfs-afp</packagereq>
         <packagereq type="default">gvfs-archive</packagereq>
         <packagereq type="default">gvfs-fuse</packagereq>
         <packagereq type="default">gvfs-goa</packagereq>
-        <packagereq
-                arch="aarch64,ppc64le,x86_64"
-                type="default"
-            >gvfs-gphoto2</packagereq>
-        <packagereq
-                arch="aarch64,ppc64le,x86_64"
-                type="default"
-            >gvfs-mtp</packagereq>
+        <packagereq arch="aarch64,ppc64le,x86_64" type="default">gvfs-gphoto2</packagereq>
+        <packagereq arch="aarch64,ppc64le,x86_64" type="default">gvfs-mtp</packagereq>
         <packagereq type="default">gvfs-smb</packagereq>
         <packagereq type="default">librsvg2</packagereq>
         <packagereq type="default">libsane-hpaio</packagereq>
@@ -369,8 +342,7 @@
   <environment>
     <id>ultramarine-gnome-product-environment</id>
     <name>Ultramarine GNOME</name>
-    <description
-        >Ultramarine GNOME is an Ultramarine experience powered by the GNOME desktop environment.</description>
+    <description>Ultramarine GNOME is an Ultramarine experience powered by the GNOME desktop environment.</description>
     <grouplist>
       <groupid>base-graphical</groupid>
       <groupid>container-management</groupid>
@@ -398,19 +370,14 @@
     <group>
     <id>ultramarine-plasma-product</id>
     <name>Ultramarine Plasma product core</name>
-    <description
-        >Packages mandatory for the Ultramarine Plasma product.</description>
+    <description>Packages mandatory for the Ultramarine Plasma product.</description>
     <default>false</default>
     <uservisible>false</uservisible>
     <packagelist>
-      <packagereq
-                type="default"
-            >kwin-system76-scheduler-integration</packagereq>
+      <packagereq type="default">kwin-system76-scheduler-integration</packagereq>
       <packagereq type="default">ultramarine-appstream-metadata</packagereq>
       <packagereq type="default">ultramarine-release-plasma</packagereq>
-      <packagereq
-                type="optional"
-            >ultramarine-release-identity-plasma</packagereq>
+      <packagereq type="optional">ultramarine-release-identity-plasma</packagereq>
       <packagereq type="default">fcitx5-mozc</packagereq>
       <packagereq type="default">fcitx5-gtk</packagereq>
       <packagereq type="default">fcitx5-qt</packagereq>
@@ -431,8 +398,7 @@
   <environment>
     <id>ultramarine-plasma-product-environment</id>
     <name>Ultramarine plasma</name>
-    <description
-        >Ultramarine Plasma is an Ultramarine experience powered by the Plasma desktop environment.</description>
+    <description>Ultramarine Plasma is an Ultramarine experience powered by the Plasma desktop environment.</description>
     <grouplist>
       <groupid>base-graphical</groupid>
       <groupid>container-management</groupid>
@@ -462,8 +428,7 @@
     <!-- NOTE: keep this in sync with ultramarine-kde-product-environment for backwards compat -->
     <id>ultramarine-kde-product-environment</id>
     <name>Ultramarine plasma (legacy)</name>
-    <description
-        >Ultramarine Plasma is an Ultramarine experience powered by the Plasma desktop environment. (This is a legacy group kept for backwards compatibility.)</description>
+    <description>Ultramarine Plasma is an Ultramarine experience powered by the Plasma desktop environment. (This is a legacy group kept for backwards compatibility.)</description>
     <grouplist>
       <groupid>base-graphical</groupid>
       <groupid>container-management</groupid>
@@ -492,8 +457,7 @@
   <group>
     <id>ultramarine-xfce-product</id>
     <name>Ultramarine Xfce product core</name>
-    <description
-        >Packages mandatory for the Ultramarine Xfce product.</description>
+    <description>Packages mandatory for the Ultramarine Xfce product.</description>
     <default>false</default>
     <uservisible>false</uservisible>
     <packagelist>
@@ -531,8 +495,7 @@
   <environment>
     <id>ultramarine-xfce-product-environment</id>
     <name>Ultramarine Xfce</name>
-    <description
-        >Ultramarine Xfce is the Ultramarine experience powered by the Xfce desktop.</description>
+    <description>Ultramarine Xfce is the Ultramarine experience powered by the Xfce desktop.</description>
     <grouplist>
       <groupid>base-x</groupid>
       <groupid>container-management</groupid>
