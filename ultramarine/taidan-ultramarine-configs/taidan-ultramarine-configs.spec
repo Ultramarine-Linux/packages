@@ -1,6 +1,6 @@
 Name:           taidan-ultramarine-configs
 Version:        44
-Release:        2%?dist
+Release:        3%?dist
 Summary:        Taidan configuration for Ultramarine
 License:        (MIT AND GPL-3.0-or-later)
 Provides:       taidan-configs
