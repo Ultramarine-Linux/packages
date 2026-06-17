@@ -5,6 +5,7 @@ Summary:        Taidan configuration for Ultramarine
 License:        (MIT AND GPL-3.0-or-later)
 Provides:       taidan-configs
 Provides:       initial-setup initial-setup-gui
+Conflicts:      taidan-default-configs
 
 BuildArch:      noarch
 Source0:        detect-internet
