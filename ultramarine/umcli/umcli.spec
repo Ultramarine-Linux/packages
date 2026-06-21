@@ -6,7 +6,7 @@
 
 Name:           umcli
 Version:        0.4.5
-Release:        1%dist
+Release:        2%dist
 Summary:        A CLI tool for managing an Ultramarine Linux system
 
 License:        GPL-3.0-or-later
