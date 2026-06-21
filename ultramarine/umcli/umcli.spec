@@ -6,7 +6,7 @@
 
 Name:           umcli
 Version:        0.4.5
-Release:        2%dist
+Release:        3%{?dist}
 Summary:        A CLI tool for managing an Ultramarine Linux system
 
 License:        GPL-3.0-or-later
@@ -18,6 +18,7 @@ BuildRequires:  pkgconfig(rpm)
 BuildRequires:  pkgconfig(flatpak)
 Requires:	ansible-core
 Requires:	ansible-collection-ansible-posix
+Requires:	ansible-collection-community-general
 
 Obsoletes: golang-github-ultramarine-linux-um <= 0.4.5
 
