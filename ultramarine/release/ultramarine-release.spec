@@ -53,7 +53,7 @@
 Summary:	Ultramarine Linux release files
 Name:		ultramarine-release
 Version:	%{dist_version}
-Release:	2%{?dist}
+Release:	3%{?dist}
 License:	MIT
 Source0:	LICENSE
 URL:        https://ultramarine-linux.org
@@ -653,6 +653,8 @@ Summary:        Common configuration package for desktop variants
 
 Recommends: system76-scheduler
 Recommends: ultramarine-phony-bookmarks
+Requires(post): /usr/bin/ln
+Requires(post): firewalld
 
 %description desktop
 Common configuration package for desktop variants
