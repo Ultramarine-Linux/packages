@@ -117,7 +117,7 @@
       <packagereq type="default">ultramarine-backgrounds-gnome</packagereq>
       <packagereq type="default">ultramarine-backgrounds</packagereq>
       <packagereq type="mandatory">sddm</packagereq>
-      <packagereq type="mandatory">sddm-breeze</packagereq>
+      <packagereq type="mandatory">materia-kde-sddm</packagereq>
       <packagereq type="mandatory">fluent-kde-theme</packagereq>
       <packagereq type="mandatory">budgie-sddm-switch</packagereq>
       <packagereq type="default">bluejay</packagereq>
