@@ -53,7 +53,7 @@
 Summary:	Ultramarine Linux release files
 Name:		ultramarine-release
 Version:	%{dist_version}
-Release:	3%{?dist}
+Release:	4%{?dist}
 License:	MIT
 Source0:	LICENSE
 URL:        https://ultramarine-linux.org
@@ -123,6 +123,8 @@ Source73:   polycrystal-ultramarine-xfce.json
 Source80:   https://github.com/Ultramarine-Linux/anywhere/archive/%{anywhere_conf_commit}.tar.gz
 
 Source90:   ultramarine-installonly-2.conf
+
+Source100:  budgie-sddm.conf
 
 BuildRequires:    systemd-rpm-macros
 
@@ -781,6 +783,7 @@ sed -i -e "s|(%{release_name}%{?prerelease})|(Budgie Edition%{?prerelease})|g" %
 sed -e "s#\$version#%{bug_version}#g" -e 's/$edition/Budgie/;s/<!--.*-->//;/^$/d' %{SOURCE20} > %{buildroot}%{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.budgie
 
 install -Dm0644 %{SOURCE60} %{buildroot}%{_sysconfdir}/dnf/protected.d/ultramarine-budgie.conf
+install -Dm0644 %{SOURCE100} %{buildroot}%{_libdir}/sddm/sddm.conf.d/budgie-sddm.conf
 %endif
 
 %if %{with atomic_budgie}
@@ -1129,6 +1132,7 @@ ln -sf firewalld-workstation.conf %{_sysconfdir}/firewalld/firewalld.conf
 %{_sysconfdir}/dnf/protected.d/ultramarine-budgie.conf
 %config %{_sysconfdir}/polycrystal/entries/ultramarine-budgie.json
 %{_sysconfdir}/lightdm/lightdm.conf.d/60-ultramarine-presets.conf
+%{_libdir}/sddm/sddm.conf.d/budgie-sddm.conf
 %endif
 
 %if %{with atomic_budgie}
