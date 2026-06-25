@@ -783,7 +783,7 @@ sed -i -e "s|(%{release_name}%{?prerelease})|(Budgie Edition%{?prerelease})|g" %
 sed -e "s#\$version#%{bug_version}#g" -e 's/$edition/Budgie/;s/<!--.*-->//;/^$/d' %{SOURCE20} > %{buildroot}%{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.budgie
 
 install -Dm0644 %{SOURCE60} %{buildroot}%{_sysconfdir}/dnf/protected.d/ultramarine-budgie.conf
-install -Dm0644 %{SOURCE100} %{buildroot}%{libdir}/sddm/sddm.conf.d/budgie-sddm.conf
+install -Dm0644 %{SOURCE100} %{buildroot}%{_libdir}/sddm/sddm.conf.d/budgie-sddm.conf
 %endif
 
 %if %{with atomic_budgie}
