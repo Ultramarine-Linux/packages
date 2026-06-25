@@ -153,6 +153,14 @@ compat_link "$DEFAULT_DARK_WALL" images/default-dark-16_10.png
         -alpha off default-16_9.jxl
     magick default-16_10.png \
         -alpha off default-16_10.jxl
+    magick default-dark.png \
+        -alpha off default-dark.jxl
+    magick default-dark-5_4.png \
+        -alpha off default-dark-5_4.jxl
+    magick default-dark-16_9.png \
+        -alpha off default-dark-16_9.jxl
+    magick default-dark-16_10.png \
+        -alpha off default-dark-16_10.jxl
 )
 
 # Hopefully no XML required for the JXL variant
