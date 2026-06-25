@@ -1132,7 +1132,7 @@ ln -sf firewalld-workstation.conf %{_sysconfdir}/firewalld/firewalld.conf
 %{_sysconfdir}/dnf/protected.d/ultramarine-budgie.conf
 %config %{_sysconfdir}/polycrystal/entries/ultramarine-budgie.json
 %{_sysconfdir}/lightdm/lightdm.conf.d/60-ultramarine-presets.conf
-%{_libdir}/sddm/sddm.conf.d/ultramarine-budgie.conf
+%{_libdir}/sddm/sddm.conf.d/budgie-sddm.conf
 %endif
 
 %if %{with atomic_budgie}
