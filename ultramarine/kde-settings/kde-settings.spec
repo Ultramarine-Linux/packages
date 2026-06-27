@@ -156,7 +156,7 @@ cp -p %{SOURCE1} .
 # legacy default wallpaper symlink
 %if 0%{?version_maj:1}
 mkdir -p %{buildroot}%{_datadir}/wallpapers
-ln -s Default %{buildroot}%{_datadir}/wallpapers/Fedora
+ln -s F%{version_maj} %{buildroot}%{_datadir}/wallpapers/Fedora
 %endif
 
 %if 0%{?flatpak} == 0
