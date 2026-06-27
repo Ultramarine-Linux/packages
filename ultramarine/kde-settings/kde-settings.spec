@@ -180,6 +180,9 @@ sed -e "s/Noto Sans Mono/Noto Mono/g" \
 # for ssh-agent.serivce, set SSH_AUTH_SOCK
 install -p -m644 -D %{SOURCE10} %{buildroot}%{_sysconfdir}/xdg/plasma-workspace/env/ssh-agent.sh
 
+# copy theme from SOURCE2
+cp -a ultramarine-kde-theme-um%{version} %{buildroot}%{_datadir}/plasma/look-and-feel/org.ultramarine-linux.ultramarine.desktop
+
 %if ! %{with initialsetup_gui_backend}
 rm -rv %{buildroot}%{_libexecdir}/initial-setup
 %endif
