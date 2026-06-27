@@ -26,11 +26,11 @@ BuildRequires: xdg-user-dirs
 BuildRequires: systemd-rpm-macros
 Source10: ssh-agent.sh
 
-%if ! 0%{?bootstrap}
+%dnl %if ! 0%{?bootstrap}
 # for f33+ , consider merging version_maj with version, ie, use Version: 33 --rex
-%global  version_maj %(echo %{version} | cut -d. -f1)
-BuildRequires: ultramarine-backgrounds-kde
-%endif
+%dnl %global  version_maj %(echo %{version} | cut -d. -f1)
+%dnl BuildRequires: ultramarine-backgrounds-kde
+%dnl %endif
 
 # when kdebugrc was moved here
 Conflicts: kf5-kdelibs4support < 5.7.0-3
