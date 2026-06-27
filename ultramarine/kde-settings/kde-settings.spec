@@ -117,6 +117,11 @@ Summary: Configuration files for Qt
 %description -n qt-settings
 %{summary}.
 
+%package -n ultramarine-plasma-theme
+Summary:  Plasma theme for Ultramarine
+%description -n ultramarine-plasma-theme
+%{summary}.
+
 %if %{with initialsetup_gui_backend}
 %package -n initial-setup-gui-wayland-plasma
 Summary: Run initial-setup GUI on Plasma Wayland
@@ -255,6 +260,9 @@ test -f %{_datadir}/wallpapers/F%{version_maj} || ls -l %{_datadir}/wallpapers
 
 %files pulseaudio
 # nothing, this is a metapackage
+
+%files -n ultramarine-plasma-theme
+%{_datadir}/plasma/look-and-feel/org.ultramarine-linux.ultramarine.desktop/
 
 %files -n qt-settings
 %license COPYING
