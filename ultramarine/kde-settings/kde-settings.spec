@@ -86,7 +86,6 @@ Requires: breeze-cursor-theme
 %package plasmalogin
 Summary: Configuration files for Plasma Login Manager
 Requires: plasma-login-manager >= 0.21.0~git1.20260112
-Requires: ultramarine-backgrounds-kde
 Supplements: (%{name} and plasma-login-manager)
 %description plasmalogin
 %{summary}.
