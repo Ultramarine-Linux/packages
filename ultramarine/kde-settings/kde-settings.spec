@@ -98,7 +98,7 @@ Supplements: (%{name} and plasma-login-manager)
 Summary: Enable pulseaudio support in KDE
 # nothing here to license
 License: LicenseRef-Not-Copyrightable
-Requires: %{name} = %{version}-%{release}
+Requires: %{name} = %{epoch}:%{version}-%{release}
 %if 0%{?rhel} && 0%{?rhel} < 9
 Requires: pulseaudio
 %else
