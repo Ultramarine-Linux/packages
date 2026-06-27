@@ -11,7 +11,7 @@ Version: %{?fedora}
 Release: 2%{?dist}
 
 License: MIT
-URL:     https://pagure.io/fedora-kde/kde-settings
+URL:     https://github.com/Ultramarine-Linux/kde-settings
 Source0: https://github.com/Ultramarine-Linux/kde-settings/archive/refs/heads/um%{version}.tar.gz#/kde-settings.tar.gz
 Source1: COPYING
 Source2: https://github.com/Ultramarine-Linux/ultramarine-kde-theme/archive/refs/heads/um%{version}.zip#/ultramarine-kde-theme.zip
