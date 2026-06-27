@@ -3,7 +3,7 @@
 Name: ultramarine-backgrounds
 # This version tracks the upstream version tag. Do not bump this when branching a new release unless the upstream release matches.
 Version: 44
-Release: 1%{?dist}
+Release: 2%{?dist}
 BuildArch: noarch
 # details for the artworks' licenses can be seen in the COPYING file
 License: CC-BY-SA-4.0 AND CC0-1.0
@@ -153,6 +153,14 @@ compat_link "$DEFAULT_DARK_WALL" images/default-dark-16_10.png
         -alpha off default-16_9.jxl
     magick default-16_10.png \
         -alpha off default-16_10.jxl
+    magick default-dark.png \
+        -alpha off default-dark.jxl
+    magick default-dark-5_4.png \
+        -alpha off default-dark-5_4.jxl
+    magick default-dark-16_9.png \
+        -alpha off default-dark-16_9.jxl
+    magick default-dark-16_10.png \
+        -alpha off default-dark-16_10.jxl
 )
 
 # Hopefully no XML required for the JXL variant
