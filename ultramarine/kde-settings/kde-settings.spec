@@ -58,7 +58,7 @@ Requires: shared-mime-info
 
 %package plasma
 Summary: Configuration files for plasma
-Requires: %{name} = %{version}-%{release}
+Requires: %{name} = %{epoch}:%{version}-%{release}
 Requires: ultramarine-plasma-theme
 %if 0%{?version_maj:1}
 Requires: ultramarine-backgrounds-kde
