@@ -5,8 +5,8 @@
 %global godocs          README.md
 
 Name:           umcli
-Version:        0.4.5
-Release:        1%dist
+Version:        0.5.1
+Release:        1%{?dist}
 Summary:        A CLI tool for managing an Ultramarine Linux system
 
 License:        GPL-3.0-or-later
@@ -18,6 +18,7 @@ BuildRequires:  pkgconfig(rpm)
 BuildRequires:  pkgconfig(flatpak)
 Requires:	ansible-core
 Requires:	ansible-collection-ansible-posix
+Requires:	ansible-collection-community-general
 
 Obsoletes: golang-github-ultramarine-linux-um <= 0.4.5
 
@@ -45,6 +46,7 @@ cp -av data/. %{buildroot}%{_datadir}/um/.
 
 %files
 %doc README.md
+%license LICENSE
 %{_bindir}/um
 %{_datadir}/um/
 

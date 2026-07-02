@@ -1,13 +1,17 @@
+%if 0%{?fedora} >= 40 || 0%{?rhel} >= 10
 %bcond initialsetup_gui_backend 1
+%else
+%bcond initialsetup_gui_backend 0
+%endif
 
 Summary: Config files for KDE
 Name:    kde-settings
 Epoch:   1
 Version: %{?fedora}
-Release: 1%{?dist}
+Release: 2%{?dist}
 
 License: MIT
-Url:     https://github.com/Ultramarine-Linux/kde-settings
+URL:     https://github.com/Ultramarine-Linux/kde-settings
 Source0: https://github.com/Ultramarine-Linux/kde-settings/archive/refs/heads/um%{version}.tar.gz#/kde-settings.tar.gz
 Source1: COPYING
 Source2: https://github.com/Ultramarine-Linux/ultramarine-kde-theme/archive/refs/heads/um%{version}.zip#/ultramarine-kde-theme.zip
@@ -22,11 +26,11 @@ BuildRequires: xdg-user-dirs
 BuildRequires: systemd-rpm-macros
 Source10: ssh-agent.sh
 
-%if ! 0%{?bootstrap}
+%dnl %if ! 0%{?bootstrap}
 # for f33+ , consider merging version_maj with version, ie, use Version: 33 --rex
-%global  version_maj %(echo %{version} | cut -d. -f1)
-BuildRequires: ultramarine-backgrounds-kde
-%endif
+%dnl %global  version_maj %(echo %{version} | cut -d. -f1)
+%dnl BuildRequires: ultramarine-backgrounds-kde
+%dnl %endif
 
 # when kdebugrc was moved here
 Conflicts: kf5-kdelibs4support < 5.7.0-3
@@ -35,11 +39,17 @@ Obsoletes: kde-settings-ksplash < 24-2
 Obsoletes: kde-settings-minimal < 24-3
 
 Requires: kde-filesystem
-# /etc/pam.d/ ownership
-Requires: pam
-Requires: xdg-user-dirs
+%if 0%{?el10}
+Requires: xdg-user-dirs >= 0.18-7
+%else
+Requires: xdg-user-dirs >= 0.18-9
+%endif
 ## add breeze deps here? probably, need more too -- rex
 Requires: breeze-icon-theme
+# Baseline mimeapps associations, e.g. LibreOffice
+Requires: shared-mime-info
+# /etc/pam.d/ ownership
+Requires: pam
 # Baseline mimeapps associations, e.g. LibreOffice
 Requires: shared-mime-info
 
@@ -73,13 +83,20 @@ Requires: breeze-cursor-theme
 %description sddm
 %{summary}.
 
+%package plasmalogin
+Summary: Configuration files for Plasma Login Manager
+Requires: plasma-login-manager >= 0.21.0~git1.20260112
+Supplements: (%{name} and plasma-login-manager)
+%description plasmalogin
+%{summary}.
+
 
 # FIXME/TODO: can probably consider dropping this subpkg now that we
 # have good comps and soft dependencies support -- rex
 %package pulseaudio
 Summary: Enable pulseaudio support in KDE
 # nothing here to license
-License: Public Domain
+License: LicenseRef-Not-Copyrightable
 Requires: %{name} = %{epoch}:%{version}-%{release}
 %if 0%{?rhel} && 0%{?rhel} < 9
 Requires: pulseaudio
@@ -99,7 +116,6 @@ Summary: Configuration files for Qt
 %description -n qt-settings
 %{summary}.
 
-
 %package -n ultramarine-plasma-theme
 Summary:  Plasma theme for Ultramarine
 %description -n ultramarine-plasma-theme
@@ -111,7 +127,7 @@ Summary: Run initial-setup GUI on Plasma Wayland
 Provides: firstboot(gui-backend)
 Conflicts: firstboot(gui-backend)
 Requires: kwin-wayland
-Requires: maliit-keyboard
+Requires: plasma-keyboard
 Requires: xorg-x11-server-Xwayland
 Requires: initial-setup-gui >= 0.3.99
 Supplements: ((initial-setup or initial-setup-gui) and kwin-wayland)
@@ -124,10 +140,6 @@ Enhances: (initial-setup-gui and kwin-wayland)
 
 %prep
 %autosetup -p1 -n %{name}-um%{version} -a 2
-
-# omit crud
-rm -fv Makefile
-
 
 %build
 # Intentionally left blank.  Nothing to see here.
@@ -145,7 +157,7 @@ fi
 
 cp -p %{SOURCE1} .
 
-# default wallpaper symlink
+# legacy default wallpaper symlink
 %if 0%{?version_maj:1}
 mkdir -p %{buildroot}%{_datadir}/wallpapers
 ln -s F%{version_maj} %{buildroot}%{_datadir}/wallpapers/Fedora
@@ -180,12 +192,13 @@ rm -rv %{buildroot}%{_libexecdir}/initial-setup
 %endif
 
 ## unpackaged files
-
 rm -rfv %{buildroot}/.package_note*
 rm -rf %{buildroot}/ultramarine-kde-theme-*
 rm -rf %{buildroot}/README.md
 
 %check
+test -e %{_datadir}/wallpapers/Default || ls -l %{_datadir}/wallpapers
+
 %if 0%{?version_maj:1} && 1%{?flatpak} == 0
 test -f %{_datadir}/wallpapers/F%{version_maj} || ls -l %{_datadir}/wallpapers
 %endif
@@ -208,6 +221,7 @@ test -f %{_datadir}/wallpapers/F%{version_maj} || ls -l %{_datadir}/wallpapers
 %endif
 %config(noreplace) %{_sysconfdir}/xdg/kcm-about-distrorc
 %config(noreplace) %{_sysconfdir}/xdg/kdebugrc
+%dir %{_sysconfdir}/pam.d
 %config(noreplace) %{_sysconfdir}/pam.d/kcheckpass
 %config(noreplace) %{_sysconfdir}/pam.d/kscreensaver
 # drop noreplace, so we can be sure to get the new kiosk bits
@@ -225,9 +239,10 @@ test -f %{_datadir}/wallpapers/F%{version_maj} || ls -l %{_datadir}/wallpapers
 %{_sysconfdir}/xdg/plasma-workspace/env/env.sh
 %{_sysconfdir}/xdg/plasma-workspace/env/gtk2_rc_files.sh
 %{_sysconfdir}/xdg/plasma-workspace/env/gtk3_scrolling.sh
-%{_datadir}/plasma/look-and-feel/org.fedoraproject.fedora.desktop/contents/plasmoidsetupscripts/org.kde.plasma.kicker.js
-%{_datadir}/plasma/look-and-feel/org.fedoraproject.fedora.desktop/contents/plasmoidsetupscripts/org.kde.plasma.kickerdash.js
-%{_datadir}/plasma/look-and-feel/org.fedoraproject.fedora.desktop/contents/plasmoidsetupscripts/org.kde.plasma.kickoff.js
+%dir %{_datadir}/plasma/look-and-feel/org.fedoraproject.fedora*.desktop/contents/plasmoidsetupscripts/
+%{_datadir}/plasma/look-and-feel/org.fedoraproject.fedora*.desktop/contents/plasmoidsetupscripts/org.kde.plasma.kicker.js
+%{_datadir}/plasma/look-and-feel/org.fedoraproject.fedora*.desktop/contents/plasmoidsetupscripts/org.kde.plasma.kickerdash.js
+%{_datadir}/plasma/look-and-feel/org.fedoraproject.fedora*.desktop/contents/plasmoidsetupscripts/org.kde.plasma.kickoff.js
 %if 0%{?version_maj:1}
 %{_datadir}/wallpapers/Fedora
 %endif
@@ -236,6 +251,10 @@ test -f %{_datadir}/wallpapers/F%{version_maj} || ls -l %{_datadir}/wallpapers
 
 %files sddm
 %{_prefix}/lib/sddm/sddm.conf.d/kde_settings.conf
+
+
+%files plasmalogin
+%{_prefix}/lib/plasmalogin/defaults.conf
 
 
 %files pulseaudio
@@ -255,6 +274,66 @@ test -f %{_datadir}/wallpapers/F%{version_maj} || ls -l %{_datadir}/wallpapers
 
 
 %changelog
+* Fri Feb 20 2026 Neal Gompa <ngompa@fedoraproject.org> - 43.101-5
+- Handle correct xdg-user-dirs versioned dependency for EL10
+
+* Wed Feb 18 2026 Neal Gompa <ngompa@fedoraproject.org> - 43.101-4
+- Add backgrounds dep on plasmalogin subpackage
+
+* Sun Feb 08 2026 Neal Gompa <ngompa@fedoraproject.org> - 43.101-3
+- Correctly require plasma-keyboard
+
+* Fri Jan 16 2026 Fedora Release Engineering <releng@fedoraproject.org> - 43.101-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_44_Mass_Rebuild
+
+* Mon Jan 12 2026 Neal Gompa <ngompa@fedoraproject.org> - 43.101-1
+- plasmalogin, kscreenlocker: Use the proper wallpaper theme and PLM config file path
+
+* Sun Jan 11 2026 Neal Gompa <ngompa@fedoraproject.org> - 43.100-1
+- Set wallpaper configuration for plasmalogin and kscreenlocker properly
+
+* Fri Jan 09 2026 Yaakov Selkowitz <yselkowi@redhat.com> - 43.99-2
+- Use system-backgrounds-kde for wallpaper symlink
+
+* Sat Dec 27 2025 Neal Gompa <ngompa@fedoraproject.org> - 43.99-1
+- look-and-feel: Add support for Fedora light/dark themes
+
+* Mon Dec 15 2025 Alessandro Astone <ales.astone@gmail.com> - 43.98-1
+- Use plasma-keyboard as the virtual keyboard for initial-setup
+
+* Sun Dec 14 2025 Alessandro Astone <ales.astone@gmail.com> - 43.97-1
+- Set org.kde.plasma.keyboard as default virtual keyboard
+
+* Mon Sep 29 2025 Alessandro Astone <ales.astone@gmail.com> - 43.1-1
+- Add default list of favorites for the application launcher
+
+* Mon Sep 01 2025 Neal Gompa <ngompa@fedoraproject.org> - 43.0-1
+- Bump for F43 backgrounds
+- ShellCheck fixes for gpg-agent startup script
+- Fixes for prelink handling logic in profile.d shell scripts
+
+* Thu Jul 24 2025 Fedora Release Engineering <releng@fedoraproject.org> - 42.0-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_43_Mass_Rebuild
+
+* Tue May 13 2025 Than Ngo <than@redhat.com> - 42.0-4
+- Fix rhbz#2291074 - Directory is missing in RPM database
+
+* Thu Feb 20 2025 Neal Gompa <ngompa@fedoraproject.org> - 42.0-3
+- Bump minimum xdg-user-dirs package version to require systemd unit
+
+* Wed Feb 19 2025 Neal Gompa <ngompa@fedoraproject.org> - 42.0-2
+- Drop xdg-user-dirs hack as it's no longer needed
+
+* Fri Feb 14 2025 Neal Gompa <ngompa@fedoraproject.org> - 42.0-1
+- Bump for F42 backgrounds
+- Cleanup and sync profile.d shell scripts
+
+* Fri Jan 17 2025 Fedora Release Engineering <releng@fedoraproject.org> - 41.2-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_42_Mass_Rebuild
+
+* Fri Jan 03 2025 Yaakov Selkowitz <yselkowi@redhat.com> - 41.2-2
+- Avoid pam dependency
+
 * Wed Sep 25 2024 Neal Gompa <ngompa@fedoraproject.org> - 41.2-1
 - Drop AT-SPI Xwayland property script as it's now handled by KWin
 
@@ -1044,3 +1123,4 @@ test -f %{_datadir}/wallpapers/F%{version_maj} || ls -l %{_datadir}/wallpapers
 
 * Sun Nov 29 2009 Rex Dieter <rdieter@fedoraproject.org> 4.4-1
 - -pulseaudio: drop xine-lib-pulseaudio (subpkg no longer exists)
+
