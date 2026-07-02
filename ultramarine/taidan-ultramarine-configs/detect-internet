@@ -15,7 +15,7 @@ is_chromebook=$(has_pkg ultramarine-release-chromebook)
 is_surface=$(has_pkg ultramarine-release-surface)
 is_rpi=$(has_pkg ultramarine-release-raspberry_pi)
 
-curl -X POST https://plausible.fyralabs.com/api/event --json @- <<EOF
+curl -X POST https://plausible.fyralabs.com/api/event --json @- <<EOF || ping -c 1 -W 20 1.1.1.1 > /dev/null
 {
     "name": "pageview",
     "url": "app://internet/v0.2/$VERSION_ID",
@@ -28,4 +28,4 @@ curl -X POST https://plausible.fyralabs.com/api/event --json @- <<EOF
         "rpi": "$is_rpi"
     }
 }
-EOF || ping -c 1 -W 20 1.1.1.1 > /dev/null
+EOF
