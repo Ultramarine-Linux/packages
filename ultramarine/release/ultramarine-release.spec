@@ -19,26 +19,45 @@
 %define doc_version f%{dist_version}
 %endif
 
+## Basic ##
+
 %bcond_without basic
+
+## Editions ##
+
 %bcond_without budgie
 %bcond_without plasma
 %bcond_without gnome
 %bcond_without xfce
+
+## Atomic Editions ##
+
 %bcond_without atomic_budgie
 %bcond_without atomic_plasma
 %bcond_without atomic_gnome
 %bcond_without atomic_xfce
+
+## Anywhere ##
+
 %bcond_without chromebook
 %bcond_without raspberry_pi
 %bcond_without wsl
 %bcond_without container
+# No aarch64 Surface images
 %ifarch x86_64
 %bcond_without surface
 %else
 %bcond_with surface
 %endif
 
-%if %{with budgie} || %{with plasma} || %{with gnome} || %{with xfce} || %{with atomic_budgie} || %{with atomic_plasma} || %{with atomic_gnome} || %{with atomic_xfce}
+## Shades ##
+
+%bcond_without shades_nothing
+%bcond_without shades_sway
+%bcond_without shades_niri
+%bcond_without shades_cinnamon
+
+%if %{with budgie} || %{with plasma} || %{with gnome} || %{with xfce} || %{with atomic_budgie} || %{with atomic_plasma} || %{with atomic_gnome} || %{with atomic_xfce} || %{with shades_nothing} || %{with shades_sway} || %{with shades_niri} || %{with shades_cinnamon}
 %global with_desktop 1
 %endif
 
@@ -140,7 +159,7 @@ Requires:   ultramarine-release-variant = %{version}
 Requires:   ultramarine-repos(%{version})
 Requires:   ultramarine-release-identity = %{version}-%{release}
 Recommends: fastfetch
-Recommends: golang-github-ultramarine-linux-um
+Recommends: umcli
 Recommends: ultramarine-release-identity-basic
 Conflicts:  generic-release
 Conflicts:  fedora-release
@@ -612,6 +631,168 @@ itself as the Ultramarine Container Base Image.
 %endif
 
 ######################################################################
+#### Shades
+######################################################################
+
+####### Generic (Basic) #######
+
+######################################################################
+####### Nothing #######
+
+%if %{with shades_nothing}
+
+%package nothing
+Summary:	Base package for Ultramarine nothing-specific default configurations
+# I don't think we need this?
+%dnl RemovePathPostfixes: .nothing
+Provides:   ultramarine-release = %{version}-%{release}
+Provides:   ultramarine-release-nothing = %{version}-%{release}
+Provides:   ultramarine-release-variant = %{version}-%{release}
+Provides:   system-release
+Provides:   system-release(%{version})
+Provides:   base-module(platform:f%{version})
+Requires:   ultramarine-release-common = %{version}-%{release}
+Requires:   ultramarine-release-desktop = %{version}-%{release}
+Provides:   system-release-product
+# ultramarine-release-common Requires: ultramarine-release-identity, so at least one
+# package must provide it. This Recommends: pulls in
+# ultramarine-release-identity-cinnamon if nothing else is already doing so.
+Recommends:	ultramarine-release-identity-nothing
+# pull in slick greeter for people upgrading
+%dnl Recommends: slick-greeter
+
+%description nothing
+Provides a base package for Ultramarine Nothing Shade configurations.
+
+%package identity-nothing
+Summary:		Package providing the Ultramarine Nothing Shade Identity
+# I don't think we need this?
+%dnl RemovePathPostfixes: .nothing
+Provides:		ultramarine-release-identity = %{version}-%{release}
+Conflicts:		ultramarine-release-identity
+Requires(meta):	ultramarine-release-nothing = %{version}-%{release}
+
+%description identity-nothing
+Provides the necessary files for a Ultramarine Nothing Shade installation.
+%endif
+
+######################################################################
+####### Sway #######
+
+%if %{with shades_sway}
+
+%package sway
+Summary:	Base package for Ultramarine sway-specific default configurations
+RemovePathPostfixes: .sway
+Provides:   ultramarine-release = %{version}-%{release}
+Provides:   ultramarine-release-sway = %{version}-%{release}
+Provides:   ultramarine-release-variant = %{version}-%{release}
+Provides:   system-release
+Provides:   system-release(%{version})
+Provides:   base-module(platform:f%{version})
+Requires:   ultramarine-release-common = %{version}-%{release}
+Requires:   ultramarine-release-desktop = %{version}-%{release}
+Provides:   system-release-product
+# ultramarine-release-common Requires: ultramarine-release-identity, so at least one
+# package must provide it. This Recommends: pulls in
+# ultramarine-release-identity-cinnamon if nothing else is already doing so.
+Recommends:	ultramarine-release-identity-sway
+# pull in slick greeter for people upgrading
+Recommends: slick-greeter
+
+%description sway
+Provides a base package for Ultramarine Sway Shade configurations.
+
+%package identity-sway
+Summary:		Package providing the Ultramarine Sway Shade Identity
+RemovePathPostfixes: .sway
+Provides:		ultramarine-release-identity = %{version}-%{release}
+Conflicts:		ultramarine-release-identity
+Requires(meta):	ultramarine-release-sway = %{version}-%{release}
+
+%description identity-sway
+Provides the necessary files for a Ultramarine Sway Shade installation.
+
+%endif
+
+######################################################################
+####### Niri #######
+
+%if %{with shades_niri}
+
+%package niri
+Summary:	Base package for Ultramarine Niri-specific default configurations
+RemovePathPostfixes: .niri
+Provides:   ultramarine-release = %{version}-%{release}
+Provides:   ultramarine-release-niri = %{version}-%{release}
+Provides:   ultramarine-release-variant = %{version}-%{release}
+Provides:   system-release
+Provides:   system-release(%{version})
+Provides:   base-module(platform:f%{version})
+Requires:   ultramarine-release-common = %{version}-%{release}
+Requires:   ultramarine-release-desktop = %{version}-%{release}
+Provides:   system-release-product
+# ultramarine-release-common Requires: ultramarine-release-identity, so at least one
+# package must provide it. This Recommends: pulls in
+# ultramarine-release-identity-cinnamon if nothing else is already doing so.
+Recommends:	ultramarine-release-identity-niri
+# pull in slick greeter for people upgrading
+Recommends: slick-greeter
+
+%description niri
+Provides a base package for Ultramarine Niri Shade configurations.
+
+%package identity-niri
+Summary:		Package providing the Ultramarine Niri Shade Identity
+RemovePathPostfixes: .niri
+Provides:		ultramarine-release-identity = %{version}-%{release}
+Conflicts:		ultramarine-release-identity
+Requires(meta):	ultramarine-release-niri = %{version}-%{release}
+
+%description identity-niri
+Provides the necessary files for a Ultramarine Niri Shade installation.
+
+%endif
+
+######################################################################
+####### Cinnamon #######
+
+%if %{with shades_cinnamon}
+
+%package cinnamon
+Summary:	Base package for Ultramarine cinnamon-specific default configurations
+RemovePathPostfixes: .cinnamon
+Provides:   ultramarine-release = %{version}-%{release}
+Provides:   ultramarine-release-cinnamon = %{version}-%{release}
+Provides:   ultramarine-release-variant = %{version}-%{release}
+Provides:   system-release
+Provides:   system-release(%{version})
+Provides:   base-module(platform:f%{version})
+Requires:   ultramarine-release-common = %{version}-%{release}
+Requires:   ultramarine-release-desktop = %{version}-%{release}
+Provides:   system-release-product
+# ultramarine-release-common Requires: ultramarine-release-identity, so at least one
+# package must provide it. This Recommends: pulls in
+# ultramarine-release-identity-cinnamon if nothing else is already doing so.
+Recommends:	ultramarine-release-identity-cinnamon
+# pull in slick greeter for people upgrading
+Recommends: slick-greeter
+
+%description cinnamon
+Provides a base package for Ultramarine Cinnamon Shade configurations.
+
+%package identity-cinnamon
+Summary:		Package providing the Ultramarine Cinnamon Shade Identity
+RemovePathPostfixes: .cinnamon
+Provides:		ultramarine-release-identity = %{version}-%{release}
+Conflicts:		ultramarine-release-identity
+Requires(meta):	ultramarine-release-cinnamon = %{version}-%{release}
+
+%description identity-cinnamon
+Provides the necessary files for a Ultramarine Cinnamon Shade installation.
+%endif
+
+######################################################################
 #### Accessory packages
 ######################################################################
 
@@ -914,6 +1095,48 @@ VERSION_ID=%dist_version
 VERSION_CODENAME="%fedora_codename"
 PRETTY_NAME="Fedora Linux %dist_version (%fedora_codename)"
 EOF
+
+## Shades ##
+
+%if %{with shades_nothing}
+# Nothing
+cp -p os-release \
+      %{buildroot}%{_prefix}/lib/os-release.nothing
+echo "VARIANT=\"Nothing Shade\"" >> %{buildroot}%{_prefix}/lib/os-release.nothing
+echo "VARIANT_ID=nothing" >> %{buildroot}%{_prefix}/lib/os-release.nothing
+sed -i -e "s|(%{release_name}%{?prerelease})|(Nothing Shade%{?prerelease})|g" %{buildroot}%{_prefix}/lib/os-release.nothing
+sed -e "s#\$version#%{bug_version}#g" -e 's/$edition/nothing/;s/<!--.*-->//;/^$/d' %{SOURCE20} > %{buildroot}%{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.nothing
+%endif
+
+%if %{with shades_sway}
+# Sway
+cp -p os-release \
+      %{buildroot}%{_prefix}/lib/os-release.sway
+echo "VARIANT=\"Sway Shade\"" >> %{buildroot}%{_prefix}/lib/os-release.sway
+echo "VARIANT_ID=sway" >> %{buildroot}%{_prefix}/lib/os-release.sway
+sed -i -e "s|(%{release_name}%{?prerelease})|(Sway Shade%{?prerelease})|g" %{buildroot}%{_prefix}/lib/os-release.sway
+sed -e "s#\$version#%{bug_version}#g" -e 's/$edition/sway/;s/<!--.*-->//;/^$/d' %{SOURCE20} > %{buildroot}%{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.sway
+%endif
+
+%if %{with shades_niri}
+# Niri
+cp -p os-release \
+      %{buildroot}%{_prefix}/lib/os-release.niri
+echo "VARIANT=\"Niri Shade\"" >> %{buildroot}%{_prefix}/lib/os-release.niri
+echo "VARIANT_ID=niri" >> %{buildroot}%{_prefix}/lib/os-release.niri
+sed -i -e "s|(%{release_name}%{?prerelease})|(Niri Shade%{?prerelease})|g" %{buildroot}%{_prefix}/lib/os-release.niri
+sed -e "s#\$version#%{bug_version}#g" -e 's/$edition/niri/;s/<!--.*-->//;/^$/d' %{SOURCE20} > %{buildroot}%{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.niri
+%endif
+
+%if %{with shades_cinnamon}
+# Cinnamon
+cp -p os-release \
+      %{buildroot}%{_prefix}/lib/os-release.cinnamon
+echo "VARIANT=\"Cinnamon Shade\"" >> %{buildroot}%{_prefix}/lib/os-release.cinnamon
+echo "VARIANT_ID=cinnamon" >> %{buildroot}%{_prefix}/lib/os-release.cinnamon
+sed -i -e "s|(%{release_name}%{?prerelease})|(Cinnamon Shade%{?prerelease})|g" %{buildroot}%{_prefix}/lib/os-release.cinnamon
+sed -e "s#\$version#%{bug_version}#g" -e 's/$edition/cinnamon/;s/<!--.*-->//;/^$/d' %{SOURCE20} > %{buildroot}%{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.cinnamon
+%endif
 
 ##########################
 
@@ -1221,6 +1444,39 @@ ln -sf firewalld-workstation.conf %{_sysconfdir}/firewalld/firewalld.conf
 %files desktop
 %{_prefix}/lib/systemd/system-preset/81-desktop.preset
 %endif
+
+## Shades ##
+
+%if %{with shades_nothing}
+%files nothing
+%files identity-nothing
+%{_prefix}/lib/os-release.nothing
+%attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.nothing
+%endif
+
+%if %{with shades_sway}
+%files sway
+%files identity-sway
+%{_prefix}/lib/os-release.sway
+%attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.sway
+%endif
+
+%if %{with shades_niri}
+%files niri
+%files identity-niri
+%{_prefix}/lib/os-release.niri
+%attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.niri
+%endif
+
+%if %{with shades_cinnamon}
+%files cinnamon
+%files identity-cinnamon
+%{_prefix}/lib/os-release.cinnamon
+%attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.cinnamon
+
+%endif
+
+########
 
 %if %{with chromebook}
 %files chromebook
