@@ -32,6 +32,7 @@
 %bcond_without raspberry_pi
 %bcond_without wsl
 %bcond_without container
+%bcond_without server
 %ifarch x86_64
 %bcond_without surface
 %else
@@ -53,7 +54,7 @@
 Summary:	Ultramarine Linux release files
 Name:		ultramarine-release
 Version:	%{dist_version}
-Release:	7%{?dist}
+Release:	8%{?dist}
 License:	MIT
 Source0:	LICENSE
 URL:        https://ultramarine-linux.org
@@ -85,6 +86,7 @@ Source10:	89-ultramarine-default.preset
 Source11:   81-atomic-desktop.preset
 
 Source12:   60-ultramarine-presets.conf
+Source13:   80-server.preset
 Source14:   slick-greeter-xfce.conf
 Source15:   50_ultramarine-gnome.gschema.override
 
@@ -104,6 +106,7 @@ Source51:   ultramarine-budgie.conf
 Source52:   ultramarine-gnome.conf
 Source53:   ultramarine-plasma.conf
 Source54:   ultramarine-xfce.conf
+Source55:   ultramarine-server.conf
 
 Source60:   ultramarine-budgie-protected.conf
 Source61:   ultramarine-gnome-protected.conf
@@ -611,6 +614,42 @@ Provides the necessary files for an Ultramarine installation that is identifying
 itself as the Ultramarine Container Base Image.
 %endif
 
+%if %{with server}
+
+######################################################################
+####### Server #######
+
+%package server
+Summary:	Base package for Ultramarine Server-specific default configurations
+RemovePathPostfixes: .server
+Provides:   ultramarine-release = %{version}-%{release}
+Provides:   ultramarine-release-server = %{version}-%{release}
+Provides:   ultramarine-release-variant = %{version}-%{release}
+Provides:   system-release
+Provides:   system-release(%{version})
+Provides:   base-module(platform:f%{version})
+Requires:   ultramarine-release-common = %{version}-%{release}
+Provides:   system-release-product
+# ultramarine-release-common Requires: ultramarine-release-identity, so at least one
+# package must provide it. This Recommends: pulls in
+# ultramarine-release-identity-server if nothing else is already doing so.
+Recommends:	ultramarine-release-identity-server
+
+%description server
+Provides a base package for Ultramarine Server configurations.
+
+%package identity-server
+Summary:		Package providing the Ultramarine Server Identity
+RemovePathPostfixes: .server
+Provides:		ultramarine-release-identity = %{version}-%{release}
+Conflicts:		ultramarine-release-identity
+Requires(meta):	ultramarine-release-server = %{version}-%{release}
+
+%description identity-server
+Provides the necessary files for a Ultramarine Server installation.
+
+%endif
+
 ######################################################################
 #### Accessory packages
 ######################################################################
@@ -896,6 +935,17 @@ sed -i -e "s|(%{release_name}%{?prerelease})|(Container Image%{?prerelease})|g" 
 sed -e "s#\$version#%{bug_version}#g" -e 's/$edition/Container/;s/<!--.*-->//;/^$/d' %{SOURCE20} > %{buildroot}%{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.container
 %endif
 
+%if %{with server}
+# Server
+cp -p os-release \
+      %{buildroot}%{_prefix}/lib/os-release.server
+echo "VARIANT=\"Server Edition\"" >> %{buildroot}%{_prefix}/lib/os-release.server
+echo "VARIANT_ID=server" >> %{buildroot}%{_prefix}/lib/os-release.server
+sed -i -e "s|(%{release_name}%{?prerelease})|(Server Edition%{?prerelease})|g" %{buildroot}%{_prefix}/lib/os-release.server
+sed -e "s#\$version#%{bug_version}#g" -e 's/$edition/Server/;s/<!--.*-->//;/^$/d' %{SOURCE20} > %{buildroot}%{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.server
+install -Dm0644 %{SOURCE13} -t $RPM_BUILD_ROOT%{_prefix}/lib/systemd/system-preset/
+%endif
+
 # Create copr config file so COPR doesnt flip out and assume EPEL
 # I created a PR to support this months ago, but completely forgot about it
 # to the point that risiOS managed to beat us to it - Cappy
@@ -924,6 +974,7 @@ cp -pr %{SOURCE51} %{buildroot}%{_sysconfdir}/anaconda/profile.d/ultramarine-bud
 cp -pr %{SOURCE52} %{buildroot}%{_sysconfdir}/anaconda/profile.d/ultramarine-gnome.conf
 cp -pr %{SOURCE53} %{buildroot}%{_sysconfdir}/anaconda/profile.d/ultramarine-plasma.conf
 cp -pr %{SOURCE54} %{buildroot}%{_sysconfdir}/anaconda/profile.d/ultramarine-xfce.conf
+cp -pr %{SOURCE55} %{buildroot}%{_sysconfdir}/anaconda/profile.d/ultramarine-server.conf
 
 # sysctls
 mkdir -p %{buildroot}%{_prefix}/lib/sysctl.d/
@@ -1083,6 +1134,7 @@ ln -sf firewalld-workstation.conf %{_sysconfdir}/firewalld/firewalld.conf
 %{_sysconfdir}/anaconda/profile.d/ultramarine-gnome.conf
 %{_sysconfdir}/anaconda/profile.d/ultramarine-plasma.conf
 %{_sysconfdir}/anaconda/profile.d/ultramarine-xfce.conf
+%{_sysconfdir}/anaconda/profile.d/ultramarine-server.conf
 %license licenses/LICENSE licenses/README.license
 %{_prefix}/lib/ultramarine-release
 %{_prefix}/lib/systemd/user.conf.d/*
@@ -1215,6 +1267,14 @@ ln -sf firewalld-workstation.conf %{_sysconfdir}/firewalld/firewalld.conf
 %files identity-container
 %{_prefix}/lib/os-release.container
 %attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.container
+%endif
+
+%if %{with server}
+%files server
+%files identity-server
+%{_prefix}/lib/os-release.server
+%{_prefix}/lib/systemd/system-preset/80-server.preset
+%attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.server
 %endif
 
 %if %{with desktop}
