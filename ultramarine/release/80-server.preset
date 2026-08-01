@@ -1,0 +1,7 @@
+# Ultramarine Server
+
+# The Cockpit web-based system management console
+enable cockpit.socket
+
+# Ultramarine Server OOBE first-run setup
+enable ultramarine-server-oobe.service
