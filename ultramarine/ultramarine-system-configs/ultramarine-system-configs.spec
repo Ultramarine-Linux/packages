@@ -1,5 +1,3 @@
-%global mozappdir     %{_libdir}/firefox
-
 Name:           ultramarine-system-configs
 Version:        %{?fedora}
 Release:        2%{?dist}
