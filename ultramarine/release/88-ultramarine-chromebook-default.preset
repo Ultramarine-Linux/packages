@@ -1,10 +1,5 @@
 # Enable Ultramarine Chromebook Edition specific services in this file
 
-# Keyboard mappings
-enable cros-keyboard-map.service
-enable keyd.service #vhopefully will be replaced by croskbd soon
-enable croskbd.spec
-
 # USB-C fix on newer Chromebooks
 enable chromebook-usbc.service
 
