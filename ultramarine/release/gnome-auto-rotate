@@ -1,0 +1,185 @@
+#!/usr/bin/env python3
+"""Apply display transform from iio-sensor-proxy when GNOME auto-rotate is on.
+
+Used on Ultramarine Surface (GNOME Wayland) where built-in auto-rotate is
+unreliable and Touch Up's floating confirm button is undesirable.
+"""
+from __future__ import annotations
+
+import logging
+import os
+import subprocess
+import sys
+import time
+
+import gi
+
+gi.require_version("Gio", "2.0")
+gi.require_version("GLib", "2.0")
+from gi.repository import Gio, GLib
+
+LOG = logging.getLogger("gnome-auto-rotate")
+
+ORIENT_TO_TRANSFORM = {
+    "normal": "normal",
+    "bottom-up": "180",
+    "left-up": "90",
+    "right-up": "270",
+}
+
+SENSOR_DEST = "net.hadess.SensorProxy"
+SENSOR_PATH = "/net/hadess/SensorProxy"
+SENSOR_IFACE = "net.hadess.SensorProxy"
+
+
+class AutoRotate:
+    def __init__(self) -> None:
+        self.bus = Gio.bus_get_sync(Gio.BusType.SYSTEM, None)
+        self.proxy = Gio.DBusProxy.new_sync(
+            self.bus,
+            Gio.DBusProxyFlags.NONE,
+            None,
+            SENSOR_DEST,
+            SENSOR_PATH,
+            SENSOR_IFACE,
+            None,
+        )
+        self.lock_settings = Gio.Settings.new(
+            "org.gnome.settings-daemon.peripherals.touchscreen"
+        )
+        self.current_transform: str | None = None
+        self._applying = False
+        self.lock_settings.connect("changed::orientation-lock", self._on_lock_changed)
+        self.proxy.connect("g-properties-changed", self._on_props)
+        self._claim_or_release()
+        for delay in (2, 5, 10, 20, 35):
+            GLib.timeout_add_seconds(delay, self._claim_or_release_once)
+
+    def orientation_locked(self) -> bool:
+        return bool(self.lock_settings.get_boolean("orientation-lock"))
+
+    def _claim_or_release_once(self) -> bool:
+        self._claim_or_release()
+        return False
+
+    def _on_lock_changed(self, *_args) -> None:
+        self._claim_or_release()
+
+    def _claim_or_release(self) -> None:
+        try:
+            has = bool(self.proxy.get_cached_property("HasAccelerometer").unpack())
+        except Exception:
+            has = True
+        if not has:
+            LOG.warning("No accelerometer")
+            return
+        if self.orientation_locked():
+            LOG.info("Orientation locked — releasing accelerometer")
+            try:
+                self.proxy.call_sync(
+                    "ReleaseAccelerometer", None, Gio.DBusCallFlags.NONE, -1, None
+                )
+            except Exception as e:
+                LOG.debug("Release: %s", e)
+            return
+        LOG.info("Auto-rotate on — claiming accelerometer")
+        try:
+            self.proxy.call_sync(
+                "ClaimAccelerometer", None, Gio.DBusCallFlags.NONE, -1, None
+            )
+        except Exception as e:
+            LOG.error("Claim failed: %s", e)
+            return
+        try:
+            prop = self.proxy.get_cached_property("AccelerometerOrientation")
+            if prop is not None:
+                self._apply(str(prop.unpack()))
+        except Exception as e:
+            LOG.debug("Initial orient: %s", e)
+
+    def _on_props(self, _proxy, changed, _invalidated) -> None:
+        if self.orientation_locked():
+            return
+        try:
+            d = changed.unpack()
+        except Exception:
+            return
+        if "AccelerometerOrientation" not in d:
+            return
+        orient = d["AccelerometerOrientation"]
+        if hasattr(orient, "unpack"):
+            orient = orient.unpack()
+        self._apply(str(orient))
+
+    def _apply(self, orientation: str) -> None:
+        transform = ORIENT_TO_TRANSFORM.get(orientation)
+        if transform is None or transform == self.current_transform or self._applying:
+            return
+        self._applying = True
+        try:
+            LOG.info("Rotating to %s (%s)", transform, orientation)
+            cmd = [
+                "gdctl",
+                "set",
+                "--logical-monitor",
+                "--primary",
+                "--monitor",
+                "eDP-1",
+                "--transform",
+                transform,
+            ]
+            scale = self._current_scale()
+            if scale is not None:
+                cmd.extend(["--scale", str(scale)])
+            r = subprocess.run(cmd, capture_output=True, text=True, timeout=10)
+            if r.returncode != 0:
+                LOG.error("gdctl failed: %s %s", r.stdout, r.stderr)
+            else:
+                self.current_transform = transform
+        except Exception as e:
+            LOG.error("apply failed: %s", e)
+        finally:
+            self._applying = False
+
+    def _current_scale(self) -> float | None:
+        try:
+            out = subprocess.check_output(["gdctl", "show"], text=True, timeout=5)
+            for line in out.splitlines():
+                if "Scale:" in line:
+                    return float(line.split("Scale:")[1].strip())
+        except Exception:
+            return 2.0
+        return 2.0
+
+
+def main() -> int:
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s %(levelname)s %(message)s",
+        stream=sys.stdout,
+    )
+    for _ in range(30):
+        if os.environ.get("WAYLAND_DISPLAY") or os.path.exists(
+            f"/run/user/{os.getuid()}/wayland-0"
+        ):
+            break
+        time.sleep(1)
+    if "WAYLAND_DISPLAY" not in os.environ and os.path.exists(
+        f"/run/user/{os.getuid()}/wayland-0"
+    ):
+        os.environ["WAYLAND_DISPLAY"] = "wayland-0"
+    if "XDG_RUNTIME_DIR" not in os.environ:
+        os.environ["XDG_RUNTIME_DIR"] = f"/run/user/{os.getuid()}"
+    if "DBUS_SESSION_BUS_ADDRESS" not in os.environ:
+        os.environ["DBUS_SESSION_BUS_ADDRESS"] = (
+            f"unix:path=/run/user/{os.getuid()}/bus"
+        )
+
+    AutoRotate()
+    LOG.info("gnome-auto-rotate started")
+    GLib.MainLoop().run()
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

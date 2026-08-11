@@ -1,0 +1,10 @@
+# Fake/virtual key devices that suppress GNOME / Chromium on-screen keyboard.
+# ID_INPUT_KEYBOARD=0 alone is not enough — libinput still sets Capabilities:keyboard
+# from the key bitmask. LIBINPUT_IGNORE_DEVICE drops them from the seat.
+#
+# keyd virtual keyboard: always present when keyd runs; blocks tablet OSK.
+# Video Bus: ACPI brightness keys presented as a full keyboard.
+# gpio-keys: keep for volume/power — only clear KEYBOARD tag, do not ignore.
+KERNEL=="event*", SUBSYSTEM=="input", ATTRS{name}=="keyd virtual keyboard", ENV{ID_INPUT_KEYBOARD}="0", ENV{LIBINPUT_IGNORE_DEVICE}="1"
+KERNEL=="event*", SUBSYSTEM=="input", ATTRS{name}=="Video Bus", ENV{ID_INPUT_KEYBOARD}="0", ENV{LIBINPUT_IGNORE_DEVICE}="1"
+KERNEL=="event*", SUBSYSTEM=="input", ATTRS{name}=="gpio-keys", ENV{ID_INPUT_KEYBOARD}="0"
