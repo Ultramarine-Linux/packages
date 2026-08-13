@@ -33,6 +33,10 @@ jobs:
       - name: Build ultramarine-release
         run: |
           anda build -D "vendor Ultramarine Linux" -c ultramarine-${{ matrix.version }}-${{ matrix.arch }} ultramarine/release/pkg
+      
+      - name: Build ultramarine-repos
+        run: |
+          anda build -D "vendor Ultramarine Linux" -c ultramarine-${{ matrix.version }}-${{ matrix.arch }} ultramarine/repos/pkg
 
       - name: Upload packages to subatomic
         run: |
