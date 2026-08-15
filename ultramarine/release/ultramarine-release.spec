@@ -117,6 +117,12 @@ Source64:   88-ultramarine-chromebook-default.preset
 
 Source65:   91-ultramarine-surface-default.preset
 Source66:   linux-surface.repo
+Source67:   99-surface-osk-ignore-virtual-keyboards.rules
+Source68:   50-surface-wayland-osk.conf
+Source69:   surface-electron-flags.conf
+Source74:   surface-thermald-thermal-conf.xml
+Source75:   gnome-auto-rotate
+Source76:   gnome-auto-rotate.service
 
 Source70:   polycrystal-ultramarine-budgie.json
 Source71:   polycrystal-ultramarine-gnome.json
@@ -669,9 +675,19 @@ Common configuration package for chromebook variants
 %if %{with surface}
 %package        surface
 Summary:        Common configuration package for surface variants
+Requires:       thermald
+Requires:       iio-sensor-proxy
+Requires:       python3-gobject
+# gdctl comes with mutter / gnome-console tooling on GNOME images
 
 %description surface
-Common configuration package for surface variants
+Common configuration package for Surface variants of Ultramarine Linux.
+
+Includes tablet-oriented defaults:
+- udev rules so keyd/Video Bus do not suppress the GNOME on-screen keyboard
+- Wayland text-input environment for Chromium/Electron/QtWebEngine
+- thermald policy tuned for sustained Surface loads
+- optional user service for accelerometer auto-rotate (gdctl)
 %endif
 
 ####### Raspberry Pi #######
@@ -1070,6 +1086,21 @@ install -Dm0644 %{SOURCE64} -t $RPM_BUILD_ROOT%{_prefix}/lib/systemd/system-pres
 install -Dm0644 %{SOURCE65} -t $RPM_BUILD_ROOT%{_prefix}/lib/systemd/system-preset/
 install -Dm0644 %{SOURCE66} -t $RPM_BUILD_ROOT/etc/yum.repos.d/
 
+# Tablet OSK / input quirks
+install -Dm0644 %{SOURCE67} -t $RPM_BUILD_ROOT%{_udevrulesdir}/
+install -Dm0644 %{SOURCE68} -t $RPM_BUILD_ROOT%{_prefix}/lib/environment.d/
+# Electron/Chromium flags (apps that honor *.conf under /etc or XDG config)
+install -Dm0644 %{SOURCE69} $RPM_BUILD_ROOT%{_sysconfdir}/electron-flags.conf
+install -Dm0644 %{SOURCE69} $RPM_BUILD_ROOT%{_sysconfdir}/chromium-flags.conf
+install -Dm0644 %{SOURCE69} $RPM_BUILD_ROOT%{_sysconfdir}/chrome-flags.conf
+
+# Thermald
+install -Dm0644 %{SOURCE74} $RPM_BUILD_ROOT%{_sysconfdir}/thermald/thermal-conf.xml
+
+# Auto-rotate helper (opt-in via user systemd)
+install -Dm0755 %{SOURCE75} $RPM_BUILD_ROOT%{_libexecdir}/ultramarine-surface/gnome-auto-rotate
+install -Dm0644 %{SOURCE76} -t $RPM_BUILD_ROOT%{_userunitdir}/
+
 %endif
 
 %if %{with raspberry_pi}
@@ -1291,6 +1322,14 @@ ln -sf firewalld-workstation.conf %{_sysconfdir}/firewalld/firewalld.conf
 %files surface
 %{_prefix}/lib/systemd/system-preset/91-ultramarine-surface-default.preset
 /etc/yum.repos.d//linux-surface.repo
+%{_udevrulesdir}/99-surface-osk-ignore-virtual-keyboards.rules
+%{_prefix}/lib/environment.d/50-surface-wayland-osk.conf
+%{_sysconfdir}/electron-flags.conf
+%{_sysconfdir}/chromium-flags.conf
+%{_sysconfdir}/chrome-flags.conf
+%{_sysconfdir}/thermald/thermal-conf.xml
+%{_libexecdir}/ultramarine-surface/gnome-auto-rotate
+%{_userunitdir}/gnome-auto-rotate.service
 %endif
 
 %if %{with raspberry_pi}

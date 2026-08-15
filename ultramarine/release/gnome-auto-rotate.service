@@ -1,0 +1,14 @@
+[Unit]
+Description=Auto-rotate display from iio-sensor-proxy (GNOME Wayland)
+Documentation=man:iio-sensor-proxy(8)
+After=graphical-session.target
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/libexec/ultramarine-surface/gnome-auto-rotate
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=graphical-session.target

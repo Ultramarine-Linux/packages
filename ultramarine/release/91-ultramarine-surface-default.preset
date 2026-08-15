@@ -4,3 +4,7 @@
 enable surface-dtx-daemon.service
 enable surface-dtx-userd.service
 enable linux-surface-default-watchdog.path
+
+# Thermal management for sustained tablet/laptop loads
+enable thermald.service
+enable iio-sensor-proxy.service
