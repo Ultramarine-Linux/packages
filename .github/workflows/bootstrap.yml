@@ -22,6 +22,11 @@ jobs:
       - name: Install build dependencies
         run: dnf builddep -y ultramarine/ultramarine-mock-configs/*.spec
 
+      # Must be built using Fedora's Mock configs first so it is available for subsequent builds
+      - name: Build ultramarine-release
+        run: |
+          anda build -D "vendor Ultramarine Linux" -D "dist .um${{ matrix.version }}" -c fedora-${{ matrix.version }}-${{ matrix.arch }} ultramarine/release/pkg
+
       - name: Build ultramarine-mock-configs
         run: |
           anda build -D "vendor Ultramarine Linux" -D "dist .um${{ matrix.version }}" -c fedora-${{ matrix.version }}-${{ matrix.arch }} ultramarine/ultramarine-mock-configs/pkg
@@ -33,10 +38,6 @@ jobs:
       - name: Build ultramarine-repos
         run: |
           anda build -D "vendor Ultramarine Linux" -c ultramarine-${{ matrix.version }}-${{ matrix.arch }} ultramarine/repos/pkg
-
-      - name: Build ultramarine-release
-        run: |
-          anda build -D "vendor Ultramarine Linux" -c ultramarine-${{ matrix.version }}-${{ matrix.arch }} ultramarine/release/pkg
 
       - name: Upload packages to subatomic
         run: |
