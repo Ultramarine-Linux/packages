@@ -10,6 +10,7 @@ disable flatpak-add-fedora-repos.service
 enable polycrystal.service
 
 # Chromebook keyboard maps
-enable keyd.service # hopefully will be replaced by croskbd soon
+enable keyd.service
+# keyd hopefully will be replaced by croskbd soon
 enable cros-keyboard-map.service
 enable croskbd.service
