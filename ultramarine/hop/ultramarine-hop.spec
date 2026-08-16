@@ -19,7 +19,7 @@ switch between editions or install multiple desktop environments on their
 system.
 
 %prep
-%git_clone %url v%version
+%git_clone %{url} v%{version}
 %nim_prep
 
 %build
