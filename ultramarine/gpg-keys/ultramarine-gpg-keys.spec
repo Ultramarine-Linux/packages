@@ -1,7 +1,7 @@
 %undefine dist
 
 Name:           ultramarine-gpg-keys
-Version:        %{?fedora}
+Version:        46
 Release:        3%{?dist}
 Summary:        GPG keys for Ultramarine Linux
 Requires:       filesystem >= 3.18-6

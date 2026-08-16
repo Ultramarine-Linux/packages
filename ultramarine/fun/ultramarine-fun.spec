@@ -1,5 +1,5 @@
 Name:			ultramarine-fun
-Version:		%{?fedora}
+Version:		46
 Release:		1%?dist
 Summary:		Additional secret/hidden files for ultramarine Linux
 License:		MIT

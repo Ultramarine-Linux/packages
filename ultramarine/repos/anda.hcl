@@ -3,4 +3,7 @@ project "pkg" {
         spec = "repos.spec"
         sources =  "."
     }
+    labels {
+      updbranch = 1
+    }
 }
