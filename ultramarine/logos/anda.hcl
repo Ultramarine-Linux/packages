@@ -3,4 +3,7 @@ project "pkg" {
         spec = "ultramarine-logos.spec"
         sources =  "."
     }
+    labels {
+      updbranch = 1
+    }
 }

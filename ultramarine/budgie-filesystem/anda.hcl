@@ -3,4 +3,7 @@ project "pkg" {
         spec = "ultramarine-budgie-filesystem.spec"
         sources =  "."
     }
+    labels {
+      updbranch = 1
+    }
 }
