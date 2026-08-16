@@ -1,4 +1,4 @@
-%global _dist_version %{?fedora}
+%global _dist_version 46
 
 Name: ultramarine-repos
 Version: %{_dist_version}

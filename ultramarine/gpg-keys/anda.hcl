@@ -4,4 +4,7 @@ project "pkg" {
         spec = "ultramarine-gpg-keys.spec"
         sources =  "."
     }
+    labels {
+      updbranch = 1
+    }
 }

@@ -1,5 +1,5 @@
 Name:           ultramarine-raw-filesystem
-Version:        %{?fedora}
+Version:        46
 Release:        1%{?dist}
 Summary:        systemd-repart config to automatically extend the root filesystem on raw images
 URL:            ultramarine-linux.org
