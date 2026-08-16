@@ -10,6 +10,7 @@ BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(libadwaita-1)
 BuildRequires:  anda-srpm-macros
 BuildRequires:  nim mold
+BuildRequires:  openssl-devel
 Provides:       hop
 Provides:       umswitch
 
