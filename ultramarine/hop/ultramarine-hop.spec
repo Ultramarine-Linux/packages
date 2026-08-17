@@ -1,6 +1,6 @@
 Name:           ultramarine-hop
-Version:        0.1.5
-Release:        2%?dist
+Version:        0.1.6
+Release:        1%{?dist}
 Summary:        Hop between desktop environments and editions easily!
 License:        GPL-3.0-or-later
 URL:            https://github.com/Ultramarine-Linux/hop
@@ -10,6 +10,7 @@ BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(libadwaita-1)
 BuildRequires:  anda-srpm-macros
 BuildRequires:  nim mold
+BuildRequires:  openssl-devel
 Provides:       hop
 Provides:       umswitch
 
@@ -19,7 +20,7 @@ switch between editions or install multiple desktop environments on their
 system.
 
 %prep
-%git_clone %url v%version
+%git_clone %{url} v%{version}
 %nim_prep
 
 %build
