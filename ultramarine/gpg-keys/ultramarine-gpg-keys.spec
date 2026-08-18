@@ -1,8 +1,8 @@
 %undefine dist
 
 Name:           ultramarine-gpg-keys
-Version:        %{?fedora}
-Release:        3%{?dist}
+Version:        44
+Release:        4%{?dist}
 Summary:        GPG keys for Ultramarine Linux
 Requires:       filesystem >= 3.18-6
 
@@ -39,5 +39,4 @@ install -d -m 755 $RPM_BUILD_ROOT/etc/pki/rpm-gpg
 install -m 644 %{_sourcedir}/RPM-GPG-KEY* $RPM_BUILD_ROOT/etc/pki/rpm-gpg/
 
 %files
-%dir /etc/pki/rpm-gpg
 /etc/pki/rpm-gpg/RPM-GPG-KEY-*
