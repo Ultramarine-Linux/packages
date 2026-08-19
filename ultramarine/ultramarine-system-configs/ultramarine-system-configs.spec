@@ -38,6 +38,7 @@ BuildArch:  noarch
 Provides:   system-bookmarks
 Conflicts:  fedora-bookmarks
 Obsoletes:  fedora-bookmarks
+Obsoletes:  ultramarine-phony-bookmarks
 
 %description -n ultramarine-bookmarks
 This package contains the default Firefox bookmarks for Ultramarine.
