@@ -81,7 +81,7 @@ cp %{S:7} GFDL-1.1-or-later
 
 %changelog
 * Sat Aug 08 2026 Owen Zimmerman <owen@fyralabs.com>
-- Add ultramarine-bookmarks and ultramarine-default-firefox-prefs packages
+- Add ultramarine-bookmarks subpackage
 
 * Sat Aug 03 2024 Cappy Ishihara <cappy@cappuchino.xyz>
 - Initial release
