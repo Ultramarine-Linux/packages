@@ -5,7 +5,7 @@
 %global godocs          README.md
 
 Name:           umcli
-Version:        0.5.1
+Version:        0.5.2
 Release:        2%{?dist}
 Summary:        A CLI tool for managing an Ultramarine Linux system
 
