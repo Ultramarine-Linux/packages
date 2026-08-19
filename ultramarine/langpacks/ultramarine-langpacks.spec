@@ -1,7 +1,7 @@
 # ? https://src.fedoraproject.org/rpms/langpacks/tree/rawhide
 
 Name:      ultramarine-langpacks
-Version:   %{?fedora}
+Version:   46
 Release:   1%{?dist}
 Summary:   Langpacks meta-package
 

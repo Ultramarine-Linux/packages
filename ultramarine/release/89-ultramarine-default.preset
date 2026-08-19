@@ -8,3 +8,9 @@ disable flatpak-add-fedora-repos.service
 
 # We use polycrystal to install Flatpaks
 enable polycrystal.service
+
+# Chromebook keyboard maps
+enable keyd.service
+# keyd hopefully will be replaced by croskbd soon
+enable cros-keyboard-map.service
+enable croskbd.service

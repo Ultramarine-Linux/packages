@@ -3,7 +3,7 @@
 %global release_name Cheetah
 %global fedora_codename Rawhide
 %global codename cheetah
-%define dist_version %{?fedora}
+%define dist_version 46
 
 %define xfce_conf_commit 4ee924020b97cf2b4d30510641a2f63ef06ed148
 
@@ -54,7 +54,7 @@
 Summary:	Ultramarine Linux release files
 Name:		ultramarine-release
 Version:	%{dist_version}
-Release:	8%{?dist}
+Release:	10%{?dist}
 License:	MIT
 Source0:	LICENSE
 URL:        https://ultramarine-linux.org
@@ -1068,7 +1068,7 @@ install -Dm0644 %{SOURCE64} -t $RPM_BUILD_ROOT%{_prefix}/lib/systemd/system-pres
 
 # Install systemd presets for surface
 install -Dm0644 %{SOURCE65} -t $RPM_BUILD_ROOT%{_prefix}/lib/systemd/system-preset/
-install -Dm0644 %{SOURCE66} -t $RPM_BUILD_ROOT/etc/yum.repos.d/
+install -Dm0644 %{SOURCE66} -t $RPM_BUILD_ROOT/usr/share/dnf5/repos.d/
 
 %endif
 
@@ -1290,7 +1290,7 @@ ln -sf firewalld-workstation.conf %{_sysconfdir}/firewalld/firewalld.conf
 %if %{with surface}
 %files surface
 %{_prefix}/lib/systemd/system-preset/91-ultramarine-surface-default.preset
-/etc/yum.repos.d//linux-surface.repo
+/usr/share/dnf5/repos.d//linux-surface.repo
 %endif
 
 %if %{with raspberry_pi}

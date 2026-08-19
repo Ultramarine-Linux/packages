@@ -4,4 +4,7 @@ project "pkg" {
         spec = "ultramarine-release.spec"
         sources = "."
     }
+    labels {
+      updbranch = 1
+    }
 }

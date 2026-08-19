@@ -1,5 +1,5 @@
 Name:           ultramarine-system-configs
-Version:        %{?fedora}
+Version:        46
 Release:        2%{?dist}
 Summary:        Various configuration files for a more comfortable Ultramarine desktop experience
 BuildArch:      noarch

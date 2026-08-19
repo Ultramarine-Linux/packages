@@ -20,19 +20,19 @@ jobs:
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
       - name: Install build dependencies
-        run: dnf builddep -y ultramarine/ultramarine-mock-configs*.spec
+        run: dnf builddep -y ultramarine/{ultramarine-mock-configs,release,repos}/*.spec
 
       - name: Build ultramarine-mock-configs
         run: |
           anda build -D "vendor Ultramarine Linux" -D "dist .um${{ matrix.version }}" -c fedora-${{ matrix.version }}-${{ matrix.arch }} ultramarine/ultramarine-mock-configs/pkg
 
-      - name: Install ultramarine-mock-configs
+      - name: Build ultramarine-repos
         run: |
-          dnf install -y anda-build/rpm/rpms/ultramarine-mock-configs*.rpm
+          anda build -D "vendor Ultramarine Linux" -D "dist .um${{ matrix.version }}" -c fedora-${{ matrix.version }}-${{ matrix.arch }} ultramarine/repos/pkg
 
       - name: Build ultramarine-release
         run: |
-          anda build -D "vendor Ultramarine Linux" -c ultramarine-${{ matrix.version }}-${{ matrix.arch }} ultramarine/release/pkg
+          anda build -D "vendor Ultramarine Linux" -D "dist .um${{ matrix.version }}" -c fedora-${{ matrix.version }}-${{ matrix.arch }} ultramarine/release/pkg
 
       - name: Upload packages to subatomic
         run: |

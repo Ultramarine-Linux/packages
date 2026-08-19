@@ -1,8 +1,8 @@
-%global _dist_version %{?fedora}
+%global _dist_version 46
 
 Name: ultramarine-repos
 Version: %{_dist_version}
-Release: 3%{?dist}
+Release: 4%{?dist}
 License: MIT
 Summary: Repositories for Ultramarine Linux
 Requires: %{name}-common = %{version}-%{release}
@@ -69,10 +69,10 @@ Source201: https://flatpak.elementary.io/repo.flatpakrepo
 
 %install
 # DNF repos
-mkdir -p %{buildroot}/%{_sysconfdir}/yum.repos.d/
+mkdir -p %{buildroot}/%{_datadir}/dnf5/repos.d
 
 #common
-cp -avx %{SOURCE100} %{buildroot}/%{_sysconfdir}/yum.repos.d/
+cp -avx %{SOURCE100} %{buildroot}/%{_datadir}/dnf5/repos.d/
 
 # Flatpak remotes
 mkdir -p %{buildroot}/%{_sysconfdir}/flatpak/remotes.d
@@ -80,19 +80,19 @@ cp -avx %{SOURCE200} %{buildroot}/%{_sysconfdir}/flatpak/remotes.d/
 cp -avx %{SOURCE201} %{buildroot}/%{_sysconfdir}/flatpak/remotes.d/appcenter.flatpakrepo
 
 %dnl # Raspberry Pi
-%dnl cp -avx %{SOURCE300} %{buildroot}/%{_sysconfdir}/yum.repos.d/
+%dnl cp -avx %{SOURCE300} %{buildroot}/%{_datadir}/dnf5/repos.d/
 
 %files
 
 %files common
-%{_sysconfdir}/yum.repos.d/ultramarine.repo
+%{_datadir}/dnf5/repos.d/ultramarine.repo
 %files extras
 %{_sysconfdir}/flatpak/remotes.d/flathub.flatpakrepo
 %files appcenter
 %{_sysconfdir}/flatpak/remotes.d/appcenter.flatpakrepo
-%dnl %{_sysconfdir}/yum.repos.d/rpmfusion-free.repo
-%dnl %{_sysconfdir}/yum.repos.d/rpmfusion-free-updates.repo
-%dnl %{_sysconfdir}/yum.repos.d/rpmfusion-nonfree.repo
-%dnl %{_sysconfdir}/yum.repos.d/rpmfusion-nonfree-updates.repo
+%dnl %{_datadir}/dnf5/repos.d/rpmfusion-free.repo
+%dnl %{_datadir}/dnf5/repos.d/rpmfusion-free-updates.repo
+%dnl %{_datadir}/dnf5/repos.d/rpmfusion-nonfree.repo
+%dnl %{_datadir}/dnf5/repos.d/rpmfusion-nonfree-updates.repo
 %dnl %files rpi
-%dnl %{_sysconfdir}/yum.repos.d/dwrobel-kernel-rpi-fedora-%{version}.repo
+%dnl %{_datadir}/dnf5/repos.d/dwrobel-kernel-rpi-fedora-%{version}.repo

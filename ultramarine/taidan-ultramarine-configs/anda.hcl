@@ -3,4 +3,7 @@ project pkg {
   rpm {
     spec = "taidan-ultramarine-configs.spec"
   }
+  labels {
+    updbranch = 1
+  }
 }
