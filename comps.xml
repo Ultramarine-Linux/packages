@@ -57,6 +57,7 @@
       <packagereq type="default">ultramarine-fun</packagereq>
       <packagereq type="default">ultramarine-system-configs-core</packagereq>
       <packagereq type="default">ultramarine-repos</packagereq>
+      <packagereq type="default">ultramarine-bookmarks</packagereq>
       <packagereq type="default">git</packagereq>
       <packagereq type="default">vim</packagereq>
       <packagereq type="default">nano</packagereq>
