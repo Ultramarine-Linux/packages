@@ -71,6 +71,7 @@
       <packagereq type="default">NetworkManager-tui</packagereq>
       <packagereq type="default">zstd</packagereq>
       <packagereq type="default">lm_sensors</packagereq>
+      <packagereq type="default">sl</packagereq>
     </packagelist>
   </group>
   <group>
