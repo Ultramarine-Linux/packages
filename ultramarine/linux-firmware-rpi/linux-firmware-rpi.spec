@@ -1,3 +1,5 @@
+# This package is taken from AlmaLinux, please sync from this git repo every UM release https://git.almalinux.org/metalefty/linux-firmware-raspberrypi
+# Thank you to Koichiro Iwao (metalefty) from AlmaLinux for their work on this package
 %global	_firmwarepath	/usr/lib/firmware
 %global	fn_commit	223ccf3a3ddb11b3ea829749fbbba4d65b380897
 %global	fn_shortcommit	%(c=%{commit}; echo ${c:0:7})
@@ -5,13 +7,12 @@
 %global	bz_shortcommit	%(c=%{bz_commit}; echo ${c:0:7})
 %global	fn_srcdir	firmware-nonfree-%{fn_commit}
 %global	bz_srcdir	bluez-firmware-%{bz_commit}
-%define debug_package %nil
 
 Name:		linux-firmware-rpi
 Version:	20240528
 Release:	1%{?dist}
 Summary:	Supplemental firmware used by Linux kernel for some Raspberry Pi models
-BuildArch:	aarch64
+BuildArch:	noarch
 ExclusiveArch:	aarch64
 
 # LICENSE file installed by linux-firmware package also covers these suppremental firmware
@@ -25,7 +26,15 @@ Source1:	https://github.com/RPi-Distro/bluez-firmware/archive/%{bz_commit}/bluez
 Requires:	linux-firmware
 
 %description
-This package is part of the Ultramarine Anywhere Initative. Provides suppremental firmware files not included in linux-firmware to enable radios on some Raspberry Pi models.
+This package provides suppremental firmware files not included in linux-firmware
+package to enable Bluetooth/Wi-Fi on some Raspberry Pi models.
+
+%package rpi3
+Requires:	%{name} = %{version}-%{release}
+Summary:	Supplemental firmware used by Linux kernel for Raspberry Pi 3
+
+%description rpi3
+This package provides suppremental firmware files specific to Raspberry Pi 3.
 
 %prep
 %setup -n %{fn_srcdir}
@@ -67,11 +76,24 @@ ln -s brcmfmac43456-sdio.txt.xz %{buildroot}%{_firmwarepath}/brcm/brcmfmac43456-
 ln -s BCM4345C0.hcd.xz %{buildroot}%{_firmwarepath}/brcm/BCM4345C0.raspberrypi,5-model-b.hcd.xz
 ln -s brcmfmac43455-sdio.bin.xz %{buildroot}%{_firmwarepath}/brcm/brcmfmac43455-sdio.raspberrypi,5-model-b.bin.xz
 ln -s brcmfmac43455-sdio.clm_blob.xz %{buildroot}%{_firmwarepath}/brcm/brcmfmac43455-sdio.raspberrypi,5-model-b.clm_blob.xz
+# Raspberry Pi 3
+#   These files need to be decompressed for Pi 3.
+#   https://bugs.almalinux.org/view.php?id=544
+install -c -m 644 debian/config/brcm80211/brcm/brcmfmac43430-sdio.raspberrypi,3-model-b.bin %{buildroot}%{_firmwarepath}/brcm/
+install -c -m 644 debian/config/brcm80211/brcm/brcmfmac43430-sdio.raspberrypi,3-model-b.clm_blob %{buildroot}%{_firmwarepath}/brcm/
+install -c -m 644 debian/config/brcm80211/brcm/brcmfmac43430-sdio.raspberrypi,3-model-b.txt %{buildroot}%{_firmwarepath}/brcm/
 
 %files
 %{_firmwarepath}/brcm/*
 
+%files rpi3
+%{_firmwarepath}/brcm/brcmfmac43430-sdio.raspberrypi,3-model-b.*
+
 %changelog
+* Mon Jul 14 2025 Koichiro Iwao <meta@almalinux.org> - 20240528-6
+- Add subpackage for RPi 3
+  https://bugs.almalinux.org/view.php?id=544
+
 * Thu Oct 24 2024 Jaiden Riordan <jade@fyralabs.com>
 - Port to Ultramarine
 
