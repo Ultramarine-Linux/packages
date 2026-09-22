@@ -2,7 +2,7 @@
 
 Name:           ultramarine-gpg-keys
 Version:        44
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        GPG keys for Ultramarine Linux
 Requires:       filesystem >= 3.18-6
 
@@ -22,8 +22,10 @@ Source9:        RPM-GPG-KEY-um43
 Source10:       RPM-GPG-KEY-um43-source
 Source11:       RPM-GPG-KEY-um44
 Source12:       RPM-GPG-KEY-um44-source
-Source13:       RPM-GPG-KEY-umrawhide
-Source14:       RPM-GPG-KEY-umrawhide-source
+Source13:       RPM-GPG-KEY-um45
+Source14:       RPM-GPG-KEY-um45-source
+Source15:       RPM-GPG-KEY-umrawhide
+Source16:       RPM-GPG-KEY-umrawhide-source
 BuildArch:      noarch
 Obsoletes:      ultramarine-mock-gpg-keys < %{version}-3
 
