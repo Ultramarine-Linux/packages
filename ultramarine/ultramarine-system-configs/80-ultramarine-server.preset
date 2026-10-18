@@ -9,3 +9,5 @@ enable podman.socket
 
 # Remote access ships disabled; an admin enables it explicitly.
 disable tailscaled.service
+
+enable tetra-setup-code.service
