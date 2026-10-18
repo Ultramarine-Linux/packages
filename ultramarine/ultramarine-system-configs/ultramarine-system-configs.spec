@@ -99,7 +99,7 @@ install -Dm644 %{SOURCE8} %{buildroot}%{_presetdir}/80-ultramarine-server.preset
 
 %changelog
 * Sat Oct 17 2026 Cypress Reed <cypress@fyralabs.com>
-- Add server and server-dashboard subpackages
+- Add server subpackage
 
 * Sat Aug 08 2026 Owen Zimmerman <owen@fyralabs.com>
 - Add ultramarine-bookmarks subpackage
