@@ -1,0 +1,26 @@
+# Ultramarine Server dashboard
+#
+# This is a logically bound image: /usr/lib/bootc/bound-images.d links here, so
+# bootc pulls the image into its own store alongside every deployment and the
+# dashboard is available on first boot without a registry pull.
+[Unit]
+Description=Ultramarine Server dashboard
+
+[Container]
+ContainerName=ultramarine-dashboard
+# Pinned by digest; bootc requires a fully qualified reference.
+Image=@DASHBOARD_IMAGE@@@DASHBOARD_DIGEST@
+# bootc keeps bound images in its own store, which Podman does not read by default.
+GlobalArgs=--storage-opt=additionalimagestore=/usr/lib/bootc/storage
+# Caddy is the only ingress; the dashboard listens on loopback only.
+PublishPort=127.0.0.1:3000:3000
+Volume=ultramarine-dashboard-state:/var/lib/ultramarine-dashboard
+Environment=UM_DASHBOARD_STATE_DIR=/var/lib/ultramarine-dashboard
+NoNewPrivileges=true
+DropCapability=all
+
+[Service]
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

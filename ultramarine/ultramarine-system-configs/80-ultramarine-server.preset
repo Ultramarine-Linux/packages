@@ -1,0 +1,11 @@
+# Ultramarine Server
+
+# Tetra host agent. It is socket-activated: tetra.service starts on the first
+# connection to /run/tetra/tetra.sock.
+enable tetra.socket
+
+# Docker-compatible API socket, used by podman-docker and Docker tooling
+enable podman.socket
+
+# Remote access ships disabled; an admin enables it explicitly.
+disable tailscaled.service
