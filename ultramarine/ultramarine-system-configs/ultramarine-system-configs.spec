@@ -1,6 +1,6 @@
 Name:           ultramarine-system-configs
 Version:        46
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Various configuration files for a more comfortable Ultramarine desktop experience
 BuildArch:      noarch
 License:        MIT OR GFDL-1.1-or-later
@@ -12,6 +12,9 @@ Source5:        50-mtu-probing.conf
 Source6:        ultramarine-default-bookmarks.html
 Source7:        GFDL-1.1-or-later.txt
 Source8:        80-ultramarine-server.preset
+Source9:        ultramarine-caddy-admin.conf
+Source10:       ultramarine-server.sysusers
+Source11:       ultramarine-server-automatic.conf
 
 BuildRequires:  /usr/bin/install
 BuildRequires:  systemd-rpm-macros
@@ -35,6 +38,8 @@ and performance on Ultramarine Linux.
 %package server
 Summary:        Ultramarine Server default configuration
 BuildArch:      noarch
+# Reads the automatic.conf shipped here to update mutable installs
+Requires:       dnf5-plugin-automatic
 
 %description server
 This package provides the default service configuration for Ultramarine Server,
@@ -72,9 +77,12 @@ install -Dm644 %{SOURCE5} %{buildroot}/etc/sysctl.d/50-mtu-probing.conf
 install -Dm644 %{SOURCE6} %{buildroot}%{_datadir}/bookmarks/ultramarine-default-bookmarks.html
 cp %{S:7} GFDL-1.1-or-later
 install -Dm644 %{SOURCE8} %{buildroot}%{_presetdir}/80-ultramarine-server.preset
+install -Dm644 %{SOURCE9} %{buildroot}%{_unitdir}/caddy.service.d/50-ultramarine-admin-socket.conf
+install -Dm644 %{SOURCE10} %{buildroot}%{_sysusersdir}/ultramarine-server.conf
+install -Dm644 %{SOURCE11} %{buildroot}%{_sysconfdir}/dnf/automatic.conf
 
 %post server
-%systemd_post tetra.socket podman.socket
+%systemd_post tetra.socket podman.socket dnf5-automatic.timer
 
 %files
 
@@ -90,6 +98,10 @@ install -Dm644 %{SOURCE8} %{buildroot}%{_presetdir}/80-ultramarine-server.preset
 
 %files server
 %{_presetdir}/80-ultramarine-server.preset
+%dir %{_unitdir}/caddy.service.d
+%{_unitdir}/caddy.service.d/50-ultramarine-admin-socket.conf
+%{_sysusersdir}/ultramarine-server.conf
+%config(noreplace) %{_sysconfdir}/dnf/automatic.conf
 
 %files -n ultramarine-bookmarks
 %license GFDL-1.1-or-later
@@ -98,6 +110,11 @@ install -Dm644 %{SOURCE8} %{buildroot}%{_presetdir}/80-ultramarine-server.preset
 %{_datadir}/bookmarks/ultramarine-default-bookmarks.html
 
 %changelog
+* Sun Oct 18 2026 Cypress Reed <cypress@fyralabs.com>
+- server: Move the Caddy admin API to a Unix socket
+- server: Create the ultramarine-admin group
+- server: Apply updates automatically on mutable installs
+
 * Sat Oct 17 2026 Cypress Reed <cypress@fyralabs.com>
 - Add server subpackage
 

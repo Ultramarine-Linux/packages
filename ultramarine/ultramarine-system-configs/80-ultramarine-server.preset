@@ -11,3 +11,7 @@ enable podman.socket
 disable tailscaled.service
 
 enable tetra-setup-code.service
+
+# Automatic updates for mutable installs. The service skips image-based
+# (bootc) installs, which update through bootc instead.
+enable dnf5-automatic.timer
