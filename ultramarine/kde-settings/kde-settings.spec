@@ -8,7 +8,7 @@ Summary: Config files for KDE
 Name:    kde-settings
 Epoch:   1
 Version: %{?fedora}
-Release: 2%{?dist}
+Release: 1%{?dist}
 
 License: MIT
 URL:     https://github.com/Ultramarine-Linux/kde-settings
@@ -139,7 +139,7 @@ Enhances: (initial-setup-gui and kwin-wayland)
 
 
 %prep
-%autosetup -p1 -n %{name}-um%{version} -a 2
+%autosetup -C -p1
 
 %build
 # Intentionally left blank.  Nothing to see here.
@@ -274,6 +274,15 @@ test -f %{_datadir}/wallpapers/F%{version_maj} || ls -l %{_datadir}/wallpapers
 
 
 %changelog
+* Wed Aug 19 2026 Neal Gompa <ngompa@fedoraproject.org> - 44.0-1
+- Ship plasmoidsetupscripts as regular files in fedoradark and fedoralight
+  Resolves: rhbz#2444046
+- kde-openssh-askpass: Only set SSH_ASKPASS if ksshaskpass is installed
+  Resolves: rhbz#2433736
+
+* Thu Jul 16 2026 Fedora Release Engineering <releng@fedoraproject.org> - 43.101-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_45_Mass_Rebuild
+
 * Fri Feb 20 2026 Neal Gompa <ngompa@fedoraproject.org> - 43.101-5
 - Handle correct xdg-user-dirs versioned dependency for EL10
 
@@ -1123,4 +1132,3 @@ test -f %{_datadir}/wallpapers/F%{version_maj} || ls -l %{_datadir}/wallpapers
 
 * Sun Nov 29 2009 Rex Dieter <rdieter@fedoraproject.org> 4.4-1
 - -pulseaudio: drop xine-lib-pulseaudio (subpkg no longer exists)
-

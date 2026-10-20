@@ -1,8 +1,8 @@
-%global _dist_version 46
+%global _dist_version 45
 
 Name: ultramarine-repos
 Version: %{_dist_version}
-Release: 4%{?dist}
+Release: 1%{?dist}
 License: MIT
 Summary: Repositories for Ultramarine Linux
 Requires: %{name}-common = %{version}-%{release}

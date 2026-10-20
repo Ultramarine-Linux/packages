@@ -1,8 +1,8 @@
 %undefine dist
 
 Name:           ultramarine-gpg-keys
-Version:        46
-Release:        5%{?dist}
+Version:        45
+Release:        1%{?dist}
 Summary:        GPG keys for Ultramarine Linux
 Requires:       filesystem >= 3.18-6
 

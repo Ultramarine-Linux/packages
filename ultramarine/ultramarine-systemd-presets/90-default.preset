@@ -485,3 +485,24 @@ enable authselect-apply-changes.service
 # Enable Intel Low Power Model Daemon
 # https://bugzilla.redhat.com/show_bug.cgi?id=2442391
 enable intel_lpmd.service
+
+# Enable Phosh Tour
+# https://bugzilla.redhat.com/show_bug.cgi?id=2447760
+enable mobi.phosh.PhoshTour-first-login.service
+
+# Enable Ultramarine specific services in this file
+
+# We ship system76-scheduler by default
+enable com.system76.Scheduler.service
+
+# On Ultramarine, we just use Flathub
+disable flatpak-add-fedora-repos.service
+
+# We use polycrystal to install Flatpaks
+enable polycrystal.service
+
+# Chromebook keyboard maps
+enable keyd.service
+# keyd hopefully will be replaced by croskbd soon
+enable cros-keyboard-map.service
+enable croskbd.service
