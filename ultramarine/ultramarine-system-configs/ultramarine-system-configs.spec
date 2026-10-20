@@ -1,6 +1,6 @@
 Name:           ultramarine-system-configs
 Version:        46
-Release:        4%{?dist}
+Release:        3%{?dist}
 Summary:        Various configuration files for a more comfortable Ultramarine desktop experience
 BuildArch:      noarch
 License:        MIT OR GFDL-1.1-or-later
