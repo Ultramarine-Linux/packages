@@ -1375,14 +1375,14 @@ end
 --
 local function _deffontpkg(pkgname, summary1, summary2, deps, files)
   local templ = [[
-%package -n %{_pkgname}
+%package -n ultramarine-%{_pkgname}
 Summary:    Metapackage to install %{_summary1} for %{_summary2}
 %{?_req}
 
-%description -n %{_pkgname}
+%description -n ultramarine-%{_pkgname}
 This package provides %{_summary1} package set(s) for %{_summary2}
 
-%files -n %{_pkgname}
+%files -n ultramarine-%{_pkgname}
 %{_files}
 
 ]]
