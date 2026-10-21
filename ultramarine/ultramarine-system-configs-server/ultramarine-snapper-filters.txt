@@ -1,0 +1,17 @@
+/etc/passwd
+/etc/shadow
+/etc/group
+/etc/gshadow
+/etc/subuid
+/etc/subgid
+/etc/passwd-
+/etc/shadow-
+/etc/group-
+/etc/gshadow-
+/etc/subuid-
+/etc/subgid-
+/etc/NetworkManager/system-connections
+/etc/caddy
+/etc/ultramarine-dashboard
+/etc/tetra
+/etc/ssh/ssh_host_*

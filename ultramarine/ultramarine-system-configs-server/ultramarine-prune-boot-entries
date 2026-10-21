@@ -1,0 +1,73 @@
+#!/bin/bash
+# Remove the boot entries and kernel images in /boot for kernels whose modules are gone from
+# /usr/lib/modules.
+#
+# /boot isn't part of root snapshots, so rolling back a kernel update with `snapper undochange`
+# removes the new kernel's modules but leaves its boot entry, which GRUB keeps booting by
+# default. Run this after every rollback of the root filesystem:
+#
+#   snapper undochange <pre>..0
+#   ultramarine-prune-boot-entries
+#
+# where <pre> is the pre snapshot of the dnf transaction to undo (see `snapper list`). This
+# restores root to how it was before that transaction. Don't use <pre>..<post>: the post
+# snapshot is taken while dnf still has the RPM database open, so it misses the database update.
+#
+# Use --dry-run to only list the kernels that would be removed.
+
+set -euo pipefail
+
+BOOT=/boot
+MODULES=/usr/lib/modules
+
+dry_run=0
+case "${1-}" in
+    -n | --dry-run) dry_run=1 ;;
+    -h | --help)
+        sed -n '2,/^$/s/^# \{0,1\}//p' "$0"
+        exit 0
+        ;;
+    "") ;;
+    *)
+        echo "usage: $0 [--dry-run]" >&2
+        exit 2
+        ;;
+esac
+
+# Kernel versions with a kernel image or boot entry in /boot. Rescue entries are tied to the
+# machine ID, not to a kernel package, so they're left alone.
+boot_kernels() {
+    local f
+    for f in "$BOOT"/vmlinuz-*; do
+        [ -e "$f" ] && echo "${f#"$BOOT"/vmlinuz-}"
+    done
+    # symvers is a symlink into the modules directory, so it dangles once that's gone
+    for f in "$BOOT"/symvers-*.xz; do
+        [ -L "$f" ] || [ -e "$f" ] && basename "$f" .xz | sed 's/^symvers-//'
+    done
+    for f in "$BOOT"/loader/entries/*.conf; do
+        [ -e "$f" ] && sed -n 's/^version[[:space:]]\+//p' "$f"
+    done
+}
+
+orphans=()
+while read -r kver; do
+    [[ -z "$kver" || "$kver" == *rescue* ]] && continue
+    [ -d "$MODULES/$kver" ] || orphans+=("$kver")
+done < <(boot_kernels | sort -u)
+
+if [ "${#orphans[@]}" -eq 0 ]; then
+    echo "No boot entries without kernel modules"
+    exit 0
+fi
+
+for kver in "${orphans[@]}"; do
+    if [ "$dry_run" -eq 1 ]; then
+        echo "Would remove kernel $kver"
+        continue
+    fi
+    echo "Removing kernel $kver: $MODULES/$kver no longer exists"
+    kernel-install remove "$kver"
+    # Installed by the kernel package's scriptlets rather than kernel-install
+    rm -f "$BOOT/symvers-$kver.xz" "$BOOT/.vmlinuz-$kver.hmac"
+done
