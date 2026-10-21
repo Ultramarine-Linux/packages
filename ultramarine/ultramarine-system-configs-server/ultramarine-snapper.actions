@@ -1,0 +1,14 @@
+# Snapshot the root filesystem around every dnf transaction, the way the dnf4 snapper plugin
+# did. Based on the example in libdnf5-actions(8).
+#
+# Does nothing until /etc/snapper/configs/root exists. Readymade creates it on mutable installs
+# with a btrfs root, so image builds and bootc installs never take snapshots.
+#
+# Pairs use snapper's "number" cleanup algorithm, which snapper-cleanup.timer applies.
+
+# Take a pre snapshot described by the dnf command line, and keep its number for the post
+# snapshot. The variable is always set, empty when no snapshot was taken.
+pre_transaction:::enabled=host-only:/usr/bin/sh -c if\ [\ -f\ /etc/snapper/configs/root\ ];\ then\ echo\ "tmp.snapper_pre_number=$(snapper\ create\ -t\ pre\ -c\ number\ -p\ -d\ "$(ps\ -o\ command\ --no-headers\ -p\ ${pid})")";\ else\ echo\ tmp.snapper_pre_number=;\ fi
+
+# Take the matching post snapshot, then forget the number.
+post_transaction:::enabled=host-only:/usr/bin/sh -c if\ [\ -n\ "${tmp.snapper_pre_number}"\ ];\ then\ snapper\ create\ -t\ post\ -c\ number\ --pre-number\ "${tmp.snapper_pre_number}";\ fi;\ echo\ tmp.snapper_pre_number
