@@ -23,7 +23,7 @@ URL:            https://github.com/Ultramarine-Linux/dashboard
 Source0:        ultramarine-dashboard.container
 Source1:        ultramarine-server-dashboard.sysusers
 Source2:        ultramarine-server-dashboard.tmpfiles
-Source3:        https://github.com/Ultramarine-Linux/dashboard/blob/main/LICENSE
+Source3:        https://raw.githubusercontent.com/Ultramarine-Linux/dashboard/main/LICENSE
 
 BuildArch:      noarch
 
@@ -62,9 +62,6 @@ install -Dpm644 %{SOURCE2} %{buildroot}%{_tmpfilesdir}/%{name}.conf
 # Container environment, rewritten by Tetra (e.g. ORIGIN once the server's
 # hostname is set).
 install -Dpm644 /dev/null %{buildroot}%{_sysconfdir}/ultramarine-dashboard/env
-
-%post
-%tmpfiles_create %{name}.conf
 
 %files
 %license %{SOURCE3}
