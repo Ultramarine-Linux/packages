@@ -1,5 +1,5 @@
 Name:			ultramarine-fun
-Version:		46
+Version:		45
 Release:		1%?dist
 Summary:		Additional secret/hidden files for ultramarine Linux
 License:		MIT

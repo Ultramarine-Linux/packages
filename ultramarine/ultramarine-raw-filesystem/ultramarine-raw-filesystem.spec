@@ -1,5 +1,5 @@
 Name:           ultramarine-raw-filesystem
-Version:        46
+Version:        45
 Release:        1%{?dist}
 Summary:        systemd-repart config to automatically extend the root filesystem on raw images
 URL:            ultramarine-linux.org

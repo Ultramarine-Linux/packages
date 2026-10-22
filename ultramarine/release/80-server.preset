@@ -1,4 +1,0 @@
-# Ultramarine Server
-
-# The Cockpit web-based system management console
-enable cockpit.socket

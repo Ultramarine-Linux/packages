@@ -1,7 +1,7 @@
 # ? https://src.fedoraproject.org/rpms/langpacks/tree/rawhide
 
 Name:      ultramarine-langpacks
-Version:   46
+Version:   45
 Release:   1%{?dist}
 Summary:   Langpacks meta-package
 
@@ -152,7 +152,7 @@ local langpacks_package_list = {
    recommends={ "google-noto-sans-bengali-ui-vf-fonts",
                 "lohit-assamese-fonts",
               },
-   inputmethod="",
+   inputmethod="ibus-m17n",
    meta={ requires={},
           recommends={}
    },
@@ -161,8 +161,7 @@ local langpacks_package_list = {
                 sans="",
                 serif="",
                 mono="" },
-   recommends={
-              },
+   recommends={},
    inputmethod="",
    meta={ requires={},
           recommends={}
@@ -172,8 +171,7 @@ local langpacks_package_list = {
                 sans="",
                 serif="",
                 mono="" },
-   recommends={
-              },
+   recommends={},
    inputmethod="",
    meta={ requires={},
           recommends={}
@@ -183,8 +181,7 @@ local langpacks_package_list = {
                 sans="",
                 serif="",
                 mono="" },
-   recommends={
-              },
+   recommends={},
    inputmethod="",
    meta={ requires={},
           recommends={}
@@ -197,7 +194,7 @@ local langpacks_package_list = {
    recommends={ "google-noto-sans-bengali-ui-vf-fonts",
                 "lohit-bengali-fonts",
               },
-   inputmethod="",
+   inputmethod="ibus-m17n",
    meta={ requires={},
           recommends={}
    },
@@ -208,7 +205,7 @@ local langpacks_package_list = {
                 mono="" },
    recommends={ "tibetan-machine-uni-fonts"
               },
-   inputmethod="",
+   inputmethod="ibus-m17n",
    meta={ requires={},
           recommends={}
    },
@@ -228,8 +225,7 @@ local langpacks_package_list = {
                 sans="",
                 serif="",
                 mono="" },
-   recommends={
-              },
+   recommends={},
    inputmethod="",
    meta={ requires={},
           recommends={}
@@ -239,8 +235,7 @@ local langpacks_package_list = {
                 sans="",
                 serif="",
                 mono="" },
-   recommends={
-              },
+   recommends={},
    inputmethod="",
    meta={ requires={},
           recommends={}
@@ -250,8 +245,7 @@ local langpacks_package_list = {
                 sans="google-noto-sans-cherokee-vf-fonts",
                 serif="",
                 mono="" },
-   recommends={
-              },
+   recommends={},
    inputmethod="",
    meta={ requires={},
           recommends={}
@@ -261,8 +255,7 @@ local langpacks_package_list = {
                 sans="",
                 serif="",
                 mono="" },
-   recommends={
-              },
+   recommends={},
    inputmethod="",
    meta={ requires={},
           recommends={}
@@ -272,8 +265,7 @@ local langpacks_package_list = {
                 sans="",
                 serif="",
                 mono="" },
-   recommends={
-              },
+   recommends={},
    inputmethod="",
    meta={ requires={},
           recommends={}
@@ -283,8 +275,7 @@ local langpacks_package_list = {
                 sans="",
                 serif="",
                 mono="" },
-   recommends={
-              },
+   recommends={},
    inputmethod="",
    meta={ requires={},
           recommends={}
@@ -294,8 +285,7 @@ local langpacks_package_list = {
                 sans="",
                 serif="",
                 mono="" },
-   recommends={
-              },
+   recommends={},
    inputmethod="",
    meta={ requires={},
           recommends={}
@@ -305,8 +295,7 @@ local langpacks_package_list = {
                 sans="google-noto-sans-thaana-vf-fonts",
                 serif="",
                 mono="" },
-   recommends={
-              },
+   recommends={},
    inputmethod="",
    meta={ requires={},
           recommends={}
@@ -316,8 +305,7 @@ local langpacks_package_list = {
                 sans="",
                 serif="",
                 mono="" },
-   recommends={
-              },
+   recommends={},
    inputmethod="",
    meta={ requires={},
           recommends={}
@@ -327,8 +315,7 @@ local langpacks_package_list = {
                 sans="",
                 serif="",
                 mono="" },
-   recommends={
-              },
+   recommends={},
    inputmethod="",
    meta={ requires={},
           recommends={}
@@ -351,8 +338,7 @@ local langpacks_package_list = {
                 sans="",
                 serif="",
                 mono="" },
-   recommends={
-              },
+   recommends={},
    inputmethod="",
    meta={ requires={},
           recommends={}
@@ -362,8 +348,7 @@ local langpacks_package_list = {
                 sans="",
                 serif="",
                 mono="" },
-   recommends={
-              },
+   recommends={},
    inputmethod="",
    meta={ requires={},
           recommends={}
@@ -373,8 +358,7 @@ local langpacks_package_list = {
                 sans="",
                 serif="",
                 mono="" },
-   recommends={
-              },
+   recommends={},
    inputmethod="",
    meta={ requires={},
           recommends={}
@@ -384,8 +368,7 @@ local langpacks_package_list = {
                 sans="",
                 serif="",
                 mono="" },
-   recommends={
-              },
+   recommends={},
    inputmethod="",
    meta={ requires={},
           recommends={}
@@ -395,8 +378,7 @@ local langpacks_package_list = {
                 sans="",
                 serif="",
                 mono="" },
-   recommends={
-              },
+   recommends={},
    inputmethod="",
    meta={ requires={},
           recommends={}
@@ -417,8 +399,7 @@ local langpacks_package_list = {
                 sans="",
                 serif="",
                 mono="" },
-   recommends={
-              },
+   recommends={},
    inputmethod="",
    meta={ requires={},
           recommends={}
@@ -428,8 +409,7 @@ local langpacks_package_list = {
                 sans="",
                 serif="",
                 mono="" },
-   recommends={
-              },
+   recommends={},
    inputmethod="",
    meta={ requires={},
           recommends={}
@@ -439,8 +419,7 @@ local langpacks_package_list = {
                 sans="",
                 serif="",
                 mono="" },
-   recommends={
-              },
+   recommends={},
    inputmethod="",
    meta={ requires={},
           recommends={}
@@ -450,8 +429,7 @@ local langpacks_package_list = {
                 sans="",
                 serif="",
                 mono="" },
-   recommends={
-              },
+   recommends={},
    inputmethod="",
    meta={ requires={},
           recommends={}
@@ -461,8 +439,7 @@ local langpacks_package_list = {
                 sans="google-noto-sans-gothic-fonts",
                 serif="",
                 mono="" },
-   recommends={
-              },
+   recommends={},
    inputmethod="",
    meta={ requires={},
           recommends={}
@@ -476,7 +453,7 @@ local langpacks_package_list = {
                 "lohit-gujarati-fonts",
                 "samyak-gujarati-fonts"
               },
-   inputmethod="",
+   inputmethod="ibus-m17n",
    meta={ requires={},
           recommends={}
    },
@@ -514,7 +491,7 @@ local langpacks_package_list = {
                 "lohit-devanagari-fonts",
                 "samyak-devanagari-fonts",
               },
-   inputmethod="",
+   inputmethod="ibus-m17n",
    meta={ requires={},
           recommends={}
    },
@@ -523,8 +500,7 @@ local langpacks_package_list = {
                 sans="",
                 serif="",
                 mono="" },
-   recommends={
-              },
+   recommends={},
    inputmethod="",
    meta={ requires={},
           recommends={}
@@ -534,8 +510,7 @@ local langpacks_package_list = {
                 sans="",
                 serif="",
                 mono="" },
-   recommends={
-              },
+   recommends={},
    inputmethod="",
    meta={ requires={},
           recommends={}
@@ -545,8 +520,7 @@ local langpacks_package_list = {
                 sans="google-noto-sans-armenian-vf-fonts",
                 serif="google-noto-serif-armenian-vf-fonts",
                 mono="" },
-   recommends={
-              },
+   recommends={},
    inputmethod="",
    meta={ requires={},
           recommends={}
@@ -556,8 +530,7 @@ local langpacks_package_list = {
                 sans="",
                 serif="",
                 mono="" },
-   recommends={
-              },
+   recommends={},
    inputmethod="",
    meta={ requires={},
           recommends={}
@@ -567,19 +540,29 @@ local langpacks_package_list = {
                 sans="",
                 serif="",
                 mono="" },
-   recommends={
-              },
+   recommends={},
    inputmethod="",
    meta={ requires={},
           recommends={}
    },
  },
+ { lang="ii", fclang="ii", langname="Sichuan Yi", default={
+                sans="google-noto-sans-yi-fonts",
+                serif="",
+                mono="" },
+   recommends={ "sil-nuosu-fonts"
+              },
+   inputmethod="ibus-m17n",
+   meta={ requires={},
+          recommends={}
+   },
+   only_default_font=true,
+ },
  { lang="is", fclang="", langname="Icelandic", default={
                 sans="",
                 serif="",
                 mono="" },
-   recommends={
-              },
+   recommends={},
    inputmethod="",
    meta={ requires={},
           recommends={}
@@ -589,8 +572,7 @@ local langpacks_package_list = {
                 sans="",
                 serif="",
                 mono="" },
-   recommends={
-              },
+   recommends={},
    inputmethod="",
    meta={ requires={},
           recommends={}
@@ -600,8 +582,7 @@ local langpacks_package_list = {
                 sans="google-noto-sans-canadian-aboriginal-vf-fonts",
                 serif="",
                 mono="" },
-   recommends={
-              },
+   recommends={},
    inputmethod="",
    meta={ requires={},
           recommends={}
@@ -611,12 +592,11 @@ local langpacks_package_list = {
                 sans="", -- Use core_font_package_list if you want to have common fonts for CJK
                 serif="",
                 mono="" },
-   recommends={
-              },
-   inputmethod="",
+   recommends={},
+   inputmethod="ibus-anthy",
    meta={ requires={},
           recommends={},
-           fedora_recommends={ "(uim-anthy if uim)" }
+          fedora_recommends={ "(uim-anthy if uim)" }
    },
  },
  { lang="kab", fclang="", langname="Kabyle", default={
@@ -646,8 +626,7 @@ local langpacks_package_list = {
                 sans="",
                 serif="",
                 mono="" },
-   recommends={
-              },
+   recommends={},
    inputmethod="",
    meta={ requires={},
           recommends={}
@@ -682,7 +661,7 @@ local langpacks_package_list = {
                 "lohit-kannada-fonts",
                 "navilu-fonts",
               },
-   inputmethod="",
+   inputmethod="ibus-m17n",
    meta={ requires={},
           recommends={}
    },
@@ -691,9 +670,8 @@ local langpacks_package_list = {
                 sans="", -- Use core_font_package_list if you want to have common fonts for CJK
                 serif="",
                 mono="" },
-   recommends={
-              },
-   inputmethod="",
+   recommends={},
+   inputmethod="ibus-hangul",
    meta={ requires={},
           recommends={}
    },
@@ -702,8 +680,7 @@ local langpacks_package_list = {
                 sans="",
                 serif="",
                 mono="" },
-   recommends={
-              },
+   recommends={},
    inputmethod="",
    meta={ requires={},
           recommends={}
@@ -713,8 +690,7 @@ local langpacks_package_list = {
                 sans="google-noto-sans-lao-vf-fonts",
                 serif="google-noto-serif-lao-vf-fonts",
                 mono="" },
-   recommends={
-              },
+   recommends={},
    inputmethod="",
    meta={ requires={},
           recommends={}
@@ -724,8 +700,7 @@ local langpacks_package_list = {
                 sans="",
                 serif="",
                 mono="" },
-   recommends={
-              },
+   recommends={},
    inputmethod="",
    meta={ requires={},
           recommends={}
@@ -735,8 +710,7 @@ local langpacks_package_list = {
                 sans="",
                 serif="",
                 mono="" },
-   recommends={
-              },
+   recommends={},
    inputmethod="",
    meta={ requires={},
           recommends={}
@@ -749,7 +723,7 @@ local langpacks_package_list = {
    recommends={ "google-noto-sans-devanagari-ui-vf-fonts",
                 "lohit-devanagari-fonts",
               },
-   inputmethod="",
+   inputmethod="ibus-m17n",
    meta={ requires={},
           recommends={}
    },
@@ -758,8 +732,7 @@ local langpacks_package_list = {
                 sans="",
                 serif="",
                 mono="" },
-   recommends={
-              },
+   recommends={},
    inputmethod="",
    meta={ requires={},
           recommends={}
@@ -783,7 +756,7 @@ local langpacks_package_list = {
                 "rit-ezhuthu-fonts",
                 "rit-tn-joy-fonts",
               },
-   inputmethod="",
+   inputmethod="ibus-m17n",
    meta={ requires={},
           recommends={}
    },
@@ -792,9 +765,8 @@ local langpacks_package_list = {
                 sans="google-noto-sans-meetei-mayek-vf-fonts",
                 serif="",
                 mono="" },
-   recommends={ "",
-              },
-   inputmethod="",
+   recommends={},
+   inputmethod="ibus-m17n",
    meta={ requires={},
           recommends={}
    },
@@ -807,7 +779,7 @@ local langpacks_package_list = {
                 "lohit-marathi-fonts",
                 "samyak-devanagari-fonts",
               },
-   inputmethod="",
+   inputmethod="ibus-m17n",
    meta={ requires={},
           recommends={}
    },
@@ -816,8 +788,7 @@ local langpacks_package_list = {
                 sans="",
                 serif="",
                 mono="" },
-   recommends={
-              },
+   recommends={},
    inputmethod="",
    meta={ requires={},
           recommends={}
@@ -827,8 +798,7 @@ local langpacks_package_list = {
                 sans="sil-padauk-fonts",
                 serif="",
                 mono="" },
-   recommends={
-              },
+   recommends={},
    inputmethod="",
    meta={ requires={},
           recommends={}
@@ -838,8 +808,7 @@ local langpacks_package_list = {
                 sans="",
                 serif="",
                 mono="" },
-   recommends={
-              },
+   recommends={},
    inputmethod="",
    meta={ requires={},
           recommends={}
@@ -853,7 +822,7 @@ local langpacks_package_list = {
                 "google-noto-sans-devanagari-ui-vf-fonts",
                 "google-noto-serif-devanagari-vf-fonts",
               },
-   inputmethod="",
+   inputmethod="ibus-m17n",
    meta={ requires={},
           recommends={}
    },
@@ -862,8 +831,7 @@ local langpacks_package_list = {
                 sans="",
                 serif="",
                 mono="" },
-   recommends={
-              },
+   recommends={},
    inputmethod="",
    meta={ requires={},
           recommends={}
@@ -873,8 +841,7 @@ local langpacks_package_list = {
                 sans="",
                 serif="",
                 mono="" },
-   recommends={
-              },
+   recommends={},
    inputmethod="",
    meta={ requires={},
           recommends={}
@@ -884,8 +851,7 @@ local langpacks_package_list = {
                  sans="google-noto-sans-nko-fonts",
                  serif="",
                  mono="" },
-   recommends={
-              },
+   recommends={},
    inputmethod="",
    meta={ requires={},
           recommends={}
@@ -895,8 +861,7 @@ local langpacks_package_list = {
                 sans="",
                 serif="",
                 mono="" },
-   recommends={
-              },
+   recommends={},
    inputmethod="",
    meta={ requires={},
           recommends={}
@@ -920,7 +885,7 @@ local langpacks_package_list = {
    recommends={ "samyak-odia-fonts",
                 "lohit-odia-fonts",
               },
-   inputmethod="",
+   inputmethod="ibus-m17n",
    meta={ requires={},
           recommends={}
    },
@@ -932,7 +897,7 @@ local langpacks_package_list = {
    recommends={ "saab-fonts",
                 "lohit-gurmukhi-fonts",
               },
-   inputmethod="",
+   inputmethod="ibus-m17n",
    meta={ requires={},
           recommends={}
    },
@@ -998,7 +963,7 @@ local langpacks_package_list = {
                 mono="" },
    recommends={
               },
-   inputmethod="",
+   inputmethod="ibus-m17n",
    meta={ requires={},
           recommends={}
    },
@@ -1009,7 +974,7 @@ local langpacks_package_list = {
                 mono="" },
    recommends={
               },
-   inputmethod="",
+   inputmethod="ibus-m17n",
    meta={ requires={},
           recommends={}
    },
@@ -1100,7 +1065,7 @@ local langpacks_package_list = {
                 "samyak-tamil-fonts",
                 "serafettin-cartoon-fonts",
               },
-   inputmethod="",
+   inputmethod="ibus-m17n",
    meta={ requires={},
           recommends={}
    },
@@ -1114,7 +1079,7 @@ local langpacks_package_list = {
                 "pothana2000-fonts",
                 "vemana2000-fonts",
               },
-   inputmethod="",
+   inputmethod="ibus-m17n",
    meta={ requires={},
           recommends={}
    },
@@ -1137,7 +1102,7 @@ local langpacks_package_list = {
                 "tlwg-umpush-fonts",
                 "tlwg-waree-fonts",
               },
-   inputmethod="",
+   inputmethod="ibus-m17n",
    meta={ requires={},
           recommends={}
    },
@@ -1193,7 +1158,7 @@ local langpacks_package_list = {
    recommends={ "nafees-nastaleeq-fonts",
                 "nafees-web-naskh-fonts",
               },
-   inputmethod="",
+   inputmethod="ibus-m17n",
    meta={ requires={},
           recommends={}
    },
@@ -1215,8 +1180,8 @@ local langpacks_package_list = {
                 mono="" },
    recommends={
               },
-   fedora_inputmethod="",
-   inputmethod="",
+   fedora_inputmethod="ibus-unikey",
+   inputmethod="ibus-m17n",
    meta={ requires={},
           recommends={}
    },
@@ -1263,7 +1228,7 @@ local langpacks_package_list = {
                 mono="" },
    recommends={
               },
-   inputmethod="",
+   inputmethod="ibus-libpinyin",
    meta={ requires={},
           recommends={}
    },
@@ -1274,7 +1239,14 @@ local langpacks_package_list = {
                 mono="" },
    recommends={
               },
-   inputmethod="",
+   inputmethod="ibus-table-chinese-cangjie",
+   meta={ requires={},
+          recommends={ "ibus-table-chinese-quick" },
+          fedora_recommends={ "ibus-table-chinese-quick",
+                              "ibus-cangjie-engine-cangjie",
+                              "ibus-cangjie-engine-quick",
+                            }
+   },
  },
  { lang="zh_TW", fclang="", langname="Taiwan", default={
                 sans="", -- Use core_font_package_list if you want to have common fonts for CJK
@@ -1282,7 +1254,12 @@ local langpacks_package_list = {
                 mono="" },
    recommends={
               },
-   inputmethod="",
+   inputmethod="ibus-chewing",
+   meta={ requires={},
+          recommends={ "ibus-table-chinese-cangjie",
+                       "ibus-table-chinese-quick"
+          }
+   },
  },
  { lang="zu", fclang="", langname="Zulu", default={
                 sans="",
@@ -1359,20 +1336,17 @@ local function append_fontprov(deps, lang)
 end
 
 local function append_obsolete(deps, pkg)
-  return deps .. build_deps("", "Obsoletes", {pkg .. " < %{?epoch:%epoch:}%{version}-%{release}"}) .. build_deps("", "Provides", {pkg .. " = %{?epoch:%epoch:}%{version}-%{release}"})
+  return deps .. build_deps("", "Obsoletes", {pkg .. " < %{version}-%{release}"}) .. build_deps("", "Provides", {pkg .. " = %{version}-%{release}"})
 end
 
 --
 --Package template for langpacks-core-<lang>
 --
-local function defcorepkg(lang, fontlang, langname)
+local function defcorepkg(lang, fontlang, langname, inputmethod)
   local templ = [[
 %package core-%{_lang}
-Epoch: %{?epoch:%epoch}%{!?epoch:0}
 Summary: %{_langname} langpacks core meta-package
 Requires: default-fonts-%{_fontlang}
-Conflicts: langpacks-core-%{_lang}
-Provides: langpacks-core-%{_lang} = %{?epoch:%epoch:}%version-%release
 %{?_req}
 
 %description core-%{_lang}
@@ -1382,9 +1356,13 @@ This package provides %{_langname} core langpacks packages.
 %{_datadir}/metainfo/org.fedoraproject.LangPack-Core-%{_lang}.metainfo.xml
 
 ]]
+  inputmethod = (not(inputmethod) and "" or inputmethod)
   rpm.define("_lang " .. lang)
   rpm.define("_fontlang " .. string.gsub(fontlang, "-", "_"))
   rpm.define("_langname " .. langname)
+  if inputmethod ~= "" then
+    rpm.define("_req " .. "Requires: (" .. inputmethod .. " if service(graphical-login))\n")
+  end
   print(rpm.expand(templ))
   rpm.undefine("_lang")
   rpm.undefine("_fontlang")
@@ -1398,10 +1376,7 @@ end
 local function _deffontpkg(pkgname, summary1, summary2, deps, files)
   local templ = [[
 %package -n ultramarine-%{_pkgname}
-Epoch: %{?epoch:%epoch}%{!?epoch:0}
 Summary:    Metapackage to install %{_summary1} for %{_summary2}
-Conflicts:  %{_pkgname}
-Provides:   %{_pkgname} = %{?epoch:%epoch:}%version-%release
 %{?_req}
 
 %description -n ultramarine-%{_pkgname}
@@ -1450,12 +1425,9 @@ end
 local function defmetapkg(lang, fontlang, langname, deps)
   local templ = [[
 %package %{_lang}
-Epoch: %{?epoch:%epoch}%{!?epoch:0}
 Summary: %{_langname} langpacks meta-package
 Requires: %{name}-core-%{_lang}
 Requires: %{name}-fonts-%{_fontlang}
-Provides: langpacks-%{_lang} = %{?epoch:%epoch:}%version-%release
-Conflicts: langpacks-%{_lang}
 %{?_req}
 
 %description %{_lang}
@@ -1553,10 +1525,12 @@ local function defappstream(table)
   sdf = defappstream_metabody(sdf, "cjk", "Chinese/Japanese/Korean")
 
   for i = 1, #table do
-    slpc = defappstream_body(slpc, "localization", "LangPack-Core", table[i]["lang"], table[i]["lang"], table[i]["langname"], "Core Localization support", "Core Meta-package to install default font, glibc locale and input-method if available.")
-    slp = defappstream_body(slp, "localization", "LangPack", table[i]["lang"], table[i]["lang"], table[i]["langname"], "Localization support", "Meta-package to install available langpacks for the language available for the installed packages.")
     sdf = defappstream_body(sdf, "font", "default-fonts", table[i]["lang"], table[i]["fclang"], table[i]["langname"], "Localization Font support", "Core font package to install default font.")
-    slf = defappstream_body(slf, "font", "langpacks-fonts", table[i]["lang"], table[i]["fclang"], table[i]["langname"], "Localization Font support", "Meta-package to install extra font.")
+    if not table[i]["only_default_font"] then
+      slpc = defappstream_body(slpc, "localization", "LangPack-Core", table[i]["lang"], table[i]["lang"], table[i]["langname"], "Core Localization support", "Core Meta-package to install default font, glibc locale and input-method if available.")
+      slp = defappstream_body(slp, "localization", "LangPack", table[i]["lang"], table[i]["lang"], table[i]["langname"], "Localization support", "Meta-package to install available langpacks for the language available for the installed packages.")
+      slf = defappstream_body(slf, "font", "langpacks-fonts", table[i]["lang"], table[i]["fclang"], table[i]["langname"], "Localization Font support", "Meta-package to install extra font.")
+    end
   end
 
   rpm.define("langpacks_metainfo_lpc " .. defappstream_close(slpc))
@@ -1585,8 +1559,10 @@ for i = 1, #langpacks_package_list do
   local lowerorth = string.lower(orth)
   local normlang = string.gsub(string.lower(lang), "_", "-")
   local langname = langpacks_package_list[i]["langname"]
+  local im = (tonumber(rpm.expand("0%{?fedora}")) ~= 0 and langpacks_package_list[i]["fedora_inputmethod"] ~= nil and langpacks_package_list[i]["fedora_inputmethod"] or langpacks_package_list[i]["inputmethod"])
   local fclang = (langpacks_package_list[i]["fclang"] == "" and string.gsub(lang, "_", "-") or langpacks_package_list[i]["fclang"])
   local prov = ""
+  local only_default_pkg = langpacks_package_list[i]["only_default_font"]
 
   if orth ~= "" then
     --Try to validate orth in table
@@ -1613,15 +1589,15 @@ for i = 1, #langpacks_package_list do
           table.insert(default_deps, current[k])
         end
         -- Make sure default-fonts-<language code> pulled in by langpacks-fonts-<language code>
-        table.insert(extra_deps, "default-fonts-" .. string.gsub(fclang, "-", "_") .. " = %{?epoch:%epoch:}%{version}-%{release}")
+        table.insert(extra_deps, "default-fonts-" .. string.gsub(fclang, "-", "_") .. " = %{version}-%{release}")
         -- Provide font(:lang=) deps for default face only
         prov = append_fontprov("", lowerorth)
 
         if is_nonlatin(lang) then
           if is_cjk(lang) then
-            table.insert(cjk_deps[face[j]], "default-fonts-" .. string.gsub(fclang, "-", "_") .. " = %{?epoch:%epoch:}%{version}-%{release}")
+            table.insert(cjk_deps[face[j]], "default-fonts-" .. string.gsub(fclang, "-", "_") .. " = %{version}-%{release}")
           else
-            table.insert(other_deps[face[j]], "default-fonts-" .. string.gsub(fclang, "-", "_") .. " = %{?epoch:%epoch:}%{version}-%{release}")
+            table.insert(other_deps[face[j]], "default-fonts-" .. string.gsub(fclang, "-", "_") .. " = %{version}-%{release}")
           end
         end
       else
@@ -1651,7 +1627,7 @@ for i = 1, #langpacks_package_list do
     if not is_nonlatin(lang) then
       if has_default then
         -- We may need to take care of them separately.
-        table.insert(core_deps, "default-fonts-" .. lang .. " = %{?epoch:%epoch:}%{version}-%{release}")
+        table.insert(core_deps, "default-fonts-" .. lang .. " = %{version}-%{release}")
       else
         table.insert(core_langs, lang)
       end
@@ -1659,7 +1635,7 @@ for i = 1, #langpacks_package_list do
       if is_cjk(lang) then
         if has_default then
           -- We may need to take care of them separately.
-          table.insert(cjk_sans_deps, "default-fonts-" .. lang .. " = %{?epoch:%epoch:}%{version}-%{release}")
+          table.insert(cjk_sans_deps, "default-fonts-" .. lang .. " = %{version}-%{release}")
           deffontpkg("default-fonts-" .. lang, "default fonts", langname, append_obsolete(default_deps, "langpacks-core-font-" .. lang))
         else
           table.insert(cjk_langs, lang)
@@ -1668,16 +1644,22 @@ for i = 1, #langpacks_package_list do
         deffontpkg("default-fonts-" .. lang, "default fonts", langname, append_obsolete(default_deps, "langpacks-core-font-" .. lang))
       end
     end
-    deffontpkg("langpacks-fonts-" .. lang, "extra fonts", langname, append_obsolete(extra_deps, "default-fonts-extra-" .. lang))
+    if only_default_pkg == nil then
+      deffontpkg("langpacks-fonts-" .. lang, "extra fonts", langname, append_obsolete(extra_deps, "default-fonts-extra-" .. lang))
+    end
   end
-  defcorepkg(lang, fclang, langname)
+  if only_default_pkg == nil then
+    defcorepkg(lang, fclang, langname, im)
+  end
 
   --Generate langpacks-* meta packages
-  local metadeps = {}
-  local metarecd = {}
-  local deps = build_deps("", "Requires", drop_duplicate(metadeps))
-  deps = build_deps(deps, "Recommends", drop_duplicate(metarecd))
-  defmetapkg(lang, fclang, langname, deps)
+  if only_default_pkg == nil then
+    local metadeps = (tonumber(rpm.expand("0%{?fedora}")) ~= 0 and langpacks_package_list[i]["meta"]["fedora_requires"] ~= nil and langpacks_package_list[i]["meta"]["fedora_requires"] or langpacks_package_list[i]["meta"]["requires"])
+    local metarecd = (tonumber(rpm.expand("0%{?fedora}")) ~= 0 and langpacks_package_list[i]["meta"]["fedora_recommends"] ~= nil and langpacks_package_list[i]["meta"]["fedora_recommends"] or langpacks_package_list[i]["meta"]["recommends"])
+    local deps = build_deps("", "Requires", drop_duplicate(metadeps))
+    deps = build_deps(deps, "Recommends", drop_duplicate(metarecd))
+    defmetapkg(lang, fclang, langname, deps)
+  end
 end
 
 --Generate AppStream files
@@ -1715,13 +1697,10 @@ end
 } # %%{lua:}
 
 %package -n ultramarine-default-fonts
-Epoch: %{?epoch:%epoch}%{!?epoch:0}
 Summary: Meta package to install all the default fonts
-Requires: default-fonts-core = %{?epoch:%epoch:}%version-%release
-Requires: default-fonts-cjk = %{?epoch:%epoch:}%version-%release
-Requires: default-fonts-other = %{?epoch:%epoch:}%version-%release
-Provides: default-fonts = %{?epoch:%epoch:}%version-%release
-Conflicts: default-fonts
+Requires: default-fonts-core = %{version}-%{release}
+Requires: default-fonts-cjk = %{version}-%{release}
+Requires: default-fonts-other = %{version}-%{release}
 
 %description -n ultramarine-default-fonts
 This package provides easier way to install all the default fonts meta packages
@@ -1731,15 +1710,12 @@ for all the languages.
 %{_datadir}/metainfo/org.fedoraproject.default-fonts.metainfo.xml
 
 %package -n ultramarine-default-fonts-core
-Epoch: %{?epoch:%epoch}%{!?epoch:0}
 Summary: Meta package to install sans/serif/mono/emoji/math default fonts meta packages for Western characters
-Requires: default-fonts-core-sans = %{?epoch:%epoch:}%version-%release
-Requires: default-fonts-core-serif = %{?epoch:%epoch:}%version-%release
-Requires: default-fonts-core-mono = %{?epoch:%epoch:}%version-%release
-Requires: default-fonts-core-emoji = %{?epoch:%epoch:}%version-%release
-Requires: default-fonts-core-math = %{?epoch:%epoch:}%version-%release
-Provides: default-fonts-core = %{?epoch:%epoch:}%version-%release
-Conflicts: default-fonts-core
+Requires: default-fonts-core-sans = %{version}-%{release}
+Requires: default-fonts-core-serif = %{version}-%{release}
+Requires: default-fonts-core-mono = %{version}-%{release}
+Requires: default-fonts-core-emoji = %{version}-%{release}
+Requires: default-fonts-core-math = %{version}-%{release}
 
 %description -n ultramarine-default-fonts-core
 This package provides easier way to install all variants of default fonts
@@ -1749,13 +1725,10 @@ meta packages for Western characters.
 %{_datadir}/metainfo/org.fedoraproject.default-fonts-core.metainfo.xml
 
 %package -n ultramarine-default-fonts-cjk
-Epoch: %{?epoch:%epoch}%{!?epoch:0}
 Summary: Meta package to install sans/serif/mono/emoji/math default fonts meta packages for CJK
-Requires: default-fonts-cjk-sans = %{?epoch:%epoch:}%version-%release
-Requires: default-fonts-cjk-serif = %{?epoch:%epoch:}%version-%release
-Requires: default-fonts-cjk-mono = %{?epoch:%epoch:}%version-%release
-Provides: default-fonts-cjk = %{?epoch:%epoch:}%version-%release
-Conflicts: default-fonts-cjk
+Requires: default-fonts-cjk-sans = %{version}-%{release}
+Requires: default-fonts-cjk-serif = %{version}-%{release}
+Requires: default-fonts-cjk-mono = %{version}-%{release}
 
 %description -n ultramarine-default-fonts-cjk
 This package provides easier way to install all variants of default fonts
@@ -1765,13 +1738,10 @@ meta packages for CJK languages.
 %{_datadir}/metainfo/org.fedoraproject.default-fonts-cjk.metainfo.xml
 
 %package -n ultramarine-default-fonts-other
-Epoch: %{?epoch:%epoch}%{!?epoch:0}
 Summary: Meta package to install sans/serif/mono/emoji/math default fonts meta packages for non-CJK
-Requires: default-fonts-other-sans = %{?epoch:%epoch:}%version-%release
-Requires: default-fonts-other-serif = %{?epoch:%epoch:}%version-%release
-Requires: default-fonts-other-mono = %{?epoch:%epoch:}%version-%release
-Provides: default-fonts-other = %{?epoch:%epoch:}%version-%release
-Conflicts: default-fonts-other
+Requires: default-fonts-other-sans = %{version}-%{release}
+Requires: default-fonts-other-serif = %{version}-%{release}
+Requires: default-fonts-other-mono = %{version}-%{release}
 
 %description -n ultramarine-default-fonts-other
 This package provides easier way to install all variants of default fonts
@@ -1799,3 +1769,306 @@ DESTDIR=%{buildroot} appstream-util split-appstream org.fedoraproject.LangPacks-
 DESTDIR=%{buildroot} appstream-util split-appstream org.fedoraproject.LangPacks.xml
 DESTDIR=%{buildroot} appstream-util split-appstream org.fedoraproject.default-fonts.xml
 DESTDIR=%{buildroot} appstream-util split-appstream org.fedoraproject.langpacks-fonts.xml
+
+%changelog
+* Thu Jul 16 2026 Fedora Release Engineering <releng@fedoraproject.org> - 4.3-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_45_Mass_Rebuild
+
+* Tue May 12 2026 Parag Nemade <pnemade AT redhat DOT com> - 4.3-2
+- Add functionality to only generate default-fonts for any language
+
+* Mon Mar 02 2026 Jens Petersen <petersen@redhat.com> - 4.3-1
+- add ii langpack for Sichuan Yi (Nuosu)
+- add README.md (#2237646)
+
+* Fri Jan 16 2026 Fedora Release Engineering <releng@fedoraproject.org> - 4.2-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_44_Mass_Rebuild
+
+* Thu Jul 24 2025 Fedora Release Engineering <releng@fedoraproject.org> - 4.2-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_43_Mass_Rebuild
+
+* Tue Jan 21 2025 Yaakov Selkowitz <yselkowi@redhat.com> - 4.2-4
+- Recommend ibus-cangjie only on Fedora
+
+* Fri Jan 17 2025 Fedora Release Engineering <releng@fedoraproject.org> - 4.2-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_42_Mass_Rebuild
+
+* Thu Nov 14 2024 Mike FABIAN <mfabian@redht.com> - 4.2-2
+- Resolves: rhbz#2310426 Add ibus-cangjie-engine-cangjie and ibus-cangjie-engine-quick as recommends for zh_HK
+
+* Tue Oct 22 2024 Akira TAGOH <tagoh@redhat.com> - 4.2-1
+- Add sub-packages:
+  - got for Gothic
+  - kab for Kabyle
+  - nqo for N'Ko
+  - syr for Syriac
+
+* Tue Aug 13 2024 Akira TAGOH <tagoh@redhat.com> - 4.1-3
+- Update package names for renaming
+  google-noto-sans-symbols2-fonts -> google-noto-sans-symbols-2-fonts
+  google-noto-sans-meeteimayek-vf-fonts -> google-noto-sans-meetei-mayek-vf-fonts
+
+* Wed Jul 17 2024 Parag Nemade <pnemade AT redhat DOT com> - 4.1-2
+- zh_TW: change default inputmethod to ibus-chewing
+  https://fedoraproject.org/wiki/Changes/IBusChewingForZhTW
+
+* Wed Jun 19 2024 Jens Petersen <petersen@redhat.com> - 4.1-1
+- make IME installation condition on service(graphical-login)
+  instead of xorg-x11-server-Xorg (RHEL-36747)
+
+* Fri Jun  7 2024 Jens Petersen <petersen@redhat.com> - 4.0-14
+- drop sil-mingzat-fonts recommends from fonts-en
+- use Hebrew fonts for Yiddish (#2284093)
+
+* Thu Apr 25 2024 Akira TAGOH <tagoh@redhat.com> - 4.0-13
+- Add some conditional for RHEL.
+
+* Fri Feb 02 2024 Parag Nemade <pnemade AT redhat DOT com> - 4.0-12
+- Added langpacks for sat and mni languages (#2259991 and #2259995)
+
+* Thu Jan 25 2024 Fedora Release Engineering <releng@fedoraproject.org> - 4.0-11
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Sun Jan 21 2024 Fedora Release Engineering <releng@fedoraproject.org> - 4.0-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+* Wed Aug 23 2023 Akira TAGOH <tagoh@redhat.com> - 4.0-9
+- Drop google-noto-naskh-arabic-vf-fonts from langpacks-fonts-pa.
+  Resolves: rhbz#2225410
+
+* Fri Aug 11 2023 Peng Wu <pwu@redhat.com> - 4.0-8
+- Update for the tlwg-fonts package
+
+* Fri Aug  4 2023 Akira TAGOH <tagoh@redhat.com> - 4.0-7
+- Update Indic fonts.
+  https://fedoraproject.org/wiki/Changes/Indic_Noto_fonts
+
+* Thu Jul 27 2023 Akira TAGOH <tagoh@redhat.com> - 4.0-6
+- Add google-noto-sans-mono-cjk-vf-fonts as mono for CJK.
+
+* Mon Jul 24 2023 Akira TAGOH <tagoh@redhat.com> - 4.0-5
+- Simplified sub-packages and dependencies for CJK.
+- Update serif font to google-noto-serif-gurmukhi-vf-fonts for Punjabi.
+  the original serif font for Punjabi, google-noto-naskh-arabic-vf-fonts was
+  figured out for Punjabi(Pakistan). but we don't have langpacks-pa_pk.
+  So updating based on Punjabi(Indic).
+
+* Fri Jul 21 2023 Parag Nemade <pnemade AT redhat DOT com> - 4.0-4
+- Fix wrong deps in langpacks-LL (zh languages) by Akira Tagoh
+
+* Fri Jul 21 2023 Akira TAGOH <tagoh@redhat.com> - 4.0-3
+- Drop extra dependencies for ELN which is a regression.
+
+* Thu Jul 20 2023 Fedora Release Engineering <releng@fedoraproject.org> - 4.0-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+* Tue Jun 27 2023 Akira TAGOH <tagoh@redhat.com> - 4.0-1
+- Bump the version to 4.0.
+  https://fedoraproject.org/wiki/Changes/ImproveDefaultFontHandling
+- New default-fonts metapackages.
+- Remove langpacks-core-font-* metapackages.
+
+* Tue Jun 13 2023 Peng Wu <pwu@redhat.com> - 3.0-35
+- Rename thai-scalable-fonts to tlwg-fonts
+
+* Thu Jun  8 2023 Jens Petersen <petersen@redhat.com> - 3.0-34
+- revert Urdu default font to paktype-naskh-basic-fonts
+
+* Wed Jun 07 2023 Parag Nemade <pnemade AT redhat DOT Com > - 3.0-33
+- Resolves:rhbz#2213106 - Fix rawhide compose by changing default sans for ur language
+
+* Fri Apr  7 2023 Peng Wu <pwu@redhat.com> - 3.0-32
+- Rebuild the langpacks package for Fedora 38
+
+* Wed Feb  8 2023 Peng Wu <pwu@redhat.com> - 3.0-31
+- Update for Noto CJK Variable Fonts
+- https://fedoraproject.org/wiki/Changes/Noto_CJK_Variable_Fonts
+
+* Fri Feb 03 2023 Akira TAGOH <tagoh@redhat.com> - 3.0-30
+- Update for https://fedoraproject.org/wiki/Changes/NotoFontsForMoreLang
+- Drop outdated google-noto-fonts packages.
+
+* Thu Jan 19 2023 Parag Nemade <pnemade AT redhat DOT com> - 3.0-29
+- Add serif fonts to some langpacks packages
+
+* Thu Jan 19 2023 Fedora Release Engineering <releng@fedoraproject.org> - 3.0-28
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+* Thu Dec 01 2022 Parag Nemade <pnemade AT redhat DOT com> - 3.0-27
+- Update license tag to SPDX format
+
+* Wed Aug 03 2022 Hedayat Vatankhah <hedayat.fwd+rpmchlog@gmail.com> - 3.0-26
+- langpacks-fa: use vazirmatn-vf-fonts as the default font and recommends Noto
+  Naskh font
+
+* Tue Aug  2 2022 Jens Petersen <petersen@redhat.com> - 3.0-25
+- Hebrew: recommend Noto Serif not Rashi (#2113077)
+
+* Thu Jul 21 2022 Fedora Release Engineering <releng@fedoraproject.org> - 3.0-24
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+* Tue May 17 2022 Jens Petersen <petersen@redhat.com> - 3.0-23
+- langpacks-en recommends Noto Serif and Noto Sans Mono fonts
+
+* Tue Mar 08 2022 Akira TAGOH <tagoh@redhat.com> - 3.0-22
+- langpacks-ar: Requires: google-noto-naskh-arabic-vf-fonts instead of
+  google-noto-sans-arabic-vf-fonts.
+- langpacks-ar: Add Recommends: google-noto-sans-arabic-vf-fonts.
+
+* Tue Feb 01 2022 Mike FABIAN <mfabian@redhat.com> - 3.0-21
+- zh_HK: add ibus-table-chinese-quick
+- zh_TW: add ibus-table-chinese-cangjie, add ibus-table-chinese-quick
+
+* Mon Jan 24 2022 Parag Nemade <pnemade AT redhat DOT com> - 3.0-20
+- langpacks-th: Add Recommends: thai-scalable-laksaman-fonts (#2035607)
+
+* Fri Jan 21 2022 Akira TAGOH <tagoh@redhat.com> - 3.0-19
+- Replace dejavu to google-noto (#2041929)
+  https://fedoraproject.org/wiki/Changes/DefaultToNotoFonts
+- Add more sub-packages to make sure the upgrade-path for Noto Default:
+  Cherokee, Divehi, Armenian, Inuktitut, Lao
+
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 3.0-18
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
+* Mon Jan 03 2022 Rajeesh K V <rajeeshknambiar AT fedoraproject DOT org> - 3.0-17
+- Update default fonts for Malayalam (#2036378)
+
+* Tue Nov 30 2021 Parag Nemade <pnemade AT redhat DOT com> - 3.0-16
+- Resolves: Change pa language default font, https://pagure.io/i18n/issue/146
+
+* Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 3.0-15
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Wed Mar 10 2021 Jens Petersen <petersen@redhat.com> - 3.0-14
+- ja: use ibus-anthy
+- zh_HK: use ibus-table-chinese-cangjie
+
+* Mon Mar  8 2021 Jens Petersen <petersen@redhat.com> - 3.0-13
+- add subpackages for Hong Kong (zh_HK)
+
+* Tue Feb 23 2021 Parag Nemade <pnemade AT redhat DOT com> - 3.0-12
+- Revert previous ibus-unikey change for RHEL
+
+* Mon Feb 22 2021 Parag Nemade <pnemade AT redhat DOT com> - 3.0-11
+- Move Vietnamese to use ibus-unikey as default IME (#1913431)
+
+* Sat Feb 20 2021 Parag Nemade <pnemade AT redhat DOT com> - 3.0-10
+- Add more entries to previous commit
+
+* Thu Feb 18 2021 Parag Nemade <pnemade AT redhat DOT com> - 3.0-9
+- Don't Recommends: packages in RHEL which are not available
+
+* Mon Feb 15 2021 Parag Nemade <pnemade AT redhat DOT com> - 3.0-8
+- Change default for Sinhala and Vietnamese to use ibus-m17n keymaps for Fedora
+
+* Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 3.0-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Thu Dec 17 2020 Parag Nemade <pnemade AT redhat DOT com> - 3.0-6
+- Change default for Sinhala and Vietnamese to use ibus-m17n keymaps
+
+* Wed Sep 16 2020 Parag Nemade <pnemade AT redhat DOT com> - 3.0-5
+- Resolves: Fix broken dependency for langpacks-core-font-km (#1879141)
+
+* Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 3.0-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Wed Mar 11 2020 Akira TAGOH <tagoh@redhat.com> - 3.0-3
+- Stop shipping core-font sub-packages in lowercase and keep same naming as others.
+
+* Tue Feb  4 2020 Akira TAGOH <tagoh@redhat.com> - 3.0-2
+- Revert font(familyname) dependency to fix some regressions.
+
+* Wed Jan 22 2020 Parag Nemade <pnemade AT redhat DOT com> - 3.0-1
+- Added AppStream metainfo files for -core and -core-font subpackages
+- Use fontconfig API to normalize the langcode
+  and sub-package core-font based on ortho (By Akira Tagoh)
+- Use dependencies as font(familyname) instead of actual package names
+- Added Provides: in langcore_pkg macro (#1792463)
+- Added -core-font-xx subpackages
+
+* Wed Sep 11 2019 Parag Nemade <pnemade AT redhat DOT com> - 2.0-7
+- Fix typo (#1751242)
+
+* Thu Aug 29 2019 Parag Nemade <pnemade AT redhat DOT com> - 2.0-6
+- Fix the issue detected in rpmdeplint report
+
+* Mon Aug 12 2019 Akira TAGOH <tagoh@redhat.com> - 2.0-5
+- Replace non variable fonts to variable fonts. (#1739976)
+
+* Mon Jul 29 2019 Parag Nemade <pnemade AT redhat DOT com> - 2.0-4
+- Resolves:rh#1733929 - 'Requires:' to 'Recommends:' for additional fonts in base langpacks
+
+* Fri Jul 26 2019 Parag Nemade <pnemade AT redhat DOT com> - 2.0-3
+- Resolves:rh#1554988 - google-noto-sans-gurmkukhi-fonts default for Punjabi
+
+* Thu Jul 25 2019 Fedora Release Engineering <releng@fedoraproject.org> - 2.0-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_31_Mass_Rebuild
+
+* Tue Jul 23 2019 Parag Nemade <pnemade AT redhat DOT com> - 2.0-1
+- Should have bumped the version to 2.0 in last build
+
+* Mon Jul 22 2019 Parag Nemade <pnemade AT redhat DOT com> - 1.0-18
+- Implement F31 Change (rh#1732123)
+- Improve langname expansion macro from Jens Petersen
+- macronize langpacks-core-* subpackages
+- Correct the fonts entry for -core packages
+- for now no Recommends: but Requires:
+
+* Fri Apr 12 2019 Parag Nemade <pnemade AT redhat DOT com> - 1.0-17
+- Resolves: rh#1699210 - langpack-pa: add "Recommends: google-noto-sans-gurmukhi-fonts"
+
+* Fri Feb 01 2019 Fedora Release Engineering <releng@fedoraproject.org> - 1.0-16
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
+
+* Wed Jan 30 2019 Parag Nemade <pnemade AT redhat DOT com> - 1.0-15
+- Added few new subpackages for bo, dz, ka, km, ku, my, yi
+- Added entry for above languages in org.fedoraproject.LangPacks.xml
+- Enhance few langpacks to pull input-method packages
+- Enhance few langpacks to pull font packages
+
+* Thu Nov 08 2018 Parag Nemade <pnemade AT redhat DOT com> - 1.0-14
+- Resolves:rh#1644736: Added eo (Esperanto) language
+
+* Fri Jul 13 2018 Fedora Release Engineering <releng@fedoraproject.org> - 1.0-13
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
+
+* Wed Feb 07 2018 Fedora Release Engineering <releng@fedoraproject.org> - 1.0-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_28_Mass_Rebuild
+
+* Thu Feb 01 2018 Parag Nemade <pnemade AT redhat DOT com> - 1.0-11
+- Added description in appdata metainfo files (rh#1538105)
+
+* Wed Jul 26 2017 Fedora Release Engineering <releng@fedoraproject.org> - 1.0-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Mass_Rebuild
+
+* Fri Feb 10 2017 Fedora Release Engineering <releng@fedoraproject.org> - 1.0-9
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_26_Mass_Rebuild
+
+* Mon Aug 15 2016 Richard Hughes <richard@hughsie.com> - 1.0-8
+- Use a specific AppStream component type of localization.
+
+* Mon Feb 29 2016 Parag Nemade <pnemade AT redhat DOT com> - 1.0-7
+- Resolves:rh#1312890: langpacks-en should be added
+
+* Fri Feb 26 2016 Richard Hughes <richard@hughsie.com> - 1.0-6
+- Explode the metainfo files into the subpackages so they get added to the
+  distro-specific AppStream metadata.
+- This allows us to add and remove languages in GNOME Software.
+
+* Tue Feb 23 2016 Parag Nemade <pnemade AT redhat DOT com> - 1.0-5
+- Resolves:rh#1310538: Added br ga he nn nr ss tn ts ve xh languages
+
+* Thu Feb 04 2016 Fedora Release Engineering <releng@fedoraproject.org> - 1.0-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_24_Mass_Rebuild
+
+* Wed Jan 27 2016 Parag Nemade <pnemade AT redhat DOT com> - 1.0-3
+- Removed %%files to disable langpacks.noarch package
+
+* Tue Jan 26 2016 Parag Nemade <pnemade AT redhat DOT com> - 1.0-2
+- Changed metapackage -> meta-package
+- Added information about how we chose language list
+
+* Thu Jan 21 2016 Parag Nemade <pnemade AT redhat DOT com> - 1.0-1
+- Initial packaging
