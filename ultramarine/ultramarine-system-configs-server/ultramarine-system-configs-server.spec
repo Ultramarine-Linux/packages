@@ -11,6 +11,7 @@ Source2:        ultramarine-server-automatic.conf
 Source3:        ultramarine-snapper.actions
 Source4:        ultramarine-prune-boot-entries
 Source5:        ultramarine-snapper-filters.txt
+Source6:        LICENCE.txt
 
 BuildRequires:  /usr/bin/install
 BuildRequires:  systemd-rpm-macros
@@ -50,6 +51,7 @@ install -Dm644 %{SOURCE5} %{buildroot}%{_datadir}/snapper/filters/ultramarine-se
 %dir %{_datadir}/snapper
 %dir %{_datadir}/snapper/filters
 %{_datadir}/snapper/filters/ultramarine-server.txt
+%license LICENCE.txt
 
 %changelog
 * Wed Oct 21 2026 Cypress Reed <cypress@fyralabs.com>
