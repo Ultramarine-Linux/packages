@@ -18,11 +18,12 @@ Name:           ultramarine-server-dashboard
 Version:        0.0.0
 Release:        1%{?dist}
 Summary:        Web dashboard for Ultramarine Server
-License:        MIT
+License:        AGPL-3.0-or-later
 URL:            https://github.com/Ultramarine-Linux/dashboard
 Source0:        ultramarine-dashboard.container
 Source1:        ultramarine-server-dashboard.sysusers
 Source2:        ultramarine-server-dashboard.tmpfiles
+Source3:        https://github.com/Ultramarine-Linux/dashboard/blob/main/LICENSE
 
 BuildArch:      noarch
 
@@ -66,6 +67,7 @@ install -Dpm644 /dev/null %{buildroot}%{_sysconfdir}/ultramarine-dashboard/env
 %tmpfiles_create %{name}.conf
 
 %files
+%license %{SOURCE3}
 %dir %{_sysconfdir}/ultramarine-dashboard
 %config(noreplace) %attr(0644, root, root) %{_sysconfdir}/ultramarine-dashboard/env
 %{_datadir}/containers/systemd/ultramarine-dashboard.container
