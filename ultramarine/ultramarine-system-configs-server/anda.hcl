@@ -4,5 +4,6 @@ project "pkg" {
     }
     labels {
       updbranch = 1
+      arches = ["x86_64"]
     }
 }
