@@ -1150,7 +1150,6 @@ ln -sf firewalld-workstation.conf %{_sysconfdir}/firewalld/firewalld.conf
 %{_sysconfdir}/dnf/protected.d/ultramarine-gnome.conf
 %config %{_sysconfdir}/polycrystal/entries/ultramarine-gnome.json
 %{_datadir}/glib-2.0/schemas/50_ultramarine-gnome.gschema.override
-%{_prefix}/lib/systemd/system-preset/80-workstation.preset
 %endif
 
 %if %{with atomic_gnome}
@@ -1160,7 +1159,6 @@ ln -sf firewalld-workstation.conf %{_sysconfdir}/firewalld/firewalld.conf
 %attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.atomic-gnome
 %config %{_sysconfdir}/polycrystal/entries/ultramarine-gnome.json
 %{_datadir}/glib-2.0/schemas/50_ultramarine-gnome.gschema.override
-%{_prefix}/lib/systemd/system-preset/80-workstation.preset
 %endif
 
 %if %{with xfce}
@@ -1204,24 +1202,19 @@ ln -sf firewalld-workstation.conf %{_sysconfdir}/firewalld/firewalld.conf
 %files server
 %files identity-server
 %{_prefix}/lib/os-release.server
-%{_prefix}/lib/systemd/system-preset/80-server.preset
 %attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.server
 %endif
 
 %if %{with desktop}
 %files desktop
-%{_prefix}/lib/systemd/system-preset/81-desktop.preset
 %endif
 
 %if %{with chromebook}
 %files chromebook
-%{_prefix}/lib/systemd/system-preset/88-ultramarine-chromebook-default.preset
 %endif
 
 %if %{with surface}
 %files surface
-%{_prefix}/lib/systemd/system-preset/91-ultramarine-surface-default.preset
-/usr/share/dnf5/repos.d//linux-surface.repo
 %endif
 
 %if %{with raspberry_pi}
@@ -1231,7 +1224,6 @@ ln -sf firewalld-workstation.conf %{_sysconfdir}/firewalld/firewalld.conf
 
 %if %{with atomic_desktop}
 %files atomic-desktop
-%{_prefix}/lib/systemd/system-preset/81-atomic-desktop.preset
 %attr(0644,root,root) %{_prefix}/share/polkit-1/rules.d/org.projectatomic.rpmostree1.rules
 %endif
 
