@@ -25,7 +25,7 @@ Requires: plasma-systemsettings
 Requires: kf6-kcmutils
 Requires: kf6-kirigami
 Requires: kf6-qqc2-desktop-style
-Requires: umcli
+Requires: um
 
 Packager: Cypress Reed <cypress@fyralabs.com>
 
