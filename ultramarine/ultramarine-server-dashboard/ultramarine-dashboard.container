@@ -36,6 +36,13 @@ Environment=XFF_DEPTH=1
 # server's hostname is set).
 EnvironmentFile=/etc/ultramarine-dashboard/env
 NoNewPrivileges=true
+# The image is distroless (no shell or curl), so use the JSON exec form: a
+# plain string would be run as CMD-SHELL via /bin/sh, which doesn't exist.
+HealthCmd=["/nodejs/bin/node","-e","fetch('http://127.0.0.1:3972/health').then(r=>process.exit(r.ok?0:1),()=>process.exit(1))"]
+HealthInterval=30s
+HealthTimeout=5s
+HealthRetries=3
+HealthStartPeriod=30s
 DropCapability=all
 
 [Service]

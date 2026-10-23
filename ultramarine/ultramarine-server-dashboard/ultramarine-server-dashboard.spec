@@ -63,8 +63,10 @@ install -Dpm644 %{SOURCE2} %{buildroot}%{_tmpfilesdir}/%{name}.conf
 # hostname is set).
 install -Dpm644 /dev/null %{buildroot}%{_sysconfdir}/ultramarine-dashboard/env
 
+cp %{S:3} LICENSE
+
 %files
-%license %{SOURCE3}
+%license LICENSE
 %dir %{_sysconfdir}/ultramarine-dashboard
 %config(noreplace) %attr(0644, root, root) %{_sysconfdir}/ultramarine-dashboard/env
 %{_datadir}/containers/systemd/ultramarine-dashboard.container
