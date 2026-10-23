@@ -1,0 +1,165 @@
+diff --git a/discover/DiscoverObject.cpp b/discover/DiscoverObject.cpp
+index a685619..44cc5ca 100644
+--- a/discover/DiscoverObject.cpp
++++ b/discover/DiscoverObject.cpp
+@@ -316,9 +316,8 @@ void DiscoverObject::openCategory(const QString &category)
+ 
+ void DiscoverObject::startHeadlessUpdate()
+ {
+-    openMode(u"update"_s);
+-    QQuickItem *updatesPage = m_mainWindow->property("leftPage").value<QQuickItem *>();
+-    updatesPage->setProperty("startHeadlessUpdate", true);
++    // Ultramarine: Discover does not apply updates; use `um upgrade` instead.
++    qCWarning(DISCOVER_LOG) << "headless updates are disabled; use `um upgrade` or System Settings > Updates";
+ }
+ 
+ void DiscoverObject::openLocalPackage(const QUrl &localfile)
+diff --git a/discover/main.cpp b/discover/main.cpp
+index 7fe65ef..435b2da 100644
+--- a/discover/main.cpp
++++ b/discover/main.cpp
+@@ -155,6 +155,12 @@ int main(int argc, char **argv)
+         const bool feedback = parser->isSet(QStringLiteral("feedback"));
+         const bool headlessUpdate = parser->isSet(QStringLiteral("headless-update"));
+ 
++        // Ultramarine: updates are applied by um, not Discover.
++        if (headlessUpdate) {
++            QTextStream(stderr) << "Discover does not apply updates on Ultramarine. Use `um upgrade` or System Settings > Updates.\n";
++            return 1;
++        }
++
+         if (parser->isSet(QStringLiteral("listbackends"))) {
+             QTextStream(stdout) << i18n("Available backends:\n");
+             DiscoverBackendsFactory f;
+diff --git a/discover/qml/DiscoverDrawer.qml b/discover/qml/DiscoverDrawer.qml
+index bab1551..704f368 100644
+--- a/discover/qml/DiscoverDrawer.qml
++++ b/discover/qml/DiscoverDrawer.qml
+@@ -127,46 +127,9 @@ Kirigami.GlobalDrawer {
+             visible: enabled && drawer.wideScreen
+         },
+         ActionListItem {
+-            id: updateItem
+             objectName: "updateButton"
+             action: updateAction
+             visible: enabled && drawer.wideScreen
+-
+-            stateObject: Discover.ResourcesModel.fetchingUpdatesProgress < 100 ? updatesIcon : updatesCountLabel
+-
+-            Component {
+-                id: updatesIcon
+-
+-                Kirigami.Icon {
+-                    anchors.right: parent.right
+-                    anchors.verticalCenter: parent.verticalCenter
+-                    source: "view-refresh"
+-                    implicitWidth: Kirigami.Units.iconSizes.sizeForLabels
+-                    implicitHeight: Kirigami.Units.iconSizes.sizeForLabels
+-                    selected: updateItem.highlighted || updateItem.pressed
+-                }
+-            }
+-
+-            Component {
+-                id: updatesCountLabel
+-
+-                Kirigami.Badge {
+-                    visible: Discover.ResourcesModel.updatesCount > 0
+-
+-                    type: Discover.ResourcesModel.hasSecurityUpdates
+-                        ? Kirigami.Badge.Type.Warning
+-                        : Kirigami.Badge.Type.Information
+-
+-                    text: Discover.ResourcesModel.updatesCount
+-
+-                    QQC2.ToolTip.text: Discover.ResourcesModel.hasSecurityUpdates
+-                        ? i18n("Security updates available")
+-                        : i18n("Updates available")
+-                    QQC2.ToolTip.visible: activeFocus || hovered
+-                    QQC2.ToolTip.delay: Kirigami.Units.toolTipDelay
+-
+-                }
+-            }
+         },
+         ActionListItem {
+             action: sourcesAction
+diff --git a/discover/qml/DiscoverWindow.qml b/discover/qml/DiscoverWindow.qml
+index ca08e09..c6980b8 100644
+--- a/discover/qml/DiscoverWindow.qml
++++ b/discover/qml/DiscoverWindow.qml
+@@ -9,6 +9,7 @@ import org.kde.discover as Discover
+ import org.kde.discover.app as DiscoverApp
+ import org.kde.kirigami as Kirigami
+ import org.kde.config as KConfig
++import org.kde.kcmutils as KCMUtils
+ 
+ Kirigami.ApplicationWindow {
+     id: window
+@@ -18,7 +19,6 @@ Kirigami.ApplicationWindow {
+     readonly property string topBrowsingComp: "BrowsingPage.qml"
+     readonly property string topInstalledComp: "InstalledPage.qml"
+     readonly property string topSearchComp: "SearchPage.qml"
+-    readonly property string topUpdateComp: "UpdatesPage.qml"
+     readonly property string topSourcesComp: "SourcesPage.qml"
+     readonly property string topAboutComp: "AboutPage.qml"
+ 
+@@ -93,19 +93,14 @@ Kirigami.ApplicationWindow {
+         component: topInstalledComp
+         objectName: "installed"
+     }
+-    TopLevelPageData {
++    // Ultramarine: updates are managed by the Updates page in System Settings (um),
++    // so Discover only links there instead of showing its own Updates page.
++    Kirigami.Action {
+         id: updateAction
+-
+-        icon.name: Discover.ResourcesModel.updatesCount <= 0
+-            ? "update-none"
+-            : (Discover.ResourcesModel.hasSecurityUpdates ? "update-high" : "update-low")
+-
+-        text: Discover.ResourcesModel.fetchingUpdatesProgress !== 100
+-            ? i18n("&Updates (Fetching…)")
+-            : i18n("&Updates")
+-
+-        component: topUpdateComp
++        icon.name: "system-software-update"
++        text: i18n("&Updates")
+         objectName: "update"
++        onTriggered: KCMUtils.KCMLauncher.openSystemSettings("kcm_ultramarine_updates")
+     }
+     TopLevelPageData {
+         id: aboutAction
+@@ -184,7 +179,7 @@ Kirigami.ApplicationWindow {
+         target: Discover.ResourcesModel
+ 
+         function onSwitchToUpdates() {
+-            window.currentTopLevel = topUpdateComp
++            KCMUtils.KCMLauncher.openSystemSettings("kcm_ultramarine_updates")
+         }
+         function onPassiveMessage(message) {
+             messagesSheet.addMessage(message);
+diff --git a/discover/qml/Feedback.qml b/discover/qml/Feedback.qml
+index eabeb7c..6022849 100644
+--- a/discover/qml/Feedback.qml
++++ b/discover/qml/Feedback.qml
+@@ -32,7 +32,7 @@ UserFeedback.Provider {
+             displayHint: Kirigami.DisplayHint.AlwaysHide
+             icon.name: "configure"
+             onTriggered: {
+-                KCMUtils.KCMLauncher.openSystemSettings("kcm_updates");
++                KCMUtils.KCMLauncher.openSystemSettings("kcm_ultramarine_updates");
+             }
+         }
+     ]
+diff --git a/discover/qml/SourcesPage.qml b/discover/qml/SourcesPage.qml
+index ad98870..eadb77d 100644
+--- a/discover/qml/SourcesPage.qml
++++ b/discover/qml/SourcesPage.qml
+@@ -23,7 +23,7 @@ DiscoverPage {
+         text: i18n("Configure Updates…")
+         displayHint: Kirigami.DisplayHint.AlwaysHide
+         onTriggered: {
+-            KCMUtils.KCMLauncher.openSystemSettings("kcm_updates");
++            KCMUtils.KCMLauncher.openSystemSettings("kcm_ultramarine_updates");
+         }
+     }
+ 
