@@ -51,7 +51,7 @@ install -Dm644 %{SOURCE5} %{buildroot}%{_datadir}/snapper/filters/ultramarine-se
 %dir %{_datadir}/snapper
 %dir %{_datadir}/snapper/filters
 %{_datadir}/snapper/filters/ultramarine-server.txt
-%license LICENCE.txt
+%license %{SOURCE6}
 
 %changelog
 * Wed Oct 21 2026 Cypress Reed <cypress@fyralabs.com>
