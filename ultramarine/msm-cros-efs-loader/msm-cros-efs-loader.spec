@@ -1,5 +1,5 @@
 Name:                   msm-cros-efs-loader
-Version:                1.0.2
+Version:                1.2.1
 Release:                1%?dist
 Summary:                EFS loader for Qualcomm-based Chrome OS devices
 Epoch:			1

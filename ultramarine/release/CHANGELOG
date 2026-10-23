@@ -1,3 +1,6 @@
+* Tue Oct 20 2026 Owen Zimmerman <owen@fyralabs.com>
+- Move presets and preset directories to ultramarine-systemd-presets
+- Drop linux-surface repo from surface release package
 * Mon March 2 2026 Gilver E. <roachy@fyralabs.com>
 - Add container variant
 * Wed May 18 2022 Cappy Ishihara <cappy@cappuchino.xyz>

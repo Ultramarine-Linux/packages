@@ -15,3 +15,6 @@ enable plasmalogin.service
 
 # https://bugzilla.redhat.com/show_bug.cgi?id=2305602
 enable cosmic-greeter.service
+
+# https://bugzilla.redhat.com/show_bug.cgi?id=2447643
+enable phrog.service
