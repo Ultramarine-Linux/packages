@@ -1,5 +1,5 @@
 Name:           ultramarine-mock-configs
-Version:        2.2
+Version:        2.4
 Release:        1%{?dist}
 Summary:        Mock configs for Ultramarine Linux
 

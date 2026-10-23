@@ -6,9 +6,9 @@ on:
   push:
     branches:
       - umrawhide
+      - um45
       - um44
       - um43
-      - um42
     paths:
       - comps.xml
   workflow_dispatch:
