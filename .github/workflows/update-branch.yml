@@ -15,9 +15,9 @@ jobs:
       matrix:
         branch:
           - umrawhide
+          - um45
           - um44
           - um43
-          - um42
     container:
       image: ghcr.io/ultramarine-linux/builder:umrawhide
       options: --cap-add=SYS_ADMIN --privileged
