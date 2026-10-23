@@ -39,7 +39,6 @@ install -Dpm 644 %{SOURCE5} %{buildroot}/%{_sysconfdir}/sudoers.d/
 %post
 
 if [ -f %{_sysconfdir}/bashrc ]; then
-    # append file to bashrc
     cat %{_datadir}/%{name}/ultramarine-shell.bash >> %{_sysconfdir}/skel/.bashrc
 fi
 
