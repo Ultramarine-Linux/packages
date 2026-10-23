@@ -420,6 +420,7 @@
       <packagereq type="default">fcitx5-qt</packagereq>
       <packagereq type="default">fcitx5-configtool</packagereq>
       <packagereq type="default">kcm-fcitx5</packagereq>
+      <packagereq type="default">ultramarine-plasma-settings</packagereq>
       <packagereq type="default">plasma-milou</packagereq>
       <!-- <packagereq type="default">okular</packagereq> flatpak'd -->
       <packagereq type="default">koko</packagereq>
