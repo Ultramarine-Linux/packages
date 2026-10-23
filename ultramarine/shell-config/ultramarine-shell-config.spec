@@ -27,11 +27,11 @@ This package contains shell configurations made for Ultramarine Linux.
 %build
 
 %install
-install -Dm 644 %{SOURCE0} %{buildroot}/%{_datadir}/%{name}
-install -Dm 644 %{SOURCE1} %{buildroot}/%{_datadir}/%{name}
-install -Dm 644 %{SOURCE4} %{buildroot}/%{_datadir}/%{name}
-install -Dm 644 %{SOURCE3} %{buildroot}/%{_sysconfdir}/profile.d/
-install -Dm 644 %{SOURCE5} %{buildroot}/%{_sysconfdir}/sudoers.d/
+install -Dpm 644 %{SOURCE0} %{buildroot}/%{_datadir}/%{name}
+install -Dpm 644 %{SOURCE1} %{buildroot}/%{_datadir}/%{name}
+install -Dpm 644 %{SOURCE4} %{buildroot}/%{_datadir}/%{name}
+install -Dpm 644 %{SOURCE3} %{buildroot}/%{_sysconfdir}/profile.d/
+install -Dpm 644 %{SOURCE5} %{buildroot}/%{_sysconfdir}/sudoers.d/
 
 %post
 
