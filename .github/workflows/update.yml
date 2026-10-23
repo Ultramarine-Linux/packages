@@ -12,7 +12,7 @@ jobs:
       contents: write
     runs-on: ubuntu-latest
     container:
-      image: ghcr.io/ultramarine-linux/builder:umrawhide
+      image: ghcr.io/ultramarine-linux/builder:um45
       options: --cap-add=SYS_ADMIN --privileged
     steps:
       - name: Checkout
@@ -51,8 +51,8 @@ jobs:
               git add *
               git commit -S -a -m "$msg"
             }
+            copy_over um45 || true
             copy_over um44 || true
             copy_over um43 || true
-            copy_over um42 || true
             git push -u origin --all
           fi

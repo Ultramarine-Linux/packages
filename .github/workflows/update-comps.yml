@@ -6,9 +6,9 @@ on:
   push:
     branches:
       - umrawhide
+      - um45
       - um44
       - um43
-      - um42
     paths:
       - comps.xml
   workflow_dispatch:
@@ -17,7 +17,7 @@ jobs:
   update-comps:
     runs-on: ubuntu-24.04-arm
     container:
-      image: ghcr.io/ultramarine-linux/builder:umrawhide
+      image: ghcr.io/ultramarine-linux/builder:um45
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
       - name: Push to subatomic
