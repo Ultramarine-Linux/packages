@@ -27,22 +27,15 @@ This package contains shell configurations made for Ultramarine Linux.
 %build
 
 %install
-mkdir -p %{buildroot}/%{_datadir}/%{name}
-install -pm 644 %{SOURCE0} %{buildroot}/%{_datadir}/%{name}
-install -pm 644 %{SOURCE1} %{buildroot}/%{_datadir}/%{name}
-
-install -pm 644 %{SOURCE4} %{buildroot}/%{_datadir}/%{name}
-
-
-mkdir -p %{buildroot}/%{_sysconfdir}/profile.d
-install -pm 644 %{SOURCE3} %{buildroot}/%{_sysconfdir}/profile.d/
-install -pm 644 %{SOURCE5} %{buildroot}/%{_sysconfdir}/sudoers.d/
-
+install -Dpm 644 %{SOURCE0} -t %{buildroot}/%{_datadir}/%{name}
+install -Dpm 644 %{SOURCE1} %{buildroot}/%{_datadir}/%{name}
+install -Dpm 644 %{SOURCE4} %{buildroot}/%{_datadir}/%{name}
+install -Dpm 644 %{SOURCE3} -t %{buildroot}/%{_sysconfdir}/profile.d/
+install -Dpm 644 %{SOURCE5} -t %{buildroot}/%{_sysconfdir}/sudoers.d/
 
 %post
 
 if [ -f %{_sysconfdir}/bashrc ]; then
-    # append file to bashrc
     cat %{_datadir}/%{name}/ultramarine-shell.bash >> %{_sysconfdir}/skel/.bashrc
 fi
 
