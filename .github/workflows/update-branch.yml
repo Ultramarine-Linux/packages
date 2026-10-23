@@ -15,11 +15,11 @@ jobs:
       matrix:
         branch:
           - umrawhide
+          - um45
           - um44
           - um43
-          - um42
     container:
-      image: ghcr.io/ultramarine-linux/builder:umrawhide
+      image: ghcr.io/ultramarine-linux/builder:um45
       options: --cap-add=SYS_ADMIN --privileged
     steps:
       - name: Checkout
@@ -39,7 +39,7 @@ jobs:
       - name: Run Update
         run: |
           nbranch="${{ matrix.branch }}"
-          [ "$nbranch" = 'umrawhide' ] && nbranch='um42'
+          [ "$nbranch" = 'um45' ] && nbranch='um42'
           anda update --filters updbranch=1 --labels branch=${{ matrix.branch }},nbranch=$nbranch
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
