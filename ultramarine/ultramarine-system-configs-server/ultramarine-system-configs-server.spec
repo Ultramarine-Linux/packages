@@ -37,6 +37,7 @@ install -Dm644 %{SOURCE2} %{buildroot}%{_sysconfdir}/dnf/automatic.conf
 install -Dm644 %{SOURCE3} %{buildroot}%{_sysconfdir}/dnf/libdnf5-plugins/actions.d/ultramarine-snapper.actions
 install -Dm755 %{SOURCE4} %{buildroot}%{_bindir}/ultramarine-prune-boot-entries
 install -Dm644 %{SOURCE5} %{buildroot}%{_datadir}/snapper/filters/ultramarine-server.txt
+cp %{S:6} . 
 
 %post
 %systemd_post tetra.socket podman.socket dnf5-automatic.timer snapper-cleanup.timer
