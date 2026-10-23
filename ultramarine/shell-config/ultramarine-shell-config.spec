@@ -35,6 +35,7 @@ install -pm 644 %{SOURCE4} %{buildroot}/%{_datadir}/%{name}
 
 
 mkdir -p %{buildroot}/%{_sysconfdir}/profile.d
+mkdir -p %{buildroot}/%{_sysconfdir}/sudoers.d/
 install -pm 644 %{SOURCE3} %{buildroot}/%{_sysconfdir}/profile.d/
 install -pm 644 %{SOURCE5} %{buildroot}/%{_sysconfdir}/sudoers.d/
 
