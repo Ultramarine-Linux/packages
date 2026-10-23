@@ -6,10 +6,14 @@ permissions:
 on:
   push:
     paths:
-      - ultramarine/**
+      - "ultramarine/**"
+      - "!**/update.rhai"
     branches:
       - um45
   pull_request:
+    paths:
+      - "ultramarine/**"
+      - "!**/update.rhai"
     branches:
       - um45
   workflow_dispatch:
