@@ -64,7 +64,6 @@ automatic updates. The Tweaks module uses umcli.
 
 # Created by the helper on first use; owned here so they're removed with the package.
 install -dm 0755 %{buildroot}%{_sysconfdir}/ultramarine-updates
-install -dm 0755 %{buildroot}%{_sharedstatedir}/ultramarine-updates
 touch %{buildroot}%{_sysconfdir}/ultramarine-updates/settings.json
 
 # Hide Discover's duplicate Software Update KCM
@@ -108,7 +107,6 @@ printf '%s\n' \
 %{_sysconfdir}/xdg/autostart/ultramarine-updates-user.desktop
 %dir %{_sysconfdir}/ultramarine-updates
 %ghost %config(noreplace) %{_sysconfdir}/ultramarine-updates/settings.json
-%dir %{_sharedstatedir}/ultramarine-updates
 
 %changelog
 * Fri Oct 23 2026 Cypress Reed <cypress@fyralabs.com>
