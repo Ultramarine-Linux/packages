@@ -1,0 +1,52 @@
+# Ultramarine Server dashboard
+
+[Unit]
+Description=Ultramarine Server dashboard
+Requires=tetra.socket
+After=tetra.socket
+
+[Container]
+ContainerName=ultramarine-dashboard
+# Pinned by digest; bootc requires a fully qualified reference.
+Image=@DASHBOARD_IMAGE@@@DASHBOARD_DIGEST@
+# bootc keeps bound images in its own store, which Podman does not read by default.
+GlobalArgs=--storage-opt=additionalimagestore=/usr/lib/bootc/storage
+# Run as the host ultramarine-dashboard account: Tetra identifies the dashboard
+# by this UID on its socket. User=/Group= are resolved inside the image, so they
+# must be numeric, and there must be no user namespace remapping them.
+UserNS=host
+User=@DASHBOARD_ID@
+Group=@DASHBOARD_ID@
+# The tetra group may connect to /run/tetra/tetra.sock (root:tetra 0660).
+GroupAdd=@TETRA_GID@
+# Mount the socket's directory rather than the socket itself, so the mount
+# doesn't go stale when tetra.socket recreates the socket.
+Volume=/run/tetra:/run/tetra:ro
+# Caddy is the only ingress. A rootful container has its own loopback, so
+# publish the port on the host's loopback only.
+PublishPort=127.0.0.1:3972:3972
+# Created by systemd-tmpfiles as ultramarine-dashboard:ultramarine-dashboard 0700.
+Volume=/var/lib/ultramarine-dashboard:/var/lib/ultramarine-dashboard:Z
+Environment=UM_DASHBOARD_STATE_DIR=/var/lib/ultramarine-dashboard
+# Caddy on the host loopback is the only proxy in front of the dashboard, so
+# trust exactly the one X-Forwarded-For hop it adds.
+Environment=ADDRESS_HEADER=X-Forwarded-For
+Environment=XFF_DEPTH=1
+# Shipped empty by the package; Tetra rewrites it (e.g. ORIGIN once the
+# server's hostname is set).
+EnvironmentFile=/etc/ultramarine-dashboard/env
+NoNewPrivileges=true
+# The image is distroless (no shell or curl), so use the JSON exec form: a
+# plain string would be run as CMD-SHELL via /bin/sh, which doesn't exist.
+HealthCmd=["/nodejs/bin/node","-e","fetch('http://127.0.0.1:3972/health').then(r=>process.exit(r.ok?0:1),()=>process.exit(1))"]
+HealthInterval=30s
+HealthTimeout=5s
+HealthRetries=3
+HealthStartPeriod=30s
+DropCapability=all
+
+[Service]
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
