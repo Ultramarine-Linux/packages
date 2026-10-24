@@ -1,6 +1,6 @@
 Name:           ultramarine-systemd-presets
 Version:        1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Ultramarine systemd presets
 URL:            https://src.fedoraproject.org/rpms/redhat-systemd-presets
 License:        MIT
@@ -187,6 +187,9 @@ install -Dm0644 %{SOURCE37} -t %{buildroot}%{_presetdir}/
 
 
 %changelog
+* Sat Oct 24 2026 Cypress Reed <cypress@fyralabs.com> - 1-2
+- Enable ultramarine-updates-automatic.timer
+
 * Tue Oct 20 2026 Owen Zimmerman <owen@fyralabs.com> - 1-1
 - Initial commit, based on Fedora redhat-systemd-presets
 
