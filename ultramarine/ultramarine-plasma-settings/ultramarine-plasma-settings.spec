@@ -25,6 +25,7 @@ BuildRequires: pkgconfig(Qt6Qml)
 BuildRequires: pkgconfig(Qt6Quick)
 BuildRequires: pkgconfig(Qt6Test)
 BuildRequires: systemd-rpm-macros
+BuildRequires: lld
 
 Requires: plasma-systemsettings
 Requires: kf6-kcmutils
