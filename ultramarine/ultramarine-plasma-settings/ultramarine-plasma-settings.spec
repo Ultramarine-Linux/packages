@@ -1,5 +1,5 @@
 Name:    ultramarine-plasma-settings
-Version: 0.1.0
+Version: 0.1.1
 Release: 1%{?dist}
 Summary: Ultramarine Plasma System Settings modules
 
