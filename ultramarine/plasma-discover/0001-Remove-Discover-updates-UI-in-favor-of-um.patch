@@ -9,8 +9,8 @@ index a685619..44cc5ca 100644
 -    openMode(u"update"_s);
 -    QQuickItem *updatesPage = m_mainWindow->property("leftPage").value<QQuickItem *>();
 -    updatesPage->setProperty("startHeadlessUpdate", true);
-+    // Ultramarine: Discover does not apply updates; use `um upgrade` instead.
-+    qCWarning(DISCOVER_LOG) << "headless updates are disabled; use `um upgrade` or System Settings > Updates";
++    // Ultramarine: Discover does not apply updates; System Settings > Updates does.
++    qCWarning(DISCOVER_LOG) << "headless updates are disabled; use System Settings > Updates";
  }
  
  void DiscoverObject::openLocalPackage(const QUrl &localfile)
@@ -22,9 +22,9 @@ index 7fe65ef..435b2da 100644
          const bool feedback = parser->isSet(QStringLiteral("feedback"));
          const bool headlessUpdate = parser->isSet(QStringLiteral("headless-update"));
  
-+        // Ultramarine: updates are applied by um, not Discover.
++        // Ultramarine: updates are applied by the Updates KCM, not Discover.
 +        if (headlessUpdate) {
-+            QTextStream(stderr) << "Discover does not apply updates on Ultramarine. Use `um upgrade` or System Settings > Updates.\n";
++            QTextStream(stderr) << "Discover does not apply updates on Ultramarine. Use System Settings > Updates.\n";
 +            return 1;
 +        }
 +
@@ -107,7 +107,7 @@ index ca08e09..c6980b8 100644
          objectName: "installed"
      }
 -    TopLevelPageData {
-+    // Ultramarine: updates are managed by the Updates page in System Settings (um),
++    // Ultramarine: updates are managed by the Updates page in System Settings (kcm_ultramarine_updates),
 +    // so Discover only links there instead of showing its own Updates page.
 +    Kirigami.Action {
          id: updateAction
