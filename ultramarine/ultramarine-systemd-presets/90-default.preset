@@ -501,6 +501,10 @@ disable flatpak-add-fedora-repos.service
 # We use polycrystal to install Flatpaks
 enable polycrystal.service
 
+# Automatic updates (ultramarine-plasma-settings). The settings decide whether
+# updates install by themselves or only notify.
+enable ultramarine-updates-automatic.timer
+
 # Chromebook keyboard maps
 enable keyd.service
 # keyd hopefully will be replaced by croskbd soon
