@@ -463,10 +463,10 @@
   </environment>
   <group>
     <!-- NOTE: You will want to sync this with the upstream kde-desktop group every major release -->
-    <id>ultramarine-atomic-kde-desktop</id>
-    <name>Ultramarine Atomic KDE Plasma desktop</name>
+    <id>ultramarine-atomic-plasma-desktop</id>
+    <name>Ultramarine Atomic Plasma desktop</name>
     <description
-        >The group for packages comprising the KDE Plasma desktop on Ultramarine Atomic, based on the upstream set.</description>
+        >The group for packages comprising the Plasma desktop on Ultramarine Atomic, based on the upstream kde-desktop set.</description>
     <default>false</default>
     <uservisible>false</uservisible>
     <packagelist>
@@ -565,10 +565,10 @@
     </packagelist>
   </group>
   <group>
-    <id>ultramarine-atomic-desktop-product</id>
-    <name>Ultramarine Atomic product core</name>
+    <id>ultramarine-atomic-plasma-product</id>
+    <name>Ultramarine Atomic Plasma product core</name>
     <description
-        >Packages mandatory for the Ultramarine Atomic product.</description>
+        >Packages mandatory for the Ultramarine Atomic Plasma product.</description>
     <default>false</default>
     <uservisible>false</uservisible>
     <packagelist>
@@ -593,10 +593,10 @@
     </packagelist>
   </group>
   <environment>
-    <id>ultramarine-atomic-desktop-product-environment</id>
-    <name>Ultramarine Atomic</name>
+    <id>ultramarine-atomic-plasma-product-environment</id>
+    <name>Ultramarine Atomic Plasma</name>
     <description
-        >Ultramarine Atomic is an image-based Ultramarine experience powered by the Plasma desktop environment.</description>
+        >Ultramarine Atomic Plasma is an image-based Ultramarine experience powered by the Plasma desktop environment.</description>
     <grouplist>
       <groupid>base-graphical</groupid>
       <groupid>container-management</groupid>
@@ -604,7 +604,7 @@
       <groupid>standard</groupid>
       <groupid>firefox</groupid>
       <groupid>fonts</groupid>
-      <groupid>ultramarine-atomic-kde-desktop</groupid>
+      <groupid>ultramarine-atomic-plasma-desktop</groupid>
       <groupid>critical-path-kde</groupid>
       <groupid>guest-desktop-agents</groupid>
       <groupid>hardware-support</groupid>
@@ -616,7 +616,7 @@
       <groupid>ultramarine-product-common</groupid>
       <groupid>ultramarine-desktop-product-common</groupid>
       <groupid>ultramarine-peripheral-support</groupid>
-      <groupid>ultramarine-atomic-desktop-product</groupid>
+      <groupid>ultramarine-atomic-plasma-product</groupid>
     </grouplist>
   </environment>
   <group>
