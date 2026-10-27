@@ -54,7 +54,7 @@
 Summary:	Ultramarine Linux release files
 Name:		ultramarine-release
 Version:	%{dist_version}
-Release:	10%{?dist}
+Release:	11%{?dist}
 License:	MIT
 Source0:	LICENSE
 URL:        https://ultramarine-linux.org
@@ -103,10 +103,11 @@ Source61:   ultramarine-gnome-protected.conf
 Source62:   ultramarine-plasma-protected.conf
 Source63:   ultramarine-xfce-protected.conf
 
-Source70:   polycrystal-ultramarine-budgie.json
-Source71:   polycrystal-ultramarine-gnome.json
-Source72:   polycrystal-ultramarine-plasma.json
-Source73:   polycrystal-ultramarine-xfce.json
+Source74:   ultramarine-budgie.preinstall
+Source75:   ultramarine-gnome.preinstall
+Source76:   ultramarine-plasma.preinstall
+Source77:   ultramarine-xfce.preinstall
+Source78:   flatpak-preinstall.service
 
 Source80:   https://github.com/Ultramarine-Linux/anywhere/archive/%{anywhere_conf_commit}.tar.gz
 
@@ -677,6 +678,9 @@ Summary:        Common configuration package for desktop variants
 
 Recommends: system76-scheduler
 Recommends: ultramarine-phony-bookmarks
+# Retired: traditional editions ship apps as RPMs, atomic ones use flatpak
+# preinstall (ultramarine-release-atomic-desktop)
+Obsoletes:  polycrystal < 0.3
 Requires(post): /usr/bin/ln
 Requires(post): firewalld
 
@@ -968,12 +972,11 @@ mkdir -p %{buildroot}%{_prefix}/lib/sysctl.d/
 
 #########################
 
-# Polycrystal entries
-mkdir -p %{buildroot}%{_sysconfdir}/polycrystal/entries
-install %{SOURCE70} %{buildroot}%{_sysconfdir}/polycrystal/entries/ultramarine-budgie.json
-install %{SOURCE71} %{buildroot}%{_sysconfdir}/polycrystal/entries/ultramarine-gnome.json
-install %{SOURCE72} %{buildroot}%{_sysconfdir}/polycrystal/entries/ultramarine-plasma.json
-install %{SOURCE73} %{buildroot}%{_sysconfdir}/polycrystal/entries/ultramarine-xfce.json
+# Flatpak preinstall entries (flatpak-preinstall(1)), atomic editions only
+install -Dm0644 %{SOURCE74} %{buildroot}%{_datadir}/flatpak/preinstall.d/ultramarine-budgie.preinstall
+install -Dm0644 %{SOURCE75} %{buildroot}%{_datadir}/flatpak/preinstall.d/ultramarine-gnome.preinstall
+install -Dm0644 %{SOURCE76} %{buildroot}%{_datadir}/flatpak/preinstall.d/ultramarine-plasma.preinstall
+install -Dm0644 %{SOURCE77} %{buildroot}%{_datadir}/flatpak/preinstall.d/ultramarine-xfce.preinstall
 
 #########################
 
@@ -1047,6 +1050,9 @@ install -D -p -m 0644 -t %{buildroot}%{_sysconfdir}/debuginfod %{SOURCE34}
 # Install rpm-ostree polkit rules
 install -Dm0644 %{SOURCE32} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
 
+# Installs the Flatpaks listed in /usr/share/flatpak/preinstall.d
+install -Dm0644 %{SOURCE78} -t %{buildroot}%{_unitdir}/
+
 %endif
 
 %if %{with atomic_plasma}
@@ -1063,6 +1069,17 @@ install -Dm0644 %{SOURCE32} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
 %post desktop
 mkdir -p %{_sysconfdir}/firewalld
 ln -sf firewalld-workstation.conf %{_sysconfdir}/firewalld/firewalld.conf
+
+%if %{with atomic_desktop}
+%post atomic-desktop
+%systemd_post flatpak-preinstall.service
+
+%preun atomic-desktop
+%systemd_preun flatpak-preinstall.service
+
+%postun atomic-desktop
+%systemd_postun flatpak-preinstall.service
+%endif
 
 
 %files common
@@ -1110,7 +1127,6 @@ ln -sf firewalld-workstation.conf %{_sysconfdir}/firewalld/firewalld.conf
 %{_prefix}/lib/os-release.budgie
 %attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.budgie
 %{_sysconfdir}/dnf/protected.d/ultramarine-budgie.conf
-%config %{_sysconfdir}/polycrystal/entries/ultramarine-budgie.json
 %{_sysconfdir}/lightdm/lightdm.conf.d/60-ultramarine-presets.conf
 %endif
 
@@ -1119,7 +1135,7 @@ ln -sf firewalld-workstation.conf %{_sysconfdir}/firewalld/firewalld.conf
 %files identity-atomic-budgie
 %{_prefix}/lib/os-release.atomic-budgie
 %attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.atomic-budgie
-%config %{_sysconfdir}/polycrystal/entries/ultramarine-budgie.json
+%{_datadir}/flatpak/preinstall.d/ultramarine-budgie.preinstall
 %{_sysconfdir}/lightdm/lightdm.conf.d/60-ultramarine-presets.conf
 %endif
 
@@ -1128,7 +1144,6 @@ ln -sf firewalld-workstation.conf %{_sysconfdir}/firewalld/firewalld.conf
 %files identity-plasma
 %{_prefix}/lib/os-release.plasma
 %attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.plasma
-%config %{_sysconfdir}/polycrystal/entries/ultramarine-plasma.json
 %{_sysconfdir}/dnf/protected.d/ultramarine-plasma.conf
 %config %_userunitdir/enable-kwin-system76-scheduler-integration.service
 %endif
@@ -1138,7 +1153,7 @@ ln -sf firewalld-workstation.conf %{_sysconfdir}/firewalld/firewalld.conf
 %files identity-atomic-plasma
 %{_prefix}/lib/os-release.atomic-plasma
 %attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.atomic-plasma
-%config %{_sysconfdir}/polycrystal/entries/ultramarine-plasma.json
+%{_datadir}/flatpak/preinstall.d/ultramarine-plasma.preinstall
 %config %_userunitdir/enable-kwin-system76-scheduler-integration.service
 %endif
 
@@ -1148,7 +1163,6 @@ ln -sf firewalld-workstation.conf %{_sysconfdir}/firewalld/firewalld.conf
 %{_prefix}/lib/os-release.gnome
 %attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.gnome
 %{_sysconfdir}/dnf/protected.d/ultramarine-gnome.conf
-%config %{_sysconfdir}/polycrystal/entries/ultramarine-gnome.json
 %{_datadir}/glib-2.0/schemas/50_ultramarine-gnome.gschema.override
 %endif
 
@@ -1157,7 +1171,7 @@ ln -sf firewalld-workstation.conf %{_sysconfdir}/firewalld/firewalld.conf
 %files identity-atomic-gnome
 %{_prefix}/lib/os-release.atomic-gnome
 %attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.atomic-gnome
-%config %{_sysconfdir}/polycrystal/entries/ultramarine-gnome.json
+%{_datadir}/flatpak/preinstall.d/ultramarine-gnome.preinstall
 %{_datadir}/glib-2.0/schemas/50_ultramarine-gnome.gschema.override
 %endif
 
@@ -1167,7 +1181,6 @@ ln -sf firewalld-workstation.conf %{_sysconfdir}/firewalld/firewalld.conf
 %{_prefix}/lib/os-release.xfce
 %attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.xfce
 %{_sysconfdir}/dnf/protected.d/ultramarine-xfce.conf
-%config %{_sysconfdir}/polycrystal/entries/ultramarine-xfce.json
 %{_sysconfdir}/skel/.config/xfce4/
 %{_sysconfdir}/lightdm/lightdm.conf.d/60-ultramarine-presets.conf
 %{_sysconfdir}/lightdm/lightdm.conf.d/50-ultramarine-xfce-slick-greeter.conf
@@ -1178,7 +1191,7 @@ ln -sf firewalld-workstation.conf %{_sysconfdir}/firewalld/firewalld.conf
 %files identity-atomic-xfce
 %{_prefix}/lib/os-release.atomic-xfce
 %attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.atomic-xfce
-%config %{_sysconfdir}/polycrystal/entries/ultramarine-xfce.json
+%{_datadir}/flatpak/preinstall.d/ultramarine-xfce.preinstall
 %{_sysconfdir}/skel/.config/xfce4/
 %{_sysconfdir}/lightdm/lightdm.conf.d/60-ultramarine-presets.conf
 %{_sysconfdir}/lightdm/lightdm.conf.d/50-ultramarine-xfce-slick-greeter.conf
@@ -1224,6 +1237,7 @@ ln -sf firewalld-workstation.conf %{_sysconfdir}/firewalld/firewalld.conf
 
 %if %{with atomic_desktop}
 %files atomic-desktop
+%{_unitdir}/flatpak-preinstall.service
 %attr(0644,root,root) %{_prefix}/share/polkit-1/rules.d/org.projectatomic.rpmostree1.rules
 %endif
 
