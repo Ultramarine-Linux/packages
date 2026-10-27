@@ -197,7 +197,7 @@
       <groupid>ultramarine-desktop-product-common</groupid>
       <groupid>ultramarine-peripheral-support</groupid>
       <groupid>ultramarine-budgie-product</groupid>
-      <!-- Traditional editions don't use Flatpaks; atomic ones get these via flatpak preinstall -->
+      <!-- Traditional editions don't use Flatpaks -->
       <groupid>ultramarine-budgie-no-flatpak-apps</groupid>
     </grouplist>
   </environment>
@@ -228,7 +228,7 @@
       <groupid>ultramarine-desktop-product-common</groupid>
       <groupid>ultramarine-peripheral-support</groupid>
       <groupid>ultramarine-budgie-product</groupid>
-      <!-- Traditional editions don't use Flatpaks; atomic ones get these via flatpak preinstall -->
+      <!-- Traditional editions don't use Flatpaks -->
       <groupid>ultramarine-budgie-no-flatpak-apps</groupid>
     </grouplist>
   </environment>
@@ -390,7 +390,7 @@
       <groupid>ultramarine-desktop-product-common</groupid>
       <groupid>ultramarine-peripheral-support</groupid>
       <groupid>ultramarine-gnome-product</groupid>
-      <!-- Traditional editions don't use Flatpaks; atomic ones get these via flatpak preinstall -->
+      <!-- Traditional editions don't use Flatpaks -->
       <groupid>ultramarine-gnome-no-flatpak-apps</groupid>
     </grouplist>
   </environment>
@@ -457,12 +457,12 @@
       <groupid>ultramarine-desktop-product-common</groupid>
       <groupid>ultramarine-peripheral-support</groupid>
       <groupid>ultramarine-plasma-product</groupid>
-      <!-- Traditional editions don't use Flatpaks; atomic ones get these via flatpak preinstall -->
+      <!-- Traditional editions don't use Flatpaks -->
       <groupid>ultramarine-plasma-no-flatpak-apps</groupid>
     </grouplist>
   </environment>
   <group>
-    <!-- NOTE: You will want to sync this with the upstream kde-desktop group every major release -->
+    <!-- NOTE: sync this with the upstream kde-desktop group every major release -->
     <id>ultramarine-atomic-plasma-desktop</id>
     <name>Ultramarine Atomic Plasma desktop</name>
     <description
@@ -775,7 +775,7 @@
       <groupid>ultramarine-desktop-product-common</groupid>
       <groupid>ultramarine-peripheral-support</groupid>
       <groupid>ultramarine-plasma-product</groupid>
-      <!-- Traditional editions don't use Flatpaks; atomic ones get these via flatpak preinstall -->
+      <!-- Traditional editions don't use Flatpaks -->
       <groupid>ultramarine-plasma-no-flatpak-apps</groupid>
     </grouplist>
   </environment>
@@ -845,7 +845,7 @@
       <groupid>ultramarine-desktop-product-common</groupid>
       <groupid>ultramarine-peripheral-support</groupid>
       <groupid>ultramarine-xfce-product</groupid>
-      <!-- Traditional editions don't use Flatpaks; atomic ones get these via flatpak preinstall -->
+      <!-- Traditional editions don't use Flatpaks -->
       <groupid>ultramarine-xfce-no-flatpak-apps</groupid>
     </grouplist>
   </environment>
