@@ -189,6 +189,7 @@ install -Dm0644 %{SOURCE37} -t %{buildroot}%{_presetdir}/
 %changelog
 * Mon Oct 26 2026 Cypress Reed <cypress@fyralabs.com> - 1-3
 - Switch from System76 scheduler to scx
+- Enable falcond.service
 
 * Sat Oct 24 2026 Cypress Reed <cypress@fyralabs.com> - 1-2
 - Enable ultramarine-updates-automatic.timer

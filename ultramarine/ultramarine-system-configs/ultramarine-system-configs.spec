@@ -12,6 +12,7 @@ Source5:        50-mtu-probing.conf
 Source6:        ultramarine-default-bookmarks.html
 Source7:        GFDL-1.1-or-later.txt
 Source8:        scx_loader.toml
+Source9:        falcond.conf
 
 BuildRequires:  /usr/bin/install
 
@@ -62,6 +63,7 @@ install -Dm644 %{SOURCE4} %{buildroot}/etc/modules-load.d/bbr.conf
 install -Dm644 %{SOURCE5} %{buildroot}/etc/sysctl.d/50-mtu-probing.conf
 install -Dm644 %{SOURCE6} %{buildroot}%{_datadir}/bookmarks/ultramarine-default-bookmarks.html
 install -Dm644 %{SOURCE8} %{buildroot}%{_sysconfdir}/scx_loader/config.toml
+install -Dm644 %{SOURCE9} %{buildroot}%{_sysconfdir}/falcond/config.conf
 cp %{S:7} GFDL-1.1-or-later
 
 %files
@@ -77,6 +79,8 @@ cp %{S:7} GFDL-1.1-or-later
 %config /etc/sysctl.d/50-mtu-probing.conf
 %dir %{_sysconfdir}/scx_loader
 %config(noreplace) %{_sysconfdir}/scx_loader/config.toml
+%dir %{_sysconfdir}/falcond
+%config(noreplace) %{_sysconfdir}/falcond/config.conf
 
 %files -n ultramarine-bookmarks
 %license GFDL-1.1-or-later

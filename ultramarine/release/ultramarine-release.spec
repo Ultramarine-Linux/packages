@@ -681,6 +681,8 @@ Obsoletes:  system76-scheduler < 2.0.2-3
 Obsoletes:  kwin-system76-scheduler-integration < 0.1-2
 # ships /etc/scx_loader/config.toml (scx_lavd, Auto)
 Recommends: ultramarine-system-configs-desktop
+# per-game scx switching; also covers RPM Fusion's steam, which only recommends gamemode
+Recommends: (falcond if steam)
 
 %description desktop
 Common configuration package for desktop variants
