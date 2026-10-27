@@ -1,5 +1,5 @@
 Name:           ultramarine-server-oobe
-Version:        0.1.0
+Version:        0.1.1
 Release:        1%{?dist}
 Summary:        Local first-run setup for Ultramarine Server
 License:        AGPL-3.0-only AND Apache-2.0 AND OFL-1.1 AND LicenseRef-Proprietary
