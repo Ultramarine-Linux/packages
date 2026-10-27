@@ -492,8 +492,11 @@ enable mobi.phosh.PhoshTour-first-login.service
 
 # Enable Ultramarine specific services in this file
 
-# We ship system76-scheduler by default
-enable com.system76.Scheduler.service
+# We switched to scx from system76-scheduler by default
+enable scx_loader.service
+
+# falcond switches scx schedulers per game, enable it when installed
+enable falcond.service
 
 # On Ultramarine, we just use Flathub
 disable flatpak-add-fedora-repos.service
