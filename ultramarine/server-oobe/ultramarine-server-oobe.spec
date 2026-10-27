@@ -29,6 +29,7 @@ BuildRequires:  nodejs
 BuildRequires:  nodejs-license-checker
 BuildRequires:  pnpm
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  lld
 
 Requires:       tetra
 Requires:       nodejs
