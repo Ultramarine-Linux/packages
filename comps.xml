@@ -86,7 +86,8 @@
       <packagereq type="default">ultramarine-backgrounds-common</packagereq>
       <packagereq type="default">ultramarine-backgrounds-compat</packagereq>
       <packagereq type="default">ultramarine-system-configs-desktop</packagereq>
-      <packagereq type="default">system76-scheduler</packagereq>
+      <packagereq type="default">scx-scheds</packagereq>
+      <packagereq type="default">scx-tools</packagereq>
       <packagereq type="default">orca</packagereq>
       <packagereq type="default">icoextract-thumbnailer</packagereq>
       <packagereq type="default">speech-dispatcher-espeak-ng</packagereq>
@@ -407,9 +408,6 @@
     <default>false</default>
     <uservisible>false</uservisible>
     <packagelist>
-      <packagereq
-                type="default"
-            >kwin-system76-scheduler-integration</packagereq>
       <packagereq type="default">ultramarine-appstream-metadata</packagereq>
       <packagereq type="default">ultramarine-release-plasma</packagereq>
       <packagereq
