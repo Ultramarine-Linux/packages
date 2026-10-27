@@ -1,0 +1,8 @@
+[Flatpak Preinstall org.gnome.Calculator]
+Branch=stable
+
+[Flatpak Preinstall org.gnome.Evince]
+Branch=stable
+
+[Flatpak Preinstall org.gnome.Geary]
+Branch=stable

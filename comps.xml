@@ -2,17 +2,6 @@
 <!DOCTYPE comps PUBLIC "-//Red Hat, Inc.//DTD Comps info//EN" "comps.dtd">
 <comps>
   <group>
-    <!-- We don't include this in environment groups, to not install flatpaks that conflict with already installed RPMs during the 40 to 41 upgrade -->
-    <id>default-flatpak-support</id>
-    <name>Default Flatpak support</name>
-    <description>Default Flatpak support for Ultramarine products</description>
-    <default>false</default>
-    <uservisible>false</uservisible>
-    <packagelist>
-      <packagereq type="mandatory">polycrystal</packagereq>
-    </packagelist>
-  </group>
-  <group>
     <id>ultramarine-peripheral-support</id>
     <name>Ultramarine Peripheral Support</name>
     <description>Additional support for various peripherals</description>
@@ -208,6 +197,8 @@
       <groupid>ultramarine-desktop-product-common</groupid>
       <groupid>ultramarine-peripheral-support</groupid>
       <groupid>ultramarine-budgie-product</groupid>
+      <!-- Traditional editions don't use Flatpaks; atomic ones get these via flatpak preinstall -->
+      <groupid>ultramarine-budgie-no-flatpak-apps</groupid>
     </grouplist>
   </environment>
   <environment>
@@ -237,6 +228,8 @@
       <groupid>ultramarine-desktop-product-common</groupid>
       <groupid>ultramarine-peripheral-support</groupid>
       <groupid>ultramarine-budgie-product</groupid>
+      <!-- Traditional editions don't use Flatpaks; atomic ones get these via flatpak preinstall -->
+      <groupid>ultramarine-budgie-no-flatpak-apps</groupid>
     </grouplist>
   </environment>
   <group>
@@ -397,6 +390,8 @@
       <groupid>ultramarine-desktop-product-common</groupid>
       <groupid>ultramarine-peripheral-support</groupid>
       <groupid>ultramarine-gnome-product</groupid>
+      <!-- Traditional editions don't use Flatpaks; atomic ones get these via flatpak preinstall -->
+      <groupid>ultramarine-gnome-no-flatpak-apps</groupid>
     </grouplist>
   </environment>
     <group>
@@ -462,6 +457,293 @@
       <groupid>ultramarine-desktop-product-common</groupid>
       <groupid>ultramarine-peripheral-support</groupid>
       <groupid>ultramarine-plasma-product</groupid>
+      <!-- Traditional editions don't use Flatpaks; atomic ones get these via flatpak preinstall -->
+      <groupid>ultramarine-plasma-no-flatpak-apps</groupid>
+    </grouplist>
+  </environment>
+  <group>
+    <!-- NOTE: You will want to sync this with the upstream kde-desktop group every major release -->
+    <id>ultramarine-atomic-kde-desktop</id>
+    <name>Ultramarine Atomic KDE Plasma desktop</name>
+    <description
+        >The group for packages comprising the KDE Plasma desktop on Ultramarine Atomic, based on the upstream set.</description>
+    <default>false</default>
+    <uservisible>false</uservisible>
+    <packagelist>
+      <packagereq type="mandatory">kcm-plasmalogin</packagereq>
+      <packagereq type="mandatory">plasma-desktop</packagereq>
+      <packagereq type="mandatory">plasma-login-manager</packagereq>
+      <packagereq type="mandatory">plasma-setup</packagereq>
+      <packagereq type="mandatory">plasma-workspace</packagereq>
+      <packagereq type="mandatory">plasma-workspace-wallpapers</packagereq>
+      <packagereq type="default">NetworkManager-config-connectivity-fedora</packagereq>
+      <packagereq type="default">PackageKit-command-not-found</packagereq>
+      <!-- <packagereq type="default">abrt-desktop</packagereq> removed for atomic -->
+      <packagereq type="default">akonadi-server</packagereq>
+      <packagereq type="default">akonadi-server-mysql</packagereq>
+      <packagereq type="default">ark</packagereq>
+      <packagereq type="default">audiocd-kio</packagereq>
+      <packagereq type="default">aurorae</packagereq>
+      <packagereq type="default">bluedevil</packagereq>
+      <packagereq type="default">breeze-icon-theme</packagereq>
+      <packagereq type="default">colord-kde</packagereq>
+      <packagereq type="default">cups-pk-helper</packagereq>
+      <packagereq type="default">dolphin</packagereq>
+      <packagereq type="default">fedora-flathub-remote</packagereq>
+      <packagereq type="default">fedora-workstation-repositories</packagereq>
+      <packagereq type="default">ffmpegthumbs</packagereq>
+      <packagereq type="default">filelight</packagereq>
+      <packagereq type="default">firewall-config</packagereq>
+      <packagereq type="default">flatpak-kcm</packagereq>
+      <packagereq type="default">fprintd-pam</packagereq>
+      <packagereq type="default">glibc-all-langpacks</packagereq>
+      <packagereq type="default">kaccounts-integration-qt6</packagereq>
+      <packagereq type="default">kaccounts-providers</packagereq>
+      <packagereq type="default">kcharselect</packagereq>
+      <packagereq type="default">kde-connect</packagereq>
+      <packagereq type="default">kde-gtk-config</packagereq>
+      <packagereq type="default">kde-inotify-survey</packagereq>
+      <packagereq type="default">kde-partitionmanager</packagereq>
+      <packagereq type="default">kde-settings-plasmalogin</packagereq>
+      <packagereq type="default">kde-settings-pulseaudio</packagereq>
+      <packagereq type="default">kdebugsettings</packagereq>
+      <packagereq type="default">kdegraphics-thumbnailers</packagereq>
+      <packagereq type="default">kdenetwork-filesharing</packagereq>
+      <packagereq type="default">kdeplasma-addons</packagereq>
+      <packagereq type="default">kdialog</packagereq>
+      <packagereq type="default">kdnssd</packagereq>
+      <packagereq type="default">kf6-baloo-file</packagereq>
+      <!-- <packagereq type="default">kfind</packagereq> removed for atomic -->
+      <packagereq type="default">khelpcenter</packagereq>
+      <packagereq type="default">kinfocenter</packagereq>
+      <packagereq type="default">kio-admin</packagereq>
+      <packagereq type="default">kio-gdrive</packagereq>
+      <!-- <packagereq type="default">kjournald</packagereq> removed for atomic -->
+      <packagereq type="default">kmenuedit</packagereq>
+      <packagereq type="default">konsole</packagereq>
+      <packagereq type="default">krdp</packagereq>
+      <!-- <packagereq type="default">krfb</packagereq> removed for atomic -->
+      <packagereq type="default">kscreen</packagereq>
+      <packagereq type="default">kscreenlocker</packagereq>
+      <packagereq type="default">ksshaskpass</packagereq>
+      <packagereq type="default">kunifiedpush</packagereq>
+      <packagereq type="default">kwalletmanager5</packagereq>
+      <packagereq type="default">kwin</packagereq>
+      <!-- <packagereq type="default">kwrite</packagereq> removed for atomic -->
+      <packagereq type="default">libappindicator-gtk3</packagereq>
+      <packagereq type="default">pam-kwallet</packagereq>
+      <packagereq type="default">phonon-qt6-backend-vlc</packagereq>
+      <packagereq type="default">pinentry-qt</packagereq>
+      <packagereq type="default">plasma-breeze</packagereq>
+      <packagereq type="default">plasma-desktop-doc</packagereq>
+      <packagereq type="default">plasma-discover</packagereq>
+      <packagereq type="default">plasma-discover-notifier</packagereq>
+      <packagereq type="default">plasma-disks</packagereq>
+      <packagereq type="default">plasma-drkonqi</packagereq>
+      <packagereq type="default">plasma-nm</packagereq>
+      <packagereq type="default">plasma-nm-l2tp</packagereq>
+      <packagereq type="default">plasma-nm-openconnect</packagereq>
+      <packagereq type="default">plasma-nm-openswan</packagereq>
+      <packagereq type="default">plasma-nm-openvpn</packagereq>
+      <packagereq type="default">plasma-nm-pptp</packagereq>
+      <packagereq type="default">plasma-pa</packagereq>
+      <packagereq type="default">plasma-print-manager</packagereq>
+      <packagereq type="default">plasma-systemmonitor</packagereq>
+      <packagereq type="default">plasma-thunderbolt</packagereq>
+      <packagereq type="default">plasma-vault</packagereq>
+      <packagereq type="default">plasma-welcome</packagereq>
+      <packagereq type="default">polkit-kde</packagereq>
+      <packagereq type="default">samba-usershares</packagereq>
+      <packagereq type="default">signon-kwallet-extension</packagereq>
+      <packagereq type="default">spectacle</packagereq>
+      <packagereq type="default">systemd-oomd-defaults</packagereq>
+      <packagereq type="default">thermald</packagereq>
+      <packagereq type="default">toolbox</packagereq>
+      <packagereq type="default">udisks2</packagereq>
+      <packagereq type="default">vlc-plugin-gstreamer</packagereq>
+      <packagereq type="default">xwaylandvideobridge</packagereq>
+    </packagelist>
+  </group>
+  <group>
+    <id>ultramarine-atomic-desktop-product</id>
+    <name>Ultramarine Atomic product core</name>
+    <description
+        >Packages mandatory for the Ultramarine Atomic product.</description>
+    <default>false</default>
+    <uservisible>false</uservisible>
+    <packagelist>
+      <packagereq type="default">kwin-system76-scheduler-integration</packagereq>
+      <packagereq type="default">ultramarine-appstream-metadata</packagereq>
+      <packagereq type="default">ultramarine-release-atomic-plasma</packagereq>
+      <packagereq type="optional">ultramarine-release-identity-atomic-plasma</packagereq>
+      <packagereq type="default">fcitx5-mozc</packagereq>
+      <packagereq type="default">fcitx5-gtk</packagereq>
+      <packagereq type="default">fcitx5-qt</packagereq>
+      <packagereq type="default">fcitx5-configtool</packagereq>
+      <packagereq type="default">kcm-fcitx5</packagereq>
+      <packagereq type="default">ultramarine-plasma-settings</packagereq>
+      <packagereq type="default">plasma-milou</packagereq>
+      <packagereq type="default">plasma-browser-integration</packagereq>
+      <packagereq type="default">plasma-discover-flatpak</packagereq>
+      <packagereq type="default">plasma-discover-rpm-ostree</packagereq>
+      <!-- okular, koko, kamoso, kolourpaint, kate, haruna, kcalc, elisa: flatpak'd (ultramarine-plasma.preinstall) or dropped -->
+      <!-- kmail: dropped for atomic -->
+      <packagereq type="default">krdp</packagereq>
+      <packagereq type="default">ultramarine-backgrounds-kde</packagereq>
+    </packagelist>
+  </group>
+  <environment>
+    <id>ultramarine-atomic-desktop-product-environment</id>
+    <name>Ultramarine Atomic</name>
+    <description
+        >Ultramarine Atomic is an image-based Ultramarine experience powered by the Plasma desktop environment.</description>
+    <grouplist>
+      <groupid>base-graphical</groupid>
+      <groupid>container-management</groupid>
+      <groupid>core</groupid>
+      <groupid>standard</groupid>
+      <groupid>firefox</groupid>
+      <groupid>fonts</groupid>
+      <groupid>ultramarine-atomic-kde-desktop</groupid>
+      <groupid>critical-path-kde</groupid>
+      <groupid>guest-desktop-agents</groupid>
+      <groupid>hardware-support</groupid>
+      <!-- <groupid>libreoffice</groupid> use the Flatpak -->
+      <groupid>multimedia</groupid>
+      <groupid>networkmanager-submodules</groupid>
+      <groupid>printing</groupid>
+      <groupid>desktop-accessibility</groupid>
+      <groupid>ultramarine-product-common</groupid>
+      <groupid>ultramarine-desktop-product-common</groupid>
+      <groupid>ultramarine-peripheral-support</groupid>
+      <groupid>ultramarine-atomic-desktop-product</groupid>
+    </grouplist>
+  </environment>
+  <group>
+    <id>ultramarine-atomic-gnome-product</id>
+    <name>Ultramarine Atomic GNOME product core</name>
+    <description
+        >Packages mandatory for the Ultramarine GNOME product.</description>
+    <default>false</default>
+    <uservisible>false</uservisible>
+    <packagelist>
+      <!-- <packagereq type="default">gnome-extensions-app</packagereq> flatpak'd -->
+      <packagereq
+                type="default"
+            >gnome-shell-extension-windowsNavigator</packagereq>
+      <packagereq
+                type="default"
+            >gnome-shell-extension-appmenu-is-back</packagereq>
+      <packagereq
+                type="default"
+            >gnome-shell-extension-grand-theft-focus</packagereq>
+      <packagereq type="default">gnome-shell-extension-battery_time</packagereq>
+      <packagereq type="default">ultramarine-backgrounds-gnome</packagereq>
+      <packagereq type="default">ultramarine-backgrounds-common</packagereq>
+      <packagereq type="default">ultramarine-release-atomic-gnome</packagereq>
+      <packagereq
+                type="optional"
+            >ultramarine-release-identity-atomic-gnome</packagereq>
+      <packagereq
+                type="default"
+            >gs-plugin-ultramarine-pkgdb-collections</packagereq>
+    </packagelist>
+  </group>
+  <environment>
+    <id>ultramarine-atomic-gnome-product-environment</id>
+    <name>Ultramarine Atomic GNOME</name>
+    <description
+        >Ultramarine GNOME is an Ultramarine experience powered by the GNOME desktop environment.</description>
+    <grouplist>
+      <groupid>base-graphical</groupid>
+      <groupid>container-management</groupid>
+      <groupid>core</groupid>
+      <groupid>standard</groupid>
+      <groupid>firefox</groupid>
+      <groupid>fonts</groupid>
+      <!-- <groupid>gnome-desktop</groupid> -->
+      <groupid>ultramarine-gnome-desktop</groupid>
+      <groupid>guest-desktop-agents</groupid>
+      <groupid>hardware-support</groupid>
+      <groupid>libreoffice</groupid>
+      <groupid>multimedia</groupid>
+      <!-- <groupid>sound-and-video</groupid> -->
+      <groupid>networkmanager-submodules</groupid>
+      <groupid>printing</groupid>
+      <groupid>desktop-accessibility</groupid>
+      <!-- <groupid>input-methods</groupid> While the other groups incluide this, Fedora doesn't have this group in the workstation comp, going to trust them-->
+      <groupid>ultramarine-product-common</groupid>
+      <groupid>ultramarine-desktop-product-common</groupid>
+      <groupid>ultramarine-peripheral-support</groupid>
+      <groupid>ultramarine-atomic-gnome-product</groupid>
+    </grouplist>
+  </environment>
+  <group>
+    <id>ultramarine-atomic-xfce-product</id>
+    <name>Ultramarine Atomic Xfce product core</name>
+    <description
+        >Packages mandatory for the Ultramarine Xfce product.</description>
+    <default>false</default>
+    <uservisible>false</uservisible>
+    <packagelist>
+      <packagereq type="mandatory">ultramarine-release-atomic-xfce</packagereq>
+      <packagereq type="optional">ultramarine-release-identity-atomic-xfce</packagereq>
+      <packagereq type="mandatory">lightdm</packagereq>
+      <packagereq type="mandatory">slick-greeter</packagereq>
+      <packagereq type="default">xfce4-whiskermenu-plugin</packagereq>
+      <packagereq type="default">xfce4-docklike-plugin</packagereq>
+      <packagereq type="default">gtk3-theme-orchis</packagereq>
+      <packagereq type="default">gtk4-theme-orchis</packagereq>
+      <packagereq type="default">xfwm4-theme-orchis</packagereq>
+      <packagereq type="default">papirus-icon-theme</packagereq>
+      <packagereq type="default">papirus-icon-theme-dark</packagereq>
+      <packagereq type="default">papirus-icon-theme-light</packagereq>
+      <packagereq type="default">ultramarine-backgrounds</packagereq>
+      <packagereq type="default">ultramarine-backgrounds-gnome</packagereq>
+      <packagereq type="default">ultramarine-backgrounds-common</packagereq>
+      <packagereq type="default">seahorse</packagereq>
+      <packagereq type="default">gnome-software</packagereq>
+      <!-- <packagereq type="default">evince</packagereq> flatpak'd -->
+      <!-- <packagereq type="default">geary</packagereq> flatpak'd -->
+      <packagereq type="default">firefox</packagereq>
+      <!-- <packagereq type="default">gnome-calculator</packagereq> flatpak'd -->
+      <packagereq type="default">mousepad</packagereq>
+      <packagereq type="default">eog</packagereq>
+      <packagereq type="default">xarchiver</packagereq>
+      <packagereq type="default">xfce4-clipman-plugin</packagereq>
+      <packagereq type="default">xfce4-dict-plugin</packagereq>
+      <packagereq type="default">system-config-printer</packagereq>
+      <packagereq type="default">mugshot</packagereq>
+      <packagereq type="default">mate-user-admin</packagereq>
+      </packagelist>
+  </group>
+  <environment>
+    <id>ultramarine-atomic-xfce-product-environment</id>
+    <name>Ultramarine Atomic Xfce</name>
+    <description
+        >Ultramarine Xfce is the Ultramarine experience powered by the Xfce desktop.</description>
+    <grouplist>
+      <groupid>base-x</groupid>
+      <groupid>container-management</groupid>
+      <groupid>core</groupid>
+      <groupid>standard</groupid>
+      <groupid>firefox</groupid>
+      <groupid>fonts</groupid>
+      <groupid>xfce-desktop</groupid>
+      <groupid>xfce-extra-plugins</groupid>
+      <groupid>guest-desktop-agents</groupid>
+      <groupid>hardware-support</groupid>
+      <groupid>libreoffice</groupid>
+      <groupid>multimedia</groupid>
+      <!-- <groupid>sound-and-video</groupid> -->
+      <groupid>networkmanager-submodules</groupid>
+      <groupid>printing</groupid>
+      <groupid>desktop-accessibility</groupid>
+      <groupid>input-methods</groupid>
+      <groupid>ultramarine-product-common</groupid>
+      <groupid>ultramarine-desktop-product-common</groupid>
+      <groupid>ultramarine-peripheral-support</groupid>
+      <groupid>ultramarine-atomic-xfce-product</groupid>
     </grouplist>
   </environment>
   <environment>
@@ -493,6 +775,8 @@
       <groupid>ultramarine-desktop-product-common</groupid>
       <groupid>ultramarine-peripheral-support</groupid>
       <groupid>ultramarine-plasma-product</groupid>
+      <!-- Traditional editions don't use Flatpaks; atomic ones get these via flatpak preinstall -->
+      <groupid>ultramarine-plasma-no-flatpak-apps</groupid>
     </grouplist>
   </environment>
   <group>
@@ -561,6 +845,8 @@
       <groupid>ultramarine-desktop-product-common</groupid>
       <groupid>ultramarine-peripheral-support</groupid>
       <groupid>ultramarine-xfce-product</groupid>
+      <!-- Traditional editions don't use Flatpaks; atomic ones get these via flatpak preinstall -->
+      <groupid>ultramarine-xfce-no-flatpak-apps</groupid>
     </grouplist>
   </environment>
   <group>
@@ -594,6 +880,9 @@
       <packagereq type="default">showtime</packagereq>
       <packagereq type="default">papers</packagereq>
       <packagereq type="default">decibels</packagereq>
+      <packagereq type="default">geary</packagereq>
+      <packagereq type="default">gnome-extensions-app</packagereq>
+      <packagereq type="default">papers-nautilus</packagereq>
     </packagelist>
   </group>
   <group>

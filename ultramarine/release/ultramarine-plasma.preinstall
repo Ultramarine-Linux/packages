@@ -1,0 +1,20 @@
+[Flatpak Preinstall org.kde.haruna]
+Branch=stable
+
+[Flatpak Preinstall org.kde.kamoso]
+Branch=stable
+
+[Flatpak Preinstall org.kde.kcalc]
+Branch=stable
+
+[Flatpak Preinstall org.kde.kolourpaint]
+Branch=stable
+
+[Flatpak Preinstall org.kde.kwrite]
+Branch=stable
+
+[Flatpak Preinstall org.kde.okular]
+Branch=stable
+
+[Flatpak Preinstall org.kde.elisa]
+Branch=stable

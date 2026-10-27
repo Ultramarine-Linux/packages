@@ -1,6 +1,6 @@
 Name:           ultramarine-systemd-presets
 Version:        1
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Ultramarine systemd presets
 URL:            https://src.fedoraproject.org/rpms/redhat-systemd-presets
 License:        MIT

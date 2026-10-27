@@ -1,2 +1,5 @@
 # https://fedoraproject.org/wiki/Changes/AutomaticBootloaderUpdatesBootc
 enable bootloader-update.service
+
+# Install the Flatpaks from /usr/share/flatpak/preinstall.d (ultramarine-release-atomic-desktop)
+enable flatpak-preinstall.service

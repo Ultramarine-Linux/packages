@@ -1,0 +1,41 @@
+[Flatpak Preinstall org.gnome.Extensions]
+Branch=stable
+
+[Flatpak Preinstall org.gnome.Geary]
+Branch=stable
+
+[Flatpak Preinstall org.gnome.Connections]
+Branch=stable
+
+[Flatpak Preinstall org.gnome.TextEditor]
+Branch=stable
+
+[Flatpak Preinstall org.gnome.Calculator]
+Branch=stable
+
+[Flatpak Preinstall org.gnome.Calendar]
+Branch=stable
+
+[Flatpak Preinstall org.gnome.clocks]
+Branch=stable
+
+[Flatpak Preinstall org.gnome.Contacts]
+Branch=stable
+
+[Flatpak Preinstall org.gnome.Maps]
+Branch=stable
+
+[Flatpak Preinstall org.gnome.Weather]
+Branch=stable
+
+[Flatpak Preinstall org.gnome.Snapshot]
+Branch=stable
+
+[Flatpak Preinstall org.gnome.Showtime]
+Branch=stable
+
+[Flatpak Preinstall org.gnome.Papers]
+Branch=stable
+
+[Flatpak Preinstall org.gnome.Decibels]
+Branch=stable
