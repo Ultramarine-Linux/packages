@@ -76,17 +76,7 @@ Source1:	README.developers
 Source2:	README.Ultramarine-Release-Notes
 Source3:	README.license
 
-Source4:	80-workstation.preset
-Source5:	81-desktop.preset
-Source6:	85-display-manager.preset
-Source7:	90-default.preset
-Source8:	99-default-disable.preset
-Source9:	90-default-user.preset
-Source10:	89-ultramarine-default.preset
-Source11:   81-atomic-desktop.preset
-
 Source12:   60-ultramarine-presets.conf
-Source13:   80-server.preset
 Source14:   slick-greeter-xfce.conf
 Source15:   50_ultramarine-gnome.gschema.override
 
@@ -113,11 +103,6 @@ Source61:   ultramarine-gnome-protected.conf
 Source62:   ultramarine-plasma-protected.conf
 Source63:   ultramarine-xfce-protected.conf
 
-Source64:   88-ultramarine-chromebook-default.preset
-
-Source65:   91-ultramarine-surface-default.preset
-Source66:   linux-surface.repo
-
 Source70:   polycrystal-ultramarine-budgie.json
 Source71:   polycrystal-ultramarine-gnome.json
 Source72:   polycrystal-ultramarine-plasma.json
@@ -143,7 +128,7 @@ Requires:   ultramarine-release-variant = %{version}
 Requires:   ultramarine-repos(%{version})
 Requires:   ultramarine-release-identity = %{version}-%{release}
 Recommends: fastfetch
-Recommends: golang-github-ultramarine-linux-um
+Recommends: um
 Recommends: ultramarine-release-identity-basic
 Conflicts:  generic-release
 Conflicts:  fedora-release
@@ -762,21 +747,21 @@ install -Dpm644 %SOURCE90 %buildroot%_datadir/dnf5/libdnf.conf.d/ultramarine-ins
 
 install -d $RPM_BUILD_ROOT/usr/lib/os.release.d/
 cat << EOF >> os-release
-NAME="Ultramarine Linux"
+NAME="Ultramarine"
 ID=ultramarine
 VERSION="%{dist_version} (%{release_name})"
 VERSION_CODENAME=%{codename}
 ID_LIKE=fedora
 PLATFORM_ID="platform:um%{dist_version}"
 VERSION_ID=%{dist_version}
-PRETTY_NAME="Ultramarine Linux %{dist_version} (%{release_name})"
+PRETTY_NAME="Ultramarine %{dist_version} (%{release_name})"
 ANSI_COLOR="0;34"
 LOGO=ultramarine
 CPE_NAME="cpe:/o:ultramarine:um:%{dist_version}"
 DEFAULT_HOSTNAME="ultramarine"
 HOME_URL="http://ultramarine-linux.org"
 SUPPORT_URL="https://fyralabs.com/discord"
-BUG_REPORT_URL="https://github.com/Ultramarine-Linux/ultramarine"
+BUG_REPORT_URL="https://github.com/Ultramarine-Linux/triage"
 DOCUMENTATION_URL="https://wiki.ultramarine-linux.org"
 REDHAT_BUGZILLA_PRODUCT="Fedora"
 REDHAT_BUGZILLA_PRODUCT_VERSION=%{dist_version}
@@ -943,7 +928,6 @@ echo "VARIANT=\"Server Edition\"" >> %{buildroot}%{_prefix}/lib/os-release.serve
 echo "VARIANT_ID=server" >> %{buildroot}%{_prefix}/lib/os-release.server
 sed -i -e "s|(%{release_name}%{?prerelease})|(Server Edition%{?prerelease})|g" %{buildroot}%{_prefix}/lib/os-release.server
 sed -e "s#\$version#%{bug_version}#g" -e 's/$edition/Server/;s/<!--.*-->//;/^$/d' %{SOURCE20} > %{buildroot}%{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.server
-install -Dm0644 %{SOURCE13} -t $RPM_BUILD_ROOT%{_prefix}/lib/systemd/system-preset/
 %endif
 
 # Create copr config file so COPR doesnt flip out and assume EPEL
@@ -1040,35 +1024,11 @@ mkdir -p licenses
 install -pm 0644 %{SOURCE0} licenses/LICENSE
 install -pm 0644 %{SOURCE2} licenses/README.license
 
-# Add presets
-mkdir -p $RPM_BUILD_ROOT/usr/lib/systemd/user-preset/
-mkdir -p $RPM_BUILD_ROOT%{_prefix}/lib/systemd/system-preset/
-
 # Default system wide
-install -Dm0644 %{S:6} %{S:7} %{S:8} %{S:10} -t %buildroot%_presetdir
-install -Dm0644 %{S:8} %{S:9} -t %buildroot%_userpresetdir
 install -Dm0644 %{SOURCE28} -t %buildroot%_systemd_util_dir/system.conf.d/
 install -Dm0644 %{SOURCE28} -t %buildroot%_systemd_util_dir/user.conf.d/
 
 %if %{with desktop}
-
-# Install systemd presets for desktop
-install -Dm0644 %{SOURCE5} -t $RPM_BUILD_ROOT%{_prefix}/lib/systemd/system-preset/
-
-%endif
-
-%if %{with chromebook}
-
-# Install systemd presets for chromebook
-install -Dm0644 %{SOURCE64} -t $RPM_BUILD_ROOT%{_prefix}/lib/systemd/system-preset/
-
-%endif
-
-%if %{with surface}
-
-# Install systemd presets for surface
-install -Dm0644 %{SOURCE65} -t $RPM_BUILD_ROOT%{_prefix}/lib/systemd/system-preset/
-install -Dm0644 %{SOURCE66} -t $RPM_BUILD_ROOT/usr/share/dnf5/repos.d/
 
 %endif
 
@@ -1079,34 +1039,13 @@ mkdir -p $RPM_BUILD_ROOT/boot/efi/
 install -Dm0644 anywhere-%{anywhere_conf_commit}/raspberry-pi/config.txt $RPM_BUILD_ROOT/boot/efi/config.txt
 %endif
 
-%if %{with gnome} || %{with atomic_gnome}
-
-# Install systemd presets for gnome
-install -Dm0644 %{SOURCE4} -t $RPM_BUILD_ROOT%{_prefix}/lib/systemd/system-preset/
-
-%endif
-
 # Add debuginfod urls
 install -D -p -m 0644 -t %{buildroot}%{_sysconfdir}/debuginfod %{SOURCE34}
 
 %if %{with atomic_desktop}
 
-# Install Atomic Desktop specific presets
-install -Dm0644 %{SOURCE11} -t %{buildroot}%{_prefix}/lib/systemd/system-preset/
 # Install rpm-ostree polkit rules
 install -Dm0644 %{SOURCE32} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
-
-%endif
-
-# the funny Plasma system76 scheduler integration
-%if %{with plasma}
-
-# BUG: this script trips up rpm for some reason
-#post identity-plasma
-#systemd_user_post enable-kwin-system76-scheduler-integration.service
-
-#preun identity-plasma
-#systemd_user_preun enable-kwin-system76-scheduler-integration.service
 
 %endif
 
@@ -1153,14 +1092,6 @@ ln -sf firewalld-workstation.conf %{_sysconfdir}/firewalld/firewalld.conf
 %config(noreplace) %{_sysconfdir}/issue.net
 %dir %{_sysconfdir}/issue.d
 %attr(0644,root,root) %{_rpmconfigdir}/macros.d/macros.dist
-%dir %{_prefix}/lib/systemd/user-preset/
-%{_prefix}/lib/systemd/user-preset/90-default-user.preset
-%{_prefix}/lib/systemd/user-preset/99-default-disable.preset
-%dir %{_prefix}/lib/systemd/system-preset/
-%{_prefix}/lib/systemd/system-preset/85-display-manager.preset
-%{_prefix}/lib/systemd/system-preset/89-ultramarine-default.preset
-%{_prefix}/lib/systemd/system-preset/90-default.preset
-%{_prefix}/lib/systemd/system-preset/99-default-disable.preset
 %dir %{_swidtagdir}
 %{_swidtagdir}/org.ultramarinelinux.Ultramarine-%{bug_version}.swidtag
 %dir %{_sysconfdir}/swid
@@ -1219,7 +1150,6 @@ ln -sf firewalld-workstation.conf %{_sysconfdir}/firewalld/firewalld.conf
 %{_sysconfdir}/dnf/protected.d/ultramarine-gnome.conf
 %config %{_sysconfdir}/polycrystal/entries/ultramarine-gnome.json
 %{_datadir}/glib-2.0/schemas/50_ultramarine-gnome.gschema.override
-%{_prefix}/lib/systemd/system-preset/80-workstation.preset
 %endif
 
 %if %{with atomic_gnome}
@@ -1229,7 +1159,6 @@ ln -sf firewalld-workstation.conf %{_sysconfdir}/firewalld/firewalld.conf
 %attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.atomic-gnome
 %config %{_sysconfdir}/polycrystal/entries/ultramarine-gnome.json
 %{_datadir}/glib-2.0/schemas/50_ultramarine-gnome.gschema.override
-%{_prefix}/lib/systemd/system-preset/80-workstation.preset
 %endif
 
 %if %{with xfce}
@@ -1273,24 +1202,19 @@ ln -sf firewalld-workstation.conf %{_sysconfdir}/firewalld/firewalld.conf
 %files server
 %files identity-server
 %{_prefix}/lib/os-release.server
-%{_prefix}/lib/systemd/system-preset/80-server.preset
 %attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.server
 %endif
 
 %if %{with desktop}
 %files desktop
-%{_prefix}/lib/systemd/system-preset/81-desktop.preset
 %endif
 
 %if %{with chromebook}
 %files chromebook
-%{_prefix}/lib/systemd/system-preset/88-ultramarine-chromebook-default.preset
 %endif
 
 %if %{with surface}
 %files surface
-%{_prefix}/lib/systemd/system-preset/91-ultramarine-surface-default.preset
-/usr/share/dnf5/repos.d//linux-surface.repo
 %endif
 
 %if %{with raspberry_pi}
@@ -1300,7 +1224,6 @@ ln -sf firewalld-workstation.conf %{_sysconfdir}/firewalld/firewalld.conf
 
 %if %{with atomic_desktop}
 %files atomic-desktop
-%{_prefix}/lib/systemd/system-preset/81-atomic-desktop.preset
 %attr(0644,root,root) %{_prefix}/share/polkit-1/rules.d/org.projectatomic.rpmostree1.rules
 %endif
 
