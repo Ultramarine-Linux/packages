@@ -54,7 +54,7 @@
 Summary:	Ultramarine Linux release files
 Name:		ultramarine-release
 Version:	%{dist_version}
-Release:	1%{?dist}
+Release:	2%{?dist}
 License:	MIT
 Source0:	LICENSE
 URL:        https://ultramarine-linux.org
@@ -85,7 +85,6 @@ Source20:   distro-edition-template.swidtag
 
 Source28:   longer-default-shutdown-timeout.conf
 
-Source31:   enable-kwin-system76-scheduler-integration.service
 Source32:   org.projectatomic.rpmostree1.rules
 Source34:   ultramarine.urls
 
@@ -272,7 +271,6 @@ Obsoletes: ultramarine-release-kde < 40-12
 # package must provide it. This Recommends: pulls in
 # ultramarine-release-identity-cinnamon if nothing else is already doing so.
 Recommends:	ultramarine-release-identity-plasma
-Recommends:	kwin-system76-scheduler-integration
 Recommends: pipewire-systemd-mask
 
 %description plasma
@@ -314,7 +312,6 @@ Provides:   system-release-product
 # package must provide it. This Recommends: pulls in
 # ultramarine-release-identity-cinnamon if nothing else is already doing so.
 Recommends:	ultramarine-release-identity-atomic-plasma
-Recommends: kwin-system76-scheduler-integration
 Recommends: pipewire-systemd-mask
 
 %description atomic-plasma
@@ -326,7 +323,6 @@ RemovePathPostfixes: .atomic-plasma
 Provides:		ultramarine-release-identity = %{version}-%{release}
 Conflicts:		ultramarine-release-identity
 Requires(meta):	ultramarine-release-atomic-plasma = %{version}-%{release}
-Requires(post): bash systemd
 
 %description identity-atomic-plasma
 Provides the necessary files for a Ultramarine Atomic Plasma installation.
@@ -675,10 +671,18 @@ Common configuration package for raspberry pi variants
 %package desktop
 Summary:        Common configuration package for desktop variants
 
-Recommends: system76-scheduler
+Recommends: scx-scheds
+Recommends: scx-tools
 Recommends: ultramarine-phony-bookmarks
 Requires(post): /usr/bin/ln
 Requires(post): firewalld
+# replaced by sched_ext/scx_loader in um45
+Obsoletes:  system76-scheduler < 2.0.2-3
+Obsoletes:  kwin-system76-scheduler-integration < 0.1-2
+# ships /etc/scx_loader/config.toml (scx_lavd, Auto)
+Recommends: ultramarine-system-configs-desktop
+# per-game scx switching; also covers RPM Fusion's steam, which only recommends gamemode
+Recommends: (falcond if steam)
 
 %description desktop
 Common configuration package for desktop variants
@@ -828,8 +832,6 @@ sed -e "s#\$version#%{bug_version}#g" -e 's/$edition/Plasma/;s/<!--.*-->//;/^$/d
 
 install -Dm0644 %{SOURCE62} %{buildroot}%{_sysconfdir}/dnf/protected.d/ultramarine-plasma.conf
 
-install -Dm644 %{SOURCE31} %{buildroot}%{_userunitdir}/enable-kwin-system76-scheduler-integration.service
-
 %endif
 
 %if %{with atomic_plasma}
@@ -840,8 +842,6 @@ echo "VARIANT=\"Atomic Plasma Edition\"" >> %{buildroot}%{_prefix}/lib/os-releas
 echo "VARIANT_ID=atomic-plasma" >> %{buildroot}%{_prefix}/lib/os-release.atomic-plasma
 sed -i -e "s|(%{release_name}%{?prerelease})|(Atomic Plasma Edition%{?prerelease})|g" %{buildroot}%{_prefix}/lib/os-release.atomic-plasma
 sed -e "s#\$version#%{bug_version}#g" -e 's/$edition/Atomic Plasma/;s/<!--.*-->//;/^$/d' %{SOURCE20} > %{buildroot}%{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.atomic-plasma
-
-install -Dm644 %{SOURCE31} %{buildroot}%{_userunitdir}/enable-kwin-system76-scheduler-integration.service
 
 %endif
 
@@ -1049,17 +1049,6 @@ install -Dm0644 %{SOURCE32} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
 
 %endif
 
-%if %{with atomic_plasma}
-
-%post identity-atomic-plasma
-%systemd_user_post enable-kwin-system76-scheduler-integration.service
-
-%preun identity-atomic-plasma
-%systemd_user_preun enable-kwin-system76-scheduler-integration.service
-
-%endif
-
-
 %post desktop
 mkdir -p %{_sysconfdir}/firewalld
 ln -sf firewalld-workstation.conf %{_sysconfdir}/firewalld/firewalld.conf
@@ -1130,7 +1119,6 @@ ln -sf firewalld-workstation.conf %{_sysconfdir}/firewalld/firewalld.conf
 %attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.plasma
 %config %{_sysconfdir}/polycrystal/entries/ultramarine-plasma.json
 %{_sysconfdir}/dnf/protected.d/ultramarine-plasma.conf
-%config %_userunitdir/enable-kwin-system76-scheduler-integration.service
 %endif
 
 %if %{with atomic_plasma}
@@ -1139,7 +1127,6 @@ ln -sf firewalld-workstation.conf %{_sysconfdir}/firewalld/firewalld.conf
 %{_prefix}/lib/os-release.atomic-plasma
 %attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.atomic-plasma
 %config %{_sysconfdir}/polycrystal/entries/ultramarine-plasma.json
-%config %_userunitdir/enable-kwin-system76-scheduler-integration.service
 %endif
 
 %if %{with gnome}

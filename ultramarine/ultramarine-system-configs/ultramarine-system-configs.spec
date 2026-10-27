@@ -1,6 +1,6 @@
 Name:           ultramarine-system-configs
 Version:        45
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Various configuration files for a more comfortable Ultramarine desktop experience
 BuildArch:      noarch
 License:        MIT OR GFDL-1.1-or-later
@@ -11,6 +11,8 @@ Source4:        bbr.conf
 Source5:        50-mtu-probing.conf
 Source6:        ultramarine-default-bookmarks.html
 Source7:        GFDL-1.1-or-later.txt
+Source8:        scx_loader.toml
+Source9:        falcond.conf
 
 BuildRequires:  /usr/bin/install
 
@@ -60,6 +62,8 @@ install -Dm644 %{SOURCE3} %{buildroot}/etc/sysctl.d/50-networking-tweaks.conf
 install -Dm644 %{SOURCE4} %{buildroot}/etc/modules-load.d/bbr.conf
 install -Dm644 %{SOURCE5} %{buildroot}/etc/sysctl.d/50-mtu-probing.conf
 install -Dm644 %{SOURCE6} %{buildroot}%{_datadir}/bookmarks/ultramarine-default-bookmarks.html
+install -Dm644 %{SOURCE8} %{buildroot}%{_sysconfdir}/scx_loader/config.toml
+install -Dm644 %{SOURCE9} %{buildroot}%{_sysconfdir}/falcond/config.conf
 cp %{S:7} GFDL-1.1-or-later
 
 %files
@@ -73,6 +77,10 @@ cp %{S:7} GFDL-1.1-or-later
 %defattr(-,root,root,-)
 %config /etc/logrotate.d/ultramarine-logrotate.conf
 %config /etc/sysctl.d/50-mtu-probing.conf
+%dir %{_sysconfdir}/scx_loader
+%config(noreplace) %{_sysconfdir}/scx_loader/config.toml
+%dir %{_sysconfdir}/falcond
+%config(noreplace) %{_sysconfdir}/falcond/config.conf
 
 %files -n ultramarine-bookmarks
 %license GFDL-1.1-or-later
@@ -81,6 +89,9 @@ cp %{S:7} GFDL-1.1-or-later
 %{_datadir}/bookmarks/ultramarine-default-bookmarks.html
 
 %changelog
+* Mon Oct 26 2026 Cypress Reed <cypress@fyralabs.com>
+- Ship scx_loader config, defaulting to scx_lavd
+
 * Sat Aug 08 2026 Owen Zimmerman <owen@fyralabs.com>
 - Add ultramarine-bookmarks subpackage
 
