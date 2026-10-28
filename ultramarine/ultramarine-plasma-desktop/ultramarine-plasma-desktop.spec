@@ -9,10 +9,10 @@
 
 Name:    ultramarine-plasma-desktop
 # Replaces Fedora's plasma-desktop.
-Provides:       plasma-desktop = %{version}-%{release}
-Provides:       plasma-desktop%{?_isa} = %{version}-%{release}
+Provides:       plasma-desktop = %{evr}
+Provides:       plasma-desktop%{?_isa} = %{evr}
 Conflicts:      plasma-desktop
-Obsoletes:      plasma-desktop < %{version}-%{release}
+Obsoletes:      plasma-desktop < %{evr}
 Summary: Plasma Desktop shell
 Version: 6.7.5
 Release: 1%{?dist}
@@ -221,9 +221,9 @@ Conflicts:      kde-settings < 39.1-7
 
 %package        kimpanel-scim
 # Replaces Fedora's plasma-desktop-kimpanel-scim.
-Provides:       plasma-desktop-kimpanel-scim = %{version}-%{release}
+Provides:       plasma-desktop-kimpanel-scim = %{evr}
 Conflicts:      plasma-desktop-kimpanel-scim
-Obsoletes:      plasma-desktop-kimpanel-scim < %{version}-%{release}
+Obsoletes:      plasma-desktop-kimpanel-scim < %{evr}
 Summary:        SCIM backend for kimpanel
 Requires:       %{name} = %{version}-%{release}
 %description    kimpanel-scim
@@ -232,9 +232,9 @@ method framework.
 
 %package        doc
 # Replaces Fedora's plasma-desktop-doc.
-Provides:       plasma-desktop-doc = %{version}-%{release}
+Provides:       plasma-desktop-doc = %{evr}
 Conflicts:      plasma-desktop-doc
-Obsoletes:      plasma-desktop-doc < %{version}-%{release}
+Obsoletes:      plasma-desktop-doc < %{evr}
 Summary:        Documentation and user manuals for %{name}
 # when conflicting HTML docs were removed
 Conflicts:      kcm_colors < 1:4.11.16-10

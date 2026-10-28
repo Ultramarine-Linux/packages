@@ -152,14 +152,14 @@ for line in fedora.split("\n") {
     }
     if replaces != "" {
         spec += `# Replaces Fedora's ${replaces}.
-Provides:       ${replaces} = %{version}-%{release}
+Provides:       ${replaces} = %{evr}
 `;
         if replaces == pkg {
-            spec += `Provides:       ${replaces}%{?_isa} = %{version}-%{release}
+            spec += `Provides:       ${replaces}%{?_isa} = %{evr}
 `;
         }
         spec += `Conflicts:      ${replaces}
-Obsoletes:      ${replaces} < %{version}-%{release}
+Obsoletes:      ${replaces} < %{evr}
 `;
     }
     if line.starts_with("## downstream patches") {
