@@ -135,6 +135,9 @@ for line in fedora.split("\n") {
     if line.starts_with("Release:") {
         out = `Release: ${rel}%{?dist}`;
     }
+    if line.starts_with("%autosetup") && !line.contains(" -C") {
+        out.replace("%autosetup", "%autosetup -C");
+    }
     if line.starts_with("URL:") {
         out.replace("%{name}", pkg);
     }

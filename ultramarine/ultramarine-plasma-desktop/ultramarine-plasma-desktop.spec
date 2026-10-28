@@ -273,7 +273,7 @@ BuildArch: noarch
 
 
 %prep
-%autosetup -a 20 -p1
+%autosetup -C -a 20 -p1
 
 
 %build
