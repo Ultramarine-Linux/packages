@@ -39,7 +39,7 @@ Requires: systemd
 Requires: libnotify
 # Launch Using Dedicated Graphics Card: switcherooctl picks the GPU and sets its
 # environment, kioclient launches the app. The task manager entry needs
-# Ultramarine's patched plasma-desktop. The app launchers work without it.
+# ultramarine-plasma-desktop (Fedora's plus the patch). The app launchers work without it.
 Requires: switcheroo-control
 Requires: kde-cli-tools
 Requires: systemd-udev

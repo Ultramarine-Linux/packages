@@ -12,8 +12,12 @@ import "andax/bump_extras.rhai" as bump;
 // release is our own release number. if Fedora bumps, it'll add to our release.
 // that means our release won't match Fedora's all the time, so be mindful of that.
 
+// pkg is Fedora's package, name is ours. Ours provides, conflicts with and
+// obsoletes Fedora's (and its subpackages), so it replaces it everywhere,
+// including the comps groups we can't change.
 let pkg = "plasma-desktop";
-let dir = "ultramarine/plasma-desktop";
+let name = "ultramarine-plasma-desktop";
+let dir = `ultramarine/${name}`;
 let patch_name = "0001-taskmanager-show-launcher-drop-in-actions.patch";
 
 if labels.get("branch") == () {
@@ -110,6 +114,8 @@ for line in fedora.split("\n") {
             // kf6-rpm-macros isn't in the SRPM chroot, so use %{version} in KDE URLs
             value.replace("%{stable_kf6}", "stable");
             value.replace("%{maj_ver_kf6}.%{min_ver_kf6}.%{bug_ver_kf6}", "%{version}");
+            // %{name} is ours now; upstream tarballs use Fedora's name.
+            value.replace("%{name}", pkg);
         } else {
             let file = value;
             file.replace("%{name}", pkg);
@@ -129,7 +135,33 @@ for line in fedora.split("\n") {
     if line.starts_with("Release:") {
         out = `Release: ${rel}%{?dist}`;
     }
+    if line.starts_with("URL:") {
+        out.replace("%{name}", pkg);
+    }
+    if line.starts_with("Name:") {
+        out = `Name:    ${name}`;
+    }
     spec += out + "\n";
+    // Replace Fedora's package (after Name:) and each %package <sub> (not -n,
+    // those keep their own name).
+    let replaces = "";
+    if line.starts_with("Name:") {
+        replaces = pkg;
+    } else if find_all(`^%package\s+[^-\s]\S*\s*$`, line).len() != 0 {
+        replaces = `${pkg}-${find(`^%package\s+(\S+)`, line, 1)}`;
+    }
+    if replaces != "" {
+        spec += `# Replaces Fedora's ${replaces}.
+Provides:       ${replaces} = %{version}-%{release}
+`;
+        if replaces == pkg {
+            spec += `Provides:       ${replaces}%{?_isa} = %{version}-%{release}
+`;
+        }
+        spec += `Conflicts:      ${replaces}
+Obsoletes:      ${replaces} < %{version}-%{release}
+`;
+    }
     if line.starts_with("## downstream patches") {
         spec += `# Show plasma/kickeractions drop-in actions in the task manager context menu.
 # Synced from https://github.com/Ultramarine-Linux/plasma-patches/tree/main/${pkg}/${minor}

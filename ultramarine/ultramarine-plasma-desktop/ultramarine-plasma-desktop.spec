@@ -7,16 +7,21 @@
 %undefine scim
 %endif
 
-Name:    plasma-desktop
+Name:    ultramarine-plasma-desktop
+# Replaces Fedora's plasma-desktop.
+Provides:       plasma-desktop = %{version}-%{release}
+Provides:       plasma-desktop%{?_isa} = %{version}-%{release}
+Conflicts:      plasma-desktop
+Obsoletes:      plasma-desktop < %{version}-%{release}
 Summary: Plasma Desktop shell
 Version: 6.7.5
 Release: 1%{?dist}
 
 License: BSD-2-Clause AND BSD-3-Clause AND CC0-1.0 AND GPL-2.0-only AND GPL-2.0-or-later AND GPL-3.0-only AND LGPL-2.0-only AND LGPL-2.0-or-later AND LGPL-2.1-only AND LGPL-2.1-or-later AND LGPL-3.0-only AND (GPL-2.0-only OR GPL-3.0-only) AND (LGPL-2.1-only OR LGPL-3.0-only)
-URL:     https://invent.kde.org/plasma/%{name}
+URL:     https://invent.kde.org/plasma/plasma-desktop
 
-Source0: https://download.kde.org/stable/plasma/%{version}/%{name}-%{version}.tar.xz
-Source1: https://download.kde.org/stable/plasma/%{version}/%{name}-%{version}.tar.xz.sig
+Source0: https://download.kde.org/stable/plasma/%{version}/plasma-desktop-%{version}.tar.xz
+Source1: https://download.kde.org/stable/plasma/%{version}/plasma-desktop-%{version}.tar.xz.sig
 
 # breeze fedora sddm theme components
 # includes f40-based preview (better than breeze or nothing at least)
@@ -215,6 +220,10 @@ Conflicts:      kde-settings < 39.1-7
 %{summary}.
 
 %package        kimpanel-scim
+# Replaces Fedora's plasma-desktop-kimpanel-scim.
+Provides:       plasma-desktop-kimpanel-scim = %{version}-%{release}
+Conflicts:      plasma-desktop-kimpanel-scim
+Obsoletes:      plasma-desktop-kimpanel-scim < %{version}-%{release}
 Summary:        SCIM backend for kimpanel
 Requires:       %{name} = %{version}-%{release}
 %description    kimpanel-scim
@@ -222,6 +231,10 @@ A backend for the kimpanel panel icon for input methods using the SCIM input
 method framework.
 
 %package        doc
+# Replaces Fedora's plasma-desktop-doc.
+Provides:       plasma-desktop-doc = %{version}-%{release}
+Conflicts:      plasma-desktop-doc
+Obsoletes:      plasma-desktop-doc < %{version}-%{release}
 Summary:        Documentation and user manuals for %{name}
 # when conflicting HTML docs were removed
 Conflicts:      kcm_colors < 1:4.11.16-10

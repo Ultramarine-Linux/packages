@@ -1,6 +1,6 @@
 project pkg {
     rpm {
-        spec = "plasma-desktop.spec"
+        spec = "ultramarine-plasma-desktop.spec"
     }
     labels {
         updbranch = 1
