@@ -1,7 +1,7 @@
 %global _pkg_extra_ldflags -fuse-ld=lld
 
 Name:    ultramarine-plasma-settings
-Version: 0.1.2
+Version: 0.1.3
 Release: 1%{?dist}
 Summary: Ultramarine Plasma System Settings modules
 
