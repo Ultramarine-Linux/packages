@@ -145,10 +145,11 @@ for line in fedora.split("\n") {
         out = `Name:    ${name}`;
     }
     spec += out + "\n";
-    // Replace Fedora's package (after Name:) and each %package <sub> (not -n,
-    // those keep their own name).
+    // Replace Fedora's package and each %package <sub> (not -n, those keep their
+    // own name). The main block goes after Release:, because rpm only defines
+    // %{version} and %{release} once it has read those lines.
     let replaces = "";
-    if line.starts_with("Name:") {
+    if line.starts_with("Release:") {
         replaces = pkg;
     } else if find_all(`^%package\s+[^-\s]\S*\s*$`, line).len() != 0 {
         replaces = `${pkg}-${find(`^%package\s+(\S+)`, line, 1)}`;
