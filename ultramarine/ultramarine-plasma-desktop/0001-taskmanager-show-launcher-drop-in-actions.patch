@@ -1,0 +1,104 @@
+From bc647bda1b3b41c1d49b6135289514e28afe17c2 Mon Sep 17 00:00:00 2001
+From: Cypress Reed <cypress@fyralabs.com>
+Date: Wed, 28 Oct 2026 13:42:37 -0600
+Subject: [PATCH] taskmanager: show launcher drop-in actions
+ (plasma/kickeractions)
+
+Kicker and Kickoff add the actions from share/plasma/kickeractions/*.desktop
+to every app's context menu, filtered by X-KDE-OnlyForAppIds and
+X-KDE-ExcludeAppIds, and launch them with the app's desktop file as the URL.
+
+Show the same actions in the task manager context menu, after the app's own
+jump list actions, so a drop-in (for example "Launch Using Dedicated Graphics
+Card") works the same in the launchers and the task manager.
+---
+ applets/taskmanager/backend.cpp | 59 +++++++++++++++++++++++++++++++++
+ 1 file changed, 59 insertions(+)
+
+diff --git a/applets/taskmanager/backend.cpp b/applets/taskmanager/backend.cpp
+index 6516a7e..db1602a 100644
+--- a/applets/taskmanager/backend.cpp
++++ b/applets/taskmanager/backend.cpp
+@@ -9,6 +9,7 @@
+ #include "log_settings.h"
+ #include <KConfigGroup>
+ #include <KDesktopFile>
++#include <KFileUtils>
+ #include <KFileItem>
+ #include <KFilePlacesModel>
+ #include <KLocalizedString>
+@@ -48,6 +49,33 @@ using namespace KAStats::Terms;
+ 
+ static constexpr int NoApplications = 2; // kactivitymanager StatsPlugin WhatToRemember.
+ 
++// Same drop-in actions the application launchers (Kicker/Kickoff) show for every app:
++// share/plasma/kickeractions/*.desktop, filtered by X-KDE-OnlyForAppIds/X-KDE-ExcludeAppIds
++// and launched with the app's desktop file as the URL argument.
++static QList<KServiceAction> additionalAppActions(const KService::Ptr &service)
++{
++    QList<KServiceAction> actions;
++
++    QString storageId = service->storageId();
++    if (storageId.endsWith(QLatin1String(".desktop"))) {
++        storageId.chop(8);
++    }
++
++    const QStringList locations =
++        QStandardPaths::locateAll(QStandardPaths::GenericDataLocation, QStringLiteral("plasma/kickeractions"), QStandardPaths::LocateDirectory);
++    const QStringList files = KFileUtils::findAllUniqueFiles(locations, {QStringLiteral("*.desktop")});
++    for (const QString &file : files) {
++        const KService actionsService(file);
++        const auto onlyFor = actionsService.property<QStringList>(QStringLiteral("X-KDE-OnlyForAppIds"));
++        const auto exclude = actionsService.property<QStringList>(QStringLiteral("X-KDE-ExcludeAppIds"));
++        if ((onlyFor.isEmpty() || onlyFor.contains(storageId)) && !exclude.contains(storageId)) {
++            actions.append(actionsService.actions());
++        }
++    }
++
++    return actions;
++}
++
+ Backend::Backend(QObject *parent)
+     : QObject(parent)
+     , m_actionGroup(new QActionGroup(this))
+@@ -146,6 +174,37 @@ QVariantList Backend::jumpListActions(const QUrl &launcherUrl, QObject *parent)
+         actions << QVariant::fromValue<QAction *>(action);
+     }
+ 
++    QVariantList additionalActions;
++    const QUrl desktopFile = QUrl::fromLocalFile(service->entryPath());
++    const auto additionalServiceActions = additionalAppActions(service);
++    for (const KServiceAction &serviceAction : additionalServiceActions) {
++        if (serviceAction.noDisplay() || serviceAction.isSeparator()) {
++            continue;
++        }
++
++        QAction *action = new QAction(parent);
++        action->setText(serviceAction.text());
++        action->setIcon(QIcon::fromTheme(serviceAction.icon()));
++
++        connect(action, &QAction::triggered, this, [serviceAction, desktopFile]() {
++            auto *job = new KIO::ApplicationLauncherJob(serviceAction);
++            job->setUrls({desktopFile});
++            auto *delegate = new KNotificationJobUiDelegate;
++            delegate->setAutoErrorHandlingEnabled(true);
++            job->setUiDelegate(delegate);
++            job->start();
++        });
++
++        additionalActions << QVariant::fromValue<QAction *>(action);
++    }
++
++    if (!additionalActions.isEmpty() && !actions.isEmpty()) {
++        QAction *separator = new QAction(parent);
++        separator->setSeparator(true);
++        actions << QVariant::fromValue<QAction *>(separator);
++    }
++    actions << additionalActions;
++
+     return actions;
+ }
+ 
+-- 
+2.56.0
+
