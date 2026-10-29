@@ -1,6 +1,6 @@
 project pkg {
     rpm {
-        spec = "plasma-discover.spec"
+        spec = "ultramarine-plasma-discover.spec"
     }
     labels {
         updbranch = 1

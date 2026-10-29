@@ -1,0 +1,3 @@
+discoverrc
+discover-pk-refresh-timer.patch
+0001-PackageKitBackend-always-return-highest-versioned-av.patch
