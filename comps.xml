@@ -132,7 +132,7 @@
       <packagereq type="default">fluent-icon-theme</packagereq>
       <packagereq type="default">ptyxis</packagereq>
       <packagereq type="default">mission-center</packagereq>
-      <packagereq type="default">plasma-discover</packagereq>
+      <packagereq type="default">ultramarine-plasma-discover</packagereq>
       <!--imported from upstream, please sync every release-->
       <packagereq type="mandatory">budgie-desktop</packagereq>
       <packagereq type="mandatory">dconf</packagereq>
@@ -419,6 +419,8 @@
       <packagereq type="default">fcitx5-configtool</packagereq>
       <packagereq type="default">kcm-fcitx5</packagereq>
       <packagereq type="default">ultramarine-plasma-settings</packagereq>
+      <!-- Replaces Fedora's plasma-discover (kde-desktop group) via Obsoletes/Conflicts -->
+      <packagereq type="default">ultramarine-plasma-discover</packagereq>
       <packagereq type="default">plasma-milou</packagereq>
       <!-- <packagereq type="default">okular</packagereq> flatpak'd -->
       <packagereq type="default">koko</packagereq>
