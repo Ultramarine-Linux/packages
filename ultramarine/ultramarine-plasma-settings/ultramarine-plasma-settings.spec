@@ -2,7 +2,7 @@
 
 Name:    ultramarine-plasma-settings
 Version: 0.1.3
-Release: 1%{?dist}
+Release: 2%{?dist}
 Summary: Ultramarine Plasma System Settings modules
 
 License: GPL-3.0-only
@@ -37,6 +37,12 @@ Requires: umcli
 Requires: polkit
 Requires: systemd
 Requires: libnotify
+# Launch Using Dedicated Graphics Card: switcherooctl picks the GPU and sets its
+# environment, kioclient launches the app. The task manager entry needs
+# ultramarine-plasma-desktop (Fedora's plus the patch). The app launchers work without it.
+Requires: switcheroo-control
+Requires: kde-cli-tools
+Requires: systemd-udev
 
 Packager: Cypress Reed <cypress@fyralabs.com>
 
@@ -54,7 +60,9 @@ automatic updates. The Tweaks module uses umcli.
     -DUM_EXECUTABLE:FILEPATH=%{_bindir}/um \
     -DULTRAMARINE_UPDATES_EXECUTABLE:FILEPATH=%{_libexecdir}/ultramarine-updates \
     -DSYSTEMD_SYSTEM_UNIT_DIR:PATH=%{_unitdir} \
-    -DSYSTEMD_USER_UNIT_DIR:PATH=%{_userunitdir}
+    -DSYSTEMD_USER_UNIT_DIR:PATH=%{_userunitdir} \
+    -DUDEV_RULES_DIR:PATH=%{_udevrulesdir} \
+    -DDGPU_DETECT_EXECUTABLE:FILEPATH=%{_libexecdir}/ultramarine-dgpu-detect
 
 %build
 %cmake_build
@@ -86,6 +94,11 @@ printf '%s\n' \
 # ultramarine-release's presets enable the automatic update timer.
 %post
 %systemd_post ultramarine-updates-automatic.timer
+# udev runs the dGPU check at boot and on GPU hotplug. Run it now too, so the
+# action shows up without a reboot. (Skipped in image builds w/ no running systemd)
+if [ -d /run/systemd/system ]; then
+    systemctl --no-block restart ultramarine-dgpu-detect.service >/dev/null 2>&1 || :
+fi
 
 %preun
 %systemd_preun ultramarine-updates-automatic.timer
@@ -93,6 +106,10 @@ printf '%s\n' \
 %postun
 # The service is a oneshot started by the timer: nothing to restart.
 %systemd_postun ultramarine-updates-automatic.timer
+if [ $1 -eq 0 ]; then
+    rm -rf /run/ultramarine-dgpu-launch
+fi
+# The service is a oneshot started by the timer, so there's nothing to restart
 
 %files -f %{name}.files
 %doc README.md docs/*
@@ -105,6 +122,14 @@ printf '%s\n' \
 %{_userunitdir}/ultramarine-updates-user.service
 %{_userunitdir}/ultramarine-updates-user.timer
 %{_sysconfdir}/xdg/autostart/ultramarine-updates-user.desktop
+%{_libexecdir}/ultramarine-dgpu-detect
+%{_udevrulesdir}/90-ultramarine-dgpu.rules
+%{_unitdir}/ultramarine-dgpu-detect.service
+%dir %{_datadir}/ultramarine
+%{_datadir}/ultramarine/ultramarine-dgpu-launch.desktop
+%dir %{_datadir}/plasma/kickeractions
+# Broken symlink until ultramarine-dgpu-detect finds a hybrid GPU setup
+%{_datadir}/plasma/kickeractions/ultramarine-dgpu-launch.desktop
 %dir %{_sysconfdir}/ultramarine-updates
 %ghost %config(noreplace) %{_sysconfdir}/ultramarine-updates/settings.json
 
