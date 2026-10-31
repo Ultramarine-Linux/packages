@@ -58,6 +58,14 @@ let version = find(`^${pkg}-([\d.]+)-`, nvr, 1);
 let minor = find(`^(\d+\.\d+)`, version, 1);
 
 // What the current spec was generated from
+// Bump when the spec this generates changes, so it's regenerated without a new
+// Fedora build or patch.
+let generator = "3";
+let old_generator = if find_all(`(?m)^%global generator_version `, rpm.f).len() != 0 {
+    find(`(?m)^%global generator_version\s+(\S+)`, rpm.f, 1)
+} else {
+    ""
+};
 let old_nvr = if find_all(`(?m)^%global fedora_nvr `, rpm.f).len() != 0 {
     find(`(?m)^%global fedora_nvr\s+(\S+)`, rpm.f, 1)
 } else {
@@ -75,7 +83,7 @@ try {
     patch = gh_rawfile("Ultramarine-Linux/plasma-patches", "main", patch_path);
 }
 let patch_changed = open_file(`${dir}/${patch_name}`).read_string() != patch;
-if nvr == old_nvr && !patch_changed {
+if nvr == old_nvr && !patch_changed && old_generator == generator {
     return;
 }
 
@@ -92,9 +100,10 @@ if find_all(`(?m)^Release:\s*\d+%\{\?dist\}\s*$`, fedora).len() == 0 {
     terminate();
 }
 let fedora_rel = find(`(?m)^Release:\s*(\d+)%\{\?dist\}\s*$`, fedora, 1).parse_int();
-// New version: Fedora's Release. Same version: max(ours + 1, Fedora's). Ties sort
-// our way because .umXX > .fcXX.
-let ours = if old_version == version { old_rel + 1 } else { 0 };
+// New version: Fedora's Release. Same version: max(ours, Fedora's), with ours + 1
+// if the patch changed (a generator-only change keeps it). Ties sort our way
+// because .umXX > .fcXX.
+let ours = if old_version != version { 0 } else if patch_changed { old_rel + 1 } else { old_rel };
 let rel = if ours > fedora_rel { ours } else { fedora_rel };
 
 let spec = "";
@@ -156,14 +165,20 @@ for line in fedora.split("\n") {
     }
     if replaces != "" {
         spec += `# Replaces Fedora's ${replaces}.
-Provides:       ${replaces} = %{evr}
+Provides:       ${replaces} = %{version}-%{release}
 `;
         if replaces == pkg {
-            spec += `Provides:       ${replaces}%{?_isa} = %{evr}
+            spec += `Provides:       ${replaces}%{?_isa} = %{version}-%{release}
+# Discover's Updates entries open System Settings > Updates (kcm_ultramarine_updates).
+Requires:       ultramarine-plasma-settings
+# ultramarine-updates notifies about updates and installs them while restarting,
+# so Discover's notifier and offline updates default aren't built (see below).
+Obsoletes:      ${pkg}-notifier < %{version}-%{release}
+Obsoletes:      ${pkg}-offline-updates < %{version}-%{release}
 `;
         }
         spec += `Conflicts:      ${replaces}
-Obsoletes:      ${replaces} < %{evr}
+Obsoletes:      ${replaces} < %{version}-%{release}
 `;
     }
     if line.starts_with("## downstream patches") {
@@ -177,10 +192,56 @@ if !spec.contains("Patch300:") {
     print(`${pkg}: no "## downstream patches" section in Fedora's spec, update.rhai needs adjusting`);
     terminate();
 }
+
+// Drop Discover's notifier and its offline updates default. ultramarine-updates
+// (System Settings > Updates) notifies about updates and handles offline updates,
+// and the notifier would send its own notifications and run PackageKit's updates.
+// Each edit must match, so a change in Fedora's spec stops the update instead of
+// producing a broken spec.
+fn must_sub(re, rep, text) {
+    if find_all(re, text).len() == 0 {
+        print(`plasma-discover: Fedora's spec no longer matches ${re}, update.rhai needs adjusting`);
+        terminate();
+    }
+    return sub(re, rep, text);
+}
+// %package <sub> through its %description paragraph
+spec = must_sub(`(?m)^%package notifier\n(?:.+\n)*?%description notifier\n(?:.+\n)*\n`, "", spec);
+spec = must_sub(`(?m)^%package offline-updates\n(?:.+\n)*?%description offline-updates\n(?:.+\n)*\n`, "", spec);
+spec = must_sub(`(?m)^# Enable -offline-updates by default\n`, "", spec);
+spec = must_sub(`(?m)^Recommends: %\{name\}-offline-updates .*\n`, "", spec);
+// discoverrc (UseOfflineUpdates=true) is all -offline-updates ships
+spec = must_sub(`(?m)^## override some defaults, namely to enable offline updates\n`, "", spec);
+spec = must_sub(`(?m)^Source\d+:\s*discoverrc\n`, "", spec);
+spec = must_sub(`(?m)^install .*discoverrc\n`, "", spec);
+spec = must_sub(`(?m)^%files offline-updates\n(?:.+\n)*\n`, "", spec);
+files = files.filter(|file| file != "discoverrc");
+// The notifier's files get deleted after installing, except the AppStream preview
+// launcher, which Fedora happens to package in -notifier; it moves to the main package.
+let notifier_files = find(`(?m)^%files notifier\b.*\n((?:.+\n)*)\n`, spec, 1);
+let preview = "%{_datadir}/applications/org.kde.discover.appstreampreview.desktop";
+let removals = "# Discover's notifier isn't shipped, see the top of the spec.\n";
+for file in notifier_files.split("\n") {
+    if file == "" || file == preview {
+        continue;
+    }
+    file.replace("%dir ", "");
+    removals += `rm -rfv %{buildroot}${file}` + "\n";
+}
+removals += "find %{buildroot}%{_datadir}/locale -name plasma-discover-notifier.mo -delete\n";
+spec = must_sub(`(?m)^%files notifier\b.*\n(?:.+\n)*\n`, "", spec);
+spec = must_sub(`(?m)^%find_lang plasma-discover-notifier\n`, "", spec);
+// Backtick strings don't process \n or allow ${1}, so the replacements are "..." strings.
+spec = must_sub(`(?m)^(%cmake_install\n)`, "${1}\n" + removals, spec);
+if notifier_files.contains(preview) {
+    spec = must_sub(`(?m)^(%files -f discover\.lang\n)`, "${1}" + preview + "\n", spec);
+}
+
 spec.trim();
 spec = `# Generated by update.rhai from Fedora's ${nvr}
 # (dist-git ${commit}) plus Ultramarine's Discover updates patch. Don't edit by hand.
 %global fedora_nvr ${nvr}
+%global generator_version ${generator}
 
 ${spec}
 `;
