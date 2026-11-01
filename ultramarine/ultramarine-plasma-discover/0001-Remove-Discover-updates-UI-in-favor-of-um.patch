@@ -1,8 +1,23 @@
 diff --git a/discover/DiscoverObject.cpp b/discover/DiscoverObject.cpp
-index a685619..44cc5ca 100644
+index a685619..e82648c 100644
 --- a/discover/DiscoverObject.cpp
 +++ b/discover/DiscoverObject.cpp
-@@ -316,9 +316,8 @@ void DiscoverObject::openCategory(const QString &category)
+@@ -265,6 +265,14 @@ void DiscoverObject::openMode(const QString &_mode)
+         return;
+     }
+ 
++    // Ultramarine: there is no Updates page, so open System Settings > Updates for
++    // --mode update (used by scripts and notifiers) and show the Home page
++    if (_mode.compare(u"update"_s, Qt::CaseInsensitive) == 0) {
++        Q_EMIT ResourcesModel::global()->switchToUpdates();
++        openMode(u"Browsing"_s);
++        return;
++    }
++
+     if (!modes().contains(_mode, Qt::CaseInsensitive))
+         qCWarning(DISCOVER_LOG) << "unknown mode" << _mode << modes();
+ 
+@@ -316,9 +324,8 @@ void DiscoverObject::openCategory(const QString &category)
  
  void DiscoverObject::startHeadlessUpdate()
  {
@@ -15,7 +30,7 @@ index a685619..44cc5ca 100644
  
  void DiscoverObject::openLocalPackage(const QUrl &localfile)
 diff --git a/discover/main.cpp b/discover/main.cpp
-index 7fe65ef..435b2da 100644
+index 7fe65ef..740db73 100644
 --- a/discover/main.cpp
 +++ b/discover/main.cpp
 @@ -155,6 +155,12 @@ int main(int argc, char **argv)
@@ -83,7 +98,7 @@ index bab1551..704f368 100644
          ActionListItem {
              action: sourcesAction
 diff --git a/discover/qml/DiscoverWindow.qml b/discover/qml/DiscoverWindow.qml
-index ca08e09..c6980b8 100644
+index ca08e09..d8d34e2 100644
 --- a/discover/qml/DiscoverWindow.qml
 +++ b/discover/qml/DiscoverWindow.qml
 @@ -9,6 +9,7 @@ import org.kde.discover as Discover
@@ -163,3 +178,29 @@ index ad98870..eadb77d 100644
          }
      }
  
+diff --git a/libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp b/libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp
+index 2cd53f5..444b866 100644
+--- a/libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp
++++ b/libdiscover/backends/PackageKitBackend/PackageKitBackend.cpp
+@@ -1014,19 +1014,8 @@ void PackageKitBackend::getUpdatesFinished(PackageKit::Transaction::Exit, uint)
+         Q_EMIT updatesCountChanged();
+     }
+ 
+-    if (!m_updater->isDistroUpgrade() && !PackageKit::Daemon::global()->offline()->upgradeTriggered()) {
+-        const auto loadDone = [this] {
+-            auto nextRelease = AppStreamIntegration::global()->getDistroUpgrade(m_appdata->get());
+-            if (nextRelease) {
+-                foundNewMajorVersion(*nextRelease);
+-            }
+-        };
+-        if (m_appdataLoaded) {
+-            loadDone();
+-        } else {
+-            connect(m_appdata.get(), &AppStream::ConcurrentPool::loadFinished, this, loadDone);
+-        }
+-    }
++    // Ultramarine: don't offer distro upgrades here; "Upgrade Now" would run the
++    // upgrade in Discover's updater, which is replaced by System Settings > Updates
+ }
+ 
+ void PackageKitBackend::foundNewMajorVersion(const AppStream::Release &release)
