@@ -2,7 +2,7 @@
 
 Name:    ultramarine-plasma-settings
 Version: 0.1.4
-Release: 1%{?dist}
+Release: 2%{?dist}
 Summary: Ultramarine Plasma System Settings modules
 
 License: GPL-3.0-only
@@ -19,6 +19,8 @@ BuildRequires: cmake(KF6Config)
 BuildRequires: cmake(KF6CoreAddons)
 BuildRequires: cmake(KF6KCMUtils)
 BuildRequires: cmake(KF6I18n)
+BuildRequires: cmake(KF6NewStuffCore)
+BuildRequires: pkgconfig(Qt6DBus)
 BuildRequires: pkgconfig(Qt6Core)
 BuildRequires: pkgconfig(Qt6Gui)
 BuildRequires: pkgconfig(Qt6Qml)
@@ -31,15 +33,16 @@ Requires: plasma-systemsettings
 Requires: kf6-kcmutils
 Requires: kf6-kirigami
 Requires: kf6-qqc2-desktop-style
-# Tweaks KCM backend
+# tweaks KCM backend
 Requires: umcli
 # Update helper: privilege escalation, timers and "Ask me" notifications
 Requires: polkit
 Requires: systemd
 Requires: libnotify
 # Launch Using Dedicated Graphics Card: switcherooctl picks the GPU and sets its
-# environment, kioclient launches the app. The task manager entry needs
-# ultramarine-plasma-desktop (Fedora's plus the patch). The app launchers work without it.
+# environment, kioclient launches the app. It shows up in the app launchers only.
+# see https://invent.kde.org/plasma/plasma-desktop/-/merge_requests/4149
+# and https://invent.kde.org/plasma/plasma-workspace/-/merge_requests/7333
 Requires: switcheroo-control
 Requires: kde-cli-tools
 Requires: systemd-udev
@@ -70,14 +73,14 @@ automatic updates. The Tweaks module uses umcli.
 %install
 %cmake_install
 
-# Created by the helper on first use; owned here so they're removed with the package.
+# created by the helper on first use. owned here so they're removed with the package.
 install -dm 0755 %{buildroot}%{_sysconfdir}/ultramarine-updates
 touch %{buildroot}%{_sysconfdir}/ultramarine-updates/settings.json
 
-# Hide Discover's duplicate Software Update KCM
+# hide Discover's duplicate Software Update KCM
 install -Dpm 0644 %{SOURCE1} %{buildroot}%{_sysconfdir}/xdg/kdeglobals
 
-# Weblate catalogs are optional until translators add PO files.
+# Weblate catalogs are optional until translators add PO files
 %find_lang kcm_ultramarine_updates || :
 %find_lang kcm_ultramarine_tweaks || :
 : > %{name}.files
@@ -104,12 +107,11 @@ fi
 %systemd_preun ultramarine-updates-automatic.timer
 
 %postun
-# The service is a oneshot started by the timer: nothing to restart.
+# the service is a oneshot started by the timer, so there's nothing to restart
 %systemd_postun ultramarine-updates-automatic.timer
 if [ $1 -eq 0 ]; then
     rm -rf /run/ultramarine-dgpu-launch
 fi
-# The service is a oneshot started by the timer, so there's nothing to restart
 
 %files -f %{name}.files
 %doc README.md docs/*
@@ -128,7 +130,7 @@ fi
 %dir %{_datadir}/ultramarine
 %{_datadir}/ultramarine/ultramarine-dgpu-launch.desktop
 %dir %{_datadir}/plasma/kickeractions
-# Broken symlink until ultramarine-dgpu-detect finds a hybrid GPU setup
+# broken symlink until ultramarine-dgpu-detect finds a hybrid GPU setup
 %{_datadir}/plasma/kickeractions/ultramarine-dgpu-launch.desktop
 %dir %{_sysconfdir}/ultramarine-updates
 %ghost %config(noreplace) %{_sysconfdir}/ultramarine-updates/settings.json
