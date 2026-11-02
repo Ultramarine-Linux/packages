@@ -1,7 +1,7 @@
 %global _pkg_extra_ldflags -fuse-ld=lld
 
 Name:    ultramarine-plasma-settings
-Version: 0.1.3
+Version: 0.1.5
 Release: 2%{?dist}
 Summary: Ultramarine Plasma System Settings modules
 
@@ -19,11 +19,18 @@ BuildRequires: cmake(KF6Config)
 BuildRequires: cmake(KF6CoreAddons)
 BuildRequires: cmake(KF6KCMUtils)
 BuildRequires: cmake(KF6I18n)
+BuildRequires: cmake(KF6KIO)
+BuildRequires: cmake(KF6Service)
+BuildRequires: cmake(KF6WidgetsAddons)
+BuildRequires: cmake(KF6NewStuffCore)
+BuildRequires: pkgconfig(Qt6DBus)
 BuildRequires: pkgconfig(Qt6Core)
 BuildRequires: pkgconfig(Qt6Gui)
 BuildRequires: pkgconfig(Qt6Qml)
 BuildRequires: pkgconfig(Qt6Quick)
 BuildRequires: pkgconfig(Qt6Test)
+BuildRequires: pkgconfig(Qt6Widgets)
+BuildRequires: desktop-file-utils
 BuildRequires: systemd-rpm-macros
 BuildRequires: lld
 
@@ -31,26 +38,32 @@ Requires: plasma-systemsettings
 Requires: kf6-kcmutils
 Requires: kf6-kirigami
 Requires: kf6-qqc2-desktop-style
-# Tweaks KCM backend
+# tweaks KCM backend
 Requires: umcli
 # Update helper: privilege escalation, timers and "Ask me" notifications
 Requires: polkit
 Requires: systemd
 Requires: libnotify
 # Launch Using Dedicated Graphics Card: switcherooctl picks the GPU and sets its
-# environment, kioclient launches the app. The task manager entry needs
-# ultramarine-plasma-desktop (Fedora's plus the patch). The app launchers work without it.
+# environment, kioclient launches the app. It shows up in the app launchers only.
+# see https://invent.kde.org/plasma/plasma-desktop/-/merge_requests/4149
+# and https://invent.kde.org/plasma/plasma-workspace/-/merge_requests/7333
 Requires: switcheroo-control
 Requires: kde-cli-tools
 Requires: systemd-udev
+# office apps installer
+Requires: flatpak
+Requires: PackageKit
 
 Packager: Cypress Reed <cypress@fyralabs.com>
 
 %description
 System Settings modules for Ultramarine Linux: Updates and Tweaks.
 The Updates module is backed by the bundled ultramarine-updates helper,
-which installs RPM (or bootc image), Flatpak and Nix updates and runs
+which installs RPM (or bootc image), Flatpak, Nix, and plasmoid updates and runs
 automatic updates. The Tweaks module uses umcli.
+It also includes a helper that offers to install an office suite when a document is
+opened and none is installed.
 
 %prep
 %autosetup -n plasma-patches-%{version}
@@ -62,7 +75,8 @@ automatic updates. The Tweaks module uses umcli.
     -DSYSTEMD_SYSTEM_UNIT_DIR:PATH=%{_unitdir} \
     -DSYSTEMD_USER_UNIT_DIR:PATH=%{_userunitdir} \
     -DUDEV_RULES_DIR:PATH=%{_udevrulesdir} \
-    -DDGPU_DETECT_EXECUTABLE:FILEPATH=%{_libexecdir}/ultramarine-dgpu-detect
+    -DDGPU_DETECT_EXECUTABLE:FILEPATH=%{_libexecdir}/ultramarine-dgpu-detect \
+    -DOFFICE_INSTALLER_EXECUTABLE:FILEPATH=%{_libexecdir}/ultramarine-office-installer
 
 %build
 %cmake_build
@@ -70,18 +84,19 @@ automatic updates. The Tweaks module uses umcli.
 %install
 %cmake_install
 
-# Created by the helper on first use; owned here so they're removed with the package.
+# created by the helper on first use. owned here so they're removed with the package.
 install -dm 0755 %{buildroot}%{_sysconfdir}/ultramarine-updates
 touch %{buildroot}%{_sysconfdir}/ultramarine-updates/settings.json
 
-# Hide Discover's duplicate Software Update KCM
+# hide Discover's duplicate Software Update KCM
 install -Dpm 0644 %{SOURCE1} %{buildroot}%{_sysconfdir}/xdg/kdeglobals
 
-# Weblate catalogs are optional until translators add PO files.
+# Weblate catalogs are optional until translators add PO files
 %find_lang kcm_ultramarine_updates || :
 %find_lang kcm_ultramarine_tweaks || :
+%find_lang ultramarine_office_installer || :
 : > %{name}.files
-for lang_file in kcm_ultramarine_updates.lang kcm_ultramarine_tweaks.lang; do
+for lang_file in kcm_ultramarine_updates.lang kcm_ultramarine_tweaks.lang ultramarine_office_installer.lang; do
     test ! -f "$lang_file" || cat "$lang_file" >> %{name}.files
 done
 printf '%s\n' \
@@ -90,6 +105,9 @@ printf '%s\n' \
     '%{_kf6_datadir}/applications/kcm_ultramarine_updates.desktop' \
     '%{_kf6_datadir}/applications/kcm_ultramarine_tweaks.desktop' \
     >> %{name}.files
+
+%check
+%desktop_file_validate %{buildroot}%{_kf6_datadir}/applications/org.ultramarine.OfficeInstaller.desktop
 
 # ultramarine-release's presets enable the automatic update timer.
 %post
@@ -104,11 +122,11 @@ fi
 %systemd_preun ultramarine-updates-automatic.timer
 
 %postun
+# the service is a oneshot started by the timer, so there's nothing to restart
+%systemd_postun ultramarine-updates-automatic.timer
 if [ $1 -eq 0 ]; then
     rm -rf /run/ultramarine-dgpu-launch
 fi
-# The service is a oneshot started by the timer, so there's nothing to restart
-%systemd_postun ultramarine-updates-automatic.timer
 
 %files -f %{name}.files
 %doc README.md docs/*
@@ -124,10 +142,12 @@ fi
 %{_libexecdir}/ultramarine-dgpu-detect
 %{_udevrulesdir}/90-ultramarine-dgpu.rules
 %{_unitdir}/ultramarine-dgpu-detect.service
+%{_libexecdir}/ultramarine-office-installer
+%{_kf6_datadir}/applications/org.ultramarine.OfficeInstaller.desktop
 %dir %{_datadir}/ultramarine
 %{_datadir}/ultramarine/ultramarine-dgpu-launch.desktop
 %dir %{_datadir}/plasma/kickeractions
-# Broken symlink until ultramarine-dgpu-detect finds a hybrid GPU setup
+# broken symlink until ultramarine-dgpu-detect finds a hybrid GPU setup
 %{_datadir}/plasma/kickeractions/ultramarine-dgpu-launch.desktop
 %dir %{_sysconfdir}/ultramarine-updates
 %ghost %config(noreplace) %{_sysconfdir}/ultramarine-updates/settings.json

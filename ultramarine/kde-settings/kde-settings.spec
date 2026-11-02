@@ -139,7 +139,7 @@ Enhances: (initial-setup-gui and kwin-wayland)
 
 
 %prep
-%autosetup -C -p1
+%autosetup -C -p1 -a 2
 
 %build
 # Intentionally left blank.  Nothing to see here.
