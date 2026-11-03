@@ -1,0 +1,341 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?M=C3=A9ven=20Car?= <meven@kde.org>
+Date: Fri, 2 Oct 2026 14:49:14 +0000
+Subject: [PATCH] Report the idle state of the session with SetIdleHint
+
+logind only knows that a graphical session is idle when the session
+says so with SetIdleHint. Nothing in Plasma did, so IdleHint and
+IdleSinceHint of a Plasma session stayed false. A program that wants to
+know whether the user is idle had to open its own connection to the
+display server for KIdleTime.
+
+A new bundled action sets the hint: true after SessionIdleTimeoutSec
+without input, false on activity. The setting is in the General group
+of powerdevilrc, with no UI. It defaults to 300 seconds, and 0 never
+reports the session as idle. It does not depend on the dim and
+screen-off settings, because a screen kept on is a display preference
+and does not mean that the user is present.
+
+The hint goes to the session that the policy agent already holds, so it
+reaches ConsoleKit as well as logind. A ConsoleKit session has the same
+SetIdleHint method. With logind, that session is the one that
+GetSession("auto") gives the policy agent: its own session, or the
+graphical session of the user when PowerDevil runs outside one.
+
+The action only reports the idle state. The inhibitions keep acting on
+PowerDevil's own actions.
+
+Ultramarine: the MR's other commit, 7831b2f7 "policyagent: also inhibit
+the logind idle action", is deliberately left out. It adds idle to
+PowerDevil's own logind block inhibitor, which it holds for the whole
+session. checkLogindInhibitions() mirrors every other block inhibitor
+in ListInhibitors, skipping only its own PID, and maps idle to
+ChangeScreenSettings. With two Plasma sessions (fast user switching),
+each PowerDevil would then pick up the other one's lock, and not dim
+or turn off the screen while its session is unlocked. Without it, a
+logind IdleAction= other than the default ignore can act on the hint.
+
+BUG: 448942
+
+Backported from https://invent.kde.org/plasma/powerdevil/-/merge_requests/699
+(commit bc11bfa0 only, onto v6.8.2).
+---
+ PowerDevilGlobalSettings.kcfg                 |  4 ++
+ daemon/actions/bundled/CMakeLists.txt         |  1 +
+ .../powerdevilsessionidlehintaction.json      |  8 +++
+ daemon/actions/bundled/sessionidlehint.cpp    | 63 +++++++++++++++++++
+ daemon/actions/bundled/sessionidlehint.h      | 33 ++++++++++
+ daemon/powerdevilcore.cpp                     |  5 ++
+ daemon/powerdevilcore.h                       |  1 +
+ daemon/powerdevilpolicyagent.cpp              | 39 ++++++++++++
+ daemon/powerdevilpolicyagent.h                | 12 ++++
+ 9 files changed, 166 insertions(+)
+ create mode 100644 daemon/actions/bundled/powerdevilsessionidlehintaction.json
+ create mode 100644 daemon/actions/bundled/sessionidlehint.cpp
+ create mode 100644 daemon/actions/bundled/sessionidlehint.h
+
+diff --git a/PowerDevilGlobalSettings.kcfg b/PowerDevilGlobalSettings.kcfg
+index f8e9f5521..a62160788 100644
+--- a/PowerDevilGlobalSettings.kcfg
++++ b/PowerDevilGlobalSettings.kcfg
+@@ -16,6 +16,10 @@
+     <entry name="pausePlayersOnSuspend" type="Bool">
+       <default>true</default>
+     </entry>
++    <entry name="SessionIdleTimeoutSec" type="Int">
++      <label>Seconds without input after which logind or ConsoleKit is told that the session is idle, 0 to never tell it</label>
++      <default>300</default>
++    </entry>
+   </group>
+ 
+   <group name="BatteryManagement">
+diff --git a/daemon/actions/bundled/CMakeLists.txt b/daemon/actions/bundled/CMakeLists.txt
+index e4cf7c98b..fcb9b866c 100644
+--- a/daemon/actions/bundled/CMakeLists.txt
++++ b/daemon/actions/bundled/CMakeLists.txt
+@@ -28,6 +28,7 @@ target_dbus_files(powerdevil_keyboardbrightnesscontrolaction
+     keyboardbrightnesscontrol.h PowerDevil::BundledActions::KeyboardBrightnessControl)
+ 
+ add_powerdevil_bundled_action(dimdisplay)
++add_powerdevil_bundled_action(sessionidlehint)
+ add_powerdevil_bundled_action(runscript KF6::KIOCore KF6::KIOWidgets)
+ 
+ add_powerdevil_bundled_action(suspendsession KF6::KIOCore KF6::KIOWidgets)
+diff --git a/daemon/actions/bundled/powerdevilsessionidlehintaction.json b/daemon/actions/bundled/powerdevilsessionidlehintaction.json
+new file mode 100644
+index 000000000..528488548
+--- /dev/null
++++ b/daemon/actions/bundled/powerdevilsessionidlehintaction.json
+@@ -0,0 +1,8 @@
++{
++    "KPlugin": {
++        "Description": "Reports the idle state of the session to logind or ConsoleKit",
++        "Icon": "preferences-desktop-display",
++        "Name": "Session idle hint"
++    },
++    "X-KDE-PowerDevil-Action-ID": "SessionIdleHint"
++}
+diff --git a/daemon/actions/bundled/sessionidlehint.cpp b/daemon/actions/bundled/sessionidlehint.cpp
+new file mode 100644
+index 000000000..e0445306a
+--- /dev/null
++++ b/daemon/actions/bundled/sessionidlehint.cpp
+@@ -0,0 +1,63 @@
++/*
++ *   SPDX-FileCopyrightText: 2026 Méven Car <meven@kde.org>
++ *
++ *   SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "sessionidlehint.h"
++
++#include <PowerDevilGlobalSettings.h>
++#include <PowerDevilProfileSettings.h>
++#include <powerdevil_debug.h>
++#include <powerdevilcore.h>
++#include <powerdevilpolicyagent.h>
++
++#include <KPluginFactory>
++
++K_PLUGIN_CLASS_WITH_JSON(PowerDevil::BundledActions::SessionIdleHint, "powerdevilsessionidlehintaction.json")
++
++using namespace std::chrono_literals;
++
++namespace PowerDevil::BundledActions
++{
++SessionIdleHint::SessionIdleHint(QObject *parent)
++    : Action(parent)
++{
++}
++
++bool SessionIdleHint::loadAction(const PowerDevil::ProfileSettings &profileSettings)
++{
++    Q_UNUSED(profileSettings)
++    // A new profile starts from activity: the wake-up of the previous one does not reach this action.
++    PolicyAgent::instance()->setSessionIdleHint(false);
++
++    const std::chrono::seconds timeout(core()->globalSettings()->sessionIdleTimeoutSec());
++    if (timeout <= 0s) {
++        return false;
++    }
++
++    qCDebug(POWERDEVIL) << "SessionIdleHint: the session is idle after" << timeout;
++    registerIdleTimeout(timeout);
++    return true;
++}
++
++void SessionIdleHint::onIdleTimeout(std::chrono::milliseconds timeout)
++{
++    Q_UNUSED(timeout)
++    PolicyAgent::instance()->setSessionIdleHint(true);
++}
++
++void SessionIdleHint::onWakeupFromIdle()
++{
++    PolicyAgent::instance()->setSessionIdleHint(false);
++}
++
++void SessionIdleHint::onProfileUnload()
++{
++    PolicyAgent::instance()->setSessionIdleHint(false);
++}
++}
++
++#include "sessionidlehint.moc"
++
++#include "moc_sessionidlehint.cpp"
+diff --git a/daemon/actions/bundled/sessionidlehint.h b/daemon/actions/bundled/sessionidlehint.h
+new file mode 100644
+index 000000000..79bccb71d
+--- /dev/null
++++ b/daemon/actions/bundled/sessionidlehint.h
+@@ -0,0 +1,33 @@
++/*
++ *   SPDX-FileCopyrightText: 2026 Méven Car <meven@kde.org>
++ *
++ *   SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#pragma once
++
++#include <powerdevilaction.h>
++
++namespace PowerDevil::BundledActions
++{
++/**
++ * Reports the idle state of the session to logind or ConsoleKit, as SetIdleHint, so that other
++ * programs can follow it without a connection to the display server.
++ *
++ * The session is idle after SessionIdleTimeoutSec of the global settings without input, five minutes
++ * by default, whatever the screen does. 0 never reports it idle.
++ */
++class SessionIdleHint : public PowerDevil::Action
++{
++    Q_OBJECT
++public:
++    explicit SessionIdleHint(QObject *parent);
++
++    bool loadAction(const PowerDevil::ProfileSettings &profileSettings) override;
++
++protected:
++    void onIdleTimeout(std::chrono::milliseconds timeout) override;
++    void onWakeupFromIdle() override;
++    void onProfileUnload() override;
++};
++}
+diff --git a/daemon/powerdevilcore.cpp b/daemon/powerdevilcore.cpp
+index fabcc671d..71ad73c60 100644
+--- a/daemon/powerdevilcore.cpp
++++ b/daemon/powerdevilcore.cpp
+@@ -283,6 +283,11 @@ void Core::refreshStatus()
+     loadProfile(true);
+ }
+ 
++GlobalSettings *Core::globalSettings() const
++{
++    return m_globalSettings;
++}
++
+ void Core::reparseConfiguration()
+ {
+     m_globalSettings->load();
+diff --git a/daemon/powerdevilcore.h b/daemon/powerdevilcore.h
+index 95c8341eb..d3f509932 100644
+--- a/daemon/powerdevilcore.h
++++ b/daemon/powerdevilcore.h
+@@ -82,6 +82,7 @@ public:
+     LidController *lidController();
+     KeyboardBrightnessController *keyboardBrightnessController();
+     ScreenBrightnessController *screenBrightnessController();
++    GlobalSettings *globalSettings() const;
+ 
+     Action *action(const QString actionId);
+ 
+diff --git a/daemon/powerdevilpolicyagent.cpp b/daemon/powerdevilpolicyagent.cpp
+index 8ed1edc60..c89b69d9c 100644
+--- a/daemon/powerdevilpolicyagent.cpp
++++ b/daemon/powerdevilpolicyagent.cpp
+@@ -14,6 +14,7 @@
+ #include <QDBusInterface>
+ #include <QDBusMetaType>
+ #include <QDBusObjectPath>
++#include <QDBusPendingCallWatcher>
+ #include <QDBusPendingReply>
+ #include <QDBusServiceWatcher>
+ #include <QMetaType>
+@@ -308,6 +309,8 @@ void PolicyAgent::onSessionHandlerRegistered(const QString &serviceName)
+                                              SLOT(onManagerPropertyChanged(QString, QVariantMap, QStringList)));
+         checkLogindInhibitions();
+ 
++        sendSessionIdleHint();
++
+         qCDebug(POWERDEVIL) << "systemd support initialized";
+     } else if (serviceName == CONSOLEKIT_SERVICE) {
+         m_ckAvailable = true;
+@@ -372,6 +375,8 @@ void PolicyAgent::onSessionHandlerRegistered(const QString &serviceName)
+ 
+         setupSystemdInhibition();
+ 
++        sendSessionIdleHint();
++
+         qCDebug(POWERDEVIL) << "ConsoleKit support initialized";
+     } else
+         qCWarning(POWERDEVIL) << "Unhandled service registered:" << serviceName;
+@@ -386,6 +391,40 @@ void PolicyAgent::onSessionHandlerUnregistered(const QString &serviceName)
+         m_ckAvailable = false;
+         delete m_ckSessionInterface.data();
+     }
++    // A session manager that comes back has forgotten the hint
++    m_sentSessionIdleHint.reset();
++}
++
++void PolicyAgent::setSessionIdleHint(bool idle)
++{
++    m_sessionIdleHint = idle;
++    sendSessionIdleHint();
++}
++
++void PolicyAgent::sendSessionIdleHint()
++{
++    // logind and ConsoleKit both name the method SetIdleHint
++    QDBusInterface *session = nullptr;
++    if (m_sdAvailable) {
++        session = m_sdSessionInterface.data();
++    } else if (m_ckAvailable) {
++        session = m_ckSessionInterface.data();
++    }
++    if (!session || m_sentSessionIdleHint == m_sessionIdleHint) {
++        return;
++    }
++    m_sentSessionIdleHint = m_sessionIdleHint;
++
++    auto watcher = new QDBusPendingCallWatcher(session->asyncCall(u"SetIdleHint"_s, m_sessionIdleHint), this);
++    connect(watcher, &QDBusPendingCallWatcher::finished, this, [this](QDBusPendingCallWatcher *watcher) {
++        watcher->deleteLater();
++        const QDBusPendingReply<> reply = *watcher;
++        if (reply.isError()) {
++            qCWarning(POWERDEVIL) << "Failed to set the idle hint of the session:" << reply.error().message();
++            // Send again on the next change
++            m_sentSessionIdleHint.reset();
++        }
++    });
+ }
+ 
+ void PolicyAgent::onActiveSessionChanged(const QString &ifaceName, const QVariantMap &changedProps, const QStringList &invalidatedProps)
+diff --git a/daemon/powerdevilpolicyagent.h b/daemon/powerdevilpolicyagent.h
+index 41c8b45d9..0e5715f2f 100644
+--- a/daemon/powerdevilpolicyagent.h
++++ b/daemon/powerdevilpolicyagent.h
+@@ -18,6 +18,8 @@
+ #include <QDBusUnixFileDescriptor>
+ 
+ #include <KSharedConfig>
++
++#include <optional>
+ #include <qobjectdefs.h>
+ 
+ #include "PowerDevilGlobalSettings.h"
+@@ -103,6 +105,12 @@ public:
+ 
+     void setupSystemdInhibition();
+ 
++    /**
++     * Tells logind or ConsoleKit whether the session is idle, through SetIdleHint on the session.
++     * Only a change is sent, and the current value is sent again when the session manager returns.
++     */
++    void setSessionIdleHint(bool idle);
++
+     // DEPRECATED: D-Bus getter method, returns array of {who, why}. Use properties instead
+     QList<QStringList> ListInhibitions() const;
+ 
+@@ -180,6 +188,10 @@ private:
+     bool m_ckAvailable;
+     QPointer<QDBusInterface> m_ckSessionInterface;
+     QPointer<QDBusInterface> m_ckSeatInterface;
++
++    void sendSessionIdleHint();
++    bool m_sessionIdleHint = false;
++    std::optional<bool> m_sentSessionIdleHint;
+     bool m_sessionIsBeingInterrupted;
+ 
+     QHash<uint, InhibitionInternals> m_cookieToInhibition;
