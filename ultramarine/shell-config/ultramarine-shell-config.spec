@@ -59,6 +59,7 @@ fi
 - Undo/redo
 - Case-insensitive completion
 - Colored completion lists
+- Alt text selection
 
 * Wed Mar 25 2026 madonuko <mado@fyralabs.com> - 44-2
 
