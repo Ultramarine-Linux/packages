@@ -1,6 +1,6 @@
 Name:           ultramarine-shell-config
 Version:        46
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Shell configuration for Ultramarine Linux
 License:        MIT
 
@@ -53,6 +53,13 @@ fi
 %{_sysconfdir}/sudoers.d/50-ultramarine-pwfeedback
 
 %changelog
+* Tue Nov 03 2026 Its-J <jonah@fyralabs.com> - VERSION-RELEASE
+- Bind Home/End
+- Search history using current input prefix
+- Undo/redo
+- Case-insensitive completion
+- Colored completion lists
+
 * Wed Mar 25 2026 madonuko <mado@fyralabs.com> - 44-2
 
 * Sun Oct 19 2025 Jaiden Riordan <jade@fyralabs.com> - 43-1
