@@ -33,3 +33,30 @@ setopt autocd
 
 # Allow Bash-style globbing
 unsetopt nomatch
+
+# Bind Home/End
+bindkey '^[[H' beginning-of-line
+bindkey '^[[F' end-of-line
+bindkey '^[[1~' beginning-of-line
+bindkey '^[[4~' end-of-line
+
+# Search history using current input as a prefix
+autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey '^[[A' up-line-or-beginning-search
+bindkey '^[OA' up-line-or-beginning-search
+bindkey '^[[B' down-line-or-beginning-search
+bindkey '^[OB' down-line-or-beginning-search
+
+# Ctrl+Z to undo
+bindkey '^Z' undo
+# Alt+Z to redo
+bindkey '^[z' redo
+
+# Case-insensitive completion
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+
+# Colored completion lists
+[[ -z $LS_COLORS ]] && (( $+commands[dircolors] )) && eval "$(dircolors -b)"
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
