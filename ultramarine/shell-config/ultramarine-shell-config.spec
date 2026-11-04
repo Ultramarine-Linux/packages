@@ -53,7 +53,7 @@ fi
 %{_sysconfdir}/sudoers.d/50-ultramarine-pwfeedback
 
 %changelog
-* Tue Nov 03 2026 Its-J <jonah@fyralabs.com> - VERSION-RELEASE
+* Tue Nov 03 2026 Its-J <jonah@fyralabs.com> - 46-3
 - Bind Home/End
 - Search history using current input prefix
 - Undo/redo
