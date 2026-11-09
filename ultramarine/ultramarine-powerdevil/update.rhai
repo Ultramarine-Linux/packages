@@ -60,7 +60,7 @@ let minor = find(`^(\d+\.\d+)`, version, 1);
 // What the current spec was generated from
 // Bump when the spec this generates changes, so it's regenerated without a new
 // Fedora build or patch.
-let generator = "1";
+let generator = "2";
 let old_generator = if find_all(`(?m)^%global generator_version `, rpm.f).len() != 0 {
     find(`(?m)^%global generator_version\s+(\S+)`, rpm.f, 1)
 } else {
@@ -166,14 +166,14 @@ for line in fedora.split("\n") {
     }
     if replaces != "" {
         spec += `# Replaces Fedora's ${replaces}.
-Provides:       ${replaces} = %{version}-%{release}
+Provides:       ${replaces} = %{evr}
 `;
         if replaces == pkg {
-            spec += `Provides:       ${replaces}%{?_isa} = %{version}-%{release}
+            spec += `Provides:       ${replaces}%{?_isa} = %{evr}
 `;
         }
         spec += `Conflicts:      ${replaces}
-Obsoletes:      ${replaces} < %{version}-%{release}
+Obsoletes:      ${replaces} < %{evr}
 `;
     }
 }
