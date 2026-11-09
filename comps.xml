@@ -421,6 +421,11 @@
       <packagereq type="default">ultramarine-plasma-settings</packagereq>
       <!-- Replaces Fedora's powerdevil (kde-desktop group) via Obsoletes/Conflicts -->
       <packagereq type="default">ultramarine-powerdevil</packagereq>
+      <packagereq type="default">ultramarine-plasma-settings-kcm-updates</packagereq>
+      <packagereq type="default">ultramarine-plasma-settings-kcm-tweaks</packagereq>
+      <packagereq type="default">ultramarine-plasma-settings-kcm-location</packagereq>
+      <packagereq type="default">ultramarine-plasma-settings-dgpu</packagereq>
+      <packagereq type="default">ultramarine-plasma-settings-office-apps</packagereq>
       <packagereq type="default">plasma-milou</packagereq>
       <!-- <packagereq type="default">okular</packagereq> flatpak'd -->
       <packagereq type="default">koko</packagereq>
