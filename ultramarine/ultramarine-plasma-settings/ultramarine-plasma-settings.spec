@@ -1,8 +1,8 @@
 %global _pkg_extra_ldflags -fuse-ld=lld
 
 Name:    ultramarine-plasma-settings
-Version: 0.1.7
-Release: 2%{?dist}
+Version: 0.1.8
+Release: 1%{?dist}
 Summary: Ultramarine Plasma System Settings modules
 
 License: GPL-3.0-only
