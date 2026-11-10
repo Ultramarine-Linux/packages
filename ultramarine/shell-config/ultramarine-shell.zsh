@@ -1,6 +1,8 @@
+# ========================================
+# Default Ultramarine zsh Config
+# ========================================
 
-# Ultramarine ZSH config
-# initialize starship
+# Initialize Starship
 eval "$(starship init zsh)"
 
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -63,3 +65,7 @@ zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
 # Ctrl+Arrows/Backspace/Delete stop at punctuation like Bash
 autoload -U select-word-style
 select-word-style bash
+
+# ========================================
+# End of Default Config
+# ========================================
