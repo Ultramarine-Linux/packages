@@ -460,7 +460,7 @@ Provides the necessary files for an Ultramarine GNOME for Atomic installation.
 
 
 ######################################################################
-####### XFCE #######
+####### Xfce #######
 
 %if %{with xfce}
 
@@ -470,7 +470,7 @@ Provides the necessary files for an Ultramarine GNOME for Atomic installation.
 ## as possible.
 
 %package xfce-pkgexcl
-Summary:	Package that excludes other redundant packages for XFCE
+Summary:	Package that excludes other redundant packages for Xfce
 Conflicts:	abrt-desktop
 Conflicts:	dnfdragora-updater
 
@@ -526,7 +526,7 @@ Provides the necessary files for an Ultramarine Xfce installation.
 %endif
 
 ######################################################################
-####### Atomic XFCE #######
+####### Atomic Xfce #######
 
 %if %{with atomic_xfce}
 
@@ -993,7 +993,7 @@ install %{SOURCE73} %{buildroot}%{_sysconfdir}/polycrystal/entries/ultramarine-x
 mkdir -p %{buildroot}%{_sysconfdir}/lightdm/lightdm.conf.d/
 install %{SOURCE12} %{buildroot}%{_sysconfdir}/lightdm/lightdm.conf.d/
 
-# XFCE config
+# Xfce config
 install %{SOURCE14} %{buildroot}%{_sysconfdir}/lightdm/lightdm.conf.d/50-ultramarine-xfce-slick-greeter.conf
 
 # GNOME config
