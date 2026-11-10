@@ -59,3 +59,7 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
 # Colored completion lists
 zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
+
+# Ctrl+Arrows/Backspace/Delete stop at punctuation like Bash
+autoload -U select-word-style
+select-word-style bash

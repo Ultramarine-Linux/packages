@@ -59,6 +59,7 @@ fi
 - Undo/redo
 - Case-insensitive completion
 - Colored completion lists
+- Bash-style text splitting
 
 * Wed Mar 25 2026 madonuko <mado@fyralabs.com> - 44-2
 
