@@ -198,7 +198,7 @@
       <groupid>ultramarine-budgie-apps</groupid>
       <groupid>guest-desktop-agents</groupid>
       <groupid>hardware-support</groupid>
-      <groupid>libreoffice</groupid>
+      <!-- <groupid>libreoffice</groupid> -->
       <groupid>multimedia</groupid>
       <!-- <groupid>sound-and-video</groupid> -->
       <groupid>networkmanager-submodules</groupid>
@@ -227,7 +227,7 @@
       <groupid>ultramarine-budgie-apps</groupid>
       <groupid>guest-desktop-agents</groupid>
       <groupid>hardware-support</groupid>
-      <groupid>libreoffice</groupid>
+      <!-- <groupid>libreoffice</groupid> -->
       <groupid>multimedia</groupid>
       <!-- <groupid>sound-and-video</groupid> -->
       <groupid>networkmanager-submodules</groupid>
@@ -387,7 +387,7 @@
       <groupid>ultramarine-gnome-desktop</groupid>
       <groupid>guest-desktop-agents</groupid>
       <groupid>hardware-support</groupid>
-      <groupid>libreoffice</groupid>
+      <!-- <groupid>libreoffice</groupid> -->
       <groupid>multimedia</groupid>
       <!-- <groupid>sound-and-video</groupid> -->
       <groupid>networkmanager-submodules</groupid>
@@ -448,7 +448,7 @@
       <groupid>critical-path-kde</groupid>
       <groupid>guest-desktop-agents</groupid>
       <groupid>hardware-support</groupid>
-      <groupid>libreoffice</groupid>
+      <!-- <groupid>libreoffice</groupid> -->
       <groupid>multimedia</groupid>
       <!-- <groupid>sound-and-video</groupid> -->
       <groupid>networkmanager-submodules</groupid>
@@ -479,7 +479,7 @@
       <groupid>critical-path-kde</groupid>
       <groupid>guest-desktop-agents</groupid>
       <groupid>hardware-support</groupid>
-      <groupid>libreoffice</groupid>
+      <!-- <groupid>libreoffice</groupid> -->
       <groupid>multimedia</groupid>
       <!-- <groupid>sound-and-video</groupid> -->
       <groupid>networkmanager-submodules</groupid>
@@ -548,7 +548,7 @@
       <groupid>xfce-extra-plugins</groupid>
       <groupid>guest-desktop-agents</groupid>
       <groupid>hardware-support</groupid>
-      <groupid>libreoffice</groupid>
+      <!-- <groupid>libreoffice</groupid> -->
       <groupid>multimedia</groupid>
       <!-- <groupid>sound-and-video</groupid> -->
       <groupid>networkmanager-submodules</groupid>
