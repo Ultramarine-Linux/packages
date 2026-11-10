@@ -419,6 +419,8 @@
       <packagereq type="default">fcitx5-configtool</packagereq>
       <packagereq type="default">kcm-fcitx5</packagereq>
       <packagereq type="default">ultramarine-plasma-settings</packagereq>
+      <!-- Replaces Fedora's powerdevil (kde-desktop group) via Obsoletes/Conflicts -->
+      <packagereq type="default">ultramarine-powerdevil</packagereq>
       <packagereq type="default">ultramarine-plasma-settings-kcm-updates</packagereq>
       <packagereq type="default">ultramarine-plasma-settings-kcm-tweaks</packagereq>
       <packagereq type="default">ultramarine-plasma-settings-kcm-location</packagereq>
