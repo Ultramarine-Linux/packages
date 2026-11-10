@@ -419,6 +419,11 @@
       <packagereq type="default">fcitx5-configtool</packagereq>
       <packagereq type="default">kcm-fcitx5</packagereq>
       <packagereq type="default">ultramarine-plasma-settings</packagereq>
+      <packagereq type="default">ultramarine-plasma-settings-kcm-updates</packagereq>
+      <packagereq type="default">ultramarine-plasma-settings-kcm-tweaks</packagereq>
+      <packagereq type="default">ultramarine-plasma-settings-kcm-location</packagereq>
+      <packagereq type="default">ultramarine-plasma-settings-dgpu</packagereq>
+      <packagereq type="default">ultramarine-plasma-settings-office-apps</packagereq>
       <packagereq type="default">plasma-milou</packagereq>
       <!-- <packagereq type="default">okular</packagereq> flatpak'd -->
       <packagereq type="default">koko</packagereq>
