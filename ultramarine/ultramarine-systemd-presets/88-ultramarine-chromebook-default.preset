@@ -1,4 +1,4 @@
-# Enable Ultramarine Chromebook Edition specific services in this file
+# Enable Ultramarine for Chromebook specific services in this file
 
 # USB-C fix on newer Chromebooks
 enable chromebook-usbc.service

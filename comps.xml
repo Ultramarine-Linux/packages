@@ -434,9 +434,9 @@
   </group>
   <environment>
     <id>ultramarine-plasma-product-environment</id>
-    <name>Ultramarine plasma</name>
+    <name>Ultramarine</name>
     <description
-        >Ultramarine Plasma is an Ultramarine experience powered by the Plasma desktop environment.</description>
+        >Ultramarine, powered by the Plasma desktop environment.</description>
     <grouplist>
       <groupid>base-graphical</groupid>
       <groupid>container-management</groupid>
@@ -465,9 +465,9 @@
   <environment>
     <!-- NOTE: keep this in sync with ultramarine-kde-product-environment for backwards compat -->
     <id>ultramarine-kde-product-environment</id>
-    <name>Ultramarine plasma (legacy)</name>
+    <name>Ultramarine (Legacy)</name>
     <description
-        >Ultramarine Plasma is an Ultramarine experience powered by the Plasma desktop environment. (This is a legacy group kept for backwards compatibility.)</description>
+        >Ultramarine, powered by the Plasma desktop environment. (This is a legacy group kept for backwards compatibility.)</description>
     <grouplist>
       <groupid>base-graphical</groupid>
       <groupid>container-management</groupid>
