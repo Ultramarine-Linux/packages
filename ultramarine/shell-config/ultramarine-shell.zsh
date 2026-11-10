@@ -14,33 +14,29 @@ source /usr/share/fzf/shell/key-bindings.zsh
 bindkey "^[[1;5D" backward-word
 bindkey "^[[1;5C" forward-word
 
-# Ctrl + Backspace/Delete Kebindings
+# Ctrl + Backspace/Delete Keybindings
 bindkey '^H' backward-kill-word
 bindkey '^[[3;5~' kill-word
 
-# Alt + Backspace/Delete Keybinds
+# Delete / Alt + Delete Keybindings
 bindkey "^[[3~" delete-char
-bindkey -M emacs '^[[3;3~' kill-word
+bindkey '^[[3;3~' kill-word
 
-# Home/End Keybinds
-bindkey '^[[H' beginning-of-line
-bindkey '^[[F' end-of-line
-
-HISTFILE=~/.zsh_history
-HISTSIZE=10000
-SAVEHIST=10000
-setopt appendhistory
-setopt SHARE_HISTORY
-setopt autocd
-
-# Allow Bash-style globbing
-unsetopt nomatch
-
-# Bind Home/End
+# Home/End Keybindings
 bindkey '^[[H' beginning-of-line
 bindkey '^[[F' end-of-line
 bindkey '^[[1~' beginning-of-line
 bindkey '^[[4~' end-of-line
+
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt SHARE_HISTORY
+setopt HIST_IGNORE_DUPS
+setopt autocd
+
+# Allow Bash-style globbing
+unsetopt nomatch
 
 # Search history using current input as a prefix
 autoload -Uz up-line-or-beginning-search down-line-or-beginning-search

@@ -6,10 +6,9 @@ License:        MIT
 
 Source0:        ultramarine-shell.bash
 Source1:        ultramarine-shell.zsh
-
-Source3:        ultramarine-shell.sh
-Source4:        starship.toml
-Source5:        50-ultramarine-pwfeedback
+Source2:        ultramarine-shell.sh
+Source3:        starship.toml
+Source4:        50-ultramarine-pwfeedback
 
 Requires:       zsh-autosuggestions
 Requires:       zsh-syntax-highlighting
@@ -29,9 +28,9 @@ This package contains shell configurations made for Ultramarine Linux.
 %install
 install -Dpm 644 %{SOURCE0} -t %{buildroot}/%{_datadir}/%{name}
 install -Dpm 644 %{SOURCE1} %{buildroot}/%{_datadir}/%{name}
-install -Dpm 644 %{SOURCE4} %{buildroot}/%{_datadir}/%{name}
-install -Dpm 644 %{SOURCE3} -t %{buildroot}/%{_sysconfdir}/profile.d/
-install -Dpm 644 %{SOURCE5} -t %{buildroot}/%{_sysconfdir}/sudoers.d/
+install -Dpm 644 %{SOURCE3} %{buildroot}/%{_datadir}/%{name}
+install -Dpm 644 %{SOURCE2} -t %{buildroot}/%{_sysconfdir}/profile.d/
+install -Dpm 440 %{SOURCE4} -t %{buildroot}/%{_sysconfdir}/sudoers.d/
 
 %post
 
@@ -54,7 +53,7 @@ fi
 
 %changelog
 * Tue Nov 03 2026 Its-J <jonah@fyralabs.com> - 46-3
-- Bind Home/End
+- Extend Home/End support
 - Search history using current input prefix
 - Undo/redo
 - Case-insensitive completion
