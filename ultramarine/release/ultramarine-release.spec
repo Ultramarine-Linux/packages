@@ -1158,6 +1158,7 @@ ln -sf firewalld-workstation.conf %{_sysconfdir}/firewalld/firewalld.conf
 %endif
 
 %if %{with xfce}
+%files xfce-pkgexcl
 %files xfce
 %files identity-xfce
 %{_prefix}/lib/os-release.xfce
