@@ -19,7 +19,7 @@ jobs:
   report:
     runs-on: ubuntu-latest
     container:
-      image: ghcr.io/Ultramarine-Linux/builder:umrawhide
+      image: ghcr.io/ultramarine-linux/builder:umrawhide
     timeout-minutes: 60
     steps:
       - name: Checkout
@@ -56,7 +56,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         shell: bash
         run: |
-          common=(-m . -u --fedora -v --fail-on never)
+          common=(-m . -u -v --fail-on never -d ultramarine)
           oglyad "${common[@]}" --format markdown > "$RUNNER_TEMP/report.md"
           oglyad "${common[@]}" --format json > "$RUNNER_TEMP/report.json"
           cat "$RUNNER_TEMP/report.md" >> "$GITHUB_STEP_SUMMARY"
