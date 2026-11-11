@@ -2,7 +2,7 @@
   "repoOwner": "ultramarine-linux",
   "repoName": "packages",
   "resetAuthor": true,
-  "targetBranchChoices": ["umrawhide", "um44", "um43", "um42"],
+  "targetBranchChoices": ["umrawhide", "um45", "um44", "um43"],
   "branchLabelMapping": {
     "^sync-(.+)$": "$1"
   }
