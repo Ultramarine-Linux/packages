@@ -86,7 +86,8 @@
       <packagereq type="default">ultramarine-backgrounds-common</packagereq>
       <packagereq type="default">ultramarine-backgrounds-compat</packagereq>
       <packagereq type="default">ultramarine-system-configs-desktop</packagereq>
-      <packagereq type="default">system76-scheduler</packagereq>
+      <packagereq type="default">scx-scheds</packagereq>
+      <packagereq type="default">scx-tools</packagereq>
       <packagereq type="default">orca</packagereq>
       <packagereq type="default">icoextract-thumbnailer</packagereq>
       <packagereq type="default">speech-dispatcher-espeak-ng</packagereq>
@@ -197,7 +198,7 @@
       <groupid>ultramarine-budgie-apps</groupid>
       <groupid>guest-desktop-agents</groupid>
       <groupid>hardware-support</groupid>
-      <groupid>libreoffice</groupid>
+      <!-- <groupid>libreoffice</groupid> -->
       <groupid>multimedia</groupid>
       <!-- <groupid>sound-and-video</groupid> -->
       <groupid>networkmanager-submodules</groupid>
@@ -226,7 +227,7 @@
       <groupid>ultramarine-budgie-apps</groupid>
       <groupid>guest-desktop-agents</groupid>
       <groupid>hardware-support</groupid>
-      <groupid>libreoffice</groupid>
+      <!-- <groupid>libreoffice</groupid> -->
       <groupid>multimedia</groupid>
       <!-- <groupid>sound-and-video</groupid> -->
       <groupid>networkmanager-submodules</groupid>
@@ -386,7 +387,7 @@
       <groupid>ultramarine-gnome-desktop</groupid>
       <groupid>guest-desktop-agents</groupid>
       <groupid>hardware-support</groupid>
-      <groupid>libreoffice</groupid>
+      <!-- <groupid>libreoffice</groupid> -->
       <groupid>multimedia</groupid>
       <!-- <groupid>sound-and-video</groupid> -->
       <groupid>networkmanager-submodules</groupid>
@@ -407,9 +408,6 @@
     <default>false</default>
     <uservisible>false</uservisible>
     <packagelist>
-      <packagereq
-                type="default"
-            >kwin-system76-scheduler-integration</packagereq>
       <packagereq type="default">ultramarine-appstream-metadata</packagereq>
       <packagereq type="default">ultramarine-release-plasma</packagereq>
       <packagereq
@@ -423,6 +421,13 @@
       <packagereq type="default">ultramarine-plasma-settings</packagereq>
       <!-- Replaces Fedora's plasma-discover (kde-desktop group) via Obsoletes/Conflicts -->
       <packagereq type="default">ultramarine-plasma-discover</packagereq>
+      <!-- Replaces Fedora's powerdevil (kde-desktop group) via Obsoletes/Conflicts -->
+      <packagereq type="default">ultramarine-powerdevil</packagereq>
+      <packagereq type="default">ultramarine-plasma-settings-kcm-updates</packagereq>
+      <packagereq type="default">ultramarine-plasma-settings-kcm-tweaks</packagereq>
+      <packagereq type="default">ultramarine-plasma-settings-kcm-location</packagereq>
+      <packagereq type="default">ultramarine-plasma-settings-dgpu</packagereq>
+      <packagereq type="default">ultramarine-plasma-settings-office-apps</packagereq>
       <packagereq type="default">plasma-milou</packagereq>
       <!-- <packagereq type="default">okular</packagereq> flatpak'd -->
       <packagereq type="default">koko</packagereq>
@@ -452,7 +457,7 @@
       <groupid>critical-path-kde</groupid>
       <groupid>guest-desktop-agents</groupid>
       <groupid>hardware-support</groupid>
-      <groupid>libreoffice</groupid>
+      <!-- <groupid>libreoffice</groupid> -->
       <groupid>multimedia</groupid>
       <!-- <groupid>sound-and-video</groupid> -->
       <groupid>networkmanager-submodules</groupid>
@@ -483,7 +488,7 @@
       <groupid>critical-path-kde</groupid>
       <groupid>guest-desktop-agents</groupid>
       <groupid>hardware-support</groupid>
-      <groupid>libreoffice</groupid>
+      <!-- <groupid>libreoffice</groupid> -->
       <groupid>multimedia</groupid>
       <!-- <groupid>sound-and-video</groupid> -->
       <groupid>networkmanager-submodules</groupid>
@@ -552,7 +557,7 @@
       <groupid>xfce-extra-plugins</groupid>
       <groupid>guest-desktop-agents</groupid>
       <groupid>hardware-support</groupid>
-      <groupid>libreoffice</groupid>
+      <!-- <groupid>libreoffice</groupid> -->
       <groupid>multimedia</groupid>
       <!-- <groupid>sound-and-video</groupid> -->
       <groupid>networkmanager-submodules</groupid>

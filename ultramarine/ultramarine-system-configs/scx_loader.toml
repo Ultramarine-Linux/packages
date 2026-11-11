@@ -1,0 +1,5 @@
+# Ultramarine default sched_ext scheduler, loaded by scx_loader.service.
+# scx_lavd in Auto mode (--autopilot) tunes itself from load and topology.
+# Change at runtime with `scxctl switch`, or edit this file to persist.
+default_sched = "scx_lavd"
+default_mode = "Auto"
