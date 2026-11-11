@@ -1,6 +1,6 @@
 Name:           ultramarine-shell-config
 Version:        45
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Shell configuration for Ultramarine Linux
 License:        MIT
 
@@ -12,7 +12,6 @@ Source4:        50-ultramarine-pwfeedback
 
 Requires:       zsh-autosuggestions
 Requires:       zsh-syntax-highlighting
-Requires:       bat
 Requires:       starship
 Requires:       fzf
 
