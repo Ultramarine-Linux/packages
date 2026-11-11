@@ -1,4 +1,4 @@
 
 # Ultramarine bash config
-# initialize starship
+# initialize Starship
 eval "$(starship init bash)"
