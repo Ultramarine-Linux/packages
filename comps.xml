@@ -113,9 +113,7 @@
       <packagereq type="mandatory">budgie-extras</packagereq>
       <packagereq type="mandatory">budgie-extras-daemon</packagereq>
       <packagereq type="mandatory">ultramarine-release-budgie</packagereq>
-      <packagereq
-                type="optional"
-            >ultramarine-release-identity-budgie</packagereq>
+      <packagereq type="default">ultramarine-release-identity-budgie</packagereq>
       <packagereq type="mandatory">ultramarine-budgie-filesystem</packagereq>
       <packagereq type="default">ultramarine-backgrounds-gnome</packagereq>
       <packagereq type="default">ultramarine-backgrounds</packagereq>
@@ -262,9 +260,7 @@
       <packagereq type="default">ultramarine-backgrounds-gnome</packagereq>
       <packagereq type="default">ultramarine-backgrounds-common</packagereq>
       <packagereq type="default">ultramarine-release-gnome</packagereq>
-      <packagereq
-                type="optional"
-            >ultramarine-release-identity-gnome</packagereq>
+      <packagereq type="default">ultramarine-release-identity-gnome</packagereq>
       <packagereq
                 type="default"
             >gs-plugin-ultramarine-pkgdb-collections</packagereq>
@@ -410,9 +406,7 @@
     <packagelist>
       <packagereq type="default">ultramarine-appstream-metadata</packagereq>
       <packagereq type="default">ultramarine-release-plasma</packagereq>
-      <packagereq
-                type="optional"
-            >ultramarine-release-identity-plasma</packagereq>
+      <packagereq type="default">ultramarine-release-identity-plasma</packagereq>
       <packagereq type="default">fcitx5-mozc</packagereq>
       <packagereq type="default">fcitx5-gtk</packagereq>
       <packagereq type="default">fcitx5-qt</packagereq>
@@ -439,9 +433,9 @@
   </group>
   <environment>
     <id>ultramarine-plasma-product-environment</id>
-    <name>Ultramarine plasma</name>
+    <name>Ultramarine</name>
     <description
-        >Ultramarine Plasma is an Ultramarine experience powered by the Plasma desktop environment.</description>
+        >Ultramarine, powered by the Plasma desktop environment.</description>
     <grouplist>
       <groupid>base-graphical</groupid>
       <groupid>container-management</groupid>
@@ -470,9 +464,9 @@
   <environment>
     <!-- NOTE: keep this in sync with ultramarine-kde-product-environment for backwards compat -->
     <id>ultramarine-kde-product-environment</id>
-    <name>Ultramarine plasma (legacy)</name>
+    <name>Ultramarine (Legacy)</name>
     <description
-        >Ultramarine Plasma is an Ultramarine experience powered by the Plasma desktop environment. (This is a legacy group kept for backwards compatibility.)</description>
+        >Ultramarine, powered by the Plasma desktop environment. (This is a legacy group kept for backwards compatibility.)</description>
     <grouplist>
       <groupid>base-graphical</groupid>
       <groupid>container-management</groupid>
@@ -507,7 +501,7 @@
     <uservisible>false</uservisible>
     <packagelist>
       <packagereq type="mandatory">ultramarine-release-xfce</packagereq>
-      <packagereq type="optional">ultramarine-release-identity-xfce</packagereq>
+      <packagereq type="default">ultramarine-release-identity-xfce</packagereq>
       <packagereq type="mandatory">lightdm</packagereq>
       <packagereq type="mandatory">slick-greeter</packagereq>
       <packagereq type="default">xfce4-whiskermenu-plugin</packagereq>
