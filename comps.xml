@@ -59,14 +59,12 @@
       <packagereq type="default">ultramarine-repos</packagereq>
       <packagereq type="default">ultramarine-bookmarks</packagereq>
       <packagereq type="default">git</packagereq>
-      <packagereq type="default">vim</packagereq>
       <packagereq type="default">nano</packagereq>
       <packagereq type="default">rsync</packagereq>
       <packagereq type="default">dive</packagereq>
       <packagereq type="default">umcli</packagereq>
       <packagereq type="default">fastfetch</packagereq>
       <packagereq type="default">btop</packagereq>
-      <packagereq type="default">htop</packagereq>
       <packagereq type="default">linux-firmware</packagereq>
       <packagereq type="default">NetworkManager-tui</packagereq>
       <packagereq type="default">zstd</packagereq>
@@ -198,7 +196,6 @@
       <groupid>ultramarine-budgie-apps</groupid>
       <groupid>guest-desktop-agents</groupid>
       <groupid>hardware-support</groupid>
-      <!-- <groupid>libreoffice</groupid> -->
       <groupid>multimedia</groupid>
       <!-- <groupid>sound-and-video</groupid> -->
       <groupid>networkmanager-submodules</groupid>
@@ -227,7 +224,6 @@
       <groupid>ultramarine-budgie-apps</groupid>
       <groupid>guest-desktop-agents</groupid>
       <groupid>hardware-support</groupid>
-      <!-- <groupid>libreoffice</groupid> -->
       <groupid>multimedia</groupid>
       <!-- <groupid>sound-and-video</groupid> -->
       <groupid>networkmanager-submodules</groupid>
@@ -387,7 +383,6 @@
       <groupid>ultramarine-gnome-desktop</groupid>
       <groupid>guest-desktop-agents</groupid>
       <groupid>hardware-support</groupid>
-      <!-- <groupid>libreoffice</groupid> -->
       <groupid>multimedia</groupid>
       <!-- <groupid>sound-and-video</groupid> -->
       <groupid>networkmanager-submodules</groupid>
@@ -455,7 +450,6 @@
       <groupid>critical-path-kde</groupid>
       <groupid>guest-desktop-agents</groupid>
       <groupid>hardware-support</groupid>
-      <!-- <groupid>libreoffice</groupid> -->
       <groupid>multimedia</groupid>
       <!-- <groupid>sound-and-video</groupid> -->
       <groupid>networkmanager-submodules</groupid>
@@ -486,7 +480,6 @@
       <groupid>critical-path-kde</groupid>
       <groupid>guest-desktop-agents</groupid>
       <groupid>hardware-support</groupid>
-      <!-- <groupid>libreoffice</groupid> -->
       <groupid>multimedia</groupid>
       <!-- <groupid>sound-and-video</groupid> -->
       <groupid>networkmanager-submodules</groupid>
@@ -555,7 +548,6 @@
       <groupid>xfce-extra-plugins</groupid>
       <groupid>guest-desktop-agents</groupid>
       <groupid>hardware-support</groupid>
-      <!-- <groupid>libreoffice</groupid> -->
       <groupid>multimedia</groupid>
       <!-- <groupid>sound-and-video</groupid> -->
       <groupid>networkmanager-submodules</groupid>
