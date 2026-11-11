@@ -176,6 +176,9 @@ Conflicts:  fedora-release
 Provides:   fedora-release-common
 Conflicts:  fedora-release-common
 Provides:   generic-release = %{version}-%{release}
+# presets moved out of the release package in 45, like fedora-release-common and
+# redhat-systemd-presets. without them every unit gets enabled, plasma-setup and networkd too
+Requires:   ultramarine-systemd-presets
 
 %description common
 Release files common to all Ultramarine variants
@@ -749,6 +752,7 @@ Obsoletes:  kwin-system76-scheduler-integration < 0.1-2
 Recommends: ultramarine-system-configs-desktop
 # per-game scx switching; also covers RPM Fusion's steam, which only recommends gamemode
 Recommends: (falcond if steam)
+Requires:   ultramarine-systemd-presets-desktop
 
 %description desktop
 Common configuration package for desktop variants
@@ -759,6 +763,7 @@ Common configuration package for desktop variants
 %if %{with atomic_desktop}
 %package atomic-desktop
 Summary:        Common configuration package for atomic desktop variants
+Requires:   ultramarine-systemd-presets-desktop-atomic
 
 %description atomic-desktop
 Common configuration package for atomic desktop variants

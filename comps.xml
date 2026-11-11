@@ -196,7 +196,7 @@
       <groupid>ultramarine-budgie-apps</groupid>
       <groupid>guest-desktop-agents</groupid>
       <groupid>hardware-support</groupid>
-      <groupid>libreoffice</groupid>
+      <!-- <groupid>libreoffice</groupid> -->
       <groupid>multimedia</groupid>
       <!-- <groupid>sound-and-video</groupid> -->
       <groupid>networkmanager-submodules</groupid>
@@ -225,7 +225,7 @@
       <groupid>ultramarine-budgie-apps</groupid>
       <groupid>guest-desktop-agents</groupid>
       <groupid>hardware-support</groupid>
-      <groupid>libreoffice</groupid>
+      <!-- <groupid>libreoffice</groupid> -->
       <groupid>multimedia</groupid>
       <!-- <groupid>sound-and-video</groupid> -->
       <groupid>networkmanager-submodules</groupid>
@@ -383,7 +383,7 @@
       <groupid>ultramarine-gnome-desktop</groupid>
       <groupid>guest-desktop-agents</groupid>
       <groupid>hardware-support</groupid>
-      <groupid>libreoffice</groupid>
+      <!-- <groupid>libreoffice</groupid> -->
       <groupid>multimedia</groupid>
       <!-- <groupid>sound-and-video</groupid> -->
       <groupid>networkmanager-submodules</groupid>
@@ -413,6 +413,11 @@
       <packagereq type="default">fcitx5-configtool</packagereq>
       <packagereq type="default">kcm-fcitx5</packagereq>
       <packagereq type="default">ultramarine-plasma-settings</packagereq>
+      <packagereq type="default">ultramarine-plasma-settings-kcm-updates</packagereq>
+      <packagereq type="default">ultramarine-plasma-settings-kcm-tweaks</packagereq>
+      <packagereq type="default">ultramarine-plasma-settings-kcm-location</packagereq>
+      <packagereq type="default">ultramarine-plasma-settings-dgpu</packagereq>
+      <packagereq type="default">ultramarine-plasma-settings-office-apps</packagereq>
       <packagereq type="default">plasma-milou</packagereq>
       <!-- <packagereq type="default">okular</packagereq> flatpak'd -->
       <packagereq type="default">koko</packagereq>
@@ -442,7 +447,7 @@
       <groupid>critical-path-kde</groupid>
       <groupid>guest-desktop-agents</groupid>
       <groupid>hardware-support</groupid>
-      <groupid>libreoffice</groupid>
+      <!-- <groupid>libreoffice</groupid> -->
       <groupid>multimedia</groupid>
       <!-- <groupid>sound-and-video</groupid> -->
       <groupid>networkmanager-submodules</groupid>
@@ -473,7 +478,7 @@
       <groupid>critical-path-kde</groupid>
       <groupid>guest-desktop-agents</groupid>
       <groupid>hardware-support</groupid>
-      <groupid>libreoffice</groupid>
+      <!-- <groupid>libreoffice</groupid> -->
       <groupid>multimedia</groupid>
       <!-- <groupid>sound-and-video</groupid> -->
       <groupid>networkmanager-submodules</groupid>
@@ -542,7 +547,7 @@
       <groupid>xfce-extra-plugins</groupid>
       <groupid>guest-desktop-agents</groupid>
       <groupid>hardware-support</groupid>
-      <groupid>libreoffice</groupid>
+      <!-- <groupid>libreoffice</groupid> -->
       <groupid>multimedia</groupid>
       <!-- <groupid>sound-and-video</groupid> -->
       <groupid>networkmanager-submodules</groupid>
