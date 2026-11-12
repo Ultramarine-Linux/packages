@@ -1,19 +1,17 @@
 Name:           ultramarine-shell-config
 Version:        46
-Release:        2%{?dist}
+Release:        4%{?dist}
 Summary:        Shell configuration for Ultramarine Linux
 License:        MIT
 
 Source0:        ultramarine-shell.bash
 Source1:        ultramarine-shell.zsh
-
-Source3:        ultramarine-shell.sh
-Source4:        starship.toml
-Source5:        50-ultramarine-pwfeedback
+Source2:        ultramarine-shell.sh
+Source3:        starship.toml
+Source4:        50-ultramarine-pwfeedback
 
 Requires:       zsh-autosuggestions
 Requires:       zsh-syntax-highlighting
-Requires:       bat
 Requires:       starship
 Requires:       fzf
 
@@ -29,9 +27,9 @@ This package contains shell configurations made for Ultramarine Linux.
 %install
 install -Dpm 644 %{SOURCE0} -t %{buildroot}/%{_datadir}/%{name}
 install -Dpm 644 %{SOURCE1} %{buildroot}/%{_datadir}/%{name}
-install -Dpm 644 %{SOURCE4} %{buildroot}/%{_datadir}/%{name}
-install -Dpm 644 %{SOURCE3} -t %{buildroot}/%{_sysconfdir}/profile.d/
-install -Dpm 644 %{SOURCE5} -t %{buildroot}/%{_sysconfdir}/sudoers.d/
+install -Dpm 644 %{SOURCE3} %{buildroot}/%{_datadir}/%{name}
+install -Dpm 644 %{SOURCE2} -t %{buildroot}/%{_sysconfdir}/profile.d/
+install -Dpm 440 %{SOURCE4} -t %{buildroot}/%{_sysconfdir}/sudoers.d/
 
 %post
 
@@ -53,6 +51,14 @@ fi
 %{_sysconfdir}/sudoers.d/50-ultramarine-pwfeedback
 
 %changelog
+* Tue Nov 03 2026 Its-J <jonah@fyralabs.com> - 46-3
+- Extend Home/End support
+- Search history using current input prefix
+- Undo/redo
+- Case-insensitive completion
+- Colored completion lists
+- Bash-style text splitting
+
 * Wed Mar 25 2026 madonuko <mado@fyralabs.com> - 44-2
 
 * Sun Oct 19 2025 Jaiden Riordan <jade@fyralabs.com> - 43-1

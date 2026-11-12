@@ -10,7 +10,7 @@ if ! [ -x "$(command -v apt)" ]; then
     apt() {
         echo "Debian packages are not supported in Ultramarine."
         echo $um
-        echo $tryinstall | sed 's/%/apt/g'
+        echo $tryinstall
         return 1
     }
 fi
@@ -20,7 +20,7 @@ if ! [ -x "$(command -v dpkg)" ]; then
     dpkg() {
         echo "Debian packages are not supported in Ultramarine."
         echo $um
-        echo $tryinstall | sed 's/%/dpkg/g'
+        echo $tryinstall
         return 1
     }
 fi
@@ -29,7 +29,7 @@ if ! [ -x "$(command -v snap)" ]; then
     snap() {
         echo "Ultramarine comes with Flathub and Terra, which should include most of the software you're looking for."
         echo $um
-        echo "If the software you need is only availible as a Snap, you can install it with `sudo dnf install snapd`"
+        echo "If the software you need is only available as a Snap, you can install it with: sudo dnf install snapd"
         return 1
     }
 fi
@@ -43,10 +43,13 @@ if ! [ -x "$(command -v neofetch)" ]; then
     }
 fi
 
-# if ~/.config/starship.toml doesn't exist
-if ! [ -f ~/.config/starship.toml ]; then
-    # export another starship config
-    export STARSHIP_CONFIG=/usr/share/ultramarine-shell-config/starship.toml
-else
-    unset STARSHIP_CONFIG
-fi
+# Use the Ultramarine Starship config unless the user has one of their own
+case "$STARSHIP_CONFIG" in
+    ""|/usr/share/ultramarine-shell-config/starship.toml)
+        if [ -f ~/.config/starship.toml ]; then
+            unset STARSHIP_CONFIG
+        else
+            export STARSHIP_CONFIG=/usr/share/ultramarine-shell-config/starship.toml
+        fi
+        ;;
+esac
