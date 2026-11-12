@@ -2,7 +2,7 @@
 
 Name:    ultramarine-plasma-settings
 Version: 0.1.9
-Release: 1%{?dist}
+Release: 2%{?dist}
 Summary: Ultramarine Plasma System Settings modules
 
 License: GPL-3.0-only
@@ -201,6 +201,7 @@ fi
 %files common -f %{name}.lang
 %doc README.md docs/*
 %license LICENSE
+%{_kf6_datadir}/systemsettings/categories/settings-ultramarine.desktop
 
 %files kcm-updates
 %config(noreplace) %{_sysconfdir}/xdg/kdeglobals
