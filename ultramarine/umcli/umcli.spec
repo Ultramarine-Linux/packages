@@ -5,7 +5,7 @@
 %global godocs          README.md
 
 Name:           umcli
-Version:        0.5.2
+Version:        0.5.3
 Release:        1%{?dist}
 Summary:        A CLI tool for managing an Ultramarine Linux system
 
@@ -19,6 +19,7 @@ BuildRequires:  pkgconfig(flatpak)
 Requires:	ansible-core
 Requires:	ansible-collection-ansible-posix
 Requires:	ansible-collection-community-general
+Requires:	polkit
 
 Obsoletes: golang-github-ultramarine-linux-um <= 0.4.5
 
@@ -40,6 +41,7 @@ install -m 0755 -vd                     %{buildroot}%{_bindir}
 install -m 0755 -vp %{gobuilddir}/bin/* %{buildroot}%{_bindir}/
 mkdir -p %{buildroot}%{_datadir}/um
 cp -av data/. %{buildroot}%{_datadir}/um/.
+install -Dm0644 polkit/org.ultramarine.um.policy %{buildroot}%{_datadir}/polkit-1/actions/org.ultramarine.um.policy
 
 %check
 %gocheck
@@ -49,7 +51,8 @@ cp -av data/. %{buildroot}%{_datadir}/um/.
 %license LICENSE
 %{_bindir}/um
 %{_datadir}/um/
+%{_datadir}/polkit-1/actions/org.ultramarine.um.policy
 
 %changelog
-* Sun January 18 2026 Jaiden Riordan <jade@fyralabs.com> - 0.4.5-2
+* Sun Jan 18 2026 Jaiden Riordan <jade@fyralabs.com> - 0.4.5-2
 - Rename and cleanup spec
