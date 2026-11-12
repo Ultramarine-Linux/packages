@@ -1,1 +1,1 @@
-rpm.global("commit", gh_commit("Ultramarine-Linux/um"));
+rpm.version(gh("Ultramarine-Linux/um"));
