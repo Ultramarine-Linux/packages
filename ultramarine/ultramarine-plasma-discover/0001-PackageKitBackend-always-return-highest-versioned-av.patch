@@ -1,0 +1,64 @@
+From dd43490456805dfde4efb500800a3578cffc78b7 Mon Sep 17 00:00:00 2001
+From: Adam Williamson <adamwill@fedoraproject.org>
+Date: Mon, 19 Oct 2026 17:02:17 -0700
+Subject: [PATCH] PackageKitBackend: always return highest versioned
+ availablePackageId
+
+When the m_packages struct contains multiple package IDs,
+PackageKitResource::availablePackageId() has always just made an
+assumption about which one to return. Before 9572f935 it assumed
+the last one was the right one. Since 9572f935 it assumes the first
+one is the right one.
+
+I don't think any assumption is a good idea, here. The current
+assumption seems to be incorrect, per
+https://bugzilla.redhat.com/show_bug.cgi?id=2480694 and my
+investigation in comment 13. Just flipping back to assuming the
+last ID is the right one doesn't seem like a good idea.
+
+Instead, let's actually iterate over the available IDs, get the
+version for each one, and return the one with the highest version.
+
+This should fix things so we don't install old versions when
+multiple versions are available from different repositories.
+
+Signed-off-by: Adam Williamson <adamwill@fedoraproject.org>
+---
+ .../PackageKitBackend/PackageKitResource.cpp       | 14 +++++++++++++-
+ 1 file changed, 13 insertions(+), 1 deletion(-)
+
+diff --git a/libdiscover/backends/PackageKitBackend/PackageKitResource.cpp b/libdiscover/backends/PackageKitBackend/PackageKitResource.cpp
+index cb3411eb5..57a3f0dc1 100644
+--- a/libdiscover/backends/PackageKitBackend/PackageKitResource.cpp
++++ b/libdiscover/backends/PackageKitBackend/PackageKitResource.cpp
+@@ -12,6 +12,7 @@
+ #include "appstream/AppStreamUtils.h"
+ #include "config-paths.h"
+ #include <AppStreamQt/spdx.h>
++#include <AppStreamQt/utils.h>
+ #include <KIO/ApplicationLauncherJob>
+ #include <KLocalizedString>
+ #include <KService>
+@@ -72,7 +73,18 @@ QString PackageKitResource::availablePackageId() const
+ 
+     const auto it = m_packages.constFind(PackageKit::Transaction::InfoAvailable);
+     if (it != m_packages.constEnd()) {
+-        return it->first();
++        // find highest versioned entry
++        QString highest;
++        QVector<QString> pkgstocheck = it->archPkgIds;
++        if (it->archPkgIds.isEmpty()) {
++            pkgstocheck = it->nonarchPkgIds;
++        }
++        for (const QString &val : pkgstocheck) {
++            if (highest.isEmpty() || AppStream::Utils::vercmpSimple(PackageKit::Daemon::packageVersion(val), PackageKit::Daemon::packageVersion(highest)) > 0) {
++                highest = val;
++            }
++        }
++        return highest;
+     }
+     return installedPackageId();
+ }
+-- 
+2.55.0
+
