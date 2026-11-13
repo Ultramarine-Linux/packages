@@ -1,3 +1,5 @@
+%global _distro_extra_cflags -Wno-incompatible-pointer-types
+
 Name: gs-plugin-ultramarine-pkgdb-collections
 Version: 0.3.0
 Release: 1%{?dist}
