@@ -3,7 +3,7 @@ Version:        46
 Release:        6%?dist
 Summary:        Taidan configuration for Ultramarine
 License:        (MIT AND GPL-3.0-or-later)
-Provides:       taidan-configs
+Supplements:    taidan
 Provides:       initial-setup initial-setup-gui
 Conflicts:      taidan-default-configs
 Obsoletes:      taidan-default-configs <= 999
