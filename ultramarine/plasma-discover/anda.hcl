@@ -4,5 +4,6 @@ project pkg {
 	}
 	labels {
 		bootc = 1
+		oglyad_ignore = "build-lag"
 	}
 }
