@@ -8,7 +8,7 @@ Summary: Config files for KDE
 Name:    kde-settings
 Epoch:   1
 Version: %{?fedora}
-Release: 2%{?dist}
+Release: 1%{?dist}
 
 License: MIT
 URL:     https://github.com/Ultramarine-Linux/kde-settings
@@ -118,6 +118,9 @@ Summary: Configuration files for Qt
 
 %package -n ultramarine-plasma-theme
 Summary:  Plasma theme for Ultramarine
+# LGPL-2.0-or-later is only for lockscreen/MainBlock.qml and systemdialog/SystemDialog.qml, drop it if the bloat gets removed from SOURCE2
+License:  GPL-2.0-or-later AND LGPL-2.0-or-later AND GPL-3.0-or-later AND LicenseRef-FyraLabs-Proprietary
+Requires: plasma-breeze-common
 %description -n ultramarine-plasma-theme
 %{summary}.
 
@@ -142,7 +145,7 @@ Enhances: (initial-setup-gui and kwin-wayland)
 %autosetup -C -p1 -a 2
 
 %build
-# Intentionally left blank.  Nothing to see here.
+# Intentionally left blank. Nothing to see here.
 
 
 %install
@@ -184,8 +187,11 @@ sed -e "s/Noto Sans Mono/Noto Mono/g" \
 # for ssh-agent.serivce, set SSH_AUTH_SOCK
 install -p -m644 -D %{SOURCE10} %{buildroot}%{_sysconfdir}/xdg/plasma-workspace/env/ssh-agent.sh
 
-# copy theme from SOURCE2
-cp -a ultramarine-kde-theme-um%{version} %{buildroot}%{_datadir}/plasma/look-and-feel/org.ultramarine-linux.ultramarine.desktop
+# install themes from SOURCE2
+mkdir -p %{buildroot}%{_datadir}/plasma/look-and-feel
+cp -a ultramarine-kde-theme-um%{version}/dark %{buildroot}%{_datadir}/plasma/look-and-feel/org.ultramarine-linux.ultramarine.desktop
+cp -a ultramarine-kde-theme-um%{version}/light %{buildroot}%{_datadir}/plasma/look-and-feel/org.ultramarine-linux.ultramarinelight.desktop
+install -Dm644 ultramarine-kde-theme-um%{version}/color-schemes/UltramarineDark.colors %{buildroot}%{_datadir}/color-schemes/UltramarineDark.colors
 
 %if ! %{with initialsetup_gui_backend}
 rm -rv %{buildroot}%{_libexecdir}/initial-setup
@@ -261,7 +267,10 @@ test -f %{_datadir}/wallpapers/F%{version_maj} || ls -l %{_datadir}/wallpapers
 # nothing, this is a metapackage
 
 %files -n ultramarine-plasma-theme
+%license ultramarine-kde-theme-um%{version}/LICENSES/LICENSE-*
 %{_datadir}/plasma/look-and-feel/org.ultramarine-linux.ultramarine.desktop/
+%{_datadir}/plasma/look-and-feel/org.ultramarine-linux.ultramarinelight.desktop/
+%{_datadir}/color-schemes/UltramarineDark.colors
 
 %files -n qt-settings
 %license COPYING
@@ -274,6 +283,9 @@ test -f %{_datadir}/wallpapers/F%{version_maj} || ls -l %{_datadir}/wallpapers
 
 
 %changelog
+* Wed Nov 18 2026 Its-J <jonah@fyralabs.com>
+- Add ultramarine light/dark themes
+
 * Wed Aug 19 2026 Neal Gompa <ngompa@fedoraproject.org> - 44.0-1
 - Ship plasmoidsetupscripts as regular files in fedoradark and fedoralight
   Resolves: rhbz#2444046
