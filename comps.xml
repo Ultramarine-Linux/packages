@@ -62,7 +62,7 @@
       <packagereq type="default">vim</packagereq>
       <packagereq type="default">nano</packagereq>
       <packagereq type="default">rsync</packagereq>
-      <packagereq type="default">dive</packagereq>
+      <packagereq type="default">umdive</packagereq>
       <packagereq type="default">umcli</packagereq>
       <packagereq type="default">fastfetch</packagereq>
       <packagereq type="default">btop</packagereq>
