@@ -33,13 +33,14 @@
 %bcond_without wsl
 %bcond_without container
 %bcond_without server
+%bcond_without niri
 %ifarch x86_64
 %bcond_without surface
 %else
 %bcond_with surface
 %endif
 
-%if %{with budgie} || %{with plasma} || %{with gnome} || %{with xfce} || %{with atomic_budgie} || %{with atomic_plasma} || %{with atomic_gnome} || %{with atomic_xfce}
+%if %{with budgie} || %{with plasma} || %{with gnome} || %{with xfce} || %{with niri} || %{with atomic_budgie} || %{with atomic_plasma} || %{with atomic_gnome} || %{with atomic_xfce}
 %global with_desktop 1
 %endif
 
@@ -143,6 +144,7 @@ Source60:   ultramarine-budgie-protected.conf
 Source61:   ultramarine-gnome-protected.conf
 Source62:   ultramarine-plasma-protected.conf
 Source63:   ultramarine-xfce-protected.conf
+Source64:   ultramarine-niri-protected.conf
 
 Source70:   polycrystal-ultramarine-budgie.json
 Source71:   polycrystal-ultramarine-gnome.json
@@ -677,6 +679,44 @@ Provides the necessary files for an Ultramarine Server installation.
 %endif
 
 ######################################################################
+####### Niri #######
+
+%if %{with niri}
+%package niri
+Summary:	Base package for Ultramarine Niri specific default configurations
+RemovePathPostfixes: .niri
+Provides:   ultramarine-release = %{version}-%{release}
+Provides:   ultramarine-release-niri = %{version}-%{release}
+Provides:   ultramarine-release-variant = %{version}-%{release}
+Provides:   system-release
+Provides:   system-release(%{version})
+Provides:   base-module(platform:f%{version})
+Requires:   ultramarine-release-common = %{version}-%{release}
+Requires:   ultramarine-release-desktop = %{version}-%{release}
+Provides:   system-release-product
+# ultramarine-release-common Requires: ultramarine-release-identity, so at least one
+# package must provide it. This Recommends: pulls in
+# the matching identity package if nothing else is already doing so.
+Recommends:	ultramarine-release-identity-niri
+Recommends:	ultramarine-niri-settings
+
+%description niri
+Provides a base package for Ultramarine Niri configurations.
+
+%package identity-niri
+Summary:		Package providing the Ultramarine Niri Identity
+RemovePathPostfixes: .niri
+Provides:		ultramarine-release-identity = %{version}-%{release}
+Conflicts:		ultramarine-release-identity
+Requires(meta):	ultramarine-release-niri = %{version}-%{release}
+
+%description identity-niri
+Provides the necessary files for an Ultramarine Niri installation.
+
+%endif
+
+
+######################################################################
 #### Accessory packages
 ######################################################################
 
@@ -935,6 +975,11 @@ mkvariant container container "Container Image" "Ultramarine" "Container"
 
 %if %{with server}
 mkvariant server server "Server" "Ultramarine Server"
+%endif
+
+%if %{with niri}
+mkvariant niri niri "Niri" "Ultramarine Niri"
+install -Dm0644 %{SOURCE64} %{buildroot}%{_sysconfdir}/dnf/protected.d/ultramarine-niri.conf
 %endif
 
 # device identities keep the DE's VARIANT_ID so Anaconda profiles and taidan still match
@@ -1201,6 +1246,14 @@ ln -sf firewalld-workstation.conf %{_sysconfdir}/firewalld/firewalld.conf
 %files identity-server
 %{_prefix}/lib/os-release.server
 %attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.server
+%endif
+
+%if %{with niri}
+%files niri
+%files identity-niri
+%{_prefix}/lib/os-release.niri
+%attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.niri
+%{_sysconfdir}/dnf/protected.d/ultramarine-niri.conf
 %endif
 
 %if %{with desktop}
