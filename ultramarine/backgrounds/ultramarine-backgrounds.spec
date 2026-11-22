@@ -42,13 +42,13 @@ License:        CC0
 %description    gnome
 The desktop-backgrounds-gnome package sets default background in GNOME-based desktops
 
-%package        kde
+%package        plasma
 Summary:        The default KDE wallpaper from KDE desktop
 Requires:   ultramarine-backgrounds-common = %{version}-%{release}
 Provides:       system-backgrounds-kde = %{version}-%{release}
 License:        CC0
 
-%description    kde
+%description    plasma
 The desktop-backgrounds-kde package sets default background in the KDE Plasma desktop
 
 %package        compat
@@ -200,7 +200,7 @@ compat_link $DEFAULT_DARK_WALL images/default-dark-16_10.png
 %{_datadir}/gnome-background-properties/ultramarine-wallpapers-extras.xml
 %{_datadir}/gnome-background-properties/ultramarine.xml
 
-%files kde
+%files plasma
 "%{_datadir}/wallpapers/Tortuga Dark"
 "%{_datadir}/wallpapers/Tortuga Light"
 "%{_datadir}/wallpapers/Forresty Skies Dark"
@@ -232,7 +232,7 @@ compat_link $DEFAULT_DARK_WALL images/default-dark-16_10.png
 %files community-gnome
 %{_datadir}/gnome-background-properties/41-community-extras.xml
 
-%files community-kde
+%files community-plasma
 "%{_datadir}/wallpapers/Eternal Ultramarine Dark"
 "%{_datadir}/wallpapers/Eternal Ultramarine Light"
 "%{_datadir}/wallpapers/Lazuli Dark"
