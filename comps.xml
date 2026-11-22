@@ -565,6 +565,8 @@
       <packagereq type="mandatory">ultramarine-release-niri</packagereq>
       <packagereq type="default">ultramarine-release-identity-niri</packagereq>
       <packagereq type="mandatory">ultramarine-niri-settings</packagereq>
+      <packagereq type="mandatory">niri</packagereq>
+      <packagereq type="mandatory">noctalia</packagereq>
       <packagereq type="mandatory">noctalia-greeter</packagereq>
       <packagereq type="default">gnome-keyring-pam</packagereq>
       <packagereq type="default">xdg-user-dirs</packagereq>
