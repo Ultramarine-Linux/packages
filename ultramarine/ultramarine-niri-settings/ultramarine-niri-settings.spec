@@ -8,51 +8,21 @@ URL:		https://github.com/Ultramarine-Linux/%{name}
 Source0:	%{url}/archive/refs/tags/v%{version}.tar.gz
 BuildArch:	noarch
 
-BuildRequires:	niri
-BuildRequires:	noctalia
+BuildRequires:	make
 
 Requires:	niri
-Requires:	xwayland-satellite
 Requires:	noctalia
-Requires:	noctalia-greeter
-Requires:	greetd
-Requires:	alacritty
-Requires:	xdg-terminal-exec
-Requires:	nautilus-open-any-terminal
-Requires:	adw-gtk3-theme
-Requires:	ultramarine-backgrounds-compat
-
-# launched by the binds and default apps
-Recommends:	firefox
-Recommends:	nautilus
-Recommends:	gnome-text-editor
 
 %description
 %{summary}.
 
 %prep
-%autosetup -n %{name}-%{version}
+%autosetup
 
 %build
 
 %install
-cp -a files/. %{buildroot}/
-install -d %{buildroot}%{_sysconfdir}/niri
-# default niri config but switch to noctalia and include ultramarine/noctalia niri configs
-sed -e 's/^spawn-at-startup "waybar"$/spawn-at-startup "noctalia"/' \
-    %{_docdir}/niri/default-config.kdl > %{buildroot}%{_sysconfdir}/niri/config.kdl
-grep -q '^spawn-at-startup "noctalia"$' %{buildroot}%{_sysconfdir}/niri/config.kdl
-cat >> %{buildroot}%{_sysconfdir}/niri/config.kdl <<'EOF'
-
-include "%{_datadir}/ultramarine-niri/ultramarine.kdl"
-include "%{_datadir}/ultramarine-niri/noctalia-binds.kdl"
-EOF
-
-%check
-# includes are absolute, point them into the buildroot to validate
-sed 's|"%{_datadir}/|"%{buildroot}%{_datadir}/|' %{buildroot}%{_sysconfdir}/niri/config.kdl > config.kdl
-niri validate -c config.kdl
-noctalia config validate %{buildroot}%{_sysconfdir}/skel/.config/noctalia
+%make_install
 
 %files
 %license LICENSE
@@ -60,7 +30,6 @@ noctalia config validate %{buildroot}%{_sysconfdir}/skel/.config/noctalia
 %dir %{_sysconfdir}/niri
 %config(noreplace) %{_sysconfdir}/niri/config.kdl
 %config(noreplace) %{_sysconfdir}/xdg/niri-xdg-terminals.list
-%dir %{_sysconfdir}/skel/.config
 %{_sysconfdir}/skel/.config/niri/
 %{_sysconfdir}/skel/.config/noctalia/
 %{_datadir}/applications/niri-mimeapps.list

@@ -571,6 +571,43 @@ Provides the necessary files for an Ultramarine Xfce for Atomic installation.
 %endif
 
 ######################################################################
+####### Niri #######
+
+%if %{with niri}
+%package niri
+Summary:	Base package for Ultramarine Niri specific default configurations
+RemovePathPostfixes: .niri
+Provides:   ultramarine-release = %{version}-%{release}
+Provides:   ultramarine-release-niri = %{version}-%{release}
+Provides:   ultramarine-release-variant = %{version}-%{release}
+Provides:   system-release
+Provides:   system-release(%{version})
+Provides:   base-module(platform:f%{version})
+Requires:   ultramarine-release-common = %{version}-%{release}
+Requires:   ultramarine-release-desktop = %{version}-%{release}
+Provides:   system-release-product
+# ultramarine-release-common Requires: ultramarine-release-identity, so at least one
+# package must provide it. This Recommends: pulls in
+# the matching identity package if nothing else is already doing so.
+Recommends:	ultramarine-release-identity-niri
+Recommends:	ultramarine-niri-settings
+
+%description niri
+Provides a base package for Ultramarine Niri configurations.
+
+%package identity-niri
+Summary:		Package providing the Ultramarine Niri Identity
+RemovePathPostfixes: .niri
+Provides:		ultramarine-release-identity = %{version}-%{release}
+Conflicts:		ultramarine-release-identity
+Requires(meta):	ultramarine-release-niri = %{version}-%{release}
+
+%description identity-niri
+Provides the necessary files for an Ultramarine Niri installation.
+
+%endif
+
+######################################################################
 ####### WSL #######
 
 %if %{with wsl}
@@ -675,43 +712,6 @@ Requires(meta):	ultramarine-release-server = %{version}-%{release}
 
 %description identity-server
 Provides the necessary files for an Ultramarine Server installation.
-
-%endif
-
-######################################################################
-####### Niri #######
-
-%if %{with niri}
-%package niri
-Summary:	Base package for Ultramarine Niri specific default configurations
-RemovePathPostfixes: .niri
-Provides:   ultramarine-release = %{version}-%{release}
-Provides:   ultramarine-release-niri = %{version}-%{release}
-Provides:   ultramarine-release-variant = %{version}-%{release}
-Provides:   system-release
-Provides:   system-release(%{version})
-Provides:   base-module(platform:f%{version})
-Requires:   ultramarine-release-common = %{version}-%{release}
-Requires:   ultramarine-release-desktop = %{version}-%{release}
-Provides:   system-release-product
-# ultramarine-release-common Requires: ultramarine-release-identity, so at least one
-# package must provide it. This Recommends: pulls in
-# the matching identity package if nothing else is already doing so.
-Recommends:	ultramarine-release-identity-niri
-Recommends:	ultramarine-niri-settings
-
-%description niri
-Provides a base package for Ultramarine Niri configurations.
-
-%package identity-niri
-Summary:		Package providing the Ultramarine Niri Identity
-RemovePathPostfixes: .niri
-Provides:		ultramarine-release-identity = %{version}-%{release}
-Conflicts:		ultramarine-release-identity
-Requires(meta):	ultramarine-release-niri = %{version}-%{release}
-
-%description identity-niri
-Provides the necessary files for an Ultramarine Niri installation.
 
 %endif
 
@@ -965,6 +965,11 @@ tar -xvf %{SOURCE40} -C %{buildroot}%{_sysconfdir}/skel --strip-components=1
 mkvariant atomic-xfce atomic-xfce "Xfce for Atomic" "Ultramarine Xfce" "for Atomic"
 %endif
 
+%if %{with niri}
+mkvariant niri niri "Niri" "Ultramarine Niri"
+install -Dm0644 %{SOURCE64} %{buildroot}%{_sysconfdir}/dnf/protected.d/ultramarine-niri.conf
+%endif
+
 %if %{with wsl}
 mkvariant wsl wsl "WSL" "Ultramarine" "for WSL"
 %endif
@@ -975,11 +980,6 @@ mkvariant container container "Container Image" "Ultramarine" "Container"
 
 %if %{with server}
 mkvariant server server "Server" "Ultramarine Server"
-%endif
-
-%if %{with niri}
-mkvariant niri niri "Niri" "Ultramarine Niri"
-install -Dm0644 %{SOURCE64} %{buildroot}%{_sysconfdir}/dnf/protected.d/ultramarine-niri.conf
 %endif
 
 # device identities keep the DE's VARIANT_ID so Anaconda profiles and taidan still match
@@ -1227,6 +1227,14 @@ ln -sf firewalld-workstation.conf %{_sysconfdir}/firewalld/firewalld.conf
 %{_sysconfdir}/lightdm/lightdm.conf.d/50-ultramarine-xfce-slick-greeter.conf
 %endif
 
+%if %{with niri}
+%files niri
+%files identity-niri
+%{_prefix}/lib/os-release.niri
+%attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.niri
+%{_sysconfdir}/dnf/protected.d/ultramarine-niri.conf
+%endif
+
 %if %{with wsl}
 %files wsl
 %files identity-wsl
@@ -1246,14 +1254,6 @@ ln -sf firewalld-workstation.conf %{_sysconfdir}/firewalld/firewalld.conf
 %files identity-server
 %{_prefix}/lib/os-release.server
 %attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.server
-%endif
-
-%if %{with niri}
-%files niri
-%files identity-niri
-%{_prefix}/lib/os-release.niri
-%attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.niri
-%{_sysconfdir}/dnf/protected.d/ultramarine-niri.conf
 %endif
 
 %if %{with desktop}

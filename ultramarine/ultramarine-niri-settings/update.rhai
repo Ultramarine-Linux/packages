@@ -1,1 +1,1 @@
-rpm.version(gh("Ultramarine-Linux/ultramarine-niri-settings"))
+rpm.version(gh("Ultramarine-Linux/ultramarine-niri-settings"));
