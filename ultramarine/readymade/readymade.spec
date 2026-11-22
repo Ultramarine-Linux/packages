@@ -1,5 +1,5 @@
 Name:           readymade
-Version:        0.8.0
+Version:        0.11.2
 Release:        1%?dist
 Summary:        Install ready-made distribution images!
 License:        MIT
@@ -9,6 +9,7 @@ BuildRequires:	anda-srpm-macros rust-packaging mold
 BuildRequires:  pkgconfig(libhelium-1)
 BuildRequires:  pkgconfig(gnome-desktop-4)
 BuildRequires:  clang-devel
+BuildRequires:  cmake
 
 Requires:  efibootmgr
 

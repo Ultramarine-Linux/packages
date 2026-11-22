@@ -9,7 +9,7 @@ Spacing=8
 
 [Budgie Menu]
 ID=Budgie Menu
-menu-icon=/usr/share/pixmaps/fedora-logo-sprite.png
+menu-icon='ultramarine'
 
 [Visual Space]
 ID=Visual Space

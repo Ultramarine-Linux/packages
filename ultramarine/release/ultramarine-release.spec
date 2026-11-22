@@ -4,9 +4,10 @@
 %global fedora_codename Forty One
 %global codename cyberia
 %define dist_version 41
-%define _alt_name fedora-release
 
-%define xfce_conf_commit db16bb9fdc2c5777389db1fcab81ba3489393e4e
+%define xfce_conf_commit d2ecec2c00250224d7762c6a2b7e15fbc8621783
+
+%define anywhere_conf_commit 240cd1e95d5abb7bbea4cefbe19d328fd6bacac7
 
 %if %{is_rawhide}
 %define bug_version rawhide
@@ -28,6 +29,8 @@
 %bcond_without atomic_gnome
 %bcond_without atomic_xfce
 %bcond_without chromebook
+%bcond_without raspberry_pi
+%bcond_without wsl
 %ifarch x86_64
 %bcond_without surface
 %else
@@ -49,7 +52,7 @@
 Summary:	Ultramarine Linux release files
 Name:		ultramarine-release
 Version:	%{dist_version}
-Release:	11%{?dist}
+Release:	18%{?dist}
 License:	MIT
 Source0:	LICENSE
 URL:        https://ultramarine-linux.org
@@ -108,11 +111,14 @@ Source63:   ultramarine-xfce-protected.conf
 Source64:   88-ultramarine-chromebook-default.preset
 
 Source65:   91-ultramarine-surface-default.preset
+Source66:   linux-surface.repo
 
 Source70:   polycrystal-ultramarine-flagship.json
 Source71:   polycrystal-ultramarine-gnome.json
 Source72:   polycrystal-ultramarine-plasma.json
 Source73:   polycrystal-ultramarine-xfce.json
+
+Source80:   https://github.com/Ultramarine-Linux/anywhere/archive/%{anywhere_conf_commit}.tar.gz
 
 BuildRequires:    systemd-rpm-macros
 
@@ -133,8 +139,8 @@ Recommends: fastfetch
 Recommends: golang-github-ultramarine-linux-um
 Conflicts:  generic-release
 Conflicts:  fedora-release
+Provides:   fedora-release-common
 Conflicts:  fedora-release-common
-Provides:   %{_alt_name} = %{version}-%{release}
 Provides:   generic-release = %{version}-%{release}
 
 %description common
@@ -270,6 +276,7 @@ Obsoletes: ultramarine-release-kde < 40-12
 # ultramarine-release-identity-cinnamon if nothing else is already doing so.
 Recommends:	ultramarine-release-identity-plasma
 Recommends:	kwin-system76-scheduler-integration
+Recommends: pipewire-systemd-mask
 
 %description plasma
 Provides a base package for Ultramarine Plasma configurations.
@@ -281,6 +288,7 @@ Provides:		ultramarine-release-identity = %{version}-%{release}
 Conflicts:		ultramarine-release-identity
 Obsoletes:        ultramarine-release-identity-kde < 40-12
 Requires(meta):	ultramarine-release-plasma = %{version}-%{release}
+Requires(post): bash systemd
 
 %description identity-plasma
 Provides the necessary files for a Ultramarine Plasma installation.
@@ -309,6 +317,8 @@ Provides:   system-release-product
 # package must provide it. This Recommends: pulls in
 # ultramarine-release-identity-cinnamon if nothing else is already doing so.
 Recommends:	ultramarine-release-identity-atomic-plasma
+Recommends: kwin-system76-scheduler-integration
+Recommends: pipewire-systemd-mask
 
 %description atomic-plasma
 Provides a base package for Ultramarine Atomic Plasma configurations.
@@ -319,6 +329,7 @@ RemovePathPostfixes: .atomic-plasma
 Provides:		ultramarine-release-identity = %{version}-%{release}
 Conflicts:		ultramarine-release-identity
 Requires(meta):	ultramarine-release-atomic-plasma = %{version}-%{release}
+Requires(post): bash systemd
 
 %description identity-atomic-plasma
 Provides the necessary files for a Ultramarine Atomic Plasma installation.
@@ -517,6 +528,45 @@ Provides the necessary files for a Ultramarine Atomic XFCE installation.
 %endif
 
 ######################################################################
+####### WSL #######
+
+%if %{with wsl}
+
+%package wsl
+Summary:	Base package for Ultramarine WSL-specific default configurations
+RemovePathPostfixes: .wsl
+Provides:   ultramarine-release = %{version}-%{release}
+Provides:   ultramarine-release-wsl = %{version}-%{release}
+Provides:   ultramarine-release-variant = %{version}-%{release}
+Provides:   system-release
+Provides:   system-release(%{version})
+Provides:   base-module(platform:f%{version})
+Requires:   ultramarine-release-common = %{version}-%{release}
+Requires:   ultramarine-release-desktop = %{version}-%{release}
+Provides:   system-release-product
+# ultramarine-release-common Requires: ultramarine-release-identity, so at least one
+# package must provide it. This Recommends: pulls in
+# ultramarine-release-identity-cinnamon if nothing else is already doing so.
+Recommends:	ultramarine-release-identity-wsl
+
+Requires:	ultramarine-wsl-filesystem
+
+%description wsl
+Provides a base package for Ultramarine WSL configurations.
+
+%package identity-wsl
+Summary:		Package providing the Ultramarine WSL Identity
+RemovePathPostfixes: .wsl
+Provides:		ultramarine-release-identity = %{version}-%{release}
+Conflicts:		ultramarine-release-identity
+Requires(meta):	ultramarine-release-wsl = %{version}-%{release}
+
+%description identity-wsl
+Provides the necessary files for a Ultramarine WSL installation.
+
+%endif
+
+######################################################################
 #### Accessory packages
 ######################################################################
 
@@ -538,6 +588,16 @@ Summary:        Common configuration package for surface variants
 
 %description surface
 Common configuration package for surface variants
+%endif
+
+####### Raspberry Pi #######
+
+%if %{with raspberry_pi}
+%package        raspberry-pi
+Summary:        Common configuration package for raspberry pi variants
+
+%description raspberry-pi
+Common configuration package for raspberry pi variants
 %endif
 
 ####### Desktop #######
@@ -766,6 +826,15 @@ sed -i -e "s|(%{release_name}%{?prerelease})|(Atomic XFCE Edition%{?prerelease})
 sed -e "s#\$version#%{bug_version}#g" -e 's/$edition/Atomic XFCE/;s/<!--.*-->//;/^$/d' %{SOURCE20} > %{buildroot}%{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.atomic-xfce
 %endif
 
+%if %{with wsl}
+# WSL
+cp -p os-release \
+      %{buildroot}%{_prefix}/lib/os-release.wsl
+echo "VARIANT=\"WSL Edition\"" >> %{buildroot}%{_prefix}/lib/os-release.wsl
+echo "VARIANT_ID=wsl" >> %{buildroot}%{_prefix}/lib/os-release.wsl
+sed -i -e "s|(%{release_name}%{?prerelease})|(WSL Edition%{?prerelease})|g" %{buildroot}%{_prefix}/lib/os-release.wsl
+sed -e "s#\$version#%{bug_version}#g" -e 's/$edition/WSL/;s/<!--.*-->//;/^$/d' %{SOURCE20} > %{buildroot}%{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.wsl
+%endif
 
 # Create copr config file so COPR doesnt flip out and assume EPEL
 # I created a PR to support this months ago, but completely forgot about it
@@ -892,7 +961,15 @@ install -Dm0644 %{SOURCE64} -t $RPM_BUILD_ROOT%{_prefix}/lib/systemd/system-pres
 
 # Install systemd presets for surface
 install -Dm0644 %{SOURCE65} -t $RPM_BUILD_ROOT%{_prefix}/lib/systemd/system-preset/
+install -Dm0644 %{SOURCE66} -t $RPM_BUILD_ROOT/etc/yum.repos.d/
 
+%endif
+
+%if %{with raspberry_pi}
+# Install bootloader configuration file for raspberry pis
+tar xvf %{SOURCE80}
+mkdir -p $RPM_BUILD_ROOT/boot/efi/
+install -Dm0644 anywhere-%{anywhere_conf_commit}/raspberry-pi/config.txt $RPM_BUILD_ROOT/boot/efi/config.txt
 %endif
 
 %if %{with gnome} || %{with atomic_gnome}
@@ -1062,6 +1139,13 @@ install -Dm0644 %{SOURCE32} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
 %{_sysconfdir}/lightdm/lightdm.conf.d/50-ultramarine-xfce-slick-greeter.conf
 %endif
 
+%if %{with wsl}
+%files wsl
+%files identity-wsl
+%{_prefix}/lib/os-release.wsl
+%attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.wsl
+%endif
+
 %if %{with desktop}
 %files desktop
 %{_prefix}/lib/systemd/system-preset/81-desktop.preset
@@ -1075,6 +1159,12 @@ install -Dm0644 %{SOURCE32} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
 %if %{with surface}
 %files surface
 %{_prefix}/lib/systemd/system-preset/91-ultramarine-surface-default.preset
+/etc/yum.repos.d//linux-surface.repo
+%endif
+
+%if %{with raspberry_pi}
+%files raspberry-pi
+/boot/efi/config.txt
 %endif
 
 %if %{with atomic_desktop}
