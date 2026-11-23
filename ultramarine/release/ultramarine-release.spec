@@ -946,7 +946,13 @@ sed -e "s#\$version#%{bug_version}#g" -e 's/$edition/Atomic XFCE/;s/<!--.*-->//;
 %endif
 
 %if %{with niri}
-mkvariant niri niri "Niri" "Ultramarine Niri"
+# Niri
+cp -p os-release \
+      %{buildroot}%{_prefix}/lib/os-release.niri
+echo "VARIANT=\"Niri Edition\"" >> %{buildroot}%{_prefix}/lib/os-release.niri
+echo "VARIANT_ID=niri" >> %{buildroot}%{_prefix}/lib/os-release.niri
+sed -i -e "s|(%{release_name}%{?prerelease})|(Niri Edition%{?prerelease})|g" %{buildroot}%{_prefix}/lib/os-release.niri
+sed -e "s#\$version#%{bug_version}#g" -e 's/$edition/Niri/;s/<!--.*-->//;/^$/d' %{SOURCE20} > %{buildroot}%{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.niri
 install -Dm0644 %{SOURCE64} %{buildroot}%{_sysconfdir}/dnf/protected.d/ultramarine-niri.conf
 %endif
 
