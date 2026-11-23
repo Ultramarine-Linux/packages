@@ -555,6 +555,64 @@
     </grouplist>
   </environment>
   <group>
+    <id>ultramarine-niri-product</id>
+    <name>Ultramarine Niri product core</name>
+    <description
+        >Packages mandatory for the Ultramarine Niri product.</description>
+    <default>false</default>
+    <uservisible>false</uservisible>
+    <packagelist>
+      <packagereq type="mandatory">ultramarine-release-niri</packagereq>
+      <packagereq type="default">ultramarine-release-identity-niri</packagereq>
+      <packagereq type="mandatory">ultramarine-niri-settings</packagereq>
+      <packagereq type="mandatory">niri</packagereq>
+      <packagereq type="mandatory">noctalia</packagereq>
+      <packagereq type="mandatory">noctalia-greeter</packagereq>
+      <packagereq type="mandatory">ultramarine-systemd-presets-niri</packagereq>
+      <packagereq type="default">gnome-keyring-pam</packagereq>
+      <packagereq type="default">xdg-user-dirs</packagereq>
+      <packagereq type="default">nautilus</packagereq>
+      <packagereq type="default">nautilus-open-any-terminal</packagereq>
+      <packagereq type="default">gnome-disk-utility</packagereq>
+      <packagereq type="default">papers-thumbnailer</packagereq>
+      <packagereq type="default">gvfs-smb</packagereq>
+      <packagereq type="default">gvfs-mtp</packagereq>
+      <packagereq type="default">gvfs-afc</packagereq>
+      <packagereq type="default">gvfs-gphoto2</packagereq>
+      <packagereq type="default">adw-gtk3-theme</packagereq>
+      <packagereq type="default">alacritty</packagereq>
+      <packagereq type="default">xdg-terminal-exec</packagereq>
+      <packagereq type="default">gnome-text-editor</packagereq>
+      <packagereq type="default">gnome-software</packagereq>
+      <packagereq type="default">nwg-displays</packagereq>
+      <packagereq type="default">nano-default-editor</packagereq>
+    </packagelist>
+  </group>
+  <environment>
+    <id>ultramarine-niri-product-environment</id>
+    <name>Ultramarine Niri</name>
+    <description
+        >Ultramarine Niri is an Ultramarine experience powered by Niri and Noctalia Shell.</description>
+    <grouplist>
+      <groupid>base-graphical</groupid>
+      <groupid>container-management</groupid>
+      <groupid>core</groupid>
+      <groupid>standard</groupid>
+      <groupid>firefox</groupid>
+      <groupid>fonts</groupid>
+      <groupid>guest-desktop-agents</groupid>
+      <groupid>hardware-support</groupid>
+      <groupid>multimedia</groupid>
+      <groupid>networkmanager-submodules</groupid>
+      <groupid>printing</groupid>
+      <groupid>desktop-accessibility</groupid>
+      <groupid>ultramarine-product-common</groupid>
+      <groupid>ultramarine-desktop-product-common</groupid>
+      <groupid>ultramarine-peripheral-support</groupid>
+      <groupid>ultramarine-niri-product</groupid>
+    </grouplist>
+  </environment>
+  <group>
     <id>ultramarine-budgie-no-flatpak-apps</id>
     <name>Ultramarine budgie non-Flatpak apps</name>
     <description>Apps for Ultramarine Budgie without flatpaks</description>
