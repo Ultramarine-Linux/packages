@@ -2,8 +2,8 @@
 
 Name:           ultramarine-gpg-keys
 Version:        46
-Release:        5%{?dist}
-Summary:        GPG keys for Ultramarine Linux
+Release:        6%{?dist}
+Summary:        GPG keys for Ultramarine
 Requires:       filesystem >= 3.18-6
 
 License:        MIT
@@ -30,7 +30,7 @@ BuildArch:      noarch
 Obsoletes:      ultramarine-mock-gpg-keys < %{version}-3
 
 %description
-GPG keys for Ultramarine Linux, used for verifying RPM package signatures.
+GPG keys for Ultramarine, used for verifying RPM package signatures.
 
 %prep
 

@@ -24,19 +24,19 @@ jobs:
 
       - name: Build ultramarine-mock-configs
         run: |
-          anda build -D "vendor Ultramarine Linux" -D "dist .um${{ matrix.version }}" -c fedora-${{ matrix.version }}-${{ matrix.arch }} ultramarine/ultramarine-mock-configs/pkg
+          anda build -D "vendor Ultramarine" -D "dist .um${{ matrix.version }}" -c fedora-${{ matrix.version }}-${{ matrix.arch }} ultramarine/ultramarine-mock-configs/pkg
 
       - name: Build ultramarine-repos
         run: |
-          anda build -D "vendor Ultramarine Linux" -D "dist .um${{ matrix.version }}" -c fedora-${{ matrix.version }}-${{ matrix.arch }} ultramarine/repos/pkg
+          anda build -D "vendor Ultramarine" -D "dist .um${{ matrix.version }}" -c fedora-${{ matrix.version }}-${{ matrix.arch }} ultramarine/repos/pkg
 
       - name: Build ultramarine-release
         run: |
-          anda build -D "vendor Ultramarine Linux" -D "dist .um${{ matrix.version }}" -c fedora-${{ matrix.version }}-${{ matrix.arch }} ultramarine/release/pkg
+          anda build -D "vendor Ultramarine" -D "dist .um${{ matrix.version }}" -c fedora-${{ matrix.version }}-${{ matrix.arch }} ultramarine/release/pkg
 
       - name: Build ultramarine-gpg-keys
         run: |
-          anda build -D "vendor Ultramarine Linux" -D "dist .um${{ matrix.version }}" -c fedora-${{ matrix.version }}-${{ matrix.arch }} ultramarine/gpg-keys/pkg
+          anda build -D "vendor Ultramarine" -D "dist .um${{ matrix.version }}" -c fedora-${{ matrix.version }}-${{ matrix.arch }} ultramarine/gpg-keys/pkg
 
       - name: Upload packages to subatomic
         run: |

@@ -1,7 +1,7 @@
 Name:           ultramarine-mock-configs
 Version:        2.4
-Release:        1%{?dist}
-Summary:        Mock configs for Ultramarine Linux
+Release:        2%{?dist}
+Summary:        Mock configs for Ultramarine
 
 License:        MIT
 URL:            https://ultramarine-linux.org

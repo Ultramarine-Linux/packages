@@ -1,8 +1,8 @@
-# Ultramarine Linux packages monorepo
+# Ultramarine packages monorepo
 
-This repository is a monorepo containing all packages specifically for Ultramarine Linux.
+This repository is a monorepo containing all packages specifically for Ultramarine.
 
-This repository uses the [Andaman](https://github.com/FyraLabs/anda) toolchain to manage its packages, created by Fyra Labs (the company behind Ultramarine Linux).
+This repository uses the [Andaman](https://github.com/FyraLabs/anda) toolchain to manage its packages, created by Fyra Labs (the company behind Ultramarine).
 
 ## Usage
 
@@ -34,6 +34,6 @@ anda list
 
 # Notes
 
-- From Ultramarine 40+, on each major release, an admin should upload the `terra-release` package from Terra into the Ultramarine Linux repo. This is required since `ultramarine-repos` no longer provides the terra.repo file, but rather requires on `terra-release`. If it's missing, this may break installs where the user doesn't have the Terra repo installed (out of band), additionally, there was a time in 40's cycle where the `ultramarine-repos` only recommended the `terra-release` package, which might have caused it to not be installed on some systems during the 39 to 40 upgrade.
+- From Ultramarine 40+, on each major release, an admin should upload the `terra-release` package from Terra into the Ultramarine repo. This is required since `ultramarine-repos` no longer provides the terra.repo file, but rather requires on `terra-release`. If it's missing, this may break installs where the user doesn't have the Terra repo installed (out of band), additionally, there was a time in 40's cycle where the `ultramarine-repos` only recommended the `terra-release` package, which might have caused it to not be installed on some systems during the 39 to 40 upgrade.
     - There's no need to update the `terra-release` package once it's uploaded to the UM repo. Once the Terra repo is discovered, the user will get updates for the package from Terra.
 - When preparing a new major release, make sure to update files pulled from upstream, such as systemd preset config in the release package or cetain kde-settings files.
