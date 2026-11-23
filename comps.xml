@@ -589,6 +589,10 @@
       <packagereq type="default">alacritty</packagereq>
       <packagereq type="default">xdg-terminal-exec</packagereq>
       <packagereq type="default">gnome-text-editor</packagereq>
+      <packagereq type="default">loupe</packagereq>
+      <packagereq type="default">showtime</packagereq>
+      <packagereq type="default">snapshot</packagereq>
+      <packagereq type="default">thunderbird</packagereq>
       <packagereq type="default">gnome-software</packagereq>
       <packagereq type="default">nwg-displays</packagereq>
       <packagereq type="default">nano-default-editor</packagereq>
