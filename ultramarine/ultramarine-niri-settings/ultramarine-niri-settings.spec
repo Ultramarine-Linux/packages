@@ -1,5 +1,5 @@
 Name:		ultramarine-niri-settings
-Version:	0.1.1
+Version:	0.1.2
 Release:	1%{?dist}
 Summary:	Default configuration for Ultramarine Niri
 
@@ -42,5 +42,5 @@ Requires:	noctalia-greeter
 %{_datadir}/ultramarine-niri/
 
 %changelog
-* Sat Nov 21 2026 Its-J <jonah@fyralabs.com> - 0.1.1-1
+* Sat Nov 21 2026 Its-J <jonah@fyralabs.com> - 0.1.2-1
 - Initial package
