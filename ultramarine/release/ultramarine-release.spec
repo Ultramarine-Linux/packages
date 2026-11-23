@@ -55,7 +55,7 @@
 Summary:	Ultramarine Linux release files
 Name:		ultramarine-release
 Version:	%{dist_version}
-Release:	14%{?dist}
+Release:	15%{?dist}
 License:	MIT
 Source0:	LICENSE
 URL:        https://ultramarine-linux.org
@@ -543,6 +543,7 @@ Provides:   system-release(%{version})
 Provides:   base-module(platform:f%{version})
 Requires:   ultramarine-release-common = %{version}-%{release}
 Requires:   ultramarine-release-desktop = %{version}-%{release}
+Requires:   ultramarine-systemd-presets-niri
 Provides:   system-release-product
 # ultramarine-release-common Requires: ultramarine-release-identity, so at least one
 # package must provide it. This Recommends: pulls in
