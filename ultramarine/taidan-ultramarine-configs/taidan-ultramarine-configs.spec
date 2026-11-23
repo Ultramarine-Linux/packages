@@ -1,6 +1,6 @@
 Name:           taidan-ultramarine-configs
 Version:        46
-Release:        5%?dist
+Release:        6%?dist
 Summary:        Taidan configuration for Ultramarine
 License:        (MIT AND GPL-3.0-or-later)
 Provides:       taidan-configs
@@ -12,7 +12,7 @@ BuildArch:      noarch
 Source0:        detect-internet
 
 %description
-This package provides the Taidan configuration files for Ultramarine Linux.
+This package provides the Taidan configuration files for Ultramarine.
 
 %global tweak(p:) %{quote:
 %package tweaks-%1

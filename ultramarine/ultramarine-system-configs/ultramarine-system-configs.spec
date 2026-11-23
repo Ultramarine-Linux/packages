@@ -1,6 +1,6 @@
 Name:           ultramarine-system-configs
 Version:        46
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Various configuration files for a more comfortable Ultramarine desktop experience
 BuildArch:      noarch
 License:        MIT OR GFDL-1.1-or-later
@@ -17,20 +17,20 @@ Source9:        falcond.conf
 BuildRequires:  /usr/bin/install
 
 %package core
-Summary:        Core system tweaks for Ultramarine Linux
+Summary:        Core system tweaks for Ultramarine
 BuildArch:      noarch
 
 %description core
 This package provides various systemd configurations that improve system performance
-and resource usage on Ultramarine Linux.
+and resource usage on Ultramarine.
 
 %package desktop
-Summary:        Desktop-specific tweaks for Ultramarine Linux
+Summary:        Desktop-specific tweaks for Ultramarine
 BuildArch:      noarch
 
 %description desktop
 This package provides various systemd configurations that optimize desktop resource usage
-and performance on Ultramarine Linux.
+and performance on Ultramarine.
 
 %package -n ultramarine-bookmarks
 # Based on https://src.fedoraproject.org/rpms/fedora-bookmarks/blob/rawhide/f/fedora-bookmarks.spec
@@ -47,7 +47,7 @@ This package contains the default Firefox bookmarks for Ultramarine.
 
 %description
 This package provides various systemd configurations
-to optimize desktop resource usage and performance on Ultramarine Linux.
+to optimize desktop resource usage and performance on Ultramarine.
 
 The configs attempt to reduce disk usage for journaling and logging, and
 cleaning up of unused temporary files periodically.

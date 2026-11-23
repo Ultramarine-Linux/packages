@@ -26,7 +26,7 @@ EFS loader for Qualcomm-based Chrome OS devices
 install -Dm755 msm-cros-efs-loader.sh %{buildroot}/usr/bin/msm-cros-efs-loader
 install -Dm644 %SOURCE1 %{buildroot}/%{_unitdir}/msm-cros-efs-loader.service
 
-# These systemd services should be included in the preset file for Ultramarine Linux sc7180 (ARM) Chromebook images
+# These systemd services should be included in the preset file for Ultramarine sc7180 (ARM) Chromebook images
 %post
 %systemd_post msm-cros-efs-loader.service
 

@@ -1,7 +1,7 @@
 Name:           ultramarine-shell-config
 Version:        46
-Release:        4%{?dist}
-Summary:        Shell configuration for Ultramarine Linux
+Release:        5%{?dist}
+Summary:        Shell configuration for Ultramarine
 License:        MIT
 
 Source0:        ultramarine-shell.bash
@@ -18,7 +18,7 @@ Requires:       fzf
 BuildArch:      noarch
 
 %description
-This package contains shell configurations made for Ultramarine Linux.
+This package contains shell configurations made for Ultramarine.
 
 %prep
 
