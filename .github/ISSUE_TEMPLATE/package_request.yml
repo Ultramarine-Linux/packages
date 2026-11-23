@@ -1,5 +1,5 @@
 name: Package Request
-description: Request a package to be patched and added to Ultramarine Linux repos
+description: Request a package to be patched and added to Ultramarine repos
 title: "[Request] "
 labels: ["enhancement"]
 body:
@@ -8,7 +8,7 @@ body:
       value: |
         # README
         You are submitting a package request in the **[Ultramarine-Linux/packages]** repository.
-        This repository only hosts packages specific to Ultramarine Linux, such as OS identity files,
+        This repository only hosts packages specific to Ultramarine, such as OS identity files,
         branding files, desktop configurations, release files, etc.
 
         If you are requesting packages for software that **works fine on other Linux distributions

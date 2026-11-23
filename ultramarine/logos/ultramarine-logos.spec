@@ -1,9 +1,9 @@
 Name:          ultramarine-logos
 %define        _alt_name fedora-logos
-Summary:       Icons and pictures related to Ultramarine Linux
+Summary:       Icons and pictures related to Ultramarine
 Version:       45
 %define        _release 1%{?dist}
-Release:       2%{?dist}
+Release:       3%{?dist}
 URL:           https://github.com/Ultramarine-Linux/logos
 Source0:       https://github.com/Ultramarine-Linux/logos/archive/refs/heads/lapis.zip
 Source1:       distributor-logo-ultramarine-flat.svg
@@ -26,7 +26,7 @@ See the included COPYING file for full information on copying and
 redistribution of this package and its contents.
 
 %package httpd
-Summary: Assets used by httpd that are related to Ultramarine Linux
+Summary: Assets used by httpd that are related to Ultramarine
 Provides:	system-logos-httpd = %{version}-%{_release}
 Provides: %{_alt_name}-httpd = %{version}-%{_release}
 BuildArch:	noarch
@@ -34,7 +34,7 @@ Recommends:	julietaula-montserrat-fonts
 Provides:	system-logos(httpd-logo-ng)
 
 %description httpd
-Assets used by httpd that are related to Ultramarine Linux
+Assets used by httpd that are related to Ultramarine
 
 %package classic
 Summary:	Compatibility package for %{_alt_name}

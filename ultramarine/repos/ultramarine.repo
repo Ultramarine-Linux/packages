@@ -1,5 +1,5 @@
 [ultramarine]
-name=Ultramarine Linux $releasever
+name=Ultramarine $releasever
 #baseurl=https://repos.fyralabs.com/um$releasever
 metalink=https://tetsudou.fyralabs.com/metalink?repo=um$releasever&arch=$basearch
 metadata_expire=6h
@@ -12,7 +12,7 @@ enabled_metadata=1
 countme=1
 
 [ultramarine-source]
-name=Ultramarine Linux $releasever - Source
+name=Ultramarine $releasever - Source
 #baseurl=https://repos.fyralabs.com/um$releasever-source
 metalink=https://tetsudou.fyralabs.com/metalink?repo=um$releasever-source&arch=$basearch
 metadata_expire=6h

@@ -1,7 +1,7 @@
 Name:           ultramarine-budgie-filesystem
 Version:        45
-Release:        1%{?dist}
-Summary:        Assets for Ultramarine Linux Budgie
+Release:        2%{?dist}
+Summary:        Assets for Ultramarine Budgie
 
 License:        MIT
 URL:            https://ultramarine-linux.org
