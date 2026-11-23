@@ -3,7 +3,7 @@ Name:          ultramarine-logos
 Summary:       Icons and pictures related to Ultramarine Linux
 Version:       46
 %define        _release 1%{?dist}
-Release:       1%{?dist}
+Release:       2%{?dist}
 URL:           https://github.com/Ultramarine-Linux/logos
 Source0:       https://github.com/Ultramarine-Linux/logos/archive/refs/heads/lapis.zip
 Source1:       distributor-logo-ultramarine-flat.svg
@@ -139,6 +139,7 @@ install -p -m 644 icons/hicolor/scalable/apps/fedora-logo-icon.svg $RPM_BUILD_RO
 install -p -m 644 icons/hicolor/scalable/apps/fedora-logo-icon_classic.svg $RPM_BUILD_ROOT%{_datadir}/icons/hicolor/scalable/apps/start-here_classic.svg
 install -p -m 644 icons/hicolor/scalable/apps/org.fedoraproject.AnacondaInstaller.svg $RPM_BUILD_ROOT%{_datadir}/icons/hicolor/scalable/apps/org.fedoraproject.AnacondaInstaller.svg
 install -p -m 644 icons/hicolor/scalable/apps/org.fedoraproject.AnacondaInstaller_classic.svg $RPM_BUILD_ROOT%{_datadir}/icons/hicolor/scalable/apps/org.fedoraproject.AnacondaInstaller_classic.svg
+install -p -m 644 icons/hicolor/scalable/apps/ultramarine.svg $RPM_BUILD_ROOT%{_datadir}/icons/hicolor/scalable/apps/ultramarine.svg
 mkdir -p $RPM_BUILD_ROOT%{_datadir}/icons/hicolor/scalable/places/
 pushd $RPM_BUILD_ROOT%{_datadir}/icons/hicolor/scalable/places/
   ln -s ../apps/start-here.svg .
