@@ -9,9 +9,11 @@ Source0:	%{url}/archive/refs/tags/v%{version}.tar.gz
 BuildArch:	noarch
 
 BuildRequires:	make
+BuildRequires:	systemd-rpm-macros
 
 Requires:	niri
 Requires:	noctalia
+Requires:	noctalia-greeter
 
 %description
 %{summary}.
@@ -30,6 +32,9 @@ Requires:	noctalia
 %dir %{_sysconfdir}/niri
 %config(noreplace) %{_sysconfdir}/niri/config.kdl
 %config(noreplace) %{_sysconfdir}/xdg/niri-xdg-terminals.list
+%config(noreplace) %{_sysconfdir}/greetd/ultramarine-niri.toml
+%dir %{_unitdir}/greetd.service.d
+%{_unitdir}/greetd.service.d/ultramarine-niri.conf
 %{_sysconfdir}/skel/.config/niri/
 %{_sysconfdir}/skel/.config/noctalia/
 %{_datadir}/applications/niri-mimeapps.list
@@ -37,5 +42,5 @@ Requires:	noctalia
 %{_datadir}/ultramarine-niri/
 
 %changelog
-* Sat Nov 21 2026 Its-J <jonah@fyralabs.com> - 0.1.0-1
+* Sat Nov 21 2026 Its-J <jonah@fyralabs.com> - 0.1.1-1
 - Initial package
