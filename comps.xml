@@ -568,6 +568,7 @@
       <packagereq type="mandatory">niri</packagereq>
       <packagereq type="mandatory">noctalia</packagereq>
       <packagereq type="mandatory">noctalia-greeter</packagereq>
+      <packagereq type="mandatory">ultramarine-systemd-presets-niri</packagereq>
       <packagereq type="default">gnome-keyring-pam</packagereq>
       <packagereq type="default">xdg-user-dirs</packagereq>
       <packagereq type="default">nautilus</packagereq>
