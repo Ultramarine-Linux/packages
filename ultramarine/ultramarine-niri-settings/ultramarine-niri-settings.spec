@@ -1,5 +1,5 @@
 Name:		ultramarine-niri-settings
-Version:	0.1.2
+Version:	0.1.3
 Release:	1%{?dist}
 Summary:	Default configuration for Ultramarine Niri
 
