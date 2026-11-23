@@ -1,4 +1,4 @@
-# Global and common shell config for Ultramarine Linux
+# Global and common shell config for Ultramarine
 
 um=$(cat<<EOF
 Try searching for this package with dnf search or in your edition's app store.

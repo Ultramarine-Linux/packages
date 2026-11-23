@@ -2,9 +2,9 @@
 
 Name: ultramarine-repos
 Version: %{_dist_version}
-Release: 1%{?dist}
+Release: 2%{?dist}
 License: MIT
-Summary: Repositories for Ultramarine Linux
+Summary: Repositories for Ultramarine
 Requires: %{name}-common = %{version}-%{release}
 Recommends: %{name}-extras = %{version}-%{release}
 
@@ -12,10 +12,10 @@ Provides: ultramarine-repos(%{_dist_version}) = %{_dist_version}
 BuildArch: noarch
 
 %description
-Metapackage for Ultramarine Linux repositories.
+Metapackage for Ultramarine repositories.
 
 %package common
-Summary: Common repository for Ultramarine Linux
+Summary: Common repository for Ultramarine
 Requires: fedora-repos(%{version})
 Requires: ultramarine-gpg-keys
 Source100: ultramarine.repo
@@ -24,10 +24,10 @@ Requires: terra-release
 Requires: terra-release-mesa
 # todo: if upgrading from 39 require terra-release or something
 %description common
-Common repository files for Ultramarine Linux
+Common repository files for Ultramarine
 
 %package extras
-Summary: Additional repositories for Ultramarine Linux
+Summary: Additional repositories for Ultramarine
 Requires: distribution-gpg-keys
 Requires: flatpak
 Requires: terra-release-extras
@@ -40,7 +40,7 @@ Source200: https://flathub.org/repo/flathub.flatpakrepo
 #Source203: rpmfusion-nonfree.repo
 #Source204: rpmfusion-nonfree-updates.repo
 %description extras
-Additional repository files for Ultramarine Linux that provides access to popular software that are not shipped by default:
+Additional repository files for Ultramarine that provides access to popular software that are not shipped by default:
     - Flathub's Flatpak repo (enabled by default)
     - RPMFusion Free (all patented codecs filtered out)
     - RPMFusion Nonfree (enabled by default)
@@ -49,7 +49,7 @@ Additional repository files for Ultramarine Linux that provides access to popula
 
 
 %package appcenter
-Summary: AppCenter repository for Ultramarine Linux
+Summary: AppCenter repository for Ultramarine
 Requires: %{name}-extras = %{version}-%{release}
 Source201: https://flatpak.elementary.io/repo.flatpakrepo
 

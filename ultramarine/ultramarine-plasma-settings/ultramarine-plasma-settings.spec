@@ -2,7 +2,7 @@
 
 Name:    ultramarine-plasma-settings
 Version: 0.1.9
-Release: 2%{?dist}
+Release: 3%{?dist}
 Summary: Ultramarine Plasma System Settings modules
 
 License: GPL-3.0-only
@@ -47,7 +47,7 @@ Recommends: %{name}-office-apps%{?_isa} = %{evr}
 Packager: Cypress Reed <cypress@fyralabs.com>
 
 %description
-System Settings modules and desktop helpers for Ultramarine Linux. This is a
+System Settings modules and desktop helpers for Ultramarine. This is a
 metapackage that recommends the Updates, Tweaks and Location Services KCMs, the
 dGPU launcher action, and the office suite installer.
 
@@ -68,7 +68,7 @@ Requires: kf6-kirigami
 Requires: kf6-qqc2-desktop-style
 
 %description kcm-updates
-System Settings module for managing updates on Ultramarine Linux. It replaces
+System Settings module for managing updates on Ultramarine. It replaces
 Discover's Software Update module and is backed by %{name}-updates.
 
 %package updates

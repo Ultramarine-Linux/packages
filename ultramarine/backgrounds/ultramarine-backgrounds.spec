@@ -3,11 +3,11 @@
 Name: ultramarine-backgrounds
 # This version tracks the upstream version tag. Do not bump this when branching a new release unless the upstream release matches.
 Version: 45_preview
-Release: 1%{?dist}
+Release: 2%{?dist}
 BuildArch: noarch
 # details for the artworks' licenses can be seen in the COPYING file
 License: CC-BY-SA-4.0 AND CC0-1.0
-Summary: Ultramarine Linux backgrounds
+Summary: Ultramarine backgrounds
 Provides: desktop-backgrounds = %{version}-%{release}
 Recommends: ultramarine-backgrounds-compat = %{version}-%{release}
 BuildRequires: make ImageMagick
@@ -15,16 +15,16 @@ URL:            https://github.com/Ultramarine-Linux/backgrounds
 Source0: %{url}/archive/refs/tags/%{version}.tar.gz
 
 %description
-This package contains desktop backgrounds for the Ultramarine Linux default theme.
+This package contains desktop backgrounds for the Ultramarine default theme.
 
 %package    common
-Summary:    Ultramarine Linux backgrounds: common files
+Summary:    Ultramarine backgrounds: common files
 Provides:   ultramarine-backgrounds-common = %{version}-%{release}
 Provides:   ultramarine-backgrounds-basic = %{version}-%{release}
 
 Obsoletes:   ultramarine-backgrounds-common < %{version}-%{release}
 %description    common
-The actual desktop background files for Ultramarine Linux.
+The actual desktop background files for Ultramarine.
 
 %package        gnome
 Summary:        The default Fedora wallpaper from GNOME desktop
