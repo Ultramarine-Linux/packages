@@ -33,13 +33,14 @@
 %bcond_without wsl
 %bcond_without container
 %bcond_without server
+%bcond_without niri
 %ifarch x86_64
 %bcond_without surface
 %else
 %bcond_with surface
 %endif
 
-%if %{with budgie} || %{with plasma} || %{with gnome} || %{with xfce} || %{with atomic_budgie} || %{with atomic_plasma} || %{with atomic_gnome} || %{with atomic_xfce}
+%if %{with budgie} || %{with plasma} || %{with gnome} || %{with xfce} || %{with niri} || %{with atomic_budgie} || %{with atomic_plasma} || %{with atomic_gnome} || %{with atomic_xfce}
 %global with_desktop 1
 %endif
 
@@ -54,7 +55,7 @@
 Summary:	Ultramarine Linux release files
 Name:		ultramarine-release
 Version:	%{dist_version}
-Release:	13%{?dist}
+Release:	14%{?dist}
 License:	MIT
 Source0:	LICENSE
 URL:        https://ultramarine-linux.org
@@ -101,6 +102,7 @@ Source60:   ultramarine-budgie-protected.conf
 Source61:   ultramarine-gnome-protected.conf
 Source62:   ultramarine-plasma-protected.conf
 Source63:   ultramarine-xfce-protected.conf
+Source64:   ultramarine-niri-protected.conf
 
 Source70:   polycrystal-ultramarine-budgie.json
 Source71:   polycrystal-ultramarine-gnome.json
@@ -527,6 +529,43 @@ Provides the necessary files for a Ultramarine Atomic XFCE installation.
 %endif
 
 ######################################################################
+####### Niri #######
+
+%if %{with niri}
+%package niri
+Summary:	Base package for Ultramarine Niri specific default configurations
+RemovePathPostfixes: .niri
+Provides:   ultramarine-release = %{version}-%{release}
+Provides:   ultramarine-release-niri = %{version}-%{release}
+Provides:   ultramarine-release-variant = %{version}-%{release}
+Provides:   system-release
+Provides:   system-release(%{version})
+Provides:   base-module(platform:f%{version})
+Requires:   ultramarine-release-common = %{version}-%{release}
+Requires:   ultramarine-release-desktop = %{version}-%{release}
+Provides:   system-release-product
+# ultramarine-release-common Requires: ultramarine-release-identity, so at least one
+# package must provide it. This Recommends: pulls in
+# the matching identity package if nothing else is already doing so.
+Recommends:	ultramarine-release-identity-niri
+Recommends:	ultramarine-niri-settings
+
+%description niri
+Provides a base package for Ultramarine Niri configurations.
+
+%package identity-niri
+Summary:		Package providing the Ultramarine Niri Identity
+RemovePathPostfixes: .niri
+Provides:		ultramarine-release-identity = %{version}-%{release}
+Conflicts:		ultramarine-release-identity
+Requires(meta):	ultramarine-release-niri = %{version}-%{release}
+
+%description identity-niri
+Provides the necessary files for an Ultramarine Niri installation.
+
+%endif
+
+######################################################################
 ####### WSL #######
 
 %if %{with wsl}
@@ -633,6 +672,7 @@ Requires(meta):	ultramarine-release-server = %{version}-%{release}
 Provides the necessary files for a Ultramarine Server installation.
 
 %endif
+
 
 ######################################################################
 #### Accessory packages
@@ -905,6 +945,17 @@ sed -i -e "s|(%{release_name}%{?prerelease})|(Atomic XFCE Edition%{?prerelease})
 sed -e "s#\$version#%{bug_version}#g" -e 's/$edition/Atomic XFCE/;s/<!--.*-->//;/^$/d' %{SOURCE20} > %{buildroot}%{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.atomic-xfce
 %endif
 
+%if %{with niri}
+# Niri
+cp -p os-release \
+      %{buildroot}%{_prefix}/lib/os-release.niri
+echo "VARIANT=\"Niri Edition\"" >> %{buildroot}%{_prefix}/lib/os-release.niri
+echo "VARIANT_ID=niri" >> %{buildroot}%{_prefix}/lib/os-release.niri
+sed -i -e "s|(%{release_name}%{?prerelease})|(Niri Edition%{?prerelease})|g" %{buildroot}%{_prefix}/lib/os-release.niri
+sed -e "s#\$version#%{bug_version}#g" -e 's/$edition/Niri/;s/<!--.*-->//;/^$/d' %{SOURCE20} > %{buildroot}%{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.niri
+install -Dm0644 %{SOURCE64} %{buildroot}%{_sysconfdir}/dnf/protected.d/ultramarine-niri.conf
+%endif
+
 %if %{with wsl}
 # WSL
 cp -p os-release \
@@ -1174,6 +1225,14 @@ ln -sf firewalld-workstation.conf %{_sysconfdir}/firewalld/firewalld.conf
 %{_sysconfdir}/skel/.config/xfce4/
 %{_sysconfdir}/lightdm/lightdm.conf.d/60-ultramarine-presets.conf
 %{_sysconfdir}/lightdm/lightdm.conf.d/50-ultramarine-xfce-slick-greeter.conf
+%endif
+
+%if %{with niri}
+%files niri
+%files identity-niri
+%{_prefix}/lib/os-release.niri
+%attr(0644,root,root) %{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.niri
+%{_sysconfdir}/dnf/protected.d/ultramarine-niri.conf
 %endif
 
 %if %{with wsl}

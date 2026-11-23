@@ -1,6 +1,6 @@
 Name:           ultramarine-systemd-presets
 Version:        1
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Ultramarine systemd presets
 URL:            https://src.fedoraproject.org/rpms/redhat-systemd-presets
 License:        MIT
@@ -18,6 +18,7 @@ Source13:       99-default-disable.preset
 Source20:       80-server.preset
 Source21:       88-ultramarine-chromebook-default.preset
 Source22:       91-ultramarine-surface-default.preset
+Source23:       100-ultramarine-niri-default.preset
 
 # Desktop preset files
 Source27:       81-desktop.preset
@@ -159,6 +160,20 @@ that determine which services are enabled by default.
 %files surface
 %{_presetdir}/91-ultramarine-surface-default.preset
 
+%package niri
+Summary:        Niri systemd presets for Ultramarine Niri
+Requires:       %{name}-common = %{evr}
+# Allow only one provider
+Provides:       distribution-systemd-presets-niri
+Conflicts:      distribution-systemd-presets-niri
+
+%description niri
+Ultramarine systemd preset files for all Niri variants
+that determine which services are enabled by default.
+
+%files niri
+%{_presetdir}/100-ultramarine-niri-default.preset
+
 %prep
 %autosetup -T -c
 
@@ -178,6 +193,7 @@ install -Dm0644 %{SOURCE13} -t %{buildroot}%{_userpresetdir}/
 install -Dm0644 %{SOURCE20} -t %{buildroot}%{_presetdir}/
 install -Dm0644 %{SOURCE21} -t %{buildroot}%{_presetdir}/
 install -Dm0644 %{SOURCE22} -t %{buildroot}%{_presetdir}/
+install -Dm0644 %{SOURCE23} -t %{buildroot}%{_presetdir}/
 
 # Common desktop preset
 install -Dm0644 %{SOURCE27} -t %{buildroot}%{_presetdir}/
@@ -187,6 +203,9 @@ install -Dm0644 %{SOURCE37} -t %{buildroot}%{_presetdir}/
 
 
 %changelog
+* Sun Nov 22 2026 Its-J <jonah@fyralabs.com> - 1-4
+- Add Ultramarine Niri support
+
 * Mon Oct 26 2026 Cypress Reed <cypress@fyralabs.com> - 1-3
 - Switch from System76 scheduler to scx
 - Enable falcond.service
