@@ -427,7 +427,7 @@
       <!-- <packagereq type="default">kamoso</packagereq> flatpak'd -->
       <!-- <packagereq type="default">kolourpaint</packagereq> flatpak'd -->
       <packagereq type="default">kate</packagereq>
-      <packagereq type="default">kmail</packagereq>
+      <packagereq type="default">thunderbird</packagereq>
       <!-- <packagereq type="default">haruna</packagereq> flatpak'd -->
       <!-- <packagereq type="default">kcalc</packagereq> flatpak'd -->
       <packagereq type="default">krdp</packagereq>
