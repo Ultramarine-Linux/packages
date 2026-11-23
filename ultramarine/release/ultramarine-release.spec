@@ -44,15 +44,17 @@
 %global with_desktop 1
 %endif
 
+%global identity_packages ultramarine-release-identity-basic, ultramarine-release-identity-budgie, ultramarine-release-identity-atomic-budgie, ultramarine-release-identity-plasma, ultramarine-release-identity-atomic-plasma, ultramarine-release-identity-gnome, ultramarine-release-identity-atomic-gnome, ultramarine-release-identity-xfce, ultramarine-release-identity-atomic-xfce, ultramarine-release-identity-niri, ultramarine-release-identity-wsl, ultramarine-release-identity-container, ultramarine-release-identity-server
+
 %if %{with atomic_budgie} || %{with atomic_plasma} || %{with atomic_gnome} || %{with atomic_xfce}
 %global with_atomic_desktop 1
 %endif
 
-## ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-## ┃ Ultramarine Linux Release Package ┃
-## ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+## ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+## ┃ Ultramarine Release Package ┃
+## ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 
-Summary:	Ultramarine Linux release files
+Summary:	Ultramarine release files
 Name:		ultramarine-release
 Version:	%{dist_version}
 Release:	15%{?dist}
@@ -116,7 +118,7 @@ Source90:   ultramarine-installonly-2.conf
 BuildRequires:    systemd-rpm-macros
 
 %description
-Release files for Ultramarine Linux.
+Release files for Ultramarine.
 
 
 ## ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
@@ -150,7 +152,7 @@ License:	Open Publication
 Provides:	system-release-notes = %{version}-%{release}
 
 %description notes
-Release files for Ultramarine Linux.
+Release files for Ultramarine.
 
 %if %{with basic}
 
@@ -199,18 +201,18 @@ Recommends: slick-greeter
 Obsoletes:  ultramarine-release-flagship < 43-2
 
 %description budgie
-Provides a base package for Ultramarine budgie configurations.
+Provides a base package for Ultramarine Budgie configurations.
 
 %package identity-budgie
-Summary:		Package providing the Ultramarine budgie Identity
+Summary:		Package providing the Ultramarine Budgie Identity
 RemovePathPostfixes: .budgie
 Provides:		ultramarine-release-identity = %{version}-%{release}
 Conflicts:		ultramarine-release-identity
 Requires(meta):	ultramarine-release-budgie = %{version}-%{release}
-Obsoletes:  ultramarine-release-identity-flagship < 43-2
+Obsoletes:      ultramarine-release-identity-flagship < 43-2
 
 %description identity-budgie
-Provides the necessary files for a Ultramarine budgie installation.
+Provides the necessary files for an Ultramarine Budgie installation.
 
 %endif
 
@@ -220,7 +222,7 @@ Provides the necessary files for a Ultramarine budgie installation.
 %if %{with atomic_budgie}
 
 %package atomic-budgie
-Summary:	Base package for Ultramarine Atomic budgie-specific default configurations
+Summary:	Base package for Ultramarine Budgie (Atomic) default configurations
 RemovePathPostfixes: .atomic-budgie
 Provides:   ultramarine-release = %{version}-%{release}
 Provides:   ultramarine-release-atomic-budgie = %{version}-%{release}
@@ -239,10 +241,10 @@ Recommends:	ultramarine-release-identity-atomic-budgie
 Obsoletes:  ultramarine-release-atomic-flagship < 43-2
 
 %description atomic-budgie
-Provides a base package for Ultramarine Atomic budgie configurations.
+Provides a base package for Ultramarine Budgie (Atomic) configurations.
 
 %package identity-atomic-budgie
-Summary:		Package providing the Ultramarine Atomic budgie Identity
+Summary:		Package providing the Ultramarine Budgie (Atomic) Identity
 RemovePathPostfixes: .atomic-budgie
 Provides:		ultramarine-release-identity = %{version}-%{release}
 Conflicts:		ultramarine-release-identity
@@ -250,7 +252,7 @@ Requires(meta):	ultramarine-release-atomic-budgie = %{version}-%{release}
 Obsoletes: ultramarine-release-identity-atomic-flagship < 43-2
 
 %description identity-atomic-budgie
-Provides the necessary files for a Ultramarine Atomic budgie installation.
+Provides the necessary files for a Ultramarine Budgie (Atomic) installation.
 
 %endif
 
@@ -300,7 +302,7 @@ Provides the necessary files for a Ultramarine Plasma installation.
 
 %if %{with atomic_plasma}
 %package atomic-plasma
-Summary:	Base package for Ultramarine Atomic Plasma-specific default configurations
+Summary:	Base package for Ultramarine Plasma (Atomic) default configurations
 
 RemovePathPostfixes: .atomic-plasma
 Provides:   ultramarine-release = %{version}-%{release}
@@ -320,17 +322,17 @@ Recommends:	ultramarine-release-identity-atomic-plasma
 Recommends: pipewire-systemd-mask
 
 %description atomic-plasma
-Provides a base package for Ultramarine Atomic Plasma configurations.
+Provides a base package for Ultramarine Plasma (Atomic) configurations.
 
 %package identity-atomic-plasma
-Summary:		Package providing the Ultramarine Atomic Plasma Identity
+Summary:		Package providing the Ultramarine (Atomic) Identity
 RemovePathPostfixes: .atomic-plasma
 Provides:		ultramarine-release-identity = %{version}-%{release}
 Conflicts:		ultramarine-release-identity
 Requires(meta):	ultramarine-release-atomic-plasma = %{version}-%{release}
 
 %description identity-atomic-plasma
-Provides the necessary files for a Ultramarine Atomic Plasma installation.
+Provides the necessary files for a Ultramarine (Atomic) installation.
 
 %endif
 
@@ -385,7 +387,7 @@ Provides the necessary files for a Ultramarine GNOME installation.
 %if %{with atomic_gnome}
 
 %package atomic-gnome
-Summary:	Base package for Ultramarine Atomic GNOME-specific default configurations
+Summary:	Base package for Ultramarine GNOME (Atomic) default configurations
 RemovePathPostfixes: .atomic-gnome
 Provides:   ultramarine-release = %{version}-%{release}
 Provides:   ultramarine-release-atomic-gnome = %{version}-%{release}
@@ -407,17 +409,17 @@ Recommends: gnome-shell-extension-appmenu-is-back
 Recommends:	ultramarine-release-identity-atomic-gnome
 
 %description atomic-gnome
-Provides a base package for Ultramarine Atomic GNOME configurations.
+Provides a base package for Ultramarine GNOME (Atomic) configurations.
 
 %package identity-atomic-gnome
-Summary:		Package providing the Ultramarine Atomic GNOME Identity
+Summary:		Package providing the Ultramarine GNOME (Atomic) Identity
 RemovePathPostfixes: .atomic-gnome
 Provides:		ultramarine-release-identity = %{version}-%{release}
 Conflicts:		ultramarine-release-identity
 Requires(meta):	ultramarine-release-atomic-gnome = %{version}-%{release}
 
 %description identity-atomic-gnome
-Provides the necessary files for a Ultramarine Atomic GNOME installation.
+Provides the necessary files for a Ultramarine GNOME (Atomic) installation.
 
 %endif
 
@@ -444,7 +446,7 @@ This is done by marking them as conflicts in this package.
 
 
 %package xfce
-Summary:	Base package for Ultramarine XFCE-specific default configurations
+Summary:	Base package for Ultramarine Xfce-specific default configurations
 RemovePathPostfixes: .xfce
 Provides:   ultramarine-release = %{version}-%{release}
 Provides:   ultramarine-release-xfce = %{version}-%{release}
@@ -474,17 +476,17 @@ Recommends: ultramarine-release-xfce-pkgexcl
 Recommends: slick-greeter
 
 %description xfce
-Provides a base package for Ultramarine XFCE configurations.
+Provides a base package for Ultramarine Xfce configurations.
 
 %package identity-xfce
-Summary:		Package providing the Ultramarine XFCE Identity
+Summary:		Package providing the Ultramarine Xfce Identity
 RemovePathPostfixes: .xfce
 Provides:		ultramarine-release-identity = %{version}-%{release}
 Conflicts:		ultramarine-release-identity
 Requires(meta): ultramarine-release-xfce = %{version}-%{release}
 
 %description identity-xfce
-Provides the necessary files for a Ultramarine XFCE installation.
+Provides the necessary files for a Ultramarine Xfce installation.
 
 %endif
 
@@ -494,7 +496,7 @@ Provides the necessary files for a Ultramarine XFCE installation.
 %if %{with atomic_xfce}
 
 %package atomic-xfce
-Summary:	Base package for Ultramarine Atomic XFCE-specific default configurations
+Summary:	Base package for Ultramarine Xfce (Atomic) default configurations
 
 RemovePathPostfixes: .atomic-xfce
 Provides:   ultramarine-release = %{version}-%{release}
@@ -514,17 +516,17 @@ Recommends:	ultramarine-release-identity-atomic-xfce
 Recommends: ultramarine-release-xfce-pkgexcl
 
 %description atomic-xfce
-Provides a base package for Ultramarine Atomic XFCE configurations.
+Provides a base package for Ultramarine Xfce (Atomic) configurations.
 
 %package identity-atomic-xfce
-Summary:		Package providing the Ultramarine Atomic XFCE Identity
+Summary:		Package providing the Ultramarine Xfce (Atomic) Identity
 RemovePathPostfixes: .atomic-xfce
 Provides:		ultramarine-release-identity = %{version}-%{release}
 Conflicts:		ultramarine-release-identity
 Requires(meta): ultramarine-release-atomic-xfce = %{version}-%{release}
 
 %description identity-atomic-xfce
-Provides the necessary files for a Ultramarine Atomic XFCE installation.
+Provides the necessary files for a Ultramarine Xfce (Atomic) installation.
 
 %endif
 
@@ -683,6 +685,8 @@ Provides the necessary files for a Ultramarine Server installation.
 
 %if %{with chromebook}
 %package        chromebook
+Requires(post): sed
+Requires(postun): sed
 Summary:        Common configuration package for chromebook variants
 
 %description chromebook
@@ -693,6 +697,8 @@ Common configuration package for chromebook variants
 
 %if %{with surface}
 %package        surface
+Requires(post): sed
+Requires(postun): sed
 Summary:        Common configuration package for surface variants
 
 %description surface
@@ -703,6 +709,8 @@ Common configuration package for surface variants
 
 %if %{with raspberry_pi}
 %package        raspberry-pi
+Requires(post): sed
+Requires(postun): sed
 Summary:        Common configuration package for raspberry pi variants
 
 %description raspberry-pi
@@ -750,7 +758,7 @@ Common configuration package for atomic desktop variants
 
 %install
 install -d %{buildroot}%{_prefix}/lib
-echo "Ultramarine Linux release %{version} (%{release_name})" > %{buildroot}%{_prefix}/lib/ultramarine-release
+echo "Ultramarine release %{version} (%{release_name})" > %{buildroot}%{_prefix}/lib/ultramarine-release
 echo "cpe:/o:ultramarine:um:%{version}" > %{buildroot}%{_prefix}/lib/system-release-cpe
 
 # Symlink the -release files
@@ -781,7 +789,7 @@ install -Dpm644 %SOURCE90 %buildroot%_datadir/dnf5/libdnf.conf.d/ultramarine-ins
 # │ Examples: gdb.spec, clang.spec
 
 %global dist_vendor Ultramarine
-%global dist_name   Ultramarine Linux
+%global dist_name   Ultramarine
 
 # │ URL of the homepage of the distribution
 # │ Example: gstreamer1-plugins-base.spec
@@ -838,6 +846,12 @@ mkdir -p %{buildroot}%{_swidtagdir}
 
 
 # Create os-release files for the different editions
+write_variant_os_release() {
+  local variant_id=$1 product=$2 qualifier=$3
+  local target=%{buildroot}%{_prefix}/lib/os-release.$variant_id
+  sed -e "s|^PRETTY_NAME=.*|PRETTY_NAME=\"$product %{dist_version}%{?prerelease}${qualifier:+ $qualifier}\"|" os-release > "$target"
+  echo "VARIANT_ID=$variant_id" >> "$target"
+}
 
 %if %{with basic}
 # Basic
@@ -847,11 +861,7 @@ cp -p os-release \
 
 %if %{with budgie}
 # Budgie
-cp -p os-release \
-      %{buildroot}%{_prefix}/lib/os-release.budgie
-echo "VARIANT=\"Budgie Edition\"" >> %{buildroot}%{_prefix}/lib/os-release.budgie
-echo "VARIANT_ID=budgie" >> %{buildroot}%{_prefix}/lib/os-release.budgie
-sed -i -e "s|(%{release_name}%{?prerelease})|(Budgie Edition%{?prerelease})|g" %{buildroot}%{_prefix}/lib/os-release.budgie
+write_variant_os_release budgie "Ultramarine Budgie"
 sed -e "s#\$version#%{bug_version}#g" -e 's/$edition/Budgie/;s/<!--.*-->//;/^$/d' %{SOURCE20} > %{buildroot}%{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.budgie
 
 install -Dm0644 %{SOURCE60} %{buildroot}%{_sysconfdir}/dnf/protected.d/ultramarine-budgie.conf
@@ -859,21 +869,13 @@ install -Dm0644 %{SOURCE60} %{buildroot}%{_sysconfdir}/dnf/protected.d/ultramari
 
 %if %{with atomic_budgie}
 # Atomic Budgie
-cp -p os-release \
-      %{buildroot}%{_prefix}/lib/os-release.atomic-budgie
-echo "VARIANT=\"Atomic Budgie Edition\"" >> %{buildroot}%{_prefix}/lib/os-release.atomic-budgie
-echo "VARIANT_ID=atomic-budgie" >> %{buildroot}%{_prefix}/lib/os-release.atomic-budgie
-sed -i -e "s|(%{release_name}%{?prerelease})|(Atomic Budgie Edition%{?prerelease})|g" %{buildroot}%{_prefix}/lib/os-release.atomic-budgie
+write_variant_os_release atomic-budgie "Ultramarine Budgie" "(Atomic)"
 sed -e "s#\$version#%{bug_version}#g" -e 's/$edition/Atomic Budgie/;s/<!--.*-->//;/^$/d' %{SOURCE20} > %{buildroot}%{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.atomic-budgie
 %endif
 
 %if %{with plasma}
 # Plasma
-cp -p os-release \
-      %{buildroot}%{_prefix}/lib/os-release.plasma
-echo "VARIANT=\"Plasma Edition\"" >> %{buildroot}%{_prefix}/lib/os-release.plasma
-echo "VARIANT_ID=plasma" >> %{buildroot}%{_prefix}/lib/os-release.plasma
-sed -i -e "s|(%{release_name}%{?prerelease})|(Plasma Edition%{?prerelease})|g" %{buildroot}%{_prefix}/lib/os-release.plasma
+write_variant_os_release plasma "Ultramarine"
 sed -e "s#\$version#%{bug_version}#g" -e 's/$edition/Plasma/;s/<!--.*-->//;/^$/d' %{SOURCE20} > %{buildroot}%{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.plasma
 
 install -Dm0644 %{SOURCE62} %{buildroot}%{_sysconfdir}/dnf/protected.d/ultramarine-plasma.conf
@@ -882,22 +884,14 @@ install -Dm0644 %{SOURCE62} %{buildroot}%{_sysconfdir}/dnf/protected.d/ultramari
 
 %if %{with atomic_plasma}
 # Atomic Plasma
-cp -p os-release \
-      %{buildroot}%{_prefix}/lib/os-release.atomic-plasma
-echo "VARIANT=\"Atomic Plasma Edition\"" >> %{buildroot}%{_prefix}/lib/os-release.atomic-plasma
-echo "VARIANT_ID=atomic-plasma" >> %{buildroot}%{_prefix}/lib/os-release.atomic-plasma
-sed -i -e "s|(%{release_name}%{?prerelease})|(Atomic Plasma Edition%{?prerelease})|g" %{buildroot}%{_prefix}/lib/os-release.atomic-plasma
+write_variant_os_release atomic-plasma "Ultramarine" "(Atomic)"
 sed -e "s#\$version#%{bug_version}#g" -e 's/$edition/Atomic Plasma/;s/<!--.*-->//;/^$/d' %{SOURCE20} > %{buildroot}%{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.atomic-plasma
 
 %endif
 
 %if %{with gnome}
 # GNOME
-cp -p os-release \
-      %{buildroot}%{_prefix}/lib/os-release.gnome
-echo "VARIANT=\"GNOME Edition\"" >> %{buildroot}%{_prefix}/lib/os-release.gnome
-echo "VARIANT_ID=gnome" >> %{buildroot}%{_prefix}/lib/os-release.gnome
-sed -i -e "s|(%{release_name}%{?prerelease})|(GNOME Edition%{?prerelease})|g" %{buildroot}%{_prefix}/lib/os-release.gnome
+write_variant_os_release gnome "Ultramarine GNOME"
 sed -e "s#\$version#%{bug_version}#g" -e 's/$edition/GNOME/;s/<!--.*-->//;/^$/d' %{SOURCE20} > %{buildroot}%{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.gnome
 
 install -Dm0644 %{SOURCE61} %{buildroot}%{_sysconfdir}/dnf/protected.d/ultramarine-gnome.conf
@@ -905,21 +899,13 @@ install -Dm0644 %{SOURCE61} %{buildroot}%{_sysconfdir}/dnf/protected.d/ultramari
 
 %if %{with atomic_gnome}
 # Atomic GNOME
-cp -p os-release \
-      %{buildroot}%{_prefix}/lib/os-release.atomic-gnome
-echo "VARIANT=\"Atomic GNOME Edition\"" >> %{buildroot}%{_prefix}/lib/os-release.atomic-gnome
-echo "VARIANT_ID=atomic-gnome" >> %{buildroot}%{_prefix}/lib/os-release.atomic-gnome
-sed -i -e "s|(%{release_name}%{?prerelease})|(Atomic GNOME Edition%{?prerelease})|g" %{buildroot}%{_prefix}/lib/os-release.atomic-gnome
+write_variant_os_release atomic-gnome "Ultramarine GNOME" "(Atomic)"
 sed -e "s#\$version#%{bug_version}#g" -e 's/$edition/Atomic GNOME/;s/<!--.*-->//;/^$/d' %{SOURCE20} > %{buildroot}%{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.atomic-gnome
 %endif
 
 %if %{with xfce}
 # XFCE
-cp -p os-release \
-      %{buildroot}%{_prefix}/lib/os-release.xfce
-echo "VARIANT=\"XFCE Edition\"" >> %{buildroot}%{_prefix}/lib/os-release.xfce
-echo "VARIANT_ID=xfce" >> %{buildroot}%{_prefix}/lib/os-release.xfce
-sed -i -e "s|(%{release_name}%{?prerelease})|(XFCE Edition%{?prerelease})|g" %{buildroot}%{_prefix}/lib/os-release.xfce
+write_variant_os_release xfce "Ultramarine Xfce"
 sed -e "s#\$version#%{bug_version}#g" -e 's/$edition/XFCE/;s/<!--.*-->//;/^$/d' %{SOURCE20} > %{buildroot}%{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.xfce
 
 install -Dm0644 %{SOURCE63} %{buildroot}%{_sysconfdir}/dnf/protected.d/ultramarine-xfce.conf
@@ -938,52 +924,32 @@ tar -xvf %{SOURCE40} -C %{buildroot}%{_sysconfdir}/skel --strip-components=1
 
 %if %{with atomic_xfce}
 # Atomic XFCE
-cp -p os-release \
-      %{buildroot}%{_prefix}/lib/os-release.atomic-xfce
-echo "VARIANT=\"Atomic XFCE Edition\"" >> %{buildroot}%{_prefix}/lib/os-release.atomic-xfce
-echo "VARIANT_ID=atomic-xfce" >> %{buildroot}%{_prefix}/lib/os-release.atomic-xfce
-sed -i -e "s|(%{release_name}%{?prerelease})|(Atomic XFCE Edition%{?prerelease})|g" %{buildroot}%{_prefix}/lib/os-release.atomic-xfce
+write_variant_os_release atomic-xfce "Ultramarine Xfce" "(Atomic)"
 sed -e "s#\$version#%{bug_version}#g" -e 's/$edition/Atomic XFCE/;s/<!--.*-->//;/^$/d' %{SOURCE20} > %{buildroot}%{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.atomic-xfce
 %endif
 
 %if %{with niri}
 # Niri
-cp -p os-release \
-      %{buildroot}%{_prefix}/lib/os-release.niri
-echo "VARIANT=\"Niri Edition\"" >> %{buildroot}%{_prefix}/lib/os-release.niri
-echo "VARIANT_ID=niri" >> %{buildroot}%{_prefix}/lib/os-release.niri
-sed -i -e "s|(%{release_name}%{?prerelease})|(Niri Edition%{?prerelease})|g" %{buildroot}%{_prefix}/lib/os-release.niri
+write_variant_os_release niri "Ultramarine Niri"
 sed -e "s#\$version#%{bug_version}#g" -e 's/$edition/Niri/;s/<!--.*-->//;/^$/d' %{SOURCE20} > %{buildroot}%{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.niri
 install -Dm0644 %{SOURCE64} %{buildroot}%{_sysconfdir}/dnf/protected.d/ultramarine-niri.conf
 %endif
 
 %if %{with wsl}
 # WSL
-cp -p os-release \
-      %{buildroot}%{_prefix}/lib/os-release.wsl
-echo "VARIANT=\"WSL Edition\"" >> %{buildroot}%{_prefix}/lib/os-release.wsl
-echo "VARIANT_ID=wsl" >> %{buildroot}%{_prefix}/lib/os-release.wsl
-sed -i -e "s|(%{release_name}%{?prerelease})|(WSL Edition%{?prerelease})|g" %{buildroot}%{_prefix}/lib/os-release.wsl
+write_variant_os_release wsl "Ultramarine WSL"
 sed -e "s#\$version#%{bug_version}#g" -e 's/$edition/WSL/;s/<!--.*-->//;/^$/d' %{SOURCE20} > %{buildroot}%{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.wsl
 %endif
 
 %if %{with container}
 # Container
-cp -p os-release \
-      %{buildroot}%{_prefix}/lib/os-release.container
-echo "VARIANT=\"Container Image\"" >> %{buildroot}%{_prefix}/lib/os-release.container
-echo "VARIANT_ID=container" >> %{buildroot}%{_prefix}/lib/os-release.container
-sed -i -e "s|(%{release_name}%{?prerelease})|(Container Image%{?prerelease})|g" %{buildroot}%{_prefix}/lib/os-release.container
+write_variant_os_release container "Ultramarine Container"
 sed -e "s#\$version#%{bug_version}#g" -e 's/$edition/Container/;s/<!--.*-->//;/^$/d' %{SOURCE20} > %{buildroot}%{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.container
 %endif
 
 %if %{with server}
 # Server
-cp -p os-release \
-      %{buildroot}%{_prefix}/lib/os-release.server
-echo "VARIANT=\"Server Edition\"" >> %{buildroot}%{_prefix}/lib/os-release.server
-echo "VARIANT_ID=server" >> %{buildroot}%{_prefix}/lib/os-release.server
-sed -i -e "s|(%{release_name}%{?prerelease})|(Server Edition%{?prerelease})|g" %{buildroot}%{_prefix}/lib/os-release.server
+write_variant_os_release server "Ultramarine Server"
 sed -e "s#\$version#%{bug_version}#g" -e 's/$edition/Server/;s/<!--.*-->//;/^$/d' %{SOURCE20} > %{buildroot}%{_swidtagdir}/org.ultramarinelinux.Ultramarine-edition.swidtag.server
 %endif
 
@@ -1109,6 +1075,36 @@ install -Dm0644 %{SOURCE32} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
 %post desktop
 mkdir -p %{_sysconfdir}/firewalld
 ln -sf firewalld-workstation.conf %{_sysconfdir}/firewalld/firewalld.conf
+
+%if %{with surface}
+%triggerin surface -- %{identity_packages}
+sed -i '/^PRETTY_NAME=/{/ for Surface/!{s/ (Atomic)"$/ for Surface (Atomic)"/;t;s/"$/ for Surface"/}}' %{_prefix}/lib/os-release
+
+%postun surface
+if [ $1 -eq 0 ] && [ -f %{_prefix}/lib/os-release ]; then
+  sed -i '/^PRETTY_NAME=/s/ for Surface//' %{_prefix}/lib/os-release
+fi
+%endif
+
+%if %{with chromebook}
+%triggerin chromebook -- %{identity_packages}
+sed -i '/^PRETTY_NAME=/{/ for Chromebook/!{s/ (Atomic)"$/ for Chromebook (Atomic)"/;t;s/"$/ for Chromebook"/}}' %{_prefix}/lib/os-release
+
+%postun chromebook
+if [ $1 -eq 0 ] && [ -f %{_prefix}/lib/os-release ]; then
+  sed -i '/^PRETTY_NAME=/s/ for Chromebook//' %{_prefix}/lib/os-release
+fi
+%endif
+
+%if %{with raspberry_pi}
+%triggerin raspberry-pi -- %{identity_packages}
+sed -i '/^PRETTY_NAME=/{/ for Raspberry Pi/!{s/ (Atomic)"$/ for Raspberry Pi (Atomic)"/;t;s/"$/ for Raspberry Pi"/}}' %{_prefix}/lib/os-release
+
+%postun raspberry-pi
+if [ $1 -eq 0 ] && [ -f %{_prefix}/lib/os-release ]; then
+  sed -i '/^PRETTY_NAME=/s/ for Raspberry Pi//' %{_prefix}/lib/os-release
+fi
+%endif
 
 
 %files common
