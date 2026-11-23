@@ -1,5 +1,5 @@
-The ultramarine-release package is a clone of the fedora-release packages, made for Ultramarine Linux.
+The ultramarine-release package is a clone of the fedora-release packages, made for Ultramarine.
 
-This package will install files such as the os-release file and all the things that make other apps know that you're running Ultramarine Linux.
+This package will install files such as the os-release file and all the things that make other apps know that you're running Ultramarine.
 
 ultramarine-release generates an Anaconda release profile, previously this was to brand the installer, but in a Readymade world it's for initial setup.
