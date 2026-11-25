@@ -99,6 +99,7 @@ kde_one 42/sea-of-imagination-dark-alt-b.png "Sea of Imagination (Dark Alt B)"
 kde_all 42/sea-of-imagination{,-dark}.png "Sea of Imagination"
 kde_all 43/"Valley Bowl "{Day,Night}time.png "Valley Bowl"
 kde_all 44/Breakthrough-{Light,Dark}.png "Breakthrough"
+kde_all 45/frutiger-{light,dark}.png "Frutiger"
 kde_one preview/blueprint.png "Ultramarine Preview"
 kde_all ultramarine/ultramarine-{light,dark}.png "Ultramarine"
 kde_one extras/mizuki.png "Mizuki at Home"
@@ -112,9 +113,9 @@ compat_link() {
 }
 
 
-DEFAULT_WALL="44/Breakthrough-Light.png"
-DEFAULT_DARK_WALL="44/Breakthrough-Dark.png"
-DEFAULT_XML="44/Breakthrough.xml"
+DEFAULT_WALL="45/frutiger-light.png"
+DEFAULT_DARK_WALL="45/frutiger-dark.png"
+DEFAULT_XML="45/frutiger.xml"
 
 # Let's generate our default gschema override file
 
