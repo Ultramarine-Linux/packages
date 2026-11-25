@@ -60,6 +60,7 @@
       <packagereq type="default">ultramarine-bookmarks</packagereq>
       <packagereq type="default">git</packagereq>
       <packagereq type="default">nano</packagereq>
+      <packagereq type="default">nano-default-editor</packagereq>
       <packagereq type="default">rsync</packagereq>
       <packagereq type="default">umdive</packagereq>
       <packagereq type="default">umcli</packagereq>
@@ -595,7 +596,6 @@
       <packagereq type="default">thunderbird</packagereq>
       <packagereq type="default">gnome-software</packagereq>
       <packagereq type="default">nwg-displays</packagereq>
-      <packagereq type="default">nano-default-editor</packagereq>
     </packagelist>
   </group>
   <environment>
