@@ -2,8 +2,8 @@
 
 Name: ultramarine-backgrounds
 # This version tracks the upstream version tag. Do not bump this when branching a new release unless the upstream release matches.
-Version: 45_preview
-Release: 2%{?dist}
+Version: 45
+Release: 1%{?dist}
 BuildArch: noarch
 # details for the artworks' licenses can be seen in the COPYING file
 License: CC-BY-SA-4.0 AND CC0-1.0
@@ -99,6 +99,7 @@ kde_one 42/sea-of-imagination-dark-alt-b.png "Sea of Imagination (Dark Alt B)"
 kde_all 42/sea-of-imagination{,-dark}.png "Sea of Imagination"
 kde_all 43/"Valley Bowl "{Day,Night}time.png "Valley Bowl"
 kde_all 44/Breakthrough-{Light,Dark}.png "Breakthrough"
+kde_all 45/45/frutiger-{light,dark}.png "Frutiger"
 kde_one preview/blueprint.png "Ultramarine Preview"
 kde_all ultramarine/ultramarine-{light,dark}.png "Ultramarine"
 kde_one extras/mizuki.png "Mizuki at Home"
@@ -112,9 +113,9 @@ compat_link() {
 }
 
 
-DEFAULT_WALL="44/Breakthrough-Light.png"
-DEFAULT_DARK_WALL="44/Breakthrough-Dark.png"
-DEFAULT_XML="44/Breakthrough.xml"
+DEFAULT_WALL="45/frutiger-light.png"
+DEFAULT_DARK_WALL="45/frutiger-dark.png"
+DEFAULT_XML="45/frutiger.xml"
 
 # Let's generate our default gschema override file
 
