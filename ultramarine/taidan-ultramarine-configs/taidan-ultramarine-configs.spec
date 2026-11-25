@@ -3,13 +3,11 @@ Version:        46
 Release:        6%?dist
 Summary:        Taidan configuration for Ultramarine
 License:        (MIT AND GPL-3.0-or-later)
-Provides:       taidan-configs
+Supplements:    taidan
 Provides:       initial-setup initial-setup-gui
-Conflicts:      taidan-default-configs
-Obsoletes:      taidan-default-configs <= 999
+Requires:       umcli
 
 BuildArch:      noarch
-Source0:        detect-internet
 
 %description
 This package provides the Taidan configuration files for Ultramarine.
@@ -26,17 +24,17 @@ Taidan tweaks: %1.
 %_datadir/taidan/tweaks/%1
 }
 
-%tweak cachyos-kernel -p %{quote:BuildArch: x86_64_v3}
+%tweak cachyos-kernel
 %tweak mtu-probing
 
 %prep
 %git_clone https://github.com/Ultramarine-Linux/taidan main
 
 %install
-install -Dpm755 %{S:0} -t %buildroot%_sysconfdir/com.fyralabs.Taidan
 mkdir -p %buildroot%_datadir/taidan
 cp -r data/tweaks/ %buildroot%_datadir/taidan/
 
 %files
 %license LICENSE.md
-%config %_sysconfdir/com.fyralabs.Taidan/
+%dir %_datadir/taidan/
+%dir %_datadir/taidan/tweaks/
