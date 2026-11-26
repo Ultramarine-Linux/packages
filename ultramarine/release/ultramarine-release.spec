@@ -731,12 +731,13 @@ Summary:        Common configuration package for desktop variants
 
 Recommends: scx-scheds
 Recommends: scx-tools
-Recommends: ultramarine-phony-bookmarks
+Recommends: ultramarine-bookmarks
 Requires(post): /usr/bin/ln
 Requires(post): firewalld
 # replaced by sched_ext/scx_loader in um45
 Obsoletes:  system76-scheduler < 2.0.2-3
 Obsoletes:  kwin-system76-scheduler-integration < 0.1-2
+Obsoletes:  ultramarine-phony-bookmarks
 # ships /etc/scx_loader/config.toml (scx_lavd, Auto)
 Recommends: ultramarine-system-configs-desktop
 # per-game scx switching; also covers RPM Fusion's steam, which only recommends gamemode
