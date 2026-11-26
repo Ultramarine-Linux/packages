@@ -38,6 +38,7 @@ Requires:	noctalia-greeter
 %{_sysconfdir}/skel/.config/niri/
 %{_sysconfdir}/skel/.config/noctalia/
 %{_appsdir}/niri-mimeapps.list
+%{_appsdir}/ultramarine-noctalia-settings.desktop
 %{_datadir}/glib-2.0/schemas/60-ultramarine-niri.gschema.override
 %{_datadir}/ultramarine-niri/
 
