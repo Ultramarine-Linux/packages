@@ -40,6 +40,7 @@ Requires:	noctalia-greeter
 %{_appsdir}/niri-mimeapps.list
 %{_datadir}/glib-2.0/schemas/60-ultramarine-niri.gschema.override
 %{_datadir}/ultramarine-niri/
+%{_appsdir}/ultramarine-noctalia-settings.desktop
 
 %changelog
 * Sat Nov 21 2026 Its-J <jonah@fyralabs.com> - 0.1.2-1
