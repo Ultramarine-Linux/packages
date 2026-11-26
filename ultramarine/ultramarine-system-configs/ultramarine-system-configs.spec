@@ -3,7 +3,7 @@ Version:        46
 Release:        4%{?dist}
 Summary:        Various configuration files for a more comfortable Ultramarine desktop experience
 BuildArch:      noarch
-License:        MIT OR GFDL-1.1-or-later
+License:        MIT OR (GFDL-1.1-or-later AND LicenseRef-Fyra-Labs-Proprietary)
 URL:            https://ultramarine-linux.org
 Source2:        ultramarine-logrotate.conf
 Source3:        networking-tweaks.conf
@@ -36,7 +36,7 @@ and performance on Ultramarine.
 %package -n ultramarine-bookmarks
 # Based on https://src.fedoraproject.org/rpms/fedora-bookmarks/blob/rawhide/f/fedora-bookmarks.spec
 Summary:    Ultramarine default Firefox settings
-License:    GFDL-1.1-or-later
+License:    GFDL-1.1-or-later AND LicenseRef-Fyra-Labs-Proprietary
 BuildArch:  noarch
 Provides:   system-bookmarks
 Conflicts:  fedora-bookmarks
