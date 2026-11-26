@@ -3,7 +3,7 @@ Version:        46
 Release:        4%{?dist}
 Summary:        Various configuration files for a more comfortable Ultramarine desktop experience
 BuildArch:      noarch
-License:        MIT OR GFDL-1.1-or-later
+License:        MIT OR (GFDL-1.1-or-later AND LicenseRef-Fyra-Labs-Proprietary)
 URL:            https://ultramarine-linux.org
 Source2:        ultramarine-logrotate.conf
 Source3:        networking-tweaks.conf
@@ -13,6 +13,7 @@ Source6:        ultramarine-default-bookmarks.html
 Source7:        GFDL-1.1-or-later.txt
 Source8:        scx_loader.toml
 Source9:        falcond.conf
+Source10:       ultramarine-bookmarks.js
 
 BuildRequires:  /usr/bin/install
 
@@ -35,12 +36,13 @@ and performance on Ultramarine.
 %package -n ultramarine-bookmarks
 # Based on https://src.fedoraproject.org/rpms/fedora-bookmarks/blob/rawhide/f/fedora-bookmarks.spec
 Summary:    Ultramarine default Firefox settings
-License:    GFDL-1.1-or-later
+License:    GFDL-1.1-or-later AND LicenseRef-Fyra-Labs-Proprietary
 BuildArch:  noarch
 Provides:   system-bookmarks
 Conflicts:  fedora-bookmarks
 Obsoletes:  fedora-bookmarks
 Obsoletes:  ultramarine-phony-bookmarks
+Enhances:   firefox
 
 %description -n ultramarine-bookmarks
 This package contains the default Firefox bookmarks for Ultramarine.
@@ -64,6 +66,7 @@ install -Dm644 %{SOURCE5} %{buildroot}/etc/sysctl.d/50-mtu-probing.conf
 install -Dm644 %{SOURCE6} %{buildroot}%{_datadir}/bookmarks/ultramarine-default-bookmarks.html
 install -Dm644 %{SOURCE8} %{buildroot}%{_sysconfdir}/scx_loader/config.toml
 install -Dm644 %{SOURCE9} %{buildroot}%{_sysconfdir}/falcond/config.conf
+install -Dm644 %{SOURCE10} %{buildroot}%{_prefix}/lib64/firefox/browser/defaults/preferences/ultramarine-bookmarks.js
 cp %{S:7} GFDL-1.1-or-later
 
 %files
@@ -87,6 +90,7 @@ cp %{S:7} GFDL-1.1-or-later
 # This folder is also needed for all browsers
 %dir %{_datadir}/bookmarks
 %{_datadir}/bookmarks/ultramarine-default-bookmarks.html
+%{_prefix}/lib64/firefox/browser/defaults/preferences/ultramarine-bookmarks.js
 
 %changelog
 * Mon Oct 26 2026 Cypress Reed <cypress@fyralabs.com>
