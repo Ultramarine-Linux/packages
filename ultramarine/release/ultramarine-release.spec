@@ -57,7 +57,7 @@
 Summary:	Ultramarine release files
 Name:		ultramarine-release
 Version:	%{dist_version}
-Release:	17%{?dist}
+Release:	18%{?dist}
 License:	MIT
 Source0:	LICENSE
 URL:        https://ultramarine-linux.org
@@ -699,6 +699,7 @@ Common configuration package for chromebook variants
 
 %if %{with surface}
 %package        surface
+Requires:      ultramarine-systemd-presets-surface
 Requires(post): sed
 Requires(postun): sed
 Summary:        Common configuration package for surface variants
