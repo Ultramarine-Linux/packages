@@ -8,7 +8,7 @@ Summary: Config files for KDE
 Name:    kde-settings
 Epoch:   1
 Version: %{?fedora}
-Release: 3%{?dist}
+Release: 2%{?dist}
 
 License: MIT
 URL:     https://github.com/Ultramarine-Linux/kde-settings
