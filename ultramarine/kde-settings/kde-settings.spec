@@ -19,8 +19,6 @@ Source2: https://github.com/Ultramarine-Linux/ultramarine-kde-theme/archive/refs
 BuildArch: noarch
 
 BuildRequires: kde-filesystem
-# this is so i can do something fucking stupid (copy the breeze colours out of the default one into ours)
-BuildRequires: plasma-breeze-common
 # xdg-user-dirs hackery
 BuildRequires: desktop-file-utils
 BuildRequires: xdg-user-dirs
@@ -194,13 +192,7 @@ mkdir -p %{buildroot}%{_datadir}/plasma/look-and-feel
 cp -a ultramarine-kde-theme-um%{version}/dark %{buildroot}%{_datadir}/plasma/look-and-feel/org.ultramarine-linux.ultramarine.desktop
 cp -a ultramarine-kde-theme-um%{version}/light %{buildroot}%{_datadir}/plasma/look-and-feel/org.ultramarine-linux.ultramarinelight.desktop
 install -Dm644 ultramarine-kde-theme-um%{version}/color-schemes/UltramarineDark.colors %{buildroot}%{_datadir}/color-schemes/UltramarineDark.colors
-
-# this is the aforementioned fuckery
-sed -e 's/^ColorScheme=BreezeLight$/ColorScheme=UltramarineLight/' \
-    -e 's/^Name=Breeze Light$/Name=Ultramarine Light/' \
-    -e '/^Name\[/d' \
-    %{_datadir}/color-schemes/BreezeLight.colors \
-    > %{buildroot}%{_datadir}/color-schemes/UltramarineLight.colors
+install -Dm644 ultramarine-kde-theme-um%{version}/color-schemes/UltramarineLight.colors %{buildroot}%{_datadir}/color-schemes/UltramarineLight.colors
 
 %if ! %{with initialsetup_gui_backend}
 rm -rv %{buildroot}%{_libexecdir}/initial-setup
