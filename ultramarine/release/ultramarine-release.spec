@@ -57,7 +57,7 @@
 Summary:	Ultramarine release files
 Name:		ultramarine-release
 Version:	%{dist_version}
-Release:	15%{?dist}
+Release:	16%{?dist}
 License:	MIT
 Source0:	LICENSE
 URL:        https://ultramarine-linux.org
@@ -272,8 +272,9 @@ Provides:   base-module(platform:f%{version})
 Requires:   ultramarine-release-common = %{version}-%{release}
 Requires:   ultramarine-release-desktop = %{version}-%{release}
 Provides:   system-release-product
-Provides: ultramarine-release-kde = %{version}-%{release}
-Obsoletes: ultramarine-release-kde < 40-12
+Provides:   ultramarine-release-kde = %{version}-%{release}
+Provides:   fedora-release-kde-desktop = %{version}-%{release}
+Obsoletes:  ultramarine-release-kde < 40-12
 # ultramarine-release-common Requires: ultramarine-release-identity, so at least one
 # package must provide it. This Recommends: pulls in
 # ultramarine-release-identity-cinnamon if nothing else is already doing so.
