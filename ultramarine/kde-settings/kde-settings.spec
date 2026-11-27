@@ -8,7 +8,7 @@ Summary: Config files for KDE
 Name:    kde-settings
 Epoch:   1
 Version: %{?fedora}
-Release: 1%{?dist}
+Release: 2%{?dist}
 
 License: MIT
 URL:     https://github.com/Ultramarine-Linux/kde-settings
@@ -192,6 +192,7 @@ mkdir -p %{buildroot}%{_datadir}/plasma/look-and-feel
 cp -a ultramarine-kde-theme-um%{version}/dark %{buildroot}%{_datadir}/plasma/look-and-feel/org.ultramarine-linux.ultramarine.desktop
 cp -a ultramarine-kde-theme-um%{version}/light %{buildroot}%{_datadir}/plasma/look-and-feel/org.ultramarine-linux.ultramarinelight.desktop
 install -Dm644 ultramarine-kde-theme-um%{version}/color-schemes/UltramarineDark.colors %{buildroot}%{_datadir}/color-schemes/UltramarineDark.colors
+install -Dm644 ultramarine-kde-theme-um%{version}/color-schemes/UltramarineLight.colors %{buildroot}%{_datadir}/color-schemes/UltramarineLight.colors
 
 %if ! %{with initialsetup_gui_backend}
 rm -rv %{buildroot}%{_libexecdir}/initial-setup
@@ -271,6 +272,7 @@ test -f %{_datadir}/wallpapers/F%{version_maj} || ls -l %{_datadir}/wallpapers
 %{_datadir}/plasma/look-and-feel/org.ultramarine-linux.ultramarine.desktop/
 %{_datadir}/plasma/look-and-feel/org.ultramarine-linux.ultramarinelight.desktop/
 %{_datadir}/color-schemes/UltramarineDark.colors
+%{_datadir}/color-schemes/UltramarineLight.colors
 
 %files -n qt-settings
 %license COPYING
@@ -283,6 +285,9 @@ test -f %{_datadir}/wallpapers/F%{version_maj} || ls -l %{_datadir}/wallpapers
 
 
 %changelog
+* Thu Nov 26 2026 Jaiden Riordan <jade@fyralabs.com>
+- Add Ultramarine Light colour scheme for real this time
+
 * Wed Nov 18 2026 Its-J <jonah@fyralabs.com>
 - Add ultramarine light/dark themes
 
