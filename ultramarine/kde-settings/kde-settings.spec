@@ -286,7 +286,7 @@ test -f %{_datadir}/wallpapers/F%{version_maj} || ls -l %{_datadir}/wallpapers
 
 %changelog
 * Thu Nov 26 2026 Jaiden Riordan <jade@fyralabs.com>
-- Add Ultramarine Light colourscheme for real this time
+- Add Ultramarine Light colour scheme for real this time
 
 * Wed Nov 18 2026 Its-J <jonah@fyralabs.com>
 - Add ultramarine light/dark themes
