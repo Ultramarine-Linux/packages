@@ -57,7 +57,7 @@
 Summary:	Ultramarine release files
 Name:		ultramarine-release
 Version:	%{dist_version}
-Release:	16%{?dist}
+Release:	17%{?dist}
 License:	MIT
 Source0:	LICENSE
 URL:        https://ultramarine-linux.org
@@ -287,9 +287,10 @@ Provides a base package for Ultramarine Plasma configurations.
 %package identity-plasma
 Summary:		Package providing the Ultramarine Plasma Identity
 RemovePathPostfixes: .plasma
-Provides:		ultramarine-release-identity = %{version}-%{release}
-Conflicts:		ultramarine-release-identity
-Obsoletes:        ultramarine-release-identity-kde < 40-12
+Provides:		    ultramarine-release-identity = %{version}-%{release}
+Provides:       fedora-release-identity-kde-desktop = %{version}-%{release}
+Conflicts:	    ultramarine-release-identity
+Obsoletes:      ultramarine-release-identity-kde < 40-12
 Requires(meta):	ultramarine-release-plasma = %{version}-%{release}
 #Requires(post): bash systemd
 
